@@ -1,5 +1,6 @@
 import {
   insertChunksBatch,
+  clearChunks,
   getChunkCount,
   setMetadata,
   getMetadata,
@@ -8,7 +9,7 @@ import {
 import { SEED_CHUNKS } from "./sources/seed-data";
 import { fetchUSPSTFChunks } from "./sources/uspstf-ingest";
 
-const INGEST_VERSION = "v3";
+const INGEST_VERSION = "v5";
 const BATCH_SIZE = 100;
 
 async function ingestChunks(
@@ -31,6 +32,9 @@ export async function runIngestion(force = false): Promise<void> {
     console.log("[RAG] Already ingested at version", INGEST_VERSION);
     return;
   }
+
+  console.log("[RAG] Clearing previous index...");
+  await clearChunks();
 
   console.log("[RAG] Starting full guideline ingestion (FTS mode)...");
   const start = Date.now();

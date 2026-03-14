@@ -12,10 +12,10 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - Citation block format: `%%FM_CITE%%{...}%%/FM_CITE%%` emitted by API at end of every response; parsed by streaming.ts, displayed via SourceCitation component
 - ABFM 16-domain taxonomy with exam weights enforced in every response
 - USPSTF recommendations fetched live (24hr cache) for preventive medicine queries
-- **True RAG pipeline**: 63+ curated guideline chunks across all 16 ABFM domains stored in PostgreSQL with FTS (`tsvector`/GIN index); every clinical query retrieves the top 10 most relevant chunks using `websearch_to_tsquery` + `ts_rank`, injected as `[REF N]` formatted context blocks into the LLM system prompt before generation
+- **True RAG pipeline**: 94 curated guideline chunks across all 16 ABFM domains stored in PostgreSQL with FTS (`tsvector`/GIN index); every clinical query retrieves the top 10 most relevant chunks using `websearch_to_tsquery` + `ts_rank`, injected as `[REF N]` formatted context blocks into the LLM system prompt before generation
 - RAG retrieval uses PostgreSQL Full-Text Search (FTS) — no external embedding API required; `content_tsv` generated column indexes source + title + section + content for each chunk
 - Guideline chunks cover all 16 ABFM domains from ACC/AHA, ADA, APA, GINA, GOLD, IDSA, ACOG, AAP, KDIGO, USPSTF, CDC/ACIP, AAFP, Endocrine Society, ACR, AAN
-- Ingest version gate (`v3`) in `ingest.ts` — change to force full re-ingestion; startup `ensureIngested()` auto-populates on first run
+- Ingest version gate (`v5`) in `ingest.ts` — change to force full re-ingestion; startup `ensureIngested()` auto-populates on first run; `clearChunks()` called before each re-ingest to prevent duplicate accumulation
 - Admin endpoints: `GET /api/admin/rag/status` (chunk count, version, timestamp), `POST /api/admin/rag/reindex` (force re-ingest)
 - SRS (Spaced Repetition System) using SM-2 algorithm, persisted locally via AsyncStorage
 - Domain coverage tracked per-session and per-domain against ABFM blueprint weights

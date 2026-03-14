@@ -102,6 +102,10 @@ export async function searchByTextFallback(
   return rows;
 }
 
+export async function clearChunks(): Promise<void> {
+  await pool.query("TRUNCATE TABLE guideline_chunks RESTART IDENTITY CASCADE");
+}
+
 export async function getChunkCount(): Promise<number> {
   const { rows } = await pool.query<{ count: string }>(
     "SELECT COUNT(*) AS count FROM guideline_chunks"

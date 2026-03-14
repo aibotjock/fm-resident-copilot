@@ -1882,4 +1882,1224 @@ Medication management perioperatively:
 - Anticoagulants: bridge vs. hold decision based on thromboembolic risk vs. bleeding risk`,
     url: "https://www.aafp.org/pubs/afp/preoperative",
   },
+
+  // ========== MUSCULOSKELETAL — EXPANSION ==========
+
+  {
+    source: "ACR",
+    tier: 2,
+    guideline_title: "2019 ACR Guideline for Osteoarthritis of the Hand, Hip, and Knee",
+    guideline_year: "2019",
+    abfm_domain: "Musculoskeletal",
+    section: "Osteoarthritis Diagnosis and Management",
+    content: `Osteoarthritis (OA) — ACR 2019 guideline:
+
+Diagnosis:
+- Knee OA: age ≥50 + knee pain + morning stiffness <30 min + crepitus → clinical diagnosis; X-ray confirms (joint space narrowing, osteophytes, subchondral sclerosis)
+- Hip OA: hip pain + internal rotation <15° + flexion ≤115° + ESR <45 mm/h → 86% sensitivity for OA
+- Hand OA: hard tissue enlargement ≥2 of 10 selected joints + swelling ≤3 MCP joints
+
+First-line (strongly recommended):
+- Exercise therapy (aquatic, aerobic, resistance) — strongest evidence; improves pain and function
+- Weight loss ≥5% body weight in overweight OA patients (reduces knee loading by 4× per pound lost)
+- Patient education and self-management programs
+
+Pharmacotherapy:
+- Topical NSAIDs: FIRST-CHOICE for hand and knee OA (diclofenac gel 1%); superior safety vs. oral NSAIDs
+- Oral NSAIDs: effective for pain; use lowest dose shortest duration; add PPI if GI risk; avoid in CKD, HF, >75 years
+- Topical capsaicin: adjunct for hand and knee OA
+- Intraarticular corticosteroids: short-term benefit (4–8 weeks); useful for flares; limit to 3–4 per joint per year
+- Intraarticular hyaluronic acid: conditionally recommended for knee OA (modest benefit vs. placebo)
+- Duloxetine: conditionally recommended for knee OA (central sensitization component)
+- Opioids: NOT recommended for OA (risks > benefits); tramadol conditionally acceptable
+
+Not recommended: glucosamine, chondroitin (no evidence above placebo); hydroxychloroquine; TNF inhibitors
+
+Surgical referral: persistent pain/functional limitation after ≥3-6 months of conservative therapy`,
+    url: "https://www.rheumatology.org/Practice-Quality/Clinical-Support/Clinical-Practice-Guidelines/Osteoarthritis",
+  },
+
+  {
+    source: "Endocrine Society",
+    tier: 2,
+    guideline_title: "2020 Endocrine Society Clinical Practice Guideline: Osteoporosis",
+    guideline_year: "2020",
+    abfm_domain: "Musculoskeletal",
+    section: "Osteoporosis Screening, Diagnosis, and Pharmacotherapy",
+    content: `Osteoporosis — Endocrine Society / AAFP / NOF guidelines:
+
+Diagnosis (DXA T-score):
+- Normal: T-score ≥ -1.0
+- Osteopenia (low bone mass): T-score -1.0 to -2.5
+- Osteoporosis: T-score ≤ -2.5
+- Severe/established osteoporosis: T-score ≤ -2.5 + fragility fracture
+
+Screening (USPSTF):
+- All women ≥65 years: DXA screening
+- Postmenopausal women <65 with risk factors: DXA if FRAX 10-year major fracture risk ≥9.3%
+- Men ≥70 or men 50-69 with risk factors: DXA recommended
+
+Treatment thresholds (NOF guidelines):
+- T-score ≤ -2.5 at spine, femoral neck, or total hip: treat
+- Osteopenia (T-score -1.0 to -2.5) + FRAX 10-year risk: major osteoporotic fracture ≥20% OR hip fracture ≥3%: treat
+- Prior fragility fracture: treat regardless of T-score
+
+Pharmacotherapy:
+- First-line: bisphosphonates (alendronate 70 mg/week or 10 mg/day PO; risedronate; zoledronic acid 5 mg IV annually)
+- Denosumab: injectable Q6 months; first-line alternative; do NOT discontinue abruptly (rebound vertebral fractures)
+- Anabolic agents: teriparatide (PTH 1-34) or abaloparatide — for severe osteoporosis or bisphosphonate failure; 18–24 months maximum; follow with antiresorptive
+- Romosozumab (sclerostin inhibitor): reduces both spine and hip fractures; 12 months then switch to antiresorptive
+
+Calcium + Vitamin D: calcium 1200 mg/day (dietary preferred); Vitamin D 800-1000 IU/day to maintain 25-OH-D ≥30 ng/mL
+Drug holiday: after 5 years bisphosphonate if low-moderate risk; reassess DXA; continue if high risk
+Jaw osteonecrosis and atypical femur fractures: rare with oral bisphosphonates; higher risk with IV and longer use`,
+    url: "https://academic.oup.com/jcem/article/104/5/1802/5418369",
+  },
+
+  {
+    source: "ACR",
+    tier: 2,
+    guideline_title: "2021 ACR Guideline for Fibromyalgia",
+    guideline_year: "2021",
+    abfm_domain: "Musculoskeletal",
+    section: "Fibromyalgia Diagnosis and Treatment",
+    content: `Fibromyalgia — ACR 2010/2016 diagnostic criteria and management:
+
+Diagnosis (2016 ACR criteria — no tender point count required):
+- Widespread pain index (WPI) ≥7 AND symptom severity scale (SSS) ≥5, OR WPI 4-6 AND SSS ≥9
+- Symptoms present at similar level ≥3 months
+- No other diagnosis that would explain the pain
+- Associated: fatigue, unrefreshing sleep, cognitive symptoms ("fibro fog"), somatic symptoms
+
+Labs: normal CBC, CMP, TSH, ESR, CRP, ANA — diagnosis is clinical; labs to exclude mimics
+Mimics: hypothyroidism, inflammatory arthritis, SLE, PMR, myopathy, sleep apnea
+
+Management hierarchy (EULAR 2017, ACR):
+Strongly recommended (non-pharmacologic):
+1. Aerobic exercise (best evidence): land or water-based, 2-3×/week
+2. Cognitive behavioral therapy (CBT) — addresses central sensitization
+3. Patient education about condition (reduces catastrophizing)
+4. Multimodal rehabilitation programs
+
+Pharmacotherapy (adjunctive):
+- Duloxetine 60-120 mg/day: FDA-approved; targets SNS-mediated central pain
+- Milnacipran 100-200 mg/day: FDA-approved; similar to duloxetine
+- Pregabalin 300-450 mg/day: FDA-approved; reduces central sensitization
+- Amitriptyline 10-50 mg/hs: off-label but widely used for sleep + pain
+- Cyclobenzaprine 5-10 mg/hs: short-term use for sleep
+
+Not recommended: opioids (do not improve fibromyalgia; may worsen central sensitization); corticosteroids; NSAIDs (minimal evidence); strong opioids contraindicated`,
+    url: "https://www.rheumatology.org/Practice-Quality/Clinical-Support/Clinical-Practice-Guidelines",
+  },
+
+  {
+    source: "AAFP",
+    tier: 1,
+    guideline_title: "AAFP Clinical Practice Guideline: Shoulder Pain",
+    guideline_year: "2020",
+    abfm_domain: "Musculoskeletal",
+    section: "Rotator Cuff Disease and Shoulder Pain Assessment",
+    content: `Shoulder pain — rotator cuff disease (most common cause in primary care):
+
+Anatomy: supraspinatus (most commonly torn), infraspinatus, teres minor, subscapularis
+
+Diagnostic tests (exam):
+- Neer impingement sign: arm in IR, forward flex to 180° — sensitivity 72%, specificity 60%
+- Hawkins-Kennedy: arm 90° forward flex, internally rotate — sensitivity 79%, specificity 59%
+- Empty can (supraspinatus): arm 90° forward flex, 30° abduction, thumb down → assess strength
+- Drop arm test: rotator cuff tear — inability to lower slowly (sensitivity 21%, specificity 92%)
+- Speed's test: biceps tendinopathy — resisted forward flex with elbow extended
+- O'Brien's test: labral tear (SLAP) — arm 90°, elbow extended, thumb down, cross body
+
+Imaging:
+- X-ray: rule out glenohumeral OA, calcific tendinitis, AC joint disease, fracture
+- MRI: gold standard for full-thickness tears, SLAP lesions; order if conservative therapy fails
+- Ultrasound: dynamic assessment, cheaper; useful for partial tears and guided injection
+
+Management:
+- Rotator cuff tendinopathy/impingement: NSAIDs + physical therapy (6-12 weeks) → subacromial corticosteroid injection if PT fails → surgery if persistent
+- Full-thickness rotator cuff tear in active patient: orthopedic referral for possible repair
+- Glenohumeral OA: conservative (PT, NSAIDs, intraarticular injection) → joint replacement
+- Adhesive capsulitis (frozen shoulder): stages (freezing, frozen, thawing); intraarticular CS injection + PT accelerates resolution; gentle stretching; surgery rarely needed
+- Biceps tendinopathy: conservative; corticosteroid injection near tendon`,
+    url: "https://www.aafp.org/pubs/afp/shoulder-pain",
+  },
+
+  {
+    source: "AAFP",
+    tier: 1,
+    guideline_title: "AAFP / AAO Clinical Guideline: Knee Pain in Primary Care",
+    guideline_year: "2021",
+    abfm_domain: "Musculoskeletal",
+    section: "Knee Pain Evaluation and Management",
+    content: `Knee pain — primary care evaluation (AAFP/AAO):
+
+Ottawa Knee Rules (when to X-ray):
+Age ≥55 OR isolated patellar tenderness OR fibula head tenderness OR inability to flex to 90° OR inability to weight bear (4 steps immediately and in ED) → X-ray indicated
+Ottawa rule sensitivity 97-99% for fracture; specificity ~50%
+
+Common diagnoses by location:
+- Anterior: patellofemoral pain syndrome (PFPS), patellar tendinopathy, Osgood-Schlatter (adolescents), prepatellar bursitis
+- Medial: MCL sprain, medial meniscal tear, pes anserine bursitis (overweight, OA, DM)
+- Lateral: IT band syndrome (runners), LCL sprain, lateral meniscal tear, popliteal cyst (Baker's cyst)
+- Posterior: Baker's cyst, popliteal artery entrapment, DVT
+- Diffuse: OA, inflammatory arthritis, septic arthritis
+
+Meniscal tear — clinical tests:
+- McMurray test: valgus/varus stress with rotation; sensitivity 70%, specificity 71%
+- Thessaly test (most sensitive): weight-bearing rotation; sensitivity 89% for medial meniscal tears
+- Joint line tenderness: most sensitive exam finding
+
+ACL tear:
+- Lachman test: gold standard (sensitivity 84%, specificity 98% for complete tear)
+- Anterior drawer: less sensitive
+- Pivot shift: specific but difficult in acute setting
+
+Management:
+- PFPS: quadriceps strengthening, patellar taping, avoid aggravating activities; NSAIDs short-term
+- IT band syndrome: stretching, foam rolling, temporary reduction in mileage
+- Meniscal tear: conservative (PT, activity modification, NSAIDs) 6 weeks before MRI; MRI before orthopedic referral
+- ACL tear: orthopedic referral; surgical vs. conservative based on activity level, age, instability`,
+    url: "https://www.aafp.org/pubs/afp/knee-pain",
+  },
+
+  // ========== RENAL & UROLOGY — EXPANSION ==========
+
+  {
+    source: "KDIGO",
+    tier: 2,
+    guideline_title: "KDIGO 2024 CKD Clinical Practice Guideline",
+    guideline_year: "2024",
+    abfm_domain: "Renal & Urology",
+    section: "CKD Complications Management",
+    content: `CKD complications management — KDIGO 2024:
+
+Anemia of CKD:
+- Threshold: Hgb <10 g/dL in non-dialysis CKD; investigate iron stores first
+- Iron therapy: if TSAT <20% OR ferritin <200 ng/mL → iron supplementation (oral or IV)
+- Erythropoiesis-stimulating agents (ESAs): if Hgb <10 g/dL after iron optimization; target Hgb 10-11.5 g/dL (do not target >13; increased CV risk)
+
+Metabolic acidosis:
+- Target: serum bicarbonate ≥22 mEq/L in CKD
+- Treat with oral sodium bicarbonate (Baking soda) or citrate supplements
+- Correction slows CKD progression
+
+Hyperkalemia in CKD:
+- Dietary potassium restriction: <2-3 g/day; avoid high-K foods (bananas, oranges, potatoes, tomatoes)
+- Review and adjust medications: ACEi/ARB — weigh benefit vs. K-sparing effect; do not routinely discontinue for hyperkalemia ≤5.5 mEq/L if other benefits present
+- Patiromer (Veltassa) or sodium zirconium cyclosilicate (Lokelma): potassium binders; allow continued ACEi/ARB use
+- Loop diuretics: can reduce K in volume-overloaded patients
+
+Mineral metabolism:
+- Phosphorus: dietary restriction if elevated; phosphate binders if >4.5 mg/dL (sevelamer preferred — no calcium load)
+- PTH: secondary hyperparathyroidism — treat with activated Vitamin D (calcitriol) when PTH elevated; target per CKD stage
+- Calcium: avoid hypercalcemia (no >3 g elemental calcium/day total)
+
+Cardiovascular risk reduction (leading cause of death in CKD):
+- Statins: recommended for all CKD G1-G3; reassess in G4-G5 (continue if started)
+- BP target: ≤130/80 mmHg; ACEi or ARB first-line if proteinuria
+- SGLT2i: now recommended for CKD G2-G4 with proteinuria (CREDENCE, DAPA-CKD trials)`,
+    url: "https://kdigo.org/guidelines/ckd-evaluation-and-management/",
+  },
+
+  {
+    source: "KDIGO",
+    tier: 2,
+    guideline_title: "KDIGO 2012 Acute Kidney Injury Clinical Practice Guideline",
+    guideline_year: "2012",
+    abfm_domain: "Renal & Urology",
+    section: "Acute Kidney Injury Staging and Management",
+    content: `Acute Kidney Injury (AKI) — KDIGO 2012 staging:
+
+Definition: increase in serum Cr ≥0.3 mg/dL within 48h OR ≥50% increase from baseline within 7 days OR urine output <0.5 mL/kg/h for >6h
+
+Staging:
+- Stage 1: Cr ≥0.3 mg/dL rise OR 1.5-1.9× baseline; UO <0.5 mL/kg/h for 6-12h
+- Stage 2: Cr 2.0-2.9× baseline; UO <0.5 mL/kg/h for ≥12h
+- Stage 3: Cr ≥3× baseline OR Cr ≥4.0 mg/dL OR initiation of RRT; UO <0.3 mL/kg/h for ≥24h or anuria ≥12h
+
+Pre-renal vs. intrinsic (FeNa):
+- FeNa <1%: pre-renal (hypovolemia, cardiorenal syndrome, hepatorenal syndrome) OR contrast nephropathy
+- FeNa >2%: intrinsic (ATN, glomerulonephritis, interstitial nephritis)
+- FeNa unreliable with diuretics → use FeUrea instead (<35% = pre-renal)
+
+Common causes:
+- Pre-renal: volume depletion, cardiorenal, hepatorenal, NSAID-induced (afferent vasoconstriction), ACEi/ARB (efferent dilation in RAS)
+- ATN: ischemic (hypotension, sepsis), nephrotoxic (contrast, aminoglycosides, vancomycin, cisplatin)
+- AIN: drug-induced (NSAIDs, PPIs, PCN, sulfa, rifampin); eosinophilia, eosinophiluria, rash
+- Post-renal: obstruction (BPH, stones, malignancy) → renal ultrasound
+
+Contrast nephropathy prevention:
+- Identify high-risk (CKD G3+, DM, volume depletion, heart failure, NSAID use)
+- Pre-hydrate: IV NS 1 mL/kg/h for 3-12h before and 6-12h after; oral hydration acceptable for low-risk
+- Use iso-osmolar or low-osmolar contrast; minimize contrast volume
+- Hold metformin for 48h after contrast in eGFR <45
+
+Indications for emergent dialysis (AEIOU):
+Acidosis (pH <7.1), Electrolyte (K >6.5), Ingestion/poisoning, Overload (refractory), Uremia (symptoms: encephalopathy, pericarditis, bleeding)`,
+    url: "https://kdigo.org/guidelines/acute-kidney-injury/",
+  },
+
+  {
+    source: "AUA",
+    tier: 2,
+    guideline_title: "2023 AUA Guideline: Benign Prostatic Hyperplasia (BPH)",
+    guideline_year: "2023",
+    abfm_domain: "Renal & Urology",
+    section: "BPH Diagnosis and Management",
+    content: `Benign Prostatic Hyperplasia (BPH) / LUTS — AUA 2023:
+
+Diagnosis:
+- AUA Symptom Score (AUASS / IPSS): validated questionnaire; mild 0-7, moderate 8-19, severe 20-35
+- Digital rectal exam: estimate prostate size; assess for nodules/asymmetry (→ PSA)
+- Urinalysis: rule out infection, hematuria, glucose/protein
+- PSA: if prostate cancer suspected or changes management; discuss before checking
+- Post-void residual (PVR) ultrasound: if retention suspected; >300 mL abnormal
+- Imaging and cystoscopy: NOT routine; reserved for specific indications
+
+Management:
+- Mild (IPSS ≤7) or mildly bothersome symptoms: watchful waiting + lifestyle modification
+  - Limit fluids 2-3h before bed, avoid caffeine/alcohol, timed voiding, double voiding
+
+- Moderate-severe (IPSS 8+): offer pharmacotherapy
+  - Alpha-1 blockers (first-line): tamsulosin 0.4 mg/day, alfuzosin, silodosin — rapid onset (days); SFx: orthostatic hypotension, retrograde ejaculation (silodosin > tamsulosin), floppy iris syndrome
+  - 5-alpha reductase inhibitors (5-ARIs): finasteride 5 mg/day or dutasteride 0.5 mg/day — shrinks prostate; onset 3-6 months; best for prostate >40 g; reduces PSA by ~50% (double PSA to estimate true value); SFx: decreased libido, ED, gynecomastia
+  - Combination (alpha-blocker + 5-ARI): superior to either alone for large prostates (>40g); reduces retention and surgical risk (CombAT trial)
+  - PDE5 inhibitors: tadalafil 5 mg/day — also treats ED; option for patients with both conditions
+  - Anticholinergics/beta-3 agonists: for OAB/storage symptoms; caution if PVR >250 mL
+
+Surgical referral: refractory urinary retention, recurrent UTI, bladder stones, renal insufficiency, failed medical therapy`,
+    url: "https://www.auanet.org/guidelines-and-quality/guidelines/benign-prostatic-hyperplasia",
+  },
+
+  {
+    source: "AUA",
+    tier: 2,
+    guideline_title: "2022 AUA Guideline: Medical Management of Kidney Stones",
+    guideline_year: "2022",
+    abfm_domain: "Renal & Urology",
+    section: "Nephrolithiasis Evaluation and Medical Management",
+    content: `Nephrolithiasis — AUA 2022 medical management:
+
+Stone composition (from 24-hour urine):
+- Calcium oxalate (75-80%): most common; hypercalciuria, hyperoxaluria, hypocitraturia
+- Calcium phosphate (5-10%): RTA, hyperparathyroidism, alkaline urine
+- Uric acid (5-10%): low urine pH, hyperuricosuria, gout, DM; radiolucent on plain X-ray (seen on CT)
+- Struvite (10-15%): "infection stones" — urease-producing bacteria (Proteus, Klebsiella); staghorn calculi; treat infection and stone
+- Cystine (<1%): hereditary cystinuria; hexagonal crystals on UA
+
+Acute management:
+- Pain control: ketorolac (NSAID) first-line (reduces ureteral spasm); opioids if NSAID contraindicated
+- Medical expulsive therapy (MET): alpha-blocker (tamsulosin 0.4 mg/day) — increases passage rate for distal ureteral stones 5-10 mm
+- Spontaneous passage rate: <5 mm: ~68%; 5-10 mm: ~47%; >10 mm: unlikely without intervention
+- Indications for urgent urologic intervention: urosepsis + obstruction, solitary kidney, bilateral obstruction, anuria, refractory pain/vomiting, obstruction with fever
+
+Metaphylaxis (prevention):
+All stone formers: high fluid intake to urine output ≥2.5 L/day; urine specific gravity <1.010
+- Calcium oxalate: dietary calcium 1000-1200 mg/day (do NOT restrict; binds oxalate in gut); reduce oxalate-rich foods (spinach, nuts, chocolate); if hypercalciuria → thiazide diuretic (reduces urinary calcium); if hypocitraturia → potassium citrate
+- Uric acid: alkalinize urine to pH 6.5-7.0 with potassium citrate; allopurinol if hyperuricosuria; dietary purine restriction
+- Struvite: treat infection; surgical removal often required`,
+    url: "https://www.auanet.org/guidelines-and-quality/guidelines/kidney-stones",
+  },
+
+  {
+    source: "AUA",
+    tier: 2,
+    guideline_title: "2020 AUA Guideline: Hematuria Evaluation",
+    guideline_year: "2020",
+    abfm_domain: "Renal & Urology",
+    section: "Microscopic Hematuria Evaluation",
+    content: `Hematuria evaluation — AUA 2020:
+
+Definitions:
+- Gross (visible) hematuria: always requires complete evaluation
+- Microscopic hematuria: ≥3 RBC/HPF on properly collected, non-contaminated midstream urinalysis on at least one specimen
+
+Benign causes to exclude before workup:
+- Menstruation, vigorous exercise, urologic procedures, recent instrumentation → repeat UA in 6 weeks
+- Confirmed benign cause: no further workup needed
+
+Indications for full evaluation (cystoscopy + upper tract imaging):
+- Any gross hematuria
+- Microscopic hematuria in patients with any risk factor OR age >35 years
+Risk factors: smoking (strongest), occupational chemical exposure, irritative voiding symptoms, prior pelvic radiation, prior cyclophosphamide, analgesic abuse, chronic UTI, indwelling foreign body
+
+Evaluation pathway:
+1. Urinalysis with microscopy (confirm RBC, not myoglobin/hemoglobin)
+2. Urine culture (if dipstick positive for leukocytes/nitrites — treat UTI, repeat UA in 6 weeks)
+3. Serum Cr and eGFR
+4. Imaging: CT urography (preferred; three-phase: non-contrast, arterial, excretory) for upper tract — renal masses, stones, urothelial tumors; MRI urography if CT contrast contraindicated
+5. Cystoscopy (in-office flexible): evaluate bladder and urethra for urothelial carcinoma
+6. Urine cytology: low sensitivity but ordered concurrently with cystoscopy
+
+Most common causes by age:
+- <40: UTI, nephrolithiasis, IgA nephropathy, trauma
+- >40: Bladder cancer, renal cell carcinoma, BPH, stones, UTI
+
+Persistent hematuria after negative workup: nephrology referral if significant proteinuria/casts/dysmorphic RBC (→ glomerulonephritis); repeat evaluation at 3-5 years if initially negative`,
+    url: "https://www.auanet.org/guidelines-and-quality/guidelines/hematuria",
+  },
+
+  // ========== DERMATOLOGY — EXPANSION ==========
+
+  {
+    source: "AAD",
+    tier: 2,
+    guideline_title: "2023 AAD-NPF Guidelines of Care for Psoriasis",
+    guideline_year: "2023",
+    abfm_domain: "Dermatology",
+    section: "Psoriasis Diagnosis and Management",
+    content: `Psoriasis — AAD-NPF 2023:
+
+Diagnosis: clinical (well-demarcated, erythematous plaques with silvery-white scale)
+- Auspitz sign: pinpoint bleeding after scale removal (characteristic)
+- Koebner phenomenon: new lesions at sites of trauma
+- Nail findings: pitting, oil spots, onycholysis, subungual hyperkeratosis
+- Scalp: thick, adherent scale; may be first/only site
+- Common sites: extensor surfaces (elbows, knees), scalp, lower back, umbilicus, intergluteal cleft
+
+PASI score and BSA: severity classification
+- Mild: BSA <3% OR DLQI <6
+- Moderate-severe: BSA 3-10% OR DLQI ≥6 → consider systemic therapy
+
+Comorbidities: psoriatic arthritis (30%), metabolic syndrome, cardiovascular disease, depression, IBD
+- Screen all patients: joint pain (dactylitis, enthesitis, sausage digits), anxiety/depression, cardiometabolic risk
+
+Management:
+Mild (localized):
+- Topical corticosteroids (first-line): potency based on site; use mid-potency on body, low-potency on face/skin folds
+- Vitamin D analogues (calcipotriene): adjunct to or combination with TCS; calcipotriene/betamethasone combo foam (Enstilar) — superior to either alone
+- Keratolytics (salicylic acid): thick scalp plaques
+- Topical calcineurin inhibitors (tacrolimus/pimecrolimus): face, skin folds (off-label)
+- Topical PDE4 inhibitor (roflumilast 0.3% cream): FDA-approved for mild-moderate plaque psoriasis
+
+Moderate-Severe (systemic):
+- Phototherapy: NB-UVB (narrowband UVB) — first-line systemic; safest long-term; 3×/week
+- Methotrexate: 15-25 mg/week; monitor LFTs; avoid in active hepatitis, alcohol use; folate supplement; hepatotoxic
+- Cyclosporine: rapid response; reserved for severe flares; limit to 1-2 years (nephrotoxicity, HTN)
+- Apremilast (PDE4 inhibitor): oral; moderate psoriasis; avoid in depression/suicidal ideation
+- Biologics: TNF inhibitors (etanercept, adalimumab, infliximab), IL-17 inhibitors (secukinumab, ixekizumab — most effective), IL-23 inhibitors (guselkumab, risankizumab, tildrakizumab); JAK inhibitors (deucravacitinib — TYK2, safer JAK profile)
+
+Psoriatic arthritis: biologic therapy; TNF or IL-17 inhibitor; methotrexate for peripheral arthritis`,
+    url: "https://www.aad.org/member/practice/clinical-excellence/guidelines/psoriasis",
+  },
+
+  {
+    source: "AAD",
+    tier: 2,
+    guideline_title: "2023 AAD Guidelines of Care: Atopic Dermatitis",
+    guideline_year: "2023",
+    abfm_domain: "Dermatology",
+    section: "Atopic Dermatitis Diagnosis and Stepwise Treatment",
+    content: `Atopic dermatitis (eczema) — AAD 2023:
+
+Diagnosis (Hanifin-Rajka criteria): pruritus + characteristic distribution + chronic/relapsing course + personal/family history of atopy
+- Infants (<2 yrs): face, scalp, extensor surfaces
+- Children (2-12 yrs): flexural creases (antecubital, popliteal fossae), neck, wrists
+- Adults: hands, flexural areas, face/neck
+
+Severity: mild (localized, clear intervals), moderate (frequent recurrences, sleep disturbance), severe (continuous symptoms, affecting QoL)
+
+Stepwise management:
+Step 1 — Skin care (all patients):
+- Moisturize within 3 minutes of bathing ("soak and seal"): fragrance-free emollient/cream/ointment
+- Short warm baths (5-10 min); use mild, fragrance-free soap
+- Identify and avoid triggers: irritants (wool, fragrances, soaps), allergens, sweat, stress
+
+Step 2 — Mild: topical corticosteroids (TCS)
+- Low-potency: face, skin folds, infants (hydrocortisone 1-2.5%)
+- Medium-high potency: body lesions
+- Apply once or twice daily; taper to intermittent proactive therapy (2×/week) when clear
+
+Step 3 — Moderate: topical calcineurin inhibitors (TCIs)
+- Tacrolimus 0.1% ointment (adults), 0.03% (children 2-15 years): face, skin folds (steroid-sparing)
+- Pimecrolimus 1% cream: milder disease; excellent for face
+- Topical PDE4 inhibitor: crisaborole 2% (FDA for ≥2 years), difamilast
+- Topical JAK1 inhibitor: ruxolitinib 1.5% cream (FDA-approved ≥12 years, mild-moderate AD)
+
+Step 4 — Moderate-severe: systemic
+- Dupilumab (IL-4/13 inhibitor): FDA-approved ≥6 months; injectable Q2-4 weeks; safest biologic; first-line systemic
+- JAK inhibitors: abrocitinib, upadacitinib, baricitinib — FDA-approved adults; rapid onset
+- Cyclosporine: off-label; use 1-2 years maximum
+- Methotrexate/azathioprine/mycophenolate: off-label; longer onset
+
+Antibiotics: only if secondary infection (S. aureus — honey-colored crusting, impetigo pattern); routine decolonization not recommended`,
+    url: "https://www.aad.org/member/practice/clinical-excellence/guidelines/atopic-dermatitis",
+  },
+
+  {
+    source: "AAFP",
+    tier: 1,
+    guideline_title: "AAFP Clinical Guidance: Dermatophytosis and Tinea Infections",
+    guideline_year: "2022",
+    abfm_domain: "Dermatology",
+    section: "Tinea Infections and Superficial Fungal Infections",
+    content: `Tinea (dermatophytosis) — clinical guide for primary care:
+
+Types and presentation:
+- Tinea pedis (athlete's foot): interdigital maceration, scaling, pruritus; ±vesicles (inflammatory type)
+- Tinea cruris (jock itch): medial thighs, inguinal folds; sharp border; spare scrotum (unlike Candida)
+- Tinea corporis (ringworm): annular, scaly plaque with central clearing, raised border
+- Tinea capitis: scalp scaling + alopecia; most common in children; can cause kerion (boggy, tender mass)
+- Tinea unguium (onychomycosis): thickened, discolored, brittle nails; confirm with KOH or nail culture before treatment
+- Tinea versicolor (Malassezia furfur — NOT a dermatophyte): hypo or hyperpigmented fine-scaling macules; trunk; Wood's lamp = yellow-green; treat with topical antifungals
+
+Diagnosis: clinical + KOH preparation (hyphae confirm dermatophyte); culture for refractory or scalp/nail
+
+Treatment:
+- Tinea pedis, cruris, corporis: topical antifungals 2-4 weeks
+  - Terbinafine 1% cream: most effective; fungicidal; apply BID × 1 week (cruris/corporis) or 2 weeks (pedis)
+  - Clotrimazole 1% or miconazole: effective; apply BID × 2-4 weeks
+- Tinea capitis: MUST use systemic (topical ineffective due to hair follicle involvement)
+  - Griseofulvin (first-line pediatric): 20-25 mg/kg/day × 6-8 weeks; take with fatty meal
+  - Terbinafine: alternative, 4-6 weeks; superior for Trichophyton species
+  - Adjunct: selenium sulfide 2.5% shampoo twice weekly to reduce shedding
+- Onychomycosis: systemic required
+  - Terbinafine 250 mg/day: 6 weeks (fingernail), 12 weeks (toenail); hepatotoxic; check LFTs if prolonged
+  - Itraconazole pulse: 200 mg BID 1 week/month × 2-3 months; multiple drug interactions
+  - Topical (tavaborole, ciclopirox): <50% cure; mild disease/cannot tolerate systemic
+  - Cure rate: ~50-70% with systemic; 20-25% relapse
+
+Prevention: keep feet dry, wear moisture-wicking socks, change shoes regularly, avoid barefoot in communal areas`,
+    url: "https://www.aafp.org/pubs/afp/tinea",
+  },
+
+  {
+    source: "AAFP",
+    tier: 1,
+    guideline_title: "AAFP / IDSA: Skin and Soft Tissue Infections Management",
+    guideline_year: "2022",
+    abfm_domain: "Dermatology",
+    section: "Cellulitis, Erysipelas, and Abscess Management",
+    content: `Skin and soft tissue infections (SSTIs) — IDSA/AAFP:
+
+Cellulitis vs. Erysipelas:
+- Cellulitis: deeper dermis/subcutaneous tissue; borders less distinct; can occur anywhere
+- Erysipelas: superficial dermis, lymphatics; SHARPLY demarcated, raised border; face or lower legs; S. pyogenes
+- Both: unilateral lower extremity most common; warmth, erythema, edema, tenderness
+- Bilateral lower leg "cellulitis": almost never true cellulitis (consider stasis dermatitis, lipodermatosclerosis, contact dermatitis)
+
+Causative organisms:
+- Non-purulent cellulitis/erysipelas: Group A Streptococcus (S. pyogenes)
+- Purulent (abscess, furunculosis): S. aureus (MSSA or MRSA)
+
+Classification:
+- Non-purulent, mild: beta-lactam (cephalexin 500 mg QID × 5 days) — covers strep
+- Non-purulent, moderate (systemic): IV antibiotics (ampicillin-sulbactam, nafcillin/oxacillin); Cefazolin 2g IV Q8h acceptable
+- Purulent abscess: INCISION AND DRAINAGE is primary treatment; antibiotics adjunct for systemic features
+  - MRSA coverage (TMP-SMX DS BID × 5-7 days preferred; doxycycline 100 mg BID × 5 days alternative)
+- MRSA risk factors: prior MRSA, failure of beta-lactam, healthcare exposure, household contact with MRSA, crowded living
+
+Marking border: mark erythema border with pen at presentation; reassess 24-48h
+Hospitalization: systemic signs (fever >38.5°C, HR >90, RR >20, WBC >12K), rapid spread, failure of oral therapy, immunocompromise, near face/hands/genitals
+
+Complications: lymphangitis (streaking), bacteremia, necrotizing fasciitis (surgical emergency: hard, wooden-feel, dishwater fluid, pain out of proportion)
+Recurrent cellulitis: low-dose penicillin VK 250 mg BID or cephalexin 250 mg BID × 6-12 months for suppression; treat predisposing conditions (tinea pedis, lymphedema, obesity)`,
+    url: "https://www.idsociety.org/practice-guideline/skin-and-soft-tissue-infections/",
+  },
+
+  // ========== GASTROINTESTINAL — EXPANSION ==========
+
+  {
+    source: "ACG",
+    tier: 2,
+    guideline_title: "2018 ACG Clinical Guideline: Inflammatory Bowel Disease",
+    guideline_year: "2018",
+    abfm_domain: "Gastrointestinal",
+    section: "Crohn's Disease and Ulcerative Colitis Diagnosis and Management",
+    content: `Inflammatory Bowel Disease (IBD) — ACG 2018:
+
+Crohn's Disease (CD) vs. Ulcerative Colitis (UC):
+- UC: mucosal inflammation, continuous from rectum proximally; BLOODY diarrhea; smoking PROTECTIVE
+- Crohn's: transmural; any GI tract mouth-to-anus; skip lesions; cobblestone; smoking worsens
+- Crohn's: perianal disease (fistulas, abscesses), fistulas, strictures, malabsorption; extraintestinal manifestations (uveitis, episcleritis, ankylosing spondylitis, erythema nodosum, pyoderma gangrenosum, PSC [UC>CD])
+
+Diagnosis:
+- Endoscopy: gold standard; biopsy essential (pathology differentiates CD vs UC)
+- Biomarkers: fecal calprotectin (>150-200 μg/g: sensitive for IBD, helps distinguish from IBS); CRP; ESR
+- Imaging: CT or MRI enterography for small bowel CD; pelvic MRI for perianal disease
+
+Management — UC:
+- Mild-moderate proctitis/left-sided: mesalamine suppository or enema; oral mesalamine if extensive
+- Moderate-severe: oral corticosteroids for flare (not maintenance); biologic therapy if steroid-dependent/refractory
+  - Anti-TNFs: infliximab, adalimumab, golimumab
+  - Anti-integrins: vedolizumab (gut-selective)
+  - IL-12/23: ustekinumab
+  - JAK inhibitors: tofacitinib, ozanimod (S1P modulator), upadacitinib
+- Maintenance: mesalamine (mild disease); biologic for moderate-severe
+- Colectomy: refractory, dysplasia, perforation, toxic megacolon
+
+Management — Crohn's:
+- Mild ileocolonic: budesonide 9 mg/day (topical effect, less systemic)
+- Moderate-severe: anti-TNF (infliximab, adalimumab, certolizumab); combination with immunomodulator (azathioprine/6-MP) reduces immunogenicity
+- Methotrexate: alternative immunomodulator for CD
+- Ustekinumab, vedolizumab, risankizumab: biologic options
+- Exclusive enteral nutrition: first-line for pediatric CD (mucosal healing)
+
+Colorectal cancer surveillance: all UC patients and CD with colonic involvement → colonoscopy 8 years after diagnosis, then Q1-3 years`,
+    url: "https://journals.lww.com/ajg/fulltext/2018/04000/management_of_crohn_s_disease.4.aspx",
+  },
+
+  {
+    source: "AASLD",
+    tier: 2,
+    guideline_title: "2023 AASLD Practice Guidance: NAFLD/MASLD",
+    guideline_year: "2023",
+    abfm_domain: "Gastrointestinal",
+    section: "Non-Alcoholic Fatty Liver Disease — Screening, Diagnosis, and Management",
+    content: `Metabolic-associated steatotic liver disease (MASLD/NAFLD) — AASLD 2023:
+
+New nomenclature (2023):
+- MASLD (metabolic-associated steatotic liver disease): replaces NAFLD; requires ≥1 cardiometabolic risk factor
+- MASH (metabolic-associated steatohepatitis): replaces NASH; inflammation + ballooning + steatosis
+- MetALD: alcohol + metabolic risk; previously overlapping
+
+Spectrum: Simple steatosis → MASH → Fibrosis (F1-F4) → Cirrhosis → HCC
+
+Risk factors: obesity (central), type 2 DM (strongest modifier for progression), hyperlipidemia, metabolic syndrome, sleep apnea
+
+Diagnosis:
+- Elevated ALT (common but not required); ALT can be normal in MASLD
+- Ultrasound: detects steatosis >20-30%; cannot stage fibrosis; first-line screening tool
+- FIB-4 score: [(age × AST)/(PLT × √ALT)]; <1.30 → low fibrosis risk; >2.67 → high risk → refer hepatology
+- NAFLD Fibrosis Score (NFS): also validated non-invasive fibrosis staging
+- Liver biopsy: gold standard for staging; reserved for uncertain diagnosis or high fibrosis risk
+- FibroScan (transient elastography): non-invasive fibrosis assessment; ordered by GI/hepatology
+
+Management:
+- Weight loss: 5-10% reduces steatosis; ≥10% improves histology (MASH); ≥7-10% reduces fibrosis
+- Mediterranean diet + aerobic exercise
+- GLP-1 receptor agonists: semaglutide (significant histologic improvement in trials); FDA-approved for obesity
+- Pioglitazone: improves histology in MASH (with and without DM); weight gain, osteoporosis risk
+- Vitamin E 800 IU/day: improves histology in non-diabetic MASH (PIVENS trial); no long-term safety data
+- Resmetirom (Rezdiffra): FDA-approved 2024 — first disease-specific therapy for MASH with moderate-severe fibrosis (F2-F3)
+- Avoid alcohol, hepatotoxic meds; evaluate for other liver disease
+
+HCC surveillance: cirrhosis from MASLD → ultrasound Q6 months ± AFP`,
+    url: "https://www.aasld.org/practice-guidelines/nafld",
+  },
+
+  {
+    source: "ACG",
+    tier: 2,
+    guideline_title: "2013 ACG Clinical Guideline: Acute Pancreatitis",
+    guideline_year: "2013",
+    abfm_domain: "Gastrointestinal",
+    section: "Acute Pancreatitis Diagnosis and Management",
+    content: `Acute pancreatitis — ACG 2013:
+
+Diagnosis (2 of 3 required):
+1. Abdominal pain characteristic (epigastric, radiation to back, onset 30-60 min post-meal)
+2. Serum lipase (or amylase) >3× upper limit of normal — lipase more specific; amylase normalizes faster
+3. Characteristic imaging (CT or MRI with pancreatic inflammation)
+
+Lipase: preferred marker (sensitivity >95%); peaks within 24-48h; remains elevated 3-5 days
+Lipase-to-amylase ratio: >3 suggests alcoholic etiology
+
+Common etiologies: Gallstones (40%) → ERCP/cholecystectomy; Alcohol (30%); Hypertriglyceridemia (>1000 mg/dL — treat with insulin infusion ± plasmapheresis); Idiopathic (15%); Medications (thiazides, azathioprine, furosemide, sulfa, metronidazole, tetracycline, valproate)
+
+Severity classification (Revised Atlanta 2012):
+- Mild: no organ failure, no local complications; resolves in <1 week
+- Moderately severe: transient organ failure (<48h) OR local complications
+- Severe: persistent organ failure (>48h) — mortality 30-50%
+
+SIRS criteria (predict severity): >2 present at admission → ICU monitoring
+Ranson criteria: >3 at 48h = severe (12 risk factors total)
+BISAP score: BUN >25, Impaired mental status, SIRS, Age >60, Pleural effusion — ≥3 = increased mortality
+
+Management (ACG):
+- Aggressive IV hydration: Lactated Ringer's preferred over NS (reduces SIRS); 250-500 mL/h first 24h
+- NPO initially → early oral feeding (within 24-48h if tolerated) — superior to prolonged NPO
+- Pain control: IV opioids (hydromorphone or morphine)
+- Antibiotics: NOT routine; only for confirmed infected necrosis (carbapenem or fluoroquinolone + metronidazole)
+- Gallstone pancreatitis: ERCP within 24h if cholangitis or persistent obstruction; cholecystectomy same admission or within 4 weeks if mild
+- NECROTIZING pancreatitis: CT diagnosis; manage conservatively first; surgical debridement only if infected (CT-guided FNA) and fails antibiotics`,
+    url: "https://journals.lww.com/ajg/fulltext/2013/02000/american_college_of_gastroenterology_guideline_.8.aspx",
+  },
+
+  // ========== GERIATRICS — EXPANSION ==========
+
+  {
+    source: "AGS",
+    tier: 2,
+    guideline_title: "2023 AGS Beers Criteria for Potentially Inappropriate Medication Use in Older Adults",
+    guideline_year: "2023",
+    abfm_domain: "Geriatrics",
+    section: "Beers Criteria and Polypharmacy in Older Adults",
+    content: `Beers Criteria (AGS 2023) — medications to AVOID or use with caution in adults ≥65:
+
+Medications to AVOID (selected high-priority):
+- First-generation antihistamines: diphenhydramine, hydroxyzine, chlorpheniramine — highly anticholinergic; confusion, falls, urinary retention, constipation; avoid for sleep (Benadryl)
+- Benzodiazepines (all): diazepam, lorazepam, clonazepam — fall risk, hip fracture, cognitive impairment, respiratory depression; do not abruptly stop if dependent
+- Non-BZD hypnotics (Z-drugs): zolpidem, zaleplon, eszopiclone — same risks as BZDs; avoid for insomnia; preferred: melatonin, low-dose doxepin, CBT-I
+- Tricyclic antidepressants: amitriptyline, imipramine, nortriptyline — anticholinergic, orthostatic, cardiac conduction; amitriptyline EXPLICITLY listed; prefer SSRI
+- Antipsychotics for behavioral BPSD: increased mortality in dementia; use only when non-pharmacologic fails and patient/family informed
+- Skeletal muscle relaxants: cyclobenzaprine, carisoprodol, methocarbamol — anticholinergic, fall risk, little evidence in elderly
+- Sulfonylureas (especially glyburide and chlorpropamide): prolonged hypoglycemia; prefer glipizide if SU needed
+- NSAIDs (oral): GI bleeding, peptic ulcer (5× higher risk), renal impairment, fluid retention, HTN exacerbation; avoid unless no alternative + add PPI
+- Megestrol: appetite stimulation — increased thromboembolic risk
+- Antispasmodics (oxybutynin, tolterodine): anticholinergic; prefer mirabegron (beta-3 agonist)
+
+Use with caution:
+- Aspirin >100 mg/day: no primary prevention benefit ≥60; increased GI bleed risk
+- Dabigatran: increased GI bleed vs. warfarin if eGFR <30; prefer apixaban
+- Rivaroxaban: QD dosing — if dose missed, reduced anticoagulation; apixaban safer
+
+STOPP/START criteria: European equivalent of Beers; START identifies drugs that should BE prescribed (frequently under-prescribed in elderly)
+
+Deprescribing approach: identify medication indication, assess risk-benefit, patient preference, taper carefully when stopping antidepressants, BZDs, antihypertensives, opioids`,
+    url: "https://agsjournals.onlinelibrary.wiley.com/doi/10.1111/jgs.18372",
+  },
+
+  {
+    source: "AGS",
+    tier: 2,
+    guideline_title: "AGS/AMS Clinical Practice Guidelines: Delirium Prevention and Management",
+    guideline_year: "2020",
+    abfm_domain: "Geriatrics",
+    section: "Delirium Recognition and Management in Older Adults",
+    content: `Delirium in older adults — AGS/AMS guidelines:
+
+Definition: acute brain dysfunction with fluctuating consciousness, attention deficit, cognitive disturbance
+Core features: CAMINO mnemonic
+- Acute onset and fluctuating course
+- Inattention (cannot state days of week backward) — REQUIRED
+- Altered level of consciousness OR disorganized thinking (one required for diagnosis)
+
+CAM (Confusion Assessment Method) — validated screening:
+Feature 1: Acute onset + fluctuating course AND Feature 2: Inattention → PLUS Feature 3 (disorganized thinking) OR Feature 4 (altered consciousness) = DELIRIUM
+
+Subtypes:
+- Hyperactive: agitation, calling out, pulling lines — recognized more easily
+- Hypoactive: quiet, withdrawn, somnolent — often missed; worse prognosis
+- Mixed: both features
+
+Risk factors: age ≥65, pre-existing cognitive impairment, severe illness, dehydration, immobility, sensory impairment, medications (anticholinergics, opioids, BZDs, steroids)
+
+Precipitants (FIND ME mnemonic): Fasting/dehydration, Infection, New drugs, Decreased O2, Metabolic abnormalities, Environmental change
+
+Workup: BMP, CBC, UA/culture, blood cultures if infected, TSH, liver enzymes, drug screen, medication review; brain imaging only if focal neuro findings or head trauma; LP if fever + meningismus
+
+Management — NON-PHARMACOLOGIC (first-line, prevents and treats):
+- HELP protocol (Hospital Elder Life Program): reorientation, sensory aids (glasses, hearing aids), early mobilization, sleep hygiene, hydration/nutrition, non-pharmacologic sleep program
+- Frequent reorientation by staff and family
+
+Pharmacology (for agitation threatening safety):
+- Low-dose haloperidol 0.25-0.5 mg PO/IM (least studied but most experience): short-term only; EPS risk
+- Quetiapine 12.5-25 mg: more sedating; useful for ICU
+- Avoid benzodiazepines UNLESS alcohol/BZD withdrawal delirium (then BZDs are first-line)
+
+Prevention: avoid anticholinergics, unnecessary catheters, physical restraints; early mobility`,
+    url: "https://www.americangeriatrics.org/media-center/news/ags-ams-guidelines-delirium",
+  },
+
+  {
+    source: "AGS",
+    tier: 2,
+    guideline_title: "AGS Clinical Practice Guideline: Urinary Incontinence in Older Adults",
+    guideline_year: "2022",
+    abfm_domain: "Geriatrics",
+    section: "Urinary Incontinence Evaluation and Management",
+    content: `Urinary incontinence (UI) in older adults — AGS:
+
+Types:
+- Stress UI: involuntary leakage with increased intraabdominal pressure (cough, sneeze, exercise); weak pelvic floor/sphincter; more common in women
+- Urgency UI (OAB wet): sudden urge to void + inability to reach toilet; detrusor overactivity; most common in elderly
+- Overflow UI: constant dribbling or incomplete emptying; detrusor underactivity (diabetes, MS, cauda equina) OR outlet obstruction (BPH, stricture); high PVR
+- Mixed: stress + urgency; common in older women
+- Functional: cognitive/mobility limitations prevent timely toileting; incontinence functional, not anatomic
+
+Evaluation:
+- History: character, timing, volume, associated symptoms, fluid intake, medications
+- Medications causing UI: diuretics, CCBs (retention/overflow), alpha-blockers (stress), opioids (retention), BZDs (functional), anticholinergics (retention/overflow)
+- Pelvic exam: pelvic organ prolapse, atrophic vaginitis, mass
+- DRE: prostate size, sphincter tone
+- Urinalysis + culture: rule out UTI (common precipitant)
+- Post-void residual (PVR): bladder scan or catheter; >150-200 mL → overflow/retention
+
+Management:
+Behavioral (first-line, all types):
+- Bladder training: scheduled voiding, gradually extend intervals (urgency UI)
+- Pelvic floor muscle training (PFMT / Kegel exercises): 8-12 contractions 3×/day × 8-12 weeks; stress and urgency UI (Level 1A evidence)
+- Urgency: urge suppression techniques; scheduled voiding Q2-3h
+
+Pharmacotherapy:
+- Urgency UI (OAB): antimuscarinic agents (oxybutynin, tolterodine, solifenacin, trospium); PREFER mirabegron (beta-3 agonist) in older adults — avoids anticholinergic SFx; avoid oxybutynin IR in elderly (Beers criteria)
+- Stress UI: topical estrogen (vaginal) for atrophic vaginitis; duloxetine (off-label); pelvic floor PT; midurethral sling surgery
+- Overflow/retention: treat cause; catheterization (intermittent preferred); alpha-blockers for BPH
+
+Genitourinary syndrome of menopause (GSM): vaginal dryness, dyspareunia, urgency — topical estrogen first-line (vaginal cream, ring, tablet); systemic HRT increases UI risk`,
+    url: "https://www.americangeriatrics.org/guidelines",
+  },
+
+  // ========== HEMATOLOGY & ONCOLOGY — EXPANSION ==========
+
+  {
+    source: "AAFP",
+    tier: 1,
+    guideline_title: "AAFP / ASH Clinical Practice: B12 and Folate Deficiency Anemia",
+    guideline_year: "2022",
+    abfm_domain: "Hematology & Oncology",
+    section: "Vitamin B12 and Folate Deficiency Diagnosis and Treatment",
+    content: `Vitamin B12 (cobalamin) deficiency — AAFP/ASH:
+
+Clinical manifestations:
+- Hematologic: macrocytic anemia (MCV >100 fL), hypersegmented neutrophils (≥5 lobes in ≥1 neutrophil), megaloblastosis
+- Neurologic (B12-specific, NOT folate): subacute combined degeneration (posterolateral spinal cord); proprioception loss, vibration loss, ataxia, cognitive impairment; peripheral neuropathy; neuropsychiatric (depression, psychosis)
+- IMPORTANT: Folate corrects anemia but NOT neurologic deficits — do not replace folate without ruling out B12 deficiency first
+
+B12 deficiency causes:
+- Pernicious anemia: autoimmune (anti-intrinsic factor antibodies, anti-parietal cell antibodies); achlorhydria; most common cause in developed countries; associated with autoimmune thyroid disease
+- Dietary: strict vegans (no animal products)
+- Malabsorption: gastrectomy, ileal resection/disease (Crohn's), celiac, surgical bypass
+- Metformin: reduces B12 absorption (monitor annually in long-term metformin use)
+- PPIs/H2 blockers: reduce gastric acid → less protein-bound B12 release
+
+Diagnosis: Serum B12 <200 pg/mL definitive; 200-300 pg/mL borderline → check methylmalonic acid (MMA) and homocysteine (both elevated in B12 deficiency; only homocysteine elevated in folate deficiency)
+
+Treatment:
+- Pernicious anemia: IM cyanocobalamin 1000 mcg daily × 7 days, then weekly × 4 weeks, then monthly (lifelong); OR high-dose oral B12 1000-2000 mcg/day (effective — ~1% absorbed without IF by passive diffusion)
+- Dietary/malabsorption: oral B12 1000-2000 mcg/day OR IM monthly
+- Monitor: reticulocyte count rises 3-5 days; Hgb normalizes 6-8 weeks; neurologic improvement slower (may be incomplete if prolonged)
+
+Folate deficiency:
+- Causes: poor diet, alcohol (most common), malabsorption (celiac, tropical sprue), increased demand (pregnancy, hemolysis, malignancy), medications (methotrexate, phenytoin, sulfasalazine, trimethoprim)
+- Homocysteine elevated (MMA normal — distinguishes from B12)
+- Treatment: folic acid 1-5 mg/day PO × 4 months; neural tube defect prevention: 0.4-0.8 mg/day pre-conception
+- Always rule out B12 deficiency before starting folate therapy`,
+    url: "https://www.aafp.org/pubs/afp/vitamin-b12-deficiency",
+  },
+
+  {
+    source: "AAFP",
+    tier: 1,
+    guideline_title: "AAFP Thrombocytopenia Evaluation in Primary Care",
+    guideline_year: "2021",
+    abfm_domain: "Hematology & Oncology",
+    section: "Thrombocytopenia Differential Diagnosis and Workup",
+    content: `Thrombocytopenia (platelet count <150,000/μL) — primary care evaluation:
+
+Classification by platelet count:
+- Mild: 100,000-150,000 — usually asymptomatic; observation often appropriate
+- Moderate: 50,000-100,000 — petechiae possible; increased surgical bleeding
+- Severe: <50,000 — significant bleed risk; <20,000 → spontaneous bleeding risk; <10,000 → CNS/life-threatening bleed risk
+
+Pseudothrombocytopenia: EDTA-induced platelet clumping → repeat in citrate tube; common artifact
+
+Differential diagnosis framework:
+
+1. Decreased production:
+   - Bone marrow suppression: chemotherapy, radiation, aplastic anemia
+   - Infiltration: leukemia, lymphoma, myeloma, solid tumor metastasis
+   - Nutritional: B12/folate deficiency, alcohol
+   - Viral: HIV (check risk factors), EBV, CMV, hepatitis C
+
+2. Increased destruction — immune-mediated:
+   - ITP (Immune Thrombocytopenic Purpura): isolated thrombocytopenia, no anemia or leukopenia, no splenomegaly, exclusion diagnosis
+     - Treatment: observation (>30,000 without bleeding), prednisone 1 mg/kg/day, IVIG (rapid response needed), anti-D (Rh+ patients), TPO agonists (eltrombopag, romiplostim) for chronic
+   - Drug-induced: heparin (HIT), quinine, quinidine, sulfonamides, vancomycin, linezolid, checkpoint inhibitors → HIT: check anti-PF4 antibody; 4T score
+   - TTP: MAHA (schistocytes) + thrombocytopenia + renal failure + fever + neuro changes → EMERGENCY plasmapheresis
+   - HUS: MAHA + thrombocytopenia + AKI (especially post-Shiga-toxin E. coli O157:H7)
+   - HELLP: pregnancy — hemolysis + elevated LFTs + low platelets
+   - Antiphospholipid syndrome: venous/arterial thrombosis + thrombocytopenia
+   - SLE: multi-mechanism
+
+3. Sequestration: hypersplenism (portal HTN, cirrhosis, lymphoma)
+
+Initial workup: CBC + differential, peripheral blood smear, reticulocyte count, BMP/LFTs, LDH, haptoglobin; HIV/HCV if risk factors; B12/folate; ANA if SLE suspected; coagulation studies (DIC); heparin exposure history`,
+    url: "https://www.aafp.org/pubs/afp/thrombocytopenia",
+  },
+
+  {
+    source: "USPSTF",
+    tier: 1,
+    guideline_title: "USPSTF: Colorectal Cancer Screening 2021",
+    guideline_year: "2021",
+    abfm_domain: "Hematology & Oncology",
+    section: "Colorectal Cancer Screening Recommendations and Methods",
+    content: `Colorectal cancer (CRC) screening — USPSTF 2021 (Grade B: 45-75; Grade C: 76-85):
+
+Screening start age: 45 years (average risk) — USPSTF 2021 update (previously 50); ACG/USMSTF: also 45
+
+Screening methods (all acceptable):
+Stool-based tests (non-invasive):
+- gFOBT (guaiac FOBT): annually; avoid red meat, NSAIDs, Vitamin C 3 days before; 3 consecutive samples
+- FIT (fecal immunochemical test): annually; more specific than gFOBT; no dietary restriction; preferred stool test
+- FIT-DNA (Cologuard): every 1-3 years; higher sensitivity (92%) but lower specificity → more false positives
+
+Structural tests:
+- Colonoscopy: every 10 years; gold standard; direct visualization and polypectomy; bowel prep required; sedation needed
+- CT colonography (virtual colonoscopy): every 5 years; requires bowel prep; IV contrast optional; cannot remove polyps
+- Flexible sigmoidoscopy: every 5 years; or Q10 years + annual FIT
+
+High-risk screening (START EARLIER, MORE FREQUENT):
+- First-degree relative with CRC or advanced adenoma <60 years OR ≥2 first-degree relatives any age → colonoscopy starting at age 40 OR 10 years before youngest relative's diagnosis (whichever earlier), Q5 years
+- Lynch syndrome (HNPCC): colonoscopy starting age 20-25, Q1-2 years
+- FAP: flexible sigmoidoscopy starting puberty; colectomy usually recommended
+- IBD (UC/CD with colonic involvement): colonoscopy 8 years after diagnosis, then Q1-3 years
+
+Stop screening: at 75 (discuss risk-benefit); do not screen after 85
+
+Positive non-colonoscopy test: follow-up diagnostic colonoscopy within 6 months (not another non-invasive test)
+
+Risk factors: personal/family history CRC, IBD, Lynch/FAP, obesity, red/processed meat, alcohol, smoking; PROTECTIVE: physical activity, fiber, calcium, aspirin (not first-line for cancer prevention)`,
+    url: "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/colorectal-cancer-screening",
+  },
+
+  // ========== NEUROLOGY — EXPANSION ==========
+
+  {
+    source: "AAN",
+    tier: 2,
+    guideline_title: "2022 AAN/MDS Practice Guideline: Parkinson Disease",
+    guideline_year: "2022",
+    abfm_domain: "Neurology",
+    section: "Parkinson Disease Diagnosis and Management",
+    content: `Parkinson Disease (PD) — AAN/MDS guidelines:
+
+Diagnosis (UK Brain Bank criteria):
+Cardinal motor features (TRAP): Tremor (resting, 4-6 Hz, pill-rolling, improves with action), Rigidity (cogwheel, lead-pipe), Akinesia/Bradykinesia, Postural instability
+- Resting tremor disappears with intentional movement (vs. essential tremor which is ACTION tremor, no rigidity)
+- Unilateral onset → bilateral progression
+- Strong response to levodopa supports diagnosis
+
+Supportive features: anosmia (often premotor), constipation, REM sleep behavior disorder, orthostatic hypotension, pain
+Red flags against PD: no levodopa response, early falls, symmetrical onset, early dementia, cerebellar signs, autonomic failure → consider MSA, PSP, LBD, DLB
+
+Staging: Hoehn-Yahr scale (1-5; 1-2 unilateral, 3 bilateral with balance, 4-5 severe/wheelchair)
+
+Pharmacotherapy:
+- Dopamine precursor: LEVODOPA (L-DOPA) + carbidopa — most effective; "gold standard"; carbidopa prevents peripheral conversion → more reaches brain, reduces nausea
+  - Preparations: immediate release (Sinemet), extended release, intestinal gel (Duopa) for advanced
+  - Motor fluctuations with chronic use: "wearing off," "on-off" phenomenon, dyskinesias (involuntary movements at peak dose)
+- Dopamine agonists: pramipexole, ropinirole, rotigotine patch — first-line in younger patients (delay motor complications); SE: impulse control disorders (gambling, hypersexuality), daytime somnolence, hallucinations, leg edema
+- MAO-B inhibitors: selegiline, rasagiline, safinamide — mild symptom control; adjunct; possible neuroprotection
+- COMT inhibitors: entacapone, opicapone — extend levodopa action; reduce "wearing off"
+- Amantadine: treats levodopa-induced dyskinesias; also mild PD
+
+Non-motor management:
+- Dementia: rivastigmine (only ChEI approved for PD dementia); avoid typical antipsychotics (worsen PD)
+- Psychosis/hallucinations: reduce PD meds first; quetiapine or clozapine (atypical); pimavanserin (FDA-approved for PD psychosis)
+- Depression: SSRIs, SNRIs; TCAs with caution
+- Constipation: increased fiber, hydration, docusate; macrogol (PEG laxative)
+- Exercise: neurologist-guided exercise therapy (LSVT BIG, LSVT LOUD, tango, tai chi — evidence for gait and QoL)
+- DBS (deep brain stimulation): STN or GPi; for fluctuations/dyskinesias refractory to medication`,
+    url: "https://www.aan.com/Guidelines/home/GuidelineDetail/1045",
+  },
+
+  {
+    source: "ACC/AHA",
+    tier: 2,
+    guideline_title: "2017 ACC/AHA Guideline on Evaluation and Management of Syncope",
+    guideline_year: "2017",
+    abfm_domain: "Neurology",
+    section: "Syncope Evaluation and Risk Stratification",
+    content: `Syncope evaluation — ACC/AHA 2017:
+
+Definition: transient, self-limited loss of consciousness due to global cerebral hypoperfusion; characteristically: rapid onset, short duration, spontaneous complete recovery
+
+Classification:
+1. Reflex (neurally-mediated) — most common (50%):
+   - Vasovagal: prodrome (warmth, nausea, diaphoresis), triggers (pain, emotion, prolonged standing); tilt-table test positive; benign
+   - Situational: cough, micturition, defecation, post-exercise
+   - Carotid sinus syndrome: turning head, tight collar → carotid massage (confirm diagnosis; do under monitoring)
+
+2. Orthostatic hypotension: ≥20 mmHg systolic OR ≥10 mmHg diastolic drop within 3 min of standing
+   - Causes: volume depletion, medications (diuretics, alpha-blockers, antihypertensives), autonomic neuropathy (DM, PD, MSA)
+   - Active stand test: BP lying → then standing at 1, 3, 5 min
+
+3. Cardiac syncope — HIGH RISK:
+   - Arrhythmia: VT, VF, high-degree AV block, sick sinus syndrome, SVT with pre-excitation
+   - Structural: severe AS (effort syncope), HCM, acute MI, PE, cardiac tamponade
+
+High-risk features (require urgent evaluation/admission):
+- New ECG abnormality (complete LBBB, Q waves, long QT/short QT, Brugada pattern, delta waves, AV block)
+- Structural heart disease (HCM, severe AS, prior MI, EF <35%)
+- Exertional syncope
+- Family history of sudden cardiac death
+- Syncope without prodrome in supine position
+- During exercise
+
+Workup:
+- ALL patients: 12-lead ECG, history, physical, orthostatic BPs
+- Ambulatory monitoring (Holter/event monitor): if arrhythmic cause suspected; no clear diagnosis
+- Tilt-table test: if reflex syncope suspected after initial evaluation
+- Echocardiogram: if structural heart disease suspected or ECG abnormal
+- NOT routine: carotid ultrasound (unless stroke suspected), neuroimaging (unless focal deficit), EEG (unless seizure suspected)
+
+CHESS/EGSYS/SFSR risk scores: predict serious outcome; guide admission vs. discharge
+
+Seizure vs. syncope: clonic jerks AFTER LOC (syncope); prolonged tonic-clonic BEFORE recovery, aura, post-ictal confusion, tongue biting, incontinence (more specific for seizure)`,
+    url: "https://www.ahajournals.org/doi/10.1161/CIR.0000000000000492",
+  },
+
+  // ========== MULTISYSTEM & OTHER — EXPANSION ==========
+
+  {
+    source: "AAFP",
+    tier: 1,
+    guideline_title: "AAFP: Chronic Pain Management in Primary Care",
+    guideline_year: "2022",
+    abfm_domain: "Multisystem & Other",
+    section: "Opioid Therapy for Chronic Non-Cancer Pain — CDC 2022 Guidelines",
+    content: `Chronic non-cancer pain — CDC 2022 Clinical Practice Guideline for Opioid Prescribing:
+
+CDC 2022 core principles:
+1. Non-opioid therapies preferred first: NSAIDs, acetaminophen, SNRIs (duloxetine, milnacipran), gabapentinoids, topical agents, exercise therapy, CBT, physical therapy
+2. Opioids: only if expected benefits > risks; lowest effective dose; reassess frequently
+3. Immediate-release opioids before ER/LA opioids for non-cancer chronic pain
+4. Avoid concurrent opioid + benzodiazepine (↑ overdose risk 3-4×); taper if currently combined
+5. Morphine milligram equivalents (MME): risk increases substantially at ≥50 MME/day; use caution ≥90 MME/day
+
+Opioid initiation:
+- Signed informed consent / treatment agreement (risks, alternatives, urine drug screen, PDMP check)
+- Prescription drug monitoring program (PDMP): check before initiating AND periodically
+- Urine drug screen: at baseline and periodically during therapy
+- Start lowest effective dose; titrate by 25-50% increments; reassess monthly × 3, then Q3-6 months
+
+High-risk indicators (require more intensive monitoring):
+- History of OUD, alcohol use disorder
+- Mental health comorbidities (depression, PTSD)
+- Sleep-disordered breathing
+- Concurrent benzodiazepines, sedatives, stimulants
+
+Opioid use disorder (OUD) treatment — SAMHSA:
+- Medications for OUD (MOUD) — first-line:
+  - Buprenorphine/naloxone (Suboxone): first-line; office-based (DATA 2000 waiver no longer required since 2023); sublingual; partial mu agonist + antagonist; safer (ceiling effect)
+  - Methadone: OTP clinic; daily observed dosing; full mu agonist; QTc monitoring
+  - Naltrexone (Vivitrol): monthly IM; complete detox required first; high relapse if non-adherent; useful in motivated patients
+- Naloxone rescue (Narcan): prescribe to ALL patients on chronic opioids (0.4 mg IM or 4 mg intranasal); educate patient + household members
+- Opioid overdose: naloxone 0.4-2 mg IV/IM/IN; may need repeat doses for fentanyl; supportive care; 911`,
+    url: "https://www.cdc.gov/drugoverdose/prescribing/guideline.html",
+  },
+
+  {
+    source: "AAFP",
+    tier: 1,
+    guideline_title: "AAFP: Approach to Fatigue in Primary Care",
+    guideline_year: "2023",
+    abfm_domain: "Multisystem & Other",
+    section: "Fatigue Workup and Differential Diagnosis",
+    content: `Chronic fatigue evaluation — AAFP primary care approach:
+
+Definition: fatigue lasting >6 months; persistent or relapsing; reduces activity by ≥50%
+
+Myalgic encephalomyelitis / Chronic fatigue syndrome (ME/CFS) — IOM 2015 criteria:
+- Substantial reduction in pre-illness activity + profound fatigue
+- Post-exertional malaise (PEM): hallmark — worsening symptoms after physical/cognitive exertion (not just tiredness)
+- Unrefreshing sleep
+- Plus ≥1 of: cognitive impairment ("brain fog") OR orthostatic intolerance
+- Exclusion of other explanations after workup
+
+Differential diagnosis of chronic fatigue (systematic approach):
+- Endocrine: hypothyroidism (TSH first), diabetes (fasting glucose/A1c), adrenal insufficiency (if systemic symptoms: 8 AM cortisol)
+- Anemia: CBC, iron studies, B12/folate, reticulocyte count
+- Sleep disorders: obstructive sleep apnea (Epworth scale, polysomnography), insomnia, restless legs
+- Mood disorders: depression (PHQ-9), anxiety (GAD-7) — most common identified cause of chronic fatigue
+- Chronic infections: HIV, hepatitis B/C, EBV (mono in young adults), Lyme (if endemic area + exposure)
+- Inflammatory: connective tissue disease (ANA, anti-dsDNA, anti-SSA/B), inflammatory arthritis (CRP, ESR)
+- Cardiac: exertional dyspnea + fatigue → echo (assess EF, valvular disease), ECG
+- Malignancy: unexplained weight loss, night sweats, lymphadenopathy, elevated LDH/uric acid → CXR, CT
+- Medications: beta-blockers, diuretics, antihistamines, BZDs, statins, opioids
+
+Initial labs: CBC, BMP, TSH, LFTs, ESR/CRP, UA, fasting glucose; consider ferritin (iron deficiency without anemia)
+
+ME/CFS management:
+- No curative treatment; goal = symptom management and function
+- Pacing: avoid "push-crash" cycles; heart rate-based pacing; graded exercise therapy CONTRAINDICATED (worsens PEM)
+- Sleep hygiene, CBT (for coping, not curative), low-dose amitriptyline or trazodone for sleep
+- Orthostatic intolerance: increased salt/fluid, compression stockings, fludrocortisone, propranolol
+
+Long COVID overlap: post-acute sequelae of SARS-CoV-2 (PASC); similar presentation to ME/CFS; brain fog, fatigue, PEM`,
+    url: "https://www.aafp.org/pubs/afp/fatigue",
+  },
+
+  // ========== CARDIOVASCULAR — ADDITIONAL HIGH-YIELD ==========
+
+  {
+    source: "ACC/AHA",
+    tier: 2,
+    guideline_title: "2023 ACC/AHA Guideline for Diagnosis and Management of Atrial Fibrillation",
+    guideline_year: "2023",
+    abfm_domain: "Cardiovascular",
+    section: "Atrial Fibrillation Diagnosis, Stroke Risk, and Anticoagulation",
+    content: `Atrial Fibrillation (AFib) — ACC/AHA 2023:
+
+Classification:
+- Paroxysmal: self-terminates within 7 days
+- Persistent: lasts >7 days (needs cardioversion)
+- Long-standing persistent: continuous >12 months
+- Permanent: accepted; no further rhythm control attempted
+
+Diagnosis: irregular rhythm on exam/ECG; confirmed by 12-lead ECG or Holter
+
+Initial evaluation: TFTs (thyroid), BMP, CBC, echo (structural heart disease, LA size, LV function), sleep apnea screen
+
+Stroke risk — CHA₂DS₂-VASc score:
+C: CHF/LV dysfunction (1 pt)
+H: Hypertension (1 pt)
+A₂: Age ≥75 (2 pts)
+D: Diabetes mellitus (1 pt)
+S₂: Stroke/TIA/thromboembolism (2 pts)
+V: Vascular disease (prior MI, PAD, aortic plaque) (1 pt)
+A: Age 65-74 (1 pt)
+Sc: Sex category female (1 pt)
+
+Anticoagulation thresholds (ACC/AHA 2023):
+- Score ≥2 in men OR ≥3 in women: anticoagulate (NOT antiplatelets — inferior to OAC)
+- Score 1 in men OR 2 in women: may consider OAC
+- Score 0 in men OR 1 in women (female sex alone): no anticoagulation
+
+Preferred anticoagulants (DOACs over warfarin if eligible):
+- Apixaban 5 mg BID: preferred; less GI bleed, renal dose: 2.5 mg BID if ≥2 of: age ≥80, Cr ≥1.5, weight ≤60 kg
+- Rivaroxaban 20 mg daily with evening meal
+- Dabigatran 150 mg BID: avoid if eGFR <30; not preferred in elderly (higher GI bleed vs. warfarin)
+- Warfarin: second-line; TTR >70% needed; INR target 2.0-3.0
+
+Rate control (first-line for most):
+- Beta-blockers (metoprolol, bisoprolol, carvedilol): first-line; especially HFrEF
+- Non-dihydropyridine CCBs (diltiazem, verapamil): effective; CONTRAINDICATED in HFrEF
+- Digoxin: adjunct; less effective with exercise; narrow therapeutic window; toxicity (N/V, visual changes, bradycardia)
+- Target resting HR <110 bpm (lenient strategy acceptable per RACE II trial)
+
+Rhythm control (cardioversion ± antiarrhythmic):
+- Rate vs. rhythm: no mortality difference (AFFIRM trial); rhythm control for symptoms
+- Electrical cardioversion: TEE first if AFib >48h (or unknown duration) unless anticoagulated ≥3 weeks; cardiovert then anticoagulate ≥4 weeks (thrombus formation risk)
+- Antiarrhythmics: flecainide/propafenone (no structural heart disease); amiodarone (structural HD — toxicity: thyroid, pulmonary, hepatic, photo); sotalol; dronedarone (do not use in HF or permanent AFib)
+- Catheter ablation: pulmonary vein isolation; superior to drugs for paroxysmal/early persistent AFib`,
+    url: "https://www.ahajournals.org/doi/10.1161/CIR.0000000000001193",
+  },
+
+  // ========== PREVENTIVE MEDICINE — ADDITIONAL ==========
+
+  {
+    source: "USPSTF",
+    tier: 1,
+    guideline_title: "USPSTF: Statin Use for Cardiovascular Disease Prevention 2022",
+    guideline_year: "2022",
+    abfm_domain: "Preventive Medicine & Health Maintenance",
+    section: "Statin Prescribing for Primary Prevention",
+    content: `Statin primary prevention — USPSTF 2022 (Grade B for qualifying adults):
+
+Recommendation: Prescribe LOW-TO-MODERATE dose statins for adults 40-75 who have:
+1. No history of CVD (primary prevention)
+2. ≥1 CVD risk factor (dyslipidemia, DM, HTN, or smoking)
+3. Estimated 10-year CVD risk ≥10% (calculated using Pooled Cohort Equations — PCE)
+
+Grade C (offer selectively, individualized decision): 10-year risk 7.5-10%
+Grade I (insufficient evidence): adults ≥76 years
+
+Pooled Cohort Equations (PCE) — 10-year ASCVD risk:
+Inputs: age, sex, race, total cholesterol, HDL, systolic BP, BP treatment status, DM, smoking status
+- Available at ACC ASCVD Risk Estimator Plus (online/app)
+- Low risk: <5%; Borderline: 5-7.5%; Intermediate: 7.5-20%; High: ≥20%
+
+Statin intensity selection:
+- Low-intensity: lovastatin 20 mg, pravastatin 40 mg, simvastatin 10 mg → LDL reduction ~30%
+- Moderate-intensity: atorvastatin 10-20 mg, rosuvastatin 5-10 mg, simvastatin 20-40 mg → LDL reduction 30-50%
+- High-intensity: atorvastatin 40-80 mg, rosuvastatin 20-40 mg → LDL reduction >50%
+
+Monitoring: fasting lipids 4-12 weeks after initiation and dose change; annual thereafter
+Statin side effects:
+- Myopathy: myalgias (5-10%); CK not routinely checked; check if symptomatic (hold if CK >10× ULN)
+- Rhabdomyolysis: rare but life-threatening; CK >10,000 or >10× ULN with symptoms → stop immediately
+- Hepatotoxicity: rare; routine LFT monitoring not recommended; check if symptomatic
+- Diabetes risk: slight increase in DM risk (especially high-intensity); cardiovascular benefit outweighs in most
+- Drug interactions: simvastatin/lovastatin + CYP3A4 inhibitors (amiodarone, azole antifungals, HIV PIs, grapefruit) → myopathy risk; prefer rosuvastatin or pravastatin in these patients`,
+    url: "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/statin-use-in-adults-preventive-medication",
+  },
+
+  // ========== WOMEN'S HEALTH — ADDITIONAL ==========
+
+  {
+    source: "ACOG",
+    tier: 2,
+    guideline_title: "ACOG Practice Bulletin: Menopause and Hormone Therapy",
+    guideline_year: "2022",
+    abfm_domain: "Women's Health & Reproductive Medicine",
+    section: "Menopause Diagnosis and Hormone Replacement Therapy",
+    content: `Menopause and Hormone Therapy (HT) — ACOG 2022:
+
+Definitions:
+- Natural menopause: 12 months amenorrhea without other cause; median age 51.4 years
+- Perimenopause: 2-8 years before menopause; irregular cycles, vasomotor symptoms
+- Premature ovarian insufficiency (POI): menopause before 40 years; FSH >25 IU/L on two occasions
+- Surgical menopause: bilateral oophorectomy at any age
+
+Diagnosis: clinical (symptoms + 12-month amenorrhea); FSH >25 IU/L supports diagnosis
+Vasomotor symptoms (VMS): hot flashes, night sweats — most common symptoms; affect 75-80% of women; peak during first 2 years, can last >10 years
+
+Hormone therapy — indications and benefits:
+- MOST EFFECTIVE treatment for VMS (Grade A evidence)
+- Effective for: genitourinary syndrome of menopause (GSM), mood changes, sleep disruption
+- Systemic HT: estrogen + progestogen (if intact uterus) — protects against endometrial cancer
+- Estrogen-only: ONLY for women with prior hysterectomy (no uterus)
+- Non-oral estrogen (patches, gels, vaginal ring): avoids first-pass hepatic metabolism → lower clot risk
+
+Risk reassessment — WHI study context:
+- WHI study: mostly oral CEE + MPA in women 63 years avg; NOT representative of typical menopausal women ≤60
+- For MOST symptomatic women ≤60 OR within 10 years of menopause: benefits > risks (cardiovascular neutral)
+- Timing hypothesis: HT started near menopause may be cardioprotective; started ≥10 years after = increased CV risk
+
+Contraindications to systemic HT:
+- Active or history of breast cancer, endometrial cancer
+- Unexplained vaginal bleeding
+- Active DVT/PE or strong thromboembolic history
+- Active liver disease or liver tumor
+- Known CAD, stroke, or TIA (relative)
+
+Non-hormonal options (for VMS when HT contraindicated):
+- SSRIs/SNRIs: paroxetine 7.5 mg (only FDA-approved non-hormonal for VMS), venlafaxine, escitalopram
+- Gabapentin: 300 mg TID; especially nocturnal symptoms
+- Clonidine: modest effect; SE: hypotension, dry mouth
+- Fezolinetant (Veozah): FDA-approved 2023 — NKB pathway antagonist; effective non-hormonal option
+
+Duration: use lowest effective dose shortest time; no mandatory time limit if ongoing symptoms and benefits > risks (ACOG 2022)
+
+Vaginal estrogen (local): safe for GSM; minimal systemic absorption; use long-term; even with breast cancer history (per most guidelines)`,
+    url: "https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2014/01/management-of-menopausal-symptoms",
+  },
+
+  // ========== INFECTIOUS DISEASE — ADDITIONAL ==========
+
+  {
+    source: "IDSA",
+    tier: 2,
+    guideline_title: "IDSA Diagnosis and Management of Lyme Disease",
+    guideline_year: "2020",
+    abfm_domain: "Infectious Disease",
+    section: "Lyme Disease Diagnosis and Treatment",
+    content: `Lyme disease — IDSA 2020 guidelines:
+
+Causative agent: Borrelia burgdorferi (USA); transmitted by Ixodes scapularis tick; geographic: Northeast, Midwest US; peak: May-September
+
+Clinical stages:
+
+1. Early localized (3-30 days after tick bite):
+   - Erythema migrans (EM): pathognomonic; ≥5 cm expanding rash; classic bull's-eye pattern OR uniform erythema; 70-80% of patients; warm, not painful or pruritic
+   - Diagnosis: CLINICAL — do not test when EM is present (serology negative early); treat based on exam
+   - Treatment: doxycycline 100 mg BID × 10 days (adults; NOT pregnant women or children <8 years); amoxicillin 500 mg TID × 14 days (pregnancy, children); cefuroxime alternative
+
+2. Early disseminated (days-weeks):
+   - Neurologic (Lyme neuroborreliosis): facial palsy (bilateral in 25%), meningitis, radiculopathy, encephalopathy
+     → CSF: lymphocytic pleocytosis; Lyme antibody testing in CSF; treat with doxycycline 14-21 days (OR IV ceftriaxone if severe)
+   - Cardiac: AV block (1st-3rd degree); Lyme carditis; monitor with telemetry if PR >300 ms or high-degree block; treat with doxycycline or IV ceftriaxone
+   - Multiple EM lesions
+
+3. Late disseminated (months-years):
+   - Lyme arthritis: large joint (especially knee); intermittent; synovial fluid: 25,000-50,000 WBC/μL
+     → Treat with doxycycline 28 days; amoxicillin × 28 days; if refractory → IV ceftriaxone × 28 days
+   - Late neurologic: encephalopathy, cognitive changes → IV ceftriaxone
+
+Serologic testing (TWO-TIER mandatory):
+- EIA/ELISA first → if positive or equivocal → IgM and IgG Western blot
+- IgM: positive 2-4 weeks after infection (only reliable first 4 weeks)
+- IgG: 4-6 weeks; should be positive in late disease; use IgG ONLY if >4 weeks symptoms
+- Positive IgM alone after >4 weeks = likely false positive
+
+Post-treatment Lyme disease syndrome (PTLDS): persistent symptoms after adequate treatment; NOT ongoing infection; do NOT retreat with antibiotics; no evidence for long-term antibiotics
+
+Tick bite prophylaxis: single dose doxycycline 200 mg if: Ixodes tick, attached ≥36h, within 72h of removal, in endemic area`,
+    url: "https://www.idsociety.org/practice-guideline/lyme-disease/",
+  },
 ];
