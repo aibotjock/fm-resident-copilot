@@ -12,6 +12,11 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - Citation block format: `%%FM_CITE%%{...}%%/FM_CITE%%` emitted by API at end of every response; parsed by streaming.ts, displayed via SourceCitation component
 - ABFM 16-domain taxonomy with exam weights enforced in every response
 - USPSTF recommendations fetched live (24hr cache) for preventive medicine queries
+- **True RAG pipeline**: 63+ curated guideline chunks across all 16 ABFM domains stored in PostgreSQL with FTS (`tsvector`/GIN index); every clinical query retrieves the top 10 most relevant chunks using `websearch_to_tsquery` + `ts_rank`, injected as `[REF N]` formatted context blocks into the LLM system prompt before generation
+- RAG retrieval uses PostgreSQL Full-Text Search (FTS) — no external embedding API required; `content_tsv` generated column indexes source + title + section + content for each chunk
+- Guideline chunks cover all 16 ABFM domains from ACC/AHA, ADA, APA, GINA, GOLD, IDSA, ACOG, AAP, KDIGO, USPSTF, CDC/ACIP, AAFP, Endocrine Society, ACR, AAN
+- Ingest version gate (`v3`) in `ingest.ts` — change to force full re-ingestion; startup `ensureIngested()` auto-populates on first run
+- Admin endpoints: `GET /api/admin/rag/status` (chunk count, version, timestamp), `POST /api/admin/rag/reindex` (force re-ingest)
 - SRS (Spaced Repetition System) using SM-2 algorithm, persisted locally via AsyncStorage
 - Domain coverage tracked per-session and per-domain against ABFM blueprint weights
 - ITE (In-Training Exam) scores stored locally; low-scoring domains surfaced as study priorities
@@ -65,6 +70,18 @@ Every package extends `tsconfig.base.json` which sets `composite: true`. The roo
 ### `artifacts/api-server` (`@workspace/api-server`)
 
 Express 5 API server. Routes live in `src/routes/` and use `@workspace/api-zod` for request and response validation and `@workspace/db` for persistence.
+
+#### RAG Infrastructure (`src/rag/`)
+- `store.ts` — PostgreSQL FTS search (`searchByText` using `websearch_to_tsquery`), batch insert without embeddings, metadata CRUD
+- `retrieval.ts` — retrieves top 10 relevant chunks for any query using FTS; falls back to OR-based `to_tsquery`
+- `ingest.ts` — version-gated orchestrator (`ensureIngested()`, `runIngestion(force?)`); auto-runs at startup
+- `sources/seed-data.ts` — 63 curated guideline chunks covering all 16 ABFM domains
+- `sources/uspstf-ingest.ts` — live USPSTF API → chunks with domain inference
+- `embeddings.ts` — reserved for future vector embedding upgrade
+
+#### Database Tables
+- `guideline_chunks` — id (uuid), source, tier, guideline_title, guideline_year, abfm_domain, section, content, url, embedding (vector 1536, reserved), content_tsv (tsvector, GIN indexed, generated)
+- `rag_metadata` — key/value store for ingest version, timestamp, chunk count
 
 - Entry: `src/index.ts` — reads `PORT`, starts Express
 - App setup: `src/app.ts` — mounts CORS, JSON/urlencoded parsing, routes at `/api`

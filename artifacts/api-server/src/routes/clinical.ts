@@ -2,6 +2,7 @@ import { Router, type IRouter, type Request, type Response } from "express";
 import { openai } from "@workspace/integrations-openai-ai-server";
 import { getDomainList } from "../guidelines/abfm";
 import { getUSPSTFContext } from "../guidelines/uspstf";
+import { retrieveContext } from "../rag/retrieval";
 
 const router: IRouter = Router();
 
@@ -31,7 +32,7 @@ const PHARMACY_SOURCES = `PHARMACY — RESTRICTED SOURCE SET:
 - If a pharmacy question cannot be answered from ACPE-approved sources: state this limitation explicitly`;
 
 const LIMITATION_RULE = `MANDATORY LIMITATION RULE:
-If the answer to any part of the query is NOT supported by the indexed sources above, you MUST state: "This falls outside the indexed sources for this application. Consult [relevant body] directly." Do NOT synthesize from general knowledge, do NOT speculate, do NOT extrapolate. If you are uncertain whether a specific value is from an indexed guideline, state: "Specific value not confirmed in indexed sources."`;
+Your response MUST be grounded primarily in the RETRIEVED GUIDELINE CONTEXT provided above. If a specific question cannot be answered from the retrieved indexed content, state: "This falls outside the retrieved indexed sources for this query. Consult [relevant body] directly." Do NOT synthesize from general training knowledge outside the retrieved context. Do NOT speculate or extrapolate beyond what is stated in the retrieved excerpts. If you are uncertain whether a value appears in the retrieved content, state: "Specific value not confirmed in retrieved indexed sources."`;
 
 const CITATION_RULE = `MANDATORY CITATION BLOCK:
 At the very end of your response — after all clinical content — you MUST output a citation block in exactly this format on a single line with no other text:
@@ -70,7 +71,12 @@ function isPreventiveQuery(query: string): boolean {
   return terms.some((t) => lower.includes(t));
 }
 
-async function getSystemPrompt(mode: string, query: string, condition?: string): Promise<string> {
+async function getSystemPrompt(
+  mode: string,
+  query: string,
+  condition?: string,
+  ragContext?: string
+): Promise<string> {
   const conditionCtx = condition ? `\nClinical focus: ${condition}` : "";
 
   const uspstfCtx = isPreventiveQuery(query)
@@ -79,6 +85,19 @@ async function getSystemPrompt(mode: string, query: string, condition?: string):
 
   const pharmacyCtx = isPharmacyQuery(query)
     ? `\nPHARMACY RESTRICTION ACTIVE: This query involves pharmacotherapy details. Answer drug-specific questions ONLY from ACPE-approved sources. For dosing, interactions, and pharmacokinetic parameters, use ACPE-approved pharmacotherapy guidelines. If not covered, state the limitation.`
+    : "";
+
+  const ragSection = ragContext
+    ? `\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RETRIEVED GUIDELINE CONTEXT
+The following excerpts have been retrieved from the indexed guideline database specifically for this query. Your response MUST be grounded in these retrieved excerpts. Cite the [REF N] numbers when referencing specific content. Do not use information that is not present in the retrieved context or supported by the indexed sources listed above.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+${ragContext}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+END OF RETRIEVED CONTEXT — Base your response on the content above.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
     : "";
 
   const baseHeader = `You are FM Resident Copilot — a fact-based, evidence-based, guideline-based clinical and board preparation tool for family medicine residents.
@@ -91,7 +110,7 @@ ${TIER_2_SOURCES}
 ${PHARMACY_SOURCES}
 
 ${ABFM_BLUEPRINT}
-${conditionCtx}${uspstfCtx}${pharmacyCtx}
+${conditionCtx}${uspstfCtx}${pharmacyCtx}${ragSection}
 
 ${LIMITATION_RULE}
 
@@ -262,7 +281,15 @@ router.post("/clinical/query", async (req: Request, res: Response) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
   try {
-    const systemPrompt = await getSystemPrompt(mode, query, condition);
+    const ragQueryText = [query, condition].filter(Boolean).join(" ");
+    const ragCtx = await retrieveContext(ragQueryText, 10);
+
+    const systemPrompt = await getSystemPrompt(
+      mode,
+      query,
+      condition,
+      ragCtx.empty ? undefined : ragCtx.formattedContext
+    );
 
     const stream = await openai.chat.completions.create({
       model: "gpt-5.2",
