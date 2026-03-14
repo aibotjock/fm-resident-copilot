@@ -145,6 +145,39 @@ FRONT: [specific clinical question, scenario, or "what is..." prompt]
 BACK: [complete answer: specific drug/value/criteria + one-sentence mechanism or clinical implication]
 ---END---`;
 
+    case "ddx":
+      return `${baseInstructions}
+
+You are helping a family medicine resident work through a differential diagnosis at the bedside. The resident has provided a clinical presentation. Your job is to give a structured, ranked differential that is immediately actionable — not a vague list, but a working framework that drives the workup.
+
+Format your response with these exact sections:
+
+## MUST NOT MISS
+The single most dangerous diagnosis in this presentation that cannot be missed even if the probability is low. State: (1) what makes it dangerous, (2) the one clinical feature that raises or lowers suspicion, and (3) the one test to order if you have any concern.
+
+## RANKED DIFFERENTIAL
+5–7 diagnoses ranked from most to least likely for this presentation. For each, provide:
+- **Likelihood:** High / Moderate / Low
+- **Key supporting features:** Specific findings in this presentation that fit (be concrete — name the vitals, symptoms, demographics that match)
+- **Key against features:** What in this presentation argues against it
+- **Distinguishing finding:** The one clinical or lab finding that would most confirm or rule out this diagnosis
+Format each as a named subsection.
+
+## KEY DISTINGUISHING TEST
+The single next test that would most change your differential — not a shotgun panel. State what result would push you toward which diagnosis.
+
+## FIRST WORKUP ORDERS
+The first 3–5 orders you would write right now, ranked by urgency. Include: test name, what you are looking for, and what result would change management.
+
+## DECISION BRANCH
+A brief "if-then" logic tree. Format:
+- If [finding A] → favors [diagnosis X], order [next step]
+- If [finding B] → favors [diagnosis Y], order [next step]
+- If [finding C] → raises concern for must-not-miss, escalate to [action]
+
+## BOARD PEARL
+One high-yield insight about this presentation pattern that distinguishes a correct diagnosis from a classic distractor on the ABFM exam.`;
+
     default:
       return baseInstructions;
   }

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Pressable,
   StyleSheet,
@@ -23,7 +23,14 @@ export default function ResponseScreen() {
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
   const insets = useSafeAreaInsets();
-  const { addToHistory } = useApp();
+  const {
+    addToHistory,
+    bookmarks,
+    addBookmark,
+    removeBookmark,
+    addSRSCards,
+    setAppMode,
+  } = useApp();
 
   const params = useLocalSearchParams<{
     query: string;
@@ -42,12 +49,19 @@ export default function ResponseScreen() {
   const [error, setError] = useState("");
   const [flashcards, setFlashcards] = useState<Array<{ front: string; back: string }>>([]);
   const [showFlashcards, setShowFlashcards] = useState(false);
+  const [deckSaved, setDeckSaved] = useState(false);
 
   const responseRef = useRef("");
   const abortRef = useRef<AbortController | null>(null);
   const savedRef = useRef(false);
 
   const modeColor = getModeColor(mode, isDark);
+
+  const existingBookmark = useMemo(
+    () => bookmarks.find((b) => b.query === query && b.mode === mode),
+    [bookmarks, query, mode]
+  );
+  const bookmarkedNow = !!existingBookmark;
 
   const startStream = useCallback(
     async (q: string, m: ClinicalMode, cond?: string) => {
@@ -56,6 +70,7 @@ export default function ResponseScreen() {
       setIsStreaming(true);
       setError("");
       setShowFlashcards(false);
+      setDeckSaved(false);
       savedRef.current = false;
 
       abortRef.current = new AbortController();
@@ -107,44 +122,61 @@ export default function ResponseScreen() {
     };
   }, []);
 
-  const handleGeneratePearls = () => {
+  const handleToggleBookmark = useCallback(async () => {
+    if (existingBookmark) {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+      await removeBookmark(existingBookmark.id);
+    } else {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      await addBookmark({
+        query,
+        mode,
+        condition,
+        system,
+        response: responseRef.current,
+      });
+    }
+  }, [existingBookmark, query, mode, condition, system, addBookmark, removeBookmark]);
+
+  const handleSaveToDeck = useCallback(async () => {
+    if (deckSaved || flashcards.length === 0) return;
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    const topic = condition || query.slice(0, 40);
+    await addSRSCards(
+      flashcards.map((c) => ({
+        front: c.front,
+        back: c.back,
+        condition,
+        topic,
+      }))
+    );
+    setDeckSaved(true);
+    await setAppMode("study");
+  }, [flashcards, deckSaved, condition, query, addSRSCards, setAppMode]);
+
+  const handleGeneratePearls = useCallback(() => {
     const pearlQuery = `Give me high-yield ABFM board pearls and common exam traps for ${condition || "this condition"}.`;
     router.push({
       pathname: "/response",
-      params: {
-        query: pearlQuery,
-        mode: "board_prep",
-        condition,
-        system,
-      },
+      params: { query: pearlQuery, mode: "board_prep", condition, system },
     });
-  };
+  }, [condition, system]);
 
-  const handleGenerateFlashcards = () => {
-    const flashQuery = `Generate 5 Anki-style flashcards for ${condition || query}.`;
+  const handleGenerateFlashcards = useCallback(() => {
+    const flashQuery = `Generate 6 Anki-style flashcards for ${condition || query}.`;
     router.push({
       pathname: "/response",
-      params: {
-        query: flashQuery,
-        mode: "flashcards",
-        condition,
-        system,
-      },
+      params: { query: flashQuery, mode: "flashcards", condition, system },
     });
-  };
+  }, [condition, query, system]);
 
-  const handleGenerateVignette = () => {
-    const vignetteQuery = `Write an ABFM-style board exam vignette (4-option multiple choice) for ${condition || "this clinical topic"}.`;
+  const handleGenerateVignette = useCallback(() => {
+    const vigQuery = `Write an ABFM-style board exam vignette (4-option multiple choice) for ${condition || "this clinical topic"}.`;
     router.push({
       pathname: "/response",
-      params: {
-        query: vignetteQuery,
-        mode: "board_prep",
-        condition,
-        system,
-      },
+      params: { query: vigQuery, mode: "board_prep", condition, system },
     });
-  };
+  }, [condition, system]);
 
   return (
     <View
@@ -172,7 +204,10 @@ export default function ResponseScreen() {
           <View
             style={[
               styles.modeBadge,
-              { backgroundColor: `${modeColor}20`, borderColor: `${modeColor}40` },
+              {
+                backgroundColor: `${modeColor}20`,
+                borderColor: `${modeColor}40`,
+              },
             ]}
           >
             <Text
@@ -213,7 +248,7 @@ export default function ResponseScreen() {
         </View>
       ) : showFlashcards && flashcards.length > 0 ? (
         <View style={{ flex: 1 }}>
-          <View style={styles.flashcardHeader}>
+          <View style={styles.flashcardHeaderRow}>
             <Pressable
               onPress={() => setShowFlashcards(false)}
               style={({ pressed }) => [
@@ -224,18 +259,77 @@ export default function ResponseScreen() {
                 },
               ]}
             >
-              <Ionicons name="list-outline" size={16} color={theme.textSecondary} />
-              <Text style={[styles.viewToggleText, { color: theme.textSecondary }]}>
+              <Ionicons
+                name="list-outline"
+                size={16}
+                color={theme.textSecondary}
+              />
+              <Text
+                style={[
+                  styles.viewToggleText,
+                  { color: theme.textSecondary },
+                ]}
+              >
                 View Text
               </Text>
             </Pressable>
+
+            {!deckSaved ? (
+              <Pressable
+                onPress={handleSaveToDeck}
+                style={({ pressed }) => [
+                  styles.saveBtn,
+                  {
+                    backgroundColor: Colors.flashcards,
+                    opacity: pressed ? 0.8 : 1,
+                  },
+                ]}
+              >
+                <Ionicons name="layers-outline" size={15} color="#fff" />
+                <Text
+                  style={[
+                    styles.saveBtnText,
+                    { fontFamily: "Inter_600SemiBold" },
+                  ]}
+                >
+                  Save to Deck
+                </Text>
+              </Pressable>
+            ) : (
+              <View
+                style={[
+                  styles.savedBadge,
+                  {
+                    backgroundColor: `${Colors.boardPrep}15`,
+                    borderColor: `${Colors.boardPrep}40`,
+                  },
+                ]}
+              >
+                <Ionicons
+                  name="checkmark-circle"
+                  size={14}
+                  color={Colors.boardPrep}
+                />
+                <Text
+                  style={[
+                    styles.savedBadgeText,
+                    {
+                      color: Colors.boardPrep,
+                      fontFamily: "Inter_500Medium",
+                    },
+                  ]}
+                >
+                  Saved to Deck
+                </Text>
+              </View>
+            )}
           </View>
           <FlashcardView cards={flashcards} />
         </View>
       ) : (
         <View style={{ flex: 1 }}>
           {mode === "flashcards" && flashcards.length > 0 && !showFlashcards && (
-            <View style={styles.flashcardHeader}>
+            <View style={styles.flashcardHeaderRow}>
               <Pressable
                 onPress={() => setShowFlashcards(true)}
                 style={({ pressed }) => [
@@ -247,8 +341,17 @@ export default function ResponseScreen() {
                   },
                 ]}
               >
-                <Ionicons name="layers-outline" size={16} color={Colors.flashcards} />
-                <Text style={[styles.viewToggleText, { color: Colors.flashcards }]}>
+                <Ionicons
+                  name="layers-outline"
+                  size={16}
+                  color={Colors.flashcards}
+                />
+                <Text
+                  style={[
+                    styles.viewToggleText,
+                    { color: Colors.flashcards },
+                  ]}
+                >
                   Flashcard View
                 </Text>
               </Pressable>
@@ -258,9 +361,13 @@ export default function ResponseScreen() {
             response={response}
             mode={mode}
             isStreaming={isStreaming}
+            bookmarked={bookmarkedNow}
+            onBookmark={handleToggleBookmark}
             onGeneratePearls={handleGeneratePearls}
             onGenerateFlashcards={handleGenerateFlashcards}
             onGenerateVignette={handleGenerateVignette}
+            onSaveToDeck={mode === "flashcards" ? handleSaveToDeck : undefined}
+            deckSaved={deckSaved}
           />
         </View>
       )}
@@ -269,9 +376,7 @@ export default function ResponseScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  container: { flex: 1 },
   header: {
     flexDirection: "row",
     alignItems: "center",
@@ -286,24 +391,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  headerCenter: {
-    flex: 1,
-    alignItems: "center",
-    gap: 4,
-  },
+  headerCenter: { flex: 1, alignItems: "center", gap: 4 },
   modeBadge: {
     paddingHorizontal: 10,
     paddingVertical: 3,
     borderRadius: 20,
     borderWidth: 1,
   },
-  modeBadgeText: {
-    fontSize: 11,
-    letterSpacing: 0.3,
-  },
-  conditionTitle: {
-    fontSize: 15,
-  },
+  modeBadgeText: { fontSize: 11, letterSpacing: 0.3 },
+  conditionTitle: { fontSize: 15 },
   errorContainer: {
     flex: 1,
     alignItems: "center",
@@ -322,15 +418,13 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     borderRadius: 12,
   },
-  retryBtnText: {
-    color: "#fff",
-    fontSize: 15,
-    fontFamily: "Inter_600SemiBold",
-  },
-  flashcardHeader: {
+  retryBtnText: { color: "#fff", fontSize: 15, fontFamily: "Inter_600SemiBold" },
+  flashcardHeaderRow: {
     paddingHorizontal: 16,
     paddingVertical: 8,
-    alignItems: "flex-end",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   viewToggle: {
     flexDirection: "row",
@@ -342,8 +436,24 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "transparent",
   },
-  viewToggleText: {
-    fontSize: 12,
-    fontFamily: "Inter_500Medium",
+  viewToggleText: { fontSize: 12, fontFamily: "Inter_500Medium" },
+  saveBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    paddingHorizontal: 14,
+    paddingVertical: 7,
+    borderRadius: 10,
   },
+  saveBtnText: { color: "#fff", fontSize: 13 },
+  savedBadge: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 8,
+    borderWidth: 1,
+  },
+  savedBadgeText: { fontSize: 12 },
 });

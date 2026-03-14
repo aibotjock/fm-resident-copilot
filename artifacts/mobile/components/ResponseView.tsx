@@ -19,9 +19,13 @@ interface ResponseViewProps {
   response: string;
   mode: ClinicalMode;
   isStreaming: boolean;
+  bookmarked?: boolean;
+  onBookmark?: () => void;
   onGeneratePearls?: () => void;
   onGenerateFlashcards?: () => void;
   onGenerateVignette?: () => void;
+  onSaveToDeck?: () => void;
+  deckSaved?: boolean;
 }
 
 function parseBoldInline(
@@ -41,6 +45,94 @@ function parseBoldInline(
   );
 }
 
+function renderTableBlock(
+  rows: string[],
+  key: number,
+  modeColor: string,
+  theme: typeof Colors.light,
+  isDark: boolean
+): React.ReactNode {
+  const parsed = rows
+    .filter((row) => row.replace(/\|/g, "").replace(/-/g, "").replace(/:/g, "").replace(/\s/g, "").length > 0)
+    .map((row) =>
+      row
+        .split("|")
+        .map((cell) => cell.trim())
+        .filter((_, i, arr) => i > 0 && i < arr.length - 1)
+    )
+    .filter((row) => row.length > 0);
+
+  if (parsed.length === 0) return null;
+
+  const [header, ...body] = parsed;
+
+  return (
+    <View
+      key={key}
+      style={[
+        styles.table,
+        { borderColor: `${modeColor}30` },
+      ]}
+    >
+      <View
+        style={[
+          styles.tableHeader,
+          { backgroundColor: `${modeColor}12` },
+        ]}
+      >
+        {header.map((cell, ci) => (
+          <Text
+            key={ci}
+            style={[
+              styles.tableHeaderCell,
+              {
+                color: modeColor,
+                fontFamily: "Inter_600SemiBold",
+                flex: ci === 0 ? 1.2 : 1,
+              },
+            ]}
+          >
+            {cell}
+          </Text>
+        ))}
+      </View>
+      {body.map((row, ri) => (
+        <View
+          key={ri}
+          style={[
+            styles.tableRow,
+            {
+              backgroundColor:
+                ri % 2 === 0
+                  ? isDark
+                    ? "#1A2030"
+                    : "#FAFBFC"
+                  : "transparent",
+              borderTopColor: theme.border,
+            },
+          ]}
+        >
+          {row.map((cell, ci) => (
+            <Text
+              key={ci}
+              style={[
+                styles.tableCell,
+                {
+                  color: theme.text,
+                  fontFamily: ci === 0 ? "Inter_500Medium" : "Inter_400Regular",
+                  flex: ci === 0 ? 1.2 : 1,
+                },
+              ]}
+            >
+              {parseBoldInline(cell, theme)}
+            </Text>
+          ))}
+        </View>
+      ))}
+    </View>
+  );
+}
+
 function parseMarkdown(
   text: string,
   isDark: boolean,
@@ -50,28 +142,65 @@ function parseMarkdown(
   const lines = text.split("\n");
   const elements: React.ReactNode[] = [];
   let keyCounter = 0;
+  let tableBuffer: string[] = [];
+
+  const flushTable = () => {
+    if (tableBuffer.length > 0) {
+      const el = renderTableBlock(
+        tableBuffer,
+        keyCounter++,
+        modeColor,
+        theme,
+        isDark
+      );
+      if (el) elements.push(el);
+      tableBuffer = [];
+    }
+  };
 
   for (const line of lines) {
+    const isTableRow = line.trim().startsWith("|");
+    const isSeparator = /^[\s|:-]+$/.test(line) && line.includes("|");
+
+    if (isTableRow) {
+      if (!isSeparator) {
+        tableBuffer.push(line);
+      }
+      continue;
+    }
+
+    if (tableBuffer.length > 0) {
+      flushTable();
+    }
+
     const key = keyCounter++;
 
     if (line.startsWith("## ")) {
       elements.push(
         <View key={key} style={styles.sectionHeader}>
           <View style={[styles.sectionIndicator, { backgroundColor: modeColor }]} />
-          <Text style={[styles.h2, { color: modeColor, fontFamily: "Inter_700Bold" }]}>
+          <Text
+            style={[styles.h2, { color: modeColor, fontFamily: "Inter_700Bold" }]}
+          >
             {line.slice(3)}
           </Text>
         </View>
       );
     } else if (line.startsWith("# ")) {
       elements.push(
-        <Text key={key} style={[styles.h1, { color: theme.text, fontFamily: "Inter_700Bold" }]}>
+        <Text
+          key={key}
+          style={[styles.h1, { color: theme.text, fontFamily: "Inter_700Bold" }]}
+        >
           {line.slice(2)}
         </Text>
       );
-    } else if (line.startsWith("**") && line.endsWith("**")) {
+    } else if (line.startsWith("**") && line.endsWith("**") && line.length > 4) {
       elements.push(
-        <Text key={key} style={[styles.bold, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}>
+        <Text
+          key={key}
+          style={[styles.bold, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}
+        >
           {line.slice(2, -2)}
         </Text>
       );
@@ -79,7 +208,12 @@ function parseMarkdown(
       elements.push(
         <View key={key} style={styles.bulletRow}>
           <View style={[styles.bullet, { backgroundColor: theme.textTertiary }]} />
-          <Text style={[styles.bulletText, { color: theme.text, fontFamily: "Inter_400Regular" }]}>
+          <Text
+            style={[
+              styles.bulletText,
+              { color: theme.text, fontFamily: "Inter_400Regular" },
+            ]}
+          >
             {parseBoldInline(line.slice(2), theme)}
           </Text>
         </View>
@@ -89,28 +223,57 @@ function parseMarkdown(
       if (match) {
         elements.push(
           <View key={key} style={styles.bulletRow}>
-            <Text style={[styles.numeral, { color: modeColor, fontFamily: "Inter_600SemiBold" }]}>
+            <Text
+              style={[
+                styles.numeral,
+                { color: modeColor, fontFamily: "Inter_600SemiBold" },
+              ]}
+            >
               {match[1]}.
             </Text>
-            <Text style={[styles.bulletText, { color: theme.text, fontFamily: "Inter_400Regular" }]}>
+            <Text
+              style={[
+                styles.bulletText,
+                { color: theme.text, fontFamily: "Inter_400Regular" },
+              ]}
+            >
               {parseBoldInline(match[2], theme)}
             </Text>
           </View>
         );
       }
-    } else if (line.startsWith("SOURCES:") || line.startsWith("Sources:")) {
+    } else if (
+      line.startsWith("SOURCES:") ||
+      line.startsWith("Sources:")
+    ) {
       elements.push(
         <View
           key={key}
           style={[
             styles.sourcesBox,
-            { backgroundColor: `${modeColor}08`, borderColor: `${modeColor}25` },
+            {
+              backgroundColor: `${modeColor}08`,
+              borderColor: `${modeColor}25`,
+            },
           ]}
         >
-          <Text style={[styles.sourcesLabel, { color: modeColor, fontFamily: "Inter_600SemiBold" }]}>
+          <Text
+            style={[
+              styles.sourcesLabel,
+              { color: modeColor, fontFamily: "Inter_600SemiBold" },
+            ]}
+          >
             SOURCES
           </Text>
-          <Text style={[styles.sourcesText, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
+          <Text
+            style={[
+              styles.sourcesText,
+              {
+                color: theme.textSecondary,
+                fontFamily: "Inter_400Regular",
+              },
+            ]}
+          >
             {line.replace(/^SOURCES:\s*|^Sources:\s*/, "")}
           </Text>
         </View>
@@ -119,13 +282,20 @@ function parseMarkdown(
       elements.push(<View key={key} style={styles.spacer} />);
     } else {
       elements.push(
-        <Text key={key} style={[styles.body, { color: theme.text, fontFamily: "Inter_400Regular" }]}>
+        <Text
+          key={key}
+          style={[
+            styles.body,
+            { color: theme.text, fontFamily: "Inter_400Regular" },
+          ]}
+        >
           {parseBoldInline(line, theme)}
         </Text>
       );
     }
   }
 
+  flushTable();
   return elements;
 }
 
@@ -133,9 +303,13 @@ export function ResponseView({
   response,
   mode,
   isStreaming,
+  bookmarked,
+  onBookmark,
   onGeneratePearls,
   onGenerateFlashcards,
   onGenerateVignette,
+  onSaveToDeck,
+  deckSaved,
 }: ResponseViewProps) {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
@@ -197,37 +371,69 @@ export function ResponseView({
     };
   }, []);
 
+  const isStudyMode = mode === "board_prep" || mode === "flashcards";
+
   return (
     <View style={styles.container}>
       <View style={[styles.toolbar, { borderBottomColor: theme.border }]}>
         <Text style={[styles.toolbarLabel, { color: theme.textTertiary }]}>
           {isStreaming ? "Generating..." : "Response"}
         </Text>
-        <Pressable
-          onPress={handleCopy}
-          disabled={isStreaming || response.length === 0}
-          style={({ pressed }) => [
-            styles.copyBtn,
-            {
-              backgroundColor: copied ? `${modeColor}15` : "transparent",
-              opacity: pressed ? 0.6 : isStreaming ? 0.4 : 1,
-            },
-          ]}
-        >
-          <Ionicons
-            name={copied ? "checkmark" : "copy-outline"}
-            size={18}
-            color={copied ? modeColor : theme.textSecondary}
-          />
-          <Text
-            style={[
-              styles.copyLabel,
-              { color: copied ? modeColor : theme.textSecondary, fontFamily: "Inter_500Medium" },
+        <View style={styles.toolbarRight}>
+          {onBookmark && !isStreaming && response.length > 0 && (
+            <Pressable
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                onBookmark();
+              }}
+              style={({ pressed }) => [
+                styles.toolbarBtn,
+                {
+                  backgroundColor: bookmarked
+                    ? `${Colors.flashcards}15`
+                    : "transparent",
+                  opacity: pressed ? 0.6 : 1,
+                },
+              ]}
+            >
+              <Ionicons
+                name={bookmarked ? "bookmark" : "bookmark-outline"}
+                size={18}
+                color={bookmarked ? Colors.flashcards : theme.textSecondary}
+              />
+            </Pressable>
+          )}
+          <Pressable
+            onPress={handleCopy}
+            disabled={isStreaming || response.length === 0}
+            style={({ pressed }) => [
+              styles.copyBtn,
+              {
+                backgroundColor: copied
+                  ? `${modeColor}15`
+                  : "transparent",
+                opacity: pressed ? 0.6 : isStreaming ? 0.4 : 1,
+              },
             ]}
           >
-            {copied ? "Copied!" : "Copy"}
-          </Text>
-        </Pressable>
+            <Ionicons
+              name={copied ? "checkmark" : "copy-outline"}
+              size={18}
+              color={copied ? modeColor : theme.textSecondary}
+            />
+            <Text
+              style={[
+                styles.copyLabel,
+                {
+                  color: copied ? modeColor : theme.textSecondary,
+                  fontFamily: "Inter_500Medium",
+                },
+              ]}
+            >
+              {copied ? "Copied!" : "Copy"}
+            </Text>
+          </Pressable>
+        </View>
       </View>
 
       <ScrollView
@@ -248,74 +454,134 @@ export function ResponseView({
 
         {!isStreaming && response.length > 0 && (
           <View style={styles.addOns}>
-            <Text style={[styles.addOnsLabel, { color: theme.textTertiary }]}>
-              GENERATE ADD-ONS
-            </Text>
-            <View style={styles.addOnButtons}>
-              {onGeneratePearls && mode !== "board_prep" && (
-                <Pressable
-                  onPress={() => {
-                    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                    onGeneratePearls();
-                  }}
-                  style={({ pressed }) => [
-                    styles.addOnBtn,
+            {onSaveToDeck && mode === "flashcards" && (
+              <Pressable
+                onPress={() => {
+                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+                  onSaveToDeck();
+                }}
+                disabled={deckSaved}
+                style={({ pressed }) => [
+                  styles.saveDeckBtn,
+                  {
+                    backgroundColor: deckSaved
+                      ? `${Colors.boardPrep}15`
+                      : Colors.flashcards,
+                    borderColor: deckSaved
+                      ? `${Colors.boardPrep}40`
+                      : "transparent",
+                    borderWidth: deckSaved ? 1 : 0,
+                    opacity: pressed ? 0.8 : 1,
+                  },
+                ]}
+              >
+                <Ionicons
+                  name={deckSaved ? "checkmark-circle" : "layers-outline"}
+                  size={18}
+                  color={deckSaved ? Colors.boardPrep : "#fff"}
+                />
+                <Text
+                  style={[
+                    styles.saveDeckText,
                     {
-                      backgroundColor: isDark ? "#1E293B" : "#F1F5F9",
-                      borderColor: theme.border,
-                      opacity: pressed ? 0.7 : 1,
+                      color: deckSaved ? Colors.boardPrep : "#fff",
+                      fontFamily: "Inter_600SemiBold",
                     },
                   ]}
                 >
-                  <Ionicons name="trophy-outline" size={15} color={Colors.boardPrep} />
-                  <Text style={[styles.addOnText, { color: theme.text }]}>
-                    Board Pearls
-                  </Text>
-                </Pressable>
-              )}
-              {onGenerateFlashcards && (
-                <Pressable
-                  onPress={() => {
-                    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                    onGenerateFlashcards();
-                  }}
-                  style={({ pressed }) => [
-                    styles.addOnBtn,
-                    {
-                      backgroundColor: isDark ? "#1E293B" : "#F1F5F9",
-                      borderColor: theme.border,
-                      opacity: pressed ? 0.7 : 1,
-                    },
-                  ]}
-                >
-                  <Ionicons name="layers-outline" size={15} color={Colors.flashcards} />
-                  <Text style={[styles.addOnText, { color: theme.text }]}>
-                    Flashcards
-                  </Text>
-                </Pressable>
-              )}
-              {onGenerateVignette && mode !== "board_prep" && (
-                <Pressable
-                  onPress={() => {
-                    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                    onGenerateVignette();
-                  }}
-                  style={({ pressed }) => [
-                    styles.addOnBtn,
-                    {
-                      backgroundColor: isDark ? "#1E293B" : "#F1F5F9",
-                      borderColor: theme.border,
-                      opacity: pressed ? 0.7 : 1,
-                    },
-                  ]}
-                >
-                  <Ionicons name="school-outline" size={15} color={Colors.boardPrep} />
-                  <Text style={[styles.addOnText, { color: theme.text }]}>
-                    Board Vignette
-                  </Text>
-                </Pressable>
-              )}
-            </View>
+                  {deckSaved ? "Added to Study Deck" : "Save to Study Deck"}
+                </Text>
+              </Pressable>
+            )}
+
+            {!isStudyMode && (onGeneratePearls || onGenerateFlashcards || onGenerateVignette) && (
+              <View style={styles.addOnsInner}>
+                <Text style={[styles.addOnsLabel, { color: theme.textTertiary }]}>
+                  GENERATE ADD-ONS
+                </Text>
+                <View style={styles.addOnButtons}>
+                  {onGenerateFlashcards && (
+                    <Pressable
+                      onPress={() => {
+                        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                        onGenerateFlashcards();
+                      }}
+                      style={({ pressed }) => [
+                        styles.studyThisBtn,
+                        {
+                          backgroundColor: Colors.flashcards,
+                          opacity: pressed ? 0.8 : 1,
+                        },
+                      ]}
+                    >
+                      <Ionicons
+                        name="layers-outline"
+                        size={15}
+                        color="#fff"
+                      />
+                      <Text
+                        style={[
+                          styles.studyThisText,
+                          { fontFamily: "Inter_600SemiBold" },
+                        ]}
+                      >
+                        Study This
+                      </Text>
+                    </Pressable>
+                  )}
+                  {onGeneratePearls && (
+                    <Pressable
+                      onPress={() => {
+                        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                        onGeneratePearls();
+                      }}
+                      style={({ pressed }) => [
+                        styles.addOnBtn,
+                        {
+                          backgroundColor: isDark ? "#1E293B" : "#F1F5F9",
+                          borderColor: theme.border,
+                          opacity: pressed ? 0.7 : 1,
+                        },
+                      ]}
+                    >
+                      <Ionicons
+                        name="trophy-outline"
+                        size={15}
+                        color={Colors.boardPrep}
+                      />
+                      <Text style={[styles.addOnText, { color: theme.text }]}>
+                        Board Pearls
+                      </Text>
+                    </Pressable>
+                  )}
+                  {onGenerateVignette && (
+                    <Pressable
+                      onPress={() => {
+                        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                        onGenerateVignette();
+                      }}
+                      style={({ pressed }) => [
+                        styles.addOnBtn,
+                        {
+                          backgroundColor: isDark ? "#1E293B" : "#F1F5F9",
+                          borderColor: theme.border,
+                          opacity: pressed ? 0.7 : 1,
+                        },
+                      ]}
+                    >
+                      <Ionicons
+                        name="school-outline"
+                        size={15}
+                        color={Colors.boardPrep}
+                      />
+                      <Text style={[styles.addOnText, { color: theme.text }]}>
+                        Board Vignette
+                      </Text>
+                    </Pressable>
+                  )}
+                </View>
+              </View>
+            )}
           </View>
         )}
       </ScrollView>
@@ -324,9 +590,7 @@ export function ResponseView({
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  container: { flex: 1 },
   toolbar: {
     flexDirection: "row",
     alignItems: "center",
@@ -340,6 +604,18 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_500Medium",
     letterSpacing: 0.3,
   },
+  toolbarRight: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+  },
+  toolbarBtn: {
+    width: 36,
+    height: 36,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 8,
+  },
   copyBtn: {
     flexDirection: "row",
     alignItems: "center",
@@ -348,16 +624,9 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     borderRadius: 8,
   },
-  copyLabel: {
-    fontSize: 13,
-  },
-  scrollView: {
-    flex: 1,
-  },
-  content: {
-    padding: 16,
-    paddingBottom: 40,
-  },
+  copyLabel: { fontSize: 13 },
+  scrollView: { flex: 1 },
+  content: { padding: 16, paddingBottom: 40 },
   sectionHeader: {
     flexDirection: "row",
     alignItems: "center",
@@ -365,26 +634,15 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 6,
   },
-  sectionIndicator: {
-    width: 3,
-    height: 16,
-    borderRadius: 2,
-  },
+  sectionIndicator: { width: 3, height: 16, borderRadius: 2 },
   h1: {
     fontSize: 20,
     marginTop: 4,
     marginBottom: 8,
     lineHeight: 28,
   },
-  h2: {
-    fontSize: 13,
-    letterSpacing: 0.5,
-  },
-  bold: {
-    fontSize: 14,
-    lineHeight: 22,
-    marginTop: 2,
-  },
+  h2: { fontSize: 13, letterSpacing: 0.5 },
+  bold: { fontSize: 14, lineHeight: 22, marginTop: 2 },
   bulletRow: {
     flexDirection: "row",
     alignItems: "flex-start",
@@ -405,18 +663,9 @@ const styles = StyleSheet.create({
     flexShrink: 0,
     minWidth: 20,
   },
-  bulletText: {
-    flex: 1,
-    fontSize: 14,
-    lineHeight: 22,
-  },
-  body: {
-    fontSize: 14,
-    lineHeight: 22,
-  },
-  spacer: {
-    height: 4,
-  },
+  bulletText: { flex: 1, fontSize: 14, lineHeight: 22 },
+  body: { fontSize: 14, lineHeight: 22 },
+  spacer: { height: 4 },
   cursor: {
     width: 2,
     height: 18,
@@ -430,27 +679,70 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     gap: 4,
   },
-  sourcesLabel: {
-    fontSize: 10,
-    letterSpacing: 0.8,
+  sourcesLabel: { fontSize: 10, letterSpacing: 0.8 },
+  sourcesText: { fontSize: 12, lineHeight: 18 },
+  table: {
+    marginTop: 12,
+    marginBottom: 4,
+    borderRadius: 10,
+    borderWidth: 1,
+    overflow: "hidden",
   },
-  sourcesText: {
-    fontSize: 12,
-    lineHeight: 18,
+  tableHeader: {
+    flexDirection: "row",
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+  },
+  tableHeaderCell: {
+    fontSize: 11,
+    letterSpacing: 0.3,
+    paddingHorizontal: 4,
+  },
+  tableRow: {
+    flexDirection: "row",
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderTopWidth: 1,
+  },
+  tableCell: {
+    fontSize: 13,
+    lineHeight: 19,
+    paddingHorizontal: 4,
   },
   addOns: {
     marginTop: 28,
-    gap: 10,
+    gap: 12,
   },
+  saveDeckBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    paddingVertical: 14,
+    borderRadius: 14,
+  },
+  saveDeckText: {
+    color: "#fff",
+    fontSize: 15,
+  },
+  addOnsInner: { gap: 10 },
   addOnsLabel: {
     fontSize: 10,
     fontFamily: "Inter_600SemiBold",
     letterSpacing: 0.8,
   },
-  addOnButtons: {
+  addOnButtons: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
+  studyThisBtn: {
     flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 8,
+    alignItems: "center",
+    gap: 6,
+    paddingHorizontal: 16,
+    paddingVertical: 9,
+    borderRadius: 10,
+  },
+  studyThisText: {
+    color: "#fff",
+    fontSize: 13,
   },
   addOnBtn: {
     flexDirection: "row",
@@ -461,8 +753,5 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
   },
-  addOnText: {
-    fontSize: 13,
-    fontFamily: "Inter_500Medium",
-  },
+  addOnText: { fontSize: 13, fontFamily: "Inter_500Medium" },
 });

@@ -21,6 +21,7 @@ interface ModeCardProps {
 const MODE_ICONS: Record<ClinicalMode, keyof typeof Ionicons.glyphMap> = {
   point_of_care: "pulse-outline",
   documentation: "document-text-outline",
+  ddx: "git-branch-outline",
   board_prep: "school-outline",
   flashcards: "layers-outline",
 };
@@ -28,6 +29,7 @@ const MODE_ICONS: Record<ClinicalMode, keyof typeof Ionicons.glyphMap> = {
 const MODE_ICONS_FILLED: Record<ClinicalMode, keyof typeof Ionicons.glyphMap> = {
   point_of_care: "pulse",
   documentation: "document-text",
+  ddx: "git-branch",
   board_prep: "school",
   flashcards: "layers",
 };

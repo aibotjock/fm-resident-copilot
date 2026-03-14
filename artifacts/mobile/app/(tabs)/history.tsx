@@ -23,6 +23,7 @@ import type { ClinicalMode } from "@/types";
 const MODE_ICONS: Record<ClinicalMode, keyof typeof Ionicons.glyphMap> = {
   point_of_care: "pulse-outline",
   documentation: "document-text-outline",
+  ddx: "git-branch-outline",
   board_prep: "school-outline",
   flashcards: "layers-outline",
 };

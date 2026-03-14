@@ -7,6 +7,10 @@ export const Colors = {
   documentationLight: "#FEF3C7",
   documentationDark: "#D97706",
 
+  ddx: "#0891B2",
+  ddxLight: "#CFFAFE",
+  ddxDark: "#0E7490",
+
   boardPrep: "#10B981",
   boardPrepLight: "#D1FAE5",
   boardPrepDark: "#059669",
@@ -14,6 +18,11 @@ export const Colors = {
   flashcards: "#8B5CF6",
   flashcardsLight: "#EDE9FE",
   flashcardsDark: "#7C3AED",
+
+  clinical: "#3B82F6",
+  clinicalDark: "#60A5FA",
+  study: "#8B5CF6",
+  studyDark: "#A78BFA",
 
   light: {
     background: "#F8FAFC",
@@ -56,6 +65,7 @@ export function getModeColor(mode: string, isDark: boolean): string {
   const colors: Record<string, string> = {
     point_of_care: isDark ? "#60A5FA" : Colors.pointOfCare,
     documentation: isDark ? "#FCD34D" : Colors.documentation,
+    ddx: isDark ? "#22D3EE" : Colors.ddx,
     board_prep: isDark ? "#34D399" : Colors.boardPrep,
     flashcards: isDark ? "#A78BFA" : Colors.flashcards,
   };
@@ -66,6 +76,7 @@ export function getModeLightColor(mode: string): string {
   const colors: Record<string, string> = {
     point_of_care: Colors.pointOfCareLight,
     documentation: Colors.documentationLight,
+    ddx: Colors.ddxLight,
     board_prep: Colors.boardPrepLight,
     flashcards: Colors.flashcardsLight,
   };
