@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
+  Animated,
+  Platform,
   Pressable,
   ScrollView,
-  Share,
   StyleSheet,
   Text,
   View,
   useColorScheme,
 } from "react-native";
 import * as Haptics from "expo-haptics";
+import * as Clipboard from "expo-clipboard";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors, getModeColor } from "@/constants/colors";
 import type { ClinicalMode } from "@/types";
@@ -22,7 +24,29 @@ interface ResponseViewProps {
   onGenerateVignette?: () => void;
 }
 
-function parseMarkdown(text: string, isDark: boolean, modeColor: string, theme: typeof Colors.light) {
+function parseBoldInline(
+  text: string,
+  theme: typeof Colors.light
+): React.ReactNode {
+  const parts = text.split(/\*\*(.+?)\*\*/g);
+  if (parts.length === 1) return text;
+  return parts.map((part, i) =>
+    i % 2 === 1 ? (
+      <Text key={i} style={{ fontFamily: "Inter_600SemiBold", color: theme.text }}>
+        {part}
+      </Text>
+    ) : (
+      part
+    )
+  );
+}
+
+function parseMarkdown(
+  text: string,
+  isDark: boolean,
+  modeColor: string,
+  theme: typeof Colors.light
+) {
   const lines = text.split("\n");
   const elements: React.ReactNode[] = [];
   let keyCounter = 0;
@@ -60,21 +84,34 @@ function parseMarkdown(text: string, isDark: boolean, modeColor: string, theme: 
           </Text>
         </View>
       );
-    } else if (line.match(/^\*\*[A-D]\)/)) {
-      const isAnswer = false;
+    } else if (/^\d+\.\s/.test(line)) {
+      const match = line.match(/^(\d+)\.\s(.+)/);
+      if (match) {
+        elements.push(
+          <View key={key} style={styles.bulletRow}>
+            <Text style={[styles.numeral, { color: modeColor, fontFamily: "Inter_600SemiBold" }]}>
+              {match[1]}.
+            </Text>
+            <Text style={[styles.bulletText, { color: theme.text, fontFamily: "Inter_400Regular" }]}>
+              {parseBoldInline(match[2], theme)}
+            </Text>
+          </View>
+        );
+      }
+    } else if (line.startsWith("SOURCES:") || line.startsWith("Sources:")) {
       elements.push(
-        <Text key={key} style={[styles.option, { color: theme.text, fontFamily: "Inter_400Regular" }]}>
-          {parseBoldInlineText(line)}
-        </Text>
-      );
-    } else if (line.startsWith("SOURCES:")) {
-      elements.push(
-        <View key={key} style={[styles.sourcesBox, { backgroundColor: isDark ? "#1E293B" : "#F1F5F9", borderColor: theme.border }]}>
-          <Text style={[styles.sourcesLabel, { color: theme.textTertiary, fontFamily: "Inter_600SemiBold" }]}>
+        <View
+          key={key}
+          style={[
+            styles.sourcesBox,
+            { backgroundColor: `${modeColor}08`, borderColor: `${modeColor}25` },
+          ]}
+        >
+          <Text style={[styles.sourcesLabel, { color: modeColor, fontFamily: "Inter_600SemiBold" }]}>
             SOURCES
           </Text>
           <Text style={[styles.sourcesText, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
-            {line.slice(8).trim()}
+            {line.replace(/^SOURCES:\s*|^Sources:\s*/, "")}
           </Text>
         </View>
       );
@@ -92,24 +129,6 @@ function parseMarkdown(text: string, isDark: boolean, modeColor: string, theme: 
   return elements;
 }
 
-function parseBoldInlineText(text: string): string {
-  return text.replace(/\*\*(.+?)\*\*/g, "$1");
-}
-
-function parseBoldInline(text: string, theme: typeof Colors.light): React.ReactNode {
-  const parts = text.split(/\*\*(.+?)\*\*/g);
-  if (parts.length === 1) return text;
-  return parts.map((part, i) =>
-    i % 2 === 1 ? (
-      <Text key={i} style={{ fontFamily: "Inter_600SemiBold", color: theme.text }}>
-        {part}
-      </Text>
-    ) : (
-      part
-    )
-  );
-}
-
 export function ResponseView({
   response,
   mode,
@@ -123,10 +142,60 @@ export function ResponseView({
   const theme = isDark ? Colors.dark : Colors.light;
   const modeColor = getModeColor(mode, isDark);
 
-  const handleCopy = async () => {
+  const [copied, setCopied] = useState(false);
+  const copyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const cursorOpacity = useRef(new Animated.Value(1)).current;
+  const blinkAnimation = useRef<Animated.CompositeAnimation | null>(null);
+
+  useEffect(() => {
+    if (isStreaming) {
+      const nativeDriver = Platform.OS !== "web";
+      blinkAnimation.current = Animated.loop(
+        Animated.sequence([
+          Animated.timing(cursorOpacity, {
+            toValue: 0,
+            duration: 500,
+            useNativeDriver: nativeDriver,
+          }),
+          Animated.timing(cursorOpacity, {
+            toValue: 1,
+            duration: 500,
+            useNativeDriver: nativeDriver,
+          }),
+        ])
+      );
+      blinkAnimation.current.start();
+    } else {
+      blinkAnimation.current?.stop();
+      cursorOpacity.setValue(0);
+    }
+    return () => {
+      blinkAnimation.current?.stop();
+    };
+  }, [isStreaming, cursorOpacity]);
+
+  const handleCopy = useCallback(async () => {
+    if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
+    try {
+      await Clipboard.setStringAsync(response);
+    } catch {
+      try {
+        if (typeof navigator !== "undefined" && navigator.clipboard) {
+          await navigator.clipboard.writeText(response);
+        }
+      } catch {}
+    }
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-    await Share.share({ message: response });
-  };
+    setCopied(true);
+    copyTimeoutRef.current = setTimeout(() => setCopied(false), 2000);
+  }, [response]);
+
+  useEffect(() => {
+    return () => {
+      if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
+    };
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -136,14 +205,27 @@ export function ResponseView({
         </Text>
         <Pressable
           onPress={handleCopy}
+          disabled={isStreaming || response.length === 0}
           style={({ pressed }) => [
             styles.copyBtn,
-            { opacity: pressed ? 0.6 : 1 },
+            {
+              backgroundColor: copied ? `${modeColor}15` : "transparent",
+              opacity: pressed ? 0.6 : isStreaming ? 0.4 : 1,
+            },
           ]}
         >
-          <Ionicons name="copy-outline" size={18} color={theme.textSecondary} />
-          <Text style={[styles.copyLabel, { color: theme.textSecondary }]}>
-            Copy
+          <Ionicons
+            name={copied ? "checkmark" : "copy-outline"}
+            size={18}
+            color={copied ? modeColor : theme.textSecondary}
+          />
+          <Text
+            style={[
+              styles.copyLabel,
+              { color: copied ? modeColor : theme.textSecondary, fontFamily: "Inter_500Medium" },
+            ]}
+          >
+            {copied ? "Copied!" : "Copy"}
           </Text>
         </Pressable>
       </View>
@@ -156,7 +238,12 @@ export function ResponseView({
         {parseMarkdown(response, isDark, modeColor, theme)}
 
         {isStreaming && (
-          <View style={[styles.cursor, { backgroundColor: modeColor }]} />
+          <Animated.View
+            style={[
+              styles.cursor,
+              { backgroundColor: modeColor, opacity: cursorOpacity },
+            ]}
+          />
         )}
 
         {!isStreaming && response.length > 0 && (
@@ -180,13 +267,13 @@ export function ResponseView({
                     },
                   ]}
                 >
-                  <Ionicons name="school-outline" size={14} color={Colors.boardPrep} />
+                  <Ionicons name="trophy-outline" size={15} color={Colors.boardPrep} />
                   <Text style={[styles.addOnText, { color: theme.text }]}>
                     Board Pearls
                   </Text>
                 </Pressable>
               )}
-              {onGenerateFlashcards && mode !== "flashcards" && (
+              {onGenerateFlashcards && (
                 <Pressable
                   onPress={() => {
                     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -201,7 +288,7 @@ export function ResponseView({
                     },
                   ]}
                 >
-                  <Ionicons name="layers-outline" size={14} color={Colors.flashcards} />
+                  <Ionicons name="layers-outline" size={15} color={Colors.flashcards} />
                   <Text style={[styles.addOnText, { color: theme.text }]}>
                     Flashcards
                   </Text>
@@ -222,7 +309,7 @@ export function ResponseView({
                     },
                   ]}
                 >
-                  <Ionicons name="help-circle-outline" size={14} color={Colors.documentation} />
+                  <Ionicons name="school-outline" size={15} color={Colors.boardPrep} />
                   <Text style={[styles.addOnText, { color: theme.text }]}>
                     Board Vignette
                   </Text>
@@ -231,7 +318,6 @@ export function ResponseView({
             </View>
           </View>
         )}
-        <View style={{ height: 60 }} />
       </ScrollView>
     </View>
   );
@@ -252,29 +338,31 @@ const styles = StyleSheet.create({
   toolbarLabel: {
     fontSize: 12,
     fontFamily: "Inter_500Medium",
-    letterSpacing: 0.5,
+    letterSpacing: 0.3,
   },
   copyBtn: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 4,
+    gap: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 8,
   },
   copyLabel: {
     fontSize: 13,
-    fontFamily: "Inter_500Medium",
   },
   scrollView: {
     flex: 1,
   },
   content: {
     padding: 16,
-    gap: 2,
+    paddingBottom: 40,
   },
   sectionHeader: {
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
-    marginTop: 16,
+    marginTop: 20,
     marginBottom: 6,
   },
   sectionIndicator: {
@@ -283,8 +371,10 @@ const styles = StyleSheet.create({
     borderRadius: 2,
   },
   h1: {
-    fontSize: 18,
-    marginBottom: 4,
+    fontSize: 20,
+    marginTop: 4,
+    marginBottom: 8,
+    lineHeight: 28,
   },
   h2: {
     fontSize: 13,
@@ -292,30 +382,33 @@ const styles = StyleSheet.create({
   },
   bold: {
     fontSize: 14,
-    marginVertical: 2,
+    lineHeight: 22,
+    marginTop: 2,
   },
   bulletRow: {
     flexDirection: "row",
     alignItems: "flex-start",
     gap: 8,
-    paddingVertical: 2,
+    marginTop: 4,
+    paddingLeft: 4,
   },
   bullet: {
-    width: 4,
-    height: 4,
-    borderRadius: 2,
-    marginTop: 7,
+    width: 5,
+    height: 5,
+    borderRadius: 3,
+    marginTop: 9,
+    flexShrink: 0,
+  },
+  numeral: {
+    fontSize: 13,
+    marginTop: 3,
+    flexShrink: 0,
+    minWidth: 20,
   },
   bulletText: {
     flex: 1,
     fontSize: 14,
-    lineHeight: 20,
-  },
-  option: {
-    fontSize: 14,
     lineHeight: 22,
-    paddingVertical: 2,
-    paddingLeft: 8,
   },
   body: {
     fontSize: 14,
@@ -326,12 +419,12 @@ const styles = StyleSheet.create({
   },
   cursor: {
     width: 2,
-    height: 16,
+    height: 18,
     borderRadius: 1,
-    marginTop: 4,
+    marginTop: 6,
   },
   sourcesBox: {
-    marginTop: 16,
+    marginTop: 20,
     padding: 12,
     borderRadius: 8,
     borderWidth: 1,
@@ -346,7 +439,7 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
   addOns: {
-    marginTop: 24,
+    marginTop: 28,
     gap: 10,
   },
   addOnsLabel: {

@@ -3,6 +3,7 @@ import {
   Alert,
   Platform,
   Pressable,
+  RefreshControl,
   ScrollView,
   StyleSheet,
   Text,
@@ -31,9 +32,16 @@ export default function HistoryScreen() {
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
   const insets = useSafeAreaInsets();
-  const { history, deleteFromHistory, clearHistory, searchHistory } = useApp();
+  const { history, deleteFromHistory, clearHistory, searchHistory, reloadHistory } = useApp();
 
   const [searchQuery, setSearchQuery] = useState("");
+  const [refreshing, setRefreshing] = useState(false);
+
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    await reloadHistory();
+    setRefreshing(false);
+  };
 
   const filtered = searchHistory(searchQuery);
 
@@ -162,6 +170,14 @@ export default function HistoryScreen() {
             styles.listContent,
             { paddingBottom: Platform.OS === "web" ? 120 : 100 },
           ]}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={handleRefresh}
+              tintColor={Colors.pointOfCare}
+              colors={[Colors.pointOfCare]}
+            />
+          }
         >
           <Text style={[styles.resultCount, { color: theme.textTertiary }]}>
             {filtered.length} {filtered.length === 1 ? "entry" : "entries"}

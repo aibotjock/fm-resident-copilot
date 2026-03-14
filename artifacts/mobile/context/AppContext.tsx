@@ -19,6 +19,7 @@ interface AppContextValue {
   deleteFromHistory: (id: string) => Promise<void>;
   clearHistory: () => Promise<void>;
   searchHistory: (keyword: string) => QueryHistory[];
+  reloadHistory: () => Promise<void>;
   isLoading: boolean;
 }
 
@@ -29,23 +30,25 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [activeMode, setActiveMode] = useState<ClinicalMode>("point_of_care");
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    loadHistory();
-  }, []);
-
-  const loadHistory = async () => {
+  const loadHistory = useCallback(async () => {
     try {
       const raw = await AsyncStorage.getItem(HISTORY_KEY);
       if (raw) {
         const parsed = JSON.parse(raw) as QueryHistory[];
         setHistory(parsed);
+      } else {
+        setHistory([]);
       }
     } catch (e) {
       console.error("Failed to load history:", e);
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    loadHistory();
+  }, [loadHistory]);
 
   const saveHistory = useCallback(async (entries: QueryHistory[]) => {
     try {
@@ -112,6 +115,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         deleteFromHistory,
         clearHistory,
         searchHistory,
+        reloadHistory: loadHistory,
         isLoading,
       }}
     >
