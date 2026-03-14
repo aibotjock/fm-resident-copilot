@@ -1,6 +1,5 @@
 openapi: 3.1.0
 info:
-  # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
   description: API specification
@@ -10,6 +9,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: clinical
+    description: Clinical AI query operations
 paths:
   /healthz:
     get:
@@ -24,6 +25,22 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /clinical/query:
+    post:
+      operationId: clinicalQuery
+      tags: [clinical]
+      summary: Submit a clinical query and receive a streaming AI response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClinicalQueryBody"
+      responses:
+        "200":
+          description: SSE stream of AI response chunks
+          content:
+            text/event-stream: {}
 components:
   schemas:
     HealthStatus:
@@ -33,4 +50,19 @@ components:
           type: string
       required:
         - status
-
+    ClinicalQueryBody:
+      type: object
+      properties:
+        query:
+          type: string
+          description: The clinical question or prompt
+        mode:
+          type: string
+          enum: [point_of_care, documentation, board_prep, flashcards]
+          description: The clinical mode for prompt context
+        condition:
+          type: string
+          description: Optional condition name for context
+      required:
+        - query
+        - mode

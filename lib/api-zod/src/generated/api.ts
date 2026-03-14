@@ -14,3 +14,17 @@ import * as zod from "zod";
 export const HealthCheckResponse = zod.object({
   status: zod.string(),
 });
+
+/**
+ * @summary Submit a clinical query and receive a streaming AI response
+ */
+export const ClinicalQueryBody = zod.object({
+  query: zod.string().describe("The clinical question or prompt"),
+  mode: zod
+    .enum(["point_of_care", "documentation", "board_prep", "flashcards"])
+    .describe("The clinical mode for prompt context"),
+  condition: zod
+    .string()
+    .optional()
+    .describe("Optional condition name for context"),
+});
