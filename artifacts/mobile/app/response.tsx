@@ -15,7 +15,7 @@ import { ResponseView } from "@/components/ResponseView";
 import { FlashcardView } from "@/components/FlashcardView";
 import { useApp } from "@/context/AppContext";
 import { streamClinicalQuery, parseFlashcards } from "@/utils/streaming";
-import type { ClinicalMode } from "@/types";
+import type { ClinicalMode, CitationMetadata } from "@/types";
 import { MODE_LABELS } from "@/types";
 
 export default function ResponseScreen() {
@@ -30,6 +30,7 @@ export default function ResponseScreen() {
     removeBookmark,
     addSRSCards,
     setAppMode,
+    recordDomainQuery,
   } = useApp();
 
   const params = useLocalSearchParams<{
@@ -50,6 +51,7 @@ export default function ResponseScreen() {
   const [flashcards, setFlashcards] = useState<Array<{ front: string; back: string }>>([]);
   const [showFlashcards, setShowFlashcards] = useState(false);
   const [deckSaved, setDeckSaved] = useState(false);
+  const [citationMetadata, setCitationMetadata] = useState<CitationMetadata | null>(null);
 
   const responseRef = useRef("");
   const abortRef = useRef<AbortController | null>(null);
@@ -71,9 +73,11 @@ export default function ResponseScreen() {
       setError("");
       setShowFlashcards(false);
       setDeckSaved(false);
+      setCitationMetadata(null);
       savedRef.current = false;
 
       abortRef.current = new AbortController();
+      let capturedDomain = "";
 
       await streamClinicalQuery(
         q,
@@ -83,6 +87,13 @@ export default function ResponseScreen() {
           onChunk: (chunk) => {
             responseRef.current += chunk;
             setResponse(responseRef.current);
+          },
+          onCitation: (meta) => {
+            setCitationMetadata(meta);
+            if (meta.domain) {
+              capturedDomain = meta.domain;
+              recordDomainQuery(meta.domain);
+            }
           },
           onDone: () => {
             setIsStreaming(false);
@@ -94,6 +105,7 @@ export default function ResponseScreen() {
                 condition: cond,
                 response: responseRef.current,
                 system,
+                abfmDomain: capturedDomain || undefined,
               });
             }
             if (m === "flashcards") {
@@ -361,6 +373,7 @@ export default function ResponseScreen() {
             response={response}
             mode={mode}
             isStreaming={isStreaming}
+            citationMetadata={citationMetadata}
             bookmarked={bookmarkedNow}
             onBookmark={handleToggleBookmark}
             onGeneratePearls={handleGeneratePearls}

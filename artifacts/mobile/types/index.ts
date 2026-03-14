@@ -20,6 +20,7 @@ export interface QueryHistory {
   response: string;
   timestamp: number;
   system?: string;
+  abfmDomain?: string;
 }
 
 export interface Bookmark {
@@ -31,6 +32,7 @@ export interface Bookmark {
   system?: string;
   timestamp: number;
   note?: string;
+  abfmDomain?: string;
 }
 
 export interface SRSCard {
@@ -45,6 +47,7 @@ export interface SRSCard {
   dueDate: number;
   createdAt: number;
   lastReviewed?: number;
+  abfmDomain?: string;
 }
 
 export type SRSRating = 0 | 1 | 3 | 4;
@@ -53,6 +56,78 @@ export interface Flashcard {
   front: string;
   back: string;
 }
+
+export interface CitationEntry {
+  source: string;
+  year?: string;
+  guideline?: string;
+  confidence: "direct" | "peripheral" | "outside";
+  note?: string;
+}
+
+export interface CitationMetadata {
+  domain: string;
+  weight: string;
+  citations: CitationEntry[];
+  limitation: string | null;
+}
+
+export interface ABFMDomainCoverage {
+  domain: string;
+  displayName: string;
+  weight: number;
+  queryCount: number;
+  flashcardCount: number;
+  masteredCount: number;
+}
+
+export interface ITEScore {
+  id: string;
+  year: 1 | 2 | 3;
+  takenDate: string;
+  scores: Record<string, number>;
+  createdAt: number;
+}
+
+export const ABFM_ITE_SECTIONS = [
+  "Cardiovascular",
+  "Musculoskeletal",
+  "Psychiatry & Behavioral Health",
+  "Endocrine & Metabolic",
+  "Preventive Medicine & Health Maintenance",
+  "Women's Health & Reproductive Medicine",
+  "Gastrointestinal",
+  "Pulmonary & Allergy",
+  "Infectious Disease",
+  "Neurology",
+  "Dermatology",
+  "Renal & Urology",
+  "Pediatrics",
+  "Hematology & Oncology",
+  "Geriatrics",
+  "Multisystem & Other",
+] as const;
+
+export type ABFMITESection = (typeof ABFM_ITE_SECTIONS)[number];
+
+export const ABFM_DOMAIN_WEIGHTS: Record<string, number> = {
+  "Cardiovascular": 10,
+  "Musculoskeletal": 8,
+  "Psychiatry & Behavioral Health": 8,
+  "Endocrine & Metabolic": 8,
+  "Preventive Medicine & Health Maintenance": 8,
+  "Women's Health & Reproductive Medicine": 7,
+  "Gastrointestinal": 7,
+  "Pulmonary & Allergy": 7,
+  "Infectious Disease": 7,
+  "Neurology": 5,
+  "Dermatology": 5,
+  "Renal & Urology": 5,
+  "Pediatrics": 5,
+  "Hematology & Oncology": 4,
+  "Geriatrics": 4,
+  "Multisystem & Other": 2,
+};
 
 export const MODE_LABELS: Record<ClinicalMode, string> = {
   point_of_care: "Point of Care",
@@ -63,12 +138,23 @@ export const MODE_LABELS: Record<ClinicalMode, string> = {
 };
 
 export const MODE_DESCRIPTIONS: Record<ClinicalMode, string> = {
-  point_of_care: "Quick clinical reference",
-  documentation: "Charting essentials",
-  ddx: "Symptom → ranked DDx",
-  board_prep: "ABFM exam prep",
-  flashcards: "Anki-style review",
+  point_of_care: "Guideline-directed clinical reference",
+  documentation: "Charting and coding essentials",
+  ddx: "Symptom → evidence-based DDx",
+  board_prep: "ABFM ITE exam preparation",
+  flashcards: "Spaced repetition review",
 };
+
+export function getModePrompt(mode: ClinicalMode, condition: string): string {
+  const prompts: Record<ClinicalMode, string> = {
+    point_of_care: `Guideline-directed clinical reference for ${condition}: diagnosis criteria, classification, first-line treatment, monitoring targets, and escalation thresholds — all from indexed sources only.`,
+    documentation: `SOAP note and charting template for ${condition} with ICD-10 code, HPI elements, assessment, plan, and billing documentation requirements.`,
+    ddx: `Evidence-based differential diagnosis for a presentation suggesting ${condition}: ranked differential with must-not-miss, decision branch, and first workup orders from indexed guidelines.`,
+    board_prep: `ABFM board preparation for ${condition}: high-yield pearls, key numbers, exam traps, guideline conflicts, and a board-style vignette — from indexed sources only.`,
+    flashcards: `Generate 6 Anki-style flashcards for ${condition} covering diagnosis, treatment, monitoring, and board-tested facts — each backed by an indexed guideline source.`,
+  };
+  return prompts[mode];
+}
 
 export const SYSTEMS = [
   "Cardiovascular",
@@ -86,17 +172,6 @@ export const SYSTEMS = [
   "Renal",
   "Hematology",
 ];
-
-export function getModePrompt(mode: ClinicalMode, condition: string): string {
-  const prompts: Record<ClinicalMode, string> = {
-    point_of_care: `Clinical reference for ${condition}: diagnosis criteria, first-line treatment, key monitoring`,
-    documentation: `SOAP note and charting template for ${condition} with HPI, assessment, plan, and billing codes`,
-    ddx: `Differential diagnosis for presentation suggesting ${condition}: ranked list with must-not-miss, decision branch, first workup orders`,
-    board_prep: `ABFM board pearls for ${condition}: high-yield facts, common exam traps, mnemonics`,
-    flashcards: `Generate 6 Anki-style flashcards for ${condition} covering diagnosis, treatment, and key facts`,
-  };
-  return prompts[mode];
-}
 
 export const CONDITIONS: Condition[] = [
   { name: "Heart Failure", system: "Cardiovascular" },

@@ -13,12 +13,14 @@ import * as Haptics from "expo-haptics";
 import * as Clipboard from "expo-clipboard";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors, getModeColor } from "@/constants/colors";
-import type { ClinicalMode } from "@/types";
+import { SourceCitation } from "@/components/SourceCitation";
+import type { ClinicalMode, CitationMetadata } from "@/types";
 
 interface ResponseViewProps {
   response: string;
   mode: ClinicalMode;
   isStreaming: boolean;
+  citationMetadata?: CitationMetadata | null;
   bookmarked?: boolean;
   onBookmark?: () => void;
   onGeneratePearls?: () => void;
@@ -303,6 +305,7 @@ export function ResponseView({
   response,
   mode,
   isStreaming,
+  citationMetadata,
   bookmarked,
   onBookmark,
   onGeneratePearls,
@@ -583,6 +586,10 @@ export function ResponseView({
               </View>
             )}
           </View>
+        )}
+
+        {!isStreaming && citationMetadata && (
+          <SourceCitation metadata={citationMetadata} />
         )}
       </ScrollView>
     </View>

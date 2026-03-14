@@ -10,15 +10,19 @@ import type {
   AppMode,
   Bookmark,
   ClinicalMode,
+  ITEScore,
   QueryHistory,
   SRSCard,
   SRSRating,
 } from "@/types";
+import { ABFM_DOMAIN_WEIGHTS } from "@/types";
 
 const HISTORY_KEY = "@fm_copilot_history";
 const BOOKMARKS_KEY = "@fm_copilot_bookmarks";
 const SRS_KEY = "@fm_copilot_srs_cards";
 const APP_MODE_KEY = "@fm_copilot_app_mode";
+const DOMAIN_COVERAGE_KEY = "@fm_copilot_domain_coverage";
+const ITE_SCORES_KEY = "@fm_copilot_ite_scores";
 const MAX_HISTORY = 200;
 const MAX_BOOKMARKS = 200;
 
@@ -71,12 +75,20 @@ interface AppContextValue {
       back: string;
       condition?: string;
       topic: string;
+      abfmDomain?: string;
     }>
   ) => Promise<number>;
   updateSRSCard: (id: string, rating: SRSRating) => Promise<void>;
   deleteSRSCard: (id: string) => Promise<void>;
   clearSRSDeck: () => Promise<void>;
   getDueCards: () => SRSCard[];
+
+  domainCoverage: Record<string, number>;
+  recordDomainQuery: (domain: string) => void;
+
+  iteScores: ITEScore[];
+  saveITEScore: (score: Omit<ITEScore, "id" | "createdAt">) => Promise<void>;
+  deleteITEScore: (id: string) => Promise<void>;
 }
 
 const AppContext = createContext<AppContextValue | null>(null);
@@ -88,19 +100,26 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [appMode, setAppModeState] = useState<AppMode>("clinical");
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [srsCards, setSrsCards] = useState<SRSCard[]>([]);
+  const [domainCoverage, setDomainCoverage] = useState<Record<string, number>>({});
+  const [iteScores, setIteScores] = useState<ITEScore[]>([]);
 
   const loadAll = useCallback(async () => {
     try {
-      const [rawHistory, rawBookmarks, rawSRS, rawMode] = await Promise.all([
-        AsyncStorage.getItem(HISTORY_KEY),
-        AsyncStorage.getItem(BOOKMARKS_KEY),
-        AsyncStorage.getItem(SRS_KEY),
-        AsyncStorage.getItem(APP_MODE_KEY),
-      ]);
+      const [rawHistory, rawBookmarks, rawSRS, rawMode, rawCoverage, rawITE] =
+        await Promise.all([
+          AsyncStorage.getItem(HISTORY_KEY),
+          AsyncStorage.getItem(BOOKMARKS_KEY),
+          AsyncStorage.getItem(SRS_KEY),
+          AsyncStorage.getItem(APP_MODE_KEY),
+          AsyncStorage.getItem(DOMAIN_COVERAGE_KEY),
+          AsyncStorage.getItem(ITE_SCORES_KEY),
+        ]);
       if (rawHistory) setHistory(JSON.parse(rawHistory));
       if (rawBookmarks) setBookmarks(JSON.parse(rawBookmarks));
       if (rawSRS) setSrsCards(JSON.parse(rawSRS));
       if (rawMode) setAppModeState(JSON.parse(rawMode) as AppMode);
+      if (rawCoverage) setDomainCoverage(JSON.parse(rawCoverage));
+      if (rawITE) setIteScores(JSON.parse(rawITE));
     } catch (e) {
       console.error("Failed to load app data:", e);
     } finally {
@@ -133,6 +152,22 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       await AsyncStorage.setItem(SRS_KEY, JSON.stringify(cards));
     } catch (e) {
       console.error("Failed to save SRS cards:", e);
+    }
+  }, []);
+
+  const saveDomainCoverage = useCallback(async (coverage: Record<string, number>) => {
+    try {
+      await AsyncStorage.setItem(DOMAIN_COVERAGE_KEY, JSON.stringify(coverage));
+    } catch (e) {
+      console.error("Failed to save domain coverage:", e);
+    }
+  }, []);
+
+  const saveITEScores = useCallback(async (scores: ITEScore[]) => {
+    try {
+      await AsyncStorage.setItem(ITE_SCORES_KEY, JSON.stringify(scores));
+    } catch (e) {
+      console.error("Failed to save ITE scores:", e);
     }
   }, []);
 
@@ -183,15 +218,12 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     [history]
   );
 
-  const setAppMode = useCallback(
-    async (mode: AppMode) => {
-      setAppModeState(mode);
-      try {
-        await AsyncStorage.setItem(APP_MODE_KEY, JSON.stringify(mode));
-      } catch {}
-    },
-    []
-  );
+  const setAppMode = useCallback(async (mode: AppMode) => {
+    setAppModeState(mode);
+    try {
+      await AsyncStorage.setItem(APP_MODE_KEY, JSON.stringify(mode));
+    } catch {}
+  }, []);
 
   const addBookmark = useCallback(
     async (entry: Omit<Bookmark, "id" | "timestamp">) => {
@@ -234,6 +266,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         back: string;
         condition?: string;
         topic: string;
+        abfmDomain?: string;
       }>
     ) => {
       const now = Date.now();
@@ -243,6 +276,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         back: c.back,
         condition: c.condition,
         topic: c.topic,
+        abfmDomain: c.abfmDomain,
         easeFactor: 2.5,
         interval: 1,
         repetitions: 0,
@@ -293,6 +327,45 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     return srsCards.filter((c) => c.dueDate <= now);
   }, [srsCards]);
 
+  const recordDomainQuery = useCallback(
+    (domain: string) => {
+      if (!domain || !ABFM_DOMAIN_WEIGHTS[domain]) return;
+      setDomainCoverage((prev) => {
+        const updated = { ...prev, [domain]: (prev[domain] ?? 0) + 1 };
+        saveDomainCoverage(updated);
+        return updated;
+      });
+    },
+    [saveDomainCoverage]
+  );
+
+  const saveITEScore = useCallback(
+    async (score: Omit<ITEScore, "id" | "createdAt">) => {
+      const newScore: ITEScore = {
+        ...score,
+        id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+        createdAt: Date.now(),
+      };
+      setIteScores((prev) => {
+        const updated = [newScore, ...prev];
+        saveITEScores(updated);
+        return updated;
+      });
+    },
+    [saveITEScores]
+  );
+
+  const deleteITEScore = useCallback(
+    async (id: string) => {
+      setIteScores((prev) => {
+        const updated = prev.filter((s) => s.id !== id);
+        saveITEScores(updated);
+        return updated;
+      });
+    },
+    [saveITEScores]
+  );
+
   return (
     <AppContext.Provider
       value={{
@@ -317,6 +390,11 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         deleteSRSCard,
         clearSRSDeck,
         getDueCards,
+        domainCoverage,
+        recordDomainQuery,
+        iteScores,
+        saveITEScore,
+        deleteITEScore,
       }}
     >
       {children}

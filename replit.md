@@ -1,8 +1,20 @@
-# Workspace
+# FM Resident Copilot
 
 ## Overview
 
 pnpm workspace monorepo using TypeScript. Each package manages its own dependencies.
+
+**App**: FM Resident Copilot — an Expo React Native mobile app for family medicine residents. A fact-based, evidence-based, guideline-based RAG tool restricted to indexed sources only. Provides guideline-directed clinical practice (Point of Care, Documentation, DDx) and ABFM board exam preparation (Board Prep, Flashcards, Progress) organized around the ABFM Content Blueprint. No hallucination, speculation, or synthesis outside indexed sources.
+
+### Key Architecture Decisions
+- RAG restricted to **Tier 1** (ABFM Blueprint, USPSTF live feed, AAFP, CDC/ACIP) + **Tier 2** (ADA, ACC/AHA, GINA, GOLD, IDSA, AAP, ACOG, KDIGO, ATS, Endocrine, ACR, APA, AAN)
+- Pharmacy questions restricted to ACPE-only sources
+- Citation block format: `%%FM_CITE%%{...}%%/FM_CITE%%` emitted by API at end of every response; parsed by streaming.ts, displayed via SourceCitation component
+- ABFM 16-domain taxonomy with exam weights enforced in every response
+- USPSTF recommendations fetched live (24hr cache) for preventive medicine queries
+- SRS (Spaced Repetition System) using SM-2 algorithm, persisted locally via AsyncStorage
+- Domain coverage tracked per-session and per-domain against ABFM blueprint weights
+- ITE (In-Training Exam) scores stored locally; low-scoring domains surfaced as study priorities
 
 ## Stack
 
