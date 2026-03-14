@@ -79,6 +79,7 @@ export async function streamClinicalQuery(
     let lineBuffer = "";
     let citationBuffer = "";
     let inCitation = false;
+    let doneCalled = false;
 
     while (true) {
       const { done, value } = await reader.read();
@@ -132,13 +133,19 @@ export async function streamClinicalQuery(
                 }
               }
             } else if (data.done) {
+              doneCalled = true;
               callbacks.onDone();
             } else if (data.error) {
+              doneCalled = true;
               callbacks.onError(data.error);
             }
           } catch {}
         }
       }
+    }
+
+    if (!doneCalled) {
+      callbacks.onDone();
     }
   } catch (error: unknown) {
     if (error instanceof Error && error.name === "AbortError") return;

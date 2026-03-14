@@ -14,23 +14,30 @@ interface USPSTFCache {
 }
 
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
+const ERROR_CACHE_TTL_MS = 5 * 60 * 1000;
 const USPSTF_API = "https://www.uspreventiveservicestaskforce.org/uspstf/api/json/all";
 
 let cache: USPSTFCache | null = null;
+let lastErrorAt: number | null = null;
 
 export async function fetchUSPSTFRecommendations(): Promise<USPSTFRecommendation[]> {
-  if (cache && Date.now() - cache.fetchedAt < CACHE_TTL_MS) {
+  if (cache && cache.data.length > 0 && Date.now() - cache.fetchedAt < CACHE_TTL_MS) {
     return cache.data;
+  }
+
+  if (lastErrorAt && Date.now() - lastErrorAt < ERROR_CACHE_TTL_MS) {
+    return cache?.data ?? [];
   }
 
   try {
     const res = await fetch(USPSTF_API, {
       headers: { Accept: "application/json" },
-      signal: AbortSignal.timeout(10000),
+      signal: AbortSignal.timeout(3000),
     });
 
     if (!res.ok) {
       console.error(`USPSTF API error: ${res.status}`);
+      lastErrorAt = Date.now();
       return cache?.data ?? [];
     }
 
@@ -48,9 +55,10 @@ export async function fetchUSPSTFRecommendations(): Promise<USPSTFRecommendation
       }));
 
     cache = { data: recommendations, fetchedAt: Date.now() };
+    lastErrorAt = null;
     return recommendations;
   } catch (err) {
-    console.error("Failed to fetch USPSTF data:", err);
+    lastErrorAt = Date.now();
     return cache?.data ?? [];
   }
 }

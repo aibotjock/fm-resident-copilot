@@ -112,21 +112,21 @@ export type ABFMITESection = (typeof ABFM_ITE_SECTIONS)[number];
 
 export const ABFM_DOMAIN_WEIGHTS: Record<string, number> = {
   "Cardiovascular": 10,
-  "Musculoskeletal": 8,
+  "Musculoskeletal": 10,
   "Psychiatry & Behavioral Health": 8,
   "Endocrine & Metabolic": 8,
   "Preventive Medicine & Health Maintenance": 8,
   "Women's Health & Reproductive Medicine": 7,
-  "Gastrointestinal": 7,
-  "Pulmonary & Allergy": 7,
-  "Infectious Disease": 7,
+  "Gastrointestinal": 6,
+  "Pulmonary & Allergy": 6,
+  "Infectious Disease": 6,
   "Neurology": 5,
   "Dermatology": 5,
   "Renal & Urology": 5,
   "Pediatrics": 5,
   "Hematology & Oncology": 4,
   "Geriatrics": 4,
-  "Multisystem & Other": 2,
+  "Multisystem & Other": 3,
 };
 
 export const MODE_LABELS: Record<ClinicalMode, string> = {

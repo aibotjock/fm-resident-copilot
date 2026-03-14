@@ -18,7 +18,7 @@ export const ABFM_DOMAINS: ABFMDomain[] = [
   {
     id: "musculoskeletal",
     name: "Musculoskeletal",
-    weight: 8,
+    weight: 10,
     primarySources: ["ACR", "AAFP"],
     secondarySources: [],
   },
@@ -53,23 +53,21 @@ export const ABFM_DOMAINS: ABFMDomain[] = [
   {
     id: "gastrointestinal",
     name: "Gastrointestinal",
-    weight: 7,
-    primarySources: ["AAFP", "USPSTF"],
+    weight: 6,
+    primarySources: ["ACG", "AASLD", "AAFP", "USPSTF"],
     secondarySources: [],
-    limitationNote:
-      "ACG (American College of Gastroenterology) guidelines are not currently indexed. For GI topics beyond AAFP/USPSTF scope, this limitation will be stated.",
   },
   {
     id: "pulmonary",
     name: "Pulmonary & Allergy",
-    weight: 7,
+    weight: 6,
     primarySources: ["GINA", "GOLD", "ATS", "AAFP"],
     secondarySources: [],
   },
   {
     id: "infectious_disease",
     name: "Infectious Disease",
-    weight: 7,
+    weight: 6,
     primarySources: ["IDSA", "CDC", "AAFP"],
     secondarySources: ["AAP"],
   },
@@ -84,10 +82,8 @@ export const ABFM_DOMAINS: ABFMDomain[] = [
     id: "dermatology",
     name: "Dermatology",
     weight: 5,
-    primarySources: ["AAFP"],
+    primarySources: ["AAD", "AAFP"],
     secondarySources: [],
-    limitationNote:
-      "AAD (American Academy of Dermatology) guidelines are not currently indexed. Responses draw from AAFP recommendations only. For detailed dermatology management, consult AAD directly.",
   },
   {
     id: "renal",
@@ -110,22 +106,20 @@ export const ABFM_DOMAINS: ABFMDomain[] = [
     primarySources: ["AAFP", "USPSTF"],
     secondarySources: [],
     limitationNote:
-      "ASH (American Society of Hematology) and ASCO/NCCN guidelines are not currently indexed. Responses draw from AAFP and USPSTF recommendations only.",
+      "ASH (American Society of Hematology) and ASCO/NCCN oncology guidelines are not fully indexed. Core hematology content (iron deficiency, B12/folate, thrombocytopenia, VTE, CRC screening) is covered from AAFP and USPSTF sources.",
   },
   {
     id: "geriatrics",
     name: "Geriatrics",
     weight: 4,
-    primarySources: ["AAFP"],
+    primarySources: ["AGS", "AAFP"],
     secondarySources: [],
-    limitationNote:
-      "AGS (American Geriatrics Society) Beers Criteria and geriatric-specific guidelines are not currently indexed. Responses draw from AAFP recommendations only.",
   },
   {
     id: "multisystem",
     name: "Multisystem & Other",
-    weight: 2,
-    primarySources: ["AAFP"],
+    weight: 3,
+    primarySources: ["AAFP", "CDC"],
     secondarySources: [],
   },
 ];

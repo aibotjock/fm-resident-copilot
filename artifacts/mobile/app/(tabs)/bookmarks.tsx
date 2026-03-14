@@ -49,7 +49,7 @@ export default function BookmarksScreen() {
 
   const handleDelete = (id: string, query: string) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    Alert.alert("Remove Bookmark", `Remove "${query.slice(0, 60)}..."?`, [
+    Alert.alert("Remove Bookmark", `Remove "${query.length > 60 ? query.slice(0, 60) + "…" : query}"?`, [
       { text: "Cancel", style: "cancel" },
       {
         text: "Remove",

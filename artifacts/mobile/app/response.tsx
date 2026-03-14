@@ -154,17 +154,19 @@ export default function ResponseScreen() {
     if (deckSaved || flashcards.length === 0) return;
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     const topic = condition || query.slice(0, 40);
+    const abfmDomain = citationMetadata?.domain || undefined;
     await addSRSCards(
       flashcards.map((c) => ({
         front: c.front,
         back: c.back,
         condition,
         topic,
+        abfmDomain,
       }))
     );
     setDeckSaved(true);
     await setAppMode("study");
-  }, [flashcards, deckSaved, condition, query, addSRSCards, setAppMode]);
+  }, [flashcards, deckSaved, condition, query, citationMetadata, addSRSCards, setAppMode]);
 
   const handleGeneratePearls = useCallback(() => {
     const pearlQuery = `Give me high-yield ABFM board pearls and common exam traps for ${condition || "this condition"}.`;

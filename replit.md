@@ -11,7 +11,7 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - Pharmacy questions restricted to ACPE-only sources
 - Citation block format: `%%FM_CITE%%{...}%%/FM_CITE%%` emitted by API at end of every response; parsed by streaming.ts, displayed via SourceCitation component
 - ABFM 16-domain taxonomy with exam weights enforced in every response
-- USPSTF recommendations fetched live (24hr cache) for preventive medicine queries
+- USPSTF recommendations fetched live (24hr success cache, 5min error cache) for preventive medicine queries; uses 3s timeout + error-back-off to fail fast when network is restricted
 - **True RAG pipeline**: 94 curated guideline chunks across all 16 ABFM domains stored in PostgreSQL with FTS (`tsvector`/GIN index); every clinical query retrieves the top 10 most relevant chunks using `websearch_to_tsquery` + `ts_rank`, injected as `[REF N]` formatted context blocks into the LLM system prompt before generation
 - RAG retrieval uses PostgreSQL Full-Text Search (FTS) — no external embedding API required; `content_tsv` generated column indexes source + title + section + content for each chunk
 - Guideline chunks cover all 16 ABFM domains from ACC/AHA, ADA, APA, GINA, GOLD, IDSA, ACOG, AAP, KDIGO, USPSTF, CDC/ACIP, AAFP, Endocrine Society, ACR, AAN
@@ -75,7 +75,7 @@ Express 5 API server. Routes live in `src/routes/` and use `@workspace/api-zod` 
 - `store.ts` — PostgreSQL FTS search (`searchByText` using `websearch_to_tsquery`), batch insert without embeddings, metadata CRUD
 - `retrieval.ts` — retrieves top 10 relevant chunks for any query using FTS; falls back to OR-based `to_tsquery`
 - `ingest.ts` — version-gated orchestrator (`ensureIngested()`, `runIngestion(force?)`); auto-runs at startup
-- `sources/seed-data.ts` — 63 curated guideline chunks covering all 16 ABFM domains
+- `sources/seed-data.ts` — 94 curated guideline chunks covering all 16 ABFM domains (ACR, ADA, ACC/AHA, AGS, AAD, ACG, AASLD, IDSA, KDIGO, AUA, AAN, ACOG, CDC, APA, AAFP, Endocrine Society)
 - `sources/uspstf-ingest.ts` — live USPSTF API → chunks with domain inference
 - `embeddings.ts` — reserved for future vector embedding upgrade
 
@@ -85,7 +85,7 @@ Express 5 API server. Routes live in `src/routes/` and use `@workspace/api-zod` 
 
 - Entry: `src/index.ts` — reads `PORT`, starts Express
 - App setup: `src/app.ts` — mounts CORS, JSON/urlencoded parsing, routes at `/api`
-- Routes: `src/routes/index.ts` mounts sub-routers; `src/routes/health.ts` exposes `GET /health` (full path: `/api/health`)
+- Routes: `src/routes/index.ts` mounts sub-routers; `src/routes/health.ts` exposes `GET /healthz` (full path: `/api/healthz`)
 - Depends on: `@workspace/db`, `@workspace/api-zod`
 - `pnpm --filter @workspace/api-server run dev` — run the dev server
 - `pnpm --filter @workspace/api-server run build` — production esbuild bundle (`dist/index.cjs`)
