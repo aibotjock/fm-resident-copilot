@@ -66,6 +66,7 @@ interface AppContextValue {
   bookmarks: Bookmark[];
   addBookmark: (entry: Omit<Bookmark, "id" | "timestamp">) => Promise<void>;
   removeBookmark: (id: string) => Promise<void>;
+  updateBookmark: (id: string, note: string) => Promise<void>;
   isBookmarked: (query: string, mode: ClinicalMode) => boolean;
 
   srsCards: SRSCard[];
@@ -252,6 +253,17 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     [saveBookmarks]
   );
 
+  const updateBookmark = useCallback(
+    async (id: string, note: string) => {
+      setBookmarks((prev) => {
+        const updated = prev.map((b) => (b.id === id ? { ...b, note } : b));
+        saveBookmarks(updated);
+        return updated;
+      });
+    },
+    [saveBookmarks]
+  );
+
   const isBookmarked = useCallback(
     (query: string, mode: ClinicalMode) => {
       return bookmarks.some((b) => b.query === query && b.mode === mode);
@@ -383,6 +395,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         bookmarks,
         addBookmark,
         removeBookmark,
+        updateBookmark,
         isBookmarked,
         srsCards,
         addSRSCards,

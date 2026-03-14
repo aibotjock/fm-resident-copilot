@@ -12,10 +12,10 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - Citation block format: `%%FM_CITE%%{...}%%/FM_CITE%%` emitted by API at end of every response; parsed by streaming.ts, displayed via SourceCitation component
 - ABFM 16-domain taxonomy with exam weights enforced in every response
 - USPSTF recommendations fetched live (24hr success cache, 5min error cache) for preventive medicine queries; uses 3s timeout + error-back-off to fail fast when network is restricted
-- **True RAG pipeline**: 94 curated guideline chunks across all 16 ABFM domains stored in PostgreSQL with FTS (`tsvector`/GIN index); every clinical query retrieves the top 10 most relevant chunks using `websearch_to_tsquery` + `ts_rank`, injected as `[REF N]` formatted context blocks into the LLM system prompt before generation
+- **True RAG pipeline**: 120 curated guideline chunks (v6) across all 16 ABFM domains stored in PostgreSQL with FTS (`tsvector`/GIN index); every clinical query retrieves the top 10 most relevant chunks using `websearch_to_tsquery` + `ts_rank`, injected as `[REF N]` formatted context blocks into the LLM system prompt before generation
 - RAG retrieval uses PostgreSQL Full-Text Search (FTS) — no external embedding API required; `content_tsv` generated column indexes source + title + section + content for each chunk
 - Guideline chunks cover all 16 ABFM domains from ACC/AHA, ADA, APA, GINA, GOLD, IDSA, ACOG, AAP, KDIGO, USPSTF, CDC/ACIP, AAFP, Endocrine Society, ACR, AAN
-- Ingest version gate (`v5`) in `ingest.ts` — change to force full re-ingestion; startup `ensureIngested()` auto-populates on first run; `clearChunks()` called before each re-ingest to prevent duplicate accumulation
+- Ingest version gate (`v6`) in `ingest.ts` — change to force full re-ingestion; startup `ensureIngested()` auto-populates on first run; `clearChunks()` called before each re-ingest to prevent duplicate accumulation
 - Admin endpoints: `GET /api/admin/rag/status` (chunk count, version, timestamp), `POST /api/admin/rag/reindex` (force re-ingest)
 - SRS (Spaced Repetition System) using SM-2 algorithm, persisted locally via AsyncStorage
 - Domain coverage tracked per-session and per-domain against ABFM blueprint weights
@@ -75,7 +75,7 @@ Express 5 API server. Routes live in `src/routes/` and use `@workspace/api-zod` 
 - `store.ts` — PostgreSQL FTS search (`searchByText` using `websearch_to_tsquery`), batch insert without embeddings, metadata CRUD
 - `retrieval.ts` — retrieves top 10 relevant chunks for any query using FTS; falls back to OR-based `to_tsquery`
 - `ingest.ts` — version-gated orchestrator (`ensureIngested()`, `runIngestion(force?)`); auto-runs at startup
-- `sources/seed-data.ts` — 94 curated guideline chunks covering all 16 ABFM domains (ACR, ADA, ACC/AHA, AGS, AAD, ACG, AASLD, IDSA, KDIGO, AUA, AAN, ACOG, CDC, APA, AAFP, Endocrine Society)
+- `sources/seed-data.ts` — 120 curated guideline chunks (v6) covering all 16 ABFM domains (AASM, ACR, ADA, ACC/AHA, AGS, AAD, ACG, AASLD, IDSA, KDIGO, AUA, AAN, ACOG, AAP, CDC, DHHS, SAMHSA, APA, AAFP, BTS, CHEST, ATS, ESC/ERS, NAEPP, Endocrine Society, NHLBI, ASH, ACCP, SCCM, AAOS)
 - `sources/uspstf-ingest.ts` — live USPSTF API → chunks with domain inference
 - `embeddings.ts` — reserved for future vector embedding upgrade
 
@@ -123,3 +123,18 @@ Generated React Query hooks and fetch client from the OpenAPI spec (e.g. `useHea
 ### `scripts` (`@workspace/scripts`)
 
 Utility scripts package. Each script is a `.ts` file in `src/` with a corresponding npm script in `package.json`. Run scripts via `pnpm --filter @workspace/scripts run <script>`. Scripts can import any workspace package (e.g., `@workspace/db`) by adding it as a dependency in `scripts/package.json`.
+
+## Key Mobile Features (v6)
+
+### Vignette Practice Mode (Board Tab)
+- `POST /api/clinical/vignette` — non-streaming endpoint that returns structured JSON MCQ `{question, options:{a,b,c,d}, answer, explanation, domain, source}`; weighted random ABFM domain selection; RAG context injected into vignette prompt
+- `components/VignetteCard.tsx` — interactive MCQ component: tap answer, see green/red feedback, reveal explanation, session score tracker, "Next Question" flow
+- Board tab has `Study` / `Practice MCQs` mode toggle; Practice mode includes domain selector (random or any of 16 ABFM domains), session score tracker, and reset
+
+### Bookmark Notes
+- `AppContext.tsx` → `updateBookmark(id, note)` — persists personal annotation to any saved bookmark via AsyncStorage
+- `bookmarks.tsx` — "Add note" / "Edit note" button on each card; Modal with TextInput + 500 char limit; note text shown inline below query
+
+### Onboarding Screen
+- `components/OnboardingModal.tsx` — 3-panel first-launch carousel (Guideline-Grounded Answers, Five Clinical Modes, Important Disclaimer); paginated with dot indicators; "Get Started" saves `@fm_copilot_onboarded` flag; Skip available
+- `app/_layout.tsx` — checks AsyncStorage on mount; shows OnboardingModal as fullScreen modal on first launch only

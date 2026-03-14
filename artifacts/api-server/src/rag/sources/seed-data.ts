@@ -3102,4 +3102,1053 @@ Post-treatment Lyme disease syndrome (PTLDS): persistent symptoms after adequate
 Tick bite prophylaxis: single dose doxycycline 200 mg if: Ixodes tick, attached ≥36h, within 72h of removal, in endemic area`,
     url: "https://www.idsociety.org/practice-guideline/lyme-disease/",
   },
+
+  // ========== PULMONARY — EXPANDED ==========
+
+  {
+    source: "AASM",
+    tier: 2,
+    guideline_title: "AASM Clinical Practice Guidelines for Obstructive Sleep Apnea",
+    guideline_year: "2023",
+    abfm_domain: "Pulmonary & Allergy",
+    section: "OSA Diagnosis and Treatment",
+    content: `Obstructive Sleep Apnea (OSA) — AASM 2023 guidelines:
+
+DIAGNOSIS:
+- Polysomnography (PSG, in-lab) is gold standard; home sleep apnea testing (HSAT) acceptable for uncomplicated adults
+- AHI (Apnea-Hypopnea Index) cutoffs:
+  • Mild OSA: AHI 5-14 events/hour
+  • Moderate OSA: AHI 15-29 events/hour
+  • Severe OSA: AHI ≥30 events/hour
+- Clinical suspicion: Epworth Sleepiness Scale ≥10, witnessed apneas, loud snoring, morning headaches, nocturia
+- STOP-BANG screening: 3+ of 8 criteria = high risk (Snoring, Tired, Observed apneas, Pressure [HTN], BMI >35, Age >50, Neck >40cm, Gender male)
+
+TREATMENT:
+1. Continuous positive airway pressure (CPAP): first-line for moderate-severe OSA; also for mild OSA with significant symptoms or cardiovascular comorbidity
+   - Adequate use: ≥4 hours/night on ≥70% of nights (Medicare definition for continued coverage)
+   - Auto-titrating PAP (APAP): acceptable alternative to CPAP for non-complex patients
+2. Mandibular advancement device (MAD): preferred patient alternative for mild-moderate OSA; less effective than CPAP but improves adherence
+3. Weight loss: can reduce AHI (10% weight loss → ~26% AHI reduction)
+4. Positional therapy: for position-dependent OSA (supine-predominant)
+5. Upper airway surgery (UPPP, hypoglossal nerve stimulation): for CPAP-intolerant patients
+
+COMORBIDITIES: OSA is independently associated with hypertension (resistant HTN), AF, stroke, type 2 DM, pulmonary HTN, GERD
+- CPAP reduces cardiovascular events and all-cause mortality in severe OSA
+
+Board trap: Treating OSA with CPAP does NOT reliably reduce cardiovascular events in patients without severe baseline sleepiness (SAVE trial); clinical decision should be individualized.`,
+    url: "https://aasm.org/clinical-resources/practice-standards/practice-guidelines/",
+  },
+
+  {
+    source: "BTS/CHEST",
+    tier: 2,
+    guideline_title: "BTS/CHEST Pleural Disease Guidelines",
+    guideline_year: "2022",
+    abfm_domain: "Pulmonary & Allergy",
+    section: "Pleural Effusion Evaluation and Management",
+    content: `Pleural Effusion — BTS/CHEST guidelines:
+
+CLASSIFICATION — LIGHT'S CRITERIA (1972, still gold standard):
+Exudate if ONE or more of the following:
+1. Pleural fluid protein / serum protein > 0.5
+2. Pleural fluid LDH / serum LDH > 0.6
+3. Pleural fluid LDH > 2/3 upper limit of normal serum LDH
+
+Transudate causes: CHF (#1), liver cirrhosis, nephrotic syndrome, hypothyroidism, constrictive pericarditis
+Exudate causes: pneumonia (parapneumonic), malignancy, TB, PE, collagen vascular disease, pancreatitis, post-CABG
+
+ADDITIONAL TESTS on pleural fluid:
+- pH <7.2 → complicated parapneumonic effusion or empyema (requires drainage)
+- Glucose <60 mg/dL → empyema, malignancy, rheumatoid disease, TB
+- Adenosine deaminase (ADA) >40 U/L → high sensitivity/specificity for TB pleuritis
+- Cytology: positive in ~60% of malignant effusions
+- Cell count: neutrophils → acute/parapneumonic; lymphocytes → TB, malignancy, sarcoid
+
+MANAGEMENT:
+- Transudates: treat underlying cause; thoracentesis if symptomatic
+- Exudates: drain if: empyema (pus), pH <7.2, loculated, non-draining after 1 week antibiotics, or malignant (for palliation)
+- Parapneumonic effusion drainage indications: frank pus on aspiration, pH <7.2, glucose <60, positive Gram stain/culture, or loculation
+- Malignant effusion: pleurodesis (talc) or indwelling pleural catheter (IPC) for recurrence prevention
+
+THORACENTESIS technique: ultrasound guidance reduces complications (pneumothorax rate 1.3% US-guided vs 8% blind)
+
+Chylothorax (triglycerides >110 mg/dL): lymphatic obstruction; causes: malignancy, thoracic duct injury post-surgery, trauma`,
+    url: "https://www.brit-thoracic.org.uk/quality-improvement/guidelines/pleural-disease/",
+  },
+
+  {
+    source: "ATS/IDSA",
+    tier: 2,
+    guideline_title: "ATS/IDSA Community-Acquired Pneumonia Guidelines",
+    guideline_year: "2019",
+    abfm_domain: "Pulmonary & Allergy",
+    section: "CAP Severity Assessment and Antibiotic Therapy",
+    content: `Community-Acquired Pneumonia (CAP) — ATS/IDSA 2019 guidelines:
+
+DIAGNOSIS: Clinical + radiographic (CXR or CT showing new infiltrate)
+
+SEVERITY ASSESSMENT — CURB-65 score (1 point each):
+- Confusion (new onset)
+- Urea (BUN) >19 mg/dL
+- Respiratory rate ≥30/min
+- Blood pressure: systolic <90 OR diastolic ≤60 mmHg
+- Age ≥65
+
+Score 0-1: outpatient; Score 2: hospitalize or close follow-up; Score 3+: inpatient; Score 4-5: consider ICU
+
+PSI (Pneumonia Severity Index, PORT score) is more accurate but complex; preferred in research; CURB-65 preferred for bedside use.
+
+OUTPATIENT TREATMENT:
+- No comorbidities: amoxicillin 1g TID × 5 days (preferred by ATS/IDSA 2019 over azithromycin due to resistance) OR doxycycline 100mg BID × 5d
+- With comorbidities (COPD, immunosuppression, recent antibiotics): respiratory fluoroquinolone (levofloxacin 750mg QD × 5d) OR amoxicillin-clavulanate + azithromycin
+- Macrolone monotherapy (azithromycin): avoid where Streptococcal pneumoniae resistance >25%
+
+INPATIENT TREATMENT (non-ICU):
+- Beta-lactam (ceftriaxone 1g IV daily) + macrolide (azithromycin 500mg IV/PO) OR respiratory fluoroquinolone monotherapy
+
+ICU TREATMENT:
+- Beta-lactam + azithromycin OR beta-lactam + respiratory fluoroquinolone
+- Add antipseudomonal coverage if Pseudomonas risk (structural lung disease, COPD, recent hospitalizations)
+- MRSA CAP: vancomycin or linezolid
+
+DURATION: 5 days for non-severe CAP; extend based on clinical stability (afebrile ≥48h, improving symptoms)
+
+BIOMARKERS: PCT (procalcitonin) useful for antibiotic de-escalation; CRP tracks response; Legionella/pneumococcal urinary antigen for severe CAP`,
+    url: "https://www.thoracic.org/statements/resources/tb-opi/cap-in-adults-guideline.pdf",
+  },
+
+  {
+    source: "ATS/ERS",
+    tier: 2,
+    guideline_title: "ATS/ERS Official Statement: Idiopathic Pulmonary Fibrosis",
+    guideline_year: "2022",
+    abfm_domain: "Pulmonary & Allergy",
+    section: "IPF Diagnosis and Management",
+    content: `Idiopathic Pulmonary Fibrosis (IPF) — ATS/ERS 2022 guidelines:
+
+DIAGNOSIS:
+- Usual interstitial pneumonia (UIP) pattern required: bibasilar, subpleural honeycombing (±traction bronchiectasis)
+- HRCT: typical UIP pattern = honeycombing with or without peripheral traction bronchiectasis/bronchiolectasis
+- Biopsy: surgical lung biopsy (VATS) if HRCT indeterminate; transbronchial lung cryobiopsy acceptable alternative
+- Exclusion of known causes: drugs (amiodarone, bleomycin, nitrofurantoin), hypersensitivity pneumonitis, collagen vascular disease, occupational exposure
+
+CLINICAL FEATURES: progressive dyspnea, dry cough, bibasilar crackles ("Velcro"), clubbing (~50%), male >female, age >60, smoking history
+
+SPIROMETRY: restrictive pattern — ↓FVC, ↓TLC, ↓DLCO; FEV1/FVC ratio normal or elevated
+
+TREATMENT:
+- Antifibrotic agents (strong recommendation): nintedanib (150mg BID) OR pirfenidone (801mg TID) — both slow FVC decline by ~50%; do NOT improve FVC
+- Acid suppression: GERD common; treat (though evidence for outcome benefit is limited)
+- Pulmonary rehabilitation: improves 6MWT and quality of life
+- Lung transplantation: definitive treatment for eligible patients (IPF is leading indication for lung transplant in adults)
+- Supplemental O2 for resting hypoxemia (SaO2 ≤88%)
+
+DO NOT USE: N-acetylcysteine (NAC) monotherapy; corticosteroids; azathioprine; cyclophosphamide (increase mortality in IPF)
+
+PROGNOSIS: median survival 3-5 years from diagnosis; 5-year mortality ~70%
+
+ACUTE EXACERBATION OF IPF: acute worsening with new bilateral opacities; triggers include GERD aspiration, infection, procedure; treat with high-dose corticosteroids empirically; poor prognosis`,
+    url: "https://www.thoracic.org/statements/ipf.php",
+  },
+
+  {
+    source: "ESC/ERS",
+    tier: 2,
+    guideline_title: "ESC/ERS Guidelines for Pulmonary Hypertension",
+    guideline_year: "2022",
+    abfm_domain: "Pulmonary & Allergy",
+    section: "Pulmonary Hypertension Classification and Management",
+    content: `Pulmonary Hypertension (PH) — ESC/ERS 2022 guidelines:
+
+DEFINITION: mean pulmonary arterial pressure (mPAP) >20 mmHg at rest on right heart catheterization (RHC) — updated 2022 from old threshold of >25 mmHg
+
+WHO/ERS GROUPS:
+1. Pulmonary arterial hypertension (PAH): idiopathic, heritable, drug/toxin-induced (anorexigens), connective tissue disease (scleroderma #1), HIV, portal HTN, congenital heart disease
+2. PH due to left heart disease: HFrEF, HFpEF, valvular disease — MOST COMMON cause overall
+3. PH due to lung disease: COPD, ILD, OSA
+4. Chronic thromboembolic PH (CTEPH): requires VQ scan screening in PE survivors with persistent dyspnea
+5. Unclear/multifactorial PH
+
+DIAGNOSIS WORKUP:
+- Echo: screens for PH; TR velocity >2.8 m/s = elevated probability; RHC required for definitive diagnosis
+- VQ scan: CTEPH evaluation (CT-PA can miss distal disease)
+- 6-minute walk test (6MWT): functional assessment, prognosis
+- WHO functional class (I-IV): determines treatment strategy
+
+TREATMENT (Group 1 PAH):
+- WHO FC II-III: initial combination therapy with ERA (ambrisentan, macitentan) + PDE5i (sildenafil, tadalafil) — AMBITION trial supports upfront combination
+- WHO FC III-IV: add prostacyclin (parenteral epoprostenol preferred for severe PAH; inhaled iloprost; oral selexipag)
+- Anticoagulation: recommended for idiopathic PAH (warfarin, target INR 2.0-3.0) — controversial, center-dependent
+- Lung transplant: for refractory PAH
+- Treat underlying cause for Groups 2-3
+
+CTEPH (Group 4): pulmonary endarterectomy (PEA) is potentially curative; riociguat for inoperable CTEPH`,
+    url: "https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Pulmonary-Hypertension",
+  },
+
+  // ========== PEDIATRICS — EXPANDED ==========
+
+  {
+    source: "AAP",
+    tier: 2,
+    guideline_title: "AAP Bright Futures: Guidelines for Health Supervision of Infants, Children, and Adolescents",
+    guideline_year: "2023",
+    abfm_domain: "Pediatrics",
+    section: "Well-Child Visit Schedule and Developmental Surveillance",
+    content: `AAP Bright Futures Well-Child Visit Schedule (2023):
+
+VISIT SCHEDULE:
+- Prenatal visit (high-risk), Newborn (hospital), 1 week (high-risk), 2 weeks, 1 month, 2 months, 4 months, 6 months, 9 months, 12 months, 15 months, 18 months, 24 months, 30 months, 3 years, 4 years, 5 years, then annually through adolescence
+
+DEVELOPMENTAL SURVEILLANCE (every visit) + SCREENING TOOLS:
+- Ages & Stages Questionnaire (ASQ) at 9, 18, 30 months
+- Autism screening: M-CHAT-R/F at 18 and 24 months (mandatory)
+- Developmental delay screening: at 9, 18, 24/30 months using validated tool
+- Hearing screen: universal newborn hearing screen before hospital discharge; assess at each visit
+
+KEY MILESTONES (red flags if absent):
+- 2 months: social smile, tracks past midline
+- 4 months: head control, babbles
+- 6 months: sits with support, babbling consonants
+- 9 months: sits independently, babbles mama/dada (non-specific), pincer grasp emerging
+- 12 months: stands independently, first words, pincer grasp complete
+- 18 months: walks independently, ≥10 words, points to indicate wants
+- 24 months: 2-word phrases, runs, ≥50 words
+- 3 years: 3-word sentences, rides tricycle
+- 4 years: hops on one foot, 4-word sentences, draws person with 3 parts
+
+ANTICIPATORY GUIDANCE (key topics):
+- Safe sleep (back-to-sleep, no bed sharing, firm mattress) until 12 months
+- Car seat: rear-facing until 2 years OR upper weight/height limit; then forward-facing with harness; then booster
+- Screen time: none <18-24 months (except video chat); <1 hr/day 2-5 years
+- Lead screening: blood lead level at 12 and 24 months in high-risk areas
+- Iron supplementation: 1 mg/kg/day at 4 months for exclusively breastfed infants; universal screen at 12 months
+
+PREVENTIVE LABS: universal newborn screen (NBS), critical congenital heart disease (CCHD) screen, bilirubin screen, hemoglobin/hematocrit at 12 months`,
+    url: "https://brightfutures.aap.org",
+  },
+
+  {
+    source: "AAP",
+    tier: 2,
+    guideline_title: "AAP Clinical Practice Guideline for ADHD: Diagnosis, Evaluation, and Treatment",
+    guideline_year: "2019",
+    abfm_domain: "Pediatrics",
+    section: "ADHD Diagnosis and Pharmacologic Management",
+    content: `ADHD — AAP Clinical Practice Guidelines 2019:
+
+DIAGNOSIS (DSM-5-TR criteria):
+- ≥6 inattention symptoms (or ≥5 in adults ≥17) AND/OR ≥6 hyperactivity-impulsivity symptoms
+- Symptoms present before age 12
+- Symptoms in ≥2 settings (home AND school/work)
+- Clear functional impairment
+- Not better explained by another condition
+
+Types: Predominantly Inattentive (formerly ADD), Predominantly Hyperactive-Impulsive, Combined presentation
+
+EVALUATION:
+- Vanderbilt ADHD Rating Scales: standard tool; parent AND teacher versions required
+- Consider: vision/hearing screen, sleep evaluation (OSA can mimic ADHD), anxiety, learning disabilities
+- No laboratory test or neuroimaging required for diagnosis
+
+TREATMENT BY AGE:
+- Preschool (4-5 years): behavior therapy FIRST; medication only if inadequate response or impairment severe
+- School-age (6-11 years): FDA-approved medications FIRST-LINE + behavior therapy (combination superior to either alone)
+- Adolescents (12-18 years): medications first-line + behavior therapy + consider organizational skills training
+
+MEDICATIONS — STIMULANTS (first-line):
+1. Methylphenidate (Ritalin, Concerta, Vyvanse-type): most studied; standard and extended-release
+2. Amphetamines (Adderall, Vyvanse): equal efficacy; DEA Schedule II
+- Monitor: BP, HR, height/weight (growth velocity monthly × 6 months, then quarterly)
+- Side effects: appetite suppression, insomnia, headache; rarely cardiac effects (screen for cardiac history)
+- No evidence for increased substance abuse when treated; may be protective
+
+NON-STIMULANTS (second-line):
+- Atomoxetine (Strattera): non-stimulant SNRI; takes 4-6 weeks; FDA-approved; black box warning for suicidality
+- Guanfacine ER (Intuniv), Clonidine ER (Kapvay): alpha-2 agonists; useful for tic disorders, aggression, sleep
+
+COMORBIDITIES: 50-60% have at least one comorbidity (anxiety, depression, ODD, ASD, LD); treat ADHD first unless anxiety is severe`,
+    url: "https://publications.aap.org/pediatrics/article/144/4/e20192528",
+  },
+
+  {
+    source: "AAP",
+    tier: 2,
+    guideline_title: "AAP Clinical Practice Guideline: Febrile Seizures",
+    guideline_year: "2011",
+    abfm_domain: "Pediatrics",
+    section: "Febrile Seizure Evaluation and Management",
+    content: `Febrile Seizures — AAP Guidelines 2011 (updated 2022):
+
+DEFINITION: Seizure with fever (>38°C) in children 6 months-5 years WITHOUT CNS infection or metabolic cause and no prior afebrile seizure history
+
+CLASSIFICATION:
+Simple febrile seizure (80-85%):
+- Generalized (tonic-clonic)
+- Duration <15 minutes
+- Does NOT recur within 24 hours
+- Complete neurologic recovery
+
+Complex febrile seizure (15-20%):
+- Focal onset
+- Duration ≥15 minutes (febrile status epilepticus if ≥30 min)
+- Recurs within 24 hours OR incomplete recovery
+
+EVALUATION:
+- Simple febrile seizure: LUMBAR PUNCTURE NOT ROUTINELY REQUIRED in well-appearing children >18 months who are fully immunized
+  → LP recommended if: meningeal signs, clinical concern for meningitis, prolonged postictal state, <12 months (especially if not fully immunized), 12-18 months (clinical judgment), prior antibiotics that may mask meningitis
+- EEG: NOT recommended after first simple febrile seizure
+- Neuroimaging: NOT recommended after simple febrile seizure
+- Blood glucose, electrolytes: not routinely needed unless specific clinical concern
+
+MANAGEMENT:
+- Active seizure: benzodiazepine (rectal diazepam, buccal/intranasal midazolam)
+- After seizure: address fever (antipyretics for comfort, NOT proven to prevent recurrence)
+- Prophylactic antiepileptics NOT recommended for simple febrile seizures
+- Diazepam rectal gel: consider for parents of high-risk children with prolonged seizure history
+
+RECURRENCE: 30-35% of children with first febrile seizure will have another; risk factors: age <12 months, family history, low fever at time of seizure, brief fever before seizure
+
+PROGNOSIS: Excellent. NO increased risk of epilepsy, cognitive impairment, or death after simple febrile seizure. Lifetime epilepsy risk only slightly elevated (~2-5% vs 1-2% general population)`,
+    url: "https://publications.aap.org/pediatrics/article/127/2/389",
+  },
+
+  {
+    source: "AAP",
+    tier: 2,
+    guideline_title: "AAP Clinical Practice Guideline: Acute Otitis Media",
+    guideline_year: "2013",
+    abfm_domain: "Pediatrics",
+    section: "AOM Diagnosis and Antibiotic Management",
+    content: `Acute Otitis Media (AOM) — AAP Clinical Practice Guideline 2013:
+
+DIAGNOSIS CRITERIA (all 3 required):
+1. Moderate-to-severe bulging of the tympanic membrane (TM) OR new onset otorrhea not due to external otitis
+2. Mild TM bulging + RECENT onset of ear pain (<48h) + intense TM erythema
+3. (OR: TM perforation with purulent discharge)
+- Erythema alone without bulging is NOT sufficient for AOM diagnosis
+
+Distinguish from Otitis Media with Effusion (OME): fluid without signs of acute inflammation — do NOT treat with antibiotics
+
+TREATMENT DECISION:
+
+Severe AOM (any age): immediate antibiotics
+- Severe symptoms: moderate-severe otalgia, otalgia ≥48h, temperature ≥39°C
+
+Non-severe AOM — watchful waiting option (48-72 hours):
+- ≥2 years: bilateral or unilateral, mild symptoms → watchful waiting acceptable
+- 6-23 months: bilateral → treat; unilateral, mild → watchful waiting acceptable
+- <6 months: always treat
+
+ANTIBIOTIC THERAPY:
+- First-line: amoxicillin 80-90 mg/kg/day divided BID × 10 days (5-7 days for mild cases ≥2 years)
+- Penicillin allergy (non-severe): cefdinir, cefpodoxime, cefuroxime
+- Penicillin allergy (severe/anaphylaxis): clindamycin or TMP-SMX
+- Treatment failure (48-72h no improvement): amoxicillin-clavulanate 90 mg/kg/day
+- Recurrent AOM (≥3 episodes/6 months or ≥4/year): refer for tympanostomy tubes evaluation
+
+COMPLICATIONS: mastoiditis, meningitis, brain abscess — rare but serious; headache/neck stiffness warrant workup
+
+PREVENTION: pneumococcal vaccine (PCV15/PCV20) and influenza vaccine reduce AOM incidence; breastfeeding protective; avoid pacifier use after 6 months; avoid supine bottle feeding`,
+    url: "https://publications.aap.org/pediatrics/article/131/3/e964",
+  },
+
+  {
+    source: "NAEPP",
+    tier: 2,
+    guideline_title: "NAEPP Expert Panel Report 3: Guidelines for the Diagnosis and Management of Asthma in Children",
+    guideline_year: "2020",
+    abfm_domain: "Pediatrics",
+    section: "Childhood Asthma Stepwise Management",
+    content: `Childhood Asthma — NAEPP EPR-3 (updated 2020):
+
+CLASSIFICATION (children ≥5 years):
+Intermittent: symptoms ≤2 days/week, nighttime ≤2/month, FEV1 ≥80%, no daily medications needed
+Persistent - Mild: symptoms >2d/week but not daily; nighttime 3-4/month; FEV1 ≥80%
+Persistent - Moderate: daily symptoms; nighttime >1/week; FEV1 60-80%
+Persistent - Severe: continual symptoms; frequent nighttime; FEV1 <60%
+
+STEPWISE THERAPY:
+Step 1 (Intermittent): SABA (albuterol) PRN only — no controller medication
+Step 2 (Mild Persistent): Low-dose ICS (fluticasone 88-264 mcg/day or equivalent); montelukast alternative
+Step 3 (Moderate Persistent): Low-dose ICS + LABA (if ≥5 years) OR medium-dose ICS
+Step 4: Medium-dose ICS + LABA
+Step 5: High-dose ICS + LABA ± tiotropium
+Step 6: High-dose ICS + LABA + oral corticosteroids
+
+KEY MEDICATIONS:
+- SABA (albuterol): rescue; via MDI + spacer in all children; nebulizer for acute exacerbations
+- ICS: most effective controller; use lowest effective dose; growth velocity monitor (minimal effect at low-medium doses)
+- LABA (salmeterol, formoterol): NOT approved <5 years; always with ICS (increased mortality risk as monotherapy)
+- Montelukast: alternative to ICS for mild persistent; less effective than ICS
+
+CHILDREN 0-4 YEARS: ICS preferred; LABA not approved; montelukast alternative; cromolyn no longer preferred
+
+SPACER/VHC: mandatory for MDI in all children <12 years; reduces oropharyngeal deposition, improves lung deposition
+
+ASTHMA ACTION PLAN: green/yellow/red zones based on symptoms AND peak flow; written plan for school
+
+ACUTE EXACERBATION (school-age): albuterol 2.5-5mg nebulized or 4-8 puffs MDI q20min × 3 doses; systemic corticosteroids if no improvement; O2 if SpO2 <92%`,
+    url: "https://www.nhlbi.nih.gov/health-topics/asthma",
+  },
+
+  // ========== WOMEN'S HEALTH — EXPANDED ==========
+
+  {
+    source: "ACOG",
+    tier: 2,
+    guideline_title: "ACOG Practice Bulletin: Contraception",
+    guideline_year: "2022",
+    abfm_domain: "Women's Health & Reproductive Medicine",
+    section: "Contraception Effectiveness and Long-Acting Reversible Contraception",
+    content: `Contraception — ACOG 2022:
+
+CDC MEDICAL ELIGIBILITY CRITERIA (MEC) FOR CONTRACEPTIVE USE:
+Category 1: No restriction | Category 2: Advantages > risks | Category 3: Risks > advantages | Category 4: Unacceptable health risk (contraindicated)
+
+EFFECTIVENESS (Pearl Index — failures per 100 woman-years with PERFECT use):
+- LONG-ACTING REVERSIBLE CONTRACEPTION (LARC) — most effective:
+  • Levonorgestrel IUD (Mirena, Liletta, Kyleena, Skyla): 0.1-0.8% failure; lasts 3-8 years; reduces menstrual bleeding
+  • Copper IUD (Paragard): 0.6-0.8% failure; lasts 10-12 years; non-hormonal; ALSO most effective emergency contraception if placed ≤5 days post-coitus
+  • Etonogestrel implant (Nexplanon): 0.05% failure; lasts 3 years; most effective reversible method
+- INJECTABLE: depot medroxyprogesterone acetate (DMPA/Depo-Provera): 6% typical-use failure; bone density loss with prolonged use (reversible); Q13 weeks injection
+- COMBINED ORAL CONTRACEPTIVES (COCs): 9% typical-use; 0.3% perfect-use; estrogen-containing
+  • Absolute contraindications (MEC 4): migraine with aura, ≥35 years old AND smoking ≥15 cigarettes/day, history of VTE/DVT/PE, stroke, coronary artery disease, known thrombophilia, breast cancer
+  • Drug interactions: rifampin (reduces effectiveness); St. John's Wort; anticonvulsants (carbamazepine, phenytoin, topiramate)
+- PROGESTIN-ONLY PILLS (POPs): 9% typical-use; safe in breastfeeding women; fewer contraindications; must take same time daily (±3 hours for older generation; ±24 hours for norethindrone 0.35mg)
+- BARRIER: male condom (85% typical use, 98% perfect); only method protecting against STIs
+- FERTILITY AWARENESS: 2-23% typical-use failure
+
+EMERGENCY CONTRACEPTION:
+- Levonorgestrel (Plan B, Take Action): within 72h (up to 120h); less effective with BMI >25 kg/m²
+- Ulipristal acetate (ella): within 120h; more effective than LNG especially >72h; prescription required; avoid breastfeeding 1 week
+- Copper IUD: most effective (>99%); up to 5 days post-coitus
+
+POSTPARTUM CONTRACEPTION: LARCs can be placed immediately postpartum (IUD) or within 6 weeks; COCs contraindicated <6 weeks postpartum in breastfeeding; progestin-only methods safe immediately postpartum`,
+    url: "https://www.acog.org/womens-health/faqs/birth-control",
+  },
+
+  {
+    source: "ACOG/AE-PCOS",
+    tier: 2,
+    guideline_title: "ACOG Practice Bulletin: Polycystic Ovary Syndrome",
+    guideline_year: "2023",
+    abfm_domain: "Women's Health & Reproductive Medicine",
+    section: "PCOS Diagnosis and Management",
+    content: `Polycystic Ovary Syndrome (PCOS) — ACOG 2023:
+
+DIAGNOSIS — ROTTERDAM CRITERIA (2 of 3 required, after excluding other causes):
+1. Oligo- or anovulation (irregular/absent menses)
+2. Clinical or biochemical hyperandrogenism (hirsutism, acne, alopecia; elevated free/total testosterone)
+3. Polycystic ovaries on ultrasound (≥12 follicles 2-9mm OR ovarian volume >10 mL on either ovary)
+
+EXCLUSION OF MIMICS (required before diagnosis):
+- TSH (hypothyroidism), prolactin (hyperprolactinemia), 17-OH progesterone (congenital adrenal hyperplasia)
+- Cushing's syndrome if clinical features present; androgen-secreting tumor (if testosterone very high or rapid virilization)
+
+CLINICAL FEATURES:
+- Menstrual: oligomenorrhea (<8 cycles/year), amenorrhea
+- Hyperandrogenic: hirsutism (modified Ferriman-Gallwey score ≥8), acne, androgenic alopecia
+- Metabolic: insulin resistance (70-80%), type 2 DM (10× increased risk), metabolic syndrome, obesity (not universal)
+- Reproductive: anovulatory infertility (most common cause of anovulatory infertility)
+- Psychological: anxiety, depression
+
+MANAGEMENT:
+1. Lifestyle modification: first-line; 5-10% weight loss restores ovulation in obese women; aerobic exercise recommended
+2. Menstrual regulation: COCs (suppress LH, reduce androgens, regulate cycles) — first-line for non-pregnant patients; progestin withdrawal × 10 days Q1-3 months
+3. Hyperandrogenism: COCs ± spironolactone 50-100mg/day (anti-androgen); finasteride alternative
+4. Insulin resistance/metabolic: metformin 500mg-2g/day; FDA-approved for DM prevention; reduces LH, improves insulin sensitivity
+5. Infertility/ovulation induction:
+   - First-line: letrozole 2.5-7.5mg days 3-7 (superior to clomiphene; NEJM 2014 — higher live birth rate)
+   - Second-line: clomiphene citrate OR metformin
+   - Third-line: gonadotropins, IVF
+6. Endometrial protection: progestin therapy if amenorrhea to prevent endometrial hyperplasia/cancer
+
+LONG-TERM RISKS: T2DM, metabolic syndrome, cardiovascular disease, endometrial cancer (due to unopposed estrogen), OSA`,
+    url: "https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2018/01/polycystic-ovary-syndrome",
+  },
+
+  {
+    source: "ACOG",
+    tier: 2,
+    guideline_title: "ACOG Committee Opinion: Screening and Diagnosis of Perinatal Depression",
+    guideline_year: "2023",
+    abfm_domain: "Women's Health & Reproductive Medicine",
+    section: "Perinatal and Postpartum Depression Screening and Treatment",
+    content: `Postpartum Depression (PPD) and Perinatal Mental Health — ACOG 2023:
+
+SCREENING:
+- Edinburgh Postnatal Depression Scale (EPDS): standard screening tool; 10-item self-report; score ≥10 warrants further evaluation; score ≥13 suggests major depression
+- Screen at: first prenatal visit AND postpartum visits (USPSTF Grade B — screen all perinatal women)
+- PHQ-9 also validated in perinatal population
+
+CLASSIFICATION:
+- Baby blues: 50-80% of women; onset within 3-5 days; self-limited by 2 weeks; education and support
+- Postpartum depression (PPD): 10-15% of women; onset within 4 weeks to 12 months postpartum; meets MDD criteria (DSM-5); impairs mother-infant bonding and child development
+- Postpartum anxiety: often comorbid with PPD; GAD, panic disorder, OCD patterns
+- Postpartum psychosis: rare (1-2/1000); onset within 2 weeks; hallucinations, delusions, disorganized behavior; psychiatric emergency; 5% suicide/infanticide rate → immediate hospitalization
+
+TREATMENT:
+- Mild-moderate PPD: psychotherapy (CBT, interpersonal therapy) first-line; SSRIs if inadequate response
+- Moderate-severe PPD: SSRIs first-line (sertraline preferred — most studied, lowest breast milk transfer)
+- Breastfeeding safety: sertraline and paroxetine preferred (low milk-to-plasma ratio); avoid fluoxetine (active metabolite)
+- Brexanolone (Zulresso, IV): FDA-approved for PPD (2019); single 60-hour infusion; requires REMS; for moderate-severe PPD; rapid onset
+- Zuranolone (Zurzuvae, oral): FDA-approved 2023 for PPD; 14-day course; synthetic neurosteroid (GABAA modulator)
+
+PARTNER SUPPORT: 10% of fathers develop depression in first postpartum year; screen male partners too
+
+RISK FACTORS: prior PPD (50% recurrence), depression in pregnancy, poor social support, domestic violence, unplanned pregnancy, perinatal loss, NICU admission`,
+    url: "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2023/02/screening-and-diagnosis-of-mental-health-conditions-during-pregnancy-and-postpartum",
+  },
+
+  {
+    source: "ACOG",
+    tier: 2,
+    guideline_title: "ACOG Practice Bulletin: Prenatal Care",
+    guideline_year: "2022",
+    abfm_domain: "Women's Health & Reproductive Medicine",
+    section: "First Trimester Prenatal Screening and Lab Evaluation",
+    content: `Prenatal Care — ACOG 2022 (First Trimester):
+
+INITIAL PRENATAL LABS (at first prenatal visit, ideally 8-10 weeks):
+- CBC with differential: anemia, thrombocytopenia; MCV <80 → iron studies, hemoglobin electrophoresis if indicated
+- Blood type and Rh factor + antibody screen: Rh-negative women receive RhoGAM at 28 weeks and after sensitizing events
+- Rubella IgG: if non-immune → vaccinate postpartum (live vaccine, avoid in pregnancy)
+- RPR or VDRL: syphilis screening (USPSTF Grade A)
+- HIV: opt-out screening (USPSTF Grade A)
+- Hepatitis B surface antigen (HBsAg): universal screening (USPSTF Grade B)
+- Hepatitis C: all adults 18-79 per USPSTF
+- Urine culture: bacteriuria screen (treat even if asymptomatic — risk of pyelonephritis/preterm birth)
+- Pap smear: if due per cervical cancer screening guidelines
+- GC/chlamydia: screen women ≤25 or at-risk (USPSTF Grade B)
+- TSH: screen symptomatic women; consider universal in areas with iodine deficiency
+- Varicella IgG: if unsure immune status
+- Glucose challenge test: 24-28 weeks (gestational diabetes screen)
+
+FIRST-TRIMESTER SCREENING (10-13 weeks):
+- Cell-free fetal DNA (cfDNA/NIPT): screens for trisomy 21 (Down), 18 (Edwards), 13 (Patau); sex chromosome aneuploidies; best PPV in high-risk women; offer to all
+- First-trimester combined screening: nuchal translucency (NT) + PAPP-A + beta-hCG; 85-90% detection rate for T21
+- Sequential or contingency integrated screening with second-trimester markers: used if cfDNA not available
+
+ANATOMY SCAN: 18-20 weeks; evaluates fetal anatomy, placenta location, amniotic fluid, fetal growth
+
+SUPPLEMENTS:
+- Folic acid: 400-800 mcg/day starting ≥1 month before conception; 4mg/day if prior NTD child or on valproate/carbamazepine
+- Iron: 27 mg/day (prenatal vitamins usually sufficient); supplement if anemia detected
+- DHA 200-300 mg/day: supports fetal neurologic development
+- Low-dose aspirin 81 mg/day starting 12-28 weeks: recommended by USPSTF for women at HIGH risk for preeclampsia`,
+    url: "https://www.acog.org/womens-health/faqs/prenatal-care",
+  },
+
+  // ========== PSYCHIATRY — EXPANDED ==========
+
+  {
+    source: "APA",
+    tier: 2,
+    guideline_title: "APA Practice Guideline for the Treatment of Patients with Bipolar Disorder",
+    guideline_year: "2023",
+    abfm_domain: "Psychiatry & Behavioral Health",
+    section: "Bipolar Disorder Diagnosis and Pharmacologic Management",
+    content: `Bipolar Disorder — APA Practice Guidelines 2023:
+
+DSM-5 DIAGNOSTIC CRITERIA:
+Bipolar I: At least ONE manic episode (even if preceded/followed by depression); mania = 7 days or hospitalization or psychosis; marked functional impairment
+Bipolar II: At least ONE hypomanic episode (≥4 days) AND ONE major depressive episode; NO full manic episode; functional impairment primarily from depression
+Cyclothymic disorder: ≥2 years of numerous hypomanic + depressive periods (not meeting full MDE criteria)
+
+MANIC EPISODE features (≥3 of): grandiosity, decreased need for sleep (not fatigue), pressured speech, racing thoughts, distractibility, goal-directed activity increase, risky behavior
+
+KEY DISTINCTION: Bipolar depression vs. unipolar depression: personal/family history, early onset, atypical features (hypersomnia, hyperphagia), psychotic features, rapid onset/offset, treatment resistance to antidepressants
+
+MOOD STABILIZERS — EVIDENCE-BASED:
+1. Lithium carbonate (gold standard for classic bipolar I):
+   - Therapeutic range: 0.6-1.2 mEq/L (acute mania: 0.8-1.2); maintenance: 0.6-0.8
+   - Monitoring: BMP (Cr/BUN), TSH, ECG q6-12 months; lithium level 5 days after dose change or q6 months
+   - Side effects: tremor (fine), polyuria/polydipsia (nephrogenic DI), hypothyroidism, weight gain, teratogenicity (Ebstein anomaly — relative, not absolute)
+   - Toxicity (>1.5 mEq/L): coarse tremor, nausea, ataxia, confusion; avoid NSAIDs and ACE inhibitors/thiazides (increase levels)
+   - Unique benefit: proven antisuicidal effect; reduces all-cause mortality in bipolar disorder
+
+2. Valproate (Depakote): equally effective as lithium for mixed states and rapid cycling; monitor CBC, LFTs, valproate level; teratogenic (neural tube defects, contraceptive required); avoid in women of childbearing potential if possible
+3. Lamotrigine: most effective for bipolar depression prevention (NOT acute mania); rash (Stevens-Johnson) — slow titration mandatory
+4. Atypical antipsychotics (quetiapine, olanzapine, aripiprazole, lurasidone): acute mania and bipolar depression; quetiapine most studied for bipolar depression
+
+ANTIDEPRESSANTS IN BIPOLAR: generally AVOIDED as monotherapy (risk of precipitating mania/mixed state/rapid cycling); if needed, only with mood stabilizer; bupropion or SSRI + mood stabilizer if absolutely indicated
+
+ACUTE MANIA: atypical antipsychotic ± lithium or valproate; haloperidol if severe agitation`,
+    url: "https://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/bipolar.pdf",
+  },
+
+  {
+    source: "APA/VA-DoD",
+    tier: 2,
+    guideline_title: "APA/VA-DoD Clinical Practice Guideline for PTSD and Acute Stress Disorder",
+    guideline_year: "2023",
+    abfm_domain: "Psychiatry & Behavioral Health",
+    section: "PTSD Diagnosis and Evidence-Based Treatment",
+    content: `PTSD — APA/VA-DoD Clinical Practice Guidelines 2023:
+
+DSM-5 DIAGNOSTIC CRITERIA (all 4 criterion clusters required):
+A. Exposure to traumatic event (direct, witness, learned about close family/friend, or repeated occupational exposure)
+B. Intrusion symptoms: flashbacks, nightmares, distressing recollections, psychological/physiological reactivity to trauma cues (≥1)
+C. Avoidance: of internal (thoughts, feelings) or external (reminders) trauma cues (≥1)
+D. Negative cognitions/mood: persistent negative beliefs, distorted blame, persistent negative emotions, diminished interest, detachment, inability to feel positive emotions (≥2)
+E. Alterations in arousal/reactivity: hypervigilance, exaggerated startle, sleep disturbance, irritability/aggression, reckless behavior, concentration problems (≥2)
+Duration: >1 month; functional impairment; not due to substances or medical condition
+Acute stress disorder: same symptoms but <1 month duration after trauma
+
+FIRST-LINE TREATMENTS (strong evidence):
+1. PSYCHOTHERAPY (preferred):
+   - Prolonged Exposure (PE): gold standard; imaginal + in vivo exposure to trauma memories
+   - Cognitive Processing Therapy (CPT): cognitive restructuring of trauma-related beliefs
+   - EMDR (Eye Movement Desensitization and Reprocessing): evidence-based; especially trauma-focused
+   - Cognitive Behavioral Therapy for trauma (CBT-T)
+
+2. PHARMACOTHERAPY (strong evidence for trauma-focused therapy + medications):
+   - SSRIs (first-line): sertraline and paroxetine are FDA-APPROVED for PTSD; fluoxetine and venlafaxine also evidence-based
+   - Treatment duration: ≥12 months after symptom remission; do not discontinue abruptly
+   - Prazosin (alpha-1 blocker): evidence for PTSD-related nightmares; start 1mg QHS, titrate to 10-15mg; VA guideline supported
+   - Benzodiazepines: NOT recommended for PTSD (may impair fear extinction, increase risk of dependence)
+
+COMORBIDITIES: substance use disorder (40-60%), MDD (50%), traumatic brain injury (veterans); screen for suicidality at every visit
+
+PRIMARY CARE SCREENING: Primary Care PTSD Screen (PC-PTSD-5): 5 questions; score ≥3 = positive; warrants full assessment`,
+    url: "https://www.healthquality.va.gov/guidelines/MH/ptsd/",
+  },
+
+  {
+    source: "SAMHSA/CSAT",
+    tier: 1,
+    guideline_title: "SAMHSA/CSAT Clinical Guidelines for Medications for Opioid Use Disorder",
+    guideline_year: "2023",
+    abfm_domain: "Psychiatry & Behavioral Health",
+    section: "Medication for Opioid Use Disorder (MOUD) — Buprenorphine, Naltrexone, Methadone",
+    content: `Substance Use Disorder / MOUD — SAMHSA/CSAT Guidelines 2023:
+
+DSM-5 OPIOID USE DISORDER (OUD) criteria: ≥2 of 11 criteria in 12-month period (tolerance, withdrawal, use more than intended, failed attempts to cut down, time spent obtaining/using/recovering, neglect of responsibilities, continued use despite problems, etc.)
+Severity: Mild (2-3), Moderate (4-5), Severe (≥6)
+
+MEDICATIONS FOR OUD (MOUD) — all 3 are FDA-approved, reduce mortality 50%:
+
+1. BUPRENORPHINE (Suboxone/Subutex):
+   - Mechanism: partial mu-opioid agonist + kappa antagonist; ceiling effect on respiratory depression
+   - Buprenorphine/naloxone (Suboxone): preferred for office-based treatment; naloxone deters IV misuse
+   - DEA X-waiver ELIMINATED as of January 2023 (Consolidated Appropriations Act): any DEA-licensed provider can prescribe buprenorphine for OUD — no special waiver required
+   - Initiation: patient must be in mild-moderate withdrawal (COWS score ≥8-12); starting when NOT in withdrawal → precipitated withdrawal; low-dose (microdose) buprenorphine induction avoids this
+   - Starting dose: 2-4mg sublingual; titrate by 2-4mg per day; target 16-24mg/day for most patients
+   - Home induction supported (telemedicine-based induction is now standard of care)
+
+2. NALTREXONE (Vivitrol, extended-release injectable):
+   - Mechanism: full opioid antagonist; non-addictive; NO abuse potential; NOT a scheduled substance
+   - Formulation: oral (50mg daily) or monthly IM injection (380mg — Vivitrol)
+   - Requires opioid-free for 7-10 days before initiation (5-7 days for buprenorphine, 7-10 days for methadone) to avoid precipitated withdrawal
+   - Preferred when: abstinence-based programs, high-risk professions (healthcare, law), alcohol use disorder comorbidity
+
+3. METHADONE:
+   - Full mu-opioid agonist; only dispensed at federally licensed Opioid Treatment Programs (OTPs)
+   - Once-daily observed dosing (initially); take-home doses earned
+   - Most effective for severe OUD; requires daily clinic attendance
+   - Significant drug interactions (QTc prolongation); cardiac monitoring recommended
+
+ALCOHOL USE DISORDER (AUD):
+- Naltrexone (oral or IM): first-line; reduces craving/relapse
+- Acamprosate: reduces protracted withdrawal dysphoria; renal dosing required; safe in liver disease
+- Disulfiram: aversion therapy; poor adherence; not first-line
+- Gabapentin: off-label but growing evidence for AUD withdrawal prevention
+
+CANNABIS USE DISORDER: No FDA-approved medications; CBT first-line; motivational enhancement therapy`,
+    url: "https://store.samhsa.gov/product/Clinical-Guidelines-for-the-Use-of-Buprenorphine-in-the-Treatment-of-Opioid-Addiction/SMA07-3939",
+  },
+
+  // ========== INFECTIOUS DISEASE — EXPANDED ==========
+
+  {
+    source: "DHHS",
+    tier: 1,
+    guideline_title: "DHHS Guidelines for the Use of Antiretroviral Agents in Adults and Adolescents with HIV",
+    guideline_year: "2024",
+    abfm_domain: "Infectious Disease",
+    section: "HIV Diagnosis, ART Initiation, and Initial Regimen",
+    content: `HIV Management — DHHS Guidelines 2024:
+
+DIAGNOSIS:
+- 4th generation HIV-1/2 antigen/antibody combination assay: preferred initial test; detects HIV RNA (p24 antigen) + antibodies; window period 18-45 days
+- Confirmatory: HIV-1/HIV-2 antibody differentiation assay → if negative, HIV-1 NAT (RNA)
+- Acute HIV: elevated RNA with negative or indeterminate antibody (before seroconversion)
+- USPSTF: screen all adults 15-65 years (Grade A); opt-out screening recommended
+
+INITIAL EVALUATION:
+- CD4 count, HIV RNA (viral load), HLA-B*5701 (abacavir hypersensitivity), drug resistance testing (genotype), CBC, CMP, lipids, hepatitis B/C serologies, RPR, TSH, TB screening (IGRA), urine GC/chlamydia
+- Opportunistic infection prophylaxis based on CD4 count:
+  • CD4 <200: TMP-SMX for PCP and toxoplasma prophylaxis
+  • CD4 <50: azithromycin for MAC prophylaxis; fluconazole for candida/cryptococcus (resource-limited settings)
+
+WHEN TO START ART:
+- ALL people with HIV, regardless of CD4 count — START IMMEDIATELY (same-day ART recommended)
+- High urgency (start ASAP, even same day): AIDS-defining illness, pregnancy, acute HIV infection, to prevent transmission
+
+PREFERRED INITIAL REGIMEN (DHHS 2024):
+- Bictegravir/tenofovir alafenamide/emtricitabine (BIC/TAF/FTC — Biktarvy): single-tablet regimen; preferred for most
+- Dolutegravir + TAF/FTC (Triumeq or combination): preferred for women of childbearing age (lower NTD risk than older InSTIs)
+- Cabotegravir + rilpivirine (Cabenuva): monthly or bimonthly IM injection; for virologically suppressed patients; enhances adherence
+
+MONITORING:
+- Viral load 2-4 weeks after starting, then q4-8 weeks until undetectable, then q3-6 months
+- Target: undetectable viral load (<20-50 copies/mL) within 24 weeks
+- U=U (Undetectable = Untransmittable): with sustained viral suppression, HIV transmission during sex is effectively zero
+
+OPPORTUNISTIC INFECTIONS: PCP (TMP-SMX), CMV retinitis (valganciclovir), MAC (azithromycin), toxoplasma encephalitis (pyrimethamine/sulfadiazine + leucovorin), cryptococcal meningitis (amphotericin B → fluconazole)
+
+PREP (Pre-Exposure Prophylaxis):
+- TDF/FTC (Truvada): USPSTF Grade A recommendation for HIV-negative adults at high risk
+- TAF/FTC (Descovy): alternative; approved for non-MSM after pregnancy concerns excluded
+- Cabotegravir IM q2 months: injectable PrEP; more effective than oral in HPTN 083`,
+    url: "https://clinicalinfo.hiv.gov/en/guidelines/hiv-clinical-guidelines-adult-and-adolescent-arv",
+  },
+
+  {
+    source: "IDSA/SHEA",
+    tier: 2,
+    guideline_title: "IDSA/SHEA Clinical Practice Guidelines for Clostridioides difficile Infection",
+    guideline_year: "2021",
+    abfm_domain: "Infectious Disease",
+    section: "C. difficile Classification and Antibiotic Treatment",
+    content: `Clostridioides difficile Infection (CDI) — IDSA/SHEA 2021:
+
+DIAGNOSIS:
+- Stool test for patients with ≥3 unformed stools/24 hours (no testing of asymptomatic patients or formed stools)
+- Testing algorithm: NAAT (PCR) highly sensitive; toxin EIA specific — NAAT + toxin combination most accurate (reduces overdiagnosis)
+- Do NOT test patients who are asymptomatic carriers
+
+SEVERITY CLASSIFICATION (IDSA 2021):
+- Non-severe (mild-moderate): WBC ≤15,000 cells/μL AND serum creatinine <1.5 mg/dL
+- Severe: WBC >15,000 OR Cr ≥1.5 mg/dL
+- Fulminant: hypotension/shock, ileus, OR megacolon → surgical consultation
+
+TREATMENT (IDSA 2021 — KEY CHANGE: fidaxomicin now preferred over vancomycin):
+Initial non-severe episode:
+- PREFERRED: fidaxomicin 200mg BID × 10 days (higher sustained cure rate, lower recurrence than vancomycin)
+- ALTERNATIVE: vancomycin 125mg QID × 10 days
+- Metronidazole: NO LONGER RECOMMENDED as first-line (inferior cure rates)
+
+Initial severe episode: vancomycin 125mg QID × 10 days OR fidaxomicin 200mg BID × 10 days
+
+Fulminant CDI: vancomycin 500mg QID PO/NG + metronidazole 500mg IV q8h; surgical consultation; possible total colectomy
+
+RECURRENT CDI (within 8 weeks of completing therapy):
+- 1st recurrence: fidaxomicin (preferred) OR vancomycin pulse/taper × 6 weeks (125mg QID 10d → BID 7d → daily 7d → q2-3 days × 8 weeks)
+- ≥2 recurrences: fecal microbiota transplantation (FMT) — FDA-approved (Rebyota, Vowst); highly effective (80-90%)
+- Bezlotoxumab (monoclonal antibody against toxin B): given IV with antibiotics for recurrence prevention in high-risk patients
+
+DISCONTINUE offending antibiotics as soon as possible; avoid PPIs, anti-motility agents (narcotics, anti-diarrheals)
+
+INFECTION CONTROL: contact precautions; hand WASHING (soap and water) — alcohol hand gels do NOT kill C. diff spores; private room; bleach disinfection of surfaces`,
+    url: "https://www.idsociety.org/practice-guideline/clostridium-difficile/",
+  },
+
+  {
+    source: "CDC",
+    tier: 1,
+    guideline_title: "CDC Sexually Transmitted Infections Treatment Guidelines",
+    guideline_year: "2021",
+    abfm_domain: "Infectious Disease",
+    section: "Gonorrhea, Chlamydia, and Syphilis Treatment",
+    content: `STI Treatment — CDC 2021 Guidelines:
+
+GONORRHEA (Neisseria gonorrhoeae):
+- Treatment (uncomplicated urogenital, rectal, pharyngeal): CEFTRIAXONE 500mg IM × 1 dose (if ≥150 kg: 1g IM)
+  → No longer recommend adding azithromycin to ceftriaxone (2021 update — previous dual therapy abandoned due to resistance tracking)
+- Penicillin allergy: Gentamicin 240mg IM + azithromycin 2g PO (reserve; only if ceftriaxone unavailable)
+- Resistance: widespread fluoroquinolone resistance; cephalosporin resistance emerging — culture + sensitivities for treatment failure
+- Test of cure: oropharyngeal infections 1-2 weeks after treatment; urogenital only if symptoms persist
+- Co-treatment for chlamydia: if chlamydia NOT excluded: add doxycycline 100mg BID × 7d
+
+CHLAMYDIA (Chlamydia trachomatis):
+- Treatment (uncomplicated urogenital, rectal): doxycycline 100mg BID × 7 days (preferred over azithromycin since 2021 — superior for rectal chlamydia)
+- Alternative: azithromycin 1g PO × 1 dose (acceptable for urogenital; NOT preferred for rectal infection)
+- Pregnancy: azithromycin 1g PO × 1 dose (doxycycline contraindicated in pregnancy); amoxicillin alternative
+- Lymphogranuloma venereum (LGV strains): doxycycline 100mg BID × 21 days
+
+SYPHILIS (Treponema pallidum):
+- Primary/secondary/early latent (<1 year): Benzathine penicillin G 2.4 million units IM × 1 dose
+- Late latent (>1 year duration unknown): Benzathine penicillin G 2.4 million units IM × 3 doses (weekly × 3)
+- Neurosyphilis: aqueous crystalline penicillin G 18-24 million units IV daily × 10-14 days
+- Penicillin allergy: doxycycline 100mg BID × 14d (primary/secondary); 28d (late latent); MUST desensitize and treat with penicillin in pregnancy
+- Jarisch-Herxheimer reaction: fever, myalgias 6-8h after first dose (especially secondary syphilis) — self-limited; antipyretics; NOT an allergy
+
+SCREENING GUIDELINES (USPSTF):
+- Gonorrhea/chlamydia: all sexually active women ≤25 years (Grade B); older women at risk
+- Syphilis: pregnant women (Grade A); sexually active persons at increased risk (Grade B) including MSM, commercial sex workers, HIV-positive individuals
+
+EXPEDITED PARTNER THERAPY (EPT): treating partners of chlamydia/gonorrhea patients without physical exam — legal in most states; recommended by CDC`,
+    url: "https://www.cdc.gov/std/treatment-guidelines/",
+  },
+
+  // ========== HEMATOLOGY — EXPANDED ==========
+
+  {
+    source: "ASH/ACCP",
+    tier: 2,
+    guideline_title: "ASH/ACCP Guidelines for VTE Treatment and Duration",
+    guideline_year: "2021",
+    abfm_domain: "Hematology & Oncology",
+    section: "DVT and PE Treatment, Anticoagulant Selection, and Duration",
+    content: `VTE Treatment (DVT and PE) — ASH/ACCP Guidelines 2021:
+
+DIAGNOSIS:
+- DVT: D-dimer (Wells score pretest probability); compression ultrasound confirmatory
+- PE: D-dimer + CT pulmonary angiography (CTPA) gold standard; V/Q scan if CTPA contraindicated
+- Wells criteria for PE: clinical signs of DVT, alternative diagnosis less likely, HR >100, immobilization/surgery within 4 weeks, prior DVT/PE, hemoptysis, malignancy
+
+ANTICOAGULATION SELECTION:
+1. DOACs (preferred for most patients):
+   - Apixaban (Eliquis): 10mg BID × 7d → 5mg BID; preferred for obese patients, cancer VTE
+   - Rivaroxaban (Xarelto): 15mg BID × 21d → 20mg daily
+   - Edoxaban/Dabigatran: require 5-10 days of parenteral therapy first (use only after LMWH)
+   - GFR considerations: rivaroxaban avoid if CrCl <30; apixaban preferred in renal disease
+   
+2. LMWH (enoxaparin): preferred in pregnancy (DOACs contraindicated), cancer-associated VTE (although DOACs now acceptable for most cancers per newer evidence), antiphospholipid syndrome (warfarin preferred)
+
+3. Warfarin: used with cancer (LMWH superior for cancer VTE), APS, mechanical valves; INR target 2.0-3.0
+
+DURATION:
+- Provoked VTE (reversible risk factor: surgery, immobilization, estrogen): 3 months → no extended therapy if risk factor removed
+- Unprovoked DVT/PE (first episode): minimum 3 months; consider extended therapy (indefinitely) based on bleeding risk vs. recurrence risk
+  → Male sex, proximal DVT, PE (vs. DVT alone) favor extended therapy
+  → Extended: apixaban 2.5mg BID OR rivaroxaban 10mg daily (reduced-dose regimens after 6 months)
+- Cancer-associated VTE: indefinitely while cancer active or on chemotherapy
+
+MASSIVE/SUBMASSIVE PE:
+- Massive PE (hemodynamic instability): systemic thrombolysis (tPA alteplase 100mg IV × 2h) if no contraindications; catheter-directed thrombolysis if absolute contraindications to systemic tPA
+- Submassive PE (RV dysfunction, elevated troponin/BNP but hemodynamically stable): anticoagulate + monitor; thrombolysis only if deteriorating
+
+INFERIOR VENA CAVA (IVC) FILTER: only if anticoagulation absolutely contraindicated; not superior to anticoagulation alone; retrievable filters preferred`,
+    url: "https://www.hematology.org/education/clinicians/guidelines-and-quality-care/clinical-practice-guidelines/venous-thromboembolism-guidelines",
+  },
+
+  {
+    source: "NHLBI/ASH",
+    tier: 2,
+    guideline_title: "NHLBI Evidence-Based Management of Sickle Cell Disease",
+    guideline_year: "2022",
+    abfm_domain: "Hematology & Oncology",
+    section: "Sickle Cell Disease Complications, Hydroxyurea, and Acute Management",
+    content: `Sickle Cell Disease (SCD) — NHLBI/ASH Guidelines 2022:
+
+PATHOPHYSIOLOGY: HbSS most common and severe; HbSC, HbS/beta-thalassemia also symptomatic; HbAS (trait) — generally asymptomatic but can have complications with extreme conditions
+
+SCREENING: Newborn blood spot screening — mandatory in all 50 states
+
+HYDROXYUREA — Cornerstone of SCD management:
+- Indication: ALL patients with HbSS or HbS/beta0-thalassemia ≥9 months (NHLBI 2022 — not just recurrent crisis)
+- Mechanism: increases HbF, reduces HbS polymerization; decreases adhesion molecules, leukocyte count
+- Starting dose: 15-20 mg/kg/day; titrate by 5 mg/kg/day q8 weeks to maximum tolerated dose (max ~35 mg/kg/day)
+- Goal: ANC 2,000-4,000, HbF increase >15-20%, no significant cytopenias
+- Benefit: reduces VOC frequency by 44%, ACS by 50%, hospitalizations, transfusions, stroke risk, and mortality
+- Monitoring: CBC q4 weeks; hold if ANC <2,000 or platelets <80,000
+
+VASO-OCCLUSIVE CRISIS (VOC) MANAGEMENT:
+- Pain severity: titrate opioids based on pain scale; do NOT under-treat
+- IV hydration: isotonic saline; correct dehydration
+- Parenteral opioids: morphine or hydromorphone IV/SQ; PCA pump preferred for frequent admissions
+- Ketorolac: adjunct (limit to 5 days); avoid NSAIDs long-term (renal toxicity)
+- Incentive spirometry: prevents ACS in all hospitalized SCD patients
+- Hospital discharge: adequate oral opioid prescription, follow-up within 2-3 days
+
+ACUTE CHEST SYNDROME (ACS): new infiltrate + fever, chest pain, cough, hypoxia — leading cause of death:
+- Supplemental O2, incentive spirometry, bronchodilators, empiric antibiotics (CAP coverage + atypical), exchange transfusion if severe (preferred over simple transfusion)
+
+STROKE: primary prevention with transcranial Doppler (TCD) screening annually age 2-16; if elevated velocity → prophylactic transfusion program; if stroke → exchange transfusion then chronic transfusion
+
+CHRONIC TRANSFUSION: target HbS <30% for primary/secondary stroke prevention; iron chelation required (deferoxamine, deferasirox) to prevent iron overload
+
+CRIZANLIZUMAB (Adakveo): anti-P-selectin monoclonal antibody; IV monthly; reduces VOC frequency by 45%
+
+VOXELOTOR (Oxbryta): increases HbO2 affinity; reduces hemolysis; FDA-approved for hemoglobin improvement
+
+PENICILLIN PROPHYLAXIS: ALL patients with HbSS from birth until age 5 (some centers until age 10); pneumococcal vaccines (PCV15 and PPSV23) mandatory
+
+BONE MARROW TRANSPLANT: curative; best outcomes in children with HLA-matched sibling; gene therapy emerging as curative option`,
+    url: "https://www.nhlbi.nih.gov/health-topics/sickle-cell-disease",
+  },
+
+  // ========== MULTISYSTEM — EXPANDED ==========
+
+  {
+    source: "SCCM/ESICM",
+    tier: 2,
+    guideline_title: "Surviving Sepsis Campaign International Guidelines",
+    guideline_year: "2021",
+    abfm_domain: "Multisystem & Other",
+    section: "Sepsis-3 Definition, Diagnosis, and 1-Hour Bundle",
+    content: `Sepsis Management — Surviving Sepsis Campaign 2021 / Sepsis-3 Definition:
+
+SEPSIS-3 DEFINITIONS (2016, still current):
+- Sepsis: life-threatening organ dysfunction caused by dysregulated host response to infection
+  → SOFA score ≥2 points (or increase from baseline) with suspected infection
+  → qSOFA (quick SOFA, bedside screen): altered mentation, RR ≥22/min, SBP ≤100 mmHg — ≥2 of 3 = high risk
+- Septic shock: sepsis + vasopressor requirement to maintain MAP ≥65 mmHg + serum lactate >2 mmol/L (18 mg/dL) despite adequate fluid resuscitation; mortality >40%
+- SIRS criteria no longer defines sepsis (too non-specific)
+
+ORGAN DYSFUNCTION (SOFA score components): PaO2/FiO2 ratio, GCS, MAP/vasopressors, bilirubin, creatinine, platelets
+
+1-HOUR BUNDLE (SSC 2021):
+1. Measure lactate; re-measure if initial >2 mmol/L
+2. Blood cultures BEFORE antibiotics (≥2 sets)
+3. Broad-spectrum antibiotics within 1 hour (goal immediately upon recognition)
+4. 30 mL/kg IV crystalloid for hypotension OR lactate ≥4 mmol/L
+5. Vasopressors if MAP <65 mmHg despite fluids: norepinephrine first-line
+
+ANTIBIOTIC SELECTION:
+- Community-onset: broad-spectrum; empiric coverage for MRSA if high risk (vancomycin), gram-negatives, and source-directed
+- Healthcare/hospital-onset: anti-pseudomonal coverage (piperacillin-tazobactam, meropenem); add vancomycin for MRSA risk
+- De-escalate: once culture results available; procalcitonin-guided de-escalation (reduces duration without harm)
+- Target duration: 7-10 days for most infections; shorter durations validated for CAP, UTI, peritonitis
+
+HEMODYNAMIC TARGETS:
+- MAP ≥65 mmHg (first target); norepinephrine first-line vasopressor; vasopressin add-on (0.03-0.04 units/min) to spare norepinephrine
+- Dopamine: NOT preferred (more arrhythmias); reserve for bradycardia
+- Epinephrine: add-on or substitute if norepinephrine insufficient; causes tachycardia, hyperglycemia, lactic acidosis
+- Dobutamine: add for persistent hypoperfusion with low CO despite adequate MAP
+
+CORTICOSTEROIDS: IV hydrocortisone 200mg/day (50mg q6h) only for septic shock not responsive to fluids + vasopressors; reduces vasopressor requirement, duration of shock; no mortality benefit (APROCCHSS/ADRENAL trials)
+
+GLUCOSE CONTROL: target 140-180 mg/dL; avoid hypoglycemia; insulin infusion protocol in ICU
+
+LUNG PROTECTIVE VENTILATION (for ARDS complicating sepsis): tidal volume 6 mL/kg IBW; plateau pressure <30 cmH2O; PEEP per ARDSNet table; prone positioning ≥16h/day if PaO2/FiO2 <150`,
+    url: "https://www.sccm.org/SurvivingSepsisCampaign/Guidelines/Adult-Patients",
+  },
+
+  {
+    source: "SCCM/AGS",
+    tier: 2,
+    guideline_title: "SCCM/AGS Clinical Practice Guidelines for Delirium in Critically Ill Patients",
+    guideline_year: "2018",
+    abfm_domain: "Multisystem & Other",
+    section: "Delirium Recognition, Prevention, and Management",
+    content: `Delirium — SCCM/AGS Guidelines (PADIS 2018 + hospital delirium):
+
+DEFINITION: Acute change in mental status characterized by: (1) disturbance in attention and awareness, (2) additional disturbance in cognition (memory, orientation, language, perception), (3) develops acutely and fluctuates, (4) not explained by pre-existing neurocognitive disorder
+
+TYPES:
+- Hyperactive: agitation, combativeness, pulling at lines/tubes (~25%)
+- Hypoactive: withdrawal, somnolence, reduced responsiveness — often MISSED; worse prognosis (~50%)
+- Mixed (~25%)
+
+DIAGNOSIS TOOLS:
+- CAM (Confusion Assessment Method): STANDARD; requires: (1) acute onset + fluctuating course AND (2) inattention AND either (3) disorganized thinking OR (4) altered level of consciousness
+  → CAM-ICU: validated for nonverbal ICU patients using features A, B, C, D; bedside assessment with picture tests
+- 4AT scale: quick bedside screen (Alert, Abbreviated Mental Test-4, Attention, Acute change)
+
+ABCDEF BUNDLE (ICU prevention):
+A — Assess, prevent, and manage Pain
+B — Both SAT (spontaneous awakening trial) and SBT (spontaneous breathing trial) daily
+C — Choice of analgesia and sedation (minimize benzodiazepines; use propofol or dexmedetomidine instead)
+D — Delirium: assess, prevent, and manage
+E — Early mobility and Exercise
+F — Family engagement and empowerment
+
+PREVENTION (strongly evidence-based):
+- Non-pharmacologic FIRST: reorientation (clocks, windows, lighting cycles), mobilization, hearing aids/glasses, hydration/nutrition, sleep hygiene, cognitive stimulation
+- AVOID: benzodiazepines (strong risk factor for delirium), restraints, bladder catheters, polypharmacy, Beers Criteria medications
+
+PHARMACOLOGIC MANAGEMENT (symptoms only, NOT to treat):
+- Antipsychotics: haloperidol 0.5-1mg (NOT routinely recommended to reduce delirium duration per SCCM 2018; use sparingly for safety)
+- Quetiapine: off-label for agitation; associated with QTc prolongation; avoid if QTc >450ms
+- Dexmedetomidine: preferred sedative in ICU to prevent delirium vs. benzodiazepines (less delirium, facilitates weaning)
+- Melatonin/ramelteon: low-dose melatonin 0.5-3mg QHS for sleep-wake cycle regulation; evidence emerging
+
+HOSPITAL DELIRIUM RISK FACTORS (non-ICU): age >65, dementia, prior delirium, visual/hearing impairment, dehydration, immobility, Foley catheter, multiple medications, pain, sleep deprivation, surgery
+
+OUTCOMES: delirium is associated with prolonged mechanical ventilation, ICU/hospital LOS, cognitive impairment, functional decline, and mortality`,
+    url: "https://www.sccm.org/Clinical-Resources/Guidelines/Guidelines/Guidelines-for-the-Prevention-and-Management-of-Pa",
+  },
+
+  // ========== MUSCULOSKELETAL — EXPANDED ==========
+
+  {
+    source: "ACR",
+    tier: 2,
+    guideline_title: "ACR Guideline for the Management of Gout",
+    guideline_year: "2020",
+    abfm_domain: "Musculoskeletal",
+    section: "Gout Diagnosis, Acute Flare Management, and Urate-Lowering Therapy",
+    content: `Gout — ACR 2020 Clinical Practice Guidelines:
+
+DIAGNOSIS:
+- Gold standard: joint aspiration with monosodium urate (MSU) crystals — needle-shaped, negatively birefringent under polarized light
+- Clinical diagnosis acceptable if classic presentation (podagra in first MTP joint, rapid onset, erythema, warmth) + hyperuricemia
+- Imaging: ultrasound (double contour sign, tophi), dual-energy CT (DECT) — confirms urate deposits without aspiration
+
+ACUTE GOUT FLARE MANAGEMENT (anti-inflammatory):
+FIRST-LINE (any one):
+1. NSAIDs (full anti-inflammatory dose): indomethacin 50mg TID, naproxen 500mg BID; avoid with CKD, peptic ulcer
+2. Colchicine: 1.2mg loading → 0.6mg 1 hour later (low-dose superior to high-dose per AGREE trial, fewer GI effects); then 0.6mg QD-BID; start within 36 hours of flare
+3. Glucocorticoids: prednisone 30-40mg/day × 5 days (if NSAIDs/colchicine contraindicated)
+
+KEY: start within 24 hours of flare for best response; combination therapy (e.g., colchicine + NSAID) if inadequate mono response
+
+URATE-LOWERING THERAPY (ULT) — TREAT TO TARGET:
+INDICATION: ≥2 gout flares/year OR tophi OR urate nephrolithiasis OR CKD stage 3+ with gout (regardless of frequency)
+TARGET: serum uric acid (SUA) <6 mg/dL; <5 mg/dL if tophi (to dissolve deposits)
+
+FIRST-LINE: allopurinol (xanthine oxidase inhibitor)
+- Start: 100mg/day; titrate by 100mg q2-5 weeks to target SUA
+- Maximum: 800mg/day (renally adjusted); typical effective dose 300-400mg/day
+- HLA-B*5801 screening before allopurinol in Asian/Pacific Islander descent (risk of severe hypersensitivity — DRESS, SJS/TEN)
+- Common error: starting ULT without anti-inflammatory prophylaxis → triggers flare
+
+ALTERNATIVE: febuxostat (Uloric) — more expensive; FDA warning for CV mortality (restrict to allopurinol failures)
+
+PROBENECID: uricosuric; second-line; avoid with eGFR <30 or nephrolithiasis history
+
+PROPHYLAXIS during ULT initiation (6 months minimum or until SUA at target × 6 months):
+- Colchicine 0.6mg QD-BID (preferred) OR low-dose NSAID daily OR low-dose prednisone
+
+LIFESTYLE: low-purine diet (limit red meat, organ meats, shellfish, alcohol, fructose-sweetened beverages); weight loss; increase dairy; cherry consumption (modest effect); hydration
+
+AVOID in gout patients: thiazide diuretics (increase uric acid), low-dose aspirin (reduce UA excretion), cyclosporine, pyrazinamide (all raise uric acid)`,
+    url: "https://www.rheumatology.org/Practice-Quality/Clinical-Support/Clinical-Practice-Guidelines/Gout",
+  },
+
+  {
+    source: "AAOS",
+    tier: 2,
+    guideline_title: "AAOS Clinical Practice Guideline: Rotator Cuff Injuries",
+    guideline_year: "2019",
+    abfm_domain: "Musculoskeletal",
+    section: "Shoulder Pain and Rotator Cuff Tear Diagnosis and Management",
+    content: `Shoulder Pain and Rotator Cuff Disease — AAOS 2019 Guideline:
+
+ANATOMY: Rotator cuff = 4 muscles (SITS): Supraspinatus (most commonly torn), Infraspinatus, Teres minor, Subscapularis
+
+DIAGNOSIS:
+Clinical examination:
+- Neer sign: forward flexion with shoulder internally rotated (subacromial impingement) — sensitivity 79%, specificity 53%
+- Hawkins-Kennedy test: shoulder forward flexed 90° + internal rotation (impingement) — sensitivity 79%, specificity 59%
+- Empty can (Jobe test): shoulder abducted 90°, forward flexed 30°, thumbs pointing down (supraspinatus) — sensitivity 69-89%
+- Drop arm test: inability to lower arm slowly from 90° abduction → full-thickness tear; high specificity
+- External rotation lag sign: full-thickness infraspinatus tear
+- Belly press test: subscapularis integrity
+
+Imaging:
+- X-ray: first-line (AC joint, calcifications, acromial morphology, arthritis); may show superior humeral head migration in massive tear
+- MRI: gold standard for rotator cuff tears (full vs. partial, muscle atrophy, tendon retraction)
+- Ultrasound: dynamic; equivalent sensitivity/specificity to MRI for full-thickness tears in experienced hands; less expensive, accessible
+
+CLASSIFICATION: Partial-thickness (50% tendon involved → consider surgical repair
+- Full-thickness tear: small (<1cm), medium (1-3cm), large (3-5cm), massive (>5cm)
+
+TREATMENT:
+Conservative (first-line for most):
+- PT × 6-12 weeks: rotator cuff strengthening, scapular stabilization, postural training
+- NSAIDs: pain control
+- Subacromial corticosteroid injection: short-term pain relief (strongest evidence for 4-6 weeks); limit to 3-4 per year; no evidence for tissue-healing benefit; may weaken tendon if surgical repair planned
+
+Surgical (arthroscopic rotator cuff repair):
+- Indications: failed conservative therapy × 3-6 months; acute full-thickness tear after trauma; large tear with progressive weakness; young active patient with full-thickness tear
+- Outcomes: best in smaller tears, younger patients, early surgery (before muscle atrophy/fatty infiltration)
+
+RETURN TO ACTIVITY: after surgery: passive ROM 6 weeks → active ROM 12 weeks → strengthening 4-6 months → return to overhead activity 6-12 months`,
+    url: "https://www.aaos.org/quality/quality-programs/upper-extremity-programs/rotator-cuff-injuries/",
+  },
 ];

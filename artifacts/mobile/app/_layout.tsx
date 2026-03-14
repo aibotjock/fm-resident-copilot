@@ -8,13 +8,18 @@ import {
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import React, { useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useEffect, useState } from "react";
+import { Modal, useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { AppProvider } from "@/context/AppContext";
+import { OnboardingModal } from "@/components/OnboardingModal";
+
+const ONBOARDED_KEY = "@fm_copilot_onboarded";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -43,11 +48,28 @@ export default function RootLayout() {
     Inter_700Bold,
   });
 
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const [onboardingChecked, setOnboardingChecked] = useState(false);
+
   useEffect(() => {
     if (fontsLoaded || fontError) {
       SplashScreen.hideAsync();
     }
   }, [fontsLoaded, fontError]);
+
+  useEffect(() => {
+    AsyncStorage.getItem(ONBOARDED_KEY).then((val) => {
+      if (!val) {
+        setShowOnboarding(true);
+      }
+      setOnboardingChecked(true);
+    });
+  }, []);
+
+  const handleOnboardingComplete = async () => {
+    await AsyncStorage.setItem(ONBOARDED_KEY, "1");
+    setShowOnboarding(false);
+  };
 
   if (!fontsLoaded && !fontError) return null;
 
@@ -59,6 +81,15 @@ export default function RootLayout() {
             <GestureHandlerRootView>
               <KeyboardProvider>
                 <RootLayoutNav />
+                {onboardingChecked && (
+                  <Modal
+                    visible={showOnboarding}
+                    animationType="slide"
+                    presentationStyle="fullScreen"
+                  >
+                    <OnboardingModal onComplete={handleOnboardingComplete} />
+                  </Modal>
+                )}
               </KeyboardProvider>
             </GestureHandlerRootView>
           </AppProvider>

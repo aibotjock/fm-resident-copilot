@@ -267,6 +267,100 @@ One high-yield insight about this presentation from an indexed source that disti
   }
 }
 
+const WEIGHTED_DOMAINS = [
+  ...Array(10).fill("Cardiovascular"),
+  ...Array(10).fill("Musculoskeletal"),
+  ...Array(8).fill("Psychiatry & Behavioral Health"),
+  ...Array(8).fill("Endocrine & Metabolic"),
+  ...Array(8).fill("Preventive Medicine & Health Maintenance"),
+  ...Array(7).fill("Women's Health & Reproductive Medicine"),
+  ...Array(6).fill("Gastrointestinal"),
+  ...Array(6).fill("Pulmonary & Allergy"),
+  ...Array(6).fill("Infectious Disease"),
+  ...Array(5).fill("Neurology"),
+  ...Array(5).fill("Dermatology"),
+  ...Array(5).fill("Renal & Urology"),
+  ...Array(5).fill("Pediatrics"),
+  ...Array(4).fill("Hematology & Oncology"),
+  ...Array(4).fill("Geriatrics"),
+  ...Array(3).fill("Multisystem & Other"),
+];
+
+router.post("/clinical/vignette", async (req: Request, res: Response) => {
+  const { domain, topic } = req.body;
+
+  const targetDomain = domain || WEIGHTED_DOMAINS[Math.floor(Math.random() * WEIGHTED_DOMAINS.length)];
+  const ragQuery = topic ? `${topic} ${targetDomain}` : `high-yield ABFM board exam ${targetDomain}`;
+
+  try {
+    const ragCtx = await retrieveContext(ragQuery, 8);
+
+    const ragSection = ragCtx.empty ? "" : `\n\nRELEVANT GUIDELINE CONTEXT:\n${ragCtx.formattedContext}\n\nBase your vignette on the facts in this retrieved context.`;
+
+    const systemPrompt = `You are FM Resident Copilot generating an ABFM Family Medicine board exam practice question.
+
+${TIER_1_SOURCES}
+
+${TIER_2_SOURCES}
+
+${ABFM_BLUEPRINT}${ragSection}
+
+Generate ONE high-quality ABFM-style board exam MCQ for the domain: ${targetDomain}.
+
+Rules:
+- The vignette must be 4-6 sentences with specific clinical details (age, sex, symptoms, vitals, key labs/findings)
+- Include one classic misleading element that tests true understanding vs. surface pattern recognition
+- All 4 options must be plausible; only ONE is correct
+- The correct answer must be supported by an indexed guideline source
+- The explanation must cite the source guideline and explain why each distractor is wrong
+
+Return ONLY a valid JSON object with exactly this structure (no markdown, no additional text):
+{
+  "question": "4-6 sentence clinical vignette ending with the question",
+  "options": {
+    "a": "First option text",
+    "b": "Second option text",
+    "c": "Third option text",
+    "d": "Fourth option text"
+  },
+  "answer": "a",
+  "explanation": "Complete explanation: why the correct answer is right (mechanism + guideline source and year), why each distractor is wrong (1-2 sentences each). Include the key rule to remember.",
+  "domain": "${targetDomain}",
+  "source": "Primary guideline source and year"
+}`;
+
+    const completion = await openai.chat.completions.create({
+      model: "gpt-5.2",
+      max_completion_tokens: 2048,
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: `Generate an ABFM board vignette for: ${targetDomain}${topic ? ` — specifically about ${topic}` : ""}` },
+      ],
+      stream: false,
+    });
+
+    const rawContent = completion.choices[0]?.message?.content ?? "";
+
+    const jsonMatch = rawContent.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) {
+      res.status(500).json({ error: "Failed to parse vignette response" });
+      return;
+    }
+
+    const vignette = JSON.parse(jsonMatch[0]);
+
+    if (!vignette.question || !vignette.options || !vignette.answer || !vignette.explanation) {
+      res.status(500).json({ error: "Incomplete vignette generated" });
+      return;
+    }
+
+    res.json(vignette);
+  } catch (error) {
+    console.error("Vignette generation error:", error);
+    res.status(500).json({ error: "Failed to generate vignette. Please try again." });
+  }
+});
+
 router.post("/clinical/query", async (req: Request, res: Response) => {
   const { query, mode, condition } = req.body;
 
