@@ -5004,4 +5004,365 @@ BARIATRIC SURGERY: BMI ≥40 or ≥35 + comorbidities; sleeve gastrectomy or RYG
     url: "https://www.ahajournals.org/doi/10.1161/CIR.0000000000001060",
   },
 
+
+  // ========== v7 ADDITIONS BATCH 2: REMAINING TOP-100 FM GAPS ==========
+
+  {
+    source: "AASLD",
+    tier: 1,
+    guideline_title: "AASLD Practice Guidance: Hepatic Cirrhosis and Portal Hypertension Complications (2022)",
+    guideline_year: "2022",
+    abfm_domain: "Gastroenterology",
+    section: "Cirrhosis Complications — Varices, SBP, Hepatic Encephalopathy, and HCC Surveillance",
+    content: `CIRRHOSIS COMPLICATIONS — AASLD 2022:
+
+DIAGNOSIS OF CIRRHOSIS:
+- Clinical: spider angiomas, palmar erythema, gynecomastia, caput medusae, splenomegaly, ascites
+- Labs: thrombocytopenia (hypersplenism), elevated PT/INR, hypoalbuminemia, elevated bilirubin
+- MELD-Na score: predicts 90-day mortality without transplant (used for organ allocation)
+- Imaging: ultrasound (nodular liver, splenomegaly, ascites); FIB-4 >3.25 suggests advanced fibrosis
+
+ESOPHAGEAL VARICES — PREVENTION AND MANAGEMENT:
+Non-selective beta-blockers (NSBB): first-line for primary prophylaxis
+- Propranolol 20 mg BID (titrate to HR 55-60 or max tolerated) or nadolol 40 mg daily
+- Carvedilol 6.25 mg BID: preferred if available (also reduces hepatic venous pressure gradient)
+- Contraindicated: SBP <90, bradycardia, decompensated HF, severe COPD/asthma
+Endoscopic band ligation (EBL): first-line for high-risk varices (large varices or red wale signs) if NSBB contraindicated; also equivalent primary prophylaxis option
+Acute variceal hemorrhage management: octreotide IV + endoscopy within 12 hours + prophylactic antibiotics (ceftriaxone 1g/day x 7 days)
+
+SPONTANEOUS BACTERIAL PERITONITIS (SBP):
+- Diagnostic tap: ascitic PMN ≥250/mm3 + positive culture (usually E. coli, Klebsiella, Strep)
+- Treatment: cefotaxime 2g IV q8h x 5 days (or ceftriaxone); albumin 1.5 g/kg on day 1 + 1 g/kg on day 3 (prevents hepatorenal syndrome)
+- Primary prophylaxis: norfloxacin (or TMP-SMX) if ascitic protein <1.5 g/dL + renal dysfunction or Child-Pugh ≥9 with bilirubin ≥3
+- Secondary prophylaxis (after SBP): norfloxacin 400 mg/day indefinitely
+
+HEPATIC ENCEPHALOPATHY (HE):
+- Precipitants: GI bleed, infection, constipation, renal failure, sedatives, electrolyte disturbances
+- Grades: I (mild confusion) → IV (coma)
+- Treatment:
+  • Lactulose: 30-45 mL q1-2h until 2-3 loose stools/day; maintenance 30-45 mL BID-TID
+  • Rifaximin 550 mg BID: adjunct and maintenance; significantly reduces recurrence (TARGET-HE trial)
+  • Identify and treat precipitant
+
+ASCITES MANAGEMENT:
+- First-line: sodium restriction (≤2 g/day) + spironolactone 100 mg/day (titrate up to 400 mg); add furosemide 40 mg/day (titrate up to 160 mg) maintaining 100:40 ratio
+- Refractory ascites: large-volume paracentesis (>5L) + albumin (6-8 g/L removed); TIPS consideration
+
+HCC SURVEILLANCE:
+- Every 6 months: abdominal ultrasound +/- AFP for ALL cirrhotic patients (any etiology)`,
+    url: "https://www.aasld.org/publications/practice-guidelines",
+  },
+
+  {
+    source: "ADA",
+    tier: 1,
+    guideline_title: "ADA Standards of Medical Care in Diabetes 2024 — Prediabetes and Diabetes Prevention",
+    guideline_year: "2024",
+    abfm_domain: "Endocrine & Metabolic",
+    section: "Prediabetes Diagnosis, Lifestyle Intervention, and Pharmacotherapy",
+    content: `PREDIABETES AND DIABETES PREVENTION — ADA 2024:
+
+DIAGNOSTIC CRITERIA FOR PREDIABETES:
+- Impaired Fasting Glucose (IFG): FPG 100-125 mg/dL
+- Impaired Glucose Tolerance (IGT): 2-hour OGTT glucose 140-199 mg/dL
+- Elevated A1c: 5.7-6.4%
+- Any one criteria = prediabetes; persons with IFG + IGT + elevated A1c have highest T2DM progression risk
+
+SCREENING FOR PREDIABETES/T2DM:
+- Screen all adults ≥35 years (USPSTF Grade B: 35-70, overweight/obese)
+- Screen earlier if BMI ≥25 (≥23 in Asian Americans) + ≥1 risk factor: first-degree relative with DM, high-risk ethnicity (Black, Hispanic, Native American, Asian, Pacific Islander), GDM history, HTN, HDL <35 mg/dL or TG >250, PCOS, A1c ≥5.7% previously, sedentary lifestyle, cardiovascular disease
+- Rescreening: every 1-3 years if normal; annually if prediabetes
+- No preferred test — FPG, 2h OGTT, or A1c all acceptable; OGTT most sensitive
+
+TREATMENT — LIFESTYLE MODIFICATION (FIRST-LINE):
+- Diabetes Prevention Program (DPP): landmark trial — 5-7% weight loss + 150 min/week moderate physical activity → 58% relative risk reduction in T2DM conversion (vs 31% with metformin)
+- Goal: achieve and maintain ≥5% weight loss; 150+ min/week aerobic activity
+- CDC-recognized DPP programs available (covered by Medicare Part B and many insurers)
+- Dietary pattern: Mediterranean, DASH, or plant-based — no single diet mandated
+- Sleep: treat OSA; optimize sleep duration (poor sleep worsens insulin resistance)
+
+PHARMACOTHERAPY FOR PREDIABETES:
+Metformin — CONSIDER (not mandatory) for:
+- BMI ≥35 AND age <60 years
+- Women with prior GDM (high-risk group)
+- Those with A1c ≥6.0% or progression on repeat testing
+- Dose: 500 mg BID with meals → 1000 mg BID (max 2550 mg/day); extended-release preferred (less GI side effects)
+- Monitor B12 annually (metformin depletes B12 over time)
+
+GLP-1 receptor agonists (semaglutide, liraglutide) and tirzepatide: not FDA-approved specifically for prediabetes; may reduce progression as obesity treatment side effect
+
+MONITORING:
+- Repeat A1c or FPG every 6-12 months to monitor for progression to T2DM
+- Annual monitoring even if lifestyle is successful`,
+    url: "https://diabetesjournals.org/care/article/47/Supplement_1/S43/153954/",
+  },
+
+  {
+    source: "CMS/NHPCO",
+    tier: 1,
+    guideline_title: "Medicare Hospice Benefit; National Consensus Project Clinical Practice Guidelines for Quality Palliative Care (2018)",
+    guideline_year: "2018",
+    abfm_domain: "Geriatrics",
+    section: "Palliative Care, Hospice Eligibility, and Goals-of-Care Communication",
+    content: `PALLIATIVE CARE AND HOSPICE — CMS/NHPCO:
+
+PALLIATIVE CARE:
+- Definition: specialized medical care focused on relieving suffering and improving quality of life for patients with serious illness at ANY stage; not limited to end of life; can be provided alongside curative treatment
+- Indications: any serious or life-limiting illness (cancer, HF, COPD, dementia, ALS, ESRD, etc.)
+- Components: pain and symptom management, goals-of-care communication, psychosocial support, coordination of care
+
+HOSPICE:
+- Definition: comfort-focused care when curative treatment is no longer pursued; covers last 6 months of life
+- Medicare eligibility (Medicare Part A Hospice Benefit):
+  • Two physicians certify prognosis ≤6 months if disease runs its natural course
+  • Patient (or surrogate) elects comfort-focused care (agrees to forgo curative treatment for the terminal diagnosis)
+  • Enrolled in an approved hospice program
+- Covered services: physician visits, nursing, home health aide, medical social work, chaplaincy, medications for comfort, bereavement support
+- Diagnoses with validated 6-month prognosis guidelines: cancer (fastest decline), HF (EF <25%, NYHA IV), COPD (FEV1 <30%, oxygen dependent), dementia (Functional Assessment Staging Test Stage 7, unable to ambulate, speak, or dress, with recent aspiration/UTI/pressure ulcer), ESRD (not pursuing dialysis or transplant)
+
+GOALS-OF-CARE CONVERSATION (advance care planning):
+- POLST (Physician Orders for Life-Sustaining Treatment): actionable medical orders; resuscitation, artificial nutrition, hospitalization preferences
+- Advance directive / Living will: documents wishes for end-of-life care
+- Durable Power of Attorney for Healthcare: designates a surrogate decision-maker
+- Surrogate hierarchy (when no advance directive): spouse → adult children → parents → siblings → other relatives → close friends
+
+SYMPTOM MANAGEMENT IN SERIOUS ILLNESS:
+Pain: oral morphine or oxycodone (start low; titrate q24-48h); fentanyl patch for stable opioid requirements; avoid NSAIDs in renal failure
+Dyspnea: low-dose opioids (most evidence-based intervention for dyspnea at EOL); anxiolytics (lorazepam) for refractory; fan directed at face; oxygen only if hypoxic
+Nausea/Vomiting: haloperidol 0.5-2 mg SQ/IV; ondansetron; prochlorperazine; treat reversible causes (constipation, opioid-induced)
+Constipation: ALL opioid patients require stimulant laxative (senna ± bisacodyl); methylnaltrexone (Relistor) for opioid-induced constipation refractory to oral laxatives
+Delirium at EOL: haloperidol 0.5-2 mg; lorazepam if refractory; discontinue anticholinergics, unnecessary medications; provide reorientation`,
+    url: "https://www.nhpco.org/palliative-care-overview/",
+  },
+
+  {
+    source: "AAFP/CDC",
+    tier: 2,
+    guideline_title: "AAFP Choosing Wisely: Acute Bronchitis; CDC Antibiotic Prescribing Recommendations",
+    guideline_year: "2023",
+    abfm_domain: "Pulmonary",
+    section: "Acute Bronchitis — Diagnosis and Antibiotic Avoidance",
+    content: `ACUTE BRONCHITIS — AAFP/CDC 2023:
+
+DEFINITION: Acute inflammation of the tracheobronchial tree; cough ≤3 weeks in absence of pneumonia.
+
+ETIOLOGY: Viral in >90% of cases (rhinovirus, influenza, parainfluenza, RSV, coronavirus, adenovirus); bacterial causes rare (<10%): Bordetella pertussis, Mycoplasma pneumoniae, Chlamydia pneumoniae
+
+DIAGNOSIS: Clinical — cough (productive or non-productive), may have wheezing/rhonchi; low-grade fever; no infiltrate on imaging (if obtained)
+- Chest X-ray: NOT routinely indicated; obtain if fever >38°C, HR >100, RR >24, oxygen saturation <95%, or clinical features suggest pneumonia (focal consolidation signs)
+- Rule out pertussis: prolonged cough >3 weeks, paroxysmal cough, post-tussive vomiting, whoop — PCR or culture if suspected
+
+TREATMENT:
+ANTIBIOTICS: NOT recommended (Choosing Wisely — AAFP; CDC) — even if sputum is colored
+- No evidence antibiotics reduce illness duration or severity in uncomplicated acute bronchitis
+- Yellow/green sputum = neutrophil inflammation, NOT bacterial infection
+- Prescribing antibiotics for acute bronchitis = low-value care; contributes to antimicrobial resistance
+
+Symptomatic treatment:
+- Cough suppressants: dextromethorphan 15-30 mg q6-8h or codeine 10-20 mg q4h (short-term)
+- Honey (adults and children >12 months): evidence for cough relief (avoid in infants <12 months — botulism risk)
+- Inhaled albuterol: offer only if wheezing or underlying reactive airway disease
+- NSAIDs/acetaminophen: fever and myalgias
+- Avoid: antihistamines (ineffective), decongestants (minimal evidence for lower respiratory symptoms)
+
+PERTUSSIS MANAGEMENT:
+- Azithromycin 500 mg day 1 then 250 mg days 2-5 (reduces transmission, may reduce severity if given early)
+- Prophylaxis of close contacts: azithromycin same regimen
+- Report to public health: pertussis is a reportable disease in all states`,
+    url: "https://www.aafp.org/pubs/afp/issues/2016/1001/p560.html",
+  },
+
+  {
+    source: "USPSTF",
+    tier: 1,
+    guideline_title: "USPSTF Recommendation: Intimate Partner Violence, Elder Abuse, and Abuse of Vulnerable Adults (2018)",
+    guideline_year: "2018",
+    abfm_domain: "Psychiatry / Behavioral Health",
+    section: "Intimate Partner Violence Screening and Referral",
+    content: `INTIMATE PARTNER VIOLENCE (IPV) SCREENING — USPSTF 2018:
+
+USPSTF RECOMMENDATION: GRADE B
+- Screen ALL women of reproductive age (defined as childbearing-age women, typically 14-46 years) for IPV
+- Screen regardless of signs or symptoms of abuse
+- Provide or refer to intervention services for those who screen positive
+- Men and elderly: insufficient evidence (Grade I) — individualized approach
+
+PREVALENCE: ~1 in 3 women experience physical violence, sexual violence, or stalking by a partner in their lifetime; ~1 in 4 during pregnancy; leading cause of injury in women
+
+VALIDATED SCREENING TOOLS:
+- HITS (Hurt, Insult, Threaten, Scream): 4 questions; score ≥11 = positive; can be self-administered
+  • How often does your partner: Hurt you physically? Insult or talk down to you? Threaten you? Scream or curse at you?
+- HARK (Humiliation, Afraid, Rape, Kick): 4 questions; ≥1 positive = screen positive
+- WAST (Women Abuse Screening Tool): 2-question short form; validated in primary care
+
+ASKING ABOUT IPV IN PRACTICE:
+- Ask in private, in the patient's preferred language, without partner present
+- Non-judgmental, direct language: "Many patients experience violence at home. I ask all my patients about this. Has your partner ever hurt you physically, threatened you, or made you feel afraid?"
+- If screening positive: assess safety, provide resources, warm referral to DV services; mandatory reporting varies by state (for child abuse, abuse of minors, elder abuse — varies for adult IPV)
+
+DOCUMENTATION: Document in private; use coded terms if patient at risk of partner reviewing records; offer to review safety plan
+
+SAFETY ASSESSMENT: Danger Assessment (DA) — assesses lethality risk (firearms in home, escalating frequency, threats to kill, strangulation); high lethality → urgent intervention, safety plan, hotline
+
+RESOURCES: National DV Hotline 1-800-799-7233; local shelters; legal advocacy; counseling
+REFERRAL: Evidence-based interventions include counseling, advocacy, and safety planning programs`,
+    url: "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/intimate-partner-violence-and-abuse-of-elderly-and-vulnerable-adults-screening",
+  },
+
+  {
+    source: "ACC/AHA/AHA",
+    tier: 1,
+    guideline_title: "ACC/AHA 2018 Cholesterol Guideline; AHA 2021 Scientific Statement on Hypertriglyceridemia",
+    guideline_year: "2021",
+    abfm_domain: "Cardiovascular",
+    section: "Hypertriglyceridemia and Mixed Dyslipidemia Management",
+    content: `HYPERTRIGLYCERIDEMIA — ACC/AHA 2018 / AHA 2021:
+
+CLASSIFICATION:
+- Normal: <150 mg/dL
+- Mild-moderate: 150-499 mg/dL (most common; lifestyle-driven)
+- Severe: 500-999 mg/dL
+- Very severe: ≥1000 mg/dL → high risk of acute pancreatitis
+
+COMMON CAUSES (secondary):
+- Lifestyle: excess refined carbohydrates/alcohol, obesity, physical inactivity
+- Medical: diabetes/insulin resistance (most common), hypothyroidism, CKD, nephrotic syndrome, pregnancy (third trimester)
+- Medications: glucocorticoids, thiazides, beta-blockers (non-ISA), oral estrogens, isotretinoin, protease inhibitors, antipsychotics (especially clozapine, olanzapine)
+- Genetic: familial hypertriglyceridemia, familial combined hyperlipidemia, lipoprotein lipase deficiency
+
+TREATMENT:
+
+Mild-moderate (150-499 mg/dL):
+1. Lifestyle first: weight loss, eliminate refined sugars/alcohol, increase omega-3 rich fish (salmon, sardines), low-carbohydrate diet, aerobic exercise
+2. Treat underlying causes (control DM, replace hypothyroid, switch medications if possible)
+3. Statins: reduce TG by 10-30% as secondary effect; first priority if ASCVD risk elevated
+
+Severe (500-999 mg/dL):
+- Above lifestyle measures + pharmacotherapy to prevent pancreatitis
+- Fibrates: fenofibrate 145 mg/day or gemfibrozil 600 mg BID; reduce TG 30-50%; avoid gemfibrozil + statin combination (myopathy risk); fenofibrate preferred with statin
+- Omega-3 fatty acids: prescription icosapentaenoic acid (Vascepa — EPA only) 2 g BID or DHA+EPA (Lovaza) 4 g/day; reduce TG 30-50%
+
+Very severe (≥1000 mg/dL — pancreatitis risk):
+- Emergent: stop all oral fat intake, IV fluids; insulin drip (if DM, markedly lowers TG rapidly)
+- Plasmapheresis: for pancreatitis-associated massive elevation unresponsive to insulin
+- Fibrate + omega-3 combination; fenofibrate preferred
+
+VASCEPA (icosapentaenoic acid — EPA only) — CARDIOVASCULAR BENEFIT:
+- REDUCE-IT trial: Vascepa 4 g/day in patients with TG 135-499 + statin + CVD or DM → 25% reduction in MACE (NNT ~21 over 5 years)
+- Approved for CV risk reduction in patients with TG ≥150 on statin with CVD or DM + ≥2 CV risk factors
+- Do NOT confuse with over-the-counter fish oil (mixed EPA+DHA at lower dose — no proven CV benefit)`,
+    url: "https://www.ahajournals.org/doi/10.1161/CIR.0000000000000699",
+  },
+
+  {
+    source: "AHA/ACCP",
+    tier: 1,
+    guideline_title: "AHA/ACC/ACCP Pulmonary Embolism Guidelines (2019); ACEP Clinical Policy for PE Diagnosis",
+    guideline_year: "2019",
+    abfm_domain: "Pulmonary",
+    section: "Pulmonary Embolism — Diagnosis Algorithm, Wells Criteria, PERC, and D-Dimer",
+    content: `PULMONARY EMBOLISM DIAGNOSIS — AHA/ACCP 2019:
+
+CLINICAL PRETEST PROBABILITY:
+Wells Criteria for PE (simplified — dichotomized version):
++ Clinical signs and symptoms of DVT (3 points)
++ PE is #1 diagnosis or equally likely (3 points)
++ Heart rate >100 (1.5 points)
++ Immobilization ≥3 days or surgery in past 4 weeks (1.5 points)
++ Previous DVT/PE (1.5 points)
++ Hemoptysis (1 point)
++ Malignancy (on treatment, treated in last 6 months, or palliative) (1 point)
+
+Score Interpretation:
+- Low probability: 0-1 (PE rate 1-3%)
+- Moderate probability: 2-6 (PE rate ~16%)
+- High probability: ≥7 (PE rate ~41%)
+(Dichotomized: ≤4 = PE unlikely; >4 = PE likely)
+
+PERC RULE (Pulmonary Embolism Rule-out Criteria):
+Apply ONLY in low pretest probability patients — if ALL 8 criteria met, no further testing needed:
+1. Age <50 years
+2. HR <100 bpm
+3. SaO2 ≥95% on room air
+4. No unilateral leg swelling
+5. No hemoptysis
+6. No recent trauma or surgery (≤4 weeks)
+7. No prior DVT or PE
+8. No exogenous estrogen use (OCP, HRT, pregnancy)
+Negative PERC: <2% PE probability → no D-dimer or imaging needed
+
+DIAGNOSTIC ALGORITHM:
+
+Low clinical probability (Wells ≤4):
+→ PERC negative → no testing; PERC positive → D-dimer
+→ D-dimer negative (<500 ng/mL, or age-adjusted threshold age x 10 ng/mL for ≥50 years): PE excluded
+→ D-dimer positive → CT pulmonary angiography (CTPA)
+
+High clinical probability (Wells >4):
+→ Proceed directly to CTPA (D-dimer has poor sensitivity in high probability)
+
+IMAGING:
+- CTPA: gold standard; sensitivity 83-96%, specificity 97%; identifies subsegmental PE (significance unclear)
+- V/Q scan: preferred if contrast allergy, CKD, or pregnancy (use after plain film; low-probability V/Q + low clinical probability = PE excluded)
+- Compression ultrasound: if CTPA contraindicated and high DVT probability; DVT found → treat as VTE
+- Echocardiography: RV dysfunction (RV:LV ratio >0.9), McConnell sign, RV hypokinesis; identifies massive/submassive PE; not for diagnosis
+
+RISK STRATIFICATION:
+- Massive PE: hemodynamic instability (SBP <90 or 40 mmHg drop x 15 min) → IV heparin + systemic thrombolysis (alteplase 100 mg IV over 2h if no contraindications)
+- Submassive PE: RV dysfunction without hemodynamic instability → anticoagulation; consider catheter-directed thrombolysis if deteriorating
+- Low-risk PE: PESI score class I-II or sPESI 0 → outpatient treatment appropriate`,
+    url: "https://www.ahajournals.org/doi/10.1161/CIR.0000000000000969",
+  },
+
+  {
+    source: "ACR",
+    tier: 1,
+    guideline_title: "ACR Guideline for the Management of Systemic Lupus Erythematosus (2024)",
+    guideline_year: "2024",
+    abfm_domain: "Musculoskeletal",
+    section: "Systemic Lupus Erythematosus — Diagnosis, Monitoring, and Treatment",
+    content: `SYSTEMIC LUPUS ERYTHEMATOSUS (SLE) — ACR 2024:
+
+DIAGNOSIS — ACR/EULAR 2019 Classification Criteria:
+Entry criterion: ANA ≥1:80 (most sensitive test; >95% of SLE patients positive)
+Then score additional criteria (≥10 points = SLE classification; each criterion counted once)
+
+Key domains and weights:
+- Constitutional: fever (2)
+- Hematologic: leukopenia <4000 (3), thrombocytopenia <100K (4), autoimmune hemolytic anemia (4)
+- Neuropsychiatric: delirium (2), psychosis (3), seizure (5)
+- Mucocutaneous: non-scarring alopecia (2), oral ulcers (2), subacute/discoid lupus (4), acute cutaneous lupus/malar rash (6)
+- Serosal: pleural/pericardial effusion (5), acute pericarditis (6)
+- Musculoskeletal: arthritis (6)
+- Renal: proteinuria >0.5 g/24h (4); class II/V lupus nephritis on biopsy (8); class III/IV nephritis (10)
+- Immunologic: anti-dsDNA or anti-Sm (6), antiphospholipid antibodies (2), complement proteins low (3), direct Coombs+ (1)
+
+MONITORING — ANNUAL MINIMUM:
+- CBC with differential (cytopenias), CMP (renal function), urinalysis with microscopy (nephritis), urine protein:creatinine ratio
+- Complement levels (C3, C4), anti-dsDNA — disease activity markers (low complement + high anti-dsDNA = flare)
+- Lipids (accelerated atherosclerosis in SLE), glucose, blood pressure (HTN common)
+- Ophthalmology annually (hydroxychloroquine retinal toxicity screening after 5 years of use)
+
+TREATMENT:
+ALL PATIENTS with SLE (unless contraindicated):
+- Hydroxychloroquine (HCQ) 5 mg/kg/day (max 400 mg/day): reduces flares, organ damage, mortality; safe in pregnancy; requires annual eye exam
+- Sunscreen SPF ≥30: UV triggers SLE flares (photosensitivity)
+- Vaccines: ensure up to date; avoid live vaccines when on immunosuppression
+
+MILD-MODERATE disease (mucocutaneous, arthritis):
+- NSAIDs, low-dose prednisone (≤7.5 mg/day), topical steroids
+- Add methotrexate or azathioprine for steroid-sparing
+
+SEVERE/MAJOR ORGAN-THREATENING (nephritis, CNS, hematologic):
+- High-dose prednisone (1 mg/kg/day) or IV methylprednisolone pulse (1g x 3 days)
+- Mycophenolate mofetil (MMF): first-line induction for lupus nephritis (class III/IV)
+- Cyclophosphamide IV (NIH or Euro-Lupus regimen): alternative induction for severe nephritis
+- Belimumab (Benlysta): first biologic approved for SLE; anti-BLyS; reduces flares in serologically active disease
+- Voclosporin + MMF: approved for lupus nephritis (2021)
+- Anifrolumab: anti-interferon type I receptor; approved for moderate-severe SLE
+
+ANTIPHOSPHOLIPID SYNDROME (APS): thrombosis + persistent positive antiphospholipid antibodies (aCL, anti-B2GP1, lupus anticoagulant) → warfarin (INR 2-3 for venous; 3-4 for arterial; DOACs inferior in APS)`,
+    url: "https://www.rheumatology.org/Practice-Quality/Clinical-Support/Clinical-Practice-Guidelines/Lupus",
+  },
+
 ];
