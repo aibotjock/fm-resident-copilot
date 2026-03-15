@@ -102,7 +102,7 @@ ${ragContext}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 END OF RETRIEVED CONTEXT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
-    : `\n\nNO EXCERPTS RETRIEVED: No specific indexed excerpt was returned for this query. Provide a comprehensive, guideline-accurate response drawing from your knowledge of the indexed sources listed above (ACC/AHA, AAFP, ADA, GINA, GOLD, IDSA, AAP, ACOG, etc.). In the citation block, note the relevant source(s) with confidence "peripheral" and document in the limitation field that "No indexed excerpt was retrieved for this specific query — response drawn from [source] guideline knowledge."`;
+    : `\n\nNO EXCERPTS RETRIEVED: The indexed guideline database returned no excerpts for this query. You MUST refuse to answer clinical content. State exactly: "No indexed guideline excerpts were retrieved for this topic. This content is not available in the current indexed source database." Do not provide any clinical information, recommendations, or drug details. Output only the refusal statement followed by the citation block with confidence "outside" and an appropriate limitation note.`;
 
   const baseHeader = `You are FM Resident Copilot — a fact-based, evidence-based, guideline-based clinical and board preparation tool for family medicine residents.
 
@@ -386,11 +386,19 @@ router.post("/clinical/query", async (req: Request, res: Response) => {
     const ragQueryText = condition ?? query;
     const ragCtx = await retrieveContext(ragQueryText, 10);
 
+    if (ragCtx.empty) {
+      const refusal = `No indexed guideline excerpts were retrieved for this topic. This content is not available in the current indexed source database.`;
+      res.write(`data: ${JSON.stringify({ content: refusal })}\n\n`);
+      res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+      res.end();
+      return;
+    }
+
     const systemPrompt = await getSystemPrompt(
       mode,
       query,
       condition,
-      ragCtx.empty ? undefined : ragCtx.formattedContext
+      ragCtx.formattedContext
     );
 
     const stream = await openai.chat.completions.create({
