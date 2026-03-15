@@ -4151,4 +4151,857 @@ Surgical (arthroscopic rotator cuff repair):
 RETURN TO ACTIVITY: after surgery: passive ROM 6 weeks → active ROM 12 weeks → strengthening 4-6 months → return to overhead activity 6-12 months`,
     url: "https://www.aaos.org/quality/quality-programs/upper-extremity-programs/rotator-cuff-injuries/",
   },
+
+  // ========== v7 ADDITIONS: TOP-100 FM GAP COVERAGE ==========
+
+  // ── CARDIOVASCULAR ──
+
+  {
+    source: "ACC/AHA",
+    tier: 1,
+    guideline_title: "2022 AHA/ACC Guideline for the Diagnosis and Management of Patients with Chest Pain (NSTEMI/STEMI Management)",
+    guideline_year: "2022",
+    abfm_domain: "Cardiovascular",
+    section: "STEMI and NSTEMI Acute Management",
+    content: `NSTEMI / Unstable Angina Management (ACC/AHA 2022):
+ANTIPLATELET THERAPY:
+- Aspirin 324 mg immediately (loading dose), then 81 mg daily indefinitely
+- P2Y12 inhibitor (add to aspirin — DAPT):
+  • Ticagrelor 180 mg load → 90 mg BID (preferred over clopidogrel; reduces mortality)
+  • Clopidogrel 600 mg load → 75 mg daily (if ticagrelor not tolerated or on anticoagulation)
+  • Prasugrel: only after coronary anatomy known (avoid if prior TIA/stroke, age ≥75, weight <60 kg)
+- DAPT duration: at least 12 months post-ACS in most patients; shorter (3-6 mo) if high bleeding risk
+
+ANTICOAGULATION:
+- UFH: initial choice if catheterization planned imminently
+- Enoxaparin: 1 mg/kg SQ q12h; equivalent or superior to UFH; continue through PCI
+- Fondaparinux: alternative if bleeding risk high; cannot be sole anticoagulant at PCI (add UFH)
+- Bivalirudin: option at time of PCI if high bleeding risk
+
+INVASIVE STRATEGY (PCI TIMING):
+- Immediate (<2h): refractory angina, hemodynamic instability, recurrent arrhythmia
+- Early invasive (<24h): GRACE risk score >140, dynamic ECG changes, elevated troponin
+- Delayed invasive (24-72h): stable intermediate-risk patients
+- Conservative (no angiography): low-risk; women with nonspecific findings; preference-based
+
+STEMI:
+- Primary PCI preferred if door-to-balloon ≤90 min (first medical contact ≤120 min)
+- Fibrinolysis if PCI unavailable and symptom onset <12h: alteplase or tenecteplase; contraindicated with prior ICH, recent stroke, active bleeding, aortic dissection
+- Anticoagulation: UFH or enoxaparin during fibrinolysis
+
+POST-ACS MEDICATIONS (Class I):
+- Beta-blocker (metoprolol): initiate within 24h if no HF, shock, or bradycardia; continue indefinitely
+- High-intensity statin (atorvastatin 40-80 mg or rosuvastatin 20-40 mg): start before discharge
+- ACE inhibitor or ARB: EF ≤40%, anterior MI, hypertension, or diabetes — start within 24h
+- Eplerenone/spironolactone: EF ≤40% with symptomatic HF or diabetes already on ACEi + BB`,
+    url: "https://www.jacc.org/doi/10.1016/j.jacc.2021.07.053",
+  },
+
+  {
+    source: "AHA/ASA",
+    tier: 1,
+    guideline_title: "2019 AHA/ASA Guidelines for Early Management of Acute Ischemic Stroke",
+    guideline_year: "2019",
+    abfm_domain: "Neurology",
+    section: "Acute Ischemic Stroke Treatment",
+    content: `ACUTE ISCHEMIC STROKE — AHA/ASA 2019:
+
+RECOGNITION: FAST acronym (Face drooping, Arm weakness, Speech difficulty, Time to call 911)
+Cincinnati Prehospital Stroke Scale: facial droop, arm drift, speech; positive = 72% probability of stroke
+
+IV THROMBOLYSIS — tPA (Alteplase):
+ELIGIBLE: ischemic stroke with disabling deficits, onset <4.5 hours, no contraindications
+- Dose: 0.9 mg/kg IV (max 90 mg); 10% bolus over 1 min, remainder over 60 min
+- Extended window (3.0-4.5h): avoid if age >80, on anticoagulant, NIHSS >25, hx both DM + prior stroke, imaging >1/3 MCA territory
+Contraindications: prior ICH, intracranial neoplasm/AVM, recent (3 mo) head trauma/stroke/surgery, active internal bleeding, BP >185/110 refractory to treatment, platelets <100K, INR >1.7, use of direct thrombin inhibitors or Xa inhibitors within 48h
+
+BLOOD PRESSURE MANAGEMENT:
+- If receiving tPA: BP <185/110 before; maintain <180/105 after
+- If not tPA eligible: allow permissive hypertension (treat only if >220/120 or end-organ damage)
+- Nicardipine or labetalol IV for BP lowering
+
+MECHANICAL THROMBECTOMY (Endovascular):
+- Indication: LVO (ICA, MCA M1/M2), NIHSS ≥6, ASPECTS ≥6, onset <6 hours (selected patients up to 24h with perfusion imaging)
+- Target door-to-puncture: ≤60 min
+- Can be performed with or without tPA (if tPA eligible, give both)
+
+ACUTE MANAGEMENT:
+- Oxygen: maintain SaO2 ≥94%; avoid supplemental O2 if normoxic (no benefit)
+- Glucose: treat hyperglycemia (>180 mg/dL); avoid hypoglycemia
+- Fever: treat with acetaminophen; target normothermia
+- Aspirin 325 mg within 24-48h (after ruling out hemorrhage and if no tPA in last 24h)
+
+SECONDARY PREVENTION:
+- Non-cardioembolic stroke: aspirin, aspirin + dipyridamole, or clopidogrel (all equivalent)
+- Cardioembolic stroke (AF): anticoagulation (DOAC preferred over warfarin)
+- High-risk TIA/minor stroke: dual antiplatelet (aspirin + clopidogrel) x 21 days then single agent`,
+    url: "https://www.ahajournals.org/doi/10.1161/STR.0000000000000211",
+  },
+
+  // ── INFECTIOUS DISEASE ──
+
+  {
+    source: "AASLD",
+    tier: 1,
+    guideline_title: "AASLD Practice Guidance: Hepatitis B Virus Infection (2023)",
+    guideline_year: "2023",
+    abfm_domain: "Gastroenterology",
+    section: "Hepatitis B Diagnosis, Monitoring, and Antiviral Treatment",
+    content: `HEPATITIS B VIRUS (HBV) — AASLD 2023:
+
+SEROLOGIC INTERPRETATION:
+- HBsAg+, anti-HBc+, anti-HBs-: active (chronic) infection
+- HBsAg-, anti-HBc+, anti-HBs+: prior infection, immune
+- HBsAg-, anti-HBc-, anti-HBs+: vaccinated, immune
+- HBsAg+, HBeAg+, high HBV DNA: immune tolerant or HBeAg+ chronic hepatitis B
+- HBsAg+, HBeAg-, HBV DNA detectable: HBeAg- chronic hepatitis B (anti-HBe+)
+
+PHASES OF CHRONIC HBV:
+1. Immune tolerant: HBeAg+, very high viral load, normal ALT, minimal fibrosis — treatment generally deferred
+2. Immune active (HBeAg+): elevated ALT, HBV DNA >20,000 IU/mL → TREAT
+3. Inactive carrier: HBsAg+, HBeAg-, HBV DNA <2,000 IU/mL, normal ALT — monitor
+4. HBeAg-negative CHB: HBV DNA >2,000 IU/mL, elevated ALT → TREAT
+
+TREATMENT INDICATIONS (Class I):
+- HBeAg+ or HBeAg- CHB with HBV DNA >2,000 IU/mL AND elevated ALT (>ULN)
+- Compensated cirrhosis: treat if HBV DNA detectable (any level)
+- Decompensated cirrhosis: treat regardless of HBV DNA level
+- Immunosuppression (chemotherapy, rituximab, steroids): prophylaxis to prevent reactivation
+
+FIRST-LINE ANTIVIRAL THERAPY:
+- Tenofovir alafenamide (TAF) 25 mg daily: preferred (less renal/bone toxicity than TDF)
+- Tenofovir disoproxil fumarate (TDF) 300 mg daily: effective alternative; monitor renal function/bone density
+- Entecavir 0.5 mg daily: high barrier to resistance; dose 1 mg if lamivudine-experienced
+- Pegylated interferon alfa-2a: finite duration (48 wks); HBeAg seroconversion possible; avoid in decompensated disease
+- Avoid lamivudine, adefovir as first-line (high resistance rates)
+
+MONITORING:
+- LFTs, HBV DNA q3-6 months; HBeAg/anti-HBe annually if HBeAg+
+- HCC surveillance: ultrasound +/- AFP q6 months if cirrhosis or high-risk ethnicity/family history (Asian males ≥40, Asian females ≥50, Africans ≥20, all cirrhotic)
+- Treatment endpoint: HBeAg+ → HBeAg seroconversion + HBV DNA undetectable → continue ≥12 months then consider stopping; HBeAg- → indefinite therapy (relapse common on cessation)`,
+    url: "https://www.aasld.org/publications/practice-guidelines",
+  },
+
+  {
+    source: "AASLD-IDSA",
+    tier: 1,
+    guideline_title: "HCV Guidance: Recommendations for Testing, Managing, and Treating Hepatitis C (2023)",
+    guideline_year: "2023",
+    abfm_domain: "Gastroenterology",
+    section: "Hepatitis C Screening, Diagnosis, and Direct-Acting Antiviral Treatment",
+    content: `HEPATITIS C VIRUS (HCV) — AASLD-IDSA 2023:
+
+SCREENING:
+- USPSTF Grade B: screen all adults 18-79 (universal one-time screen)
+- Repeat annually: persons who inject drugs, HIV-positive, incarcerated individuals
+- Test: anti-HCV antibody; if reactive → HCV RNA (qualitative or quantitative)
+
+DIAGNOSIS:
+- Anti-HCV+, HCV RNA+: active infection → treat
+- Anti-HCV+, HCV RNA-: resolved infection (retest in 6 months if recent exposure)
+- Staging: FIB-4 score (age x AST / PLT x sqrt-ALT) — <1.3 low fibrosis; ≥2.67 advanced
+
+TREATMENT APPROACH ("Treat All"):
+- Treat ALL patients with chronic HCV regardless of fibrosis stage
+- Goal: SVR12 (undetectable HCV RNA 12 weeks post-treatment) = virologic cure in >97%
+
+PANGENOTYPIC PREFERRED REGIMENS:
+1. Sofosbuvir/velpatasvir (Epclusa): 12 weeks for all genotypes 1-6; SVR >95%
+2. Glecaprevir/pibrentasvir (Mavyret): 8 weeks GT 1-6 without cirrhosis (treatment-naive); 12 weeks with compensated cirrhosis; SVR >97%
+3. Sofosbuvir/velpatasvir/voxilaprevir (Vosevi): 12 weeks for previously treated patients
+
+SPECIAL POPULATIONS:
+- Decompensated cirrhosis: sofosbuvir/velpatasvir +/- low-dose ribavirin (avoid NS3/4A protease inhibitors)
+- CKD stage 4-5/dialysis: glecaprevir/pibrentasvir preferred (renal-safe)
+- HIV/HCV coinfection: same regimens; check drug interactions with ART
+
+POST-SVR MONITORING:
+- HCC surveillance: continue q6 months indefinitely if advanced fibrosis (F3-F4) or cirrhosis
+- Retest if re-exposure risk continues (reinfection possible)`,
+    url: "https://www.hcvguidelines.org",
+  },
+
+  {
+    source: "IDSA",
+    tier: 1,
+    guideline_title: "IDSA Clinical Practice Guideline for Acute Bacterial Rhinosinusitis in Children and Adults (2012)",
+    guideline_year: "2012",
+    abfm_domain: "Pulmonary",
+    section: "Acute Bacterial Rhinosinusitis Diagnosis and Management",
+    content: `ACUTE RHINOSINUSITIS — IDSA 2012:
+
+DISTINGUISHING VIRAL FROM BACTERIAL:
+Criteria favoring bacterial (ABRS) — ANY ONE of:
+1. Persistent symptoms ≥10 days without improvement
+2. Severe symptoms: purulent nasal discharge + facial pain/pressure for ≥3-4 consecutive days
+3. Worsening after initial improvement (double sickening — bacterial superinfection)
+
+DIAGNOSIS: Clinical — routine sinus imaging NOT recommended for uncomplicated ABRS.
+CT sinus: reserve for complications (orbital cellulitis, meningitis, cavernous sinus thrombosis) or failure of therapy.
+
+TREATMENT:
+- First-line: Amoxicillin-clavulanate (augmentin) 500/125 mg TID or 875/125 mg BID x 5-7 days adults; 10-14 days children
+  → Preferred over amoxicillin alone (higher rates of resistant organisms)
+- Penicillin allergy: doxycycline or respiratory fluoroquinolone (levofloxacin 500 mg/d x 5-7 days)
+- TMP-SMX and macrolides: NOT recommended (high resistance rates)
+
+ADJUNCTIVE THERAPY:
+- Nasal saline irrigation: symptom relief
+- Intranasal corticosteroid: modest benefit (reduces mucosal edema)
+- Decongestants (oxymetazoline): no more than 3 days (rhinitis medicamentosa risk)
+- Antihistamines: NOT recommended (thicken secretions)
+
+COMPLICATIONS (require urgent evaluation):
+- Orbital: preseptal/periorbital cellulitis, orbital abscess (proptosis, ophthalmoplegia)
+- Intracranial: meningitis, epidural/subdural abscess, cavernous sinus thrombosis`,
+    url: "https://academic.oup.com/cid/article/54/8/e72/365169",
+  },
+
+  {
+    source: "IDSA",
+    tier: 1,
+    guideline_title: "IDSA Clinical Practice Guideline for Diagnosis and Management of Group A Streptococcal Pharyngitis (2012)",
+    guideline_year: "2012",
+    abfm_domain: "Infectious Disease",
+    section: "Acute Pharyngitis — Group A Streptococcus Diagnosis and Treatment",
+    content: `ACUTE PHARYNGITIS — IDSA 2012:
+
+ETIOLOGY: ~90% viral; GAS (Group A Streptococcus) = 5-15% adults, 20-30% children.
+Goal: identify GAS to treat and prevent acute rheumatic fever (ARF).
+
+CENTOR / McISAAC SCORE:
+Criteria (each = 1 point):
++ Tonsillar exudate
++ Tender anterior cervical adenopathy
++ Fever (history or ≥38°C)
++ Absence of cough
++ Age 3-14 (add 1 point), 15-44 (0 points), ≥45 (subtract 1 point)
+
+Interpretation:
+- ≤1: GAS very unlikely — no testing, no antibiotics
+- 2-3: Rapid antigen detection test (RADT) — treat only if positive
+- ≥4: Empirical antibiotic treatment acceptable without testing
+
+TESTING:
+- RADT (rapid strep test): sensitivity 70-90%, specificity >95%; negative RADT in children → throat culture
+- Adults: culture not routinely required if RADT negative
+
+ANTIBIOTIC TREATMENT (when GAS confirmed):
+- First-line: Amoxicillin 500 mg BID or 250 mg TID x 10 days
+  OR Penicillin V 250 mg TID or 500 mg BID x 10 days
+- Penicillin allergy (non-anaphylactic): cephalexin 500 mg BID x 10 days
+- Anaphylactic penicillin allergy: azithromycin 500 mg day 1 then 250 mg x 4 days OR clindamycin 300 mg TID x 10 days
+- Do NOT use TMP-SMX (ineffective for GAS)
+
+FULL 10-DAY COURSE required to prevent acute rheumatic fever (ARF).
+
+INFECTIOUS MONONUCLEOSIS (EBV):
+- Positive monospot; atypical lymphocytes; splenomegaly
+- Avoid ampicillin/amoxicillin (diffuse maculopapular rash)
+- Restrict contact sports x 3-4 weeks (splenic rupture risk)
+- Steroid: only for airway obstruction or severe thrombocytopenia`,
+    url: "https://academic.oup.com/cid/article/55/10/e86/321183",
+  },
+
+  {
+    source: "IDSA/ACIP",
+    tier: 1,
+    guideline_title: "IDSA Clinical Practice Guideline for Seasonal Influenza; ACIP Influenza Vaccination Recommendations (2024)",
+    guideline_year: "2024",
+    abfm_domain: "Infectious Disease",
+    section: "Influenza Diagnosis, Treatment, and Chemoprophylaxis",
+    content: `INFLUENZA — IDSA/ACIP 2024:
+
+DIAGNOSIS:
+- Clinical: abrupt onset fever, myalgia, headache, malaise, nonproductive cough, sore throat, rhinitis
+- Rapid influenza diagnostic test (RIDT): sensitivity 50-70%; negative does not rule out in high-risk
+- Rapid molecular assay (ID NOW, Cobas): sensitivity >90%; preferred if available
+- PCR: gold standard; reserve for hospitalized/immunocompromised
+
+ANTIVIRAL TREATMENT — treat within 48 hours of symptom onset for maximum benefit:
+
+HIGH-RISK populations requiring treatment (regardless of duration):
+- Hospitalized patients (start empirically — don't wait for testing)
+- Age ≥65, chronic lung/cardiac/renal/hepatic/metabolic disease, immunocompromised, BMI ≥40, pregnancy/postpartum, nursing home residents
+
+ANTIVIRAL OPTIONS:
+- Oseltamivir (Tamiflu) 75 mg BID x 5 days: first-line oral; reduce to 75 mg/day if GFR <30
+- Zanamivir (Relenza) 10 mg inhaled BID x 5 days: avoid in COPD/asthma (bronchospasm)
+- Baloxavir marboxil (Xofluza): 40 mg single dose (≤80 kg) or 80 mg (>80 kg); not for complicated/severe or immunocompromised
+- Peramivir 600 mg IV x 1 dose: hospitalized patients unable to tolerate oral
+
+CHEMOPROPHYLAXIS:
+- Oseltamivir 75 mg daily x 7 days post-exposure (high-risk household contacts, healthcare outbreaks)
+- NOT a substitute for annual vaccination
+
+VACCINATION:
+- Annual universal recommendation ≥6 months
+- High-dose (Fluzone HD), adjuvanted (FLUAD), or recombinant (Flublok) preferred for adults ≥65`,
+    url: "https://www.idsociety.org/practice-guideline/influenza/",
+  },
+
+  // ── ENDOCRINE ──
+
+  {
+    source: "ATA",
+    tier: 1,
+    guideline_title: "American Thyroid Association Guidelines for Diagnosis and Management of Hyperthyroidism (2016)",
+    guideline_year: "2016",
+    abfm_domain: "Endocrine & Metabolic",
+    section: "Hyperthyroidism — Graves Disease, Toxic Nodular Goiter, and Thyroid Storm",
+    content: `HYPERTHYROIDISM — ATA 2016:
+
+ETIOLOGY:
+- Graves disease: most common (autoimmune; TSH receptor antibodies — TRAb/TSHR-Ab)
+- Toxic multinodular goiter: autonomous nodules; older patients
+- Toxic adenoma: single autonomously functioning nodule; scan shows "hot nodule"
+- Subacute thyroiditis: transient hyperthyroidism; tender thyroid; elevated ESR; low radioiodine uptake
+
+DIAGNOSIS:
+- TSH suppressed (<0.1 mU/L) + elevated free T4 and/or free T3
+- Overt: low TSH + elevated FT4/FT3
+- Subclinical: low TSH + normal FT4/FT3 — treat if TSH persistently <0.1 + cardiac risk or osteoporosis
+- TRAb: positive in Graves (sensitivity 95%); avoids need for scan if classic presentation
+- Radioiodine uptake and scan: Graves (diffuse uptake) vs toxic nodule (focal) vs thyroiditis (low uptake)
+
+TREATMENT OPTIONS FOR GRAVES DISEASE (3 options):
+
+1. Radioactive Iodine (RAI/I-131):
+   - Preferred for most adults; >80% achieve euthyroid or hypothyroid state
+   - Hypothyroidism expected in >80% (requires levothyroxine lifelong)
+   - Contraindicated: pregnancy, breastfeeding, active thyroid eye disease (worsens orbitopathy)
+   - Pre-treat with methimazole if symptomatic, elderly, cardiac disease; stop 5-7 days before RAI
+
+2. Antithyroid Drugs (ATD):
+   - Methimazole (MMI): preferred over PTU for most (once daily, less hepatotoxicity); 5-30 mg/day
+   - PTU: use in first trimester pregnancy (MMI teratogenic), thyroid storm (blocks T4 to T3 conversion)
+   - Duration: 12-18 months; remission in 50% after ATD withdrawal
+   - Warn about agranulocytosis: sore throat + fever → stop ATD, check CBC immediately
+
+3. Thyroidectomy:
+   - Total preferred when: large goiter, coexisting thyroid cancer, severe ophthalmopathy, pregnancy (second trimester), patient preference
+
+SYMPTOMATIC MANAGEMENT:
+- Beta-blocker (propranolol 10-40 mg q6-8h or atenolol 25-100 mg/day): rapid symptom control (palpitations, tremor, heat intolerance)
+
+THYROID STORM (life-threatening emergency):
+- Signs: HR >140, fever, AMS, GI symptoms, markedly elevated thyroid hormones
+- Treatment: PTU 500-1000 mg load then 250 mg q4h + Lugol's iodine (1h after PTU) + hydrocortisone 300 mg IV + propranolol IV + cooling; ICU care`,
+    url: "https://www.liebertpub.com/doi/10.1089/thy.2016.0229",
+  },
+
+  {
+    source: "ACOG/ADA",
+    tier: 1,
+    guideline_title: "ACOG Practice Bulletin: Gestational Diabetes Mellitus; ADA Standards of Care 2024",
+    guideline_year: "2024",
+    abfm_domain: "Women's Health",
+    section: "Gestational Diabetes Mellitus — Screening, Diagnosis, and Management",
+    content: `GESTATIONAL DIABETES MELLITUS (GDM) — ACOG/ADA 2024:
+
+SCREENING (universal at 24-28 weeks):
+Two-step approach (standard in US):
+- Step 1: 50g glucose challenge test (GCT) — no fasting; 1-hr cutoff ≥130 or ≥140 mg/dL
+- Step 2 (if GCT abnormal): 100g 3-hour OGTT; GDM if ≥2 values exceed Carpenter-Coustan:
+  → Fasting ≥95 | 1h ≥180 | 2h ≥155 | 3h ≥140 mg/dL
+
+One-step approach (IADPSG): 75g 2-hour OGTT; GDM if ANY value exceeded:
+  → Fasting ≥92 | 1h ≥180 | 2h ≥153 mg/dL
+
+Early screening for high-risk (prior GDM, BMI ≥35, prior macrosomia, strong family history T2DM): first trimester FPG or A1c
+
+GLYCEMIC TARGETS IN GDM:
+- Fasting: <95 mg/dL
+- 1-hour postprandial: <140 mg/dL
+- 2-hour postprandial: <120 mg/dL
+
+MANAGEMENT:
+1. Medical Nutrition Therapy (MNT): first-line; 175g carbohydrate/day minimum; complex carbs, evenly distributed
+2. Physical activity: 30 min moderate activity most days
+3. Glucose monitoring: fasting + postprandial minimum 4x/day
+
+PHARMACOTHERAPY (if targets not met after 1-2 weeks MNT + activity):
+- Insulin: first-line pharmacotherapy; titrate to glycemic targets
+  • NPH + regular or insulin analogs (aspart, lispro, detemir): safe in pregnancy
+- Metformin: acceptable alternative if patient refuses insulin (crosses placenta; reassuring infant data)
+- Glyburide: largely abandoned (higher neonatal hypoglycemia, macrosomia)
+
+FETAL MONITORING: US for estimated fetal weight; NST weekly if poorly controlled or on insulin
+
+DELIVERY: Diet-controlled GDM → 40 weeks; insulin-requiring → 39-39.6 weeks
+
+POSTPARTUM: 75g OGTT at 4-12 weeks (screen for T2DM); high lifetime T2DM risk (>50%); annual FPG or A1c`,
+    url: "https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2018/02/gestational-diabetes-mellitus",
+  },
+
+  // ── UROLOGY / MEN'S HEALTH ──
+
+  {
+    source: "AUA",
+    tier: 1,
+    guideline_title: "AUA Guideline on Erectile Dysfunction (2018, updated 2022)",
+    guideline_year: "2022",
+    abfm_domain: "Genitourinary",
+    section: "Erectile Dysfunction Evaluation and Management",
+    content: `ERECTILE DYSFUNCTION (ED) — AUA 2022:
+
+DEFINITION: Consistent inability to attain/maintain penile erection sufficient for satisfactory sexual performance; prevalence 40% at age 40, 70% at age 70.
+
+EVALUATION:
+- Complete sexual, medical, and psychosocial history; IIEF questionnaire
+- Labs: fasting glucose or HbA1c, lipid panel, morning total testosterone x 2 measurements
+- Identify reversible causes: medications (beta-blockers, SSRIs, antipsychotics, 5-ARIs), alcohol/tobacco, performance anxiety, relationship issues, hypogonadism, CV disease, DM, HTN
+
+CARDIOVASCULAR RISK STRATIFICATION (Princeton III):
+- Low risk: sexual activity safe (stable CAD, controlled HTN, mild HF, compensated DM)
+- Intermediate risk: cardiac evaluation before ED treatment
+- High risk: defer (unstable angina, uncontrolled HTN, severe HF)
+
+TREATMENT (stepwise):
+1. LIFESTYLE MODIFICATION: exercise, weight loss, smoking cessation, reduce alcohol
+2. PDE5 INHIBITORS (first-line pharmacotherapy):
+   - Sildenafil 25-100 mg PRN 30-60 min before sex (max 1x/day; food reduces absorption)
+   - Tadalafil 10-20 mg PRN or 2.5-5 mg daily (no food effect; duration 36h)
+   - Vardenafil 5-20 mg PRN; Avanafil 50-200 mg PRN (fastest onset ~15 min)
+   - ABSOLUTE CONTRAINDICATION: concurrent nitrate use (ANY nitrate — severe hypotension)
+   - Caution: alpha-blocker combination (hypotension)
+3. TESTOSTERONE REPLACEMENT: if documented hypogonadism + ED
+4. INTRAURETHRAL ALPROSTADIL (MUSE): less effective than PDE5i
+5. INTRACAVERNOSAL INJECTION: alprostadil combinations; effective when PDE5i fail
+6. VACUUM ERECTION DEVICE: no medications; post-prostatectomy option
+7. PENILE PROSTHESIS: surgical; refractory ED after less-invasive options fail`,
+    url: "https://www.auanet.org/guidelines-and-quality/guidelines/erectile-dysfunction-guideline",
+  },
+
+  {
+    source: "AUA/USPSTF",
+    tier: 1,
+    guideline_title: "AUA Early Detection of Prostate Cancer Guideline (2023); USPSTF Prostate Cancer Screening (2018)",
+    guideline_year: "2023",
+    abfm_domain: "Genitourinary",
+    section: "Prostate Cancer Screening — PSA Shared Decision-Making",
+    content: `PROSTATE CANCER SCREENING — AUA 2023 / USPSTF 2018:
+
+USPSTF RECOMMENDATION (2018):
+- Ages 55-69: GRADE C — offer PSA-based screening after SHARED DECISION-MAKING
+- Ages ≥70: GRADE D — do NOT screen routinely (harms outweigh benefits)
+- Ages <55: routine screening NOT recommended; offer to high-risk if discussing
+
+AUA GUIDELINE 2023:
+- Ages 40-54: baseline PSA for risk-stratification (not routine screening); offer to high-risk individuals
+- Ages 55-69: shared decision-making; offer if patient understands harms
+- Ages ≥70: routine screening NOT recommended
+
+HIGH-RISK GROUPS (consider earlier/more frequent screening):
+- African American men (2x higher incidence and mortality)
+- First-degree relative with prostate cancer before age 65
+- BRCA2 mutation carriers
+- Lynch syndrome
+
+SHARED DECISION-MAKING — discuss:
+- Benefits: early detection, potential mortality reduction (ERSPC: 27% reduction; NNS = 781 to prevent 1 death)
+- Harms: false positives (biopsy complications), overdiagnosis, treatment side effects (incontinence, ED)
+- Adjunct tools if PSA elevated: PSA density, free/total PSA ratio, 4Kscore, PHI, mpMRI before biopsy (reduces unnecessary biopsies)
+
+PSA INTERPRETATION:
+- PSA gray zone 1-10 ng/mL: influenced by prostate volume (BPH), age, inflammation, recent ejaculation
+- Rising PSA velocity or doubling time may be more concerning than absolute value`,
+    url: "https://www.auanet.org/guidelines-and-quality/guidelines/prostate-cancer-early-detection-guideline",
+  },
+
+  // ── SLEEP MEDICINE ──
+
+  {
+    source: "AASM",
+    tier: 1,
+    guideline_title: "AASM Clinical Practice Guidelines for Chronic Insomnia Disorder in Adults (2017)",
+    guideline_year: "2017",
+    abfm_domain: "Psychiatry / Behavioral Health",
+    section: "Chronic Insomnia — Evaluation, CBT-I, and Pharmacotherapy",
+    content: `CHRONIC INSOMNIA — AASM 2017:
+
+DEFINITION: Difficulty initiating or maintaining sleep, or early awakening; ≥3 nights/week, ≥3 months; causes daytime impairment.
+
+EVALUATION:
+- Sleep diary (2 weeks); ISI (Insomnia Severity Index)
+- Rule out: OSA, RLS/PLMD, circadian rhythm disorder, depression/anxiety, substances (alcohol, caffeine, beta-blockers, steroids)
+- Polysomnography: NOT routinely indicated; use if OSA or PLMD suspected
+
+FIRST-LINE: Cognitive Behavioral Therapy for Insomnia (CBT-I) — STRONGLY RECOMMENDED
+Components of CBT-I:
+- Sleep restriction: limit time in bed to actual sleep time; gradually extend as efficiency improves
+- Stimulus control: bed only for sleep and sex; get up if unable to sleep after 20 min
+- Sleep hygiene: consistent wake time 7 days/week; avoid caffeine after 2pm; dark/cool/quiet; no screens 1 hour before
+- Relaxation techniques: progressive muscle relaxation, mindfulness
+- Cognitive restructuring: address catastrophic thoughts about sleep
+
+PHARMACOTHERAPY (when CBT-I insufficient):
+Dual orexin receptor antagonists (DORAs) — preferred for chronic insomnia (no dependence/fall risk):
+- Suvorexant (Belsomra) 10-20 mg: FDA-approved; reduced rebound insomnia
+- Lemborexant (Dayvigo) 5-10 mg: less residual sedation
+
+Benzodiazepine receptor agonists ("Z-drugs"):
+- Zolpidem 5-10 mg (women/elderly 5 mg — falls risk); for sleep onset/maintenance
+- Eszopiclone (Lunesta) 1-3 mg: FDA-approved for sleep maintenance
+- Zaleplon 5-10 mg: very short-acting; sleep onset only; safe for middle-of-night use
+
+Antidepressants (low-dose):
+- Doxepin 3-6 mg (Silenor): FDA-approved for insomnia maintenance
+- Trazodone 25-100 mg: widely used off-label
+
+Melatonin: primarily for circadian disorders; weak evidence for chronic insomnia
+Ramelteon 8 mg: melatonin receptor agonist; no abuse potential
+
+AVOID in elderly: benzodiazepines, diphenhydramine (Benadryl), TCAs (Beers Criteria)`,
+    url: "https://aasm.org/resources/clinicalguidelines/041417.pdf",
+  },
+
+  // ── NEUROLOGY ──
+
+  {
+    source: "AAN/ADA",
+    tier: 1,
+    guideline_title: "AAN Practice Guideline on Diabetic Peripheral Neuropathy; ADA Standards of Care 2024",
+    guideline_year: "2024",
+    abfm_domain: "Neurology",
+    section: "Diabetic Peripheral Neuropathy — Screening, Diagnosis, and Treatment",
+    content: `DIABETIC PERIPHERAL NEUROPATHY (DPN) — AAN/ADA 2024:
+
+PREVALENCE: ~50% of people with DM; most common = distal symmetric polyneuropathy (DSPN); leading cause of non-traumatic lower limb amputation.
+
+SCREENING:
+- Screen annually for DSPN: at DM diagnosis (Type 2), or 5 years after diagnosis (Type 1)
+- Foot exam: inspect skin, pulses, 10g monofilament (protective sensation), 128 Hz tuning fork (vibration), ankle reflexes, pinprick, proprioception
+- 10g monofilament insensitivity = loss of protective sensation → high ulcer/amputation risk
+
+DIAGNOSIS:
+- Clinical: stocking-glove distribution; burning, tingling, electric shock, allodynia (especially at night); numbness, loss of balance
+- Differential: B12 deficiency, hypothyroidism, uremia, alcohol, metformin (depletes B12), monoclonal gammopathy
+
+PREVENTION: Glycemic control most important — aggressive control slows progression (DCCT for T1DM)
+
+PHARMACOTHERAPY FOR PAINFUL DPN:
+- Duloxetine (Cymbalta) 60-120 mg/day: FDA-approved; NNT ~5; SNRI; also treats comorbid depression
+- Pregabalin (Lyrica) 150-600 mg/day: FDA-approved; titrate; sedation, weight gain, edema
+- Gabapentin 1800-3600 mg/day TID: off-label but widely used; titrate slowly; renal dose adjustment
+- TCAs (amitriptyline, nortriptyline) 25-100 mg QHS: effective; low-cost; avoid in elderly, cardiac disease (QTc prolongation)
+- Tapentadol ER: FDA-approved for DPN pain; reserve for refractory cases
+
+FOOT CARE AND ULCER PREVENTION:
+- Daily foot inspection; avoid barefoot walking
+- Podiatry referral for high-risk feet; accommodative footwear
+- Address coexisting peripheral arterial disease (PAD coexists in 30-50%)`,
+    url: "https://www.neurology.org/doi/10.1212/WNL.0000000000004509",
+  },
+
+  {
+    source: "AAN",
+    tier: 1,
+    guideline_title: "AAN Practice Guideline: Disease-Modifying Therapies for Adults with Multiple Sclerosis (2018)",
+    guideline_year: "2018",
+    abfm_domain: "Neurology",
+    section: "Multiple Sclerosis — Diagnosis, Relapse Management, and Disease-Modifying Therapy",
+    content: `MULTIPLE SCLEROSIS — AAN 2018:
+
+DIAGNOSIS — McDonald Criteria (2017 revision):
+- Requires: ≥2 attacks + ≥2 objective lesions; OR MRI evidence of DIS + DIT
+- DIS on MRI: ≥1 T2 lesion in ≥2 of 4 CNS regions (periventricular, juxtacortical, infratentorial, spinal cord)
+- DIT on MRI: simultaneous enhancing + non-enhancing lesions, OR new T2/enhancing lesion on follow-up
+- CSF: oligoclonal bands (OCB) support diagnosis; required for PPMS
+
+MS CLINICAL TYPES:
+- Relapsing-Remitting (RRMS): ~85% at diagnosis; discrete attacks with recovery
+- Secondary Progressive (SPMS): gradual disability after initial RRMS
+- Primary Progressive (PPMS): steady worsening from onset; older patients
+
+ACUTE RELAPSE TREATMENT:
+- IV methylprednisolone 1g/day x 3-5 days: accelerates recovery (does not change long-term outcome)
+- Oral equivalent: prednisone 1250 mg/day x 3-5 days (comparable efficacy)
+- Plasmapheresis: severe relapses not responding to steroids
+
+DISEASE-MODIFYING THERAPIES (DMTs):
+HIGH-EFFICACY:
+- Natalizumab (Tysabri): 68% relapse reduction; anti-VLA4; risk of PML (JC virus antibody screening required)
+- Ocrelizumab (Ocrevus): anti-CD20; RRMS + PPMS (only FDA-approved DMT for PPMS); infusion q6 months
+- Cladribine tablets: high-efficacy; limited to 2 treatment years
+
+MODERATE-EFFICACY:
+- Dimethyl fumarate (Tecfidera) 240 mg BID: oral; GI side effects initially; monitor lymphocytes
+- Fingolimod (Gilenya): first oral DMT; cardiac monitoring at first dose; VZV reactivation risk
+- Teriflunomide (Aubagio): oral daily; teratogenic (contraception required)
+
+LOWER EFFICACY (platform):
+- Interferons (IFN beta-1a IM/SC, IFN beta-1b SC): 30% relapse reduction; established safety; flu-like SE
+- Glatiramer acetate (Copaxone): SC injection; injection site reactions; safe in pregnancy
+
+PPMS: Ocrelizumab — only FDA-approved therapy for PPMS`,
+    url: "https://www.neurology.org/doi/10.1212/WNL.0000000000005721",
+  },
+
+  // ── PEDIATRICS ──
+
+  {
+    source: "AAP",
+    tier: 1,
+    guideline_title: "AAP Clinical Practice Guideline for Evaluation and Treatment of Children and Adolescents with Obesity (2023)",
+    guideline_year: "2023",
+    abfm_domain: "Pediatrics",
+    section: "Childhood and Adolescent Obesity — Evaluation, Lifestyle, Pharmacotherapy, and Surgery",
+    content: `CHILDHOOD AND ADOLESCENT OBESITY — AAP 2023:
+
+DEFINITION:
+- BMI ≥85th percentile = overweight
+- BMI ≥95th percentile = obesity
+- BMI ≥120% of 95th percentile or BMI ≥35 = Class 2 / severe obesity
+
+EVALUATION: Plot BMI for age at every visit starting at 2 years.
+Labs for BMI ≥95th: fasting lipids, ALT, fasting glucose or HbA1c, TSH
+
+TREATMENT — KEY PARADIGM SHIFT: Active treatment, NOT watchful waiting.
+
+INTENSIVE HEALTH BEHAVIOR AND LIFESTYLE TREATMENT (IHBLT): First-line for ALL with obesity
+- ≥26 hours of face-to-face treatment over 3-12 months (families, not just children)
+- Dietary changes, physical activity (60 min/day), reduced screen time (<2h/day), sleep optimization
+- Motivational interviewing; non-stigmatizing, patient-centered approach
+
+PHARMACOTHERAPY (new 2023 recommendations — not previously endorsed):
+- Indicated: BMI ≥95th + comorbidities if IHBLT insufficient
+- Age ≥12:
+  • Orlistat 120 mg TID with fat-containing meals: FDA-approved ≥12 years; GI side effects
+  • Phentermine/topiramate ER (Qsymia): FDA-approved ≥12; ~9-10% weight loss; avoid in pregnancy, glaucoma
+  • Semaglutide (Wegovy) 2.4 mg SC weekly: FDA-approved for obesity ≥12 (June 2023); 15-17% weight loss; GI side effects; contraindicated if personal/family history MTC or MEN2
+- Age ≥8:
+  • Metformin: BMI ≥95th with prediabetes or T2DM; modest weight benefit
+
+BARIATRIC SURGERY:
+- Recommended: adolescents ≥13 with BMI ≥120% of 95th + serious comorbidities (T2DM, severe OSA, severe NASH)
+- Sleeve gastrectomy most common; Roux-en-Y gastric bypass also performed`,
+    url: "https://publications.aap.org/pediatrics/article/151/2/e2022060640/190443/",
+  },
+
+  // ── WOMEN'S HEALTH ──
+
+  {
+    source: "ACOG",
+    tier: 1,
+    guideline_title: "ACOG Practice Bulletin: Endometriosis (2022)",
+    guideline_year: "2022",
+    abfm_domain: "Women's Health",
+    section: "Endometriosis — Diagnosis, Medical Management, and Surgical Treatment",
+    content: `ENDOMETRIOSIS — ACOG 2022:
+
+PREVALENCE: ~10% of reproductive-age women; 30-50% of women with infertility or chronic pelvic pain; average 8-10 year delay in diagnosis.
+
+CLINICAL FEATURES:
+- Dysmenorrhea (severe, starts before menses)
+- Dyspareunia (deep)
+- Chronic pelvic pain (noncyclical)
+- Dyschezia (pain with defecation)
+- Infertility (mechanical — tubal; immune; ovarian reserve)
+- Exam: fixed retroverted uterus or nodularity on rectovaginal exam in advanced disease
+
+DIAGNOSIS:
+- Clinical diagnosis acceptable to initiate empirical treatment (laparoscopy NOT required first)
+- Definitive: laparoscopy with histologic confirmation (endometrial glands + stroma outside uterus)
+- Ultrasound: identifies endometriomas (chocolate cysts); poor sensitivity for peritoneal implants
+- MRI: surgical planning; deep infiltrating endometriosis mapping
+
+MEDICAL TREATMENT (suppresses estrogen):
+FIRST-LINE:
+- NSAIDs: first for pain; start 1-2 days before expected menses
+- Combined hormonal contraceptives (CHC): pill/patch/ring — continuous preferred
+- Progestin-only therapy: norethindrone 5 mg/day; Depo-Provera 150 mg q3mo; LNG-IUD (Mirena)
+
+SECOND-LINE:
+- GnRH agonists (leuprolide/Lupron 3.75 mg IM monthly): medical menopause; add-back estrogen/progestin to prevent bone loss; limit to 6 months without add-back
+- Elagolix (Orilissa): GnRH antagonist; oral; two FDA-approved doses for endometriosis pain
+
+SURGICAL TREATMENT:
+- Laparoscopic excision or ablation: evidence for pain reduction
+- Cystectomy for endometriomas (not aspiration): reduces pain and recurrence
+- Hysterectomy +/- BSO: definitive; no future fertility desire
+- Post-surgery hormonal therapy: reduces recurrence`,
+    url: "https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2010/03/endometriosis",
+  },
+
+  // ── GASTROENTEROLOGY ──
+
+  {
+    source: "ACG",
+    tier: 1,
+    guideline_title: "American College of Gastroenterology Guideline: Diagnosis and Management of Celiac Disease (2023)",
+    guideline_year: "2023",
+    abfm_domain: "Gastroenterology",
+    section: "Celiac Disease — Diagnosis, Dietary Treatment, and Monitoring",
+    content: `CELIAC DISEASE — ACG 2023:
+
+DEFINITION: Immune-mediated enteropathy triggered by gluten (wheat, rye, barley) in genetically susceptible individuals (HLA-DQ2/DQ8); causes villous atrophy and malabsorption.
+
+PREVALENCE: ~1% of Western population; majority undiagnosed; 2:1 female predominance.
+
+CLINICAL PRESENTATIONS:
+- Classic: diarrhea, steatorrhea, weight loss, bloating, abdominal pain
+- Atypical (most common): iron deficiency anemia refractory to oral iron, osteoporosis, elevated transaminases, infertility, peripheral neuropathy, dermatitis herpetiformis (pathognomonic — IgA deposits at dermal-epidermal junction)
+- Silent: positive serology + histology without symptoms
+
+TESTING — perform on GLUTEN-CONTAINING diet:
+Serology (first-line):
+- Anti-tissue transglutaminase IgA (TTG-IgA): sensitivity 95%, specificity 95%
+- Total IgA level (with TTG-IgA): ~2% of celiacs have IgA deficiency → false-negative TTG-IgA → use IgG-based tests (TTG-IgG, DGP-IgG)
+- EMA-IgA: very high specificity; not for initial testing
+
+Confirmation:
+- Endoscopy + duodenal biopsy (≥4 samples): gold standard; Marsh classification 0-3c
+- HLA-DQ2/DQ8: if negative, celiac essentially excluded; useful for family members
+
+TREATMENT:
+- Strict lifelong gluten-free diet (GFD): sole proven treatment; avoid wheat, rye, barley
+- Dietitian referral essential (hidden gluten in medications, condiments, cross-contamination)
+- Symptom improvement: weeks to months; histologic recovery: 1-2 years in adults
+
+MONITORING:
+- TTG-IgA at 3-6 months post-GFD (normalize within 12-24 months)
+- Annual: nutritional labs (iron, B12, folate, calcium, vitamin D, zinc)
+- DEXA scan at diagnosis (osteoporosis risk)
+
+COMPLICATIONS:
+- Non-responsive celiac (5%): most commonly inadvertent gluten ingestion
+- Refractory celiac type II: risk of enteropathy-associated T-cell lymphoma (EATL)`,
+    url: "https://journals.lww.com/ajg/fulltext/2023/01000/acg_clinical_guideline__diagnosis_and_management.13.aspx",
+  },
+
+  // ── DERMATOLOGY ──
+
+  {
+    source: "AAD",
+    tier: 1,
+    guideline_title: "AAD Guidelines of Care for Allergic Contact Dermatitis and Irritant Contact Dermatitis (2023)",
+    guideline_year: "2023",
+    abfm_domain: "Dermatology",
+    section: "Contact Dermatitis — Diagnosis and Management",
+    content: `CONTACT DERMATITIS — AAD 2023:
+
+TYPES:
+1. Irritant Contact Dermatitis (ICD): most common (80%); non-immunologic; direct skin damage (soaps, detergents, solvents, water); dose-dependent; occurs on first exposure
+2. Allergic Contact Dermatitis (ACD): type IV delayed hypersensitivity (T-cell mediated); requires prior sensitization; appears 12-96 hours after re-exposure
+
+COMMON ALLERGENS (ACD):
+- Nickel (jewelry, belt buckles, cell phones)
+- Fragrance mix (cosmetics, personal care products)
+- Neomycin / Bacitracin (topical antibiotics — especially post-surgical wounds)
+- Rubber/latex chemicals (gloves)
+- Urushiol: poison ivy/oak/sumac (most common ACD in US)
+- Hair dye (p-phenylenediamine)
+
+CLINICAL FEATURES:
+- Acute ACD: pruritic erythematous papules, vesicles, bullae; oozing
+- Chronic: lichenification, scaling, fissuring
+- ACD vs ICD: ACD more pruritic, distinct borders, may spread beyond contact; ICD more burning/stinging, corresponds precisely to contact area
+
+DIAGNOSIS:
+- History: timing (ACD: delayed 12-96h; ICD: immediate or cumulative)
+- Patch testing: gold standard for ACD; standard series + customized panels; read at 48h and 96h
+
+TREATMENT:
+- AVOIDANCE: cornerstone — identify and eliminate causative agent
+
+Topical:
+- Mid-to-high potency topical corticosteroid (triamcinolone 0.1%, clobetasol 0.05%): first-line twice daily
+- Calcineurin inhibitors (tacrolimus, pimecrolimus): steroid-sparing; safe for face and eyelids
+
+Systemic:
+- Oral prednisone: extensive/severe/facial ACD (poison ivy); 1 mg/kg/day x 5 days then taper x 14-21 days total; avoid short 5-day tapers (rebound)
+- Antihistamines: sedating (hydroxyzine) for sleep/pruritus; non-sedating for daytime
+
+Wet compresses: cool water for acute vesicular phase`,
+    url: "https://www.aad.org/member/clinical-quality/guidelines/contact-dermatitis",
+  },
+
+  {
+    source: "AAD",
+    tier: 1,
+    guideline_title: "AAD Clinical Practice Guidelines: Basal Cell and Squamous Cell Carcinomas (2018, updated 2022)",
+    guideline_year: "2022",
+    abfm_domain: "Dermatology",
+    section: "Non-Melanoma Skin Cancer — BCC and SCC Diagnosis and Management",
+    content: `NON-MELANOMA SKIN CANCER (BCC AND SCC) — AAD 2022:
+
+BASAL CELL CARCINOMA (BCC):
+- Most common cancer in US; locally invasive; rarely metastasizes
+- Classic: pearly papule with rolled border and central telangiectasia on sun-exposed skin (head, neck)
+- Subtypes: nodular (most common), superficial, morpheaform/infiltrative (highest recurrence)
+
+SQUAMOUS CELL CARCINOMA (SCC):
+- Arises from keratinocytes; ~4% metastatic potential
+- Precursor: actinic keratosis (AK) → SCC in situ (Bowen disease) → invasive SCC
+- Appearance: erythematous scaly crusted papule or plaque; ulcerated; indurated
+- High-risk features: size >2 cm, depth >2 mm, perineural invasion, ear/lip location, immunosuppression
+
+DIAGNOSIS: Clinical + dermoscopy; confirmed by shave or punch biopsy
+
+TREATMENT:
+Standard (low-risk lesions):
+- Surgical excision: BCC 4mm margins; SCC 4-6mm margins; cure rates >95%
+- Electrodesiccation and curettage (ED&C): small, well-defined, low-risk lesions only
+
+Mohs Micrographic Surgery (MMS) — PREFERRED FOR:
+- High-risk locations (head, neck, hands, feet, genitalia)
+- Aggressive histologic subtypes (morpheaform BCC, perineural SCC)
+- Recurrent tumors; large tumors; immunosuppressed patients
+- Highest cure rates (>98% BCC; >96% SCC)
+
+Nonsurgical (selected patients):
+- Topical imiquimod 5% cream or 5-FU: superficial BCC, SCC in situ (NOT invasive)
+- Radiation therapy: elderly/inoperable patients; adjuvant for perineural invasion
+
+Advanced/metastatic BCC: Vismodegib (hedgehog pathway inhibitor) or sonidegib
+Advanced/metastatic SCC: cemiplimab (PD-1 inhibitor) or pembrolizumab
+
+PREVENTION:
+- Broad-spectrum SPF ≥30 sunscreen daily; UPF clothing; sun avoidance 10am-4pm
+- Actinic keratosis treatment: liquid nitrogen, 5-FU, imiquimod, PDT (field therapy)`,
+    url: "https://www.aad.org/member/clinical-quality/guidelines/basal-squamous-cell-carcinoma",
+  },
+
+  // ── OBESITY UPDATE ──
+
+  {
+    source: "AHA/AACE/Obesity Society",
+    tier: 1,
+    guideline_title: "AHA/AACE 2023 Obesity Management Algorithm; GLP-1 and Dual Agonists for Obesity",
+    guideline_year: "2023",
+    abfm_domain: "Endocrine & Metabolic",
+    section: "Obesity Pharmacotherapy — GLP-1 Agonists and Tirzepatide (2023 Updates)",
+    content: `OBESITY PHARMACOTHERAPY — 2023 UPDATES:
+
+INDICATIONS: BMI ≥30 (no comorbidities) OR BMI ≥27 + weight-related comorbidity (T2DM, HTN, OSA, dyslipidemia, NASH, PCOS, OA)
+
+FIRST-LINE PREFERRED (high-efficacy agents):
+
+1. SEMAGLUTIDE (Wegovy) 2.4 mg SC weekly — GLP-1 receptor agonist:
+- FDA-approved June 2021 for chronic weight management
+- STEP 1 trial (68 wks): ~14.9% mean body weight reduction (placebo 2.4%)
+- SELECT trial 2023: significant reduction in MACE in non-diabetic obese patients with established CVD (20% HR reduction) — FDA cardiovascular indication
+- Titration: 0.25 mg/wk x 4 wks → titrate monthly to 2.4 mg/wk over 16 weeks
+- Side effects: nausea, vomiting, diarrhea (transient); rare pancreatitis
+- Contraindicated: personal/family history of MTC, MEN2
+
+2. TIRZEPATIDE (Zepbound) 5-15 mg SC weekly — GIP/GLP-1 dual agonist:
+- FDA-approved November 2023 for obesity (Zepbound); Mounjaro = T2DM indication
+- SURMOUNT-1 (72 wks): 20.9% weight loss with 15 mg dose (vs 3.1% placebo)
+- SURMOUNT-5 head-to-head: 47% more weight loss than semaglutide 2.4 mg
+- Titration: 2.5 mg/wk x 4 wks → increase by 2.5 mg every 4 wks → target 5-15 mg/wk
+- Side effects: same as semaglutide; same MTC/MEN2 contraindication
+
+3. LIRAGLUTIDE (Saxenda) 3 mg SC daily: ~5-8% weight loss; once-daily less convenient; FDA-approved ≥12 years
+
+OTHER AGENTS:
+- Phentermine/topiramate ER (Qsymia): 9-10% weight loss; avoid pregnancy; cognitive SE
+- Naltrexone/bupropion ER (Contrave): 5-6% weight loss; seizure contraindication
+- Orlistat: GI lipase inhibitor; fatty stool; poor tolerability; least effective
+
+BARIATRIC SURGERY: BMI ≥40 or ≥35 + comorbidities; sleeve gastrectomy or RYGB; superior long-term; consider when pharmacotherapy insufficient`,
+    url: "https://www.ahajournals.org/doi/10.1161/CIR.0000000000001060",
+  },
+
 ];
