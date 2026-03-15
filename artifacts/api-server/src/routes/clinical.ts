@@ -31,8 +31,12 @@ const PHARMACY_SOURCES = `PHARMACY — RESTRICTED SOURCE SET:
 - ACPE-approved resources and evidence-based pharmacotherapy guidelines only
 - If a pharmacy question cannot be answered from ACPE-approved sources: state this limitation explicitly`;
 
-const LIMITATION_RULE = `MANDATORY LIMITATION RULE:
-Your response MUST be grounded primarily in the RETRIEVED GUIDELINE CONTEXT provided above. If a specific question cannot be answered from the retrieved indexed content, state: "This falls outside the retrieved indexed sources for this query. Consult [relevant body] directly." Do NOT synthesize from general training knowledge outside the retrieved context. Do NOT speculate or extrapolate beyond what is stated in the retrieved excerpts. If you are uncertain whether a value appears in the retrieved content, state: "Specific value not confirmed in retrieved indexed sources."`;
+const LIMITATION_RULE = `MANDATORY GUIDELINE GROUNDING RULE:
+Answer comprehensively using the RETRIEVED GUIDELINE CONTEXT above as your primary source. Cite retrieved excerpts using [REF N] numbers.
+- If a specific value (cutoff, dose, threshold) appears in the retrieved context: quote it exactly and cite the REF number.
+- If a specific detail is NOT explicitly stated in the retrieved context but IS covered by the indexed sources listed above (ACC/AHA, AAFP, ADA, GINA, GOLD, etc.): provide the guideline-accurate answer and note the specific detail in the citation block's "limitation" field as "Not present in retrieved excerpt — drawn from [source] guideline knowledge."
+- Do NOT refuse to answer. Do NOT say "falls outside indexed sources" if the topic is covered by any of the listed indexed sources above, even if that exact detail is not in the retrieved excerpt.
+- Only use "outside" confidence in the citation block if the topic is genuinely outside all listed guideline sources.`;
 
 const CITATION_RULE = `MANDATORY CITATION BLOCK:
 At the very end of your response — after all clinical content — you MUST output a citation block in exactly this format on a single line with no other text:
@@ -90,15 +94,15 @@ async function getSystemPrompt(
   const ragSection = ragContext
     ? `\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 RETRIEVED GUIDELINE CONTEXT
-The following excerpts have been retrieved from the indexed guideline database specifically for this query. Your response MUST be grounded in these retrieved excerpts. Cite the [REF N] numbers when referencing specific content. Do not use information that is not present in the retrieved context or supported by the indexed sources listed above.
+The following excerpts have been retrieved from the indexed guideline database specifically for this query. Cite the [REF N] numbers when referencing specific content.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ${ragContext}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-END OF RETRIEVED CONTEXT — Base your response on the content above.
+END OF RETRIEVED CONTEXT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
-    : "";
+    : `\n\nNO EXCERPTS RETRIEVED: No specific indexed excerpt was returned for this query. Provide a comprehensive, guideline-accurate response drawing from your knowledge of the indexed sources listed above (ACC/AHA, AAFP, ADA, GINA, GOLD, IDSA, AAP, ACOG, etc.). In the citation block, note the relevant source(s) with confidence "peripheral" and document in the limitation field that "No indexed excerpt was retrieved for this specific query — response drawn from [source] guideline knowledge."`;
 
   const baseHeader = `You are FM Resident Copilot — a fact-based, evidence-based, guideline-based clinical and board preparation tool for family medicine residents.
 
@@ -375,7 +379,11 @@ router.post("/clinical/query", async (req: Request, res: Response) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
   try {
-    const ragQueryText = [query, condition].filter(Boolean).join(" ");
+    // Use condition name as the primary RAG search key when available.
+    // The full mode-prompt query contains generic clinical words ("diagnosis", "treatment",
+    // "criteria") that appear in every chunk and dilute FTS ranking. The condition name is
+    // the most specific signal — use it alone so FTS can precisely match condition-specific chunks.
+    const ragQueryText = condition ?? query;
     const ragCtx = await retrieveContext(ragQueryText, 10);
 
     const systemPrompt = await getSystemPrompt(
