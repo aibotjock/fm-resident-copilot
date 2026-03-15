@@ -9,7 +9,7 @@ import {
 import { SEED_CHUNKS } from "./sources/seed-data";
 import { fetchUSPSTFChunks } from "./sources/uspstf-ingest";
 
-const INGEST_VERSION = "v8";
+const INGEST_VERSION = "v10";
 const BATCH_SIZE = 100;
 
 async function ingestChunks(

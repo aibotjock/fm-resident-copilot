@@ -5365,4 +5365,419 @@ ANTIPHOSPHOLIPID SYNDROME (APS): thrombosis + persistent positive antiphospholip
     url: "https://www.rheumatology.org/Practice-Quality/Clinical-Support/Clinical-Practice-Guidelines/Lupus",
   },
 
+  // ── v9 additions: 3 missing conditions ────────────────────────────────
+
+  {
+    source: "USPSTF / AAD",
+    tier: 1,
+    guideline_title: "Skin Cancer Screening and Suspicious Lesion Evaluation",
+    guideline_year: "2023",
+    abfm_domain: "Dermatology",
+    section: "Skin Cancer Screening and Suspicious Lesion Evaluation",
+    content: `SKIN CANCER SCREENING — USPSTF 2023:
+USPSTF RECOMMENDATION: Grade I (Insufficient Evidence) for skin cancer screening by visual skin examination in the primary care setting for asymptomatic adults. The USPSTF does not recommend routine full-body skin exam screening in average-risk asymptomatic patients by a primary care clinician; insufficient evidence to assess benefits vs. harms.
+
+HIGH-RISK POPULATIONS (individualize surveillance):
+- Personal or family history of melanoma
+- >50 atypical or dysplastic nevi
+- History of severe sunburns, extensive UV exposure, tanning bed use
+- Immunosuppressed patients (organ transplant, HIV, chronic immunosuppressive therapy)
+- Fitzpatrick skin type I–II (fair skin, red/blonde hair, blue eyes)
+- Xeroderma pigmentosum
+
+SUSPICIOUS LESION EVALUATION — ABCDE CRITERIA (AAD):
+A — Asymmetry: one half does not match the other
+B — Border: irregular, ragged, notched, or blurred edges
+C — Color: variation in color (shades of brown/black; red, white, or blue areas)
+D — Diameter: >6 mm (size of a pencil eraser); concerning if smaller and changing
+E — Evolving: any change in size, shape, color, or new symptom (bleeding, crusting)
+
+DERMOSCOPY: Improves diagnostic accuracy for pigmented lesions when clinician is trained; not required in primary care but useful in high-volume practices.
+
+BIOPSY INDICATIONS (AAD 2022):
+- Any lesion with ABCDE features, rapidly growing lesion, or lesion clinically suspicious for malignancy
+- Preferred biopsy: excisional biopsy with 1–3 mm margins for melanoma (do not shave suspicious pigmented lesions)
+- Shave biopsy acceptable for lesions strongly suspected to be basal cell or squamous cell carcinoma
+- Punch biopsy: for larger lesions where excision not feasible; sample most atypical area
+
+NON-MELANOMA SKIN CANCER (BCC/SCC):
+Basal Cell Carcinoma (BCC): most common skin cancer; pearly papule with rolled border and telangiectasia; rarely metastasizes; treatment: excision, Mohs surgery for high-risk/facial, or electrodesiccation and curettage for low-risk
+Squamous Cell Carcinoma (SCC): scaly, erythematous plaque or ulcerated nodule; risk of metastasis (2–5%); Marjolin ulcer = SCC in chronic wound; treat with excision or Mohs; actinic keratosis = SCC precursor (treat with cryotherapy, 5-FU, imiquimod)
+
+MELANOMA MANAGEMENT:
+- Stage IA (≤1 mm, no ulceration): wide local excision with 1 cm margins; sentinel lymph node biopsy (SLNB) not required
+- Stage IB–II (>1 mm or ulcerated): wide local excision + SLNB; adjuvant therapy for stage IIB–IIC with pembrolizumab
+- Stage III–IV: systemic therapy (BRAF/MEK inhibitors if BRAF V600E+; checkpoint inhibitors: nivolumab, pembrolizumab, ipilimumab + nivolumab); refer to oncology
+
+COUNSELING (AAD/AAFP): sunscreen SPF ≥30 (broad spectrum, water resistant), protective clothing, avoid peak UV 10am–4pm, avoid tanning beds (USPSTF Grade B recommendation to counsel young adults 6–24 with fair skin to minimize UV exposure)`,
+    url: "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/skin-cancer-screening",
+  },
+
+  {
+    source: "AAP",
+    tier: 2,
+    guideline_title: "Pediatric Undernutrition (Failure to Thrive) — AAP Clinical Guidelines",
+    guideline_year: "2023",
+    abfm_domain: "Pediatrics",
+    section: "Failure to Thrive — Pediatric Undernutrition Evaluation and Management",
+    content: `FAILURE TO THRIVE (FTT) / PEDIATRIC UNDERNUTRITION — AAP 2023:
+
+DEFINITION / DIAGNOSTIC CRITERIA:
+Failure to thrive = inadequate physical growth relative to established norms; no single universal cutoff, but commonly defined as:
+- Weight-for-age <3rd percentile (or <2nd percentile on WHO growth charts) on two separate occasions, OR
+- Crossing ≥2 major percentile lines downward on a growth chart over time (e.g., from 50th to 10th percentile), OR
+- Weight-for-length/height <2nd percentile (WHO), OR
+- Weight <80% of ideal body weight for height (Waterlow criteria for acute undernutrition)
+
+Use WHO growth charts (0–2 years) and CDC growth charts (2–20 years). Breastfed infants may naturally fall from birth curves — use WHO charts for breastfed infants 0–24 months.
+
+CLASSIFICATION:
+- Organic FTT (~20%): underlying medical condition (GERD, congenital heart disease, cystic fibrosis, malabsorption, renal tubular acidosis, hypothyroidism, HIV, celiac disease)
+- Non-organic FTT (~80%): inadequate caloric intake without organic cause (psychosocial, feeding difficulties, food insecurity, behavioral issues)
+- Mixed: combination of both
+
+EVALUATION — HISTORY (most diagnoses made by history):
+- Feeding history: breast vs. formula (dilution errors?), feeding duration, frequency, volume, introduction of solids
+- Food security screening: AAP recommends two-question screen ("We worried whether our food would run out" / "Food we bought just didn't last")
+- Developmental milestones, social history, caregiver-infant interaction
+- Review of systems for organic cause: vomiting, diarrhea, polyuria, dyspnea with feeds, recurrent infections
+
+EVALUATION — PHYSICAL EXAM:
+- Accurate weight, length/height, head circumference plotted on growth chart
+- Signs of neglect, dysmorphic features, organomegaly
+- Assess mid-upper arm circumference (MUAC) for severe acute malnutrition
+
+LABS — INITIAL (targeted, not shotgun):
+First-line if organic cause suspected: CBC, CMP (BUN, creatinine, electrolytes, LFTs, albumin), urinalysis, thyroid function (TSH)
+Additional based on history: celiac panel (anti-tTG IgA + total IgA), sweat chloride (if pulmonary symptoms), lead level (ages 1–5), HIV, stool studies for malabsorption
+
+MANAGEMENT:
+1. Address underlying cause if organic FTT identified
+2. Caloric rehabilitation (AAP): catch-up growth requires 1.5–2× estimated average requirements
+   - Increase caloric density: formula concentration (22–24 kcal/oz), caloric supplements (Duocal, corn oil, MCT oil)
+   - High-calorie foods: whole-fat dairy, nut butters, avocado
+3. Feeding therapy: occupational/speech therapy for feeding difficulties, oral aversion, oromotor dysfunction
+4. Multidisciplinary team: dietitian, social work, developmental pediatrics for complex cases
+5. Food assistance resources: WIC referral, SNAP, local food banks
+6. Hospitalization criteria: severe malnutrition (weight <60% ideal), suspected abuse/neglect, severe dehydration, failure of outpatient management
+
+MONITORING: weight every 1–2 weeks initially, then monthly once catch-up growth established; expect 2–3× normal weight gain velocity during catch-up phase`,
+    url: "https://www.aap.org/en/patient-care/failure-to-thrive/",
+  },
+
+  {
+    source: "AAFP / KDIGO",
+    tier: 1,
+    guideline_title: "Electrolyte Disorders — Evaluation and Management in Primary Care",
+    guideline_year: "2023",
+    abfm_domain: "Renal & Urology",
+    section: "Electrolyte Disorders — Hyponatremia, Hyperkalemia, Hypokalemia, Hypomagnesemia, Hypercalcemia",
+    content: `ELECTROLYTE DISORDERS — AAFP/KDIGO 2023:
+
+HYPONATREMIA (Na <135 mEq/L):
+Symptoms: nausea, headache, lethargy, seizures, coma (usually with Na <125 mEq/L or rapid decline)
+Step 1 — Assess osmolality:
+- Hyperosmolar (>295): hyperglycemia (correct Na: add 1.6 mEq/L per 100 mg/dL glucose >100), mannitol
+- Iso-osmolar (280–295): pseudohyponatremia (hyperlipidemia, hyperproteinemia)
+- Hypo-osmolar (<280): most clinically relevant — proceed to volume assessment
+
+Step 2 — Assess volume status:
+- Hypovolemic hyponatremia: urine Na <20 (extra-renal loss: vomiting, diarrhea) or >20 (renal loss: diuretics, Addison's) → isotonic saline
+- Euvolemic hyponatremia: urine Na >20, urine osmolality >100 → SIADH (most common cause in euvolemic) → fluid restriction 1–1.5 L/day; treat underlying cause; vasopressin receptor antagonists (tolvaptan, conivaptan) for severe refractory SIADH
+  SIADH causes: CNS disease, pulmonary disease, malignancy (small cell lung cancer), SSRIs, NSAIDs, carbamazepine
+- Hypervolemic hyponatremia: urine Na <20 → CHF, cirrhosis, nephrotic syndrome → fluid + sodium restriction, treat underlying cause
+
+Correction rate: raise Na no faster than 8–12 mEq/L per 24 hours (risk of osmotic demyelination syndrome / central pontine myelinolysis if corrected too rapidly)
+Acute severe/symptomatic (seizures, coma): 3% hypertonic saline 100 mL IV bolus; raise Na by 1–2 mEq/L/hour until symptoms resolve, then slow to ≤8–12/24h
+
+HYPERKALEMIA (K >5.0 mEq/L):
+Causes: CKD (most common), ACE inhibitors/ARBs, potassium-sparing diuretics (spironolactone), NSAIDs, rhabdomyolysis, adrenal insufficiency, pseudohyperkalemia (hemolysis)
+EKG changes (in order): peaked T waves → prolonged PR → widened QRS → sine wave → VF
+Management by severity:
+- Mild (5.0–5.5, no EKG changes): dietary K restriction (<2 g/day), hold offending agents, optimize GFR
+- Moderate (5.5–6.0) or EKG changes: add sodium bicarbonate (metabolic acidosis), kayexalate or patiromer (K binders); patiromer preferred for CKD
+- Severe (>6.0 or EKG changes): IV calcium gluconate (membrane stabilization — immediate, 30–60 min); IV insulin + dextrose (shifts K intracellularly, 15–30 min); IV sodium bicarbonate if acidosis; albuterol nebulized; hemodialysis for refractory/severe
+
+HYPOKALEMIA (K <3.5 mEq/L):
+Causes: GI loss (vomiting, diarrhea, laxatives), renal loss (diuretics — thiazide/loop, hyperaldosteronism), transcellular shift (insulin, alkalosis, beta-agonists)
+Symptoms: muscle weakness, cramps, constipation, arrhythmias (U waves on EKG, T-wave flattening)
+Treatment: oral KCl for mild-moderate (10 mEq/hour oral; max 40 mEq/dose); IV KCl for severe (<2.5 or symptomatic; max 10 mEq/hour peripheral, 20 mEq/hour central); correct concurrent hypomagnesemia first (Mg depletion causes renal K wasting)
+
+HYPOMAGNESEMIA (Mg <1.7 mg/dL):
+Causes: alcohol use disorder, malnutrition, PPIs (chronic use), loop/thiazide diuretics, malabsorption, poorly controlled DM
+Significance: refractory hypokalemia and hypokalemia do not correct without Mg repletion
+Treatment: oral Mg oxide/citrate for mild asymptomatic; IV magnesium sulfate for severe or symptomatic (1–2 g IV over 15 min for torsades de pointes; 1–2 g IV over 1 hour for severe deficiency); correct underlying cause
+
+HYPERCALCEMIA (Ca >10.5 mg/dL; corrected for albumin: add 0.8 mg/dL per 1 g/dL albumin below 4):
+Most common causes in outpatient: primary hyperparathyroidism (PTH ↑), malignancy (PTH-rP ↑; osteolytic mets)
+PTH-based workup: PTH elevated → primary hyperparathyroidism (refer endocrine/surgery if symptomatic or Ca >1 mg/dL above normal or age <50 or osteoporosis or nephrolithiasis); PTH suppressed → malignancy, sarcoidosis, vitamin D toxicity, thiazide diuretics
+Symptoms of significant hypercalcemia ("bones, stones, groans, psychic moans"): nephrolithiasis, fractures, constipation, nausea, depression, confusion
+Acute severe hypercalcemia (>14 mg/dL or symptomatic): IV isotonic saline (aggressive hydration first); IV bisphosphonates (zoledronic acid 4 mg IV); calcitonin for rapid reduction; dialysis for refractory`,
+    url: "https://www.aafp.org/pubs/afp/issues/2023/electrolyte-disorders.html",
+  },
+
+  // ── v10 additions: 5 critical thin-coverage conditions ─────────────────
+
+  {
+    source: "ADA",
+    tier: 2,
+    guideline_title: "ADA Standards of Medical Care in Diabetes 2024 — Treatment and Management",
+    guideline_year: "2024",
+    abfm_domain: "Endocrine & Metabolic",
+    section: "Type 2 Diabetes Mellitus — Treatment Targets, Drug Selection, and Monitoring",
+    content: `TYPE 2 DIABETES MELLITUS — TREATMENT AND MANAGEMENT (ADA 2024):
+
+GLYCEMIC TARGETS:
+- A1c <7.0% for most non-pregnant adults with T2DM
+- A1c <8.0% for older adults (>65) with multiple comorbidities, limited life expectancy, or high hypoglycemia risk
+- A1c <6.5% may be appropriate if safely achieved with lifestyle/metformin alone
+- Fasting glucose target: 80–130 mg/dL; postprandial (1-2h after meal) <180 mg/dL
+- Time In Range (TIR) on CGM: >70% (70–180 mg/dL); goal <4% <70 mg/dL
+
+FIRST-LINE THERAPY:
+- Lifestyle modification (MNT + physical activity: 150 min/week moderate-intensity) at diagnosis for all
+- Metformin: first-line pharmacotherapy (if no contraindication); start at 500 mg with meals, titrate to 1000 mg BID; hold for eGFR <30; check B12 level if on >4 years
+
+CARDIOVASCULAR/RENAL RISK-BASED PRESCRIBING (ADA 2024 priority):
+- Established ASCVD or high CV risk: add GLP-1 receptor agonist (liraglutide, semaglutide, dulaglutide) OR SGLT2 inhibitor (empagliflozin, canagliflozin, dapagliflozin) regardless of A1c
+- Heart failure with reduced EF: SGLT2 inhibitor preferred (empagliflozin or dapagliflozin — reduce HHF and CV death)
+- CKD (eGFR 25–60 or albuminuria): finerenone + SGLT2 inhibitor (canagliflozin or dapagliflozin) — reduce CKD progression
+- Obesity/weight loss priority: GLP-1 RA (semaglutide most effective; tirzepatide [GLP-1/GIP] superior for weight reduction)
+- Hypoglycemia minimization priority: DPP-4 inhibitors (sitagliptin, linagliptin) or GLP-1 RA or SGLT2i (low hypoglycemia risk)
+- Cost consideration: metformin + sulfonylurea (glipizide, glimepiride) or NPH insulin as low-cost options
+
+INSULIN THERAPY:
+- Initiate if A1c >10%, symptomatic hyperglycemia, or failure of ≥2 non-insulin agents
+- Basal insulin first: glargine (Lantus/Toujeo) or detemir; start 10 units at bedtime or 0.1–0.2 units/kg; titrate by 2 units every 3 days to FBG 80–130 mg/dL
+- Add prandial insulin if basal not sufficient: rapid-acting (lispro, aspart, glulisine) with largest meal first; titrate
+- Premixed insulins (70/30): less flexible but useful for adherence issues
+
+MONITORING:
+- A1c every 3 months until stable at goal, then every 6 months
+- Annual: urine albumin/creatinine ratio (UACR), serum creatinine/eGFR, lipid panel, foot exam, dilated eye exam, dental, depression screening (PHQ-2/PHQ-9)
+- Blood pressure target: <130/80 mmHg; preferred antihypertensives in DM: ACE inhibitor or ARB (especially with albuminuria)
+- LDL target: <100 mg/dL (high-intensity statin if ASCVD risk >10%); <70 mg/dL for established ASCVD
+- Annual influenza, pneumococcal (PPSV23 or PCV15/20), HBV (if <60 and unvaccinated), COVID vaccine, zoster
+
+COMPLICATION SCREENING TIMELINE:
+At diagnosis: A1c, UACR, CMP, lipids, dilated eye exam, foot exam, dental referral
+Year 1 and annually thereafter: UACR, eGFR, foot exam, retinal screen, dental
+As indicated: ABI if symptoms of PAD; ECG if cardiac symptoms`,
+    url: "https://diabetesjournals.org/care/issue/47/Supplement_1",
+  },
+
+  {
+    source: "AHA/ASA",
+    tier: 2,
+    guideline_title: "TIA and Minor Stroke — Early Management and Secondary Stroke Prevention",
+    guideline_year: "2021",
+    abfm_domain: "Neurology",
+    section: "Stroke / TIA — TIA Evaluation, ABCD2 Score, and Secondary Prevention",
+    content: `TRANSIENT ISCHEMIC ATTACK (TIA) AND MINOR STROKE — AHA/ASA 2021:
+
+DEFINITION:
+TIA: transient neurological dysfunction from focal brain, spinal cord, or retinal ischemia WITHOUT acute infarction on imaging (time-based definition of <24h is no longer used — tissue-based preferred)
+Minor stroke: NIHSS ≤3, independent prior to event
+
+ABCD2 SCORE (risk of early stroke after TIA):
+A — Age ≥60: 1 point
+B — Blood pressure ≥140/90 on presentation: 1 point
+C — Clinical features: unilateral weakness 2 pts, speech disturbance without weakness 1 pt
+D — Duration: ≥60 min = 2 pts; 10–59 min = 1 pt
+D — Diabetes: 1 point
+Score 0–3: low risk (~1% 2-day stroke risk); Score 4–5: moderate (~4%); Score 6–7: high (~8%)
+Note: ABCD2 alone insufficient — all TIA patients require urgent evaluation within 24 hours regardless of score
+
+URGENT WORKUP (within 24 hours of TIA):
+- Brain MRI with DWI (detects small infarcts missed by CT); if MRI unavailable: CT head
+- Vascular imaging: CTA head/neck or MRA to evaluate for carotid stenosis, intracranial stenosis, dissection
+- Cardiac monitoring: ECG immediately; telemetry or 30-day event monitor for paroxysmal AFib (causes ~30% of cardioembolic strokes)
+- Echocardiogram: if cardiac source suspected (young patient, bilateral infarcts, PFO concern)
+- Labs: CBC, BMP, glucose, INR/PTT, lipid panel, HbA1c, ESR (if GCA suspected)
+
+ANTIPLATELET THERAPY — DUAL ANTIPLATELET (DAPT):
+- High-risk TIA (ABCD2 ≥4) or minor stroke (NIHSS ≤3) without AFib: aspirin 325 mg PLUS clopidogrel 75 mg for 21 days (POINT trial), then aspirin monotherapy 81–325 mg indefinitely
+- CHANCE trial (Chinese): aspirin + clopidogrel for 21 days then clopidogrel monotherapy also validated
+- Do NOT use warfarin or DOAC for non-cardioembolic TIA/minor stroke (no benefit over antiplatelet)
+
+ANTICOAGULATION — CARDIOEMBOLIC (AFib-related):
+- AFib-related TIA: start anticoagulation early (DOAC preferred: apixaban, rivaroxaban, dabigatran, edoxaban)
+- Timing: minor TIA/stroke → can start immediately; moderate stroke → 3–7 days; large stroke → 7–14 days (to reduce hemorrhagic transformation risk)
+
+CAROTID STENOSIS:
+- Symptomatic stenosis 70–99% (ipsilateral to TIA): carotid endarterectomy (CEA) within 2 weeks (maximum benefit if done early); CEA superior to carotid stenting in most patients >70 years
+- Symptomatic stenosis 50–69%: CEA recommended, benefit less robust
+- Symptomatic stenosis <50%: medical management only
+
+SECONDARY STROKE PREVENTION (all TIA/stroke patients):
+- Antihypertensive: target BP <130/80 mmHg; start after 24–48 hours if stable; ACE inhibitor + thiazide-like diuretic preferred
+- High-intensity statin: atorvastatin 40–80 mg or rosuvastatin 20–40 mg; LDL target <70 mg/dL (or reduce by ≥50%)
+- Glycemic control: target A1c <7% in diabetic patients
+- Lifestyle: smoking cessation (doubles stroke risk), alcohol reduction (>2 drinks/day increases risk), Mediterranean diet, physical activity
+- AFib management: rate control + anticoagulation; rhythm control if symptomatic`,
+    url: "https://www.ahajournals.org/doi/10.1161/STR.0000000000000375",
+  },
+
+  {
+    source: "ACC/AHA",
+    tier: 2,
+    guideline_title: "Cardiac Arrhythmias — Heart Block, Bradyarrhythmias, and SVT Management",
+    guideline_year: "2019",
+    abfm_domain: "Cardiovascular",
+    section: "Heart Block and Cardiac Arrhythmias — Classification, EKG Features, and Management",
+    content: `HEART BLOCK AND CARDIAC ARRHYTHMIAS — ACC/AHA 2019 GUIDELINES:
+
+AV HEART BLOCK — CLASSIFICATION AND MANAGEMENT:
+First-Degree AV Block: PR interval >200 ms (0.20 sec); all P waves conduct to ventricles; usually benign; no treatment required; monitor if PR >300 ms or new onset
+Second-Degree AV Block Type I (Mobitz I / Wenckebach): progressive PR prolongation until P wave drops (non-conducted); associated with inferior MI, increased vagal tone, medication toxicity; usually benign; pacemaker rarely needed (only if symptomatic)
+Second-Degree AV Block Type II (Mobitz II): constant PR interval with sudden non-conducted P wave (no preceding PR prolongation); HIGH RISK for complete heart block; pacemaker indicated even if asymptomatic; associated with anterior MI, conduction system disease
+2:1 AV Block: every other P wave not conducted; cannot distinguish Mobitz I vs II — need longer rhythm strip; treat as Mobitz II (pacemaker)
+Third-Degree (Complete) Heart Block: no P waves conduct to ventricles; P and QRS dissociated; ventricular escape rhythm (rate 20–40 bpm); URGENT pacemaker indicated; causes: inferior MI (usually reversible), Lyme disease, digoxin toxicity, AV nodal ablation
+
+PACEMAKER INDICATIONS (Class I — definitive):
+- Symptomatic sinus node dysfunction (sick sinus syndrome): symptomatic bradycardia, chronotropic incompetence
+- Symptomatic bradycardia from AV block at any level
+- Third-degree AV block
+- Second-degree Mobitz II AV block (symptomatic or asymptomatic if associated with structural heart disease)
+- Alternating bundle branch block
+
+SUPRAVENTRICULAR TACHYCARDIA (SVT):
+AVNRT (AV node re-entry — most common SVT): narrow complex tachycardia 150–250 bpm; "pseudo-R'" in V1 (retrograde P wave); treat acute: vagal maneuvers → adenosine 6 mg IV rapid push (may repeat 12 mg x2); if hemodynamically unstable: synchronized cardioversion
+AVRT (accessory pathway, e.g., WPW): delta wave on EKG (short PR + slurred QRS upstroke); pre-excitation; AVOID adenosine, verapamil, digoxin in pre-excitation + AFib (can accelerate conduction → VF); treat with procainamide IV or cardioversion
+Atrial flutter: sawtooth flutter waves ~300 bpm with 2:1 block (ventricular rate ~150 bpm); rate control → cardioversion; anticoagulate same as AFib
+
+VENTRICULAR ARRHYTHMIAS:
+PVCs: benign if <10,000/24h and normal cardiac function; treat underlying cause (caffeine, electrolytes, ischemia); beta-blocker if symptomatic; ablation for PVC-mediated cardiomyopathy (>15–20% burden)
+Sustained VT (>30 sec or hemodynamically unstable): ACLS protocol; IV amiodarone 150 mg over 10 min or lidocaine; cardioversion if unstable; ICD if EF <35% or recurrent VT
+VF: immediate defibrillation (200J biphasic)
+
+BRADYCARDIA MANAGEMENT:
+Symptomatic bradycardia (HR <50 with hypotension, altered mental status, ischemia, pulmonary edema):
+- Atropine 1 mg IV (first-line for vagally mediated or AV nodal block); may repeat to 3 mg total
+- Transcutaneous pacing: for unstable bradycardia not responding to atropine
+- Dopamine or epinephrine infusion while arranging transvenous pacing
+- Transvenous pacemaker: definitive bridge to permanent pacemaker
+
+LONG QT SYNDROME:
+QTc >450 ms (males) / >470 ms (females); risk of Torsades de Pointes (TdP) → VF
+Common drug causes of acquired QT prolongation: macrolides (azithromycin), fluoroquinolones, antipsychotics (haloperidol, quetiapine), antifungals, methadone, ondansetron; check QTc before starting
+Congenital LQTS: refer to electrophysiology; avoid QT-prolonging drugs; consider beta-blocker (propranolol/nadolol); ICD for survivors of cardiac arrest or high-risk mutation (LQT3)`,
+    url: "https://www.acc.org/guidelines/hubs/cardiac-arrhythmias",
+  },
+
+  {
+    source: "AHA/ACCP",
+    tier: 2,
+    guideline_title: "Pulmonary Embolism Treatment — Anticoagulation, Risk Stratification, and Thrombolysis",
+    guideline_year: "2021",
+    abfm_domain: "Pulmonary & Allergy",
+    section: "Pulmonary Embolism — Treatment, Risk Stratification, Anticoagulation Selection, and Thrombolysis",
+    content: `PULMONARY EMBOLISM — TREATMENT AND MANAGEMENT (AHA/ACCP 2021):
+
+RISK STRATIFICATION (after PE confirmed):
+Massive PE (high-risk): hemodynamic instability — sustained hypotension (SBP <90 mmHg ≥15 min), shock, cardiac arrest, or need for vasopressors → immediate systemic thrombolysis + anticoagulation
+Submassive PE (intermediate-risk): hemodynamically STABLE but with RV dysfunction on echo (RV:LV ratio >0.9) AND/OR elevated troponin/BNP → anticoagulation first; consider catheter-directed thrombolysis (CDT) or surgical embolectomy if deteriorates
+Low-risk PE: hemodynamically stable, no RV dysfunction, no elevated biomarkers → anticoagulation; consider early discharge (outpatient management if HESTIA criteria met)
+
+HESTIA CRITERIA (outpatient eligibility — all must be NO):
+- Hemodynamically unstable
+- Thrombolysis/embolectomy needed
+- Active bleeding or high bleeding risk
+- O2 requirement >24h
+- PE diagnosed on anticoagulation
+- Severe pain requiring IV analgesia >24h
+- Medical or social reason for hospitalization
+- Creatinine clearance <30 mL/min or severe hepatic impairment
+- Pregnancy
+- HIT in past 3 months or platelets <75K
+→ If all HESTIA criteria = NO: outpatient treatment is safe (early discharge within 24h)
+
+ANTICOAGULATION SELECTION:
+Initial (first 5–10 days):
+- DOACs preferred: rivaroxaban 15 mg BID x21 days, then 20 mg daily; OR apixaban 10 mg BID x7 days, then 5 mg BID
+- Parenteral bridge NOT needed with rivaroxaban or apixaban (oral-only regimens)
+- LMWH (enoxaparin 1 mg/kg BID or 1.5 mg/kg daily) if DOAC not feasible; bridge to warfarin OR continue LMWH (preferred in cancer-associated VTE: LMWH or rivaroxaban/apixaban preferred over warfarin)
+- UFH: for massive PE (easier to reverse), severe renal failure (CrCl <30), or pre-surgical
+
+Long-term (3–12 months) and extended anticoagulation:
+- Provoked PE (surgery/trauma/hospitalization): 3 months → stop and reassess
+- Provoked PE (minor transient risk factor: OCP, pregnancy, travel): 3 months minimum
+- Unprovoked PE: minimum 3 months; strongly consider extended anticoagulation (indefinite) — reduced-dose DOACs (apixaban 2.5 mg BID or rivaroxaban 10 mg daily) after initial 6 months for extended therapy
+- Cancer-associated PE: treat until cancer resolved; preferred: LMWH or DOAC (apixaban, rivaroxaban, edoxaban); avoid DOACs if high GI bleeding risk (luminal GI cancer)
+- Recurrent unprovoked VTE: indefinite anticoagulation
+
+SYSTEMIC THROMBOLYSIS (massive PE):
+- Indication: massive PE (hemodynamic instability)
+- Alteplase (tPA) 100 mg IV over 2 hours (standard dose); or 0.6 mg/kg over 15 min if cardiac arrest
+- Absolute contraindications: prior intracranial hemorrhage, ischemic stroke <3 months, intracranial malignancy, active bleeding, significant head trauma <3 months
+- After thrombolysis: hold UFH during infusion; resume when PTT <80 sec
+
+CATHETER-DIRECTED THROMBOLYSIS (CDT): for submassive PE or massive PE with thrombolysis contraindication; lower dose tPA delivered directly to clot via catheter; lower bleeding risk than systemic
+
+IVC FILTER: not recommended routinely; consider ONLY if anticoagulation absolutely contraindicated AND high PE recurrence risk; temporary filters must be removed when anticoagulation can be resumed
+
+FOLLOW-UP:
+- Repeat echocardiogram at 3–6 months (assess for CTEPH — chronic thromboembolic pulmonary hypertension; suspect if persistent dyspnea + elevated RVSP)
+- V/Q scan at 3–6 months if CTEPH suspected
+- Hypercoagulability workup for unprovoked PE: antiphospholipid antibodies, factor V Leiden, prothrombin mutation, protein C/S, antithrombin; test 3 months after completing anticoagulation (before re-starting)`,
+    url: "https://www.ahajournals.org/doi/10.1161/CIR.0000000000000963",
+  },
+
+  {
+    source: "NCCN / AAFP",
+    tier: 2,
+    guideline_title: "Leukemia and Lymphoma — Recognition, Workup, and Referral in Primary Care",
+    guideline_year: "2023",
+    abfm_domain: "Hematology & Oncology",
+    section: "Leukemia and Lymphoma — Red Flags, Initial Workup, and Referral Criteria",
+    content: `LEUKEMIA AND LYMPHOMA — PRIMARY CARE RECOGNITION AND REFERRAL (NCCN/AAFP 2023):
+
+RED FLAG SYMPTOMS REQUIRING PROMPT WORKUP:
+- Unexplained lymphadenopathy (nodes >1 cm, firm, non-tender, >4–6 weeks, supraclavicular/mediastinal)
+- Unexplained splenomegaly or hepatomegaly
+- B symptoms: fever >38°C, drenching night sweats, unintentional weight loss >10% over 6 months (classic for lymphoma)
+- Unexplained fatigue, pallor, easy bruising, petechiae
+- Bone pain without trauma (myeloma, leukemia)
+- Hypercalcemia of unknown etiology
+- Abnormal CBC: unexplained leukocytosis, leukopenia, anemia, thrombocytopenia, or blasts on peripheral smear
+
+INITIAL WORKUP IN PRIMARY CARE:
+CBC with differential: key first test
+- Leukocytosis >100K with blasts → acute leukemia (EMERGENCY — same-day hematology referral)
+- Lymphocytosis with smudge cells on peripheral smear → CLL (confirm with flow cytometry)
+- WBC 12–100K with mature lymphocytes → evaluate CLL vs. reactive
+- Unexplained anemia + elevated protein gap + hypercalcemia → myeloma workup
+- Pancytopenia → evaluate for aplastic anemia, myelodysplasia, acute leukemia
+
+Peripheral blood smear: always obtain if CBC abnormal; look for blasts (>20% = acute leukemia), Auer rods (AML), lymphocytosis with smudge cells (CLL), atypical lymphocytes (infectious mononucleosis, reactive)
+
+Myeloma workup: SPEP (serum protein electrophoresis) + UPEP, serum free light chains, beta-2 microglobulin, LDH, calcium, BMP, uric acid, skeletal survey; refer hematology if M-protein detected
+
+Lymphoma workup: CT chest/abdomen/pelvis with contrast; LDH (elevated in aggressive lymphoma); CBC, CMP, uric acid; refer hematology-oncology for biopsy
+
+LEUKEMIA TYPES — HIGH-YIELD DISTINCTIONS:
+Acute Myeloid Leukemia (AML): blasts in marrow/blood; Auer rods pathognomonic; presents acutely with pancytopenia; emergency referral
+Acute Lymphoblastic Leukemia (ALL): most common pediatric cancer; lymphoblasts; common in children 2–5 years; also adults; TdT positive; emergency referral
+Chronic Myeloid Leukemia (CML): Ph chromosome (t(9;22), BCR-ABL); markedly elevated WBC with full myeloid maturation (basophilia prominent); treated with imatinib (TKI); refer urgent but not emergent
+Chronic Lymphocytic Leukemia (CLL): most common adult leukemia; CD5+/CD19+/CD23+ mature B-cells; smudge cells; Rai staging; many patients observed (watch and wait); warm autoimmune hemolytic anemia complication; refer hematology
+
+HODGKIN vs. NON-HODGKIN LYMPHOMA:
+Hodgkin Lymphoma (HL): Reed-Sternberg cells ("owl-eye" cells); young adults 15–35 and age >55 bimodal; mediastinal mass; B symptoms; excellent prognosis with ABVD chemotherapy ± radiation
+Non-Hodgkin Lymphoma (NHL): heterogeneous group; Diffuse Large B-Cell Lymphoma (DLBCL) most common aggressive NHL; Follicular Lymphoma most common indolent NHL; treated with R-CHOP (rituximab + CHOP)
+Burkitt Lymphoma: "starry sky" pattern; jaw mass in endemic form; c-myc translocation; highly aggressive — emergency
+
+MYELOMA RED FLAGS (CRAB criteria):
+C — Calcium elevated (>11 mg/dL)
+R — Renal failure (Cr >2 or GFR <40)
+A — Anemia (Hb <10 g/dL)
+B — Bone lesions (lytic lesions on skeletal survey) or bone pain
+→ Any CRAB criterion = symptomatic myeloma requiring systemic therapy (refer urgently)
+
+REFERRAL URGENCY:
+- Blasts on peripheral smear or WBC >100K: SAME DAY emergency hematology referral
+- Suspected myeloma with CRAB criteria: urgent within 1–2 weeks
+- Suspected lymphoma (B symptoms + lymphadenopathy): urgent within 2 weeks
+- CLL without treatment criteria: non-urgent referral acceptable`,
+    url: "https://www.nccn.org/guidelines/category_1",
+  },
 ];
