@@ -1,18 +1,20 @@
 import OpenAI from "openai";
 
-if (!process.env.AI_INTEGRATIONS_OPENAI_BASE_URL) {
+const directApiKey = process.env.OPENAI_API_KEY;
+const integrationBaseUrl = process.env.AI_INTEGRATIONS_OPENAI_BASE_URL;
+const integrationApiKey = process.env.AI_INTEGRATIONS_OPENAI_API_KEY;
+
+if (!directApiKey && !integrationBaseUrl) {
   throw new Error(
-    "AI_INTEGRATIONS_OPENAI_BASE_URL must be set. Did you forget to provision the OpenAI AI integration?",
+    "No OpenAI credentials found. Set OPENAI_API_KEY for a direct connection, or provision the OpenAI AI integration.",
   );
 }
 
-if (!process.env.AI_INTEGRATIONS_OPENAI_API_KEY) {
-  throw new Error(
-    "AI_INTEGRATIONS_OPENAI_API_KEY must be set. Did you forget to provision the OpenAI AI integration?",
-  );
-}
+export const openai = directApiKey
+  ? new OpenAI({ apiKey: directApiKey })
+  : new OpenAI({
+      apiKey: integrationApiKey,
+      baseURL: integrationBaseUrl,
+    });
 
-export const openai = new OpenAI({
-  apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
-  baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
-});
+export const CLINICAL_MODEL = directApiKey ? "gpt-4o" : "gpt-5.2";

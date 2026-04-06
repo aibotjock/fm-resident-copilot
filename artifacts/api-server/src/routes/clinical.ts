@@ -1,5 +1,5 @@
 import { Router, type IRouter, type Request, type Response } from "express";
-import { openai } from "@workspace/integrations-openai-ai-server";
+import { openai, CLINICAL_MODEL } from "@workspace/integrations-openai-ai-server";
 import { getDomainList } from "../guidelines/abfm";
 import { getUSPSTFContext } from "../guidelines/uspstf";
 import { retrieveContext } from "../rag/retrieval";
@@ -334,7 +334,7 @@ Return ONLY a valid JSON object with exactly this structure (no markdown, no add
 }`;
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-5.2",
+      model: CLINICAL_MODEL,
       max_completion_tokens: 2048,
       messages: [
         { role: "system", content: systemPrompt },
@@ -402,7 +402,7 @@ router.post("/clinical/query", async (req: Request, res: Response) => {
     );
 
     const stream = await openai.chat.completions.create({
-      model: "gpt-5.2",
+      model: CLINICAL_MODEL,
       max_completion_tokens: 8192,
       messages: [
         { role: "system", content: systemPrompt },
