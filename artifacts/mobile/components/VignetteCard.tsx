@@ -9,6 +9,7 @@ import {
   View,
   useColorScheme,
 } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/colors";
@@ -38,6 +39,7 @@ export function VignetteCard({ vignette, loading, error, sessionScore, onNext, o
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
+  const insets = useSafeAreaInsets();
 
   const [selected, setSelected] = useState<"a" | "b" | "c" | "d" | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
@@ -126,7 +128,7 @@ export function VignetteCard({ vignette, loading, error, sessionScore, onNext, o
   return (
     <ScrollView
       style={[styles.container, { backgroundColor: theme.background }]}
-      contentContainerStyle={styles.content}
+      contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 90 }]}
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.scoreRow}>

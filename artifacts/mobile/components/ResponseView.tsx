@@ -9,6 +9,7 @@ import {
   View,
   useColorScheme,
 } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 import * as Clipboard from "expo-clipboard";
 import { Ionicons } from "@expo/vector-icons";
@@ -318,6 +319,7 @@ export function ResponseView({
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
   const modeColor = getModeColor(mode, isDark);
+  const insets = useSafeAreaInsets();
 
   const [copied, setCopied] = useState(false);
   const copyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -441,7 +443,7 @@ export function ResponseView({
 
       <ScrollView
         style={styles.scrollView}
-        contentContainerStyle={styles.content}
+        contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 40 }]}
         showsVerticalScrollIndicator={false}
       >
         {parseMarkdown(response, isDark, modeColor, theme)}
