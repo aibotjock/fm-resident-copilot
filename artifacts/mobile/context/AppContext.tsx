@@ -23,6 +23,7 @@ const SRS_KEY = "@fm_copilot_srs_cards";
 const APP_MODE_KEY = "@fm_copilot_app_mode";
 const DOMAIN_COVERAGE_KEY = "@fm_copilot_domain_coverage";
 const ITE_SCORES_KEY = "@fm_copilot_ite_scores";
+const VIGNETTE_PERF_KEY = "@fm_copilot_vignette_perf";
 const MAX_HISTORY = 200;
 const MAX_BOOKMARKS = 200;
 
@@ -87,6 +88,9 @@ interface AppContextValue {
   domainCoverage: Record<string, number>;
   recordDomainQuery: (domain: string) => void;
 
+  vignettePerf: Record<string, { correct: number; total: number }>;
+  recordVignetteAnswer: (domain: string, correct: boolean) => void;
+
   iteScores: ITEScore[];
   saveITEScore: (score: Omit<ITEScore, "id" | "createdAt">) => Promise<void>;
   deleteITEScore: (id: string) => Promise<void>;
@@ -102,11 +106,12 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [srsCards, setSrsCards] = useState<SRSCard[]>([]);
   const [domainCoverage, setDomainCoverage] = useState<Record<string, number>>({});
+  const [vignettePerf, setVignettePerf] = useState<Record<string, { correct: number; total: number }>>({});
   const [iteScores, setIteScores] = useState<ITEScore[]>([]);
 
   const loadAll = useCallback(async () => {
     try {
-      const [rawHistory, rawBookmarks, rawSRS, rawMode, rawCoverage, rawITE] =
+      const [rawHistory, rawBookmarks, rawSRS, rawMode, rawCoverage, rawITE, rawVigPerf] =
         await Promise.all([
           AsyncStorage.getItem(HISTORY_KEY),
           AsyncStorage.getItem(BOOKMARKS_KEY),
@@ -114,6 +119,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
           AsyncStorage.getItem(APP_MODE_KEY),
           AsyncStorage.getItem(DOMAIN_COVERAGE_KEY),
           AsyncStorage.getItem(ITE_SCORES_KEY),
+          AsyncStorage.getItem(VIGNETTE_PERF_KEY),
         ]);
       if (rawHistory) setHistory(JSON.parse(rawHistory));
       if (rawBookmarks) setBookmarks(JSON.parse(rawBookmarks));
@@ -121,6 +127,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       if (rawMode) setAppModeState(JSON.parse(rawMode) as AppMode);
       if (rawCoverage) setDomainCoverage(JSON.parse(rawCoverage));
       if (rawITE) setIteScores(JSON.parse(rawITE));
+      if (rawVigPerf) setVignettePerf(JSON.parse(rawVigPerf));
     } catch (e) {
       console.error("Failed to load app data:", e);
     } finally {
@@ -351,6 +358,36 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     [saveDomainCoverage]
   );
 
+  const saveVignettePerf = useCallback(
+    async (perf: Record<string, { correct: number; total: number }>) => {
+      try {
+        await AsyncStorage.setItem(VIGNETTE_PERF_KEY, JSON.stringify(perf));
+      } catch (e) {
+        console.error("Failed to save vignette performance:", e);
+      }
+    },
+    []
+  );
+
+  const recordVignetteAnswer = useCallback(
+    (domain: string, correct: boolean) => {
+      if (!domain) return;
+      setVignettePerf((prev) => {
+        const existing = prev[domain] ?? { correct: 0, total: 0 };
+        const updated = {
+          ...prev,
+          [domain]: {
+            correct: existing.correct + (correct ? 1 : 0),
+            total: existing.total + 1,
+          },
+        };
+        saveVignettePerf(updated);
+        return updated;
+      });
+    },
+    [saveVignettePerf]
+  );
+
   const saveITEScore = useCallback(
     async (score: Omit<ITEScore, "id" | "createdAt">) => {
       const newScore: ITEScore = {
@@ -405,6 +442,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         getDueCards,
         domainCoverage,
         recordDomainQuery,
+        vignettePerf,
+        recordVignetteAnswer,
         iteScores,
         saveITEScore,
         deleteITEScore,

@@ -29,7 +29,7 @@ interface Props {
   error: string;
   sessionScore: { correct: number; total: number };
   onNext: () => void;
-  onAnswer?: (correct: boolean) => void;
+  onAnswer?: (domain: string, correct: boolean) => void;
 }
 
 const OPTION_LABELS = ["A", "B", "C", "D"] as const;
@@ -49,7 +49,7 @@ export function VignetteCard({ vignette, loading, error, sessionScore, onNext, o
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setSelected(key);
     setShowExplanation(true);
-    onAnswer?.(key === vignette.answer);
+    onAnswer?.(vignette.domain, key === vignette.answer);
   };
 
   const handleNext = () => {

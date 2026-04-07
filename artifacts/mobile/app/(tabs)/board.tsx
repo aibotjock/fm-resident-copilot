@@ -64,7 +64,7 @@ export default function BoardPrepScreen() {
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
   const insets = useSafeAreaInsets();
-  const { history } = useApp();
+  const { history, recordVignetteAnswer } = useApp();
 
   const [tabMode, setTabMode] = useState<TabMode>("study");
   const [query, setQuery] = useState("");
@@ -131,12 +131,13 @@ export default function BoardPrepScreen() {
     fetchVignette();
   }, [fetchVignette]);
 
-  const handleAnswer = useCallback((correct: boolean) => {
+  const handleAnswer = useCallback((domain: string, correct: boolean) => {
     setSessionScore((prev) => ({
       correct: prev.correct + (correct ? 1 : 0),
       total: prev.total + 1,
     }));
-  }, []);
+    recordVignetteAnswer(domain, correct);
+  }, [recordVignetteAnswer]);
 
   const handleDomainSelect = (domain: string | null) => {
     setSelectedDomain(domain);

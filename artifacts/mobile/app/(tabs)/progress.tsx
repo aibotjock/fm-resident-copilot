@@ -77,6 +77,7 @@ export default function ProgressScreen() {
     updateSRSCard,
     clearSRSDeck,
     domainCoverage,
+    vignettePerf,
     iteScores,
     saveITEScore,
     deleteITEScore,
@@ -112,8 +113,10 @@ export default function ProgressScreen() {
           c.repetitions >= 3 &&
           c.interval >= 14
       ).length,
+      mcqCorrect: vignettePerf[domain]?.correct ?? 0,
+      mcqTotal: vignettePerf[domain]?.total ?? 0,
     }));
-  }, [domainCoverage, srsCards]);
+  }, [domainCoverage, srsCards, vignettePerf]);
 
   const coveredDomains = domainStats.filter((d) => d.queries >= COVERAGE_GOAL).length;
   const overallCoverage = Math.round((coveredDomains / DOMAIN_ORDER.length) * 100);
@@ -575,18 +578,26 @@ export default function ProgressScreen() {
                       ]}
                     />
                   </View>
-                  {stat.cards > 0 && (
-                    <Text
-                      style={[
-                        styles.domainCardCount,
-                        { color: Colors.flashcards },
-                      ]}
-                    >
-                      {stat.cards} card{stat.cards !== 1 ? "s" : ""}
-                      {stat.mastered > 0
-                        ? ` · ${stat.mastered} mastered`
-                        : ""}
-                    </Text>
+                  {(stat.cards > 0 || stat.mcqTotal > 0) && (
+                    <View style={styles.domainFooter}>
+                      {stat.cards > 0 && (
+                        <Text style={[styles.domainCardCount, { color: Colors.flashcards }]}>
+                          {stat.cards} card{stat.cards !== 1 ? "s" : ""}
+                          {stat.mastered > 0 ? ` · ${stat.mastered} mastered` : ""}
+                        </Text>
+                      )}
+                      {stat.mcqTotal > 0 && (
+                        <Text style={[styles.domainMCQScore, {
+                          color: stat.mcqTotal > 0 && (stat.mcqCorrect / stat.mcqTotal) >= 0.67
+                            ? "#10B981"
+                            : stat.mcqTotal > 0 && (stat.mcqCorrect / stat.mcqTotal) >= 0.5
+                            ? "#F59E0B"
+                            : "#EF4444",
+                        }]}>
+                          MCQ {stat.mcqCorrect}/{stat.mcqTotal} ({Math.round((stat.mcqCorrect / stat.mcqTotal) * 100)}%)
+                        </Text>
+                      )}
+                    </View>
                   )}
                 </View>
               );
@@ -1301,6 +1312,16 @@ const styles = StyleSheet.create({
   domainCardCount: {
     fontSize: 10,
     fontFamily: "Inter_400Regular",
+  },
+  domainFooter: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 6,
+    alignItems: "center",
+  },
+  domainMCQScore: {
+    fontSize: 10,
+    fontFamily: "Inter_600SemiBold",
   },
   statsRow: { flexDirection: "row", gap: 8 },
   statCard: {
