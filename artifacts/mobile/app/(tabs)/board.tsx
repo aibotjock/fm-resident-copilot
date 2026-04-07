@@ -64,7 +64,7 @@ export default function BoardPrepScreen() {
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
   const insets = useSafeAreaInsets();
-  const { history, recordVignetteAnswer } = useApp();
+  const { history, recordVignetteAnswer, addSRSCards } = useApp();
 
   const [tabMode, setTabMode] = useState<TabMode>("study");
   const [query, setQuery] = useState("");
@@ -138,6 +138,13 @@ export default function BoardPrepScreen() {
     }));
     recordVignetteAnswer(domain, correct);
   }, [recordVignetteAnswer]);
+
+  const handleSaveToFlashcard = useCallback(
+    (card: { front: string; back: string; topic: string; abfmDomain: string }) => {
+      addSRSCards([card]);
+    },
+    [addSRSCards]
+  );
 
   const handleDomainSelect = (domain: string | null) => {
     setSelectedDomain(domain);
@@ -358,6 +365,7 @@ export default function BoardPrepScreen() {
             sessionScore={sessionScore}
             onNext={handleNextVignette}
             onAnswer={handleAnswer}
+            onSaveToFlashcard={handleSaveToFlashcard}
           />
         )}
       </View>

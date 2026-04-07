@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
   Animated,
@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
+import * as Speech from "expo-speech";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/colors";
 
@@ -30,12 +31,13 @@ interface Props {
   sessionScore: { correct: number; total: number };
   onNext: () => void;
   onAnswer?: (domain: string, correct: boolean) => void;
+  onSaveToFlashcard?: (card: { front: string; back: string; topic: string; abfmDomain: string }) => void;
 }
 
 const OPTION_LABELS = ["A", "B", "C", "D"] as const;
 const OPTION_KEYS = ["a", "b", "c", "d"] as const;
 
-export function VignetteCard({ vignette, loading, error, sessionScore, onNext, onAnswer }: Props) {
+export function VignetteCard({ vignette, loading, error, sessionScore, onNext, onAnswer, onSaveToFlashcard }: Props) {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
@@ -43,6 +45,56 @@ export function VignetteCard({ vignette, loading, error, sessionScore, onNext, o
 
   const [selected, setSelected] = useState<"a" | "b" | "c" | "d" | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
+  const [isSpeakingQ, setIsSpeakingQ] = useState(false);
+  const [isSpeakingE, setIsSpeakingE] = useState(false);
+  const [cardSaved, setCardSaved] = useState(false);
+
+  const stopAll = useCallback(() => {
+    Speech.stop();
+    setIsSpeakingQ(false);
+    setIsSpeakingE(false);
+  }, []);
+
+  useEffect(() => () => { Speech.stop(); }, []);
+
+  const handleSpeakQuestion = useCallback(() => {
+    if (!vignette) return;
+    if (isSpeakingQ) { stopAll(); return; }
+    stopAll();
+    const text = `${vignette.question}. Option A: ${vignette.options.a}. Option B: ${vignette.options.b}. Option C: ${vignette.options.c}. Option D: ${vignette.options.d}.`;
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setIsSpeakingQ(true);
+    Speech.speak(text, {
+      rate: 0.9,
+      onDone: () => setIsSpeakingQ(false),
+      onStopped: () => setIsSpeakingQ(false),
+      onError: () => setIsSpeakingQ(false),
+    });
+  }, [vignette, isSpeakingQ, stopAll]);
+
+  const handleSpeakExplanation = useCallback(() => {
+    if (!vignette) return;
+    if (isSpeakingE) { stopAll(); return; }
+    stopAll();
+    const answerText = `The correct answer is ${vignette.answer.toUpperCase()}. ${vignette.explanation}`;
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setIsSpeakingE(true);
+    Speech.speak(answerText, {
+      rate: 0.9,
+      onDone: () => setIsSpeakingE(false),
+      onStopped: () => setIsSpeakingE(false),
+      onError: () => setIsSpeakingE(false),
+    });
+  }, [vignette, isSpeakingE, stopAll]);
+
+  const handleSaveFlashcard = useCallback(() => {
+    if (!vignette || !onSaveToFlashcard || cardSaved) return;
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    const front = vignette.question;
+    const back = `Answer: ${vignette.answer.toUpperCase()} — ${vignette.options[vignette.answer]}\n\n${vignette.explanation}\n\nSource: ${vignette.source}`;
+    onSaveToFlashcard({ front, back, topic: vignette.domain, abfmDomain: vignette.domain });
+    setCardSaved(true);
+  }, [vignette, onSaveToFlashcard, cardSaved]);
 
   const handleSelect = (key: "a" | "b" | "c" | "d") => {
     if (selected !== null || !vignette) return;
@@ -53,8 +105,10 @@ export function VignetteCard({ vignette, loading, error, sessionScore, onNext, o
   };
 
   const handleNext = () => {
+    stopAll();
     setSelected(null);
     setShowExplanation(false);
+    setCardSaved(false);
     onNext();
   };
 
@@ -143,9 +197,27 @@ export function VignetteCard({ vignette, loading, error, sessionScore, onNext, o
       </View>
 
       <View style={[styles.questionCard, { backgroundColor: theme.surface, borderColor: theme.border }]}>
-        <View style={styles.questionHeader}>
-          <Ionicons name="help-circle-outline" size={18} color={Colors.boardPrep} />
-          <Text style={[styles.questionLabel, { color: Colors.boardPrep }]}>ABFM BOARD VIGNETTE</Text>
+        <View style={styles.questionHeaderRow}>
+          <View style={styles.questionHeader}>
+            <Ionicons name="help-circle-outline" size={18} color={Colors.boardPrep} />
+            <Text style={[styles.questionLabel, { color: Colors.boardPrep }]}>ABFM BOARD VIGNETTE</Text>
+          </View>
+          <Pressable
+            onPress={handleSpeakQuestion}
+            style={({ pressed }) => [
+              styles.speakBtn,
+              {
+                backgroundColor: isSpeakingQ ? `${Colors.boardPrep}18` : "transparent",
+                opacity: pressed ? 0.6 : 1,
+              },
+            ]}
+          >
+            <Ionicons
+              name={isSpeakingQ ? "stop-circle-outline" : "volume-medium-outline"}
+              size={18}
+              color={isSpeakingQ ? Colors.boardPrep : theme.textSecondary}
+            />
+          </Pressable>
         </View>
         <Text style={[styles.questionText, { color: theme.text }]}>{vignette.question}</Text>
         <Text style={[styles.sourceNote, { color: theme.textTertiary }]}>Source: {vignette.source}</Text>
@@ -188,19 +260,64 @@ export function VignetteCard({ vignette, loading, error, sessionScore, onNext, o
             borderColor: isCorrect ? "#10B981" : "#F43F5E",
           },
         ]}>
-          <View style={styles.explanationHeader}>
-            <Ionicons
-              name={isCorrect ? "checkmark-circle" : "close-circle"}
-              size={20}
-              color={isCorrect ? "#10B981" : "#F43F5E"}
-            />
-            <Text style={[styles.explanationTitle, { color: isCorrect ? "#10B981" : "#F43F5E" }]}>
-              {isCorrect ? "Correct!" : `Incorrect — Answer: ${vignette.answer.toUpperCase()}`}
-            </Text>
+          <View style={styles.explanationHeaderRow}>
+            <View style={styles.explanationHeader}>
+              <Ionicons
+                name={isCorrect ? "checkmark-circle" : "close-circle"}
+                size={20}
+                color={isCorrect ? "#10B981" : "#F43F5E"}
+              />
+              <Text style={[styles.explanationTitle, { color: isCorrect ? "#10B981" : "#F43F5E" }]}>
+                {isCorrect ? "Correct!" : `Incorrect — Answer: ${vignette.answer.toUpperCase()}`}
+              </Text>
+            </View>
+            <Pressable
+              onPress={handleSpeakExplanation}
+              style={({ pressed }) => [
+                styles.speakBtn,
+                {
+                  backgroundColor: isSpeakingE
+                    ? (isCorrect ? "#10B98118" : "#F43F5E18")
+                    : "transparent",
+                  opacity: pressed ? 0.6 : 1,
+                },
+              ]}
+            >
+              <Ionicons
+                name={isSpeakingE ? "stop-circle-outline" : "volume-medium-outline"}
+                size={18}
+                color={isSpeakingE ? (isCorrect ? "#10B981" : "#F43F5E") : theme.textSecondary}
+              />
+            </Pressable>
           </View>
           <Text style={[styles.explanationText, { color: theme.text }]}>
             {vignette.explanation}
           </Text>
+          {onSaveToFlashcard && (
+            <Pressable
+              onPress={handleSaveFlashcard}
+              disabled={cardSaved}
+              style={({ pressed }) => [
+                styles.saveCardBtn,
+                {
+                  backgroundColor: cardSaved
+                    ? (isDark ? "#1E293B" : "#F1F5F9")
+                    : (isDark ? "#1E293B" : "#F8FAFC"),
+                  borderColor: cardSaved ? Colors.flashcards : theme.border,
+                  opacity: pressed ? 0.7 : 1,
+                },
+              ]}
+            >
+              <Ionicons
+                name={cardSaved ? "checkmark-circle" : "add-circle-outline"}
+                size={16}
+                color={cardSaved ? Colors.flashcards : theme.textSecondary}
+              />
+              <Text style={[styles.saveCardText, { color: cardSaved ? Colors.flashcards : theme.textSecondary }]}>
+                {cardSaved ? "Saved to Flashcards" : "Save as Flashcard"}
+              </Text>
+            </Pressable>
+          )}
         </View>
       )}
 
@@ -249,7 +366,8 @@ const styles = StyleSheet.create({
     padding: 16,
     gap: 12,
   },
-  questionHeader: { flexDirection: "row", alignItems: "center", gap: 6 },
+  questionHeaderRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
+  questionHeader: { flexDirection: "row", alignItems: "center", gap: 6, flex: 1 },
   questionLabel: { fontSize: 11, fontFamily: "Inter_600SemiBold", letterSpacing: 0.5 },
   questionText: { fontSize: 15, fontFamily: "Inter_400Regular", lineHeight: 24 },
   sourceNote: { fontSize: 11, fontFamily: "Inter_400Regular" },
@@ -278,9 +396,29 @@ const styles = StyleSheet.create({
     padding: 16,
     gap: 10,
   },
-  explanationHeader: { flexDirection: "row", alignItems: "center", gap: 8 },
+  explanationHeaderRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
+  explanationHeader: { flexDirection: "row", alignItems: "center", gap: 8, flex: 1 },
   explanationTitle: { fontSize: 14, fontFamily: "Inter_700Bold" },
   explanationText: { fontSize: 14, fontFamily: "Inter_400Regular", lineHeight: 22 },
+  speakBtn: {
+    width: 32,
+    height: 32,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+    flexShrink: 0,
+  },
+  saveCardBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 10,
+    borderWidth: 1,
+    alignSelf: "flex-start",
+  },
+  saveCardText: { fontSize: 13, fontFamily: "Inter_500Medium" },
   nextBtn: {
     flexDirection: "row",
     alignItems: "center",
