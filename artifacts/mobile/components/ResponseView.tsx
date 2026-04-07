@@ -12,6 +12,7 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 import * as Clipboard from "expo-clipboard";
+import * as Speech from "expo-speech";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors, getModeColor } from "@/constants/colors";
 import { SourceCitation } from "@/components/SourceCitation";
@@ -324,6 +325,56 @@ export function ResponseView({
   const [copied, setCopied] = useState(false);
   const copyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  const stripMarkdown = useCallback((text: string): string => {
+    return text
+      .replace(/%%FM_CITE%%[\s\S]*?%%\/FM_CITE%%/g, "")
+      .replace(/^#{1,6}\s+/gm, "")
+      .replace(/\*\*(.+?)\*\*/g, "$1")
+      .replace(/\*(.+?)\*/g, "$1")
+      .replace(/`{1,3}[^`]*`{1,3}/g, "")
+      .replace(/^\s*[-*+]\s+/gm, "")
+      .replace(/^\s*\d+\.\s+/gm, "")
+      .replace(/^\|.*\|$/gm, "")
+      .replace(/^[-|:\s]+$/gm, "")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }, []);
+
+  const handleSpeak = useCallback(() => {
+    const text = stripMarkdown(response);
+    if (!text) return;
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setIsSpeaking(true);
+    Speech.speak(text, {
+      rate: 0.92,
+      pitch: 1.0,
+      onDone: () => setIsSpeaking(false),
+      onStopped: () => setIsSpeaking(false),
+      onError: () => setIsSpeaking(false),
+    });
+  }, [response, stripMarkdown]);
+
+  const handleStopSpeech = useCallback(() => {
+    Speech.stop();
+    setIsSpeaking(false);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      Speech.stop();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isStreaming && isSpeaking) {
+      Speech.stop();
+      setIsSpeaking(false);
+    }
+  }, [isStreaming, isSpeaking]);
+
   const cursorOpacity = useRef(new Animated.Value(1)).current;
   const blinkAnimation = useRef<Animated.CompositeAnimation | null>(null);
 
@@ -405,6 +456,26 @@ export function ResponseView({
                 name={bookmarked ? "bookmark" : "bookmark-outline"}
                 size={18}
                 color={bookmarked ? Colors.flashcards : theme.textSecondary}
+              />
+            </Pressable>
+          )}
+          {!isStreaming && response.length > 0 && (
+            <Pressable
+              onPress={isSpeaking ? handleStopSpeech : handleSpeak}
+              style={({ pressed }) => [
+                styles.toolbarBtn,
+                {
+                  backgroundColor: isSpeaking
+                    ? `${modeColor}18`
+                    : "transparent",
+                  opacity: pressed ? 0.6 : 1,
+                },
+              ]}
+            >
+              <Ionicons
+                name={isSpeaking ? "stop-circle-outline" : "volume-medium-outline"}
+                size={18}
+                color={isSpeaking ? modeColor : theme.textSecondary}
               />
             </Pressable>
           )}
