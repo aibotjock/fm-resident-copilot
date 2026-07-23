@@ -93,10 +93,11 @@ router.post("/clinical/vignette", async (req: Request, res: Response) => {
     // Pick domain or random
     const DOMAINS = [
       "Cardiovascular", "Endocrine", "Respiratory", "Infectious Disease",
-      "Maternity Care", "Pediatrics", "Renal", "Behavioral Health",
+      "Maternity Care", "Women's Health", "Pediatrics", "Renal", "Behavioral Health",
       "Preventive Medicine", "Musculoskeletal", "Neurology",
       "Gastroenterology", "Dermatology", "Geriatrics", "Male Reproductive",
-      "Hematology/Oncology",
+      "Hematology/Oncology", "ENT/Ophthalmology", "Emergent/Urgent Care",
+      "Population & Practice",
     ];
     const selectedDomain = domain && domain !== "random"
       ? domain

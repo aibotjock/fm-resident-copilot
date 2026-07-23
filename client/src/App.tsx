@@ -17,9 +17,11 @@ type Tab = "clinical" | "board" | "flashcards" | "history";
 
 const DOMAINS = [
   "Random", "Cardiovascular", "Endocrine", "Respiratory", "Infectious Disease",
-  "Maternity Care", "Pediatrics", "Renal", "Behavioral Health",
+  "Maternity Care", "Women's Health", "Pediatrics", "Renal", "Behavioral Health",
   "Preventive Medicine", "Musculoskeletal", "Neurology",
-  "Gastroenterology", "Dermatology", "Geriatrics",
+  "Gastroenterology", "Dermatology", "Geriatrics", "Male Reproductive",
+  "Hematology/Oncology", "ENT/Ophthalmology", "Emergent/Urgent Care",
+  "Population & Practice",
 ];
 
 export default function App() {

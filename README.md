@@ -79,7 +79,8 @@ fm-resident-copilot/
 │   │   │   ├── index.ts       # Drizzle + PostgreSQL pool
 │   │   │   └── schema.ts      # Table definitions
 │   │   ├── rag/
-│   │   │   ├── seed-data.ts   # 20 curated guideline chunks
+│   │   │   ├── seed-data.ts   # combines 300+ curated guideline chunks
+│   │   │   ├── seed/          # per-domain seed files (all ABFM blueprint domains)
 │   │   │   ├── store.ts       # FTS search + CRUD
 │   │   │   ├── retrieval.ts   # Context retrieval for prompts
 │   │   │   └── ingest.ts      # Version-gated ingestion
