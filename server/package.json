@@ -7,7 +7,7 @@
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
     "build": "tsc && tsc-alias",
-    "db:push": "drizzle-kit push --config ./drizzle.config.ts"
+    "db:push": "drizzle-kit push --config ./drizzle.config.ts --force"
   },
   "dependencies": {
     "cors": "^2.8.5",
