@@ -24,6 +24,7 @@
     "@types/node": "^22.0.0",
     "@types/pg": "^8.11.0",
     "drizzle-kit": "^0.31.0",
+    "tsc-alias": "^1.8.10",
     "tsx": "^4.21.0",
     "typescript": "^5.7.0"
   }
