@@ -1,14 +1,8 @@
 import { Router, type Request, type Response } from "express";
-import OpenAI from "openai";
 import { retrieveContext, formatContextForPrompt } from "../rag/retrieval.js";
+import { getOpenAIForRequest } from "../lib/openai.js";
 
 const router = Router();
-
-function getOpenAI(): OpenAI {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) throw new Error("OPENAI_API_KEY is required");
-  return new OpenAI({ apiKey });
-}
 
 // POST /api/voice/chat — accepts { audio: base64 }, returns SSE with transcript + audio
 router.post("/voice/chat", async (req: Request, res: Response) => {
@@ -25,7 +19,7 @@ router.post("/voice/chat", async (req: Request, res: Response) => {
     res.setHeader("X-Accel-Buffering", "no");
     res.flushHeaders();
 
-    const openai = getOpenAI();
+    const openai = getOpenAIForRequest(req);
 
     // 1. Speech-to-text
     const audioBuffer = Buffer.from(audio, "base64");

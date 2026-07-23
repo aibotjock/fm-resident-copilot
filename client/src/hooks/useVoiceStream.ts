@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef } from "react";
 import { useAudioPlayback } from "./useAudioPlayback";
+import { getAuthHeaders } from "../lib/settings";
 
 interface StreamCallbacks {
   workletPath?: string;
@@ -55,7 +56,7 @@ export function useVoiceStream({ workletPath = "/audio-playback-worklet.js", ...
 
       const response = await fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "text/event-stream" },
+        headers: { "Content-Type": "application/json", Accept: "text/event-stream", ...getAuthHeaders() },
         body: JSON.stringify({ audio: base64Audio }),
         signal: ac.signal,
       });

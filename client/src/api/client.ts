@@ -1,9 +1,8 @@
-// API base URL. For web builds served alongside the backend (or via the Vite
-// dev proxy), leave VITE_API_BASE_URL unset so relative "/api" paths are used.
-// For native (Capacitor/Android) builds, set VITE_API_BASE_URL to the full
-// backend origin, e.g. "https://my-server.example.com".
-const API_ORIGIN = (import.meta.env.VITE_API_BASE_URL as string | undefined)?.replace(/\/$/, "") ?? "";
-const API_BASE = `${API_ORIGIN}/api`;
+// API URLs and auth headers are resolved at request time from user settings
+// (localStorage) with a fallback to the build-time VITE_API_BASE_URL, so the
+// user can change the backend URL / API key in the Settings screen without
+// rebuilding the app.
+import { apiUrl, getAuthHeaders } from "../lib/settings";
 
 export type ClinicalMode = "point_of_care" | "documentation" | "board_prep" | "flashcards";
 
@@ -17,9 +16,9 @@ export async function* streamClinicalQuery(
   mode: ClinicalMode,
   condition?: string
 ): AsyncGenerator<StreamEvent | { done: true }> {
-  const response = await fetch(`${API_BASE}/clinical/query`, {
+  const response = await fetch(apiUrl("/clinical/query"), {
     method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "text/event-stream" },
+    headers: { "Content-Type": "application/json", Accept: "text/event-stream", ...getAuthHeaders() },
     body: JSON.stringify({ query, mode, condition }),
   });
 
@@ -62,9 +61,9 @@ export interface Vignette {
 }
 
 export async function fetchVignette(domain?: string): Promise<Vignette> {
-  const res = await fetch(`${API_BASE}/clinical/vignette`, {
+  const res = await fetch(apiUrl("/clinical/vignette"), {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...getAuthHeaders() },
     body: JSON.stringify({ domain: domain ?? "random" }),
   });
   if (!res.ok) throw new Error("Failed to generate vignette");
@@ -72,6 +71,6 @@ export async function fetchVignette(domain?: string): Promise<Vignette> {
 }
 
 export async function checkHealth(): Promise<{ status: string }> {
-  const res = await fetch(`${API_BASE}/healthz`);
+  const res = await fetch(apiUrl("/healthz"), { headers: getAuthHeaders() });
   return res.json();
 }

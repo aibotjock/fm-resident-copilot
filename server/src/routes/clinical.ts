@@ -1,14 +1,8 @@
 import { Router, type Request, type Response } from "express";
-import OpenAI from "openai";
 import { retrieveContext, formatContextForPrompt } from "../rag/retrieval.js";
+import { getOpenAIForRequest } from "../lib/openai.js";
 
 const router = Router();
-
-function getOpenAI(): OpenAI {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) throw new Error("OPENAI_API_KEY is required");
-  return new OpenAI({ apiKey });
-}
 
 const SYSTEM_PROMPTS: Record<string, string> = {
   point_of_care: `You are FM Resident Copilot, a fact-based clinical decision support tool for family medicine residents. You answer point-of-care questions using ONLY the guideline references provided below. If a question cannot be answered from the references, say so. Always cite your sources using [REF N] format. Be concise, clinically actionable, and evidence-based.`,
@@ -44,7 +38,7 @@ router.post("/clinical/query", async (req: Request, res: Response) => {
     res.setHeader("X-Accel-Buffering", "no");
     res.flushHeaders();
 
-    const openai = getOpenAI();
+    const openai = getOpenAIForRequest(req);
     const stream = await openai.chat.completions.create({
       model: "gpt-4o",
       messages: [
@@ -111,7 +105,7 @@ router.post("/clinical/vignette", async (req: Request, res: Response) => {
     const chunks = await retrieveContext(selectedDomain, 5);
     const contextBlock = formatContextForPrompt(chunks);
 
-    const openai = getOpenAI();
+    const openai = getOpenAIForRequest(req);
     const response = await openai.chat.completions.create({
       model: "gpt-4o",
       messages: [

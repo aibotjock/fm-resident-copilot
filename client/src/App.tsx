@@ -1,15 +1,17 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import {
   Stethoscope, GraduationCap, Layers, Clock,
-  Send, ChevronDown, Trophy, BookOpen, Loader2
+  Send, ChevronDown, Trophy, BookOpen, Loader2, Settings as SettingsIcon
 } from "lucide-react";
 import ModeSelector from "./components/ModeSelector";
 import MessageBubble, { type Message, type Source } from "./components/MessageBubble";
 import VoiceButton from "./components/VoiceButton";
 import VignetteCard from "./components/VignetteCard";
+import SettingsModal from "./components/SettingsModal";
 import { useVoiceRecorder } from "./hooks/useVoiceRecorder";
 import { useVoiceStream } from "./hooks/useVoiceStream";
 import { streamClinicalQuery, fetchVignette, type ClinicalMode, type Vignette } from "./api/client";
+import { apiUrl } from "./lib/settings";
 
 type Tab = "clinical" | "board" | "flashcards" | "history";
 
@@ -27,6 +29,7 @@ export default function App() {
   const [input, setInput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [isProcessingVoice, setIsProcessingVoice] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   // Board prep state
@@ -112,7 +115,7 @@ export default function App() {
       const blob = await recorder.stopRecording();
       if (blob.size > 0) {
         setIsProcessingVoice(true);
-        await voiceStream.streamVoiceResponse("/api/voice/chat", blob);
+        await voiceStream.streamVoiceResponse(apiUrl("/voice/chat"), blob);
       }
     } else {
       await recorder.startRecording();
@@ -149,10 +152,17 @@ export default function App() {
           <div className="w-9 h-9 rounded-xl bg-teal-500/20 flex items-center justify-center">
             <Stethoscope size={20} className="text-teal-400" />
           </div>
-          <div>
+          <div className="flex-1">
             <h1 className="text-base font-bold text-white">FM Resident Copilot</h1>
             <p className="text-[10px] text-gray-500">Evidence-based clinical support</p>
           </div>
+          <button
+            onClick={() => setShowSettings(true)}
+            className="w-9 h-9 rounded-xl flex items-center justify-center text-gray-400 hover:text-teal-400 hover:bg-white/5 transition"
+            aria-label="Settings"
+          >
+            <SettingsIcon size={20} />
+          </button>
         </div>
         {tab === "clinical" && <ModeSelector mode={mode} onModeChange={setMode} />}
       </header>
@@ -268,6 +278,9 @@ export default function App() {
           </div>
         </div>
       )}
+
+      {/* Settings modal */}
+      <SettingsModal open={showSettings} onClose={() => setShowSettings(false)} />
 
       {/* Bottom nav */}
       <nav className="flex items-center justify-around px-2 py-2 border-t border-white/5 bg-navy-900/95">
