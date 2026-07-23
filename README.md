@@ -26,7 +26,17 @@ An evidence-based clinical decision support tool for family medicine residents. 
 - **PostgreSQL** ≥ 14
 - **OpenAI API key** with access to GPT-4o, Whisper, and TTS
 
-## Quick Start
+## Cloud Deployment (Recommended)
+
+**Deploy to free cloud hosting** so your phone can access the server from anywhere:
+
+👉 **See [DEPLOYMENT.md](./DEPLOYMENT.md)** for step-by-step instructions
+
+Supports: Render.com (free tier), Railway.app
+
+---
+
+## Local Development Quick Start
 
 ```bash
 # 1. Clone the repo
