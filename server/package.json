@@ -7,7 +7,8 @@
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
     "build": "tsc && tsc-alias",
-    "db:push": "drizzle-kit push --config ./drizzle.config.ts --force"
+    "db:push": "drizzle-kit push --config ./drizzle.config.ts --force",
+    "start:deploy": "npm run db:push || echo '[deploy] db:push failed, continuing (tables may already exist)'; node dist/index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

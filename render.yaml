@@ -5,8 +5,8 @@ services:
     region: oregon
     plan: free
     rootDir: server
-    buildCommand: npm install --include=dev && npm run build && npm run db:push
-    startCommand: npm start
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm run start:deploy
     envVars:
       - key: NODE_ENV
         value: production
