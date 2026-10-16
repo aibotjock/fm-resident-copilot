@@ -1,27 +1,55 @@
-# Dependencies
-node_modules/
+# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
-# Environment / secrets
-.env
-.env.local
-.env.*.local
-
-# Build output
-dist/
-build/
+# compiled output
+dist
+tmp
+out-tsc
 *.tsbuildinfo
+.expo
+.expo-shared
 
-# Android / Capacitor build artifacts
-client/android/
-client/.capacitor/
-*.apk
-*.aab
+# dependencies
+node_modules
 
-# Logs
-*.log
-npm-debug.log*
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-# OS / editor
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
 .DS_Store
-.idea/
-.vscode/
+Thumbs.db
+
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md
+
+# Replit
+.cache/
+.local/
+
+# Local credentials
+.env
+.env.*
+!.env.example
+artifacts/mobile/static-build/
