@@ -1,0 +1,6 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": { "noEmit": true, "types": ["node"] },
+  "include": ["core.ts", "server.ts", "tutor.test.ts"],
+  "references": [{ "path": "../../../lib/db" }]
+}
