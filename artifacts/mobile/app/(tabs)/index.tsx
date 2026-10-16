@@ -18,6 +18,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/colors";
 import { ConditionGrid } from "@/components/ConditionGrid";
 import { useApp } from "@/context/AppContext";
+import { CONDITIONS } from "@/types";
 
 const MODE = "point_of_care" as const;
 const MODE_COLOR = Colors.pointOfCare;
@@ -149,7 +150,7 @@ export default function PointOfCareScreen() {
               >
                 <Ionicons name="list-outline" size={16} color={MODE_COLOR} />
                 <Text style={[styles.conditionsBtnText, { color: MODE_COLOR }]}>
-                  Browse 100 Conditions
+                  Browse {CONDITIONS.length} Conditions
                 </Text>
               </Pressable>
               <Pressable

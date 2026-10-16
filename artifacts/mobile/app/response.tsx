@@ -18,6 +18,12 @@ import { streamClinicalQuery, parseFlashcards } from "@/utils/streaming";
 import type { ClinicalMode, CitationMetadata } from "@/types";
 import { MODE_LABELS } from "@/types";
 
+function savedEvidenceNotes(meta: CitationMetadata | null): string {
+  if(!meta) return "";
+  return `\n\nReference review: ${meta.limitation || "See individual source scope."}\n`+
+    meta.citations.map(c=>`${c.source}: ${c.guideline || ""}${c.url ? ` — ${c.url}` : ""}${c.accessed ? ` (checked ${c.accessed})` : ""}`).join("\n");
+}
+
 export default function ResponseScreen() {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
@@ -78,6 +84,7 @@ export default function ResponseScreen() {
 
       abortRef.current = new AbortController();
       let capturedDomain = "";
+      let capturedCitation: CitationMetadata | null = null;
 
       await streamClinicalQuery(
         q,
@@ -90,6 +97,7 @@ export default function ResponseScreen() {
           },
           onCitation: (meta) => {
             setCitationMetadata(meta);
+            capturedCitation=meta;
             if (meta.domain) {
               capturedDomain = meta.domain;
               recordDomainQuery(meta.domain);
@@ -103,7 +111,7 @@ export default function ResponseScreen() {
                 query: q,
                 mode: m,
                 condition: cond,
-                response: responseRef.current,
+                response: responseRef.current + savedEvidenceNotes(capturedCitation),
                 system,
                 abfmDomain: capturedDomain || undefined,
               });
@@ -145,10 +153,10 @@ export default function ResponseScreen() {
         mode,
         condition,
         system,
-        response: responseRef.current,
+        response: responseRef.current + savedEvidenceNotes(citationMetadata),
       });
     }
-  }, [existingBookmark, query, mode, condition, system, addBookmark, removeBookmark]);
+  }, [existingBookmark, query, mode, condition, system, citationMetadata, addBookmark, removeBookmark]);
 
   const handleSaveToDeck = useCallback(async () => {
     if (deckSaved || flashcards.length === 0) return;
@@ -158,7 +166,7 @@ export default function ResponseScreen() {
     await addSRSCards(
       flashcards.map((c) => ({
         front: c.front,
-        back: c.back,
+        back: c.back + savedEvidenceNotes(citationMetadata),
         condition,
         topic,
         abfmDomain,

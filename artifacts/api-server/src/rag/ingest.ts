@@ -1,81 +1,31 @@
-import {
-  insertChunksBatch,
-  clearChunks,
-  getChunkCount,
-  setMetadata,
-  getMetadata,
-  type GuidelineChunk,
-} from "./store";
+import { pool } from "@workspace/db";
+import { initializeVersions, stageVersion, activateVersion, entryKey, versionDigest, type ReferenceEntry } from "./versions";
+import { CANDIDATE_ENTRIES,CANDIDATE_VERSION } from "./sources/candidate";
 import { SEED_CHUNKS } from "./sources/seed-data";
-import { fetchUSPSTFChunks } from "./sources/uspstf-ingest";
 
-const INGEST_VERSION = "v10";
-const BATCH_SIZE = 100;
-
-async function ingestChunks(
-  chunks: GuidelineChunk[],
-  label: string
-): Promise<number> {
-  for (let i = 0; i < chunks.length; i += BATCH_SIZE) {
-    const batch = chunks.slice(i, i + BATCH_SIZE);
-    await insertChunksBatch(batch);
-    console.log(
-      `[RAG] ${label}: ${Math.min(i + BATCH_SIZE, chunks.length)}/${chunks.length} chunks stored`
-    );
+export async function runIngestion(_force=false): Promise<void> {
+  await initializeVersions(pool);
+  // An empty isolated database needs a historical baseline for before/after review.
+  const baseline:ReferenceEntry[]=SEED_CHUNKS.map(e=>({...e,key:entryKey(e),review:"unresolved",
+    evidence:[],limitations:"Historical baseline; full claim-level currency review pending."}));
+  const baselineId=`baseline-v10-${versionDigest(baseline).slice(0,12)}`;
+  await stageVersion(pool,baselineId,baseline);
+  await stageVersion(pool,CANDIDATE_VERSION,CANDIDATE_ENTRIES);
+  const state=await pool.query("SELECT active_version FROM reference_state");
+  if(!state.rows.length && process.env.FM_REFERENCE_PREVIEW==="1") {
+    // Initialize only a fresh isolated preview. A restart must not undo rollback.
+    await activateVersion(pool,baselineId,"Initialize isolated preview baseline",true);
+    await activateVersion(pool,CANDIDATE_VERSION,"Preview candidate; clinical review incomplete",true);
+  } else if(!state.rows.length) {
+    throw new Error("No existing active library. Initialize an isolated preview; production activation requires reviewed migration.");
   }
-  return chunks.length;
+  console.log(`[References] Staged ${CANDIDATE_VERSION}; ${CANDIDATE_ENTRIES.length} entries. Production activation is never automatic.`);
 }
-
-export async function runIngestion(force = false): Promise<void> {
-  const existingVersion = await getMetadata("ingest_version");
-  if (!force && existingVersion === INGEST_VERSION) {
-    console.log("[RAG] Already ingested at version", INGEST_VERSION);
-    return;
-  }
-
-  console.log("[RAG] Clearing previous index...");
-  await clearChunks();
-
-  console.log("[RAG] Starting full guideline ingestion (FTS mode)...");
-  const start = Date.now();
-
-  let totalChunks = 0;
-
-  totalChunks += await ingestChunks(SEED_CHUNKS, "Seed guidelines");
-
-  try {
-    console.log("[RAG] Fetching live USPSTF recommendations...");
-    const uspstfChunks = await fetchUSPSTFChunks();
-    console.log(`[RAG] Fetched ${uspstfChunks.length} USPSTF chunks`);
-    totalChunks += await ingestChunks(uspstfChunks, "USPSTF");
-  } catch (err) {
-    console.error("[RAG] USPSTF fetch failed, continuing without:", err);
-  }
-
-  await setMetadata("ingest_version", INGEST_VERSION);
-  await setMetadata("ingest_timestamp", new Date().toISOString());
-  await setMetadata("total_chunks", totalChunks.toString());
-
-  const elapsed = ((Date.now() - start) / 1000).toFixed(1);
-  console.log(
-    `[RAG] Ingestion complete: ${totalChunks} chunks in ${elapsed}s`
-  );
-}
-
-export async function ensureIngested(): Promise<void> {
-  try {
-    const existingVersion = await getMetadata("ingest_version");
-    if (existingVersion === INGEST_VERSION) {
-      const count = await getChunkCount();
-      if (count > 0) {
-        console.log(
-          `[RAG] Index ready: ${count} chunks at version ${INGEST_VERSION}`
-        );
-        return;
-      }
-    }
-    await runIngestion();
-  } catch (err) {
-    console.error("[RAG] Failed to ensure ingestion:", err);
+export async function ensureIngested():Promise<void> {
+  try { await runIngestion(); }
+  catch(err) {
+    const state=await pool.query("SELECT active_version FROM reference_state");
+    if(!state.rows.length) throw err;
+    console.error("[References] Candidate staging failed; serving the unchanged active version.");
   }
 }

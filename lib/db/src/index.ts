@@ -10,9 +10,11 @@ if (!process.env.DATABASE_URL) {
   );
 }
 
+const referenceSchema = process.env.FM_REFERENCE_SCHEMA || "fm_copilot_restored";
+if (!/^[a-z][a-z0-9_]{0,62}$/.test(referenceSchema)) throw new Error("Invalid FM_REFERENCE_SCHEMA");
 export const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  options: "-c search_path=fm_copilot_restored,public",
+  options: `-c search_path=${referenceSchema},public`,
 });
 export const db = drizzle(pool, { schema });
 
@@ -21,8 +23,8 @@ export * from "./schema";
 // Separate tables preserve the current app's reference index during restoration.
 export async function initializeRestoredDatabase(): Promise<void> {
   await pool.query(`
-    CREATE SCHEMA IF NOT EXISTS fm_copilot_restored;
-    CREATE TABLE IF NOT EXISTS fm_copilot_restored.guideline_chunks (
+    CREATE SCHEMA IF NOT EXISTS ${referenceSchema};
+    CREATE TABLE IF NOT EXISTS ${referenceSchema}.guideline_chunks (
       id serial PRIMARY KEY,
       source text NOT NULL,
       tier integer NOT NULL DEFAULT 1,
@@ -36,8 +38,8 @@ export async function initializeRestoredDatabase(): Promise<void> {
         (to_tsvector('english', coalesce(guideline_title, '') || ' ' || coalesce(content, ''))) STORED
     );
     CREATE INDEX IF NOT EXISTS restored_guideline_fts_idx
-      ON fm_copilot_restored.guideline_chunks USING gin(content_tsv);
-    CREATE TABLE IF NOT EXISTS fm_copilot_restored.rag_metadata (
+      ON ${referenceSchema}.guideline_chunks USING gin(content_tsv);
+    CREATE TABLE IF NOT EXISTS ${referenceSchema}.rag_metadata (
       key text PRIMARY KEY,
       value text NOT NULL,
       updated_at timestamptz NOT NULL DEFAULT now()

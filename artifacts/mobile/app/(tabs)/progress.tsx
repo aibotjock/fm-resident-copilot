@@ -368,7 +368,7 @@ export default function ProgressScreen() {
               },
             ]}
           >
-            ABFM blueprint coverage · ITE scores · Spaced repetition deck
+            Study topic coverage · Saved scores · Spaced repetition deck
           </Text>
         </View>
 
@@ -451,7 +451,7 @@ export default function ProgressScreen() {
                 ]}
               >
                 {tab === "coverage"
-                  ? "Blueprint"
+                  ? "Topics"
                   : tab === "ite"
                   ? "ITE Scores"
                   : "SRS Deck"}
@@ -469,7 +469,7 @@ export default function ProgressScreen() {
                   { color: theme.textTertiary },
                 ]}
               >
-                ABFM CONTENT BLUEPRINT COVERAGE
+                STUDY TOPIC COVERAGE
               </Text>
               <View
                 style={[
@@ -507,7 +507,7 @@ export default function ProgressScreen() {
                 { color: theme.textTertiary },
               ]}
             >
-              A domain is "covered" after {COVERAGE_GOAL} queries. Weights reflect the ABFM 2024 content blueprint.
+              A domain is "covered" after {COVERAGE_GOAL} queries. These are internal study weights, not official exam percentages. The current ABFM blueprint uses five activity domains: Acute Care 35%, Chronic Care 25%, Emergent/Urgent Care 20%, Preventive Care 15%, Foundations 5%.
             </Text>
 
             {domainStats.map((stat) => {
@@ -638,7 +638,7 @@ export default function ProgressScreen() {
             <Text
               style={[styles.coverageNote, { color: theme.textTertiary }]}
             >
-              Enter your ABFM ITE section percentile scores exactly as reported on your official score report. Scores are stored locally only.
+              These retained fields use the app’s organ-system topics, not the current five-domain ABFM report. Enter a score only when the categories match your report. Scores stay on this device.
             </Text>
 
             {iteScores.length === 0 ? (
@@ -676,7 +676,7 @@ export default function ProgressScreen() {
                     },
                   ]}
                 >
-                  Enter your official ABFM ITE section percentile scores to receive a prioritized study plan based on your weakest domains.
+                  Enter matching topic scores to prioritize study. Do not translate current ABFM activity-domain scores into these historical topic fields.
                 </Text>
               </View>
             ) : (
@@ -1076,7 +1076,7 @@ export default function ProgressScreen() {
                 },
               ]}
             >
-              Enter section percentile scores exactly as reported on your official ABFM ITE score report (0–99th percentile).
+              Use only report scores that match these topic categories (0–99). Current ABFM activity-domain scores are not interchangeable.
             </Text>
 
             <View style={styles.modalField}>

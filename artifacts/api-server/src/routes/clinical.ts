@@ -1,14 +1,14 @@
 import { Router, type IRouter, type Request, type Response } from "express";
 import { openai, CLINICAL_MODEL } from "@workspace/integrations-openai-ai-server/client";
-import { getDomainList } from "../guidelines/abfm";
-import { getUSPSTFContext } from "../guidelines/uspstf";
+import { getDomainList,CURRENT_ABFM_BLUEPRINT } from "../guidelines/abfm";
+import { citationMetadata,CitationFilter } from "../rag/evidence-context";
 import { retrieveContext } from "../rag/retrieval";
 
 const router: IRouter = Router();
 
 const TIER_1_SOURCES = `TIER 1 — PRIMARY (Family Medicine Core):
-- ABFM Content Blueprint (2024) — exam-domain alignment and topic weighting
-- USPSTF — U.S. Preventive Services Task Force (preventive care, screening, grade system; live data from USPSTF.org)
+- ABFM official activity-based blueprint (effective 2025); retained organ topics have internal study weights
+- USPSTF — U.S. Preventive Services Task Force (preventive care, screening, grade system; bundled source summaries; live integration is not verified)
 - AAFP — American Academy of Family Physicians (family medicine CPGs and clinical recommendations)
 - CDC/ACIP — Centers for Disease Control / Advisory Committee on Immunization Practices (immunization schedules)`;
 
@@ -27,31 +27,39 @@ const TIER_2_SOURCES = `TIER 2 — SPECIALTY SOCIETY GUIDELINES:
 - APA — American Psychiatric Association (DSM-5-TR diagnostic criteria)
 - AAN — American Academy of Neurology`;
 
-const PHARMACY_SOURCES = `PHARMACY — RESTRICTED SOURCE SET:
-- ACPE-approved resources and evidence-based pharmacotherapy guidelines only
-- If a pharmacy question cannot be answered from ACPE-approved sources: state this limitation explicitly`;
+const PHARMACY_SOURCES = `PHARMACOTHERAPY EVIDENCE:
+Use the applicable official guideline and FDA prescribing information when available.
+Do not describe resources as ACPE-approved without specific verification. Preserve
+indications, alternatives, monitoring, contraindications, and verified dosing details.`;
 
-const LIMITATION_RULE = `MANDATORY GUIDELINE GROUNDING RULE:
-Answer comprehensively using the RETRIEVED GUIDELINE CONTEXT above as your primary source. Cite retrieved excerpts using [REF N] numbers.
-- If a specific value (cutoff, dose, threshold) appears in the retrieved context: quote it exactly and cite the REF number.
-- If a specific detail is NOT explicitly stated in the retrieved context but IS covered by the indexed sources listed above (ACC/AHA, AAFP, ADA, GINA, GOLD, etc.): provide the guideline-accurate answer and note the specific detail in the citation block's "limitation" field as "Not present in retrieved excerpt — drawn from [source] guideline knowledge."
-- Do NOT refuse to answer. Do NOT say "falls outside indexed sources" if the topic is covered by any of the listed indexed sources above, even if that exact detail is not in the retrieved excerpt.
-- Only use "outside" confidence in the citation block if the topic is genuinely outside all listed guideline sources.`;
+const LIMITATION_RULE = `EVIDENCE AND TEACHING RULES:
+This is an isolated candidate with retained historical teaching and scoped checked corrections.
+Only claims explicitly tagged [EVID id] have been individually checked in this review.
+The rest of each REF is historical and has the exact unresolved issues listed with it.
+- Never repeat a known erroneous or superseded statement identified in Unresolved.
+- Checked corrections override conflicting historical statements, including duplicated topics.
+- Preserve useful supported teaching across the requested sections; do not replace a topic with an excerpt list.
+- Cite clinical claims inline with [REF N], and cite checked changes with [EVID id].
+- Historical material may be explained as historical teaching with an explicit currency limitation;
+  do not present it as verified current guidance. Do not invent missing facts from model memory.
+- For any unresolved recommendation, dose, threshold, or population-specific rule, identify the precise
+  gap rather than guessing, or withholding the supported remainder of the topic.
+- Do not invent first/second/third treatment lines: distinguish alternatives, combinations,
+  and severity/comorbidity-specific pathways. A third line is not applicable to every condition.
+- For verified dosing include indication, population, units, route, frequency, duration, maximum,
+  titration and renal/hepatic adjustment only where supported. State any unverified component.
+- Screening thresholds, diagnostic criteria, and treatment targets are different concepts.
+- Do not claim comparative drug superiority, exam-tested frequency, exact test performance,
+  legal requirements or current billing codes without evidence in the supplied material.
+- Distinguish publication dates from access dates. Never relabel an older source as this year's guideline.
+- This is a study tool, not individualized clinical decision support.`;
 
-const CITATION_RULE = `MANDATORY CITATION BLOCK:
-At the very end of your response — after all clinical content — you MUST output a citation block in exactly this format on a single line with no other text:
+const CITATION_RULE = `CITATIONS:
+Use inline [REF N] for supplied reference material and [EVID id] for checked claims.
+Do not invent source titles, URLs, dates or evidence IDs. Do not emit a %%FM_CITE%%
+footer: the server attaches the evidence catalog and its review limitations.`;
 
-%%FM_CITE%%{"domain":"DOMAIN_NAME","weight":"~XX%","citations":[{"source":"SOURCE","year":"YEAR","guideline":"FULL GUIDELINE TITLE","confidence":"direct|peripheral|outside","note":"one-sentence relevance"}],"limitation":null_or_"description"}%%/FM_CITE%%
-
-Confidence levels:
-- "direct" = the indexed guideline has a specific recommendation for exactly this clinical question
-- "peripheral" = the indexed guideline addresses the broader topic but not this specific question
-- "outside" = this specific question is not addressed in any indexed source
-
-Use the ABFM domain name that matches this content. List ALL sources you drew from. Set "limitation" to a string if any part of the response could not be answered from indexed sources, otherwise null.`;
-
-const ABFM_BLUEPRINT = `ABFM CONTENT BLUEPRINT — DOMAIN TAXONOMY:
-${getDomainList()}`;
+const ABFM_BLUEPRINT = `${CURRENT_ABFM_BLUEPRINT}\n\nRETAINED STUDY TOPICS:\n${getDomainList()}`;
 
 function isPharmacyQuery(query: string): boolean {
   const terms = [
@@ -83,13 +91,9 @@ async function getSystemPrompt(
 ): Promise<string> {
   const conditionCtx = condition ? `\nClinical focus: ${condition}` : "";
 
-  const uspstfCtx = isPreventiveQuery(query)
-    ? await getUSPSTFContext(query)
-    : "";
+  const uspstfCtx = ""; // No unverified live API is presented as a current feed.
 
-  const pharmacyCtx = isPharmacyQuery(query)
-    ? `\nPHARMACY RESTRICTION ACTIVE: This query involves pharmacotherapy details. Answer drug-specific questions ONLY from ACPE-approved sources. For dosing, interactions, and pharmacokinetic parameters, use ACPE-approved pharmacotherapy guidelines. If not covered, state the limitation.`
-    : "";
+  const pharmacyCtx = "";
 
   const ragSection = ragContext
     ? `\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -106,7 +110,7 @@ END OF RETRIEVED CONTEXT
 
   const baseHeader = `You are FM Resident Copilot — a fact-based, evidence-based, guideline-based clinical and board preparation tool for family medicine residents.
 
-INDEXED SOURCES — RESPOND ONLY FROM THESE:
+REFERENCE ORGANIZATIONS — USE ONLY THE SUPPLIED EVIDENCE; LIST MEMBERSHIP IS NOT VERIFICATION:
 ${TIER_1_SOURCES}
 
 ${TIER_2_SOURCES}
@@ -125,9 +129,15 @@ ${CITATION_RULE}`;
       return `${baseHeader}
 
 MODE: GUIDELINE-DIRECTED CLINICAL PRACTICE
-You are answering a bedside clinical question. Your response must be specific enough to act on immediately. Every sentence must have clinical value. Name the drugs, state the guideline-specified numbers, cite the diagnostic thresholds. Do not write "consider a medication in this class" — write the first-line agent by name. Do not speculate beyond what the indexed guidelines state.
+You are answering a bedside clinical question. Your response must support detailed study and clinical reasoning, with source scope and applicability clear. Every sentence must have clinical value. Name the drugs, state the guideline-specified numbers, cite the diagnostic thresholds. Do not write "consider a medication in this class" — write the first-line agent by name. Do not speculate beyond what the indexed guidelines state.
 
 Organize your response using these sections (use ## headers):
+
+## PRESENTATION & DIFFERENTIAL
+Typical presentation, examination, red flags, likely alternatives and must-not-miss conditions, with distinguishing features where supported.
+
+## NEXT BEST TEST / STEP
+Name the supported next investigation or step and explain how its result changes management.
 
 ## DIAGNOSIS
 Diagnostic criteria from the specific guideline that defines them (name the criteria set — Framingham, Rome IV, AHA/ACC, etc.). Required vs. supportive features. Key physical exam findings with sensitivity/specificity where guideline-stated. Confirmatory and rule-out test with result thresholds.
@@ -136,7 +146,7 @@ Diagnostic criteria from the specific guideline that defines them (name the crit
 The staging or grading system used (name it explicitly — NYHA, GOLD, CKD G1-G5, etc.). Each stage with its specific defining criteria or numeric cutoffs as stated in the indexed guideline. How classification changes management.
 
 ## KEY MEDICATIONS
-First-line agent(s) by name. For each: standard dose range (if guideline-specified), mechanism in one clause, key contraindications from guidelines, monitoring parameters. Second-line options and when to prefer them. Flag any ACPE pharmacy restriction if applicable.
+First-line agent(s) by name. For each: verified dose details where available, mechanism if evidenced, contraindications and monitoring. Separate initial choices, second-line alternatives/escalation, and third-line/specialist treatment only where a supported sequence exists. Identify missing dosing components precisely.
 
 ## TREATMENT TARGETS & INITIAL PLAN
 Step-by-step management sequence with guideline-specified targets and timeframes. Non-pharmacologic interventions with their evidence base. State the numeric target (e.g., A1c <7%, BP <130/80 mmHg, LDL <70 mg/dL).
@@ -151,20 +161,20 @@ Numbered indications for inpatient admission from indexed guidelines. Validated 
 What to track, frequency, and the values that trigger a management change. Short-term and long-term parameters.
 
 ## GUIDELINE CONVERGENCE & CONFLICTS
-Where major indexed sources agree. Where they differ specifically (e.g., ACC/AHA vs. AAFP on screening age, ADA vs. AAFP on A1c targets). State the discrepancy precisely — both positions and which source holds each.`;
+Where major indexed sources agree. Where they differ specifically (e.g., ACC/AHA vs. AAFP on screening age, ADA vs. AAFP on A1c targets). State the discrepancy precisely — both positions, populations, dates, and sources; omit unverified conflicts.`;
 
     case "board_prep":
       return `${baseHeader}
 
 MODE: ABFM BOARD EXAMINATION PREPARATION
-You are preparing a resident for the ABFM Family Medicine Certification Exam and In-Training Examination (ITE). Your role is to teach what the board tests, how it tests it, and what distractors it uses. Every fact must trace back to an indexed guideline source. Do not include information that is not testable from the indexed sources.
+You are preparing a resident for the ABFM Family Medicine Certification Exam and In-Training Examination (ITE). Your role is to teach what the board tests, how it tests it, and what distractors it uses. Every clinical fact must trace to supplied evidence; identify retained historical teaching and unresolved currency explicitly. Do not include information that is not testable from the indexed sources.
 
-Begin by identifying the ABFM domain and its approximate exam weight.
+Identify the relevant official activity-based ABFM domain where justified. Do not invent a disease-specific exam weight. Keep the retained organ topic separate.
 
 Organize your response using these sections (use ## headers):
 
 ## ABFM DOMAIN & BLUEPRINT CONTEXT
-State: Domain name | Approximate exam weight | Primary indexed sources for this domain
+State: Retained study topic | Relevant official activity domain, if supportable | Supplied reference sources
 Then: What the ABFM blueprint specifically tests in this topic area (scope of testable content).
 
 ## HIGH-YIELD PEARLS
@@ -175,7 +185,7 @@ A table of the most important numeric values the ABFM tests for this topic. Form
 VALUE | MEANING | SOURCE | YEAR
 
 ## GUIDELINE CONFLICTS — HIGH-YIELD EXAM TRAPS
-Where two or more indexed sources disagree on a recommendation for this topic. For each conflict: state both positions, name both sources, and explain what the board typically tests (which position appears as the correct answer vs. a distractor). Only state conflicts that are documented between indexed sources.
+Where two or more indexed sources disagree on a recommendation for this topic. For each conflict: state both positions, name both sources, and explain the source-specific clinical distinction. Do not claim that an examination favors a position without documented evidence. Only state conflicts that are documented between indexed sources.
 
 ## COMMON EXAM TRAPS
 3–5 specific wrong-answer patterns for this topic. For each: the trap, why it is tempting, why it is wrong (mechanism), and the correct answer with its guideline source.
@@ -192,7 +202,7 @@ An ABFM-style 4-option multiple choice question. The vignette must be 4–5 sent
       return `${baseHeader}
 
 MODE: CLINICAL DOCUMENTATION
-Provide specific, copy-ready documentation elements for a defensible encounter note. Every item should be precise enough to pass a chart audit and support the billing level. Include ICD-10 codes from the current code set.
+Provide specific, copy-ready documentation elements for a defensible encounter note. Provide precise study examples without claiming that they establish billing compliance or will pass an audit. Include ICD-10 codes only if a current official code source is supplied; otherwise identify coding verification as pending.
 
 ## ICD-10 CODE
 Primary code and description. Most common alternative codes by acuity, laterality, or encounter type.
@@ -298,6 +308,9 @@ router.post("/clinical/vignette", async (req: Request, res: Response) => {
 
   try {
     const ragCtx = await retrieveContext(ragQuery, 8);
+    if(ragCtx.empty) {
+      res.status(422).json({error:"No reference material matched this topic. Try a more specific topic; a sourced question cannot be generated from missing evidence."});return;
+    }
 
     const ragSection = ragCtx.empty ? "" : `\n\nRELEVANT GUIDELINE CONTEXT:\n${ragCtx.formattedContext}\n\nBase your vignette on the facts in this retrieved context.`;
 
@@ -306,6 +319,8 @@ router.post("/clinical/vignette", async (req: Request, res: Response) => {
 ${TIER_1_SOURCES}
 
 ${TIER_2_SOURCES}
+
+${LIMITATION_RULE}
 
 ${ABFM_BLUEPRINT}${ragSection}
 
@@ -353,12 +368,14 @@ Return ONLY a valid JSON object with exactly this structure (no markdown, no add
 
     const vignette = JSON.parse(jsonMatch[0]);
 
-    if (!vignette.question || !vignette.options || !vignette.answer || !vignette.explanation) {
+    if (typeof vignette.question!=="string" || typeof vignette.explanation!=="string" || !["a","b","c","d"].includes(vignette.answer) || ["a","b","c","d"].some(key=>typeof vignette.options?.[key]!=="string")) {
       res.status(500).json({ error: "Incomplete vignette generated" });
       return;
     }
 
-    res.json(vignette);
+    const evidence=citationMetadata(ragCtx.chunks);
+    res.json({...vignette,source:evidence.citations.map(c=>`${c.source}: ${c.guideline}`).join("; ") || "Historical teaching: source review pending",
+      evidence,reviewStatus:"Candidate: claim review incomplete"});
   } catch (error) {
     console.error("Vignette generation error:", error);
     res.status(500).json({ error: "Failed to generate vignette. Please try again." });
@@ -401,6 +418,7 @@ router.post("/clinical/query", async (req: Request, res: Response) => {
       ragCtx.formattedContext
     );
 
+    const filter = new CitationFilter();
     const stream = await openai.chat.completions.create({
       model: CLINICAL_MODEL,
       max_completion_tokens: 8192,
@@ -414,10 +432,14 @@ router.post("/clinical/query", async (req: Request, res: Response) => {
     for await (const chunk of stream) {
       const content = chunk.choices[0]?.delta?.content;
       if (content) {
-        res.write(`data: ${JSON.stringify({ content })}\n\n`);
+        const visible=filter.push(content);
+        if(visible) res.write(`data: ${JSON.stringify({ content:visible })}\n\n`);
       }
     }
 
+    const tail=filter.finish();
+    if(tail) res.write(`data: ${JSON.stringify({content:tail})}\n\n`);
+    res.write(`data: ${JSON.stringify({content:`\n\n%%FM_CITE%%${JSON.stringify(citationMetadata(ragCtx.chunks))}%%/FM_CITE%%`})}\n\n`);
     res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
     res.end();
   } catch (error) {

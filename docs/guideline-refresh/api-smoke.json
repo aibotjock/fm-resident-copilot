@@ -1,0 +1,33 @@
+{
+  "description": "Real Express routes and PostgreSQL retrieval; deterministic OpenAI fixture, not generated candidate clinical answers",
+  "results": [
+    {
+      "mode": "point_of_care",
+      "transport": "pass",
+      "medicalAccuracy": "not tested: deterministic model fixture"
+    },
+    {
+      "mode": "board_prep",
+      "transport": "pass",
+      "medicalAccuracy": "not tested: deterministic model fixture"
+    },
+    {
+      "mode": "documentation",
+      "transport": "pass",
+      "medicalAccuracy": "not tested: deterministic model fixture"
+    },
+    {
+      "mode": "ddx",
+      "transport": "pass",
+      "medicalAccuracy": "not tested: deterministic model fixture"
+    },
+    {
+      "mode": "flashcards",
+      "transport": "pass",
+      "medicalAccuracy": "not tested: deterministic model fixture"
+    }
+  ],
+  "vignetteTransport": "pass",
+  "unauthorizedReferenceMutation": "denied 403",
+  "referenceCount": 156
+}

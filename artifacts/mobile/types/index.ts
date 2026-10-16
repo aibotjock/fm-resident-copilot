@@ -63,6 +63,9 @@ export interface CitationEntry {
   guideline?: string;
   confidence: "direct" | "peripheral" | "outside";
   note?: string;
+  url?: string;
+  accessed?: string;
+  reviewStatus?: string;
 }
 
 export interface CitationMetadata {

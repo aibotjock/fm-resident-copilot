@@ -131,7 +131,7 @@ export function getDomainById(id: string): ABFMDomain | undefined {
 export function getDomainList(): string {
   return ABFM_DOMAINS.map(
     (d) =>
-      `- ${d.name} (~${d.weight}% of exam) | Primary sources: ${d.primarySources.join(", ")}${d.limitationNote ? ` | NOTE: ${d.limitationNote}` : ""}`
+      `- ${d.name} (internal study priority ${d.weight}; NOT an official exam percentage) | Reference organizations: ${d.primarySources.join(", ")}${d.limitationNote ? ` | NOTE: ${d.limitationNote}` : ""}`
   ).join("\n");
 }
 
@@ -140,3 +140,9 @@ export function getSourceForDomain(domainId: string): string[] {
   if (!domain) return [];
   return [...domain.primarySources, ...domain.secondarySources];
 }
+
+// Official activity-based blueprint; independent of historical organ-system storage keys.
+export const CURRENT_ABFM_BLUEPRINT = `Official ABFM Family Medicine Exam Blueprint (effective 2025):
+Acute Care and Diagnosis 35%; Chronic Care Management 25%; Emergent and Urgent Care 20%; Preventive Care 15%; Foundations of Care 5%.
+Source: https://www.theabfm.org/family-medicine-exam-blueprint/ (accessed 2026-10-15).
+The app's retained organ-system topics are study categories, not these official domains. Do not invent exam percentages for individual diseases or map historical scores into current domains.`;
