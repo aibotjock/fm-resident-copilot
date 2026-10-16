@@ -547,11 +547,9 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
   assert.equal(JSON.parse(archive).iteReports[0].score, reports[0].score);
   nodes.get("clear").onclick();
   assert.equal(vm.runInContext("data.events.length", sandbox), 0);
-  await nodes
-    .get("importFile")
-    .onchange({
-      target: { files: [{ size: archive.length, text: async () => archive }] },
-    });
+  await nodes.get("importFile").onchange({
+    target: { files: [{ size: archive.length, text: async () => archive }] },
+  });
   assert.equal(vm.runInContext("data.iteReports.length", sandbox), 1);
   assert.ok(vm.runInContext("data.events.length", sandbox) > 0);
   const checkpoint = vm.runInContext("data.checkpoint", sandbox);
@@ -567,4 +565,38 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
   );
   assert.equal(nodes.get("text").value, "Keep my draft");
   assert.match(nodes.get("error").textContent, /Start a conversation/);
+
+  nodes.get("practiceScope").value = "mixed";
+  nodes.get("practiceMode").value = "teaching";
+  await nodes.get("practiceStart").onclick();
+  const lateQuestion = bank.find(
+    (q) => q.id === vm.runInContext("practiceCurrent.id", sandbox),
+  )!;
+  const originalFetch = sandbox.fetch;
+  let releaseAnswer!: () => void, answerArrived!: () => void;
+  const arrived = new Promise<void>((r) => (answerArrived = r));
+  sandbox.fetch = async (path: string, opts: any) => {
+    const response = await originalFetch(path, opts);
+    if (path === "/api/practice/answer") {
+      answerArrived();
+      await new Promise<void>((r) => (releaseAnswer = r));
+    }
+    return response;
+  };
+  const pendingAnswer = nodes
+    .get("practiceOptions")
+    .children[lateQuestion.answer].onclick();
+  await arrived;
+  nodes.get("filter").value = "asthma";
+  nodes.get("filter").oninput();
+  const topicMessage = nodes.get("practiceQuestion").textContent;
+  releaseAnswer();
+  await pendingAnswer;
+  assert.equal(
+    nodes.get("practiceQuestion").textContent,
+    topicMessage,
+    "late answer must not restore the old case",
+  );
+  assert.equal(nodes.get("practiceOptions").children.length, 0);
+  sandbox.fetch = originalFetch;
 });

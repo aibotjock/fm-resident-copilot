@@ -565,6 +565,7 @@
         }
       }
       if (v.question) {
+        const questionEpoch = connectionEpoch;
         practiceCurrent = v.question;
         practiceRunning = true;
         $("practiceQuestion").textContent =
@@ -599,14 +600,22 @@
                 confidence: $("confidence").value,
                 error_type: $("errorType").value,
               });
+              if (questionEpoch !== connectionEpoch) {
+                if (result.event) savePracticeEvents([result.event]);
+                if (result.events) savePracticeEvents(result.events);
+                return;
+              }
               showPractice(result);
-              if (!result.retry && !result.done)
-                showPractice(await api("practice/next", {}));
+              if (!result.retry && !result.done) {
+                const next = await api("practice/next", {});
+                if (questionEpoch === connectionEpoch) showPractice(next);
+              }
             } catch (e) {
-              fail(e.message);
+              if (questionEpoch === connectionEpoch) fail(e.message);
             } finally {
-              for (const node of $("practiceOptions").children)
-                node.disabled = false;
+              if (questionEpoch === connectionEpoch)
+                for (const node of $("practiceOptions").children)
+                  node.disabled = false;
             }
           };
           $("practiceOptions").append(b);
@@ -614,6 +623,7 @@
         clearInterval(practiceTimer);
         if (v.deadline) {
           practiceTimer = setInterval(async () => {
+            if (questionEpoch !== connectionEpoch) return;
             const seconds = Math.max(
               0,
               Math.ceil((v.deadline - Date.now()) / 1000),
@@ -621,7 +631,12 @@
             $("practiceTimer").textContent = seconds + " seconds remaining";
             if (seconds === 0) {
               clearInterval(practiceTimer);
-              showPractice(await api("practice/finish", {}));
+              try {
+                const result = await api("practice/finish", {});
+                if (questionEpoch === connectionEpoch) showPractice(result);
+              } catch (e) {
+                if (questionEpoch === connectionEpoch) fail(e.message);
+              }
             }
           }, 1000);
         }
@@ -699,8 +714,10 @@
       }
     };
     $("practiceEnd").onclick = async () => {
+      const epoch = connectionEpoch;
       try {
         const v = await api("practice/finish", {});
+        if (epoch !== connectionEpoch) return;
         showPractice(v);
         if (dc?.readyState === "open")
           ask(
@@ -1365,8 +1382,10 @@
         )
       )
         return;
+      const epoch = connectionEpoch;
       try {
         const v = await api("lookup", { url, approved: true });
+        if (epoch !== connectionEpoch) return;
         $("lookupResult").textContent =
           v.notice + "\nAccessed " + v.accessed + "\n" + v.text;
         if (dc?.readyState === "open") {
