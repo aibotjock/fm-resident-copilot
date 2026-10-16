@@ -69,6 +69,12 @@ function safeSourceUrl(value: unknown): string | null {
   }
 }
 
+function hasValidReviewDate(value: unknown): boolean {
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const date = new Date(`${value}T00:00:00.000Z`);
+  return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === value;
+}
+
 function ConfidenceBadge({
   entry,
   isDark,
@@ -76,7 +82,7 @@ function ConfidenceBadge({
   entry: CitationEntry;
   isDark: boolean;
 }) {
-  const cfg = confidenceConfig(entry.confidence);
+  const cfg = confidenceConfig(hasValidReviewDate(entry.reviewedAt) ? entry.confidence : "unverified");
   return (
     <View
       style={[
@@ -104,7 +110,7 @@ function CitationRow({
   isDark: boolean;
   theme: typeof Colors.light;
 }) {
-  const cfg = confidenceConfig(entry.confidence);
+  const cfg = confidenceConfig(hasValidReviewDate(entry.reviewedAt) ? entry.confidence : "unverified");
   const sourceUrl = safeSourceUrl(entry.url);
   return (
     <View style={[styles.citationRow, { borderColor: theme.border }]}>
@@ -154,7 +160,7 @@ function CitationRow({
             <Ionicons name="open-outline" size={12} color={theme.tint} />
           </Pressable>
         )}
-        {entry.reviewedAt && (
+        {hasValidReviewDate(entry.reviewedAt) && (
           <Text style={[styles.reviewDate, { color: theme.textSecondary }]}>
             Source checked {entry.reviewedAt}
           </Text>
@@ -171,22 +177,29 @@ export function SourceCitation({ metadata }: SourceCitationProps) {
   const [expanded, setExpanded] = useState(false);
 
   const hasLimitation = !!metadata.limitation;
+  const hasUnverifiedReviewDates = metadata.citations.length === 0 || metadata.citations.some((c) => !hasValidReviewDate(c.reviewedAt));
   const hasOutside = metadata.citations.some((c) => c.confidence === "outside");
-  const allDirect = metadata.citations.length > 0 && metadata.citations.every((c) => c.confidence === "direct");
+  const allDirect = !hasUnverifiedReviewDates && metadata.citations.every((c) => c.confidence === "direct");
 
-  const overallColor = hasOutside || hasLimitation
+  const overallColor = hasUnverifiedReviewDates
+    ? "#F59E0B"
+    : hasOutside || hasLimitation
     ? "#EF4444"
     : allDirect
     ? "#10B981"
     : "#F59E0B";
 
-  const overallLabel = hasOutside || hasLimitation
+  const overallLabel = hasUnverifiedReviewDates
+    ? "Coverage unverified — review dates unavailable"
+    : hasOutside || hasLimitation
     ? "Partial coverage — see limitation"
     : allDirect
     ? "Source excerpts cited — verify details"
     : "Review source coverage";
 
-  const overallIcon = hasOutside || hasLimitation
+  const overallIcon = hasUnverifiedReviewDates
+    ? ("alert-circle" as const)
+    : hasOutside || hasLimitation
     ? ("alert-circle" as const)
     : allDirect
     ? ("checkmark-circle" as const)
@@ -238,6 +251,11 @@ export function SourceCitation({ metadata }: SourceCitationProps) {
             color={theme.textTertiary}
           />
         </View>
+        {hasUnverifiedReviewDates && (
+          <Text style={[styles.reviewNotice, { color: theme.textSecondary }]}>
+            Saved content without valid review dates has not been rechecked here. Verify current guidance before use.
+          </Text>
+        )}
       </Pressable>
 
       {expanded && (
@@ -340,6 +358,7 @@ const styles = StyleSheet.create({
   overallLabel: {
     fontSize: 11,
   },
+  reviewNotice: { fontSize: 12, lineHeight: 18, fontFamily: "Inter_400Regular" },
   body: {
     paddingHorizontal: 14,
     paddingBottom: 12,
