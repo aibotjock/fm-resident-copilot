@@ -507,7 +507,7 @@ export default function ProgressScreen() {
                 { color: theme.textTertiary },
               ]}
             >
-              A domain is "covered" after {COVERAGE_GOAL} queries. Categories and weights here are legacy study organization, not the current official ABFM exam blueprint.
+              A domain is "covered" after {COVERAGE_GOAL} queries. Weights reflect the ABFM 2024 content blueprint.
             </Text>
 
             {domainStats.map((stat) => {

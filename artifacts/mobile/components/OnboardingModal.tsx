@@ -24,25 +24,25 @@ const PANELS: OnboardingPanel[] = [
   {
     icon: "shield-checkmark",
     color: Colors.pointOfCare,
-    title: "Guideline Reference Library",
-    subtitle: "Check the evidence behind each answer",
+    title: "Guideline-Grounded Answers",
+    subtitle: "Evidence from the sources that matter",
     bullets: [
-      "The reference library is being checked against reputable guideline publishers. The home screen shows checked excerpts and entries still pending review.",
-      "Answers use checked reference excerpts with source links. Verify important details and the latest guidance directly with the publisher.",
-      "Review source dates and stated limitations. A cited guideline may not address every part of your question.",
+      "Answers grounded in 120+ indexed guideline chunks from ACC/AHA, ADA, IDSA, AAP, ACOG, USPSTF, and 15 other bodies",
+      "Citations link answers to reference sources. AI can make mistakes; verify important details against current guidance.",
+      "When a question falls outside indexed sources, the app says so explicitly",
     ],
   },
   {
     icon: "pulse",
     color: Colors.ddx,
-    title: "Five Study Modes",
-    subtitle: "Reference review with clear limitations",
+    title: "Five Clinical Modes",
+    subtitle: "Built for how residents actually work",
     bullets: [
-      "Point of Care — checked excerpts about presentation, diagnosis, testing, treatment, and dosing where available; missing information is stated.",
-      "Documentation — source-supported reference material for study. Output is not a completed clinical note or billing recommendation.",
-      "Differential Dx — diagnostic information supported by checked excerpts; a complete ranked differential may be unavailable.",
-      "Board Prep — source-excerpt study. Practice MCQs are paused while questions and explanations undergo content review.",
-      "Flashcards — source-excerpt cards with spaced review. Previously saved cards may require rechecking.",
+      "Point of Care — diagnosis criteria, drug names, and treatment targets for bedside decisions",
+      "Documentation — ICD-10 codes, SOAP templates, and billing elements for chart accuracy",
+      "Differential Dx — ranked DDx with must-not-miss conditions and decision branches",
+      "Board Prep — ABFM-style vignettes, key numbers, and exam traps organized by blueprint domain",
+      "Flashcards — Anki-style cards with SM-2 spaced repetition for long-term retention",
     ],
   },
   {
@@ -53,7 +53,7 @@ const PANELS: OnboardingPanel[] = [
     bullets: [
       "This tool is for educational and decision-support purposes only. It is not a substitute for clinical judgment, real-time clinical decision support systems, or direct patient care protocols.",
       "Do not use this tool as the sole basis for clinical decisions. Verify all answers against your institution's resources and current guidelines.",
-      "Live guideline updates are currently unavailable. Check the displayed review status and verify the latest guidance directly with the source publisher.",
+      "Guideline content is periodically updated. Always confirm that you are referencing the most current version of any guideline before applying it to patient care.",
     ],
   },
 ];

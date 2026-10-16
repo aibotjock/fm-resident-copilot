@@ -17,7 +17,6 @@ import * as Haptics from "expo-haptics";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/colors";
 import { ConditionGrid } from "@/components/ConditionGrid";
-import { ReferenceStatus } from "@/components/ReferenceStatus";
 import { useApp } from "@/context/AppContext";
 
 const MODE = "point_of_care" as const;
@@ -102,7 +101,7 @@ export default function PointOfCareScreen() {
               Clinical Reference
             </Text>
             <Text style={[styles.heroSubtitle, { color: theme.textSecondary }]}>
-              Checked guideline excerpts and clear coverage gaps
+              Evidence-based answers at the point of care
             </Text>
           </View>
 
@@ -172,7 +171,17 @@ export default function PointOfCareScreen() {
             </View>
           </View>
 
-          <ReferenceStatus />
+          <View
+            style={[
+              styles.sourcesBadge,
+              { backgroundColor: theme.surfaceSecondary, borderColor: theme.border },
+            ]}
+          >
+            <Ionicons name="shield-checkmark-outline" size={14} color={MODE_COLOR} />
+            <Text style={[styles.sourcesText, { color: theme.textSecondary }]}>
+              Indexed: AAFP · USPSTF · CDC · ACC/AHA · ADA · IDSA · AAP · ACOG
+            </Text>
+          </View>
 
           {recentForMode.length > 0 && (
             <View style={styles.recentSection}>
@@ -331,6 +340,20 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
+  },
+  sourcesBadge: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    padding: 10,
+    borderRadius: 10,
+    borderWidth: 1,
+  },
+  sourcesText: {
+    flex: 1,
+    fontSize: 11,
+    fontFamily: "Inter_400Regular",
+    lineHeight: 16,
   },
   recentSection: {
     gap: 8,

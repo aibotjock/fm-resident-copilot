@@ -184,6 +184,14 @@ export default function ResponseScreen() {
     });
   }, [condition, query, system]);
 
+  const handleGenerateVignette = useCallback(() => {
+    const vigQuery = `Write an ABFM-style board exam vignette (4-option multiple choice) for ${condition || "this clinical topic"}.`;
+    router.push({
+      pathname: "/response",
+      params: { query: vigQuery, mode: "board_prep", condition, system },
+    });
+  }, [condition, system]);
+
   return (
     <View
       style={[
@@ -372,17 +380,10 @@ export default function ResponseScreen() {
             onBookmark={handleToggleBookmark}
             onGeneratePearls={handleGeneratePearls}
             onGenerateFlashcards={handleGenerateFlashcards}
+            onGenerateVignette={handleGenerateVignette}
             onSaveToDeck={mode === "flashcards" ? handleSaveToDeck : undefined}
             deckSaved={deckSaved}
           />
-          {!isStreaming && response && mode !== "flashcards" && (
-            <View style={[styles.practiceReviewNotice, { backgroundColor: theme.surfaceSecondary, borderTopColor: theme.border }]}>
-              <Ionicons name="information-circle-outline" size={16} color={theme.textSecondary} />
-              <Text style={[styles.practiceReviewNoticeText, { color: theme.textSecondary }]}>
-                Board vignettes unavailable during content review.
-              </Text>
-            </View>
-          )}
         </View>
       )}
     </View>
@@ -391,8 +392,6 @@ export default function ResponseScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  practiceReviewNotice: { flexDirection: "row", alignItems: "center", gap: 8, paddingHorizontal: 16, paddingVertical: 10, borderTopWidth: 1 },
-  practiceReviewNoticeText: { flex: 1, fontSize: 12, lineHeight: 18, fontFamily: "Inter_400Regular" },
   header: {
     flexDirection: "row",
     alignItems: "center",

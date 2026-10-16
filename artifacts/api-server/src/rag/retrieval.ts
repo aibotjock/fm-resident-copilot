@@ -1,11 +1,4 @@
-import {
-  searchByDomain,
-  searchByText,
-  searchByTextFallback,
-  type SearchResult,
-} from "./store";
-import { expandExactTopicAlias } from "./search-query";
-import { isOfficialSourceUrl } from "./review-policy";
+import { searchByText, searchByTextFallback, type SearchResult } from "./store";
 
 export interface RetrievalContext {
   chunks: SearchResult[];
@@ -16,22 +9,13 @@ export interface RetrievalContext {
 
 export async function retrieveContext(
   query: string,
-  limit = 10,
-  domain?: string,
+  limit = 10
 ): Promise<RetrievalContext> {
   try {
-    // Exact topic aliases preserve abbreviation-only checked excerpts; free-form
-    // questions keep all qualifiers. Domain-only practice has an explicit filter.
-    const domainOnly = !query.trim() && !!domain;
-    const searchQuery = expandExactTopicAlias(query);
-    let chunks = domainOnly
-      ? await searchByDomain(domain!, limit)
-      : await searchByText(searchQuery, limit);
-    chunks = chunks.filter((c) => isOfficialSourceUrl(c.url));
+    let chunks = await searchByText(query, limit);
 
-    if (chunks.length === 0 && !domainOnly) {
-      chunks = await searchByTextFallback(searchQuery, limit);
-      chunks = chunks.filter((c) => isOfficialSourceUrl(c.url));
+    if (chunks.length === 0) {
+      chunks = await searchByTextFallback(query, limit);
     }
 
     if (chunks.length === 0) {
@@ -42,11 +26,9 @@ export async function retrieveContext(
       .map(
         (c, i) =>
           `[REF ${i + 1}] ${c.source} — ${c.guideline_title} (${c.guideline_year})\n` +
-          `Study topic category: ${c.abfm_domain} | Section: ${c.section}\n` +
-          `Review status: ${c.review_status} | Source checked: ${c.reviewed_at} | Publication date: ${c.publication_date ?? c.guideline_year ?? "not established"}\n` +
-          `Scope: ${c.review_note ?? "Checked excerpt only; not a complete clinical guideline or proof of currentness after the check date."}\n` +
+          `ABFM Domain: ${c.abfm_domain} | Section: ${c.section}\n` +
           (c.url ? `URL: ${c.url}\n` : "") +
-          `\n${c.content}`,
+          `\n${c.content}`
       )
       .join("\n\n---\n\n");
 

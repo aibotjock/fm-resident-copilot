@@ -18,10 +18,10 @@ if (Number.isNaN(port) || port <= 0) {
 
 async function main() {
   await initializeRestoredDatabase();
-  await ensureIngested();
   app.listen(port, "0.0.0.0", () => {
     console.log(`FM Resident Copilot restored app listening on port ${port}`);
   });
+  await ensureIngested();
 }
 main().catch((err) => {
   console.error("Startup failed:", err);
