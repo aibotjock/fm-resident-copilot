@@ -752,3 +752,189 @@ DKA: pH <7.3, glucose >250, ketones; fluids + insulin drip + potassium replaceme
 Adult DKA requires all three: diabetes history or glucose ≥200 mg/dL; beta-hydroxybutyrate ≥3 mmol/L or urine ketones ≥2+; and pH <7.3 and/or bicarbonate <18 mmol/L. Normal-range glucose does not exclude DKA in someone with diabetes. Treatment requires fluids, insulin, electrolyte management and precipitant treatment under an appropriate protocol.
 
 Evidence IDs: dka-consensus
+
+## 52. Entry 113: Gonorrhea, Chlamydia, and Syphilis Treatment
+
+Reason: Separate allergy pathway from ceftriaxone unavailability and avoid applying anogenital alternatives to pharyngeal disease
+
+**Before**
+
+- Penicillin allergy: Gentamicin 240mg IM + azithromycin 2g PO (reserve; only if ceftriaxone unavailable)
+
+**After**
+
+- Assess the allergy history. For cephalosporin allergy, gentamicin 240 mg IM plus azithromycin 2 g orally, each once, is an alternative for uncomplicated anogenital disease. If ceftriaxone is unavailable, cefixime 800 mg orally once is the separate alternative. Pharyngeal infection has no reliable alternative; severe ceftriaxone reactions require specialist consultation.
+
+Evidence IDs: gonorrhea-regimens
+
+## 53. Entry 113: Gonorrhea, Chlamydia, and Syphilis Treatment
+
+Reason: Distinguish microbiologic cure testing from reinfection retesting
+
+**Before**
+
+- Test of cure: oropharyngeal infections 1-2 weeks after treatment; urogenital only if symptoms persist
+
+**After**
+
+- Pharyngeal cure testing: culture or NAAT 7–14 days after treatment. Persistent symptoms require culture and susceptibility testing; routine cure testing is unnecessary after appropriate treatment of uncomplicated anogenital infection. Retest for reinfection at 3 months.
+
+Evidence IDs: gonorrhea-regimens
+
+## 54. Entry 29: STI Treatment Recommendations
+
+Reason: Do not apply a short parenteral interval and oral stepdown to every disseminated syndrome
+
+**Before**
+
+- Disseminated gonococcal infection: IV ceftriaxone 1g q24h × ≥24-48h then oral stepdown
+
+**After**
+
+- Gonococcal arthritis/arthritis-dermatitis: ceftriaxone 1 g IM/IV every 24 hours; oral transition is susceptibility-guided after 24–48 hours of substantial improvement, with at least 7 days total treatment. Meningitis/endocarditis use separate regimens.
+
+Evidence IDs: gonorrhea-regimens
+
+## 55. Entry 29: STI Treatment Recommendations
+
+Reason: Distinguish effective historical dosing from recommended first-episode regimens
+
+**Before**
+
+- First episode: acyclovir 400mg TID or 200mg 5x/day × 7-10 days; valacyclovir 1g BID × 7-10 days
+
+**After**
+
+- First episode: oral acyclovir 400 mg three times daily or valacyclovir 1 g twice daily for 7–10 days; extend if healing is incomplete after day 10. Acyclovir 200 mg five times daily is effective but not recommended because of dosing frequency.
+
+Evidence IDs: herpes-regimens
+
+## 56. Entry 29: STI Treatment Recommendations
+
+Reason: Remove unsupported suppression threshold and add dose-specific limitation
+
+**Before**
+
+- Suppressive therapy: for ≥6 outbreaks/year or to reduce transmission to partners; valacyclovir 500mg daily
+
+**After**
+
+- Recurrent HSV-2 suppression: discuss preferences and transmission risk; six annual outbreaks is not a required threshold. Oral options include acyclovir 400 mg twice daily, valacyclovir 500 mg or 1 g daily, or famciclovir 250 mg twice daily. Valacyclovir 500 mg daily may be less effective with ≥10 episodes/year.
+
+Evidence IDs: herpes-regimens
+
+## 57. Entry 112: C. difficile Classification and Antibiotic Treatment
+
+Reason: Correct internally contradictory taper duration and distinguish an example schedule from a mandated course
+
+**Before**
+
+- 1st recurrence: fidaxomicin (preferred) OR vancomycin pulse/taper × 6 weeks (125mg QID 10d → BID 7d → daily 7d → q2-3 days × 8 weeks)
+
+**After**
+
+- First recurrence: fidaxomicin preferred; oral vancomycin taper/pulse is an alternative. Example: 125 mg four times daily for 10–14 days, twice daily for 7 days, daily for 7 days, then every 2–3 days for 2–8 weeks. This is not a fixed six-week course.
+
+Evidence IDs: cdi-taper-ileus, cdi-2021-preference
+
+## 58. Entry 112: C. difficile Classification and Antibiotic Treatment
+
+Reason: Add route-specific ileus management rather than assuming oral drug delivery is adequate
+
+**Before**
+
+Fulminant CDI: vancomycin 500mg QID PO/NG + metronidazole 500mg IV q8h; surgical consultation; possible total colectomy
+
+**After**
+
+Fulminant CDI: vancomycin 500 mg orally/NG four times daily plus metronidazole 500 mg IV every 8 hours; urgent surgical assessment. With ileus, consider additional rectal vancomycin 500 mg in approximately 100 mL normal saline every 6 hours as a retention enema.
+
+Evidence IDs: cdi-taper-ileus
+
+## 59. Entry 112: C. difficile Classification and Antibiotic Treatment
+
+Reason: Carry the resource-dependent fidaxomicin preference into severe nonfulminant disease
+
+**Before**
+
+Initial severe episode: vancomycin 125mg QID × 10 days OR fidaxomicin 200mg BID × 10 days
+
+**After**
+
+Initial severe, nonfulminant episode: favor fidaxomicin 200 mg orally twice daily for 10 days when feasible; oral vancomycin 125 mg four times daily for 10 days remains acceptable. Fulminant disease uses its separate regimen.
+
+Evidence IDs: cdi-2021-preference
+
+## 60. Entry 150: Electrolyte Disorders — Hyponatremia, Hyperkalemia, Hypokalemia, Hypomagnesemia, Hypercalcemia
+
+Reason: Separate risk-dependent limits instead of presenting 8–12 as an interchangeable safe range
+
+**Before**
+
+Correction rate: raise Na no faster than 8–12 mEq/L per 24 hours (risk of osmotic demyelination syndrome / central pontine myelinolysis if corrected too rapidly)
+
+**After**
+
+Correction ceilings: chronic hyponatremia with high osmotic demyelination risk: no more than 8 mEq/L in 24 hours. Without risk factors, the cited AAFP summary specifies no more than 12 mEq/L in 24 hours and 18 mEq/L in 48 hours. These are ceilings, not correction goals.
+
+Evidence IDs: sodium-limits
+
+## 61. Entry 150: Electrolyte Disorders — Hyponatremia, Hyperkalemia, Hypokalemia, Hypomagnesemia, Hypercalcemia
+
+Reason: Remove an unsafe open-ended correction instruction without inventing an inaccessible rescue protocol
+
+**Before**
+
+Acute severe/symptomatic (seizures, coma): 3% hypertonic saline 100 mL IV bolus; raise Na by 1–2 mEq/L/hour until symptoms resolve, then slow to ≤8–12/24h
+
+**After**
+
+Severe symptomatic hyponatremia requires emergency monitored 3% saline treatment. Check sodium after each bolus and frequently thereafter; apply the risk-specific cumulative limits above. The exact rescue-bolus protocol remains unresolved in this review; do not use the previous open-ended hourly correction instruction.
+
+Evidence IDs: sodium-limits
+
+## 62. Entry 150: Electrolyte Disorders — Hyponatremia, Hyperkalemia, Hypokalemia, Hypomagnesemia, Hypercalcemia
+
+Reason: Replace contradictory ECG-change treatment with a scoped specialist pathway and include hypoglycemia monitoring
+
+**Before**
+
+- Moderate (5.5–6.0) or EKG changes: add sodium bicarbonate (metabolic acidosis), kayexalate or patiromer (K binders); patiromer preferred for CKD
+- Severe (>6.0 or EKG changes): IV calcium gluconate (membrane stabilization — immediate, 30–60 min); IV insulin + dextrose (shifts K intracellularly, 15–30 min); IV sodium bicarbonate if acidosis; albuterol nebulized; hemodialysis for refractory/severe
+
+**After**
+
+- UKKA adult hospital pathway: moderate K 6.0–6.4; severe ≥6.5 mmol/L. Urgent ECG at ≥6.0; continuous monitoring for severe disease, ECG changes, or clinically unwell moderate disease.
+- Hyperkalemic ECG changes: calcium gluconate 10%, 30 mL IV over 10 minutes; calcium chloride 10%, 10 mL over 5 minutes is preferred in resuscitation.
+- Severe: IV soluble insulin 10 units with glucose 25 g; consider also for moderate disease. If pretreatment glucose <7 mmol/L, follow with 10% glucose 50 mL/hour for 5 hours. Nebulized salbutamol is adjunctive; IV bicarbonate is not routine.
+- Check glucose through 6 hours after insulin and potassium for response/rebound. Potassium removal and dialysis require the full pathway and patient-specific assessment.
+
+Evidence IDs: hyperkalemia-ukka-2026
+
+## 63. Entry 113: Gonorrhea, Chlamydia, and Syphilis Treatment
+
+Reason: Correct age-25 boundary without confusing screening with symptomatic testing
+
+**Before**
+
+- Gonorrhea/chlamydia: all sexually active women ≤25 years (Grade B); older women at risk
+
+**After**
+
+- Gonorrhea/chlamydia: screen asymptomatic sexually active women aged ≤24, including pregnant persons; at ≥25 screen those at increased risk (USPSTF Grade B).
+
+Evidence IDs: sti-screen-age
+
+## 64. Entry 113: Gonorrhea, Chlamydia, and Syphilis Treatment
+
+Reason: Correct evidence grade and distinguish nonpregnant screening population
+
+**Before**
+
+sexually active persons at increased risk (Grade B) including MSM, commercial sex workers, HIV-positive individuals
+
+**After**
+
+asymptomatic nonpregnant adolescents/adults at increased risk (Grade A), with risk assessed using individual history and local epidemiology
+
+Evidence IDs: syphilis-screen-grade

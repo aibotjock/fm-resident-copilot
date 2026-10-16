@@ -12,11 +12,11 @@
 
 ## Checks that do not pass or have not been performed
 
-The root typecheck fails in inherited shared packages: duplicate ClinicalQueryBody exports, missing type/dependency declarations, p-retry AbortError typing and image-response nullability. API project checking is consequently blocked by missing shared declaration outputs. The new missing-pg type import found during development was removed; the API build succeeds. Root typecheck is not reported as passing.
+The root typecheck now passes across shared packages, API, mobile, mockup sandbox and scripts. Repairs explicitly export the request schema/interface, declare development types, align React types with the Expo React 19.1 dependency, use the installed p-retry named AbortError/context API, and reject missing image bytes. No production model or credential was changed. The production-style build also passed.
 
-There are no real candidate-model responses in this package: this local runtime has no configured OpenAI credential. No key was copied from Railway or exposed. API tests use explicitly labeled fixtures. The saved baseline responses must not be presented as candidate output.
+Twelve real isolated candidate answer scenarios and two practice-question requests completed using the approved direct-API model, gpt-4o. An explicitly authorized new key was saved to ignored .env.local and is not part of this review package. No key was copied from Railway. Saved baseline requests lacked their original query text, so comparisons use reconstructed queries and are not controlled prompt-identical experiments. See LIVE-REVIEW.md for failed medical acceptance cases; successful transport does not establish medical correctness.
 
-No full browser regression of the candidate, audio test, device-to-device storage test, or cloud PostgreSQL concurrency test has been completed. The built UI's storage implementation and keys were preserved, but that alone does not prove all UI behavior. No candidate Railway service was provisioned or deployed.
+No full browser regression, audio test, device-to-device storage test, or cloud PostgreSQL concurrency test has been completed. A local isolated preview server ran, but Chromium was absent and its download failed. No browser pass is claimed. Storage keys remain unchanged. No candidate Railway service was provisioned or deployed.
 
 ## Medical release blockers
 
@@ -33,7 +33,7 @@ Full 2026 GOLD treatment algorithms, newer ACOG guidance, current labels for all
 1. Continue claim review from the per-entry inventory, prioritizing unresolved unsafe doses, withdrawn products and obsolete acute-care rules.
 2. Obtain legitimate full-source access/permissions where needed, or independently support the specific facts from other applicable official guidance.
 3. Reconcile duplicate-topic recommendations and source metadata after verification.
-4. Capture real candidate responses for the saved baseline scenarios plus prevention, pregnancy/pediatrics, renal dosing, conflicts and unknown-evidence cases.
+4. Remediate the saved live-model failures, then expand real candidate testing to pediatrics, exact dosing, conflicts and repeated question-quality checks.
 5. Review the answers against their exact supporting claims; inspect all eight tabs and exercise local save/review/read-aloud functions.
 6. Resolve required typecheck failures, finish a reviewed activation manifest and database migration rehearsal, then prepare an isolated app preview.
 7. Request production approval only after release blockers are resolved.

@@ -1269,15 +1269,14 @@
     {
       "version": "candidate",
       "condition": "Metabolic Syndrome",
-      "matches": 6,
+      "matches": 5,
       "fallback": false,
       "sections": [
         "PCOS Diagnosis and Management",
         "Schizophrenia Spectrum Disorders",
         "Non-Alcoholic Fatty Liver Disease — Screening, Diagnosis, and Management",
         "Psoriasis Diagnosis and Management",
-        "Menopause Diagnosis and Hormone Replacement Therapy",
-        "Electrolyte Disorders — Hyponatremia, Hyperkalemia, Hypokalemia, Hypomagnesemia, Hypercalcemia"
+        "Menopause Diagnosis and Hormone Replacement Therapy"
       ]
     },
     {

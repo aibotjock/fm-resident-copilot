@@ -4,13 +4,13 @@
     "baseline": 156,
     "candidate": 156,
     "domains": 21,
-    "changedEntries": 32,
-    "corrections": 51,
-    "evidenceRecords": 34,
+    "changedEntries": 35,
+    "corrections": 64,
+    "evidenceRecords": 42,
     "fullyVerifiedEntries": 0,
-    "candidateVersion": "refresh-2026-10-15-c8e9c4db72dd",
+    "candidateVersion": "refresh-2026-10-15-ae430fbadf7a",
     "baselineCharacters": 270428,
-    "candidateCharacters": 277006
+    "candidateCharacters": 279419
   },
   "checks": [
     {
@@ -55,6 +55,10 @@
     },
     {
       "name": "Full-text search uses the selected version and corrected renal dose",
+      "result": "pass"
+    },
+    {
+      "name": "Unknown topic cannot retrieve unrelated references through generic fallback words",
       "result": "pass"
     },
     {

@@ -41,7 +41,10 @@ export async function searchByText(query: string, limit = 10): Promise<SearchRes
   return rows;
 }
 export async function searchByTextFallback(query: string, limit = 10): Promise<SearchResult[]> {
-  const words=query.toLowerCase().replace(/[^a-z0-9 ]/g," ").split(/\s+/).filter(w=>w.length>2);
+  // Generic request words must not make an unknown topic look sourced.
+  const generic=new Set(["reference","references","guideline","guidelines","evidence","source","sources","clinical","condition","conditions","disease","treatment","management","diagnosis","patient","recommended","explain","provide","about","with","without","and","the","for"]);
+  const words=[...new Set(query.toLowerCase().replace(/[^a-z0-9 ]/g," ").split(/\s+/)
+    .filter(w=>w.length>2 && /[a-z]/.test(w) && !generic.has(w)))];
   if(!words.length) return [];
   const {rows}=await pool.query<SearchResult>(`
     SELECT e.key AS id,e.*,

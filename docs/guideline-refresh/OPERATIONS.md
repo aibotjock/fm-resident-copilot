@@ -4,6 +4,19 @@ Production has not been modified. Do not merge this checkpoint as a release.
 
 ## Local checks
 
+Additional continuation checks:
+
+```
+pnpm run typecheck
+# From artifacts/api-server (uses node loader, avoiding tsx CLI IPC):
+node --import tsx ../../scripts/guideline-refresh/batch-check.ts
+# From repository root; billable, requires an authorized local key:
+FM_TEST_PGLITE_MODULE=/absolute/path/to/pglite node scripts/guideline-refresh/live-answers.cjs
+FM_LIVE_VIGNETTES=1 FM_TEST_PGLITE_MODULE=/absolute/path/to/pglite node scripts/guideline-refresh/live-answers.cjs
+```
+
+The live harness uses disposable local PGlite, not DATABASE_URL. Its outputs are unverified generated material for review. It records reconstructed baseline prompts as a limitation. Set FM_LOCAL_PREVIEW=1 and FM_LOCAL_PORT=8766 to serve an isolated local app without executing the sample batch; bind is loopback only. This is not a hosted preview link.
+
 Use the repository's existing pnpm workspace. The SQL regression harness requires `@electric-sql/pglite` as a test-only dependency, installed outside the app or provided through `FM_TEST_PGLITE_MODULE`. This dependency is not added to the deployed app.
 
 ```

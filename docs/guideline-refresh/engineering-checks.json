@@ -1,0 +1,54 @@
+{
+  "checkedAt": "2026-10-16T04:03:01.939268+00:00",
+  "scope": "Local candidate only; production unchanged",
+  "checks": [
+    {
+      "command": "pnpm run typecheck",
+      "result": "pass",
+      "scope": "Shared libraries, API server, mobile, mockup sandbox and scripts"
+    },
+    {
+      "command": "pnpm run build:railway",
+      "result": "pass",
+      "note": "Final dependency-aligned build passed, including API bundle and Expo web export"
+    },
+    {
+      "command": "node scripts/guideline-refresh/test.cjs with FM_TEST_PGLITE_MODULE",
+      "result": "pass",
+      "checks": 16
+    },
+    {
+      "command": "node scripts/guideline-refresh/coverage.cjs with FM_TEST_PGLITE_MODULE",
+      "result": "pass",
+      "conditions": 96,
+      "newMissing": 0,
+      "limit": "Matching is not semantic or clinical verification"
+    },
+    {
+      "command": "node --import tsx ../../scripts/guideline-refresh/batch-check.ts from API package",
+      "result": "pass",
+      "checks": 3,
+      "apiCalls": 0
+    },
+    {
+      "command": "node scripts/guideline-refresh/live-answers.cjs",
+      "result": "transport completed; medical acceptance failed",
+      "scenarios": 12
+    },
+    {
+      "command": "FM_LIVE_VIGNETTES=1 node scripts/guideline-refresh/live-answers.cjs",
+      "result": "transport completed; question review not passed",
+      "scenarios": 2
+    },
+    {
+      "command": "Local Playwright launch / Chromium installation",
+      "result": "blocked",
+      "reason": "Browser executable absent; download failed"
+    },
+    {
+      "command": "node scripts/guideline-refresh/api-smoke.cjs with FM_TEST_PGLITE_MODULE",
+      "result": "pass",
+      "scope": "Five modes, vignette transport, citation footer, 156-entry status and denied admin write; deterministic model fixture"
+    }
+  ]
+}

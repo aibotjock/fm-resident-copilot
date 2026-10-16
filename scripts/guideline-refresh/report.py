@@ -23,7 +23,7 @@ Review access date: October 15, 2026, America/New_York. Individual publications 
 
 {inv['corrections']} targeted reference edits across {inv['changedEntries']} entries; {inv['evidenceRecords']} official-source evidence records. None of the {inv['candidate']} complete entries is certified fully verified. The original seed file remains untouched. Corrections apply as anchored changes rather than replacement topic summaries.
 
-Engineering changes: immutable reference versions, additive historical snapshot, atomic activation/rollback, failure-safe staging, preview schema isolation, server-controlled evidence footer, clickable source links, accurate ABFM weight labels, and required clinical-response sections. The candidate no longer calls unverified USPSTF endpoints or describes them as a working live feed.
+Engineering changes: corrected fallback retrieval for unknown topics, removal of unsupported exam-content demands from mode prompts, repaired shared-package typechecking, immutable reference versions, additive historical snapshot, atomic activation/rollback, failure-safe staging, preview schema isolation, server-controlled evidence footer, clickable source links, accurate ABFM weight labels, and required clinical-response sections. The candidate no longer calls unverified USPSTF endpoints or describes them as a working live feed.
 
 ## Review files
 
@@ -33,6 +33,9 @@ Engineering changes: immutable reference versions, additive historical snapshot,
 - [Evidence records](../../artifacts/api-server/src/rag/sources/evidence.json)
 - [All-entry issue inventory](../../artifacts/api-server/src/rag/sources/review-backlog.json)
 - [Six actual production-baseline responses](baseline-responses.json)
+- [Actual candidate responses](candidate-responses.json), [initial failed samples](candidate-responses-initial.json), and [practice questions](candidate-vignettes.json)
+- [Live review findings and release failures](LIVE-REVIEW.md)
+- [Engineering check results](engineering-checks.json)
 - [Retrieval comparison](retrieval-coverage.json)
 - [Database and streaming checks](validation.json)
 - [API transport checks](api-smoke.json)
@@ -42,7 +45,7 @@ Engineering changes: immutable reference versions, additive historical snapshot,
 
 ## Approval status
 
-Not requesting production approval. Full claim-level verification, publisher access/reuse questions, generated candidate-answer review, and end-to-end browser tests remain incomplete. There is no deployed candidate app preview. The review HTML is a reference comparison, not an AI app or a medical certification.
+Not requesting production approval. Full claim-level verification, publisher access/reuse questions, full generated-answer remediation, and end-to-end browser tests remain incomplete. There is no deployed candidate app preview. The review HTML is a reference comparison, not an AI app or a medical certification.
 
 The existing Railway app remains on the approved restored version. No production database, environment variables, service configuration or deployment was changed by this branch work.
 ''')
@@ -52,9 +55,9 @@ The application began as a Replit pnpm/TypeScript workspace in March 2026. Git h
 
 ## Runtime
 
-`artifacts/mobile` is Expo/React Native with Expo Router and web export. Express in `artifacts/api-server` serves the web assets and `/api` from one origin. `lib/db` supplies PostgreSQL connectivity. The deployed restored client uses the existing direct OpenAI connection; source code chooses gpt-4o for a direct key and gpt-5.2 for the older integration route. No model or credential was changed in this task.
+`artifacts/mobile` is Expo/React Native with Expo Router and web export. Express in `artifacts/api-server` serves the web assets and `/api` from one origin. `lib/db` supplies PostgreSQL connectivity. The deployed restored client uses the existing direct OpenAI connection; source code chooses gpt-4o for a direct key and gpt-5.2 for the older integration route. No production model or credential was changed; an authorized new ignored local key was used for isolated candidate tests.
 
-Clinical queries retrieve up to ten full-text matches, using PostgreSQL `websearch_to_tsquery` ranking and an OR-search fallback. Embedding helper code exists, but the current retrieval path does not use embeddings. The condition name is preferred over generic mode prompt text as the search key.
+Clinical queries retrieve up to ten full-text matches, using PostgreSQL `websearch_to_tsquery` ranking and an OR-search fallback that excludes generic request words and numeric-only tokens. The unknown-topic regression exposed and corrected unrelated matches on the word reference. Embedding helper code exists, but the current retrieval path does not use embeddings. The condition name is preferred over generic mode prompt text as the search key.
 
 The baseline reference file contains 156 written summaries, not complete copies of every listed society's guidelines. It contains 21 distinct domain strings; UI categories and internal study weights are a different, older 16-topic scheme. The condition browser has 96 entries despite its old hard-coded 100 label.
 
@@ -90,11 +93,11 @@ ABFM's official blueprint has five activity domains: Acute Care and Diagnosis 35
 
 ## Checks that do not pass or have not been performed
 
-The root typecheck fails in inherited shared packages: duplicate ClinicalQueryBody exports, missing type/dependency declarations, p-retry AbortError typing and image-response nullability. API project checking is consequently blocked by missing shared declaration outputs. The new missing-pg type import found during development was removed; the API build succeeds. Root typecheck is not reported as passing.
+The root typecheck now passes across shared packages, API, mobile, mockup sandbox and scripts. Repairs explicitly export the request schema/interface, declare development types, align React types with the Expo React 19.1 dependency, use the installed p-retry named AbortError/context API, and reject missing image bytes. No production model or credential was changed. The production-style build also passed.
 
-There are no real candidate-model responses in this package: this local runtime has no configured OpenAI credential. No key was copied from Railway or exposed. API tests use explicitly labeled fixtures. The saved baseline responses must not be presented as candidate output.
+Twelve real isolated candidate answer scenarios and two practice-question requests completed using the approved direct-API model, gpt-4o. An explicitly authorized new key was saved to ignored .env.local and is not part of this review package. No key was copied from Railway. Saved baseline requests lacked their original query text, so comparisons use reconstructed queries and are not controlled prompt-identical experiments. See LIVE-REVIEW.md for failed medical acceptance cases; successful transport does not establish medical correctness.
 
-No full browser regression of the candidate, audio test, device-to-device storage test, or cloud PostgreSQL concurrency test has been completed. The built UI's storage implementation and keys were preserved, but that alone does not prove all UI behavior. No candidate Railway service was provisioned or deployed.
+No full browser regression, audio test, device-to-device storage test, or cloud PostgreSQL concurrency test has been completed. A local isolated preview server ran, but Chromium was absent and its download failed. No browser pass is claimed. Storage keys remain unchanged. No candidate Railway service was provisioned or deployed.
 
 ## Medical release blockers
 
@@ -111,7 +114,7 @@ Full 2026 GOLD treatment algorithms, newer ACOG guidance, current labels for all
 1. Continue claim review from the per-entry inventory, prioritizing unresolved unsafe doses, withdrawn products and obsolete acute-care rules.
 2. Obtain legitimate full-source access/permissions where needed, or independently support the specific facts from other applicable official guidance.
 3. Reconcile duplicate-topic recommendations and source metadata after verification.
-4. Capture real candidate responses for the saved baseline scenarios plus prevention, pregnancy/pediatrics, renal dosing, conflicts and unknown-evidence cases.
+4. Remediate the saved live-model failures, then expand real candidate testing to pediatrics, exact dosing, conflicts and repeated question-quality checks.
 5. Review the answers against their exact supporting claims; inspect all eight tabs and exercise local save/review/read-aloud functions.
 6. Resolve required typecheck failures, finish a reviewed activation manifest and database migration rehearsal, then prepare an isolated app preview.
 7. Request production approval only after release blockers are resolved.
@@ -121,6 +124,19 @@ Full 2026 GOLD treatment algorithms, newer ACOG guidance, current labels for all
 Production has not been modified. Do not merge this checkpoint as a release.
 
 ## Local checks
+
+Additional continuation checks:
+
+```
+pnpm run typecheck
+# From artifacts/api-server (uses node loader, avoiding tsx CLI IPC):
+node --import tsx ../../scripts/guideline-refresh/batch-check.ts
+# From repository root; billable, requires an authorized local key:
+FM_TEST_PGLITE_MODULE=/absolute/path/to/pglite node scripts/guideline-refresh/live-answers.cjs
+FM_LIVE_VIGNETTES=1 FM_TEST_PGLITE_MODULE=/absolute/path/to/pglite node scripts/guideline-refresh/live-answers.cjs
+```
+
+The live harness uses disposable local PGlite, not DATABASE_URL. Its outputs are unverified generated material for review. It records reconstructed baseline prompts as a limitation. Set FM_LOCAL_PREVIEW=1 and FM_LOCAL_PORT=8766 to serve an isolated local app without executing the sample batch; bind is loopback only. This is not a hosted preview link.
 
 Use the repository's existing pnpm workspace. The SQL regression harness requires `@electric-sql/pglite` as a test-only dependency, installed outside the app or provided through `FM_TEST_PGLITE_MODULE`. This dependency is not added to the deployed app.
 

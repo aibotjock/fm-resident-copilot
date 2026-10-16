@@ -612,12 +612,14 @@
     "guideline_year": "2021",
     "abfm_domain": "Infectious Disease",
     "section": "STI Treatment Recommendations",
-    "content": "CDC 2021 STI Treatment Guidelines — key regimens:\n\nChlamydia:\n- Doxycycline 100mg BID × 7 days (preferred — superior to azithromycin for rectal chlamydia)\n- Azithromycin 1 g orally once is an alternative in nonpregnant adults when appropriate; lower rectal efficacy may require follow-up. Pregnancy uses a separate recommended regimen. [EVID chlamydia-followup]\n- Test of cure: recommended about 4 weeks after treatment in pregnancy; in nonpregnant patients, consider when adherence is uncertain, symptoms persist, or reinfection is suspected. Retest at about 3 months for reinfection. [EVID chlamydia-followup]\n\nGonorrhea:\n- Ceftriaxone 500mg IM single dose (≥150kg: 1g); NO longer dual therapy with azithromycin (CDC 2020 update)\n- If cephalosporin allergy: gentamicin 240mg IM + azithromycin 2g PO\n- Disseminated gonococcal infection: IV ceftriaxone 1g q24h × ≥24-48h then oral stepdown\n\nSyphilis:\n- Primary/secondary/early latent (<1 year): Benzathine penicillin G 2.4 million units IM × 1 dose\n- Late latent or unknown duration: 2.4 million units IM weekly × 3 doses\n- Neurosyphilis: Aqueous crystalline penicillin G IV × 10-14 days\n- Penicillin allergy: doxycycline 100mg BID × 14 days (non-pregnant)\n\nGenital Herpes:\n- First episode: acyclovir 400mg TID or 200mg 5x/day × 7-10 days; valacyclovir 1g BID × 7-10 days\n- Episodic: shorter courses\n- Suppressive therapy: for ≥6 outbreaks/year or to reduce transmission to partners; valacyclovir 500mg daily\n\nTrichomoniasis: metronidazole 500mg BID × 7 days (women); 2g single dose for men (treat partners simultaneously)",
+    "content": "CDC 2021 STI Treatment Guidelines — key regimens:\n\nChlamydia:\n- Doxycycline 100mg BID × 7 days (preferred — superior to azithromycin for rectal chlamydia)\n- Azithromycin 1 g orally once is an alternative in nonpregnant adults when appropriate; lower rectal efficacy may require follow-up. Pregnancy uses a separate recommended regimen. [EVID chlamydia-followup]\n- Test of cure: recommended about 4 weeks after treatment in pregnancy; in nonpregnant patients, consider when adherence is uncertain, symptoms persist, or reinfection is suspected. Retest at about 3 months for reinfection. [EVID chlamydia-followup]\n\nGonorrhea:\n- Ceftriaxone 500mg IM single dose (≥150kg: 1g); NO longer dual therapy with azithromycin (CDC 2020 update)\n- If cephalosporin allergy: gentamicin 240mg IM + azithromycin 2g PO\n- Gonococcal arthritis/arthritis-dermatitis: ceftriaxone 1 g IM/IV every 24 hours; oral transition is susceptibility-guided after 24–48 hours of substantial improvement, with at least 7 days total treatment. Meningitis/endocarditis use separate regimens. [EVID gonorrhea-regimens]\n\nSyphilis:\n- Primary/secondary/early latent (<1 year): Benzathine penicillin G 2.4 million units IM × 1 dose\n- Late latent or unknown duration: 2.4 million units IM weekly × 3 doses\n- Neurosyphilis: Aqueous crystalline penicillin G IV × 10-14 days\n- Penicillin allergy: doxycycline 100mg BID × 14 days (non-pregnant)\n\nGenital Herpes:\n- First episode: oral acyclovir 400 mg three times daily or valacyclovir 1 g twice daily for 7–10 days; extend if healing is incomplete after day 10. Acyclovir 200 mg five times daily is effective but not recommended because of dosing frequency. [EVID herpes-regimens]\n- Episodic: shorter courses\n- Recurrent HSV-2 suppression: discuss preferences and transmission risk; six annual outbreaks is not a required threshold. Oral options include acyclovir 400 mg twice daily, valacyclovir 500 mg or 1 g daily, or famciclovir 250 mg twice daily. Valacyclovir 500 mg daily may be less effective with ≥10 episodes/year. [EVID herpes-regimens]\n\nTrichomoniasis: metronidazole 500mg BID × 7 days (women); 2g single dose for men (treat partners simultaneously)",
     "url": "https://www.cdc.gov/std/treatment-guidelines/default.htm",
     "key": "5730fd3e11038f2d150db93f",
     "review": "partially_corrected",
     "evidence": [
-      "chlamydia-followup"
+      "chlamydia-followup",
+      "gonorrhea-regimens",
+      "herpes-regimens"
     ],
     "evidence_records": [
       {
@@ -635,6 +637,38 @@
         "access": "Original official page read; limited paraphrase",
         "rights": "Limited attributed paraphrase; no blanket commercial-use clearance",
         "supersessionCheck": "Official source read on access date; comprehensive surveillance remains pending"
+      },
+      {
+        "id": "gonorrhea-regimens",
+        "organization": "CDC",
+        "title": "STI Treatment Guidelines: Gonococcal Infections Among Adolescents and Adults",
+        "publicationDate": "2021",
+        "accessDate": "2026-10-15",
+        "url": "https://www.cdc.gov/std/treatment-guidelines/gonorrhea-adults.htm",
+        "locator": "Alternative Regimens; Follow-Up; Treatment of Arthritis and Arthritis-Dermatitis Syndrome",
+        "claim": "Separate allergy from unavailable ceftriaxone; qualify DGI oral transition and total duration; distinguish cure testing from reinfection testing.",
+        "population": "Adults/adolescents; pharyngeal disease and pregnancy need separate assessment",
+        "recommendationStrength": null,
+        "evidenceCertainty": null,
+        "access": "Original official page read; limited paraphrase",
+        "rights": "Limited attributed paraphrase; no blanket commercial-use clearance",
+        "supersessionCheck": "CDC treatment index checked on 2026-10-15; links to 2021 guidance. Comprehensive FDA/new-product reconciliation remains pending."
+      },
+      {
+        "id": "herpes-regimens",
+        "organization": "CDC",
+        "title": "STI Treatment Guidelines: Genital Herpes",
+        "publicationDate": "2021",
+        "accessDate": "2026-10-15",
+        "url": "https://www.cdc.gov/std/treatment-guidelines/herpes.htm",
+        "locator": "First Clinical Episode; Suppressive Therapy for Recurrent HSV-2",
+        "claim": "Use recommended first-episode regimens; suppression is individualized, including less frequent recurrence, with a limitation on the lower valacyclovir dose.",
+        "population": "Adult genital HSV; renal adjustments and special populations require separate review",
+        "recommendationStrength": null,
+        "evidenceCertainty": null,
+        "access": "Original official page read; limited paraphrase",
+        "rights": "Limited attributed paraphrase; no blanket commercial-use clearance",
+        "supersessionCheck": "CDC treatment index checked on 2026-10-15; links to 2021 guidance. Comprehensive FDA/new-product reconciliation remains pending."
       }
     ],
     "limitations": "Original review findings (tagged corrections below take precedence): 2021 CDC source is real, but original composite is inaccurate: chlamydia test-of-cure has nonpregnancy exceptions; azithromycin is not categorically limited to urogenital infection; disseminated gonorrhea needs syndrome-specific total duration; herpes suppression has no universal >=6-outbreak threshold. Replacement narrows to checked chlamydia facts. Full retained-entry verification, detailed dosing review, and reuse rights remain pending. A correction verifies only its explicitly tagged claim, not the rest of this entry."
@@ -2227,12 +2261,48 @@
     "guideline_year": "2021",
     "abfm_domain": "Infectious Disease",
     "section": "C. difficile Classification and Antibiotic Treatment",
-    "content": "Clostridioides difficile Infection (CDI) — IDSA/SHEA 2021:\n\nDIAGNOSIS:\n- Stool test for patients with ≥3 unformed stools/24 hours (no testing of asymptomatic patients or formed stools)\n- Testing algorithm: NAAT (PCR) highly sensitive; toxin EIA specific — NAAT + toxin combination most accurate (reduces overdiagnosis)\n- Do NOT test patients who are asymptomatic carriers\n\nSEVERITY CLASSIFICATION (IDSA 2021):\n- Non-severe (mild-moderate): WBC ≤15,000 cells/μL AND serum creatinine <1.5 mg/dL\n- Severe: WBC >15,000 OR Cr ≥1.5 mg/dL\n- Fulminant: hypotension/shock, ileus, OR megacolon → surgical consultation\n\nTREATMENT (IDSA 2021 — KEY CHANGE: fidaxomicin now preferred over vancomycin):\nInitial non-severe episode:\n- PREFERRED: fidaxomicin 200mg BID × 10 days (higher sustained cure rate, lower recurrence than vancomycin)\n- ALTERNATIVE: vancomycin 125mg QID × 10 days\n- Metronidazole: NO LONGER RECOMMENDED as first-line (inferior cure rates)\n\nInitial severe episode: vancomycin 125mg QID × 10 days OR fidaxomicin 200mg BID × 10 days\n\nFulminant CDI: vancomycin 500mg QID PO/NG + metronidazole 500mg IV q8h; surgical consultation; possible total colectomy\n\nRECURRENT CDI (within 8 weeks of completing therapy):\n- 1st recurrence: fidaxomicin (preferred) OR vancomycin pulse/taper × 6 weeks (125mg QID 10d → BID 7d → daily 7d → q2-3 days × 8 weeks)\n- ≥2 recurrences: fecal microbiota transplantation (FMT) — FDA-approved (Rebyota, Vowst); highly effective (80-90%)\n- Bezlotoxumab (monoclonal antibody against toxin B): given IV with antibiotics for recurrence prevention in high-risk patients\n\nDISCONTINUE offending antibiotics as soon as possible; avoid PPIs, anti-motility agents (narcotics, anti-diarrheals)\n\nINFECTION CONTROL: contact precautions; hand WASHING (soap and water) — alcohol hand gels do NOT kill C. diff spores; private room; bleach disinfection of surfaces",
+    "content": "Clostridioides difficile Infection (CDI) — IDSA/SHEA 2021:\n\nDIAGNOSIS:\n- Stool test for patients with ≥3 unformed stools/24 hours (no testing of asymptomatic patients or formed stools)\n- Testing algorithm: NAAT (PCR) highly sensitive; toxin EIA specific — NAAT + toxin combination most accurate (reduces overdiagnosis)\n- Do NOT test patients who are asymptomatic carriers\n\nSEVERITY CLASSIFICATION (IDSA 2021):\n- Non-severe (mild-moderate): WBC ≤15,000 cells/μL AND serum creatinine <1.5 mg/dL\n- Severe: WBC >15,000 OR Cr ≥1.5 mg/dL\n- Fulminant: hypotension/shock, ileus, OR megacolon → surgical consultation\n\nTREATMENT (IDSA 2021 — KEY CHANGE: fidaxomicin now preferred over vancomycin):\nInitial non-severe episode:\n- PREFERRED: fidaxomicin 200mg BID × 10 days (higher sustained cure rate, lower recurrence than vancomycin)\n- ALTERNATIVE: vancomycin 125mg QID × 10 days\n- Metronidazole: NO LONGER RECOMMENDED as first-line (inferior cure rates)\n\nInitial severe, nonfulminant episode: favor fidaxomicin 200 mg orally twice daily for 10 days when feasible; oral vancomycin 125 mg four times daily for 10 days remains acceptable. Fulminant disease uses its separate regimen. [EVID cdi-2021-preference]\n\nFulminant CDI: vancomycin 500 mg orally/NG four times daily plus metronidazole 500 mg IV every 8 hours; urgent surgical assessment. With ileus, consider additional rectal vancomycin 500 mg in approximately 100 mL normal saline every 6 hours as a retention enema. [EVID cdi-taper-ileus]\n\nRECURRENT CDI (within 8 weeks of completing therapy):\n- First recurrence: fidaxomicin preferred; oral vancomycin taper/pulse is an alternative. Example: 125 mg four times daily for 10–14 days, twice daily for 7 days, daily for 7 days, then every 2–3 days for 2–8 weeks. This is not a fixed six-week course. [EVID cdi-taper-ileus, cdi-2021-preference]\n- ≥2 recurrences: fecal microbiota transplantation (FMT) — FDA-approved (Rebyota, Vowst); highly effective (80-90%)\n- Bezlotoxumab (monoclonal antibody against toxin B): given IV with antibiotics for recurrence prevention in high-risk patients\n\nDISCONTINUE offending antibiotics as soon as possible; avoid PPIs, anti-motility agents (narcotics, anti-diarrheals)\n\nINFECTION CONTROL: contact precautions; hand WASHING (soap and water) — alcohol hand gels do NOT kill C. diff spores; private room; bleach disinfection of surfaces",
     "url": "https://www.idsociety.org/practice-guideline/clostridium-difficile/",
     "key": "e46fde2a2f267760c4ca55ef",
-    "review": "unresolved",
-    "evidence": [],
-    "evidence_records": [],
+    "review": "partially_corrected",
+    "evidence": [
+      "cdi-taper-ileus",
+      "cdi-2021-preference"
+    ],
+    "evidence_records": [
+      {
+        "id": "cdi-taper-ileus",
+        "organization": "SHEA/IDSA",
+        "title": "2017 Clinical Practice Guideline Update for Clostridium difficile Infection in Adults and Children",
+        "publicationDate": "2018-02-15",
+        "accessDate": "2026-10-15",
+        "url": "https://www.idsociety.org/practice-guideline/clostridium-difficile/",
+        "locator": "Treatment XXX (fulminant CDI); XXXI evidence summary (taper example)",
+        "claim": "Qualify adjunct rectal vancomycin in ileus and accurately describe the example tapered/pulsed oral regimen.",
+        "population": "Adult CDI; taper example rather than one mandatory fixed duration",
+        "recommendationStrength": null,
+        "evidenceCertainty": null,
+        "access": "Original official page read; limited paraphrase",
+        "rights": "Limited attributed paraphrase; no blanket commercial-use clearance",
+        "supersessionCheck": "IDSA current guideline index checked on 2026-10-15; lists 2021 focused update. Older taper/ileus detail used only outside that focused replacement scope."
+      },
+      {
+        "id": "cdi-2021-preference",
+        "organization": "SHEA/IDSA",
+        "title": "2021 Focused Update Guidelines on Management of Clostridioides difficile Infection in Adults",
+        "publicationDate": "2021-06-14",
+        "accessDate": "2026-10-15",
+        "url": "https://www.idsociety.org/practice-guideline/clostridioides-difficile-2021-focused-update/",
+        "locator": "Recommendations I–II; fidaxomicin evidence summary",
+        "claim": "Initial nonfulminant CDI favors fidaxomicin when resources permit; vancomycin remains acceptable. Fulminant disease follows the separate vancomycin-based regimen.",
+        "population": "Adults; not pediatric or fulminant fidaxomicin treatment",
+        "recommendationStrength": "Conditional; moderate certainty for initial episode, low for recurrence",
+        "evidenceCertainty": null,
+        "access": "Original official page read; limited paraphrase",
+        "rights": "Limited attributed paraphrase; no blanket commercial-use clearance",
+        "supersessionCheck": "IDSA current guideline index checked on 2026-10-15; lists 2021 focused update. Older taper/ileus detail used only outside that focused replacement scope."
+      }
+    ],
     "limitations": "Original review findings (tagged corrections below take precedence): The 2021 focused treatment update is real, but original combines 2017 diagnostic/severity rules with later microbiota-product approvals and an internally inconsistent vancomycin taper. Current product availability, FDA recurrence indications and every treatment claim were not verified; not certified. Replacement deliberately covers current CDC testing/prevention, not unverified antibiotic dosing. Full retained-entry verification, detailed dosing review, and reuse rights remain pending. A correction verifies only its explicitly tagged claim, not the rest of this entry."
   },
   {
@@ -2242,12 +2312,65 @@
     "guideline_year": "2021",
     "abfm_domain": "Infectious Disease",
     "section": "Gonorrhea, Chlamydia, and Syphilis Treatment",
-    "content": "STI Treatment — CDC 2021 Guidelines:\n\nGONORRHEA (Neisseria gonorrhoeae):\n- Treatment (uncomplicated urogenital, rectal, pharyngeal): CEFTRIAXONE 500mg IM × 1 dose (if ≥150 kg: 1g IM)\n  → No longer recommend adding azithromycin to ceftriaxone (2021 update — previous dual therapy abandoned due to resistance tracking)\n- Penicillin allergy: Gentamicin 240mg IM + azithromycin 2g PO (reserve; only if ceftriaxone unavailable)\n- Resistance: widespread fluoroquinolone resistance; cephalosporin resistance emerging — culture + sensitivities for treatment failure\n- Test of cure: oropharyngeal infections 1-2 weeks after treatment; urogenital only if symptoms persist\n- Co-treatment for chlamydia: if chlamydia NOT excluded: add doxycycline 100mg BID × 7d\n\nCHLAMYDIA (Chlamydia trachomatis):\n- Treatment (uncomplicated urogenital, rectal): doxycycline 100mg BID × 7 days (preferred over azithromycin since 2021 — superior for rectal chlamydia)\n- Alternative: azithromycin 1g PO × 1 dose (acceptable for urogenital; NOT preferred for rectal infection)\n- Pregnancy: azithromycin 1g PO × 1 dose (doxycycline contraindicated in pregnancy); amoxicillin alternative\n- Lymphogranuloma venereum (LGV strains): doxycycline 100mg BID × 21 days\n\nSYPHILIS (Treponema pallidum):\n- Primary/secondary/early latent (<1 year): Benzathine penicillin G 2.4 million units IM × 1 dose\n- Late latent (>1 year duration unknown): Benzathine penicillin G 2.4 million units IM × 3 doses (weekly × 3)\n- Neurosyphilis: aqueous crystalline penicillin G 18-24 million units IV daily × 10-14 days\n- Penicillin allergy: doxycycline 100mg BID × 14d (primary/secondary); 28d (late latent); MUST desensitize and treat with penicillin in pregnancy\n- Jarisch-Herxheimer reaction: fever, myalgias 6-8h after first dose (especially secondary syphilis) — self-limited; antipyretics; NOT an allergy\n\nSCREENING GUIDELINES (USPSTF):\n- Gonorrhea/chlamydia: all sexually active women ≤25 years (Grade B); older women at risk\n- Syphilis: pregnant women (Grade A); sexually active persons at increased risk (Grade B) including MSM, commercial sex workers, HIV-positive individuals\n\nEXPEDITED PARTNER THERAPY (EPT): treating partners of chlamydia/gonorrhea patients without physical exam — legal in most states; recommended by CDC",
+    "content": "STI Treatment — CDC 2021 Guidelines:\n\nGONORRHEA (Neisseria gonorrhoeae):\n- Treatment (uncomplicated urogenital, rectal, pharyngeal): CEFTRIAXONE 500mg IM × 1 dose (if ≥150 kg: 1g IM)\n  → No longer recommend adding azithromycin to ceftriaxone (2021 update — previous dual therapy abandoned due to resistance tracking)\n- Assess the allergy history. For cephalosporin allergy, gentamicin 240 mg IM plus azithromycin 2 g orally, each once, is an alternative for uncomplicated anogenital disease. If ceftriaxone is unavailable, cefixime 800 mg orally once is the separate alternative. Pharyngeal infection has no reliable alternative; severe ceftriaxone reactions require specialist consultation. [EVID gonorrhea-regimens]\n- Resistance: widespread fluoroquinolone resistance; cephalosporin resistance emerging — culture + sensitivities for treatment failure\n- Pharyngeal cure testing: culture or NAAT 7–14 days after treatment. Persistent symptoms require culture and susceptibility testing; routine cure testing is unnecessary after appropriate treatment of uncomplicated anogenital infection. Retest for reinfection at 3 months. [EVID gonorrhea-regimens]\n- Co-treatment for chlamydia: if chlamydia NOT excluded: add doxycycline 100mg BID × 7d\n\nCHLAMYDIA (Chlamydia trachomatis):\n- Treatment (uncomplicated urogenital, rectal): doxycycline 100mg BID × 7 days (preferred over azithromycin since 2021 — superior for rectal chlamydia)\n- Alternative: azithromycin 1g PO × 1 dose (acceptable for urogenital; NOT preferred for rectal infection)\n- Pregnancy: azithromycin 1g PO × 1 dose (doxycycline contraindicated in pregnancy); amoxicillin alternative\n- Lymphogranuloma venereum (LGV strains): doxycycline 100mg BID × 21 days\n\nSYPHILIS (Treponema pallidum):\n- Primary/secondary/early latent (<1 year): Benzathine penicillin G 2.4 million units IM × 1 dose\n- Late latent (>1 year duration unknown): Benzathine penicillin G 2.4 million units IM × 3 doses (weekly × 3)\n- Neurosyphilis: aqueous crystalline penicillin G 18-24 million units IV daily × 10-14 days\n- Penicillin allergy: doxycycline 100mg BID × 14d (primary/secondary); 28d (late latent); MUST desensitize and treat with penicillin in pregnancy\n- Jarisch-Herxheimer reaction: fever, myalgias 6-8h after first dose (especially secondary syphilis) — self-limited; antipyretics; NOT an allergy\n\nSCREENING GUIDELINES (USPSTF):\n- Gonorrhea/chlamydia: screen asymptomatic sexually active women aged ≤24, including pregnant persons; at ≥25 screen those at increased risk (USPSTF Grade B). [EVID sti-screen-age]\n- Syphilis: pregnant women (Grade A); asymptomatic nonpregnant adolescents/adults at increased risk (Grade A), with risk assessed using individual history and local epidemiology [EVID syphilis-screen-grade]\n\nEXPEDITED PARTNER THERAPY (EPT): treating partners of chlamydia/gonorrhea patients without physical exam — legal in most states; recommended by CDC",
     "url": "https://www.cdc.gov/std/treatment-guidelines/",
     "key": "a975e3f80c0dc6fd5af510b9",
-    "review": "unresolved",
-    "evidence": [],
-    "evidence_records": [],
+    "review": "partially_corrected",
+    "evidence": [
+      "gonorrhea-regimens",
+      "sti-screen-age",
+      "syphilis-screen-grade"
+    ],
+    "evidence_records": [
+      {
+        "id": "gonorrhea-regimens",
+        "organization": "CDC",
+        "title": "STI Treatment Guidelines: Gonococcal Infections Among Adolescents and Adults",
+        "publicationDate": "2021",
+        "accessDate": "2026-10-15",
+        "url": "https://www.cdc.gov/std/treatment-guidelines/gonorrhea-adults.htm",
+        "locator": "Alternative Regimens; Follow-Up; Treatment of Arthritis and Arthritis-Dermatitis Syndrome",
+        "claim": "Separate allergy from unavailable ceftriaxone; qualify DGI oral transition and total duration; distinguish cure testing from reinfection testing.",
+        "population": "Adults/adolescents; pharyngeal disease and pregnancy need separate assessment",
+        "recommendationStrength": null,
+        "evidenceCertainty": null,
+        "access": "Original official page read; limited paraphrase",
+        "rights": "Limited attributed paraphrase; no blanket commercial-use clearance",
+        "supersessionCheck": "CDC treatment index checked on 2026-10-15; links to 2021 guidance. Comprehensive FDA/new-product reconciliation remains pending."
+      },
+      {
+        "id": "sti-screen-age",
+        "organization": "USPSTF",
+        "title": "Chlamydia and Gonorrhea: Screening",
+        "publicationDate": "2021-09-14",
+        "accessDate": "2026-10-15",
+        "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/chlamydia-and-gonorrhea-screening",
+        "locator": "Recommendation Summary; Clinician Summary",
+        "claim": "Routine screening age is 24 or younger; at 25 or older screen those at increased risk.",
+        "population": "Asymptomatic sexually active women, including pregnant persons",
+        "recommendationStrength": "Grade B",
+        "evidenceCertainty": null,
+        "access": "Original official page read; limited paraphrase",
+        "rights": "Limited attributed paraphrase; no blanket commercial-use clearance",
+        "supersessionCheck": "Official source read on access date; comprehensive surveillance remains pending"
+      },
+      {
+        "id": "syphilis-screen-grade",
+        "organization": "USPSTF",
+        "title": "Syphilis Infection in Nonpregnant Adolescents and Adults: Screening",
+        "publicationDate": "2022-09-27",
+        "accessDate": "2026-10-15",
+        "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/syphilis-infection-nonpregnant-adults-adolescents-screening",
+        "locator": "Recommendation Summary; Population Under Consideration",
+        "claim": "Increased-risk nonpregnant asymptomatic adolescents/adults have a Grade A screening recommendation, not Grade B.",
+        "population": "Nonpregnant adolescents/adults; pregnancy addressed in a separate statement",
+        "recommendationStrength": "Grade A",
+        "evidenceCertainty": null,
+        "access": "Original official page read; limited paraphrase",
+        "rights": "Limited attributed paraphrase; no blanket commercial-use clearance",
+        "supersessionCheck": "Official source read on access date; comprehensive surveillance remains pending"
+      }
+    ],
     "limitations": "Original review findings (tagged corrections below take precedence): CDC 2021 source is real, but original confuses cephalosporin allergy with ceftriaxone-unavailability alternatives; sexual-screening age is misstated (women<25, not <=25). Penicillin-allergy and pharyngeal-infection management require nuance. Neurosyphilis regimen lacks divided/continuous administration details. Replacement narrows to checked gonorrhea facts. Full retained-entry verification, detailed dosing review, and reuse rights remain pending. A correction verifies only its explicitly tagged claim, not the rest of this entry."
   },
   {
@@ -2945,12 +3068,48 @@
     "guideline_year": "2023",
     "abfm_domain": "Renal & Urology",
     "section": "Electrolyte Disorders — Hyponatremia, Hyperkalemia, Hypokalemia, Hypomagnesemia, Hypercalcemia",
-    "content": "ELECTROLYTE DISORDERS — AAFP/KDIGO 2023:\n\nHYPONATREMIA (Na <135 mEq/L):\nSymptoms: nausea, headache, lethargy, seizures, coma (usually with Na <125 mEq/L or rapid decline)\nStep 1 — Assess osmolality:\n- Hyperosmolar (>295): hyperglycemia (correct Na: add 1.6 mEq/L per 100 mg/dL glucose >100), mannitol\n- Iso-osmolar (280–295): pseudohyponatremia (hyperlipidemia, hyperproteinemia)\n- Hypo-osmolar (<280): most clinically relevant — proceed to volume assessment\n\nStep 2 — Assess volume status:\n- Hypovolemic hyponatremia: urine Na <20 (extra-renal loss: vomiting, diarrhea) or >20 (renal loss: diuretics, Addison's) → isotonic saline\n- Euvolemic hyponatremia: urine Na >20, urine osmolality >100 → SIADH (most common cause in euvolemic) → fluid restriction 1–1.5 L/day; treat underlying cause; vasopressin receptor antagonists (tolvaptan, conivaptan) for severe refractory SIADH\n  SIADH causes: CNS disease, pulmonary disease, malignancy (small cell lung cancer), SSRIs, NSAIDs, carbamazepine\n- Hypervolemic hyponatremia: urine Na <20 → CHF, cirrhosis, nephrotic syndrome → fluid + sodium restriction, treat underlying cause\n\nCorrection rate: raise Na no faster than 8–12 mEq/L per 24 hours (risk of osmotic demyelination syndrome / central pontine myelinolysis if corrected too rapidly)\nAcute severe/symptomatic (seizures, coma): 3% hypertonic saline 100 mL IV bolus; raise Na by 1–2 mEq/L/hour until symptoms resolve, then slow to ≤8–12/24h\n\nHYPERKALEMIA (K >5.0 mEq/L):\nCauses: CKD (most common), ACE inhibitors/ARBs, potassium-sparing diuretics (spironolactone), NSAIDs, rhabdomyolysis, adrenal insufficiency, pseudohyperkalemia (hemolysis)\nEKG changes (in order): peaked T waves → prolonged PR → widened QRS → sine wave → VF\nManagement by severity:\n- Mild (5.0–5.5, no EKG changes): dietary K restriction (<2 g/day), hold offending agents, optimize GFR\n- Moderate (5.5–6.0) or EKG changes: add sodium bicarbonate (metabolic acidosis), kayexalate or patiromer (K binders); patiromer preferred for CKD\n- Severe (>6.0 or EKG changes): IV calcium gluconate (membrane stabilization — immediate, 30–60 min); IV insulin + dextrose (shifts K intracellularly, 15–30 min); IV sodium bicarbonate if acidosis; albuterol nebulized; hemodialysis for refractory/severe\n\nHYPOKALEMIA (K <3.5 mEq/L):\nCauses: GI loss (vomiting, diarrhea, laxatives), renal loss (diuretics — thiazide/loop, hyperaldosteronism), transcellular shift (insulin, alkalosis, beta-agonists)\nSymptoms: muscle weakness, cramps, constipation, arrhythmias (U waves on EKG, T-wave flattening)\nTreatment: oral KCl for mild-moderate (10 mEq/hour oral; max 40 mEq/dose); IV KCl for severe (<2.5 or symptomatic; max 10 mEq/hour peripheral, 20 mEq/hour central); correct concurrent hypomagnesemia first (Mg depletion causes renal K wasting)\n\nHYPOMAGNESEMIA (Mg <1.7 mg/dL):\nCauses: alcohol use disorder, malnutrition, PPIs (chronic use), loop/thiazide diuretics, malabsorption, poorly controlled DM\nSignificance: refractory hypokalemia and hypokalemia do not correct without Mg repletion\nTreatment: oral Mg oxide/citrate for mild asymptomatic; IV magnesium sulfate for severe or symptomatic (1–2 g IV over 15 min for torsades de pointes; 1–2 g IV over 1 hour for severe deficiency); correct underlying cause\n\nHYPERCALCEMIA (Ca >10.5 mg/dL; corrected for albumin: add 0.8 mg/dL per 1 g/dL albumin below 4):\nMost common causes in outpatient: primary hyperparathyroidism (PTH ↑), malignancy (PTH-rP ↑; osteolytic mets)\nPTH-based workup: PTH elevated → primary hyperparathyroidism (refer endocrine/surgery if symptomatic or Ca >1 mg/dL above normal or age <50 or osteoporosis or nephrolithiasis); PTH suppressed → malignancy, sarcoidosis, vitamin D toxicity, thiazide diuretics\nSymptoms of significant hypercalcemia (\"bones, stones, groans, psychic moans\"): nephrolithiasis, fractures, constipation, nausea, depression, confusion\nAcute severe hypercalcemia (>14 mg/dL or symptomatic): IV isotonic saline (aggressive hydration first); IV bisphosphonates (zoledronic acid 4 mg IV); calcitonin for rapid reduction; dialysis for refractory",
+    "content": "ELECTROLYTE DISORDERS — AAFP/KDIGO 2023:\n\nHYPONATREMIA (Na <135 mEq/L):\nSymptoms: nausea, headache, lethargy, seizures, coma (usually with Na <125 mEq/L or rapid decline)\nStep 1 — Assess osmolality:\n- Hyperosmolar (>295): hyperglycemia (correct Na: add 1.6 mEq/L per 100 mg/dL glucose >100), mannitol\n- Iso-osmolar (280–295): pseudohyponatremia (hyperlipidemia, hyperproteinemia)\n- Hypo-osmolar (<280): most clinically relevant — proceed to volume assessment\n\nStep 2 — Assess volume status:\n- Hypovolemic hyponatremia: urine Na <20 (extra-renal loss: vomiting, diarrhea) or >20 (renal loss: diuretics, Addison's) → isotonic saline\n- Euvolemic hyponatremia: urine Na >20, urine osmolality >100 → SIADH (most common cause in euvolemic) → fluid restriction 1–1.5 L/day; treat underlying cause; vasopressin receptor antagonists (tolvaptan, conivaptan) for severe refractory SIADH\n  SIADH causes: CNS disease, pulmonary disease, malignancy (small cell lung cancer), SSRIs, NSAIDs, carbamazepine\n- Hypervolemic hyponatremia: urine Na <20 → CHF, cirrhosis, nephrotic syndrome → fluid + sodium restriction, treat underlying cause\n\nCorrection ceilings: chronic hyponatremia with high osmotic demyelination risk: no more than 8 mEq/L in 24 hours. Without risk factors, the cited AAFP summary specifies no more than 12 mEq/L in 24 hours and 18 mEq/L in 48 hours. These are ceilings, not correction goals. [EVID sodium-limits]\nSevere symptomatic hyponatremia requires emergency monitored 3% saline treatment. Check sodium after each bolus and frequently thereafter; apply the risk-specific cumulative limits above. The exact rescue-bolus protocol remains unresolved in this review; do not use the previous open-ended hourly correction instruction. [EVID sodium-limits]\n\nHYPERKALEMIA (K >5.0 mEq/L):\nCauses: CKD (most common), ACE inhibitors/ARBs, potassium-sparing diuretics (spironolactone), NSAIDs, rhabdomyolysis, adrenal insufficiency, pseudohyperkalemia (hemolysis)\nEKG changes (in order): peaked T waves → prolonged PR → widened QRS → sine wave → VF\nManagement by severity:\n- Mild (5.0–5.5, no EKG changes): dietary K restriction (<2 g/day), hold offending agents, optimize GFR\n- UKKA adult hospital pathway: moderate K 6.0–6.4; severe ≥6.5 mmol/L. Urgent ECG at ≥6.0; continuous monitoring for severe disease, ECG changes, or clinically unwell moderate disease.\n- Hyperkalemic ECG changes: calcium gluconate 10%, 30 mL IV over 10 minutes; calcium chloride 10%, 10 mL over 5 minutes is preferred in resuscitation.\n- Severe: IV soluble insulin 10 units with glucose 25 g; consider also for moderate disease. If pretreatment glucose <7 mmol/L, follow with 10% glucose 50 mL/hour for 5 hours. Nebulized salbutamol is adjunctive; IV bicarbonate is not routine.\n- Check glucose through 6 hours after insulin and potassium for response/rebound. Potassium removal and dialysis require the full pathway and patient-specific assessment. [EVID hyperkalemia-ukka-2026]\n\nHYPOKALEMIA (K <3.5 mEq/L):\nCauses: GI loss (vomiting, diarrhea, laxatives), renal loss (diuretics — thiazide/loop, hyperaldosteronism), transcellular shift (insulin, alkalosis, beta-agonists)\nSymptoms: muscle weakness, cramps, constipation, arrhythmias (U waves on EKG, T-wave flattening)\nTreatment: oral KCl for mild-moderate (10 mEq/hour oral; max 40 mEq/dose); IV KCl for severe (<2.5 or symptomatic; max 10 mEq/hour peripheral, 20 mEq/hour central); correct concurrent hypomagnesemia first (Mg depletion causes renal K wasting)\n\nHYPOMAGNESEMIA (Mg <1.7 mg/dL):\nCauses: alcohol use disorder, malnutrition, PPIs (chronic use), loop/thiazide diuretics, malabsorption, poorly controlled DM\nSignificance: refractory hypokalemia and hypokalemia do not correct without Mg repletion\nTreatment: oral Mg oxide/citrate for mild asymptomatic; IV magnesium sulfate for severe or symptomatic (1–2 g IV over 15 min for torsades de pointes; 1–2 g IV over 1 hour for severe deficiency); correct underlying cause\n\nHYPERCALCEMIA (Ca >10.5 mg/dL; corrected for albumin: add 0.8 mg/dL per 1 g/dL albumin below 4):\nMost common causes in outpatient: primary hyperparathyroidism (PTH ↑), malignancy (PTH-rP ↑; osteolytic mets)\nPTH-based workup: PTH elevated → primary hyperparathyroidism (refer endocrine/surgery if symptomatic or Ca >1 mg/dL above normal or age <50 or osteoporosis or nephrolithiasis); PTH suppressed → malignancy, sarcoidosis, vitamin D toxicity, thiazide diuretics\nSymptoms of significant hypercalcemia (\"bones, stones, groans, psychic moans\"): nephrolithiasis, fractures, constipation, nausea, depression, confusion\nAcute severe hypercalcemia (>14 mg/dL or symptomatic): IV isotonic saline (aggressive hydration first); IV bisphosphonates (zoledronic acid 4 mg IV); calcitonin for rapid reduction; dialysis for refractory",
     "url": "https://www.aafp.org/pubs/afp/issues/2023/electrolyte-disorders.html",
     "key": "6a2a1974711a138a1f8ad775",
-    "review": "unresolved",
-    "evidence": [],
-    "evidence_records": [],
+    "review": "partially_corrected",
+    "evidence": [
+      "sodium-limits",
+      "hyperkalemia-ukka-2026"
+    ],
+    "evidence_records": [
+      {
+        "id": "sodium-limits",
+        "organization": "AAFP",
+        "title": "Diagnosis and Management of Sodium Disorders: Hyponatremia and Hypernatremia",
+        "publicationDate": "2023-11",
+        "accessDate": "2026-10-15",
+        "url": "https://www.aafp.org/afp/2023/1100/sodium-disorders-hyponatremia-hypernatremia",
+        "locator": "Public SORT recommendations; full article access restricted",
+        "claim": "Chronic high-ODS-risk patients have a lower correction ceiling; limits differ from an hourly rescue target.",
+        "population": "Adult hyponatremia; public recommendation summary only",
+        "recommendationStrength": "SORT C for correction ceilings",
+        "evidenceCertainty": null,
+        "access": "Official public abstract and SORT table read; full article not accessed",
+        "rights": "Independent factual paraphrase only; AAFP reproduction restrictions require review before commercial release",
+        "supersessionCheck": "Official source read on access date; comprehensive surveillance remains pending"
+      },
+      {
+        "id": "hyperkalemia-ukka-2026",
+        "organization": "UK Kidney Association",
+        "title": "Clinical Practice Guideline: Treatment of Acute Hyperkalaemia in Adults",
+        "publicationDate": "2026-07",
+        "accessDate": "2026-10-15",
+        "url": "https://www.ukkidney.org/sites/default/files/documents/FINAL%20VERSION%20-%20UKKA%20CLINICAL%20PRACTICE%20GUIDELINE%20-%20MANAGEMENT%20OF%20HYPERKALAEMIA%20IN%20ADULTS%20-%20UPDATED%20JULY%202026_0.pdf",
+        "locator": "Guidelines 14.1–14.2, 16.2–16.5, 17.1–17.2; PDF pp. 13–15",
+        "claim": "Replace the contradictory moderate/severe pathway; separate myocardial protection, intracellular shift, and monitoring.",
+        "population": "UK adult hospital guidance; not a US formulary or pediatric protocol; source grades vary",
+        "recommendationStrength": null,
+        "evidenceCertainty": null,
+        "access": "Original official page read; limited paraphrase",
+        "rights": "Limited attributed paraphrase; no blanket commercial-use clearance",
+        "supersessionCheck": "Publisher landing page links to July 2026 updated PDF; title page and relevant recommendations read. US-specific reconciliation remains pending."
+      }
+    ],
     "limitations": "Original review findings (tagged corrections below take precedence): The catalog URL/title was not authenticated. A generic sodium-correction limit of 8–12 per day omits high-risk limits. Hyperkalemia with ECG changes is an emergency regardless of a moderate numeric category; potassium binders are not a substitute for urgent stabilization. Original calcium/magnesium regimens and potassium doses remain unchecked. Full retained-entry verification, detailed dosing review, and reuse rights remain pending. A correction verifies only its explicitly tagged claim, not the rest of this entry."
   },
   {

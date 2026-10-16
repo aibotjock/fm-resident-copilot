@@ -101,6 +101,11 @@ async function main(){
   assert(found.some(e=>e.content.includes('11–30 mL/min, 30 mg PO daily')));
   assert(found.every(e=>e.version_id===c.CANDIDATE_VERSION));
  });
+ await check('Unknown topic cannot retrieve unrelated references through generic fallback words',async()=>{
+  assert.equal((await store.searchByTextFallback('zzqxv-no-reference-8392',10)).length,0);
+  assert.equal((await store.searchByTextFallback('clinical guideline treatment reference',10)).length,0);
+  assert((await store.searchByTextFallback('Influenza treatment guideline',10)).length>0);
+ });
  await check('Correction anchors and evidence links are internally valid',async()=>{
   const ids=new Set(c.EVIDENCE.map(e=>e.id));
   for(const change of c.CORRECTIONS)for(const id of change.evidence)assert(ids.has(id));

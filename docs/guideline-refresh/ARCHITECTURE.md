@@ -4,9 +4,9 @@ The application began as a Replit pnpm/TypeScript workspace in March 2026. Git h
 
 ## Runtime
 
-`artifacts/mobile` is Expo/React Native with Expo Router and web export. Express in `artifacts/api-server` serves the web assets and `/api` from one origin. `lib/db` supplies PostgreSQL connectivity. The deployed restored client uses the existing direct OpenAI connection; source code chooses gpt-4o for a direct key and gpt-5.2 for the older integration route. No model or credential was changed in this task.
+`artifacts/mobile` is Expo/React Native with Expo Router and web export. Express in `artifacts/api-server` serves the web assets and `/api` from one origin. `lib/db` supplies PostgreSQL connectivity. The deployed restored client uses the existing direct OpenAI connection; source code chooses gpt-4o for a direct key and gpt-5.2 for the older integration route. No production model or credential was changed; an authorized new ignored local key was used for isolated candidate tests.
 
-Clinical queries retrieve up to ten full-text matches, using PostgreSQL `websearch_to_tsquery` ranking and an OR-search fallback. Embedding helper code exists, but the current retrieval path does not use embeddings. The condition name is preferred over generic mode prompt text as the search key.
+Clinical queries retrieve up to ten full-text matches, using PostgreSQL `websearch_to_tsquery` ranking and an OR-search fallback that excludes generic request words and numeric-only tokens. The unknown-topic regression exposed and corrected unrelated matches on the word reference. Embedding helper code exists, but the current retrieval path does not use embeddings. The condition name is preferred over generic mode prompt text as the search key.
 
 The baseline reference file contains 156 written summaries, not complete copies of every listed society's guidelines. It contains 21 distinct domain strings; UI categories and internal study weights are a different, older 16-topic scheme. The condition browser has 96 entries despite its old hard-coded 100 label.
 

@@ -10,6 +10,9 @@
     "./audio": "./src/audio/index.ts",
     "./client": "./src/client.ts"
   },
+  "devDependencies": {
+    "@types/node": "catalog:"
+  },
   "dependencies": {
     "openai": "^6.27.0",
     "p-limit": "^7.3.0",

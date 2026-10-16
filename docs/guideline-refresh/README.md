@@ -12,13 +12,13 @@ Review access date: October 15, 2026, America/New_York. Individual publications 
 - 21 distinct legacy reference-domain strings. The interface historically uses 16 organ-system study categories; these are not the five official ABFM exam domains.
 - 96 actual condition-browser entries, with no missing retrieval matches before or after. Matching does not prove clinical relevance.
 - Original navigation, five response modes, practice questions, flashcards, read-aloud controls and local study-data storage.
-- Baseline text 270,428 characters; candidate text 277,006. Length preservation is not an accuracy measure.
+- Baseline text 270,428 characters; candidate text 279,419. Length preservation is not an accuracy measure.
 
 ## What changed
 
-51 targeted reference edits across 32 entries; 34 official-source evidence records. None of the 156 complete entries is certified fully verified. The original seed file remains untouched. Corrections apply as anchored changes rather than replacement topic summaries.
+64 targeted reference edits across 35 entries; 42 official-source evidence records. None of the 156 complete entries is certified fully verified. The original seed file remains untouched. Corrections apply as anchored changes rather than replacement topic summaries.
 
-Engineering changes: immutable reference versions, additive historical snapshot, atomic activation/rollback, failure-safe staging, preview schema isolation, server-controlled evidence footer, clickable source links, accurate ABFM weight labels, and required clinical-response sections. The candidate no longer calls unverified USPSTF endpoints or describes them as a working live feed.
+Engineering changes: corrected fallback retrieval for unknown topics, removal of unsupported exam-content demands from mode prompts, repaired shared-package typechecking, immutable reference versions, additive historical snapshot, atomic activation/rollback, failure-safe staging, preview schema isolation, server-controlled evidence footer, clickable source links, accurate ABFM weight labels, and required clinical-response sections. The candidate no longer calls unverified USPSTF endpoints or describes them as a working live feed.
 
 ## Review files
 
@@ -28,6 +28,9 @@ Engineering changes: immutable reference versions, additive historical snapshot,
 - [Evidence records](../../artifacts/api-server/src/rag/sources/evidence.json)
 - [All-entry issue inventory](../../artifacts/api-server/src/rag/sources/review-backlog.json)
 - [Six actual production-baseline responses](baseline-responses.json)
+- [Actual candidate responses](candidate-responses.json), [initial failed samples](candidate-responses-initial.json), and [practice questions](candidate-vignettes.json)
+- [Live review findings and release failures](LIVE-REVIEW.md)
+- [Engineering check results](engineering-checks.json)
 - [Retrieval comparison](retrieval-coverage.json)
 - [Database and streaming checks](validation.json)
 - [API transport checks](api-smoke.json)
@@ -37,6 +40,6 @@ Engineering changes: immutable reference versions, additive historical snapshot,
 
 ## Approval status
 
-Not requesting production approval. Full claim-level verification, publisher access/reuse questions, generated candidate-answer review, and end-to-end browser tests remain incomplete. There is no deployed candidate app preview. The review HTML is a reference comparison, not an AI app or a medical certification.
+Not requesting production approval. Full claim-level verification, publisher access/reuse questions, full generated-answer remediation, and end-to-end browser tests remain incomplete. There is no deployed candidate app preview. The review HTML is a reference comparison, not an AI app or a medical certification.
 
 The existing Railway app remains on the approved restored version. No production database, environment variables, service configuration or deployment was changed by this branch work.
