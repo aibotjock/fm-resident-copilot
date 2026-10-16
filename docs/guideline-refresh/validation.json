@@ -1,0 +1,81 @@
+{
+  "engine": "PGlite PostgreSQL WASM; no production database accessed",
+  "inventory": {
+    "baseline": 156,
+    "candidate": 156,
+    "domains": 21,
+    "changedEntries": 35,
+    "corrections": 64,
+    "evidenceRecords": 42,
+    "fullyVerifiedEntries": 0,
+    "candidateVersion": "refresh-2026-10-15-ae430fbadf7a",
+    "baselineCharacters": 270428,
+    "candidateCharacters": 279419
+  },
+  "checks": [
+    {
+      "name": "Baseline snapshot preserves all 156 original rows",
+      "result": "pass"
+    },
+    {
+      "name": "Candidate preserves section identities and domains",
+      "result": "pass"
+    },
+    {
+      "name": "Staging is idempotent and leaves active baseline unchanged",
+      "result": "pass"
+    },
+    {
+      "name": "Immutable IDs reject changed content",
+      "result": "pass"
+    },
+    {
+      "name": "Evidence metadata is immutable with its reference version",
+      "result": "pass"
+    },
+    {
+      "name": "Empty and duplicate candidates are rejected",
+      "result": "pass"
+    },
+    {
+      "name": "Incomplete candidate cannot activate in production",
+      "result": "pass"
+    },
+    {
+      "name": "Failed staging rolls back candidate rows and active pointer",
+      "result": "pass"
+    },
+    {
+      "name": "Isolated preview activates candidate and rollback restores baseline",
+      "result": "pass"
+    },
+    {
+      "name": "Restart/staging does not undo a selected rollback",
+      "result": "pass"
+    },
+    {
+      "name": "Full-text search uses the selected version and corrected renal dose",
+      "result": "pass"
+    },
+    {
+      "name": "Unknown topic cannot retrieve unrelated references through generic fallback words",
+      "result": "pass"
+    },
+    {
+      "name": "Correction anchors and evidence links are internally valid",
+      "result": "pass"
+    },
+    {
+      "name": "Model citation footer is suppressed across every split boundary",
+      "result": "pass"
+    },
+    {
+      "name": "Ordinary prose including percent characters is preserved",
+      "result": "pass"
+    },
+    {
+      "name": "Evidence footer does not claim whole-topic verification",
+      "result": "pass"
+    }
+  ]
+}

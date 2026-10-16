@@ -1,4 +1,5 @@
 import { pool } from "@workspace/db";
+import type { EvidenceRecord } from "./versions";
 
 export interface GuidelineChunk {
   source: string;
@@ -22,95 +23,41 @@ export interface SearchResult {
   content: string;
   url: string | null;
   rank: number;
+  review: "unresolved" | "partially_corrected" | "verified";
+  evidence: string[];
+  limitations: string;
+  version_id: string;
+  evidence_records: EvidenceRecord[];
 }
 
-export async function insertChunksBatch(
-  chunks: GuidelineChunk[]
-): Promise<void> {
-  const client = await pool.connect();
-  try {
-    await client.query("BEGIN");
-    for (const c of chunks) {
-      await client.query(
-        `INSERT INTO guideline_chunks
-           (source, tier, guideline_title, guideline_year, abfm_domain, section, content, url)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`,
-        [
-          c.source,
-          c.tier,
-          c.guideline_title,
-          c.guideline_year,
-          c.abfm_domain,
-          c.section,
-          c.content,
-          c.url ?? null,
-        ]
-      );
-    }
-    await client.query("COMMIT");
-  } catch (e) {
-    await client.query("ROLLBACK");
-    throw e;
-  } finally {
-    client.release();
-  }
-}
-
-export async function searchByText(
-  query: string,
-  limit = 10
-): Promise<SearchResult[]> {
-  const { rows } = await pool.query<SearchResult>(
-    `SELECT
-       id, source, tier, guideline_title, guideline_year,
-       abfm_domain, section, content, url,
-       ts_rank(content_tsv, websearch_to_tsquery('english', $1)) AS rank
-     FROM guideline_chunks
-     WHERE content_tsv @@ websearch_to_tsquery('english', $1)
-     ORDER BY rank DESC
-     LIMIT $2`,
-    [query, limit]
-  );
+// Search only the atomically selected version. No mutation truncates reference data.
+export async function searchByText(query: string, limit = 10): Promise<SearchResult[]> {
+  const {rows}=await pool.query<SearchResult>(`
+    SELECT e.key AS id,e.*,
+      ts_rank(e.content_tsv,websearch_to_tsquery('english',$1)) AS rank
+    FROM reference_entries e JOIN reference_state s ON e.version_id=s.active_version
+    WHERE e.content_tsv @@ websearch_to_tsquery('english',$1)
+    ORDER BY rank DESC,e.key LIMIT $2`,[query,limit]);
   return rows;
 }
-
-export async function searchByTextFallback(
-  query: string,
-  limit = 10
-): Promise<SearchResult[]> {
-  const words = query
-    .toLowerCase()
-    .replace(/[^a-z0-9 ]/g, " ")
-    .split(/\s+/)
-    .filter((w) => w.length > 2);
-
-  if (words.length === 0) return [];
-
-  const tsQuery = words.join(" | ");
-
-  const { rows } = await pool.query<SearchResult>(
-    `SELECT
-       id, source, tier, guideline_title, guideline_year,
-       abfm_domain, section, content, url,
-       ts_rank(content_tsv, to_tsquery('english', $1)) AS rank
-     FROM guideline_chunks
-     WHERE content_tsv @@ to_tsquery('english', $1)
-     ORDER BY rank DESC
-     LIMIT $2`,
-    [tsQuery, limit]
-  );
+export async function searchByTextFallback(query: string, limit = 10): Promise<SearchResult[]> {
+  // Generic request words must not make an unknown topic look sourced.
+  const generic=new Set(["reference","references","guideline","guidelines","evidence","source","sources","clinical","condition","conditions","disease","treatment","management","diagnosis","patient","recommended","explain","provide","about","with","without","and","the","for"]);
+  const words=[...new Set(query.toLowerCase().replace(/[^a-z0-9 ]/g," ").split(/\s+/)
+    .filter(w=>w.length>2 && /[a-z]/.test(w) && !generic.has(w)))];
+  if(!words.length) return [];
+  const {rows}=await pool.query<SearchResult>(`
+    SELECT e.key AS id,e.*,
+      ts_rank(e.content_tsv,to_tsquery('english',$1)) AS rank
+    FROM reference_entries e JOIN reference_state s ON e.version_id=s.active_version
+    WHERE e.content_tsv @@ to_tsquery('english',$1)
+    ORDER BY rank DESC,e.key LIMIT $2`,[words.join(" | "),limit]);
   return rows;
 }
-
-export async function clearChunks(): Promise<void> {
-  await pool.query("TRUNCATE TABLE guideline_chunks RESTART IDENTITY CASCADE");
-}
-
 export async function getChunkCount(): Promise<number> {
-  const { rows } = await pool.query<{ count: string }>(
-    "SELECT COUNT(*) AS count FROM guideline_chunks"
-  );
-  return parseInt(rows[0].count, 10);
+  const {rows}=await pool.query<{count:string}>(`SELECT count(*) AS count FROM reference_entries e
+    JOIN reference_state s ON e.version_id=s.active_version`);
+  return Number(rows[0].count);
 }
 
 export async function getMetadata(key: string): Promise<string | null> {

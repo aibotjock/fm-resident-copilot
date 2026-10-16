@@ -14,6 +14,8 @@ import * as Haptics from "expo-haptics";
 import * as Speech from "expo-speech";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/colors";
+import { SourceCitation } from "@/components/SourceCitation";
+import type { CitationMetadata } from "@/types";
 
 export interface VignetteQuestion {
   question: string;
@@ -22,6 +24,8 @@ export interface VignetteQuestion {
   explanation: string;
   domain: string;
   source: string;
+  evidence?: CitationMetadata;
+  reviewStatus?: string;
 }
 
 interface Props {
@@ -91,7 +95,7 @@ export function VignetteCard({ vignette, loading, error, sessionScore, onNext, o
     if (!vignette || !onSaveToFlashcard || cardSaved) return;
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     const front = vignette.question;
-    const back = `Answer: ${vignette.answer.toUpperCase()} — ${vignette.options[vignette.answer]}\n\n${vignette.explanation}\n\nSource: ${vignette.source}`;
+    const back = `Answer: ${vignette.answer.toUpperCase()} — ${vignette.options[vignette.answer]}\n\n${vignette.explanation}\n\nSource: ${vignette.source}\n${vignette.reviewStatus || ""}`;
     onSaveToFlashcard({ front, back, topic: vignette.domain, abfmDomain: vignette.domain });
     setCardSaved(true);
   }, [vignette, onSaveToFlashcard, cardSaved]);
@@ -293,6 +297,7 @@ export function VignetteCard({ vignette, loading, error, sessionScore, onNext, o
           <Text style={[styles.explanationText, { color: theme.text }]}>
             {vignette.explanation}
           </Text>
+          {vignette.evidence && <SourceCitation metadata={vignette.evidence} />}
           {onSaveToFlashcard && (
             <Pressable
               onPress={handleSaveFlashcard}

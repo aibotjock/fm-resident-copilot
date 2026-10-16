@@ -1,4 +1,5 @@
 import { searchByText, searchByTextFallback, type SearchResult } from "./store";
+import { formatReference } from "./evidence-context";
 
 export interface RetrievalContext {
   chunks: SearchResult[];
@@ -23,13 +24,7 @@ export async function retrieveContext(
     }
 
     const formatted = chunks
-      .map(
-        (c, i) =>
-          `[REF ${i + 1}] ${c.source} — ${c.guideline_title} (${c.guideline_year})\n` +
-          `ABFM Domain: ${c.abfm_domain} | Section: ${c.section}\n` +
-          (c.url ? `URL: ${c.url}\n` : "") +
-          `\n${c.content}`
-      )
+      .map((c,i)=>formatReference(c,i))
       .join("\n\n---\n\n");
 
     const uniqueSources = [

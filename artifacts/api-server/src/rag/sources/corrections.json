@@ -1,0 +1,579 @@
+[
+  {
+    "index": 0,
+    "old": "Blood pressure classification per 2017 ACC/AHA guideline (updated 2023):\n- Normal: <120/<80 mmHg\n- Elevated: 120-129/<80 mmHg\n- Stage 1 Hypertension: 130-139/80-89 mmHg\n- Stage 2 Hypertension: \u2265140/\u226590 mmHg",
+    "new": "Blood pressure categories (2025 AHA/ACC):\n- Normal: systolic <120 AND diastolic <80 mmHg\n- Elevated: systolic 120\u2013129 AND diastolic <80 mmHg\n- Stage 1: systolic 130\u2013139 OR diastolic 80\u201389 mmHg\n- Stage 2: systolic \u2265140 OR diastolic \u226590 mmHg",
+    "evidence": [
+      "bp-2025"
+    ],
+    "reason": "Correct category logic and unsupported 2023 update label"
+  },
+  {
+    "index": 0,
+    "old": "- Stage 1 HTN + established CVD or 10-year ASCVD risk \u226510%: initiate pharmacotherapy alongside lifestyle\n- Stage 1 HTN + 10-year ASCVD risk <10%: lifestyle modification first, reassess in 3-6 months\n- Stage 2 HTN: antihypertensive pharmacotherapy + lifestyle modification",
+    "new": "- Add medication for average BP \u2265140/90, or \u2265130/80 with CVD, prior stroke, diabetes, CKD, or PREVENT-CVD 10-year risk \u22657.5%.\n- Lower-risk stage 1: initiate medication if average BP remains \u2265130/80 after 3\u20136 months of lifestyle treatment.\n- Stage 2: prefer two first-line classes, ideally a single-pill combination, alongside lifestyle treatment.",
+    "evidence": [
+      "bp-2025"
+    ],
+    "reason": "Replace obsolete risk threshold and add escalation"
+  },
+  {
+    "index": 6,
+    "old": "4. Primary prevention, no DM, age 40-75, LDL 70-189, 10-yr ASCVD risk \u22657.5%: moderate-high intensity statin",
+    "new": "4. Applicable primary prevention: use PREVENT-ASCVD with patient-specific risk discussion; lipid-lowering therapy may be considered at 3\u2013<5% and should be considered at 5\u2013<10% 10-year risk.",
+    "evidence": [
+      "lipids-2026"
+    ],
+    "reason": "Replace old pooled-cohort threshold"
+  },
+  {
+    "index": 6,
+    "old": "10-year ASCVD risk calculator: ACC/AHA Pooled Cohort Equations (race/sex-specific)",
+    "new": "Risk assessment update: use PREVENT-ASCVD in applicable adults aged 30\u201379. Very-high-risk ASCVD: LDL-C goal <55 mg/dL; other ASCVD generally <70 mg/dL. Treatment intensity and additions depend on risk and response, not one universal ladder.",
+    "evidence": [
+      "lipids-2026"
+    ],
+    "reason": "Update calculator and risk-specific targets"
+  },
+  {
+    "index": 9,
+    "old": "LDL goal: <100 mg/dL; <70 mg/dL with established ASCVD",
+    "new": "Lipid goals: assess ASCVD risk separately; 2026 AHA/ACC recommends LDL-C <55 mg/dL in very-high-risk ASCVD and generally <70 mg/dL in other ASCVD. Do not use a universal LDL <100 target.",
+    "evidence": [
+      "lipids-2026"
+    ],
+    "reason": "Correct obsolete blanket lipid goals without claiming full ADA 2026 review"
+  },
+  {
+    "index": 151,
+    "old": "- LDL target: <100 mg/dL (high-intensity statin if ASCVD risk >10%); <70 mg/dL for established ASCVD",
+    "new": "Lipid goals: assess ASCVD risk separately; 2026 AHA/ACC recommends LDL-C <55 mg/dL in very-high-risk ASCVD and generally <70 mg/dL in other ASCVD. Do not use a universal LDL <100 target.",
+    "evidence": [
+      "lipids-2026"
+    ],
+    "reason": "Correct obsolete blanket lipid goals without claiming full ADA 2026 review"
+  },
+  {
+    "index": 18,
+    "old": "requires mandatory REMS monitoring (ANC weekly/biweekly) due to agranulocytosis risk",
+    "new": "FDA removed the REMS effective June 13, 2025; continue ANC monitoring according to current prescribing information because severe neutropenia risk remains",
+    "evidence": [
+      "clozapine-rems"
+    ],
+    "reason": "Remove obsolete REMS requirement without removing monitoring"
+  },
+  {
+    "index": 115,
+    "old": "VOXELOTOR (Oxbryta): increases HbO2 affinity; reduces hemolysis; FDA-approved for hemoglobin improvement",
+    "new": "VOXELOTOR (Oxbryta): withdrawn from the market in September 2024 for safety concerns. FDA advises clinicians to stop prescribing it; it is not an available treatment option.",
+    "evidence": [
+      "oxbryta-withdrawal"
+    ],
+    "reason": "Remove withdrawn therapy as an active option"
+  },
+  {
+    "index": 55,
+    "old": "- Apixaban/rivaroxaban: andexanet alfa (Andexxa \u2014 specific reversal); 4-factor PCC (off-label)",
+    "new": "- Apixaban/rivaroxaban reversal: Andexxa is not an available US treatment option following the December 2025 FDA safety update and end of US sales. Select a current institutional reversal pathway; specific alternative dosing remains to be verified.",
+    "evidence": [
+      "andexxa-sales"
+    ],
+    "reason": "Correct US availability; do not invent a replacement dose"
+  },
+  {
+    "index": 21,
+    "old": "Grade A (age 45-75) and Grade B (age 45-49)",
+    "new": "Grade A (age 50\u201375), Grade B (age 45\u201349), and selective Grade C (age 76\u201385)",
+    "evidence": [
+      "crc-grades"
+    ],
+    "reason": "Correct overlapping grade assignment"
+  },
+  {
+    "index": 104,
+    "old": "must take same time daily (\u00b13 hours for older generation; \u00b124 hours for norethindrone 0.35mg)",
+    "new": "norethindrone or norgestrel is missed if >3 hours late: take promptly and use backup until taken correctly for 2 days. Drospirenone uses a different protocol; do not apply its timing to norethindrone.",
+    "evidence": [
+      "pop-missed"
+    ],
+    "reason": "Correct formulation-specific missed-pill window"
+  },
+  {
+    "index": 31,
+    "old": "- <100 cells/mcL: also MAC prophylaxis (azithromycin 1200mg weekly or clarithromycin) [unless on effective ART with rising CD4]",
+    "new": "- MAC prophylaxis: CD4 <50 cells/mcL AND not receiving ART, remaining viremic, or no fully suppressive regimen available. No primary prophylaxis when ART is initiated immediately. Rule out disseminated MAC first.",
+    "evidence": [
+      "mac-prophylaxis"
+    ],
+    "reason": "Correct CD4 threshold and ART exception"
+  },
+  {
+    "index": 111,
+    "old": "- Dolutegravir + TAF/FTC (Triumeq or combination): preferred for women of childbearing age (lower NTD risk than older InSTIs)",
+    "new": "- DTG plus TAF or TDF plus FTC or 3TC is an initial option for most people without prior CAB-LA exposure. DTG/ABC/3TC is a different regimen; do not call DTG + TAF/FTC \u201cTriumeq.\u201d Pregnancy requires the separate perinatal guideline.",
+    "evidence": [
+      "hiv-initial"
+    ],
+    "reason": "Correct drug-combination misidentification"
+  },
+  {
+    "index": 126,
+    "old": "reduce to 75 mg/day if GFR <30",
+    "new": "adult treatment adjustments use CrCl: 31\u201360 mL/min, 30 mg PO twice daily; 11\u201330 mL/min, 30 mg PO daily. Standard uncomplicated treatment duration is 5 days; dialysis requires its own regimen.",
+    "evidence": [
+      "flu-dosing"
+    ],
+    "reason": "Correct unsafe renal dose and distinguish CrCl from eGFR"
+  },
+  {
+    "index": 126,
+    "old": "40 mg single dose (\u226480 kg) or 80 mg (>80 kg)",
+    "new": "adult oral dose: 40 mg once at 20\u2013<80 kg or 80 mg once at \u226580 kg",
+    "evidence": [
+      "flu-dosing"
+    ],
+    "reason": "Correct 80 kg dose boundary"
+  },
+  {
+    "index": 126,
+    "old": "- Peramivir 600 mg IV x 1 dose: hospitalized patients unable to tolerate oral",
+    "new": "- Peramivir: single-dose treatment is an uncomplicated outpatient regimen with renal adjustment. It is not routinely recommended for hospitalized influenza; oral/enteric oseltamivir is preferred.",
+    "evidence": [
+      "flu-dosing"
+    ],
+    "reason": "Remove unsupported inpatient substitution"
+  },
+  {
+    "index": 125,
+    "old": "- \u22654: Empirical antibiotic treatment acceptable without testing",
+    "new": "- High clinical scores guide testing; do not equate a score alone with confirmed GAS. Treat a positive RADT or throat culture.",
+    "evidence": [
+      "gas-treatment"
+    ],
+    "reason": "Avoid score-only empiric antibiotics"
+  },
+  {
+    "index": 125,
+    "old": "- First-line: Amoxicillin 500 mg BID or 250 mg TID x 10 days",
+    "new": "- First-line oral amoxicillin: 50 mg/kg once daily (maximum 1000 mg) OR 25 mg/kg twice daily (maximum 500 mg per dose), for 10 days.",
+    "evidence": [
+      "gas-treatment"
+    ],
+    "reason": "Replace non-CDC amoxicillin regimen with population-specific dose"
+  },
+  {
+    "index": 125,
+    "old": "FULL 10-DAY COURSE required to prevent acute rheumatic fever (ARF).",
+    "new": "Complete the selected regimen: penicillin/amoxicillin uses 10 days; azithromycin uses its separate 5-day regimen.",
+    "evidence": [
+      "gas-treatment"
+    ],
+    "reason": "Resolve conflicting universal-duration instruction"
+  },
+  {
+    "index": 29,
+    "old": "- Azithromycin 1g single dose (alternative \u2014 acceptable for urogenital only)",
+    "new": "- Azithromycin 1 g orally once is an alternative in nonpregnant adults when appropriate; lower rectal efficacy may require follow-up. Pregnancy uses a separate recommended regimen.",
+    "evidence": [
+      "chlamydia-followup"
+    ],
+    "reason": "Remove unsupported site-only prohibition"
+  },
+  {
+    "index": 29,
+    "old": "- Test-of-cure: only needed in pregnancy; retest all patients at 3 months",
+    "new": "- Test of cure: recommended about 4 weeks after treatment in pregnancy; in nonpregnant patients, consider when adherence is uncertain, symptoms persist, or reinfection is suspected. Retest at about 3 months for reinfection.",
+    "evidence": [
+      "chlamydia-followup"
+    ],
+    "reason": "Add nonpregnancy exceptions"
+  },
+  {
+    "index": 49,
+    "old": "Diagnosis requires ALL 3:\n1. Acute onset (rapid onset of signs/symptoms)\n2. Middle ear effusion (MEE): bulging tympanic membrane, limited mobility, air-fluid level\n3. Middle ear inflammation: distinct erythema OR otalgia interfering with normal activity/sleep",
+    "new": "Diagnosis: middle-ear effusion must be present, together with moderate/severe TM bulging or new otorrhea not caused by otitis externa; alternatively mild TM bulging with recent (<48 h) otalgia or intense erythema qualifies. Erythema alone is insufficient.",
+    "evidence": [
+      "aom-diagnosis"
+    ],
+    "reason": "Correct required-vs-alternative diagnostic criteria"
+  },
+  {
+    "index": 102,
+    "old": "DIAGNOSIS CRITERIA (all 3 required):\n1. Moderate-to-severe bulging of the tympanic membrane (TM) OR new onset otorrhea not due to external otitis\n2. Mild TM bulging + RECENT onset of ear pain (<48h) + intense TM erythema\n3. (OR: TM perforation with purulent discharge)",
+    "new": "DIAGNOSIS: require middle-ear effusion plus moderate/severe TM bulging or new otorrhea not due to otitis externa; OR mild bulging with recent (<48 h) ear pain or intense erythema. These pathways are alternatives, not three simultaneous requirements.",
+    "evidence": [
+      "aom-diagnosis"
+    ],
+    "reason": "Correct duplicate diagnostic logic"
+  },
+  {
+    "index": 20,
+    "old": "Hib #3 (if Hib-OMP)",
+    "new": "Hib primary dose #3 for products requiring it; not routine for a PedvaxHIB-only primary series",
+    "evidence": [
+      "hib-series"
+    ],
+    "reason": "Correct reversed Hib-OMP instruction"
+  },
+  {
+    "index": 19,
+    "old": "- PCV20 (Prevnar20): single dose for adults \u226565 not previously vaccinated; preferred over PCV15/PPSV23 combination\n- High-risk conditions (immunocompromised, asplenia, CKD, diabetes, smoking, COPD, heart disease) < 65: PCV20 or PCV15 followed by PPSV23",
+    "new": "- Age \u226550 with no prior PCV13/15/20/21 or unknown history: PCV15, PCV20, or PCV21. PCV15 generally requires PPSV23 \u22651 year later (selected high-risk minimum interval 8 weeks).\n- Adults 19\u201349 with eligible risk conditions have a separate risk-based pathway. Prior vaccination changes the schedule; consult the current CDC algorithm.",
+    "evidence": [
+      "pneumococcal-adult"
+    ],
+    "reason": "Update age threshold and include PCV21 without erasing other vaccines"
+  },
+  {
+    "index": 37,
+    "old": "First-line triple therapy (if local clarithromycin resistance <15%):\n- Clarithromycin triple: PPI BID + clarithromycin 500mg BID + amoxicillin 1g BID \u00d7 14 days\n- Bismuth quadruple: PPI BID + bismuth subsalicylate + metronidazole + tetracycline \u00d7 10-14 days (preferred if penicillin allergy or high clarithromycin resistance)",
+    "new": "Empiric treatment when susceptibility is unknown (ACG 2024):\n- Optimized bismuth quadruple therapy for 14 days: PPI twice daily, tetracycline 500 mg orally four times daily, metronidazole 500 mg orally three or four times daily, and bismuth four times daily (product-specific dose).\n- Clarithromycin triple therapy is not empiric first-line; use only with demonstrated susceptibility. Rifabutin triple or vonoprazan-amoxicillin dual therapy are alternatives for eligible patients.",
+    "evidence": [
+      "hpylori-treatment"
+    ],
+    "reason": "Replace obsolete empiric clarithromycin rule while retaining diagnostic and follow-up sections"
+  },
+  {
+    "index": 121,
+    "old": "",
+    "new": "\n\nCURRENT SOURCE UPDATE \u2014 Eligible disabling stroke: alteplase or tenecteplase within 4.5 hours; selected extended-window cases require imaging criteria. EVT eligibility now includes selected large-core and basilar occlusions. Non-disabling deficits have a different antiplatelet pathway.",
+    "evidence": [
+      "stroke-2026"
+    ],
+    "reason": "Add current scoped recommendation; detailed legacy assertions remain explicitly unresolved"
+  },
+  {
+    "index": 154,
+    "old": "",
+    "new": "\n\nCURRENT SOURCE UPDATE \u2014 New A\u2013E PE categories guide disposition and advanced therapy. Eligible oral therapy favors DOACs; when parenteral therapy is required, LMWH is generally preferred. Follow symptoms/function for at least one year.",
+    "evidence": [
+      "pe-2026"
+    ],
+    "reason": "Add current scoped recommendation; detailed legacy assertions remain explicitly unresolved"
+  },
+  {
+    "index": 116,
+    "old": "",
+    "new": "\n\nCURRENT SOURCE UPDATE \u2014 Shock or probable/definite sepsis: antibiotics immediately, ideally within one hour. Possible sepsis without shock: rapid investigation and antibiotics within three hours if concern persists. Low infection likelihood without shock can justify monitored deferral.",
+    "evidence": [
+      "sepsis-2026"
+    ],
+    "reason": "Add current scoped recommendation; detailed legacy assertions remain explicitly unresolved"
+  },
+  {
+    "index": 45,
+    "old": "- BP target: <120/80 if tolerated (per SPRINT/evidence); ACEi or ARB for proteinuric CKD (reduces progression)",
+    "new": "- BP: KDIGO suggests standardized-office systolic BP <120 mmHg when tolerated; this is not a routine-office <120/80 target. ACEi/ARB selection depends on albuminuria and clinical context.",
+    "evidence": [
+      "ckd-2024"
+    ],
+    "reason": "Correct measurement-dependent systolic target"
+  },
+  {
+    "index": 45,
+    "old": "- SGLT2 inhibitors: finerenone (MRA), empagliflozin/dapagliflozin \u2014 now Class 1 recommendation for DKD with albuminuria (CREDENCE, DAPA-CKD, EMPA-KIDNEY trials)",
+    "new": "- Separate drug classes: empagliflozin/dapagliflozin are SGLT2 inhibitors; finerenone is a nonsteroidal MRA, with population-specific eligibility and potassium monitoring.",
+    "evidence": [
+      "ckd-2024"
+    ],
+    "reason": "Correct finerenone drug-class error"
+  },
+  {
+    "index": 45,
+    "old": "- GFR <15: initiate dialysis or transplant referral",
+    "new": "- Kidney replacement planning and dialysis initiation are different decisions. Start dialysis based on symptoms, signs, quality of life, preferences, GFR and laboratory abnormalities; eGFR <15 alone is not an automatic start rule.",
+    "evidence": [
+      "ckd-2024"
+    ],
+    "reason": "Remove isolated eGFR dialysis trigger"
+  },
+  {
+    "index": 48,
+    "old": "- Step 3: medium-dose ICS OR low-dose ICS + LABA (age \u22655) or LTRA (age <5)\n- Step 4: medium-dose ICS + LABA; consider referral to specialist",
+    "new": "- Ages \u22654, moderate/severe persistent asthma: preferred steps 3\u20134 use low-/medium-dose ICS-formoterol as maintenance AND reliever (SMART), when appropriate. Age-specific pathways still apply.",
+    "evidence": [
+      "smart-naepp"
+    ],
+    "reason": "Restore omitted federal SMART pathway"
+  },
+  {
+    "index": 103,
+    "old": "Step 3 (Moderate Persistent): Low-dose ICS + LABA (if \u22655 years) OR medium-dose ICS\nStep 4: Medium-dose ICS + LABA",
+    "new": "Steps 3\u20134 for appropriate ages \u22654: low-/medium-dose ICS-formoterol maintenance AND reliever (SMART). In the studied 4.5 mcg formoterol/puff preparations, maximum total daily puffs are 8 for ages 4\u201311 and 12 for ages \u226512; contact the clinician if more is needed. Do not combine this reliever with ICS-salmeterol maintenance.",
+    "evidence": [
+      "smart-naepp"
+    ],
+    "reason": "Add age- and product-specific SMART limits"
+  },
+  {
+    "index": 109,
+    "old": "2. PHARMACOTHERAPY (strong evidence for trauma-focused therapy + medications):\n   - SSRIs (first-line): sertraline and paroxetine are FDA-APPROVED for PTSD; fluoxetine and venlafaxine also evidence-based",
+    "new": "2. PHARMACOTHERAPY:\n   - VA/DoD supports sertraline, paroxetine and venlafaxine; fluoxetine has insufficient evidence for or against. Oral daily guideline ranges: sertraline 50\u2013200 mg, paroxetine 20\u201360 mg, venlafaxine 75\u2013300 mg. These are ranges, not universal starting doses.\n   - Evidence does not establish superior PTSD outcomes from routinely combining recommended medication with psychotherapy.",
+    "evidence": [
+      "ptsd-meds"
+    ],
+    "reason": "Correct medication evidence and unsupported combination-superiority claim"
+  },
+  {
+    "index": 132,
+    "old": "- Tapentadol ER: FDA-approved for DPN pain; reserve for refractory cases",
+    "new": "- Do not use opioids, including tramadol or tapentadol, for painful diabetic neuropathy under AAN guidance. Existing opioid treatment requires individualized safe taper discussion, not abrupt discontinuation.",
+    "evidence": [
+      "dpn-opioids"
+    ],
+    "reason": "Separate FDA indication from guideline recommendation"
+  },
+  {
+    "index": 132,
+    "old": "- Pregabalin (Lyrica) 150-600 mg/day: FDA-approved; titrate; sedation, weight gain, edema",
+    "new": "- Pregabalin for adult diabetic neuropathic pain, CrCl \u226560 mL/min: 50 mg orally three times daily initially; may increase within 1 week to 100 mg three times daily based on response/tolerability. Maximum 300 mg/day for this indication; reduce for renal impairment using the label table. Monitor sedation, edema and weight.",
+    "evidence": [
+      "pregabalin-dpn"
+    ],
+    "reason": "Separate indication-specific maximum from other pregabalin indications"
+  },
+  {
+    "index": 132,
+    "old": "- Duloxetine (Cymbalta) 60-120 mg/day: FDA-approved; NNT ~5; SNRI; also treats comorbid depression",
+    "new": "- Duloxetine for diabetic neuropathic pain: 60 mg orally once daily; consider a lower starting dose for tolerability. Doses above 60 mg/day lack additional significant benefit and are less tolerated. Avoid chronic liver disease/cirrhosis or GFR <30 mL/min.",
+    "evidence": [
+      "duloxetine-dpn"
+    ],
+    "reason": "Correct indication-specific dosing and remove unsupported NNT"
+  },
+  {
+    "index": 110,
+    "old": "- Requires opioid-free for 7-10 days before initiation (5-7 days for buprenorphine, 7-10 days for methadone) to avoid precipitated withdrawal",
+    "new": "- Before extended-release naltrexone, patients previously using short-acting opioids need at least 7\u201310 opioid-free days. Those transitioning from buprenorphine or methadone may remain vulnerable to precipitated withdrawal for up to 2 weeks; do not apply the old shortened intervals.",
+    "evidence": [
+      "naltrexone-transition"
+    ],
+    "reason": "Correct potentially dangerous agonist-to-antagonist transition intervals"
+  },
+  {
+    "index": 100,
+    "old": "1. Methylphenidate (Ritalin, Concerta, Vyvanse-type): most studied; standard and extended-release",
+    "new": "1. Methylphenidate formulations include Ritalin and Concerta. Vyvanse is lisdexamfetamine, a prodrug of dextroamphetamine, not methylphenidate.",
+    "evidence": [
+      "lisdexamfetamine-class"
+    ],
+    "reason": "Correct drug class without changing ADHD features"
+  },
+  {
+    "index": 33,
+    "old": "Group B Streptococcus (GBS): culture at 35-37 weeks; prophylactic penicillin G in labor if positive (or prior GBS infant, GBS bacteriuria, or unknown status + \u226537 weeks + \u226518h ROM + fever)",
+    "new": "Group B Streptococcus: screen during the 36th or 37th week of each pregnancy. Determine intrapartum prophylaxis from the current obstetric algorithm; the old combined unknown-status condition is not a valid decision rule.",
+    "evidence": [
+      "gbs-screening"
+    ],
+    "reason": "Correct timing and remove malformed prophylaxis rule"
+  },
+  {
+    "index": 31,
+    "old": "tenofovir AF (Descovy, for non-receptive sex only)",
+    "new": "tenofovir AF (Descovy/F-TAF; not for HIV prevention through receptive vaginal sex)",
+    "evidence": [
+      "prep-populations"
+    ],
+    "reason": "Correct exposure-specific restriction"
+  },
+  {
+    "index": 111,
+    "old": "- TAF/FTC (Descovy): alternative; approved for non-MSM after pregnancy concerns excluded",
+    "new": "- F/TAF (Descovy): option for sexual HIV prevention excluding receptive vaginal exposure. Eligibility is exposure-specific, not a blanket non-MSM rule.",
+    "evidence": [
+      "prep-populations"
+    ],
+    "reason": "Correct false PrEP eligibility statement"
+  },
+  {
+    "index": 121,
+    "old": "- Extended window (3.0-4.5h): avoid if age >80, on anticoagulant, NIHSS >25, hx both DM + prior stroke, imaging >1/3 MCA territory",
+    "new": "- Apply current patient-specific eligibility, not the old categorical 3\u20134.5-hour exclusions. The 2026 guideline endorses alteplase or tenecteplase for eligible disabling deficits within 4.5 hours, and imaging-selected extended-window treatment in selected patients.",
+    "evidence": [
+      "stroke-2026"
+    ],
+    "reason": "Remove obsolete categorical extended-window exclusions"
+  },
+  {
+    "index": 121,
+    "old": "- Indication: LVO (ICA, MCA M1/M2), NIHSS \u22656, ASPECTS \u22656, onset <6 hours (selected patients up to 24h with perfusion imaging)",
+    "new": "- Use the 2026 imaging- and vessel-specific EVT pathway, including selected large-core strokes and basilar occlusion; the older narrow rule is not a complete eligibility screen.",
+    "evidence": [
+      "stroke-2026"
+    ],
+    "reason": "Avoid excluding newer eligible EVT populations"
+  },
+  {
+    "index": 116,
+    "old": "3. Broad-spectrum antibiotics within 1 hour (goal immediately upon recognition)",
+    "new": "3. Match timing to certainty and shock: septic shock or probable/definite sepsis warrants immediate antibiotics, ideally within 1 hour. Possible sepsis without shock warrants rapid investigation and antibiotics within 3 hours if infection concern persists.",
+    "evidence": [
+      "sepsis-2026"
+    ],
+    "reason": "Replace universal timing with current likelihood-specific recommendations"
+  },
+  {
+    "index": 111,
+    "old": "  \u2022 CD4 <200: TMP-SMX for PCP and toxoplasma prophylaxis",
+    "new": "  \u2022 Assess PCP eligibility separately. Toxoplasma primary prophylaxis requires positive Toxoplasma IgG and CD4 <100 cells/mcL; preferred TMP-SMX one DS tablet orally daily also covers PCP.",
+    "evidence": [
+      "toxo-prophylaxis"
+    ],
+    "reason": "Correct false universal toxoplasma threshold"
+  },
+  {
+    "index": 111,
+    "old": "  \u2022 CD4 <50: azithromycin for MAC prophylaxis; fluconazole for candida/cryptococcus (resource-limited settings)",
+    "new": "  \u2022 MAC primary prophylaxis: CD4 <50 cells/mcL plus absent/non-suppressive ART; not needed when effective ART is started immediately. Do not infer other OI prophylaxis solely from this threshold.",
+    "evidence": [
+      "mac-prophylaxis"
+    ],
+    "reason": "Qualify duplicate MAC statement and remove unsupported blanket antifungal prophylaxis"
+  },
+  {
+    "index": 111,
+    "old": "- ALL people with HIV, regardless of CD4 count \u2014 START IMMEDIATELY (same-day ART recommended)\n- High urgency (start ASAP, even same day): AIDS-defining illness, pregnancy, acute HIV infection, to prevent transmission",
+    "new": "- ART is recommended for all people with HIV and should generally start promptly.\n- Opportunistic-infection-specific timing matters: cryptococcal meningitis and TB meningitis may require delay to reduce serious IRIS risk. Do not apply same-day initiation to every AIDS-defining illness.",
+    "evidence": [
+      "art-timing"
+    ],
+    "reason": "Remove unsafe universal immediate-ART instruction"
+  },
+  {
+    "index": 23,
+    "old": "- Person has not smoked in >15 years",
+    "new": "- Person has not smoked for 15 years (USPSTF stopping rule)",
+    "evidence": [
+      "lung-screen-stop"
+    ],
+    "reason": "Correct boundary condition"
+  },
+  {
+    "index": 10,
+    "old": "DKA: pH <7.3, glucose >250, ketones; fluids + insulin drip + potassium replacement",
+    "new": "Adult DKA requires all three: diabetes history or glucose \u2265200 mg/dL; beta-hydroxybutyrate \u22653 mmol/L or urine ketones \u22652+; and pH <7.3 and/or bicarbonate <18 mmol/L. Normal-range glucose does not exclude DKA in someone with diabetes. Treatment requires fluids, insulin, electrolyte management and precipitant treatment under an appropriate protocol.",
+    "evidence": [
+      "dka-consensus"
+    ],
+    "reason": "Correct diagnostic glucose threshold and recognize euglycemic DKA"
+  },
+  {
+    "index": 113,
+    "old": "- Penicillin allergy: Gentamicin 240mg IM + azithromycin 2g PO (reserve; only if ceftriaxone unavailable)",
+    "new": "- Assess the allergy history. For cephalosporin allergy, gentamicin 240 mg IM plus azithromycin 2 g orally, each once, is an alternative for uncomplicated anogenital disease. If ceftriaxone is unavailable, cefixime 800 mg orally once is the separate alternative. Pharyngeal infection has no reliable alternative; severe ceftriaxone reactions require specialist consultation.",
+    "evidence": [
+      "gonorrhea-regimens"
+    ],
+    "reason": "Separate allergy pathway from ceftriaxone unavailability and avoid applying anogenital alternatives to pharyngeal disease"
+  },
+  {
+    "index": 113,
+    "old": "- Test of cure: oropharyngeal infections 1-2 weeks after treatment; urogenital only if symptoms persist",
+    "new": "- Pharyngeal cure testing: culture or NAAT 7\u201314 days after treatment. Persistent symptoms require culture and susceptibility testing; routine cure testing is unnecessary after appropriate treatment of uncomplicated anogenital infection. Retest for reinfection at 3 months.",
+    "evidence": [
+      "gonorrhea-regimens"
+    ],
+    "reason": "Distinguish microbiologic cure testing from reinfection retesting"
+  },
+  {
+    "index": 29,
+    "old": "- Disseminated gonococcal infection: IV ceftriaxone 1g q24h \u00d7 \u226524-48h then oral stepdown",
+    "new": "- Gonococcal arthritis/arthritis-dermatitis: ceftriaxone 1 g IM/IV every 24 hours; oral transition is susceptibility-guided after 24\u201348 hours of substantial improvement, with at least 7 days total treatment. Meningitis/endocarditis use separate regimens.",
+    "evidence": [
+      "gonorrhea-regimens"
+    ],
+    "reason": "Do not apply a short parenteral interval and oral stepdown to every disseminated syndrome"
+  },
+  {
+    "index": 29,
+    "old": "- First episode: acyclovir 400mg TID or 200mg 5x/day \u00d7 7-10 days; valacyclovir 1g BID \u00d7 7-10 days",
+    "new": "- First episode: oral acyclovir 400 mg three times daily or valacyclovir 1 g twice daily for 7\u201310 days; extend if healing is incomplete after day 10. Acyclovir 200 mg five times daily is effective but not recommended because of dosing frequency.",
+    "evidence": [
+      "herpes-regimens"
+    ],
+    "reason": "Distinguish effective historical dosing from recommended first-episode regimens"
+  },
+  {
+    "index": 29,
+    "old": "- Suppressive therapy: for \u22656 outbreaks/year or to reduce transmission to partners; valacyclovir 500mg daily",
+    "new": "- Recurrent HSV-2 suppression: discuss preferences and transmission risk; six annual outbreaks is not a required threshold. Oral options include acyclovir 400 mg twice daily, valacyclovir 500 mg or 1 g daily, or famciclovir 250 mg twice daily. Valacyclovir 500 mg daily may be less effective with \u226510 episodes/year.",
+    "evidence": [
+      "herpes-regimens"
+    ],
+    "reason": "Remove unsupported suppression threshold and add dose-specific limitation"
+  },
+  {
+    "index": 112,
+    "old": "- 1st recurrence: fidaxomicin (preferred) OR vancomycin pulse/taper \u00d7 6 weeks (125mg QID 10d \u2192 BID 7d \u2192 daily 7d \u2192 q2-3 days \u00d7 8 weeks)",
+    "new": "- First recurrence: fidaxomicin preferred; oral vancomycin taper/pulse is an alternative. Example: 125 mg four times daily for 10\u201314 days, twice daily for 7 days, daily for 7 days, then every 2\u20133 days for 2\u20138 weeks. This is not a fixed six-week course.",
+    "evidence": [
+      "cdi-taper-ileus",
+      "cdi-2021-preference"
+    ],
+    "reason": "Correct internally contradictory taper duration and distinguish an example schedule from a mandated course"
+  },
+  {
+    "index": 112,
+    "old": "Fulminant CDI: vancomycin 500mg QID PO/NG + metronidazole 500mg IV q8h; surgical consultation; possible total colectomy",
+    "new": "Fulminant CDI: vancomycin 500 mg orally/NG four times daily plus metronidazole 500 mg IV every 8 hours; urgent surgical assessment. With ileus, consider additional rectal vancomycin 500 mg in approximately 100 mL normal saline every 6 hours as a retention enema.",
+    "evidence": [
+      "cdi-taper-ileus"
+    ],
+    "reason": "Add route-specific ileus management rather than assuming oral drug delivery is adequate"
+  },
+  {
+    "index": 112,
+    "old": "Initial severe episode: vancomycin 125mg QID \u00d7 10 days OR fidaxomicin 200mg BID \u00d7 10 days",
+    "new": "Initial severe, nonfulminant episode: favor fidaxomicin 200 mg orally twice daily for 10 days when feasible; oral vancomycin 125 mg four times daily for 10 days remains acceptable. Fulminant disease uses its separate regimen.",
+    "evidence": [
+      "cdi-2021-preference"
+    ],
+    "reason": "Carry the resource-dependent fidaxomicin preference into severe nonfulminant disease"
+  },
+  {
+    "index": 150,
+    "old": "Correction rate: raise Na no faster than 8\u201312 mEq/L per 24 hours (risk of osmotic demyelination syndrome / central pontine myelinolysis if corrected too rapidly)",
+    "new": "Correction ceilings: chronic hyponatremia with high osmotic demyelination risk: no more than 8 mEq/L in 24 hours. Without risk factors, the cited AAFP summary specifies no more than 12 mEq/L in 24 hours and 18 mEq/L in 48 hours. These are ceilings, not correction goals.",
+    "evidence": [
+      "sodium-limits"
+    ],
+    "reason": "Separate risk-dependent limits instead of presenting 8\u201312 as an interchangeable safe range"
+  },
+  {
+    "index": 150,
+    "old": "Acute severe/symptomatic (seizures, coma): 3% hypertonic saline 100 mL IV bolus; raise Na by 1\u20132 mEq/L/hour until symptoms resolve, then slow to \u22648\u201312/24h",
+    "new": "Severe symptomatic hyponatremia requires emergency monitored 3% saline treatment. Check sodium after each bolus and frequently thereafter; apply the risk-specific cumulative limits above. The exact rescue-bolus protocol remains unresolved in this review; do not use the previous open-ended hourly correction instruction.",
+    "evidence": [
+      "sodium-limits"
+    ],
+    "reason": "Remove an unsafe open-ended correction instruction without inventing an inaccessible rescue protocol"
+  },
+  {
+    "index": 150,
+    "old": "- Moderate (5.5\u20136.0) or EKG changes: add sodium bicarbonate (metabolic acidosis), kayexalate or patiromer (K binders); patiromer preferred for CKD\n- Severe (>6.0 or EKG changes): IV calcium gluconate (membrane stabilization \u2014 immediate, 30\u201360 min); IV insulin + dextrose (shifts K intracellularly, 15\u201330 min); IV sodium bicarbonate if acidosis; albuterol nebulized; hemodialysis for refractory/severe",
+    "new": "- UKKA adult hospital pathway: moderate K 6.0\u20136.4; severe \u22656.5 mmol/L. Urgent ECG at \u22656.0; continuous monitoring for severe disease, ECG changes, or clinically unwell moderate disease.\n- Hyperkalemic ECG changes: calcium gluconate 10%, 30 mL IV over 10 minutes; calcium chloride 10%, 10 mL over 5 minutes is preferred in resuscitation.\n- Severe: IV soluble insulin 10 units with glucose 25 g; consider also for moderate disease. If pretreatment glucose <7 mmol/L, follow with 10% glucose 50 mL/hour for 5 hours. Nebulized salbutamol is adjunctive; IV bicarbonate is not routine.\n- Check glucose through 6 hours after insulin and potassium for response/rebound. Potassium removal and dialysis require the full pathway and patient-specific assessment.",
+    "evidence": [
+      "hyperkalemia-ukka-2026"
+    ],
+    "reason": "Replace contradictory ECG-change treatment with a scoped specialist pathway and include hypoglycemia monitoring"
+  },
+  {
+    "index": 113,
+    "old": "- Gonorrhea/chlamydia: all sexually active women \u226425 years (Grade B); older women at risk",
+    "new": "- Gonorrhea/chlamydia: screen asymptomatic sexually active women aged \u226424, including pregnant persons; at \u226525 screen those at increased risk (USPSTF Grade B).",
+    "evidence": [
+      "sti-screen-age"
+    ],
+    "reason": "Correct age-25 boundary without confusing screening with symptomatic testing"
+  },
+  {
+    "index": 113,
+    "old": "sexually active persons at increased risk (Grade B) including MSM, commercial sex workers, HIV-positive individuals",
+    "new": "asymptomatic nonpregnant adolescents/adults at increased risk (Grade A), with risk assessed using individual history and local epidemiology",
+    "evidence": [
+      "syphilis-screen-grade"
+    ],
+    "reason": "Correct evidence grade and distinguish nonpregnant screening population"
+  }
+]

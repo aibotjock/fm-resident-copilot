@@ -400,7 +400,7 @@ export default function BoardPrepScreen() {
               <Ionicons name="shuffle-outline" size={18} color={selectedDomain === null ? MODE_COLOR : theme.textSecondary} />
               <View style={styles.domainPickerItemContent}>
                 <Text style={[styles.domainPickerItemTitle, { color: selectedDomain === null ? MODE_COLOR : theme.text, fontFamily: selectedDomain === null ? "Inter_600SemiBold" : "Inter_400Regular" }]}>
-                  Random (Weighted by ABFM Blueprint)
+                  Random (Study-topic weights)
                 </Text>
               </View>
               {selectedDomain === null && <Ionicons name="checkmark" size={16} color={MODE_COLOR} />}

@@ -10,7 +10,7 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
-import { Modal, Platform } from "react-native";
+import { Modal, Platform, Text, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -81,6 +81,13 @@ export default function RootLayout() {
           <AppProvider>
             <GestureHandlerRootView style={{ flex: 1, width: "100%", maxWidth: Platform.OS === "web" ? 960 : undefined, alignSelf: "center" }}>
               <KeyboardProvider>
+                {process.env.EXPO_PUBLIC_REFERENCE_PREVIEW === "1" && (
+                  <View accessibilityRole="alert" style={{ backgroundColor: "#FFF3CD", paddingHorizontal: 16, paddingVertical: 10 }}>
+                    <Text style={{ color: "#664D03", fontSize: 13, textAlign: "center" }}>
+                      Guideline preview · Medical review incomplete · Study testing only
+                    </Text>
+                  </View>
+                )}
                 <RootLayoutNav />
                 {onboardingChecked && (
                   <Modal

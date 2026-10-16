@@ -1,0 +1,2096 @@
+{
+  "description": "Actual PostgreSQL full-text retrieval coverage. A match is not semantic relevance or medical verification.",
+  "conditionCount": 96,
+  "baselineMissing": [],
+  "candidateMissing": [],
+  "newMissing": [],
+  "results": [
+    {
+      "version": "baseline",
+      "condition": "Heart Failure",
+      "matches": 7,
+      "fallback": false,
+      "sections": [
+        "HFrEF Guideline-Directed Medical Therapy",
+        "Iron Deficiency Anemia Diagnosis and Treatment",
+        "HFpEF Management",
+        "Antihypertensive Drug Selection",
+        "Acute Kidney Injury Staging and Management",
+        "Type 2 Diabetes Mellitus — Treatment Targets, Drug Selection, and Monitoring",
+        "Failure to Thrive — Pediatric Undernutrition Evaluation and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Hypertension",
+      "matches": 10,
+      "fallback": false,
+      "sections": [
+        "Pulmonary Hypertension Classification and Management",
+        "Blood Pressure Classification and Thresholds",
+        "Preeclampsia Diagnosis and Management",
+        "Stroke Risk Stratification and Anticoagulation",
+        "HFpEF Management",
+        "Diabetes Diagnosis Criteria",
+        "Pulmonary Embolism — Treatment, Risk Stratification, Anticoagulation Selection, and Thrombolysis",
+        "PAD Diagnosis and Management",
+        "STEMI and NSTEMI Acute Management",
+        "Perioperative Risk Assessment and Optimization"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Atrial Fibrillation",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Atrial Fibrillation Diagnosis, Stroke Risk, and Anticoagulation",
+        "Stroke Risk Stratification and Anticoagulation",
+        "HFpEF Management",
+        "Rate and Rhythm Control"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Coronary Artery Disease",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "HFpEF Management",
+        "Contraception Effectiveness and Long-Acting Reversible Contraception"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Dyslipidemia",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Obesity Pharmacotherapy — GLP-1 Agonists and Tirzepatide (2023 Updates)",
+        "Hypertriglyceridemia and Mixed Dyslipidemia Management",
+        "Statin Prescribing for Primary Prevention",
+        "Schizophrenia Spectrum Disorders"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Peripheral Arterial Disease",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "PAD Diagnosis and Management",
+        "Diabetic Peripheral Neuropathy — Screening, Diagnosis, and Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Heart Block / Arrhythmia",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Heart Block and Cardiac Arrhythmias — Classification, EKG Features, and Management",
+        "Syncope Evaluation and Risk Stratification"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Asthma",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Pediatric Asthma Stepwise Management",
+        "Asthma Diagnosis, Classification, and Stepwise Management",
+        "Childhood Asthma Stepwise Management",
+        "Migraine Preventive Therapy"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "COPD",
+      "matches": 8,
+      "fallback": false,
+      "sections": [
+        "COPD Diagnosis and Classification",
+        "COPD Pharmacological Management",
+        "CAP Severity Assessment and Antibiotic Therapy",
+        "Palliative Care, Hospice Eligibility, and Goals-of-Care Communication",
+        "Adult Recommended Immunizations",
+        "Pulmonary Hypertension Classification and Management",
+        "CAP Severity Assessment and Treatment",
+        "Perioperative Risk Assessment and Optimization"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Pneumonia",
+      "matches": 6,
+      "fallback": false,
+      "sections": [
+        "CAP Severity Assessment and Antibiotic Therapy",
+        "Acute Bronchitis — Diagnosis and Antibiotic Avoidance",
+        "CAP Severity Assessment and Treatment",
+        "Pleural Effusion Evaluation and Management",
+        "IPF Diagnosis and Management",
+        "COPD Pharmacological Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Pulmonary Embolism",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Pulmonary Embolism — Diagnosis Algorithm, Wells Criteria, PERC, and D-Dimer",
+        "Pulmonary Embolism — Treatment, Risk Stratification, Anticoagulation Selection, and Thrombolysis"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Obstructive Sleep Apnea",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "OSA Diagnosis and Treatment",
+        "Fatigue Workup and Differential Diagnosis"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Pleural Effusion",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Pleural Effusion Evaluation and Management",
+        "Acute Pancreatitis Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Type 2 Diabetes Mellitus",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Type 2 Diabetes Mellitus — Treatment Targets, Drug Selection, and Monitoring",
+        "Diabetes Diagnosis Criteria"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Type 1 Diabetes Mellitus",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Type 2 Diabetes Mellitus — Treatment Targets, Drug Selection, and Monitoring",
+        "Diabetes Diagnosis Criteria"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Hypothyroidism",
+      "matches": 10,
+      "fallback": false,
+      "sections": [
+        "Hypothyroidism Diagnosis and Treatment",
+        "Hypertriglyceridemia and Mixed Dyslipidemia Management",
+        "Hyperthyroidism — Graves Disease, Toxic Nodular Goiter, and Thyroid Storm",
+        "Pleural Effusion Evaluation and Management",
+        "PCOS Diagnosis and Management",
+        "Fibromyalgia Diagnosis and Treatment",
+        "Well-Child Care Schedule and Developmental Surveillance",
+        "Failure to Thrive — Pediatric Undernutrition Evaluation and Management",
+        "Diabetic Peripheral Neuropathy — Screening, Diagnosis, and Treatment",
+        "Bipolar Disorder Diagnosis and Pharmacologic Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Hyperthyroidism",
+      "matches": 3,
+      "fallback": false,
+      "sections": [
+        "Hyperthyroidism — Graves Disease, Toxic Nodular Goiter, and Thyroid Storm",
+        "Thyroid Nodule Evaluation and Management",
+        "Anxiety Disorders"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Adrenal Insufficiency",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Electrolyte Disorders — Hyponatremia, Hyperkalemia, Hypokalemia, Hypomagnesemia, Hypercalcemia",
+        "Fatigue Workup and Differential Diagnosis"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Metabolic Syndrome",
+      "matches": 6,
+      "fallback": false,
+      "sections": [
+        "PCOS Diagnosis and Management",
+        "Schizophrenia Spectrum Disorders",
+        "Non-Alcoholic Fatty Liver Disease — Screening, Diagnosis, and Management",
+        "Psoriasis Diagnosis and Management",
+        "Menopause Diagnosis and Hormone Replacement Therapy",
+        "Electrolyte Disorders — Hyponatremia, Hyperkalemia, Hypokalemia, Hypomagnesemia, Hypercalcemia"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "GERD",
+      "matches": 5,
+      "fallback": false,
+      "sections": [
+        "GERD Diagnosis and Management",
+        "IPF Diagnosis and Management",
+        "Failure to Thrive — Pediatric Undernutrition Evaluation and Management",
+        "Obesity Pharmacotherapy and Surgical Management",
+        "OSA Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Peptic Ulcer Disease",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "H. pylori Testing and Eradication"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Irritable Bowel Syndrome",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "IBS Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Inflammatory Bowel Disease",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Crohn's Disease and Ulcerative Colitis Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Celiac Disease",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Celiac Disease — Diagnosis, Dietary Treatment, and Monitoring",
+        "Failure to Thrive — Pediatric Undernutrition Evaluation and Management",
+        "Iron Deficiency Anemia Diagnosis and Treatment",
+        "Vitamin B12 and Folate Deficiency Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Liver Cirrhosis",
+      "matches": 3,
+      "fallback": false,
+      "sections": [
+        "Pleural Effusion Evaluation and Management",
+        "Non-Alcoholic Fatty Liver Disease — Screening, Diagnosis, and Management",
+        "Cirrhosis Complications — Varices, SBP, Hepatic Encephalopathy, and HCC Surveillance"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Colorectal Cancer Screening",
+      "matches": 3,
+      "fallback": false,
+      "sections": [
+        "Colorectal Cancer Screening Recommendations",
+        "Colorectal Cancer Screening Recommendations and Methods",
+        "Iron Deficiency Anemia Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Stroke / TIA",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Stroke / TIA — TIA Evaluation, ABCD2 Score, and Secondary Prevention",
+        "Menopause Diagnosis and Hormone Replacement Therapy"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Migraine",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Migraine Diagnosis and Acute Treatment",
+        "Migraine Preventive Therapy",
+        "Contraceptive Methods and Counseling",
+        "Contraception Effectiveness and Long-Acting Reversible Contraception"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Epilepsy",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Seizure Classification, First Seizure, and Antiepileptic Therapy",
+        "Febrile Seizure Evaluation and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Parkinson's Disease",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Parkinson Disease Diagnosis and Management",
+        "Dementia Screening, Diagnosis, and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Dementia / Alzheimer's",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Dementia Screening, Diagnosis, and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Multiple Sclerosis",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Multiple Sclerosis — Diagnosis, Relapse Management, and Disease-Modifying Therapy"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Peripheral Neuropathy",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Diabetic Peripheral Neuropathy — Screening, Diagnosis, and Treatment",
+        "Celiac Disease — Diagnosis, Dietary Treatment, and Monitoring",
+        "Pharmacotherapy for Depression",
+        "Vitamin B12 and Folate Deficiency Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Major Depressive Disorder",
+      "matches": 5,
+      "fallback": false,
+      "sections": [
+        "Major Depressive Disorder Criteria",
+        "Pharmacotherapy for Depression",
+        "Bipolar Disorder Diagnosis and Management",
+        "Bipolar Disorder Diagnosis and Pharmacologic Management",
+        "Perinatal and Postpartum Depression Screening and Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Generalized Anxiety Disorder",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Anxiety Disorders",
+        "ADHD Diagnosis and Treatment in Children and Adolescents"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Bipolar Disorder",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Bipolar Disorder Diagnosis and Pharmacologic Management",
+        "Bipolar Disorder Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "ADHD",
+      "matches": 3,
+      "fallback": false,
+      "sections": [
+        "ADHD Diagnosis and Pharmacologic Management",
+        "ADHD Diagnosis and Treatment",
+        "ADHD Diagnosis and Treatment in Children and Adolescents"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "PTSD",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "PTSD Diagnosis and Evidence-Based Treatment",
+        "Opioid Therapy for Chronic Non-Cancer Pain — CDC 2022 Guidelines"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Schizophrenia",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Schizophrenia Spectrum Disorders"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Substance Use Disorder",
+      "matches": 7,
+      "fallback": false,
+      "sections": [
+        "Medication for Opioid Use Disorder (MOUD) — Buprenorphine, Naltrexone, Methadone",
+        "Chronic Pain Management and Opioid Stewardship",
+        "PTSD Diagnosis and Evidence-Based Treatment",
+        "Anxiety Disorders",
+        "Schizophrenia Spectrum Disorders",
+        "Chronic Insomnia — Evaluation, CBT-I, and Pharmacotherapy",
+        "ADHD Diagnosis and Pharmacologic Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Low Back Pain",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Acute and Chronic Low Back Pain Management",
+        "Psoriasis Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Osteoarthritis",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Osteoarthritis Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Rheumatoid Arthritis",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Rheumatoid Arthritis Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Gout",
+      "matches": 3,
+      "fallback": false,
+      "sections": [
+        "Gout Diagnosis, Acute Flare Management, and Urate-Lowering Therapy",
+        "Gout Diagnosis, Acute Treatment, and Urate-Lowering Therapy",
+        "Nephrolithiasis Evaluation and Medical Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Osteoporosis",
+      "matches": 6,
+      "fallback": false,
+      "sections": [
+        "Osteoporosis Screening, Diagnosis, and Pharmacotherapy",
+        "Osteoporosis Diagnosis, Screening, and Treatment",
+        "Celiac Disease — Diagnosis, Dietary Treatment, and Monitoring",
+        "Electrolyte Disorders — Hyponatremia, Hyperkalemia, Hypokalemia, Hypomagnesemia, Hypercalcemia",
+        "Hyperthyroidism — Graves Disease, Toxic Nodular Goiter, and Thyroid Storm",
+        "Non-Alcoholic Fatty Liver Disease — Screening, Diagnosis, and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Fibromyalgia",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Fibromyalgia Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Shoulder Pain / Rotator Cuff",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Shoulder Pain and Rotator Cuff Tear Diagnosis and Management",
+        "Rotator Cuff Disease and Shoulder Pain Assessment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Acne Vulgaris",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Acne Classification and Stepwise Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Psoriasis",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Psoriasis Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Atopic Dermatitis",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Atopic Dermatitis Diagnosis and Stepwise Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Cellulitis",
+      "matches": 3,
+      "fallback": false,
+      "sections": [
+        "Cellulitis, Erysipelas, and Abscess Management",
+        "Cellulitis, Abscess, and Necrotizing Fasciitis",
+        "Acute Bacterial Rhinosinusitis Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Skin Cancer Screening",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Skin Cancer Screening and Suspicious Lesion Evaluation"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Tinea Infections",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Tinea Infections and Superficial Fungal Infections",
+        "Cellulitis, Erysipelas, and Abscess Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Urinary Tract Infection",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "UTI Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Community-Acquired Pneumonia",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "CAP Severity Assessment and Treatment",
+        "CAP Severity Assessment and Antibiotic Therapy"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Sepsis",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Sepsis-3 Definition, Diagnosis, and 1-Hour Bundle",
+        "Acute Kidney Injury Staging and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "HIV Management",
+      "matches": 6,
+      "fallback": false,
+      "sections": [
+        "HIV Diagnosis, ART Initiation, and Initial Regimen",
+        "Failure to Thrive — Pediatric Undernutrition Evaluation and Management",
+        "Hepatitis C Screening, Diagnosis, and Direct-Acting Antiviral Treatment",
+        "Pulmonary Hypertension Classification and Management",
+        "Fatigue Workup and Differential Diagnosis",
+        "Skin Cancer Screening and Suspicious Lesion Evaluation"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "STI Screening & Treatment",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Gonorrhea, Chlamydia, and Syphilis Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Lyme Disease",
+      "matches": 3,
+      "fallback": false,
+      "sections": [
+        "Lyme Disease Diagnosis and Treatment",
+        "Heart Block and Cardiac Arrhythmias — Classification, EKG Features, and Management",
+        "Fatigue Workup and Differential Diagnosis"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Influenza",
+      "matches": 6,
+      "fallback": false,
+      "sections": [
+        "Influenza Diagnosis, Treatment, and Chemoprophylaxis",
+        "AOM Diagnosis and Antibiotic Management",
+        "Adult Recommended Immunizations",
+        "Birth to Adolescence Vaccine Schedule",
+        "Acute Bronchitis — Diagnosis and Antibiotic Avoidance",
+        "Type 2 Diabetes Mellitus — Treatment Targets, Drug Selection, and Monitoring"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "C. diff Infection",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "C. difficile Classification and Antibiotic Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Colorectal Cancer",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Colorectal Cancer Screening Recommendations",
+        "Colorectal Cancer Screening Recommendations and Methods",
+        "Iron Deficiency Anemia Diagnosis and Treatment",
+        "Crohn's Disease and Ulcerative Colitis Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Breast Cancer Screening",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Breast Cancer Screening Recommendations"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Cervical Cancer Screening",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Cervical Cancer Screening and Colposcopy",
+        "First Trimester Prenatal Screening and Lab Evaluation"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Lung Cancer Screening",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Lung Cancer Screening Recommendations"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Lipid Screening",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Type 2 Diabetes Mellitus — Treatment Targets, Drug Selection, and Monitoring",
+        "HIV Diagnosis, ART Initiation, and Initial Regimen",
+        "Systemic Lupus Erythematosus — Diagnosis, Monitoring, and Treatment",
+        "Childhood and Adolescent Obesity — Evaluation, Lifestyle, Pharmacotherapy, and Surgery"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Diabetes Screening",
+      "matches": 8,
+      "fallback": false,
+      "sections": [
+        "Gestational Diabetes Mellitus — Screening, Diagnosis, and Management",
+        "Diabetic Peripheral Neuropathy — Screening, Diagnosis, and Treatment",
+        "First Trimester Prenatal Screening and Lab Evaluation",
+        "Atrial Fibrillation Diagnosis, Stroke Risk, and Anticoagulation",
+        "Prediabetes Diagnosis, Lifestyle Intervention, and Pharmacotherapy",
+        "Diabetes Diagnosis Criteria",
+        "Type 2 Diabetes Mellitus — Treatment Targets, Drug Selection, and Monitoring",
+        "Non-Alcoholic Fatty Liver Disease — Screening, Diagnosis, and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Hypertension Screening",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Atrial Fibrillation Diagnosis, Stroke Risk, and Anticoagulation",
+        "Diabetes Diagnosis Criteria",
+        "Pulmonary Hypertension Classification and Management",
+        "OSA Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Adult Immunization Schedule",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Adult Recommended Immunizations"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Prenatal Care",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Routine Prenatal Screening and Care",
+        "First Trimester Prenatal Screening and Lab Evaluation"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Gestational Diabetes",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Gestational Diabetes Mellitus — Screening, Diagnosis, and Management",
+        "First Trimester Prenatal Screening and Lab Evaluation"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Preeclampsia",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Preeclampsia Diagnosis and Management",
+        "First Trimester Prenatal Screening and Lab Evaluation"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Menopause Management",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Urinary Incontinence Evaluation and Management",
+        "Endometriosis — Diagnosis, Medical Management, and Surgical Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Contraception",
+      "matches": 6,
+      "fallback": false,
+      "sections": [
+        "Contraception Effectiveness and Long-Acting Reversible Contraception",
+        "Contraceptive Methods and Counseling",
+        "Acne Classification and Stepwise Treatment",
+        "Multiple Sclerosis — Diagnosis, Relapse Management, and Disease-Modifying Therapy",
+        "Bipolar Disorder Diagnosis and Pharmacologic Management",
+        "Endometriosis — Diagnosis, Medical Management, and Surgical Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Polycystic Ovary Syndrome",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "PCOS Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Postpartum Depression",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Perinatal and Postpartum Depression Screening and Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Endometriosis",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Endometriosis — Diagnosis, Medical Management, and Surgical Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Well-Child Visits",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Well-Child Visit Schedule and Developmental Surveillance",
+        "Well-Child Care Schedule and Developmental Surveillance"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Childhood Immunizations",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Birth to Adolescence Vaccine Schedule"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Pediatric ADHD",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "ADHD Diagnosis and Treatment in Children and Adolescents"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Childhood Asthma",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Childhood Asthma Stepwise Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Failure to Thrive",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Failure to Thrive — Pediatric Undernutrition Evaluation and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Otitis Media",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Acute Otitis Media Diagnosis and Treatment",
+        "AOM Diagnosis and Antibiotic Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Febrile Seizure",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Febrile Seizure Evaluation and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Chronic Kidney Disease",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "CKD Staging, Evaluation, and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Acute Kidney Injury",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Acute Kidney Injury Staging and Management"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Nephrolithiasis",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Nephrolithiasis Evaluation and Medical Management",
+        "Electrolyte Disorders — Hyponatremia, Hyperkalemia, Hypokalemia, Hypomagnesemia, Hypercalcemia",
+        "Gout Diagnosis, Acute Flare Management, and Urate-Lowering Therapy",
+        "Microscopic Hematuria Evaluation"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Proteinuria",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "CKD Complications Management",
+        "Antihypertensive Drug Selection",
+        "Preeclampsia Diagnosis and Management",
+        "Systemic Lupus Erythematosus — Diagnosis, Monitoring, and Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Electrolyte Disorders",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Electrolyte Disorders — Hyponatremia, Hyperkalemia, Hypokalemia, Hypomagnesemia, Hypercalcemia"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Anemia (Iron Deficiency)",
+      "matches": 6,
+      "fallback": false,
+      "sections": [
+        "Iron Deficiency Anemia Diagnosis and Treatment",
+        "Celiac Disease — Diagnosis, Dietary Treatment, and Monitoring",
+        "Fatigue Workup and Differential Diagnosis",
+        "Well-Child Care Schedule and Developmental Surveillance",
+        "H. pylori Testing and Eradication",
+        "First Trimester Prenatal Screening and Lab Evaluation"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Anemia (B12/Folate)",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Fatigue Workup and Differential Diagnosis",
+        "Thrombocytopenia Differential Diagnosis and Workup"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "DVT / VTE",
+      "matches": 3,
+      "fallback": false,
+      "sections": [
+        "DVT and PE Treatment, Anticoagulant Selection, and Duration",
+        "Pulmonary Embolism — Diagnosis Algorithm, Wells Criteria, PERC, and D-Dimer",
+        "VTE Treatment and Anticoagulation"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Thrombocytopenia",
+      "matches": 7,
+      "fallback": false,
+      "sections": [
+        "Thrombocytopenia Differential Diagnosis and Workup",
+        "Preeclampsia Diagnosis and Management",
+        "First Trimester Prenatal Screening and Lab Evaluation",
+        "Systemic Lupus Erythematosus — Diagnosis, Monitoring, and Treatment",
+        "Acute Pharyngitis — Group A Streptococcus Diagnosis and Treatment",
+        "Cirrhosis Complications — Varices, SBP, Hepatic Encephalopathy, and HCC Surveillance",
+        "Leukemia and Lymphoma — Red Flags, Initial Workup, and Referral Criteria"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Anticoagulation Management",
+      "matches": 10,
+      "fallback": false,
+      "sections": [
+        "VTE Treatment and Anticoagulation",
+        "Pulmonary Embolism — Treatment, Risk Stratification, Anticoagulation Selection, and Thrombolysis",
+        "Stroke / TIA — TIA Evaluation, ABCD2 Score, and Secondary Prevention",
+        "Atrial Fibrillation Diagnosis, Stroke Risk, and Anticoagulation",
+        "Perioperative Risk Assessment and Optimization",
+        "Acute Ischemic Stroke Treatment",
+        "STEMI and NSTEMI Acute Management",
+        "Heart Block and Cardiac Arrhythmias — Classification, EKG Features, and Management",
+        "Pulmonary Hypertension Classification and Management",
+        "Systemic Lupus Erythematosus — Diagnosis, Monitoring, and Treatment"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Leukemia / Lymphoma",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Leukemia and Lymphoma — Red Flags, Initial Workup, and Referral Criteria",
+        "Thrombocytopenia Differential Diagnosis and Workup"
+      ]
+    },
+    {
+      "version": "baseline",
+      "condition": "Sickle Cell Disease",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Sickle Cell Disease Complications, Hydroxyurea, and Acute Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Heart Failure",
+      "matches": 7,
+      "fallback": false,
+      "sections": [
+        "HFrEF Guideline-Directed Medical Therapy",
+        "Iron Deficiency Anemia Diagnosis and Treatment",
+        "HFpEF Management",
+        "Antihypertensive Drug Selection",
+        "Acute Kidney Injury Staging and Management",
+        "Type 2 Diabetes Mellitus — Treatment Targets, Drug Selection, and Monitoring",
+        "Failure to Thrive — Pediatric Undernutrition Evaluation and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Hypertension",
+      "matches": 10,
+      "fallback": false,
+      "sections": [
+        "Pulmonary Hypertension Classification and Management",
+        "Preeclampsia Diagnosis and Management",
+        "Blood Pressure Classification and Thresholds",
+        "Stroke Risk Stratification and Anticoagulation",
+        "HFpEF Management",
+        "Diabetes Diagnosis Criteria",
+        "Pulmonary Embolism — Treatment, Risk Stratification, Anticoagulation Selection, and Thrombolysis",
+        "PAD Diagnosis and Management",
+        "STEMI and NSTEMI Acute Management",
+        "Perioperative Risk Assessment and Optimization"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Atrial Fibrillation",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Atrial Fibrillation Diagnosis, Stroke Risk, and Anticoagulation",
+        "Stroke Risk Stratification and Anticoagulation",
+        "HFpEF Management",
+        "Rate and Rhythm Control"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Coronary Artery Disease",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "HFpEF Management",
+        "Contraception Effectiveness and Long-Acting Reversible Contraception"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Dyslipidemia",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Obesity Pharmacotherapy — GLP-1 Agonists and Tirzepatide (2023 Updates)",
+        "Hypertriglyceridemia and Mixed Dyslipidemia Management",
+        "Statin Prescribing for Primary Prevention",
+        "Schizophrenia Spectrum Disorders"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Peripheral Arterial Disease",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "PAD Diagnosis and Management",
+        "Diabetic Peripheral Neuropathy — Screening, Diagnosis, and Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Heart Block / Arrhythmia",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Heart Block and Cardiac Arrhythmias — Classification, EKG Features, and Management",
+        "Syncope Evaluation and Risk Stratification"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Asthma",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Pediatric Asthma Stepwise Management",
+        "Asthma Diagnosis, Classification, and Stepwise Management",
+        "Childhood Asthma Stepwise Management",
+        "Migraine Preventive Therapy"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "COPD",
+      "matches": 7,
+      "fallback": false,
+      "sections": [
+        "COPD Diagnosis and Classification",
+        "COPD Pharmacological Management",
+        "CAP Severity Assessment and Antibiotic Therapy",
+        "Palliative Care, Hospice Eligibility, and Goals-of-Care Communication",
+        "Pulmonary Hypertension Classification and Management",
+        "CAP Severity Assessment and Treatment",
+        "Perioperative Risk Assessment and Optimization"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Pneumonia",
+      "matches": 6,
+      "fallback": false,
+      "sections": [
+        "CAP Severity Assessment and Antibiotic Therapy",
+        "Acute Bronchitis — Diagnosis and Antibiotic Avoidance",
+        "CAP Severity Assessment and Treatment",
+        "Pleural Effusion Evaluation and Management",
+        "IPF Diagnosis and Management",
+        "COPD Pharmacological Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Pulmonary Embolism",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Pulmonary Embolism — Diagnosis Algorithm, Wells Criteria, PERC, and D-Dimer",
+        "Pulmonary Embolism — Treatment, Risk Stratification, Anticoagulation Selection, and Thrombolysis"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Obstructive Sleep Apnea",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "OSA Diagnosis and Treatment",
+        "Fatigue Workup and Differential Diagnosis"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Pleural Effusion",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Pleural Effusion Evaluation and Management",
+        "Acute Pancreatitis Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Type 2 Diabetes Mellitus",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Type 2 Diabetes Mellitus — Treatment Targets, Drug Selection, and Monitoring",
+        "Diabetes Diagnosis Criteria"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Type 1 Diabetes Mellitus",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Type 2 Diabetes Mellitus — Treatment Targets, Drug Selection, and Monitoring",
+        "Diabetes Diagnosis Criteria"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Hypothyroidism",
+      "matches": 10,
+      "fallback": false,
+      "sections": [
+        "Hypothyroidism Diagnosis and Treatment",
+        "Hypertriglyceridemia and Mixed Dyslipidemia Management",
+        "Hyperthyroidism — Graves Disease, Toxic Nodular Goiter, and Thyroid Storm",
+        "Pleural Effusion Evaluation and Management",
+        "PCOS Diagnosis and Management",
+        "Fibromyalgia Diagnosis and Treatment",
+        "Well-Child Care Schedule and Developmental Surveillance",
+        "Failure to Thrive — Pediatric Undernutrition Evaluation and Management",
+        "Diabetic Peripheral Neuropathy — Screening, Diagnosis, and Treatment",
+        "Bipolar Disorder Diagnosis and Pharmacologic Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Hyperthyroidism",
+      "matches": 3,
+      "fallback": false,
+      "sections": [
+        "Hyperthyroidism — Graves Disease, Toxic Nodular Goiter, and Thyroid Storm",
+        "Thyroid Nodule Evaluation and Management",
+        "Anxiety Disorders"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Adrenal Insufficiency",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Electrolyte Disorders — Hyponatremia, Hyperkalemia, Hypokalemia, Hypomagnesemia, Hypercalcemia",
+        "Fatigue Workup and Differential Diagnosis"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Metabolic Syndrome",
+      "matches": 5,
+      "fallback": false,
+      "sections": [
+        "PCOS Diagnosis and Management",
+        "Schizophrenia Spectrum Disorders",
+        "Non-Alcoholic Fatty Liver Disease — Screening, Diagnosis, and Management",
+        "Psoriasis Diagnosis and Management",
+        "Menopause Diagnosis and Hormone Replacement Therapy"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "GERD",
+      "matches": 5,
+      "fallback": false,
+      "sections": [
+        "GERD Diagnosis and Management",
+        "IPF Diagnosis and Management",
+        "Failure to Thrive — Pediatric Undernutrition Evaluation and Management",
+        "Obesity Pharmacotherapy and Surgical Management",
+        "OSA Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Peptic Ulcer Disease",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "H. pylori Testing and Eradication"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Irritable Bowel Syndrome",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "IBS Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Inflammatory Bowel Disease",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Crohn's Disease and Ulcerative Colitis Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Celiac Disease",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Celiac Disease — Diagnosis, Dietary Treatment, and Monitoring",
+        "Failure to Thrive — Pediatric Undernutrition Evaluation and Management",
+        "Iron Deficiency Anemia Diagnosis and Treatment",
+        "Vitamin B12 and Folate Deficiency Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Liver Cirrhosis",
+      "matches": 3,
+      "fallback": false,
+      "sections": [
+        "Pleural Effusion Evaluation and Management",
+        "Non-Alcoholic Fatty Liver Disease — Screening, Diagnosis, and Management",
+        "Cirrhosis Complications — Varices, SBP, Hepatic Encephalopathy, and HCC Surveillance"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Colorectal Cancer Screening",
+      "matches": 3,
+      "fallback": false,
+      "sections": [
+        "Colorectal Cancer Screening Recommendations",
+        "Colorectal Cancer Screening Recommendations and Methods",
+        "Iron Deficiency Anemia Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Stroke / TIA",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Stroke / TIA — TIA Evaluation, ABCD2 Score, and Secondary Prevention",
+        "Menopause Diagnosis and Hormone Replacement Therapy"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Migraine",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Migraine Diagnosis and Acute Treatment",
+        "Migraine Preventive Therapy",
+        "Contraceptive Methods and Counseling",
+        "Contraception Effectiveness and Long-Acting Reversible Contraception"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Epilepsy",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Seizure Classification, First Seizure, and Antiepileptic Therapy",
+        "Febrile Seizure Evaluation and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Parkinson's Disease",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Parkinson Disease Diagnosis and Management",
+        "Dementia Screening, Diagnosis, and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Dementia / Alzheimer's",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Dementia Screening, Diagnosis, and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Multiple Sclerosis",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Multiple Sclerosis — Diagnosis, Relapse Management, and Disease-Modifying Therapy"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Peripheral Neuropathy",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Diabetic Peripheral Neuropathy — Screening, Diagnosis, and Treatment",
+        "Celiac Disease — Diagnosis, Dietary Treatment, and Monitoring",
+        "Pharmacotherapy for Depression",
+        "Vitamin B12 and Folate Deficiency Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Major Depressive Disorder",
+      "matches": 5,
+      "fallback": false,
+      "sections": [
+        "Major Depressive Disorder Criteria",
+        "Pharmacotherapy for Depression",
+        "Bipolar Disorder Diagnosis and Management",
+        "Bipolar Disorder Diagnosis and Pharmacologic Management",
+        "Perinatal and Postpartum Depression Screening and Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Generalized Anxiety Disorder",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Anxiety Disorders",
+        "ADHD Diagnosis and Treatment in Children and Adolescents"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Bipolar Disorder",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Bipolar Disorder Diagnosis and Pharmacologic Management",
+        "Bipolar Disorder Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "ADHD",
+      "matches": 3,
+      "fallback": false,
+      "sections": [
+        "ADHD Diagnosis and Pharmacologic Management",
+        "ADHD Diagnosis and Treatment",
+        "ADHD Diagnosis and Treatment in Children and Adolescents"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "PTSD",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "PTSD Diagnosis and Evidence-Based Treatment",
+        "Opioid Therapy for Chronic Non-Cancer Pain — CDC 2022 Guidelines"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Schizophrenia",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Schizophrenia Spectrum Disorders"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Substance Use Disorder",
+      "matches": 7,
+      "fallback": false,
+      "sections": [
+        "Medication for Opioid Use Disorder (MOUD) — Buprenorphine, Naltrexone, Methadone",
+        "Chronic Pain Management and Opioid Stewardship",
+        "PTSD Diagnosis and Evidence-Based Treatment",
+        "Anxiety Disorders",
+        "Schizophrenia Spectrum Disorders",
+        "Chronic Insomnia — Evaluation, CBT-I, and Pharmacotherapy",
+        "ADHD Diagnosis and Pharmacologic Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Low Back Pain",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Acute and Chronic Low Back Pain Management",
+        "Psoriasis Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Osteoarthritis",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Osteoarthritis Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Rheumatoid Arthritis",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Rheumatoid Arthritis Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Gout",
+      "matches": 3,
+      "fallback": false,
+      "sections": [
+        "Gout Diagnosis, Acute Flare Management, and Urate-Lowering Therapy",
+        "Gout Diagnosis, Acute Treatment, and Urate-Lowering Therapy",
+        "Nephrolithiasis Evaluation and Medical Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Osteoporosis",
+      "matches": 6,
+      "fallback": false,
+      "sections": [
+        "Osteoporosis Screening, Diagnosis, and Pharmacotherapy",
+        "Osteoporosis Diagnosis, Screening, and Treatment",
+        "Celiac Disease — Diagnosis, Dietary Treatment, and Monitoring",
+        "Electrolyte Disorders — Hyponatremia, Hyperkalemia, Hypokalemia, Hypomagnesemia, Hypercalcemia",
+        "Hyperthyroidism — Graves Disease, Toxic Nodular Goiter, and Thyroid Storm",
+        "Non-Alcoholic Fatty Liver Disease — Screening, Diagnosis, and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Fibromyalgia",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Fibromyalgia Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Shoulder Pain / Rotator Cuff",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Shoulder Pain and Rotator Cuff Tear Diagnosis and Management",
+        "Rotator Cuff Disease and Shoulder Pain Assessment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Acne Vulgaris",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Acne Classification and Stepwise Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Psoriasis",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Psoriasis Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Atopic Dermatitis",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Atopic Dermatitis Diagnosis and Stepwise Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Cellulitis",
+      "matches": 3,
+      "fallback": false,
+      "sections": [
+        "Cellulitis, Erysipelas, and Abscess Management",
+        "Cellulitis, Abscess, and Necrotizing Fasciitis",
+        "Acute Bacterial Rhinosinusitis Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Skin Cancer Screening",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Skin Cancer Screening and Suspicious Lesion Evaluation"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Tinea Infections",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Tinea Infections and Superficial Fungal Infections",
+        "Cellulitis, Erysipelas, and Abscess Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Urinary Tract Infection",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "UTI Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Community-Acquired Pneumonia",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "CAP Severity Assessment and Treatment",
+        "CAP Severity Assessment and Antibiotic Therapy"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Sepsis",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Sepsis-3 Definition, Diagnosis, and 1-Hour Bundle",
+        "Acute Kidney Injury Staging and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "HIV Management",
+      "matches": 6,
+      "fallback": false,
+      "sections": [
+        "HIV Diagnosis, ART Initiation, and Initial Regimen",
+        "Failure to Thrive — Pediatric Undernutrition Evaluation and Management",
+        "Hepatitis C Screening, Diagnosis, and Direct-Acting Antiviral Treatment",
+        "Pulmonary Hypertension Classification and Management",
+        "Fatigue Workup and Differential Diagnosis",
+        "Skin Cancer Screening and Suspicious Lesion Evaluation"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "STI Screening & Treatment",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Gonorrhea, Chlamydia, and Syphilis Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Lyme Disease",
+      "matches": 3,
+      "fallback": false,
+      "sections": [
+        "Lyme Disease Diagnosis and Treatment",
+        "Heart Block and Cardiac Arrhythmias — Classification, EKG Features, and Management",
+        "Fatigue Workup and Differential Diagnosis"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Influenza",
+      "matches": 6,
+      "fallback": false,
+      "sections": [
+        "Influenza Diagnosis, Treatment, and Chemoprophylaxis",
+        "AOM Diagnosis and Antibiotic Management",
+        "Adult Recommended Immunizations",
+        "Birth to Adolescence Vaccine Schedule",
+        "Acute Bronchitis — Diagnosis and Antibiotic Avoidance",
+        "Type 2 Diabetes Mellitus — Treatment Targets, Drug Selection, and Monitoring"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "C. diff Infection",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "C. difficile Classification and Antibiotic Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Colorectal Cancer",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Colorectal Cancer Screening Recommendations",
+        "Colorectal Cancer Screening Recommendations and Methods",
+        "Iron Deficiency Anemia Diagnosis and Treatment",
+        "Crohn's Disease and Ulcerative Colitis Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Breast Cancer Screening",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Breast Cancer Screening Recommendations"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Cervical Cancer Screening",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Cervical Cancer Screening and Colposcopy",
+        "First Trimester Prenatal Screening and Lab Evaluation"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Lung Cancer Screening",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Lung Cancer Screening Recommendations"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Lipid Screening",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Type 2 Diabetes Mellitus — Treatment Targets, Drug Selection, and Monitoring",
+        "HIV Diagnosis, ART Initiation, and Initial Regimen",
+        "Systemic Lupus Erythematosus — Diagnosis, Monitoring, and Treatment",
+        "Childhood and Adolescent Obesity — Evaluation, Lifestyle, Pharmacotherapy, and Surgery"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Diabetes Screening",
+      "matches": 8,
+      "fallback": false,
+      "sections": [
+        "Gestational Diabetes Mellitus — Screening, Diagnosis, and Management",
+        "Diabetic Peripheral Neuropathy — Screening, Diagnosis, and Treatment",
+        "First Trimester Prenatal Screening and Lab Evaluation",
+        "Atrial Fibrillation Diagnosis, Stroke Risk, and Anticoagulation",
+        "Prediabetes Diagnosis, Lifestyle Intervention, and Pharmacotherapy",
+        "Diabetes Diagnosis Criteria",
+        "Type 2 Diabetes Mellitus — Treatment Targets, Drug Selection, and Monitoring",
+        "Non-Alcoholic Fatty Liver Disease — Screening, Diagnosis, and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Hypertension Screening",
+      "matches": 5,
+      "fallback": false,
+      "sections": [
+        "Atrial Fibrillation Diagnosis, Stroke Risk, and Anticoagulation",
+        "Diabetes Diagnosis Criteria",
+        "Acute Ischemic Stroke Treatment",
+        "Pulmonary Hypertension Classification and Management",
+        "OSA Diagnosis and Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Adult Immunization Schedule",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Adult Recommended Immunizations"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Prenatal Care",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Routine Prenatal Screening and Care",
+        "First Trimester Prenatal Screening and Lab Evaluation"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Gestational Diabetes",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Gestational Diabetes Mellitus — Screening, Diagnosis, and Management",
+        "First Trimester Prenatal Screening and Lab Evaluation"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Preeclampsia",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Preeclampsia Diagnosis and Management",
+        "First Trimester Prenatal Screening and Lab Evaluation"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Menopause Management",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Urinary Incontinence Evaluation and Management",
+        "Endometriosis — Diagnosis, Medical Management, and Surgical Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Contraception",
+      "matches": 6,
+      "fallback": false,
+      "sections": [
+        "Contraception Effectiveness and Long-Acting Reversible Contraception",
+        "Contraceptive Methods and Counseling",
+        "Acne Classification and Stepwise Treatment",
+        "Multiple Sclerosis — Diagnosis, Relapse Management, and Disease-Modifying Therapy",
+        "Bipolar Disorder Diagnosis and Pharmacologic Management",
+        "Endometriosis — Diagnosis, Medical Management, and Surgical Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Polycystic Ovary Syndrome",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "PCOS Diagnosis and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Postpartum Depression",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Perinatal and Postpartum Depression Screening and Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Endometriosis",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Endometriosis — Diagnosis, Medical Management, and Surgical Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Well-Child Visits",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Well-Child Visit Schedule and Developmental Surveillance",
+        "Well-Child Care Schedule and Developmental Surveillance"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Childhood Immunizations",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Birth to Adolescence Vaccine Schedule"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Pediatric ADHD",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "ADHD Diagnosis and Treatment in Children and Adolescents"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Childhood Asthma",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Childhood Asthma Stepwise Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Failure to Thrive",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Failure to Thrive — Pediatric Undernutrition Evaluation and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Otitis Media",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Acute Otitis Media Diagnosis and Treatment",
+        "AOM Diagnosis and Antibiotic Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Febrile Seizure",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Febrile Seizure Evaluation and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Chronic Kidney Disease",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "CKD Staging, Evaluation, and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Acute Kidney Injury",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Acute Kidney Injury Staging and Management"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Nephrolithiasis",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "Nephrolithiasis Evaluation and Medical Management",
+        "Electrolyte Disorders — Hyponatremia, Hyperkalemia, Hypokalemia, Hypomagnesemia, Hypercalcemia",
+        "Gout Diagnosis, Acute Flare Management, and Urate-Lowering Therapy",
+        "Microscopic Hematuria Evaluation"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Proteinuria",
+      "matches": 4,
+      "fallback": false,
+      "sections": [
+        "CKD Complications Management",
+        "Antihypertensive Drug Selection",
+        "Preeclampsia Diagnosis and Management",
+        "Systemic Lupus Erythematosus — Diagnosis, Monitoring, and Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Electrolyte Disorders",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Electrolyte Disorders — Hyponatremia, Hyperkalemia, Hypokalemia, Hypomagnesemia, Hypercalcemia"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Anemia (Iron Deficiency)",
+      "matches": 6,
+      "fallback": false,
+      "sections": [
+        "Iron Deficiency Anemia Diagnosis and Treatment",
+        "Celiac Disease — Diagnosis, Dietary Treatment, and Monitoring",
+        "Fatigue Workup and Differential Diagnosis",
+        "Well-Child Care Schedule and Developmental Surveillance",
+        "H. pylori Testing and Eradication",
+        "First Trimester Prenatal Screening and Lab Evaluation"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Anemia (B12/Folate)",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Fatigue Workup and Differential Diagnosis",
+        "Thrombocytopenia Differential Diagnosis and Workup"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "DVT / VTE",
+      "matches": 3,
+      "fallback": false,
+      "sections": [
+        "DVT and PE Treatment, Anticoagulant Selection, and Duration",
+        "Pulmonary Embolism — Diagnosis Algorithm, Wells Criteria, PERC, and D-Dimer",
+        "VTE Treatment and Anticoagulation"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Thrombocytopenia",
+      "matches": 7,
+      "fallback": false,
+      "sections": [
+        "Thrombocytopenia Differential Diagnosis and Workup",
+        "Preeclampsia Diagnosis and Management",
+        "First Trimester Prenatal Screening and Lab Evaluation",
+        "Systemic Lupus Erythematosus — Diagnosis, Monitoring, and Treatment",
+        "Acute Pharyngitis — Group A Streptococcus Diagnosis and Treatment",
+        "Cirrhosis Complications — Varices, SBP, Hepatic Encephalopathy, and HCC Surveillance",
+        "Leukemia and Lymphoma — Red Flags, Initial Workup, and Referral Criteria"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Anticoagulation Management",
+      "matches": 10,
+      "fallback": false,
+      "sections": [
+        "VTE Treatment and Anticoagulation",
+        "Pulmonary Embolism — Treatment, Risk Stratification, Anticoagulation Selection, and Thrombolysis",
+        "Stroke / TIA — TIA Evaluation, ABCD2 Score, and Secondary Prevention",
+        "Atrial Fibrillation Diagnosis, Stroke Risk, and Anticoagulation",
+        "Perioperative Risk Assessment and Optimization",
+        "STEMI and NSTEMI Acute Management",
+        "Acute Ischemic Stroke Treatment",
+        "Heart Block and Cardiac Arrhythmias — Classification, EKG Features, and Management",
+        "Pulmonary Hypertension Classification and Management",
+        "Systemic Lupus Erythematosus — Diagnosis, Monitoring, and Treatment"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Leukemia / Lymphoma",
+      "matches": 2,
+      "fallback": false,
+      "sections": [
+        "Leukemia and Lymphoma — Red Flags, Initial Workup, and Referral Criteria",
+        "Thrombocytopenia Differential Diagnosis and Workup"
+      ]
+    },
+    {
+      "version": "candidate",
+      "condition": "Sickle Cell Disease",
+      "matches": 1,
+      "fallback": false,
+      "sections": [
+        "Sickle Cell Disease Complications, Hydroxyurea, and Acute Management"
+      ]
+    }
+  ]
+}

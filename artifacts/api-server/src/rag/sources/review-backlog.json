@@ -1,0 +1,1250 @@
+[
+  {
+    "index": 0,
+    "priorAssessment": "superseded",
+    "issue": "The 2017 guideline is replaced by the actual 2025 guideline, not a 2023 update. The old 10% pooled-cohort threshold is obsolete; classification needs explicit systolic OR diastolic criteria. Emergency BP reduction claims were not individually verified.",
+    "suggestedOfficialSource": "https://professional.heart.org/en/science-news/2025-high-blood-pressure-guideline/top-things-to-know",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 1,
+    "priorAssessment": "superseded",
+    "issue": "The 2017/2023 metadata is superseded. The original specific drug preferences, race-specific advice, and special-population medication claims were not all checked and should not remain in verified context.",
+    "suggestedOfficialSource": "https://professional.heart.org/en/science-news/2025-high-blood-pressure-guideline/top-things-to-know",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 2,
+    "priorAssessment": "unverified",
+    "issue": "The 2022 foundational guideline is real, but the original NYHA definitions and broad device/contraindication statements were not all verified. A 2024 ACC pathway provides current implementation guidance; this is supplementary, not a declaration that the 2022 guideline is retired.",
+    "suggestedOfficialSource": "https://www.acc.org/latest-in-cardiology/ten-points-to-remember/2024/03/06/19/22/2024-acc-expert-consensus-hfref",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 3,
+    "priorAssessment": "superseded",
+    "issue": "The 2022-only HFpEF summary is outdated as a current treatment overview; an actual 2026 ACC HFpEF consensus update was published July 23. BNP above a single threshold does not independently distinguish HF from all COPD/PE mimics.",
+    "suggestedOfficialSource": "https://www.acc.org/latest-in-cardiology/journal-scans/2026/07/22/17/25/updated-acc-ecdp-addresses-management-of-hfpef",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 4,
+    "priorAssessment": "unverified",
+    "issue": "The source guideline is real, but the original blanket claim that apixaban has the lowest bleeding risk among all DOACs is not established by ARISTOTLE, which compared apixaban with warfarin. Full claim-level checking is incomplete.",
+    "suggestedOfficialSource": "https://www.acc.org/Latest-in-Cardiology/ten-points-to-remember/2023/11/27/19/46/2023-acc-guideline-for-af-gl-af",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 5,
+    "priorAssessment": "unverified",
+    "issue": "The original routine HR <80 target is oversimplified: the 2023 guideline generally targets <100\u2013110 in patients without HF, guided by symptoms. Antiarrhythmic eligibility, digoxin levels, and toxicity claims remain incompletely verified.",
+    "suggestedOfficialSource": "https://www.jacc.org/doi/10.1016/j.jacc.2023.08.017",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 6,
+    "priorAssessment": "superseded",
+    "issue": "The 2018 cholesterol guideline is expressly replaced by the 2026 dyslipidemia guideline. The 2022 label and old pooled-cohort risk thresholds should not be presented as current. Original statin doses were not independently checked.",
+    "suggestedOfficialSource": "https://www.acc.org/About-ACC/Press-Releases/2026/03/13/18/01/ACCAHA-Issue-UpDated-Guideline-for-Managing-Lipids-Cholesterol",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 7,
+    "priorAssessment": "unverified",
+    "issue": "The source is a genuine 2021 chest-pain guideline, but hard-coded HEART/TIMI event rates and \u201csafe discharge\u201d based on a score alone were not verified against an accessible guideline. Assay-specific serial troponin pathways and full clinical assessment cannot be replaced by these numbers.",
+    "suggestedOfficialSource": "https://www.jacc.org/doi/10.1016/j.jacc.2021.07.053",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 8,
+    "priorAssessment": "superseded",
+    "issue": "ADA 2024 is superseded by the 2026 Standards. Original wording incorrectly appears to require repeat confirmation even with classic symptoms/crisis. ADA articles were checked only for update metadata; active replacement below is independently based on a federal reference, not ADA content.",
+    "suggestedOfficialSource": "https://www.niddk.nih.gov/health-information/diabetes/overview/tests-diagnosis",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 9,
+    "priorAssessment": "superseded",
+    "issue": "ADA 2024 has been superseded. Original LDL <100 for most/<70 with ASCVD is outdated; ADA 2026 specifies <55 with diabetes plus ASCVD. Metformin is not an obligatory prerequisite to proven cardiorenal drugs. The active replacement uses only independently checked VA/DoD recommendations.",
+    "suggestedOfficialSource": "https://www.healthquality.va.gov/guidelines/CD/diabetes/VADOD-Diabetes-CPG_Final_508.pdf",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 10,
+    "priorAssessment": "superseded",
+    "issue": "ADA 2024 is superseded by the 2026 Standards. Original DKA glucose >250 criterion misses euglycemic DKA; the 2024 consensus changed the glucose/history criterion. The blanket 140 mg/dL post-meal target is also inconsistent with the common nonpregnant target. Insulin dosing and all monitoring claims were not fully verified, so none are activated.",
+    "suggestedOfficialSource": "https://diabetesjournals.org/care/article/49/Supplement_1/S132/163927/6-Glycemic-Goals-Hypoglycemia-and-Hyperglycemic",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 11,
+    "priorAssessment": "unverified",
+    "issue": "The claimed Endocrine Society 2022 adult hypothyroidism guideline/title was not substantiated; an actual similarly titled ATA/AACE guideline dates to 2012. Overt primary hypothyroidism does not require TSH >10; high TSH with low FT4 is the key biochemical pattern. Original pregnancy targets and age-alone treatment rules are not verified.",
+    "suggestedOfficialSource": "https://www.aafp.org/afp/2021/0515/p605",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 12,
+    "priorAssessment": "unverified",
+    "issue": "The claimed 2022 Endocrine Society osteoporosis guideline/year is inaccurate: the accessible resource identifies a 2019 guideline with 2020 update. Screening, general nutrition doses, male screening, and several medication rankings in the original were not all checked. Denosumab is an alternative initial treatment, not universally second-line.",
+    "suggestedOfficialSource": "https://www.endocrine.org/clinical-practice-guidelines/osteoporosis-in-postmenopausal-women",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 13,
+    "priorAssessment": "unverified",
+    "issue": "DSM-5-TR is a diagnostic manual, not a depression treatment guideline. This chunk mixes DSM criteria, PHQ-9 accuracy estimates, STAR*D assertions, and treatment/maintenance claims without a matching primary guideline. Do not certify the whole chunk from a DSM landing page. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.psychiatry.org/psychiatrists/practice/dsm",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 14,
+    "priorAssessment": "unverified",
+    "issue": "The catalog names a 2023 APA depression guideline that has not been established from the cited general index. The asserted SSRI-first/SNRI-second hierarchy conflicts with VA/DoD 2022 non-ranked initial drug options. Absolute statements about pregnancy safety, sexual effects and CYP interactions require separate labeling checks. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/mdd/VADODMDDCPGFinal508.pdf",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 15,
+    "priorAssessment": "unverified",
+    "issue": "A DSM landing page does not establish drug choices, comparative psychotherapy efficacy, benzodiazepine recommendations or GAD-7 test performance. Full treatment and dosing verification pending. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.psychiatry.org/psychiatrists/practice/dsm",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 16,
+    "priorAssessment": "unverified",
+    "issue": "DSM source cannot verify treatment/monitoring. Mania symptom count must account for irritable-only mood; fixed lamotrigine titration ignores interacting medications. Lithium targets and phase-specific antipsychotic choices need actual guideline and labeling review. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.psychiatry.org/psychiatrists/practice/dsm",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 17,
+    "priorAssessment": "unverified",
+    "issue": "DSM source is not a pediatric ADHD treatment guideline. Medication description, preschool treatment exceptions, and legal dispensing assertions are not established by the cited page; stimulant prescribing law also needs current jurisdiction-specific review. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.psychiatry.org/psychiatrists/practice/dsm",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 18,
+    "priorAssessment": "superseded",
+    "issue": "Contains an outdated mandatory clozapine REMS requirement. FDA removed the REMS effective June 13, 2025, while ANC monitoring remains recommended per labeling. Broad diagnostic and adverse-effect treatment claims were not individually verified. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.fda.gov/drugs/drug-safety-communications/fda-removes-risk-evaluation-and-mitigation-strategy-rems-program-antipsychotic-drug-clozapine",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 19,
+    "priorAssessment": "superseded",
+    "issue": "2024 vaccine summary is outdated. Current retrieved CDC adult notes use an age-50 pneumococcal threshold and include PCV21; prior PCV20-only preference and age-65 threshold are incomplete. COVID and RSV need the live schedule and addenda; do not generate an invented 2026 schedule.",
+    "suggestedOfficialSource": "https://www.cdc.gov/vaccines/hcp/imz-schedules/adult-notes.html",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 20,
+    "priorAssessment": "superseded",
+    "issue": "Legacy childhood schedule includes an incorrect 6-month Hib instruction: PedvaxHIB (Hib-OMP) uses a 2-dose primary series at 2 and 4 months, not a routine 6-month primary dose. Blanket COVID/live-vaccine statements and a static 2024 table are not adequate current guidance.",
+    "suggestedOfficialSource": "https://www.cdc.gov/vaccines/hcp/imz-schedules/child-adolescent-notes.html",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 21,
+    "priorAssessment": "superseded",
+    "issue": "Original incorrectly assigns Grade A to ages 45\u201375. The final USPSTF recommendation assigns A to 50\u201375, B to 45\u201349, and C to selected 76\u201385-year-olds.",
+    "suggestedOfficialSource": "https://www.uspreventiveservicestaskforce.org/uspstf/document/ClinicalSummaryFinal/colorectal-cancer-screening",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 22,
+    "priorAssessment": "superseded",
+    "issue": "Core interval is supported, but legacy paragraph mixes screening, BRCA treatment, BI-RADS management, and supplemental imaging without matching sources. USPSTF has an I statement on supplemental ultrasound/MRI for dense breasts, rather than an affirmative routine recommendation.",
+    "suggestedOfficialSource": "https://www.uspreventiveservicestaskforce.org/uspstf/document/ClinicalSummaryFinal/breast-cancer-screening",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 23,
+    "priorAssessment": "unverified",
+    "issue": "USPSTF screening eligibility was checked, but the appended Lung-RADS management/biopsy shortcuts were not checked against the current ACR Lung-RADS document. Original stop rule also says >15 years instead of once 15 years without smoking.",
+    "suggestedOfficialSource": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/lung-cancer-screening",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 24,
+    "priorAssessment": "superseded",
+    "issue": "GOLD 2026 is available. Its key-changes document explicitly revises ABE assessment and uses one moderate exacerbation to consider escalation; the old 0-1 versus >=2 grouping must not remain labeled current. Full 2026 report could not be fetched, so not all clinical claims were verified.",
+    "suggestedOfficialSource": "https://goldcopd.org/wp-content/uploads/2025/11/KEY-CHANGES-GOLD-2026-10Nov2025.pdf",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 25,
+    "priorAssessment": "superseded",
+    "issue": "GOLD 2026 exists and revises the treatment pathway. The 2024 paragraph contains initial-therapy and antibiotic-indication oversimplifications; full 2026 report fetch failed, so the paragraph and its dosing/oxygen claims are not certified. Do not equate dyspnea alone with an antibiotic indication.",
+    "suggestedOfficialSource": "https://goldcopd.org/wp-content/uploads/2025/11/KEY-CHANGES-GOLD-2026-10Nov2025.pdf",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 26,
+    "priorAssessment": "superseded",
+    "issue": "GINA 2026 Strategy Report and Summary Guide exist. Original paragraph mixes Track 1 and Track 2; SABA-only alternative contradicts its own warning; FeNO alone does not establish variable airflow limitation. Full PDF could not be fetched, so no clinical replacement ingested. GINA explicitly requires approval for commercial use of its report/summary.",
+    "suggestedOfficialSource": "https://ginasthma.org/2026-gina-strategy-report/",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 27,
+    "priorAssessment": "superseded",
+    "issue": "The claimed 2023 IDSA/ATS CAP guideline metadata is unsupported; ATS published a new CAP update November 2025. Blanket fixed 5-day duration is outdated for selected clinically stable nonsevere patients. Original doxycycline atypical-coverage parenthetical and ICU criteria are misleading.",
+    "suggestedOfficialSource": "https://site.thoracic.org/press-releases/treatment-with-antibiotics-and-steroids-in-adults-with-pneumonia-addressed-in-latest-clinical-practice-guideline",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 28,
+    "priorAssessment": "superseded",
+    "issue": "The cited 2022 combined IDSA uncomplicated/complicated UTI guideline is unsupported. IDSA published its first cUTI guideline July 17, 2025, with new symptom-based classification, severity/resistance-driven selection and shorter effective therapy for eligible improving patients. Legacy pyelonephritis/CAUTI duration and resistance rules cannot be certified as current. Replacement is deliberately limited to the checked CDC adult cystitis summary.",
+    "suggestedOfficialSource": "https://www.cdc.gov/antibiotic-use/hcp/clinical-care/adult-outpatient.html",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 29,
+    "priorAssessment": "unverified",
+    "issue": "2021 CDC source is real, but original composite is inaccurate: chlamydia test-of-cure has nonpregnancy exceptions; azithromycin is not categorically limited to urogenital infection; disseminated gonorrhea needs syndrome-specific total duration; herpes suppression has no universal >=6-outbreak threshold. Replacement narrows to checked chlamydia facts.",
+    "suggestedOfficialSource": "https://www.cdc.gov/std/treatment-guidelines/chlamydia.htm",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 30,
+    "priorAssessment": "unverified",
+    "issue": "Official IDSA SSTI guideline is 2014, not 2022. Blanket no-MRSA coverage for nonpurulent cellulitis is wrong when penetrating trauma, injection drug use, known MRSA or severe systemic illness applies. Original empiric necrotizing-fasciitis regimen omits explicit MRSA-active therapy; IDSA recommends vancomycin/linezolid plus broad coverage. Several additional quantitative claims were not fully verified.",
+    "suggestedOfficialSource": "https://www.idsociety.org/practice-guideline/skin-and-soft-tissue-infections/",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 31,
+    "priorAssessment": "superseded",
+    "issue": "HIVMA/IDSA primary-care guidance is 2024, not 2023. Critical error: MAC primary prophylaxis is not triggered by CD4<100. Current NIH uses CD4<50 plus absence of effective suppressive ART; no primary prophylaxis is recommended when ART is immediately initiated. Original PrEP and monitoring statements are incomplete. Replacement contains only checked MAC facts.",
+    "suggestedOfficialSource": "https://clinicalinfo.hiv.gov/en/guidelines/hiv-clinical-guidelines-adult-and-adolescent-opportunistic-infections/disseminated",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 32,
+    "priorAssessment": "superseded",
+    "issue": "Official ACOG retrieval identifies Committee Statement 28, Screening for Cervical Cancer (2026), replacing the April 2021 advisory and adding patient-collected hrHPV options. Full page returned 402. Original 2023 attribution is unsupported, absolute prohibition on primary HPV ages25\u201329 is incorrect even in ACOG public material, and abnormal-result management must use risk/history rather than blanket colposcopy rules.",
+    "suggestedOfficialSource": "https://www.acog.org/clinical/clinical-guidance/committee-statement/articles/2026/07/screening-for-cervical-cancer",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 33,
+    "priorAssessment": "superseded",
+    "issue": "Original broad prenatal summary is unverified and gives old GBS timing (35\u201337 weeks), an incorrect/ambiguous unknown-status prophylaxis condition, and overgeneralized GC/chlamydia testing. Narrow replacement only addresses the directly checked CDC GBS screening recommendation; other prenatal care still requires separate review.",
+    "suggestedOfficialSource": "https://www.cdc.gov/group-b-strep/testing/index.html",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 34,
+    "priorAssessment": "unverified",
+    "issue": "Original cites a generic bulletin index and labels the guideline 2022; the identified ACOG Practice Bulletin222 is June2020. Diagnostic/severity, magnesium dosing, BP goals, and delivery timing are not all verified from accessible full primary guidance. Aspirin timing needs 12\u201328 weeks, optimally before16, rather than an unqualified start \u226416 weeks.",
+    "suggestedOfficialSource": "https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2020/06/gestational-hypertension-and-preeclampsia",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 35,
+    "priorAssessment": "superseded",
+    "issue": "Replace broad 2023 contraception claims with 2024 CDC US MEC: history of VTE is not uniformly category 4; therapeutic anticoagulation history is category 3 and other categories vary by recurrence risk. Pregnancy/lactation, liver disease and method duration require method-specific evidence.",
+    "suggestedOfficialSource": "https://www.cdc.gov/contraception/hcp/usmec/combined-hormonal-contraceptives.html",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 36,
+    "priorAssessment": "unverified",
+    "issue": "The cited AAFP 2023 GERD guideline title/URL is not established. ACG actual GERD guideline was published online in 2021/in a 2022 issue; EoE now has 2025 guidance. Alarm criteria, maintenance treatment and EoE sequencing must be checked separately. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aafp.org/pubs/afp/issues/2023/gerd",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 37,
+    "priorAssessment": "superseded",
+    "issue": "The empiric clarithromycin-resistance-under-15-percent recommendation is superseded by ACG 2024: clarithromycin/levofloxacin regimens require demonstrated susceptibility. The cited AAFP title/URL is not an established guideline citation. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://gi.org/wp-content/uploads/2025/01/ACG-Hpylori-Guidelines-Highlights-2024-FINAL.pdf.pdf",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 38,
+    "priorAssessment": "unverified",
+    "issue": "The named AAFP 2023 IBS guideline is not established; actual ACG guideline is January 2021. ACG does not recommend simply escalating PEG/antispasmodics/SSRIs for global IBS symptoms as this chunk implies. Workup, effect-size and regulatory REMS claims require separate verification. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aafp.org/pubs/afp/ibs",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 39,
+    "priorAssessment": "unverified",
+    "issue": "The named 2023 ACR RA drug guideline is not established; ACR lists the 2021 pharmacologic guideline. Classification criteria are not diagnostic criteria, and low disease activity does not uniformly require methotrexate. Full drug and monitoring audit pending. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://rheumatology.org/clinical-practice-guidelines",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 40,
+    "priorAssessment": "unverified",
+    "issue": "ACR gout guideline is 2020, not 2023. ULT indications mix conditional with strong recommendations, HLA testing omits African American patients, and a tophus-specific less-than-5 mg/dL target is not an ACR 2020 recommendation. Replacement is a limited independently checked summary only. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://acrjournals.onlinelibrary.wiley.com/doi/full/10.1002/art.41247",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 41,
+    "priorAssessment": "unverified",
+    "issue": "The cited AAFP 2022 back-pain guideline title/URL is not established. Acute/subacute duration definitions and routine buprenorphine as second-line chronic low-back-pain treatment require correction and direct guideline verification. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aafp.org/pubs/afp/issues/2022/back-pain",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 42,
+    "priorAssessment": "unverified",
+    "issue": "The named AAN 2022 acute migraine guideline is not established from the index. The assertion that gepants are safe in all coronary disease and have no triptan contraindications is overbroad; label contraindications, interactions and postmarketing warnings need checking. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aan.com/Guidelines",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 43,
+    "priorAssessment": "unverified",
+    "issue": "The named AAN 2022 prevention guideline is not established. AHS 2024 recognizes CGRP therapies as a first-line option without prior treatment failure. The blanket cardiovascular-safety assertion and listed drug contraindications require labeling review. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://headachejournal.onlinelibrary.wiley.com/doi/full/10.1111/head.14692",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 44,
+    "priorAssessment": "unverified",
+    "issue": "Generic AAN epilepsy page does not establish the claimed 2022 guideline. Diagnostic definitions, recurrence probabilities, drug choice by population, pregnancy precautions and emergency weight-based doses need separate current-source checks. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aan.com/Guidelines/Epilepsy",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 45,
+    "priorAssessment": "unverified",
+    "issue": "The original URL points to CKD-MBD rather than the CKD guideline. Finerenone is an nsMRA, not an SGLT2 inhibitor. KDIGO BP advice is standardized office SBP <120 if tolerated, not a blanket <120/80. Dialysis is not initiated solely because eGFR falls below 15. All original claims were not verified.",
+    "suggestedOfficialSource": "https://kdigo.org/wp-content/uploads/2024/03/KDIGO-2024-CKD-Guideline.pdf",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 46,
+    "priorAssessment": "unverified",
+    "issue": "The broad legacy well-child summary mixes visit schedules, age-specific milestones, tests, and referral rules not all verified. The AAP public schedule is dated2025 and reserves text/data-mining and similar technology rights. Replace only the federal CDC developmental-screening portion; full well-child schedule remains link-only pending rights and clinical review.",
+    "suggestedOfficialSource": "https://www.cdc.gov/autism/hcp/diagnosis/screening.html",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 47,
+    "priorAssessment": "unverified",
+    "issue": "AAP ADHD guideline identified is 2019, not a demonstrated2023 update. Broad prevalence, monitoring and treatment assertions are not all verified. AAP reserves text/data-mining/AI and similar technology rights; retain source link pending permission rather than loading original prose into an AI corpus.",
+    "suggestedOfficialSource": "https://publications.aap.org/pediatrics/article/144/4/e20192528/81590/Clinical-Practice-Guideline-for-the-Diagnosis",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 48,
+    "priorAssessment": "superseded",
+    "issue": "Legacy pediatric steps omit the NAEPP preferred ICS-formoterol SMART strategy for appropriate children aged 4+ with moderate-to-severe persistent asthma, and collapse age-specific approaches. The claimed AAP2023 asthma guideline was not established. Use the narrow federal2020 focused update; it is not a full2026 international guideline review.",
+    "suggestedOfficialSource": "https://www.nhlbi.nih.gov/sites/default/files/publications/Asthma%20Clinicians%20Guide%20508_02-03-21.pdf",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 49,
+    "priorAssessment": "superseded",
+    "issue": "Original AOM diagnosis incorrectly combines alternatives as all required; the antibiotic course lengths are oversimplified (5\u20137 days not a blanket age \u22652 rule). Index102 also recommends TMP-SMX despite substantial pneumococcal resistance in AAP guidance. Narrow CDC replacement verifies diagnosis and antibiotic selection but does not invent allergy-rescue regimens or unchecked doses.",
+    "suggestedOfficialSource": "https://www.cdc.gov/antibiotic-use/hcp/clinical-care/pediatric-outpatient.html",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 50,
+    "priorAssessment": "superseded",
+    "issue": "Original assigns 2023 date and Grade I vitaminD statement to this recommendation. Current final falls intervention recommendation is June 4,2024; it gives Grade B exercise and Grade C individualized multifactorial intervention. VitaminD is outside that final statement and reviewed separately.",
+    "suggestedOfficialSource": "https://www.uspreventiveservicestaskforce.org/uspstf/index.php/recommendation/falls-prevention-community-dwelling-older-adults-interventions",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 51,
+    "priorAssessment": "unverified",
+    "issue": "The named AAFP 2023 dementia guideline is not established. Diagnostic workup and anti-amyloid eligibility/monitoring need current guidance and FDA labels; lecanemab/donanemab are not adequately described by eligibility alone. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aafp.org/pubs/afp/dementia",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 52,
+    "priorAssessment": "superseded",
+    "issue": "The named AAFP 2022 acne guideline is not established. Actual updated AAD guideline is 2024; claims of near-permanent isotretinoin remission and mandatory monthly CBC are not established here. Pregnancy prevention and monitoring need current FDA program/label checks. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aad.org/news/updated-guidelines-acne-management",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 53,
+    "priorAssessment": "unverified",
+    "issue": "The 2023 title/year conflates 2018 USPSTF UV counseling with 2023 screening. USPSTF counseling adults over 24 is selective Grade C, not an I statement. The rest of the lesion/treatment content is not substantiated by the counseling source. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/skin-cancer-counseling",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 54,
+    "priorAssessment": "unverified",
+    "issue": "The cited AAFP title/year/URL is not established. AGA 2024 expert advice favors oral iron no more than once daily, with alternate-day dosing an option, versus this chunk BID/TID. Ferritin thresholds depend on anemia/inflammation context; dextran premedication and broad diagnostic claims need checking. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://gastro.org/clinical-guidance/management-of-iron-deficiency-anemia/",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 55,
+    "priorAssessment": "superseded",
+    "issue": "Contains obsolete US availability for andexanet alfa/Andexxa: FDA December 18, 2025 safety communication states US manufacture and sales end after December 22, 2025. The remaining VTE diagnosis, anticoagulant selection, renal dosing, bridging and reversal claims are not fully verified. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.fda.gov/vaccines-blood-biologics/safety-availability-biologics/update-safety-andexxa",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 56,
+    "priorAssessment": "unverified",
+    "issue": "Title incorrectly attributes the federal CDC 2022 guideline to AAFP. Numeric MME values are guideposts, not rigid limits; concurrent benzodiazepines warrant particular caution rather than a universal prohibition. Added MOUD/legal assertions require separate sources. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.cdc.gov/mmwr/volumes/71/rr/rr7103a1.htm",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 57,
+    "priorAssessment": "unverified",
+    "issue": "Legacy cessation doses have not all been validated; bupropion wording incorrectly suggests the entire7\u201312-week course occurs before the quit date. Pregnancy must be distinguished from nonpregnancy, and an update-in-progress must not be treated as a final replacement.",
+    "suggestedOfficialSource": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/tobacco-use-in-adults-and-pregnant-women-counseling-and-interventions",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 58,
+    "priorAssessment": "unverified",
+    "issue": "The cited AAFP 2023 AUD guideline is not established. Outpatient withdrawal eligibility cannot be decided by a CIWA cutoff alone; thiamine should not delay urgent glucose. Mortality, drug contraindications and dosing need direct guideline/label review. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aafp.org/pubs/afp/alcohol-use-disorder",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 59,
+    "priorAssessment": "unverified",
+    "issue": "The stated joint AAFP/ADA 2023 obesity guideline and supplied article path were not authenticated. Original efficacy percentages, comparative rankings, Asian BMI statements, and surgery thresholds are not all verified. Replacement is narrow federal education, not a claim of comprehensive current obesity guidance.",
+    "suggestedOfficialSource": "https://www.niddk.nih.gov/health-information/weight-management/prescription-medications-treat-overweight-obesity",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 60,
+    "priorAssessment": "superseded",
+    "issue": "The unauthenticated 2022 AAFP overview is inadequate as current PAD guidance; a 2024 multisociety guideline exists. Original fixed percentage improvements are not checked. Antithrombotic therapy depends on symptoms, revascularization, bleeding risk, and other indications.",
+    "suggestedOfficialSource": "https://www.acc.org/latest-in-cardiology/ten-points-to-remember/2024/05/09/15/00/2024-guideline-for-lower-extremity-pad",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 61,
+    "priorAssessment": "unverified",
+    "issue": "The 2023 AAFP source/title was not authenticated. Original ACR TR5 advice to consider FNA at 0.5\u20131 cm conflates surveillance with biopsy. Official ACR metadata says FNA \u22651 cm, surveillance 0.5\u20130.9 cm. The atlas could not be opened; Bethesda risks and all other claims remain unchecked.",
+    "suggestedOfficialSource": "https://www.acr.org/-/media/ACR/Files/RADS/TI-RADS/ACR-TI-RADS-Atlas.pdf",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 62,
+    "priorAssessment": "unverified",
+    "issue": "The named AAFP/ACC/AHA 2023 perioperative guideline is not established; current ACC/AHA perioperative guideline is 2024. RCRI absolute risks, selective testing, ACE/ARB indications and agent-specific SGLT2 hold intervals require primary-source review. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aafp.org/pubs/afp/preoperative",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 63,
+    "priorAssessment": "unverified",
+    "issue": "Contains recommendations inconsistent with ACR/AF 2019 OA guideline: hyaluronic acid for knee OA is conditionally recommended against, capsaicin is not recommended for hand OA, and chondroitin has a hand-specific exception. Other statistics and injection limits are unverified. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.rheumatology.org/Practice-Quality/Clinical-Support/Clinical-Practice-Guidelines/Osteoarthritis",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 64,
+    "priorAssessment": "unverified",
+    "issue": "Combines multiple organizations and dates without claim-level attribution; linked article is a 2019 Endocrine Society guideline, with a 2020 update. Fixed 9.3-percent screening threshold and male screening are not current USPSTF recommendations; drug-duration and supplement targets require population-specific review. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://academic.oup.com/jcem/article/104/5/1802/5418369",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 65,
+    "priorAssessment": "unverified",
+    "issue": "A 2021 ACR fibromyalgia treatment guideline is not established by the broad index. Diagnostic exclusion requirement conflicts with 2016 criteria permitting coexisting illnesses. Drug maximums, FDA status and evidence strength need direct-source review. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.rheumatology.org/Practice-Quality/Clinical-Support/Clinical-Practice-Guidelines",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 66,
+    "priorAssessment": "unverified",
+    "issue": "The named AAFP 2020 shoulder guideline is not established. Fixed exam sensitivities/specificities, MRI-as-gold-standard and injection/surgery sequencing need verifiable studies/guideline sources; AAOS cuff guidance updated in 2025. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aafp.org/pubs/afp/shoulder-pain",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 67,
+    "priorAssessment": "unverified",
+    "issue": "The named AAFP/AAO 2021 knee guideline is not established. Exact exam accuracy and unconditional MRI-before-referral rule are not supported by the generic URL. Urgent exclusions and imaging criteria require primary-source review. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aafp.org/pubs/afp/knee-pain",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 68,
+    "priorAssessment": "unverified",
+    "issue": "Original iron/ESA thresholds are not established by the general CKD guideline, and KDIGO published an actual 2026 anemia guideline. Blanket calcitriol use for elevated PTH and universal phosphate cutoffs are unsafe oversimplifications. KDIGO 2024 does not make bicarbonate \u226522 an automatic treatment rule; it gives <18 as an example of clinically important acidosis.",
+    "suggestedOfficialSource": "https://kdigo.org/wp-content/uploads/2024/03/KDIGO-2024-CKD-Guideline.pdf",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 69,
+    "priorAssessment": "unverified",
+    "issue": "The 2012 KDIGO AKI guideline is genuine. The 2026 AKI/AKD document located is a public-review draft, not verified final guidance, so the year must not simply be changed to 2026. Original FeNa/FeUrea generalizations, contrast/metformin cutoff, hydration doses, and fixed dialysis thresholds have not all been checked.",
+    "suggestedOfficialSource": "https://kdigo.org/guidelines/acute-kidney-injury/",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 70,
+    "priorAssessment": "superseded",
+    "issue": "A final AUA BPH guideline (2026) is present in official journal metadata, replacing the catalog as a current overview. Original large-prostate threshold, medication doses, PVR cutoffs, and treatment rankings were not fully verified. AUA explicitly restricts use in third-party AI applications; link-only until rights are established.",
+    "suggestedOfficialSource": "https://www.auajournals.org/doi/10.1097/JU.0000000000005097",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 71,
+    "priorAssessment": "superseded",
+    "issue": "The catalog identifies a 2022 AUA guideline that was not authenticated. Official journal metadata now identifies a 2026 kidney-stone medical management guideline. Original stone-composition diagnostic wording, percentages, MET advice, pH targets, and doses are unverified. AUA restricts third-party AI use; link-only.",
+    "suggestedOfficialSource": "https://www.auajournals.org/doi/10.1097/JU.0000000000005228",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 72,
+    "priorAssessment": "superseded",
+    "issue": "AUA/SUFU published a 2025 microhematuria amendment. The old blanket age >35 complete-evaluation rule and routine concurrent cytology do not reflect modern risk-stratified evaluation. Full clinical details were not ingested because AUA restricts third-party AI use.",
+    "suggestedOfficialSource": "https://www.auajournals.org/doi/10.1097/JU.0000000000004490",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 73,
+    "priorAssessment": "unverified",
+    "issue": "The generic psoriasis page includes multiple AAD-NPF guideline modules from different years, not one established 2023 document. Severity cutoffs, superior-agent assertions, apremilast depression wording and deucravacitinib classification require source/label checks. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aad.org/member/practice/clinical-excellence/guidelines/psoriasis",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 74,
+    "priorAssessment": "unverified",
+    "issue": "Year/source aggregate multiple atopic dermatitis modules. Pediatric approval ages and US approval assertions for baricitinib/difamilast are not established and may be wrong; later updates and labels need review. No whole-chunk verification. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aad.org/member/practice/clinical-excellence/guidelines/atopic-dermatitis",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 75,
+    "priorAssessment": "unverified",
+    "issue": "The named AAFP 2022 tinea guideline is not established. Says systemic treatment is required for onychomycosis while later offering topical therapy; pediatric dosing and terbinafine baseline liver testing need label/organism-specific checks. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aafp.org/pubs/afp/tinea",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 76,
+    "priorAssessment": "unverified",
+    "issue": "Original IDSA SSTI guideline is 2014, not an established 2022 AAFP/IDSA guideline. Broad admission rules, abscess antibiotics and recurrence regimens require actual source verification; IDSA AI/derivative-use restrictions require link-only handling pending permission. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.idsociety.org/practice-guideline/skin-and-soft-tissue-infections/",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 77,
+    "priorAssessment": "superseded",
+    "issue": "ACG Crohn guidance from 2018 has been superseded by separate June 2025 Crohn and ulcerative-colitis guidelines. Chunk calls ozanimod a JAK inhibitor and mixes treatment eras and diseases. Full phase-specific rebuild required. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://gi.org/guidelines-test/",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 78,
+    "priorAssessment": "superseded",
+    "issue": "The 2023 NAFLD guidance does not support later FDA approvals embedded into its content; AASLD added resmetirom and November 2025 semaglutide guidance. Uses incorrect expansion of MASLD and broad ultrasound-first screening/HCC statements need review. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aasld.org/aasld-announces-update-metabolic-dysfunction-associated-steatotic-liver-disease-masld-practice",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 79,
+    "priorAssessment": "superseded",
+    "issue": "ACG 2013 pancreatitis guidance is superseded by March 2024 guideline. Blanket aggressive 250-500 mL/h hydration and routine initial NPO are outdated; management needs individualized fluids, early feeding, and current procedural recommendations. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://pubmed.ncbi.nlm.nih.gov/38857482/",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 80,
+    "priorAssessment": "unverified",
+    "issue": "2023 AGS Beers source exists, but this chunk mixes the list with unsupported replacement preferences and ignores important exceptions. Aspirin dose, rivaroxaban rationale, antipsychotic exception and renal thresholds need claim-by-claim review. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://agsjournals.onlinelibrary.wiley.com/doi/10.1111/jgs.18372",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 81,
+    "priorAssessment": "unverified",
+    "issue": "A 2020 AGS/AMS general delirium guideline and the supplied URL are not established. Broad routine lab/culture workup and medication doses are not verified; source-specific inpatient vs postoperative vs ICU scope must be preserved. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.americangeriatrics.org/media-center/news/ags-ams-guidelines-delirium",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 82,
+    "priorAssessment": "unverified",
+    "issue": "The named 2022 AGS incontinence guideline is not established by a generic URL. Medication choice, estrogen/duloxetine use, urine culture indications and arbitrary PVR cutoff require current sources/labels and setting-specific evaluation. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.americangeriatrics.org/guidelines",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 83,
+    "priorAssessment": "unverified",
+    "issue": "The named AAFP/ASH 2022 guideline is not established. B12 diagnostic cutoffs, causes, yearly metformin monitoring and specific replacement schedules require current original sources and dosing verification. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aafp.org/pubs/afp/vitamin-b12-deficiency",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 84,
+    "priorAssessment": "unverified",
+    "issue": "The AAFP 2021 title/URL is not established. Bleeding risk cannot be determined solely from the platelet cutoffs shown; ITP treatment thresholds/steroid duration and TTP management need actual hematology guidance. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aafp.org/pubs/afp/thrombocytopenia",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 85,
+    "priorAssessment": "unverified",
+    "issue": "USPSTF 2021 source exists but the chunk wrongly labels ages45-75 all Grade B (50-75 is Grade A;45-49 Grade B). It appends hereditary/IBD recommendations beyond USPSTF scope; all claims not verified. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/colorectal-cancer-screening",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 86,
+    "priorAssessment": "unverified",
+    "issue": "The named 2022 AAN/MDS guideline is not established; AAN early Parkinson dopaminergic guidance was 2021. Hoehn-Yahr stages are misdescribed and dopamine agonists are not uniformly first-line in younger adults. Neuroprotection and medication assertions require current review. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aan.com/Guidelines/home/GuidelineDetail/1045",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 87,
+    "priorAssessment": "unverified",
+    "issue": "2017 ACC/AHA/HRS syncope guideline is identifiable, but the fixed admission rules, risk statistics and seizure discrimination claims are not fully checked. Urinary incontinence is not a reliable stand-alone seizure discriminator. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.ahajournals.org/doi/10.1161/CIR.0000000000000492",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 88,
+    "priorAssessment": "unverified",
+    "issue": "CDC 2022 source is identifiable but fixed 25-50-percent dose escalation, generic follow-up intervals, universal taper/concurrent avoidance and universal naloxone formulations are not substantiated. Duplicate of opioid-stewardship chunk; retain only checked replacement for index56. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.cdc.gov/mmwr/volumes/71/rr/rr7103a1.htm",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 89,
+    "priorAssessment": "unverified",
+    "issue": "The named AAFP 2023 fatigue article URL is not established. Fatigue is conflated with a ME/CFS definition; unconditional broad laboratory/autoimmune/imaging evaluation and off-label symptom drugs require evidence/label verification. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aafp.org/pubs/afp/fatigue",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 90,
+    "priorAssessment": "unverified",
+    "issue": "Duplicate AF coverage contains unverified default drug preferences and doses, omits renal/context restrictions, and carries the outdated generalization that rhythm control provides only symptom benefit. The 2023 guideline emphasizes early rhythm control and selection for ablation.",
+    "suggestedOfficialSource": "https://www.acc.org/Latest-in-Cardiology/ten-points-to-remember/2023/11/27/19/46/2023-acc-guideline-for-af-gl-af",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 91,
+    "priorAssessment": "unverified",
+    "issue": "The USPSTF eligibility was checked but the legacy statin intensity/dose/monitoring table contains unsupported extras and misclassifies pravastatin40mg as low-intensity. Replace with eligibility and the moderate-intensity implementation recommendation only.",
+    "suggestedOfficialSource": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/statin-use-in-adults-preventive-medication",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 92,
+    "priorAssessment": "superseded",
+    "issue": "Menopause paragraph calls paroxetine the only FDA-approved nonhormonal agent while also mentioning fezolinetant, and omits FDA2024 boxed liver injury warning. Systemic/local hormone contraindications, breast-cancer safety, POI criteria and doses remain unverified. Replacement is a focused drug-safety update only.",
+    "suggestedOfficialSource": "https://www.fda.gov/drugs/drug-safety-communications/fda-adds-warning-about-rare-occurrence-serious-liver-injury-use-veozah-fezolinetant-hot-flashes-due",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 93,
+    "priorAssessment": "unverified",
+    "issue": "2020 Lyme guideline exists, but blanket doxycycline exclusion for children<8 is incorrect, and standard Western blot is not the only accepted two-tier testing approach. Neurologic disease, arthritis retreatment and prophylaxis require detailed context not certified here. Replacement narrows to CDC erythema migrans treatment.",
+    "suggestedOfficialSource": "https://www.cdc.gov/lyme/hcp/clinical-care/erythema-migrans-rash.html",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 94,
+    "priorAssessment": "unverified",
+    "issue": "No support found for a single AASM 2023 guideline as claimed. Primary diagnostic guideline is 2017; PAP guideline is 2019. Original mortality/cardiovascular benefit statement is overconfident and contradicted by its own SAVE-trial caveat. Screening questionnaires do not diagnose OSA; negative/inconclusive HSAT requires PSG. Full treatment claims not certified.",
+    "suggestedOfficialSource": "https://www.aasm.org/resources/clinicalguidelines/diagnostic-testing-osa.pdf",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 95,
+    "priorAssessment": "unverified",
+    "issue": "Official BTS pleural guideline is July 2023, not BTS/CHEST 2022. Quantitative cytology, ADA and complication rates not fully verified. Fluid pH and drainage decisions need current thresholds and context; no blanket rule to wait one week before draining an infected effusion.",
+    "suggestedOfficialSource": "https://www.brit-thoracic.org.uk/clinical-resources/guidelines/pleural-disease/",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 96,
+    "priorAssessment": "superseded",
+    "issue": "ATS issued a CAP update November 2025, including selective shorter courses and viral-positive management. The source is not a new jointly endorsed ATS/IDSA guideline. Original claim PSI is mainly for research conflicts with 2019 guideline preference for PSI plus clinical judgment. COPD/recent hospitalization alone must not automatically trigger antipseudomonal therapy.",
+    "suggestedOfficialSource": "https://site.thoracic.org/press-releases/treatment-with-antibiotics-and-steroids-in-adults-with-pneumonia-addressed-in-latest-clinical-practice-guideline",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 97,
+    "priorAssessment": "unverified",
+    "issue": "2022 ATS/ERS/JRS/ALAT guideline exists but original is overgeneralized: probable UIP can support diagnosis in appropriate multidisciplinary context; antifibrotic recommendation strength is overstated; acid suppression must not be presented as treatment for IPF respiratory outcomes. Prognosis, percentages and acute-exacerbation steroid guidance were not fully verified.",
+    "suggestedOfficialSource": "https://www.thoracic.org/statements/guideline-implementation-tools/ipf-update-and-ppf-in-adults.php",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 98,
+    "priorAssessment": "unverified",
+    "issue": "2022 ESC/ERS guideline is real, but original universal anticoagulation recommendation for idiopathic PAH is incorrect: no general recommendation for or against anticoagulation was made; individual decisions are required. Therapy is risk/comorbidity-based, not a simple functional-class ladder. Full paragraph and dosing not certified. Original URL returns 404; current official route differs.",
+    "suggestedOfficialSource": "https://www.escardio.org/guidelines/clinical-practice-guidelines/all-esc-practice-guidelines/pulmonary-hypertension/",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 99,
+    "priorAssessment": "unverified",
+    "issue": "The broad legacy well-child summary mixes visit schedules, age-specific milestones, tests, and referral rules not all verified. The AAP public schedule is dated2025 and reserves text/data-mining and similar technology rights. Replace only the federal CDC developmental-screening portion; full well-child schedule remains link-only pending rights and clinical review.",
+    "suggestedOfficialSource": "https://www.cdc.gov/autism/hcp/diagnosis/screening.html",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 100,
+    "priorAssessment": "unverified",
+    "issue": "Original mislabels Vyvanse as methylphenidate-type; FDA identifies lisdexamfetamine as a prodrug of dextroamphetamine. Vanderbilt is not the sole mandatory diagnostic instrument. Full monitoring intervals, comorbidity ordering, and drug details remain unverified against the2019 AAP guideline. Society reuse rights require review.",
+    "suggestedOfficialSource": "https://publications.aap.org/pediatrics/article/144/4/e20192528/81590/Clinical-Practice-Guideline-for-the-Diagnosis",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 101,
+    "priorAssessment": "unverified",
+    "issue": "No2022 AAP update was substantiated. The2011 guideline says lumbar puncture is an option at6\u201312months with deficient/unknown Hib or pneumococcal immunization, rather than a blanket age-based requirement. The summary also contradicts itself on epilepsy risk. Full neurologic prognosis/rescue regimens have not been verified. Society reuse restricted.",
+    "suggestedOfficialSource": "https://publications.aap.org/pediatrics/article/127/2/389/65189/",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 102,
+    "priorAssessment": "superseded",
+    "issue": "Original AOM diagnosis incorrectly combines alternatives as all required; the antibiotic course lengths are oversimplified (5\u20137 days not a blanket age \u22652 rule). Index102 also recommends TMP-SMX despite substantial pneumococcal resistance in AAP guidance. Narrow CDC replacement verifies diagnosis and antibiotic selection but does not invent allergy-rescue regimens or unchecked doses.",
+    "suggestedOfficialSource": "https://www.cdc.gov/antibiotic-use/hcp/clinical-care/pediatric-outpatient.html",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 103,
+    "priorAssessment": "superseded",
+    "issue": "Legacy pediatric steps omit the NAEPP preferred ICS-formoterol SMART strategy for appropriate children aged 4+ with moderate-to-severe persistent asthma, and collapse age-specific approaches. The claimed AAP2023 asthma guideline was not established. Use the narrow federal2020 focused update; it is not a full2026 international guideline review.",
+    "suggestedOfficialSource": "https://www.nhlbi.nih.gov/sites/default/files/publications/Asthma%20Clinicians%20Guide%20508_02-03-21.pdf",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 104,
+    "priorAssessment": "superseded",
+    "issue": "Contraception legacy block incorrectly assigns a 24-hour missed-pill window to norethindrone0.35mg and overgeneralizes CHC VTE/postpartum exclusions. Product durations/effectiveness and breastfeeding emergency-contraception advice need current product-specific sources. Replace this duplicate with a focused CDC POP missed-dose protocol.",
+    "suggestedOfficialSource": "https://www.cdc.gov/contraception/hcp/usspr/progestin-only-pills.html",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 105,
+    "priorAssessment": "unverified",
+    "issue": "Original cites a 2018 ACOG bulletin as 2023 and includes an older12-follicle ultrasound threshold and unverified metformin regulatory/treatment-line claims. Official2023 international guideline exists, but the complete summary and doses have not been validated; no active replacement without a full clinical and rights review.",
+    "suggestedOfficialSource": "https://www.monash.edu/medicine/mchri/pcos/guideline",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 106,
+    "priorAssessment": "unverified",
+    "issue": "Original points to a nonmatching committee-opinion URL; current identified ACOG screening guidance is Clinical Practice Guideline4, June2023, with screening at the initial prenatal visit, later pregnancy, and postpartum. The broad EPDS cutoffs, psychosis risk percentages, blanket fluoxetine avoidance, brexanolone availability/REMS, and drug treatment claims are not all validated. Full ACOG access returned402.",
+    "suggestedOfficialSource": "https://www.acog.org/clinical/clinical-guidance/clinical-practice-guideline/articles/2023/06/screening-and-diagnosis-of-mental-health-conditions-during-pregnancy-and-postpartum",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 107,
+    "priorAssessment": "unverified",
+    "issue": "Original broad prenatal tests, genetic screening, supplement doses, thyroid screening and aspirin criteria are not all validated. CDC distinguishes universal HIV/syphilis/HBV/HCV testing from risk-based other infection testing. Replacement is intentionally restricted to checked infection-screening facts.",
+    "suggestedOfficialSource": "https://www.cdc.gov/pregnancy-hiv-std-tb-hepatitis/about/",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 108,
+    "priorAssessment": "unverified",
+    "issue": "No 2023 APA bipolar guideline has been established; cited APA bipolar PDF is an older guideline. Acute-mania vs bipolar-depression medication indications are improperly grouped. Current VA/DoD bipolar guideline is 2023; full rebuild pending. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.healthquality.va.gov/guidelines/MH/bd/VA-DoD-CPG-BD-Full-CPGFinal508.pdf",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 109,
+    "priorAssessment": "unverified",
+    "issue": "VA/DoD PTSD2023 exists but is not joint APA guidance. Chunk improperly calls combined psychotherapy plus medication strongly supported and implies fluoxetine remains recommended. Current VA summary finds insufficient evidence for fluoxetine and combination superiority. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.ptsd.va.gov/professional/treat/txessentials/clinician_guide_meds.asp",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 110,
+    "priorAssessment": "unverified",
+    "issue": "The SAMHSA supplied publication identifier is a 2004-era buprenorphine guideline, not a verified 2023 MOUD guideline. The naltrexone opioid-free intervals after methadone/buprenorphine are dangerously shortened; mortality reduction generalized to all medications and induction assertions are not justified. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://store.samhsa.gov/product/Clinical-Guidelines-for-the-Use-of-Buprenorphine-in-the-Treatment-of-Opioid-Addiction/SMA07-3939",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 111,
+    "priorAssessment": "superseded",
+    "issue": "NIH initial ART guidance updated September 24, 2026. Critical original errors: p24 antigen is protein, not HIV RNA; Triumeq is DTG/abacavir/lamivudine, not DTG+TAF/FTC; toxoplasma prophylaxis is not universal at CD4<200; blanket immediate ART with every AIDS-defining infection is unsafe. PrEP population restrictions are misstated. Replacement covers checked current regimen selection only.",
+    "suggestedOfficialSource": "https://clinicalinfo.hiv.gov/en/guidelines/hiv-clinical-guidelines-adult-and-adolescent-arv/what-start-initial-combination-regimens",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 112,
+    "priorAssessment": "unverified",
+    "issue": "The 2021 focused treatment update is real, but original combines 2017 diagnostic/severity rules with later microbiota-product approvals and an internally inconsistent vancomycin taper. Current product availability, FDA recurrence indications and every treatment claim were not verified; not certified. Replacement deliberately covers current CDC testing/prevention, not unverified antibiotic dosing.",
+    "suggestedOfficialSource": "https://www.cdc.gov/c-diff/hcp/clinical-guidance/index.html",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 113,
+    "priorAssessment": "unverified",
+    "issue": "CDC 2021 source is real, but original confuses cephalosporin allergy with ceftriaxone-unavailability alternatives; sexual-screening age is misstated (women<25, not <=25). Penicillin-allergy and pharyngeal-infection management require nuance. Neurosyphilis regimen lacks divided/continuous administration details. Replacement narrows to checked gonorrhea facts.",
+    "suggestedOfficialSource": "https://www.cdc.gov/std/treatment-guidelines/gonorrhea-adults.htm",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 114,
+    "priorAssessment": "unverified",
+    "issue": "Mixes ASH and ACCP dates and generic landing page. Renal-dose cutoffs and APS wording are inconsistent; full agent-label, cancer/pregnancy and high-risk PE management review required. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.hematology.org/education/clinicians/guidelines-and-quality-care/clinical-practice-guidelines/venous-thromboembolism-guidelines",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 115,
+    "priorAssessment": "superseded",
+    "issue": "Lists voxelotor/Oxbryta as an available therapy although FDA announced withdrawal September26,2024 and advised clinicians to stop prescribing. NHLBI2014 report is not a 2022 guideline, and many dosing/benefit claims are unverified. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.fda.gov/drugs/drug-alerts-and-statements/fda-alerting-patients-and-health-care-professionals-about-voluntary-withdrawal-oxbryta-market-due",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 116,
+    "priorAssessment": "superseded",
+    "issue": "SSC2021 superseded by March23,2026 adult guideline. Blanket antibiotics-within-one-hour for every suspected sepsis and the universal bundle obscure shock vs probability distinctions. Full hemodynamic/antibiotic/airway recommendations need current rebuild. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 117,
+    "priorAssessment": "unverified",
+    "issue": "PADIS2018 has a later focused update; the chunk mixes ICU sedation, general delirium and unsupported dose/QTc rules. No complete claim-by-claim verification has been performed. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.sccm.org/Clinical-Resources/Guidelines/Guidelines/Guidelines-for-the-Prevention-and-Management-of-Pa",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 118,
+    "priorAssessment": "unverified",
+    "issue": "ACR2020 exists but chunk wrongly advises avoiding indicated low-dose aspirin, overgeneralizes HLA testing to all Asian/Pacific Islander patients, and replaces 3-6month prophylaxis with an unsupported minimum-until-target rule. Does not distinguish strong vs conditional ULT indications. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://acrjournals.onlinelibrary.wiley.com/doi/full/10.1002/art.41247",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 119,
+    "priorAssessment": "superseded",
+    "issue": "AAOS2019 cuff guideline superseded by August18,2025 update. Contains malformed tear classification and unsupported fixed injection limits/postoperative timelines. AAOS document copyright explicitly restricts storage/reproduction without permission; source linked for rights review. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aaos.org/rccpg2025",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 120,
+    "priorAssessment": "superseded",
+    "issue": "The cited DOI is the 2021 chest-pain diagnosis guideline, not a 2022 ACS treatment guideline. A real 2025 ACS guideline exists. Original sex-based conservative-management wording, indefinite beta-blockers for everyone, anticoagulant doses without kidney context, and procedural timing require replacement/individual checking.",
+    "suggestedOfficialSource": "https://www.acc.org/About-ACC/Press-Releases/2025/02/28/17/51/ACC-AHA-Issue-New-Acute-Coronary-Syndromes-Guideline",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 121,
+    "priorAssessment": "superseded",
+    "issue": "AHA/ASA2019 acute stroke guideline superseded by January26,2026 guideline. Outdated extended-window exclusions and narrow thrombectomy eligibility may exclude patients benefiting under current guidance. Old regimens must not remain active. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://professional.heart.org/en/science-news/2026-guideline-for-the-early-management-of-patients-with-acute-ischemic-stroke/top-things-to-know",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 122,
+    "priorAssessment": "superseded",
+    "issue": "The named AASLD2023 HBV guideline is not established. New AASLD-IDSA chronic HBV treatment guideline published November4,2025; this chunk also contradicts itself on HBV DNA thresholds. Serologic definitions, treatment thresholds and stopping rules need current review. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aasld.org/aasld-announces-new-practice-guideline-treatment-chronic-hepatitis-b",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 123,
+    "priorAssessment": "unverified",
+    "issue": "HCV Guidance is a living AASLD-IDSA source, not safely frozen at2023. Fixed fibrosis thresholds and glecaprevir/pibrentasvir duration in compensated cirrhosis appear inconsistent with simplified current guidance. Do not ingest IDSA-associated content without rights clearance. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.hcvguidelines.org",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 124,
+    "priorAssessment": "unverified",
+    "issue": "2012 IDSA guideline exists but severe diagnostic criterion in original omitted fever>=39 C; adjunct decongestant recommendations do not match the IDSA source. Adult sinusitis recommendations have newer guidance; original pediatric duration, every antibiotic dose and failure pathway were not fully checked. Replacement limited to CDC adult summary.",
+    "suggestedOfficialSource": "https://www.cdc.gov/antibiotic-use/hcp/clinical-care/adult-outpatient.html",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 125,
+    "priorAssessment": "superseded",
+    "issue": "IDSA published risk-assessment update October 14, 2025. Original empiric antibiotics for Centor>=4 is not consistent with using scoring to select testing and treating confirmed GAS; adult amoxicillin 250 mg TID is not the CDC regimen. Blanket full-10-day wording conflicts with its own 5-day azithromycin course. EBV/activity restrictions not verified. Replacement uses current CDC presentation/testing/doses.",
+    "suggestedOfficialSource": "https://www.cdc.gov/group-a-strep/hcp/clinical-guidance/strep-throat.html",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 126,
+    "priorAssessment": "superseded",
+    "issue": "Original source is 2018 IDSA influenza guideline, not a 2024 IDSA/ACIP combined guideline. Critical wrong renal oseltamivir dose: CDC recommends 30 mg daily at CrCl 11-30, not 75 mg daily. Baloxavir boundary is >=80 kg for 80 mg, not >80. Routine one-dose peramivir is not an established inpatient substitute. Replacement is checked current CDC antiviral guidance.",
+    "suggestedOfficialSource": "https://www.cdc.gov/flu/hcp/antivirals/summary-clinicians.html",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 127,
+    "priorAssessment": "unverified",
+    "issue": "The 2016 ATA hyperthyroidism guideline is real, but the original universal preference for radioactive iodine, handling of eye disease, antithyroid doses, and thyroid-storm protocol were not fully checked. Replacement is limited to independent federal public education and preserves its actual 2021 review date.",
+    "suggestedOfficialSource": "https://www.niddk.nih.gov/health-information/endocrine-diseases/hyperthyroidism",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 128,
+    "priorAssessment": "superseded",
+    "issue": "ADA Standards of Care2026 now supersede the2024 reference. Retrieved official2026 recommendations retain insulin as preferred for GDM and75g OGTT4\u201312weeks postpartum, with ongoing screening every1\u20133years. Broad legacy delivery/fetal-surveillance/oral-agent claims are not all verified. ADA page403; rights for embedding full guidance unresolved.",
+    "suggestedOfficialSource": "https://diabetesjournals.org/care/article/49/Supplement_1/S321/163918/15-Management-of-Diabetes-in-Pregnancy-Standards",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 129,
+    "priorAssessment": "unverified",
+    "issue": "AUA2018 ED guideline is identifiable but an update2022 has not been established. AUA third-party AI terms require permission; do not ingest or paraphrase its guidance in the app. Current dose/contraindication information can instead be built from FDA labels. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.auanet.org/guidelines-and-quality/guidelines/erectile-dysfunction-guideline",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 130,
+    "priorAssessment": "unverified",
+    "issue": "AUA2023 early-detection recommendations are conflated with USPSTF2018 ages and incorrectly generalized. AUA third-party AI restrictions require link-only handling pending permission; USPSTF-only facts can be separately reconstructed from the federal source. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.auanet.org/guidelines-and-quality/guidelines/prostate-cancer-early-detection-guideline",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 131,
+    "priorAssessment": "unverified",
+    "issue": "AASM2017 source concerns pharmacotherapy, not the entire behavioral/diagnostic algorithm. The assertion DORAs carry no dependence/fall risk is unsafe; trazodone is not recommended as routine AASM pharmacotherapy. Later CBT-I guidelines and all labels need review. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://aasm.org/resources/clinicalguidelines/041417.pdf",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 132,
+    "priorAssessment": "unverified",
+    "issue": "The DOI and2024 label do not match current AAN painful neuropathy update (published online2021/issue2022). Recommending tapentadol for refractory pain conflicts with current AAN recommendation not to use opioids; dosing limits require FDA-label renal/population review. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aan.com/PressRoom/Home/PressRelease/4944",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 133,
+    "priorAssessment": "unverified",
+    "issue": "2018 AAN DMT guideline does not validate all2017 McDonald diagnostic and relapse claims in this chunk. Diagnostic criteria have later revisions, and available therapies/labels must be reviewed as of the check date. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.neurology.org/doi/10.1212/WNL.0000000000005721",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 134,
+    "priorAssessment": "unverified",
+    "issue": "AAP2023 guideline search evidence supports offering age \u226512 pharmacotherapy as an adjunct to intensive lifestyle treatment, not only after treatment failure plus comorbidities, and surgery evaluation referral for age \u226513 with severe obesity. Original TSH screening, metformin age/indications, semaglutide approval date/doses, and surgery criteria require separate checks. AAP rights reserve text/data mining and similar technology use.",
+    "suggestedOfficialSource": "https://publications.aap.org/pediatrics/article/151/2/e2022060640/190444/",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 135,
+    "priorAssessment": "superseded",
+    "issue": "Official ACOG search retrieval identifies a new Diagnosis of Endometriosis Clinical Practice Guideline11, March2026, whereas original cites a2010 bulletin as2022. Full new guidance returned402; older treatment doses/medical-versus-surgical claims are not comprehensively verified. Retain official link, do not label the original current.",
+    "suggestedOfficialSource": "https://www.acog.org/clinical/clinical-guidance/clinical-practice-guideline/articles/2026/03/diagnosis-of-endometriosis",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 136,
+    "priorAssessment": "unverified",
+    "issue": "ACG2023 celiac guideline is identifiable but prevalence, biopsy-sample count, universal DEXA/nutrient schedules and other appended claims are not fully verified against it. Need retain gluten-containing testing context and adult/pediatric distinctions. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://journals.lww.com/ajg/fulltext/2023/01000/acg_clinical_guideline__diagnosis_and_management.13.aspx",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 137,
+    "priorAssessment": "unverified",
+    "issue": "A2023 AAD contact-dermatitis guideline and supplied path are not established. Steroid regimen, sensitive-site potency and patch-test timings require a real source/label review before use. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aad.org/member/clinical-quality/guidelines/contact-dermatitis",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 138,
+    "priorAssessment": "unverified",
+    "issue": "AAD BCC/SCC2018 guidelines are identifiable, but a2022 update is not established. Risk cutoffs and nonsurgical/advanced-oncology pathways need current verification and histology-specific distinctions. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aad.org/member/clinical-quality/guidelines/basal-squamous-cell-carcinoma",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 139,
+    "priorAssessment": "unverified",
+    "issue": "The claimed AHA/AACE 2023 algorithm/DOI was not authenticated; it includes later SURMOUNT-5 findings under a 2023 heading. Drug indication and dosing must come from a current product label. Replacement is a checked single-drug label excerpt, not a universal obesity ranking.",
+    "suggestedOfficialSource": "https://www.dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=487cd7e7-434c-4925-99fa-aa80b1cc776b&type=display",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 140,
+    "priorAssessment": "unverified",
+    "issue": "No single2022 AASLD source matches this multi-condition bundle. Incorrectly requires positive ascitic culture for SBP, risking missed culture-negative neutrocytic ascites; HCC surveillance, prophylaxis drug availability and MELD allocation require current verification. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.aasld.org/publications/practice-guidelines",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 141,
+    "priorAssessment": "superseded",
+    "issue": "ADA 2024 is superseded. Original mandatory annual B12 testing and the mixed immediate/extended-release metformin maximum are not supported by the cited material. Broad screening statements conflate ADA and USPSTF populations. Replacement uses only VA/DoD federal recommendations.",
+    "suggestedOfficialSource": "https://www.healthquality.va.gov/guidelines/CD/diabetes/VADOD-Diabetes-CPG_Final_508.pdf",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 142,
+    "priorAssessment": "unverified",
+    "issue": "Hospice eligibility is oversimplified as last6months only, while recertification can extend coverage; surrogate hierarchy is state-specific. Clinical opioid/antipsychotic dosing cannot be established by a general palliative-care page. CMS facts and symptom-management evidence must be separate. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.nhpco.org/palliative-care-overview/",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 143,
+    "priorAssessment": "unverified",
+    "issue": "Original article is AAFP 2016, not 2023. Most stewardship principles are sound, but quantitative etiology, oxygen-imaging threshold, symptomatic drug doses and pertussis contact/reporting details were not all verified. Replacement narrows to current CDC uncomplicated adult bronchitis recommendations.",
+    "suggestedOfficialSource": "https://www.cdc.gov/antibiotic-use/hcp/clinical-care/adult-outpatient.html",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 144,
+    "priorAssessment": "superseded",
+    "issue": "A new final recommendation dated June 24,2025 replaces the2018 citation. It specifically includes pregnant/postpartum women and evidence-based multicomponent interventions with ongoing support. Do not arbitrarily cap reproductive age at46 or apply a formal I grade for all IPV screening in men.",
+    "suggestedOfficialSource": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/intimate-partner-violence-and-abuse-of-elderly-and-vulnerable-adults-screening",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 145,
+    "priorAssessment": "superseded",
+    "issue": "The old cholesterol basis is replaced by the 2026 dyslipidemia guideline. Original automatic emergent IV treatment for every triglyceride level \u22651000 and routine rescue plasmapheresis are not verified and may overstate emergency indications; the single source does not substantiate all doses.",
+    "suggestedOfficialSource": "https://www.acc.org/About-ACC/Press-Releases/2026/03/13/18/01/ACCAHA-Issue-UpDated-Guideline-for-Managing-Lipids-Cholesterol",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 146,
+    "priorAssessment": "superseded",
+    "issue": "A comprehensive 2026 AHA/ACC/multisociety acute PE guideline is now available, with categories A-E. Original claimed 2019 AHA/ACC/ACCP metadata/DOI not validated; mixes dichotomized versus three-tier Wells cutoffs and oversimplifies pregnancy imaging/thrombolysis. Not all diagnostic/dosing claims verified.",
+    "suggestedOfficialSource": "https://professional.heart.org/en/science-news/2026-guideline-for-the-evaluation-and-management-of-acute-pulmonary-embolism-in-adults/top-things-to-know",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 147,
+    "priorAssessment": "superseded",
+    "issue": "The purported2024 general ACR SLE guideline is not established; ACR issued general SLE treatment guidance in2025. Classification points mix older criteria (direct Coombs) and diagnostic terminology; steroid targets/renal combinations/APS treatment need current source-specific review. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://rheumatology.org/api/asset/bltec93920aad624e33",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 148,
+    "priorAssessment": "unverified",
+    "issue": "USPSTF2023 screening I statement is not a recommendation against screening and does not substantiate diagnosis/staging/treatment. Blanket no-shave-biopsy instruction is overly broad; staging and sentinel-node thresholds require current dermatology/oncology sources. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/skin-cancer-screening",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 149,
+    "priorAssessment": "superseded",
+    "issue": "New AAP/NASPGHAN faltering-weight guideline published March 16,2026 provides a new diagnostic framework and recommends against routine initial diagnostic testing without focal findings. Legacy2023 attribution, fixed organic/nonorganic percentages, caloric multipliers and admission criteria remain unverified. Article copyright and AAP AI/text-mining reservations require permission before corpus reuse.",
+    "suggestedOfficialSource": "https://publications.aap.org/pediatrics/article/157/4/e2025075764/206901/Clinical-Practice-Guideline-for-Diagnosis-and",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 150,
+    "priorAssessment": "unverified",
+    "issue": "The catalog URL/title was not authenticated. A generic sodium-correction limit of 8\u201312 per day omits high-risk limits. Hyperkalemia with ECG changes is an emergency regardless of a moderate numeric category; potassium binders are not a substitute for urgent stabilization. Original calcium/magnesium regimens and potassium doses remain unchecked.",
+    "suggestedOfficialSource": "https://www.aafp.org/afp/2023/1100/sodium-disorders-hyponatremia-hypernatremia",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 151,
+    "priorAssessment": "superseded",
+    "issue": "Duplicate ADA 2024 treatment content is superseded. Original LDL goals are outdated; the insulin threshold and CKD combination rules need patient-specific qualification; detemir availability and vaccination options require current checks. No blanket medication ladder is appropriate. The replacement below covers only independently checked lipid risk, not diabetes management as a whole.",
+    "suggestedOfficialSource": "https://www.acc.org/About-ACC/Press-Releases/2026/03/13/18/01/ACCAHA-Issue-UpDated-Guideline-for-Managing-Lipids-Cholesterol",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 152,
+    "priorAssessment": "unverified",
+    "issue": "AHA/ASA2021 secondary prevention source is identifiable but detailed DAPT loading/doses, universal anticoagulation timing and carotid recommendations are not fully verified and need current selection criteria. Avoid reusing acute-stroke2019 exclusions. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.ahajournals.org/doi/10.1161/STR.0000000000000375",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 153,
+    "priorAssessment": "unverified",
+    "issue": "The generic 2019 source hub is not an authenticated single guideline supporting this large mixed-arrhythmia entry. Treating every 2:1 AV block as mandatory permanent pacing is an unsafe oversimplification. Original stable/unstable VT/VF, pacemaker, and long-QT rules need separate source-level review. Replacement is limited to the official 2025 adult bradycardia-with-a-pulse algorithm.",
+    "suggestedOfficialSource": "https://cpr.heart.org/-/media/CPR-Files/CPR-Guidelines-Files/2025-Accessible/Algorithm-ACLS-Bradycardia-LngDscrp-250725-Ed.pdf",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 154,
+    "priorAssessment": "superseded",
+    "issue": "The 2026 acute PE guideline replaces use of 2021 metadata as current comprehensive guidance. Original automatic UFH preference, categorical thrombolysis and universal thrombophilia workup/echo follow-up are oversimplified; exact drug/thrombolytic doses and all contraindications not fully verified. Do not activate the old paragraph.",
+    "suggestedOfficialSource": "https://professional.heart.org/en/science-news/2026-guideline-for-the-evaluation-and-management-of-acute-pulmonary-embolism-in-adults/top-things-to-know",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  },
+  {
+    "index": 155,
+    "priorAssessment": "unverified",
+    "issue": "NCCN generic category index cannot substantiate this synthetic2023 title. Any CRAB feature alone does not establish symptomatic myeloma without the required clonal/plasmacytoma context; blanket CBC/smear/referral rules and treatment claims require real disease-specific guidelines. Complete original-chunk verification remains pending.",
+    "suggestedOfficialSource": "https://www.nccn.org/guidelines/category_1",
+    "origin": "Earlier review in this session; issue inventory, not full claim verification",
+    "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
+  }
+]

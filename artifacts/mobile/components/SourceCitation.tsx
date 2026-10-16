@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Linking,
   Pressable,
   StyleSheet,
   Text,
@@ -107,6 +108,13 @@ function CitationRow({
             {entry.guideline}
           </Text>
         )}
+        {entry.url && /^https:\/\//.test(entry.url) && (
+          <Pressable accessibilityRole="link" accessibilityLabel={`Open official source: ${entry.guideline || entry.source}`}
+            onPress={() => { void Linking.openURL(entry.url!); }} style={{paddingVertical:8}}>
+            <Text style={{color:theme.tint,fontSize:12}}>Open official source ↗{entry.accessed ? ` · Checked ${entry.accessed}` : ""}</Text>
+          </Pressable>
+        )}
+        {entry.reviewStatus && <Text style={[styles.citationNote,{color:theme.textTertiary}]}>{entry.reviewStatus}</Text>}
         {entry.note && (
           <Text style={[styles.citationNote, { color: theme.textTertiary }]}>
             {entry.note}
@@ -176,7 +184,7 @@ export function SourceCitation({ metadata }: SourceCitationProps) {
                 { color: overallColor, fontFamily: "Inter_600SemiBold" },
               ]}
             >
-              ABFM · {metadata.domain}
+              Topic · {metadata.domain}
             </Text>
             {metadata.weight && (
               <Text style={[styles.weightText, { color: overallColor }]}>
