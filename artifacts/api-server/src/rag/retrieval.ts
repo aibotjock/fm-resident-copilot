@@ -1,4 +1,11 @@
-import { searchByText, searchByTextFallback, type SearchResult } from "./store";
+import {
+  searchByDomain,
+  searchByText,
+  searchByTextFallback,
+  type SearchResult,
+} from "./store";
+import { expandExactTopicAlias } from "./search-query";
+import { isOfficialSourceUrl } from "./review-policy";
 
 export interface RetrievalContext {
   chunks: SearchResult[];
@@ -9,13 +16,22 @@ export interface RetrievalContext {
 
 export async function retrieveContext(
   query: string,
-  limit = 10
+  limit = 10,
+  domain?: string,
 ): Promise<RetrievalContext> {
   try {
-    let chunks = await searchByText(query, limit);
+    // Exact topic aliases preserve abbreviation-only checked excerpts; free-form
+    // questions keep all qualifiers. Domain-only practice has an explicit filter.
+    const domainOnly = !query.trim() && !!domain;
+    const searchQuery = expandExactTopicAlias(query);
+    let chunks = domainOnly
+      ? await searchByDomain(domain!, limit)
+      : await searchByText(searchQuery, limit);
+    chunks = chunks.filter((c) => isOfficialSourceUrl(c.url));
 
-    if (chunks.length === 0) {
-      chunks = await searchByTextFallback(query, limit);
+    if (chunks.length === 0 && !domainOnly) {
+      chunks = await searchByTextFallback(searchQuery, limit);
+      chunks = chunks.filter((c) => isOfficialSourceUrl(c.url));
     }
 
     if (chunks.length === 0) {
@@ -30,7 +46,7 @@ export async function retrieveContext(
           `Review status: ${c.review_status} | Source checked: ${c.reviewed_at} | Publication date: ${c.publication_date ?? c.guideline_year ?? "not established"}\n` +
           `Scope: ${c.review_note ?? "Checked excerpt only; not a complete clinical guideline or proof of currentness after the check date."}\n` +
           (c.url ? `URL: ${c.url}\n` : "") +
-          `\n${c.content}`
+          `\n${c.content}`,
       )
       .join("\n\n---\n\n");
 

@@ -102,7 +102,7 @@ export default function PointOfCareScreen() {
               Clinical Reference
             </Text>
             <Text style={[styles.heroSubtitle, { color: theme.textSecondary }]}>
-              Evidence-based answers at the point of care
+              Checked guideline excerpts and clear coverage gaps
             </Text>
           </View>
 

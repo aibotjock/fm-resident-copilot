@@ -1,18 +1,20 @@
 # Clinical content review — October 15, 2026
 
-The content review is incomplete. This release replaces the active historical index with **59 narrow, source-checked excerpts from 51 source URLs**. It does not certify complete conditions, every generated sentence, or the full app as current clinical guidance.
+The content review is incomplete. This release replaces the active historical index with **62 narrow, source-checked excerpts from 54 source URLs**. It does not certify complete conditions, every generated sentence, or the full app as current clinical guidance.
 
 ## Audit outcome
 
 All 156 historical summaries received an audit classification: 58 superseded and 98 unverified. None passed complete verification. The entire historical set is inactive for new answers. A replacement excerpt does not validate the rest of its original summary. The detailed [source audit](../artifacts/api-server/src/rag/sources/source-audit-2026-10-15.json) records each decision, source, publication date, check date, limitations and rights status.
 
+Only official publisher domains are eligible for the active index and retrieval. Reddit, Wikipedia, social posts and third-party summaries are not evidence sources. Searches may return incidental off-policy results, but those are not imported or used to verify clinical facts. Official-domain eligibility is enforced separately from source rights and clinical verification.
+
 Some publisher content is restricted for AI use or could not be fully retrieved. Those items remain inactive or link-only; a newer document title is not treated as evidence for its contents. Federal education pages, society public summaries, full guidelines and FDA labels are identified separately. Older publication dates are preserved when no newer checked document was established.
 
 ## Answer structure
 
-Complete condition overviews request presentation, differential diagnosis, diagnosis, next best test, first-line, second-line and third-line treatment, dosing/special populations, follow-up/monitoring/escalation, and sources/currentness. Focused questions use the relevant sections. Missing sections remain explicit evidence gaps. Simultaneous foundational therapy and alternatives must not be converted into invented treatment ladders.
+Complete condition overviews request presentation, differential diagnosis, diagnosis, next best test, first-line, second-line and third-line treatment, dosing/special populations, follow-up/monitoring/escalation, and sources/currentness. New reference answers retain these headings and show explicit gaps; this can be more verbose for focused questions. Missing sections remain explicit evidence gaps. Simultaneous foundational therapy and alternatives must not be converted into invented treatment ladders.
 
-Dosing requires source support for the indication/population, units, route, frequency, duration, titration and maximum where applicable. Pediatric mg/kg/day and mg/kg/dose are distinguished. Missing renal, hepatic or pregnancy instructions are disclosed rather than assumed normal. Source links and check dates come from retrieval rather than model-generated citation identities. A real citation number does not itself prove that every generated claim is supported.
+Dosing requires source support for the indication/population, units, route, frequency, duration, titration and maximum where applicable. Pediatric mg/kg/day and mg/kg/dose are distinguished. Missing renal, hepatic or pregnancy instructions are disclosed rather than assumed normal. Source links and check dates come from retrieval rather than model-generated citation identities. In live testing, the free-form model added uncited symptoms from memory, so free-form clinical synthesis is disabled. The model may select only numbered complete sentences from the checked local summary excerpts; these are factual paraphrases, not verbatim publisher quotations. The server renders unchanged checked excerpt sentences, rejects invalid selections, and includes full source context to preserve population restrictions and qualifiers. Section grouping is automated and does not establish clinical applicability or a treatment ranking.
 
 ## Currentness and limitations
 
@@ -21,7 +23,8 @@ Dosing requires source support for the indication/population, units, route, freq
 - Checked excerpts expire from retrieval 90 days after review, and future review dates are rejected. This is an expiry safeguard, not a guarantee that guidance cannot change earlier.
 - Startup waits for an atomic publication of the checked index. Unreviewed legacy database rows are ineligible for retrieval.
 - With no relevant evidence, clinical query returns a coverage gap without calling the model; practice questions decline insufficient evidence.
-- Required headings, claim relevance and medication completeness are prompt instructions, not a clinical reasoning proof. Model synthesis has not received independent clinician review.
+- Clinical text in new reference answers and flashcard backs is constructed from checked source sentences rather than model-authored prose. Automated sentence grouping does not prove that a particular excerpt answers a patient question, covers every safety detail, or constitutes complete guidance. Full source context and explicit coverage gaps remain visible.
+- Generated clinical practice vignettes are temporarily unavailable until a validated question bank exists; an unvalidated model-authored vignette is not presented as fact-checked content. Documentation outputs use placeholders, without manufacturing patient findings.
 - Historical saved answers and flashcards are not automatically reverified. Their content should be checked directly against current sources.
 - Full presentation/differential/testing/treatment coverage remains pending across the historical catalog. This release deliberately answers fewer facts rather than presenting unchecked facts as verified.
 
@@ -33,6 +36,8 @@ This table identifies the scope of the active excerpts; it is not a list of full
 | --- | --- | --- | --- |
 | Blood Pressure Classification and Thresholds | [ACC/AHA](https://professional.heart.org/en/science-news/2025-high-blood-pressure-guideline/top-things-to-know) | 2025-08-14 | 2026-10-15 |
 | Stage 2 Hypertension and Home Monitoring | [ACC/AHA](https://professional.heart.org/en/science-news/2025-high-blood-pressure-guideline/top-things-to-know) | 2025-08-14 | 2026-10-15 |
+| Hypertension — First-Line Drug Classes | [ACC](https://www.acc.org/Latest-in-Cardiology/Articles/2025/10/01/01/New-in-Clinical-Guidance-HBP) | 2025-10-01 | 2026-10-15 |
+| Hypertension — Amlodipine Label Dosing and Safety | [FDA label / DailyMed](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5467eee5-1519-7859-e063-6294a90afed1) | 2021-10 label revision; DailyMed record updated 2026-06-16 | 2026-10-15 |
 | HFrEF Guideline-Directed Medical Therapy | [ACC](https://www.acc.org/latest-in-cardiology/ten-points-to-remember/2024/03/06/19/22/2024-acc-expert-consensus-hfref) | 2024-03-08 | 2026-10-15 |
 | HFpEF Management | [ACC](https://www.acc.org/latest-in-cardiology/journal-scans/2026/07/22/17/25/updated-acc-ecdp-addresses-management-of-hfpef) | 2026-07-23 | 2026-10-15 |
 | AF Anticoagulation — Selected Checked Principles | [ACC/AHA/ACCP/HRS](https://www.acc.org/Latest-in-Cardiology/ten-points-to-remember/2023/11/27/19/46/2023-acc-guideline-for-af-gl-af) | 2023-11-30 | 2026-10-15 |
@@ -87,7 +92,8 @@ This table identifies the scope of the active excerpts; it is not a list of full
 | Uncomplicated acute bronchitis — adult antibiotic stewardship | [CDC](https://www.cdc.gov/antibiotic-use/hcp/clinical-care/adult-outpatient.html) | 2024-04-16 | 2026-10-15 |
 | Intimate Partner Violence Screening and Referral | [USPSTF](https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/intimate-partner-violence-and-abuse-of-elderly-and-vulnerable-adults-screening) | 2025-06-24 | 2026-10-15 |
 | Hypertriglyceridemia — Selected 2026 Principle | [ACC/AHA](https://www.acc.org/About-ACC/Press-Releases/2026/03/13/18/01/ACCAHA-Issue-UpDated-Guideline-for-Managing-Lipids-Cholesterol) | 2026-03-13 | 2026-10-15 |
-| Electrolyte Emergencies — Checked Safety Principles | [AAFP](https://www.aafp.org/afp/2023/1100/sodium-disorders-hyponatremia-hypernatremia) | 2023-11 | 2026-10-15 |
+| Hyponatremia — Checked Emergency Safety Principles | [AAFP](https://www.aafp.org/afp/2023/1100/sodium-disorders-hyponatremia-hypernatremia) | 2023-11 | 2026-10-15 |
+| Hyperkalemia — Checked Emergency Safety Principles | [AAFP](https://www.aafp.org/afp/2023/0100/potassium-disorders-hypokalemia-hyperkalemia) | 2023-01 | 2026-10-15 |
 | Diabetes and Lipid Risk — Selected 2026 Principle | [ACC/AHA](https://www.acc.org/About-ACC/Press-Releases/2026/03/13/18/01/ACCAHA-Issue-UpDated-Guideline-for-Managing-Lipids-Cholesterol) | 2026-03-13 | 2026-10-15 |
 | Adult Bradycardia With a Pulse — Acute Algorithm | [AHA](https://cpr.heart.org/-/media/CPR-Files/CPR-Guidelines-Files/2025-Accessible/Algorithm-ACLS-Bradycardia-LngDscrp-250725-Ed.pdf) | 2025 | 2026-10-15 |
 

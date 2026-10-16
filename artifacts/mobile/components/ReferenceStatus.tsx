@@ -78,7 +78,7 @@ export function ReferenceStatus() {
         </Text>
         <Text style={[styles.detail, { color: theme.textSecondary }]}>
           {status
-            ? `Sources checked ${status.asOf}; live updates ${status.liveUpdates ? "enabled" : "unavailable"}.`
+            ? `Official publisher sources checked ${status.asOf}; live updates ${status.liveUpdates ? "enabled" : "unavailable"}. Full topic review is incomplete.`
             : "Verify source dates and recommendations before use."}
         </Text>
       </View>

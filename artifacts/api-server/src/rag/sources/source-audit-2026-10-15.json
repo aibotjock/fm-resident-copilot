@@ -46,7 +46,34 @@
         "section": "Stage 2 Hypertension and Home Monitoring",
         "content": "For stage 2 hypertension, prefer two first-line agents from different classes, ideally as a single fixed-dose combination. Use home BP monitoring with standardized measurement and follow-up. The source excerpt does not supply individualized drug doses.",
         "url": "https://professional.heart.org/en/science-news/2025-high-blood-pressure-guideline/top-things-to-know"
-      }
+      },
+      "additionalExcerpts": [
+        {
+          "source": "ACC",
+          "tier": 1,
+          "guideline_title": "High Blood Pressure Focus of New ACC/AHA Guideline — ACC public clinical guidance summary",
+          "guideline_year": "2025",
+          "abfm_domain": "Cardiovascular",
+          "section": "Hypertension — First-Line Drug Classes",
+          "content": "For adult hypertension pharmacotherapy, the 2025 ACC/AHA guidance identifies thiazide-type diuretics, long-acting dihydropyridine calcium channel blockers, and ACE inhibitors or ARBs as first-line classes, unless a compelling indication supports another agent. Prefer once-daily regimens and single-pill combinations when appropriate to improve adherence. This summary does not establish a universal second- or third-line sequence or provide individual drug doses.",
+          "url": "https://www.acc.org/Latest-in-Cardiology/Articles/2025/10/01/01/New-in-Clinical-Guidance-HBP",
+          "publication_date": "2025-10-01",
+          "rightsStatus": "public_summary"
+        },
+        {
+          "source": "FDA label / DailyMed",
+          "tier": 1,
+          "guideline_title": "Amlodipine besylate tablets — prescribing information revised October 2021; DailyMed record updated June 16, 2026",
+          "guideline_year": "2021",
+          "abfm_domain": "Cardiovascular",
+          "section": "Hypertension — Amlodipine Label Dosing and Safety",
+          "content": "Amlodipine oral tablets for adult hypertension: usual initial dose 5 mg once daily; maximum 10 mg once daily. Small, fragile or elderly patients, or those with hepatic insufficiency, may start at 2.5 mg once daily. In general, wait 7–14 days between titration steps; titrate slowly in severe hepatic impairment. Patients with renal failure may receive the usual initial dose. For hypertension at ages 6–17 years, the oral dose is 2.5–5 mg once daily; doses above 5 mg/day have not been studied in pediatric patients, and effectiveness below age 6 is not established. Contraindication: known amlodipine sensitivity. Symptomatic hypotension and worsening angina or myocardial infarction after starting or increasing therapy are warnings. With concomitant amlodipine, limit simvastatin to 20 mg/day. Pregnancy data are insufficient to determine drug-associated risk. This is selected label information, not a complete safety review or a preferred-agent ranking.",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5467eee5-1519-7859-e063-6294a90afed1",
+          "publication_date": "2021-10 label revision; DailyMed record updated 2026-06-16",
+          "rightsStatus": "public_federal"
+        }
+      ],
+      "sourceCheckNote": "Additional narrowly checked ACC public summary and FDA-label dosing facts are separately cited. The amlodipine label revision remains 2021, not the 2026 DailyMed record-update year. Review dates follow the October 15, 2026 user-local review date."
     },
     {
       "index": 2,
@@ -2477,15 +2504,29 @@
         "guideline_title": "Diagnosis and Management of Sodium Disorders: Hyponatremia and Hypernatremia (clinical review)",
         "guideline_year": "2023",
         "abfm_domain": "Renal & Urology",
-        "section": "Electrolyte Emergencies — Checked Safety Principles",
-        "content": "Severe symptomatic hyponatremia requires emergency treatment with 3% saline and close sodium monitoring. For chronic hyponatremia at high risk for osmotic demyelination, limit correction to 8 mEq/L in 24 hours; risk and duration determine the applicable limits. For hyperkalemia with symptoms or ECG abnormalities, provide urgent assessment and treatment: stabilize membranes, shift potassium intracellularly, and remove potassium as clinically indicated. ECG sensitivity is limited; a normal tracing does not exclude serious hyperkalemia. This is a selected clinical-review summary, not a full electrolyte dosing protocol.",
-        "url": "https://www.aafp.org/afp/2023/1100/sodium-disorders-hyponatremia-hypernatremia"
+        "section": "Hyponatremia — Checked Emergency Safety Principles",
+        "content": "Severe symptomatic hyponatremia requires emergency treatment with 3% saline and close sodium monitoring. For chronic hyponatremia at high risk for osmotic demyelination, limit correction to 8 mEq/L in 24 hours; risk and duration determine the applicable limits. This is a selected clinical-review summary, not a full electrolyte dosing protocol.",
+        "url": "https://www.aafp.org/afp/2023/1100/sodium-disorders-hyponatremia-hypernatremia",
+        "publication_date": "2023-11"
       },
       "supplementalSources": [
         {
           "url": "https://www.aafp.org/afp/2023/0100/potassium-disorders-hypokalemia-hyperkalemia",
           "title": "Potassium Disorders: Hypokalemia and Hyperkalemia (clinical review)",
           "publicationDate": "2023-01"
+        }
+      ],
+      "additionalExcerpts": [
+        {
+          "source": "AAFP",
+          "tier": 2,
+          "guideline_title": "Potassium Disorders: Hypokalemia and Hyperkalemia (clinical review)",
+          "guideline_year": "2023",
+          "publication_date": "2023-01",
+          "abfm_domain": "Renal & Urology",
+          "section": "Hyperkalemia — Checked Emergency Safety Principles",
+          "content": "For hyperkalemia with symptoms or ECG abnormalities, provide urgent assessment and treatment: stabilize membranes, shift potassium intracellularly, and remove potassium as clinically indicated. ECG sensitivity is limited; a normal tracing does not exclude serious hyperkalemia. This is a selected clinical-review summary, not a full electrolyte dosing protocol.",
+          "url": "https://www.aafp.org/afp/2023/0100/potassium-disorders-hypokalemia-hyperkalemia"
         }
       ]
     },

@@ -33,6 +33,9 @@ export function getContentReviewStatus() {
     quarantinedEntries: records.filter((r) => r.status !== "verified").length,
     latestReviewAt: REVIEW_AS_OF,
     liveUpdates: false,
+    answerMode: "checked_source_excerpts",
+    officialSourcesOnly: true,
+    practiceQuestionsAvailable: false,
     reviewWindowDays: 90,
     limitation:
       "Source checks cover only the listed excerpts. Full topic reviews and independent clinical review of generated answers are incomplete. Historical saved answers and flashcards are not automatically reverified.",

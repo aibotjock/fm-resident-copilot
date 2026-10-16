@@ -1,6 +1,10 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { buildReviewedExcerpts, isReviewedCurrent } from "./review-policy";
+import {
+  buildReviewedExcerpts,
+  isReviewedCurrent,
+  isOfficialSourceUrl,
+} from "./review-policy";
 const excerpt = {
   source: "CDC",
   tier: 1,
@@ -88,4 +92,32 @@ test("historical audit reasons cannot become clinical evidence", () => {
     [excerpt],
   );
   assert.ok(!JSON.stringify(result).includes("999 mg"));
+});
+test("only official publisher domains can enter clinical evidence", () => {
+  assert.equal(isOfficialSourceUrl("https://www.cdc.gov/example"), true);
+  for (const url of [
+    "https://www.reddit.com/r/medicine/",
+    "https://cdc.gov.example.com/",
+    "https://example.com/?source=cdc.gov",
+    "https://pubmed.ncbi.nlm.nih.gov/123/",
+    "http://www.cdc.gov/example",
+  ]) {
+    assert.equal(isOfficialSourceUrl(url), false);
+    assert.equal(
+      buildReviewedExcerpts(
+        [
+          {
+            index: 0,
+            status: "superseded",
+            reason: "not official",
+            lastChecked: "2026-10-15",
+            rightsStatus: "public_federal",
+            replacement: { ...excerpt, url },
+          },
+        ],
+        [excerpt],
+      ).length,
+      0,
+    );
+  }
 });

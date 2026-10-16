@@ -25,6 +25,7 @@ import { useApp } from "@/context/AppContext";
 const MODE = "board_prep" as const;
 const MODE_COLOR = Colors.boardPrep;
 const MODE_LABEL = "Board Prep";
+const PRACTICE_AVAILABLE = false;
 
 const QUICK_PROMPTS = [
   { label: "Screening Guidelines", prompt: "What are USPSTF screening recommendations I must know for ABFM boards?" },
@@ -98,6 +99,7 @@ export default function BoardPrepScreen() {
   );
 
   const fetchVignette = useCallback(async (domain?: string) => {
+    if (!PRACTICE_AVAILABLE) return;
     setVignetteLoading(true);
     setVignetteError("");
     setVignette(null);
@@ -123,7 +125,7 @@ export default function BoardPrepScreen() {
   const handleSwitchToPractice = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setTabMode("practice");
-    if (!vignette && !vignetteLoading) {
+    if (PRACTICE_AVAILABLE && !vignette && !vignetteLoading) {
       fetchVignette();
     }
   };
@@ -214,7 +216,7 @@ export default function BoardPrepScreen() {
             </Pressable>
           </View>
 
-          {tabMode === "practice" && (
+          {tabMode === "practice" && PRACTICE_AVAILABLE && (
             <View style={styles.practiceControls}>
               <Pressable
                 onPress={() => setShowDomainPicker(true)}
@@ -247,7 +249,7 @@ export default function BoardPrepScreen() {
               contentContainerStyle={[styles.scrollContent, { paddingBottom: Platform.OS === "web" ? 120 : 100 }]}
             >
               <Text style={[styles.heroSubtitle, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
-                ABFM-style vignettes, key pearls, and exam traps — grounded in indexed guidelines
+                Study checked guideline excerpts with linked sources and explicit gaps
               </Text>
 
               <View style={[styles.inputCard, { backgroundColor: theme.surface, borderColor: theme.border }]}>
@@ -353,13 +355,33 @@ export default function BoardPrepScreen() {
                     Practice MCQ Mode
                   </Text>
                   <Text style={[styles.practicePromoText, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
-                    Interactive ABFM-style vignettes with instant feedback and explanation
+                    Validated practice questions unavailable during content review
                   </Text>
                 </View>
                 <Ionicons name="chevron-forward" size={18} color={MODE_COLOR} />
               </Pressable>
             </ScrollView>
           </KeyboardAvoidingView>
+        ) : !PRACTICE_AVAILABLE ? (
+          <ScrollView contentContainerStyle={[styles.practiceUnavailable, { paddingBottom: Platform.OS === "web" ? 120 : 100 }]}>
+            <Ionicons name="information-circle-outline" size={28} color={MODE_COLOR} />
+            <Text style={[styles.practiceUnavailableTitle, { color: theme.text }]}>
+              Validated practice questions unavailable during content review
+            </Text>
+            <Text style={[styles.practiceUnavailableText, { color: theme.textSecondary }]}>
+              Practice MCQs are paused until questions and explanations have verified source support. Use Study to review checked excerpts; missing information is marked unavailable.
+            </Text>
+            <Pressable
+              disabled
+              accessibilityRole="button"
+              accessibilityLabel="Generate Question unavailable during content review"
+              accessibilityState={{ disabled: true }}
+              style={[styles.practiceUnavailableButton, { backgroundColor: theme.surfaceSecondary, borderColor: theme.border }]}
+            >
+              <Ionicons name="lock-closed-outline" size={16} color={theme.textSecondary} />
+              <Text style={[styles.practiceUnavailableButtonText, { color: theme.textSecondary }]}>Generate Question</Text>
+            </Pressable>
+          </ScrollView>
         ) : (
           <VignetteCard
             vignette={vignette}
@@ -434,6 +456,11 @@ export default function BoardPrepScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
+  practiceUnavailable: { flexGrow: 1, paddingHorizontal: 24, paddingVertical: 24, gap: 16, justifyContent: "center" },
+  practiceUnavailableTitle: { fontSize: 18, lineHeight: 25, fontFamily: "Inter_600SemiBold" },
+  practiceUnavailableText: { fontSize: 14, lineHeight: 22, fontFamily: "Inter_400Regular" },
+  practiceUnavailableButton: { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 8, padding: 14, borderRadius: 12, borderWidth: 1 },
+  practiceUnavailableButtonText: { fontSize: 14, fontFamily: "Inter_600SemiBold" },
   screenHeader: {
     paddingHorizontal: 20,
     paddingBottom: 12,

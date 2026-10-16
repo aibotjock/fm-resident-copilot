@@ -158,6 +158,28 @@ export async function searchByTextFallback(
   return rows;
 }
 
+/** Domain-only study questions select the requested category, not generic FTS words. */
+export async function searchByDomain(
+  domain: string,
+  limit = 10,
+): Promise<SearchResult[]> {
+  const { rows } = await pool.query<SearchResult>(
+    `SELECT
+       id, source, tier, guideline_title, guideline_year,
+       abfm_domain, section, content, url, review_status, reviewed_at::text, publication_date, review_note,
+       0::real AS rank
+     FROM guideline_chunks
+     WHERE review_status = 'verified_excerpt'
+       AND reviewed_at <= CURRENT_DATE
+       AND reviewed_at >= CURRENT_DATE - INTERVAL '90 days'
+       AND abfm_domain = $1
+     ORDER BY source, section, id
+     LIMIT $2`,
+    [domain, limit],
+  );
+  return rows;
+}
+
 export async function clearChunks(): Promise<void> {
   await pool.query("TRUNCATE TABLE guideline_chunks RESTART IDENTITY CASCADE");
 }

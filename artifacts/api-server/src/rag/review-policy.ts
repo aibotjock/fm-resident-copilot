@@ -3,6 +3,44 @@ import type { GuidelineChunk } from "./store";
 export const REVIEW_AS_OF = "2026-10-15";
 export const MAX_REVIEW_AGE_DAYS = 90;
 export const ALLOWED_RIGHTS = new Set(["public_federal", "public_summary"]);
+// Explicit official publishers currently reviewed in this catalog. Adding a
+// publisher requires a policy change; being discoverable on the web is insufficient.
+const OFFICIAL_PUBLISHER_DOMAINS = [
+  "aafp.org",
+  "acc.org",
+  "professional.heart.org",
+  "cpr.heart.org",
+  "cdc.gov",
+  "fda.gov",
+  "dailymed.nlm.nih.gov",
+  "nhlbi.nih.gov",
+  "niddk.nih.gov",
+  "clinicalinfo.hiv.gov",
+  "healthquality.va.gov",
+  "ptsd.va.gov",
+  "uspreventiveservicestaskforce.org",
+  "gi.org",
+  "kdigo.org",
+  "endocrine.org",
+];
+
+export function isOfficialSourceUrl(value: unknown): boolean {
+  if (typeof value !== "string") return false;
+  try {
+    const url = new URL(value);
+    return (
+      url.protocol === "https:" &&
+      !url.username &&
+      !url.password &&
+      (!url.port || url.port === "443") &&
+      OFFICIAL_PUBLISHER_DOMAINS.includes(url.hostname.replace(/^www\./, ""))
+    );
+  } catch {
+    return false;
+  }
+}
+
+type CheckedCandidate = GuidelineChunk & { rightsStatus?: string };
 
 export interface AuditRecord {
   index: number;
@@ -13,8 +51,8 @@ export interface AuditRecord {
   publicationDate?: string;
   lastChecked: string;
   rightsStatus?: string;
-  replacement?: GuidelineChunk;
-  additionalExcerpts?: GuidelineChunk[];
+  replacement?: CheckedCandidate;
+  additionalExcerpts?: CheckedCandidate[];
 }
 
 export function isReviewedCurrent(
@@ -24,7 +62,7 @@ export function isReviewedCurrent(
   if (
     chunk.review_status !== "verified_excerpt" ||
     !chunk.reviewed_at ||
-    !chunk.url
+    !isOfficialSourceUrl(chunk.url)
   )
     return false;
   const checked = Date.parse(chunk.reviewed_at + "T00:00:00Z");
@@ -43,11 +81,16 @@ export function buildReviewedExcerpts(
   const checked = new Map<string, GuidelineChunk>();
   for (const row of records) {
     if (!ALLOWED_RIGHTS.has(row.rightsStatus ?? "unknown")) continue;
-    const primary =
+    const primary: CheckedCandidate | undefined =
       row.replacement ??
       (row.status === "verified" ? originals[row.index] : undefined);
     for (const replacement of [primary, ...(row.additionalExcerpts ?? [])]) {
-      if (!replacement?.url || !/^https:\/\//.test(replacement.url)) continue;
+      if (!replacement || !isOfficialSourceUrl(replacement.url)) continue;
+      if (
+        replacement.rightsStatus &&
+        !ALLOWED_RIGHTS.has(replacement.rightsStatus)
+      )
+        continue;
       const chunk: GuidelineChunk = {
         ...replacement,
         review_status: "verified_excerpt",

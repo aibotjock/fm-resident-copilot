@@ -195,7 +195,7 @@ export function buildGroundedCitationBlock(
   const valid = mentioned.filter((number) => Number.isInteger(number) && number >= 1 && number <= references.length);
   const invalid = mentioned.filter((number) => !valid.includes(number));
   const limitations = [
-    "This generated synthesis has not undergone independent clinical review; source-review dates apply to the supplied excerpts, not every claim in this answer.",
+    "This checked-summary response has not undergone independent clinical review; source-review dates apply to the local summary excerpts, not patient applicability or completeness.",
   ];
   if (typeof modelMetadata.limitation === "string" && modelMetadata.limitation.trim()) {
     limitations.push(modelMetadata.limitation.trim());
@@ -210,13 +210,13 @@ export function buildGroundedCitationBlock(
       typeof entry.note === "string" && entry.note.includes(`[REF ${number}]`),
     );
     const confidence = proposed && typeof proposed === "object" && "confidence" in proposed &&
-      ["direct", "peripheral", "outside"].includes(String(proposed.confidence)) ? String(proposed.confidence) : "peripheral";
+      ["direct", "peripheral", "outside"].includes(String(proposed.confidence)) ? String(proposed.confidence) : "unverified";
     return {
       source: reference.source,
       year: String(reference.guideline_year),
       guideline: reference.guideline_title,
       confidence,
-      note: `Supplied excerpt [REF ${number}]. Relevance confidence is model-assessed, not an independent clinical audit.`,
+      note: `Supplied excerpt [REF ${number}]. Section grouping is automated; no independent clinical audit of answer applicability is established.`,
       ...(reference.url ? { url: reference.url } : {}),
       ...(reference.reviewed_at ? { reviewedAt: reference.reviewed_at } : {}),
       ...(reference.publication_date ? { publicationDate: reference.publication_date } : {}),
