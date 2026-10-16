@@ -188,7 +188,7 @@
     <h1>Think it through. Out loud.</h1>
     <p>
       A family medicine tutor for ABFM preparation and clinical reasoning.
-      Patient cases, one question at a time.
+      High-yield ABFM-style cases, one question at a time.
     </p>
     <p class="notice">
       <small
@@ -759,7 +759,7 @@
           ask(
             data.lessonTopic === activeTopic && data.checkpoint
               ? "Resume our saved case; briefly restate the current question."
-              : "Start a fictional patient case for this topic; ask one question and wait.",
+              : "Start a concise, realistic ABFM-style patient case for this topic, with plausible answer choices; ask one question and wait.",
           );
           sessionTimer = setTimeout(
             () => {
@@ -800,10 +800,10 @@
       $("mute").setAttribute("aria-pressed", String(muted));
       state("Listening…");
     };
-    $("case").onclick = () => ask("Continue this case one question at a time.");
+    $("case").onclick = () => ask("Continue this case with the next concise ABFM-style question and plausible answer choices; wait for my answer.");
     $("quiz").onclick = () =>
       ask(
-        "I explicitly request a quiz on this topic, emphasizing my weak areas. One question at a time.",
+        "I explicitly request a high-yield ABFM-style quiz on this topic, emphasizing my weak areas. Use concise realistic cases and plausible answer choices. One question at a time.",
       );
     $("plan").onclick = () =>
       ask(
