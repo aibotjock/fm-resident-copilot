@@ -17,6 +17,7 @@ import {
   topicEvidence,
   validLearning,
   version,
+  searchLibrary,
 } from "./core";
 const app = express();
 app.disable("x-powered-by");
@@ -37,6 +38,7 @@ const sessions = new Map<
     calls: number;
     busy: boolean;
     ids: string[];
+    contextRevision: number;
     practice?: Practice;
   }
 >();
@@ -52,6 +54,8 @@ app.get("/api/healthz", (_req, res) =>
       process.env.OPENAI_API_KEY || process.env.OPEAI_API_KEY
     ),
     accessConfigured: !!process.env.FM_TUTOR_ACCESS_TOKEN,
+    libraryTopics: topics.length,
+    libraryNavigation: "voice-search-and-select-v1",
   }),
 );
 app.get("/learning.js", async (_req, res) =>
@@ -104,6 +108,7 @@ app.post("/api/login", (req, res) => {
     calls: 0,
     busy: false,
     ids: [],
+    contextRevision: 0,
   });
   res
     .cookie("fm_tutor", id, {
@@ -158,7 +163,6 @@ app.post("/api/context", (req, res) => {
       req.body.progress,
       req.body.history,
     );
-    res.locals.session.ids = req.body.ids;
     res.json({
       instructions: prompt,
       tools,
@@ -167,6 +171,35 @@ app.post("/api/context", (req, res) => {
     });
   } catch {
     res.status(400).json({ error: "Select valid library topics" });
+  }
+});
+app.post("/api/library/search", (req, res) => {
+  try {
+    res.json(searchLibrary(req.body.query));
+  } catch (error) {
+    res.status(400).json({ error: (error as Error).message });
+  }
+});
+app.post("/api/library/select", (req, res) => {
+  try {
+    const ids = [req.body.topic_id];
+    const entries = topicEvidence(ids);
+    // A prior-topic transcript/checkpoint must not become the new topic's context.
+    const prompt = instructions(ids, req.body.progress, [], "teaching");
+    res.locals.session.contextRevision++;
+    res.locals.session.ids = ids;
+    res.locals.session.practice = undefined;
+    res.json({
+      instructions: prompt,
+      tools,
+      entries,
+      version,
+      topic: topics.find((topic) => topic.id === req.body.topic_id),
+    });
+  } catch {
+    res
+      .status(400)
+      .json({ error: "Choose an exact topic ID from the stored library" });
   }
 });
 app.post("/api/practice/start", (req, res) => {
@@ -220,12 +253,10 @@ app.post("/api/practice/:action", (req, res) => {
 });
 app.post("/api/learning", (req, res) => {
   if (req.body.result !== "unscored") {
-    res
-      .status(400)
-      .json({
-        error:
-          "Generated teaching is unscored. Use reviewed practice for scoring.",
-      });
+    res.status(400).json({
+      error:
+        "Generated teaching is unscored. Use reviewed practice for scoring.",
+    });
     return;
   }
   if (!validLearning(req.body, res.locals.session.ids)) {
@@ -278,6 +309,7 @@ app.post("/api/session", async (req, res) => {
   }
   session.busy = true;
   session.calls++;
+  const contextRevision = ++session.contextRevision;
   try {
     const fd = new FormData();
     fd.set("sdp", req.body.sdp);
@@ -319,6 +351,13 @@ app.post("/api/session", async (req, res) => {
       });
       return;
     }
+    if (session.contextRevision !== contextRevision) {
+      res.status(409).json({
+        error:
+          "The selected topic changed while voice was connecting; start the conversation again",
+      });
+      return;
+    }
     session.ids = req.body.ids;
     res.type("application/sdp").send(await response.text());
   } catch {
@@ -333,9 +372,16 @@ app.post("/api/session", async (req, res) => {
 // No model-callable browser tool exists. Each fetch needs its own explicit approval.
 app.post("/api/lookup", async (req, res) => {
   const { url, approved } = req.body;
-  const allowed = topicEvidence(
-    res.locals.session.ids.length ? res.locals.session.ids : [topics[0].id],
-  ).flatMap((e) => (e.evidence_records || []).map((r) => r.url));
+  let allowed: string[] = [];
+  try {
+    allowed = topicEvidence(
+      req.body.topic_id === undefined
+        ? res.locals.session.ids
+        : [req.body.topic_id],
+    ).flatMap((e) => (e.evidence_records || []).map((r) => r.url));
+  } catch {
+    // Invalid or absent topic selection authorizes no external URL.
+  }
   if (approved !== true || typeof url !== "string" || !allowed.includes(url)) {
     res.status(403).json({
       error:

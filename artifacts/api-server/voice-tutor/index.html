@@ -459,6 +459,9 @@
       caption = new Map(),
       messages = [],
       connectionEpoch = 0,
+      topicEpoch = 0,
+      responseTopics = new Map(),
+      toolOutputs = new Map(),
       voiceSessionId = "",
       practiceCurrent = null,
       practiceRunning = false,
@@ -566,6 +569,7 @@
       }
       if (v.question) {
         const questionEpoch = connectionEpoch;
+        const questionTopic = topicEpoch;
         practiceCurrent = v.question;
         practiceRunning = true;
         $("practiceQuestion").textContent =
@@ -600,7 +604,10 @@
                 confidence: $("confidence").value,
                 error_type: $("errorType").value,
               });
-              if (questionEpoch !== connectionEpoch) {
+              if (
+                questionEpoch !== connectionEpoch ||
+                questionTopic !== topicEpoch
+              ) {
                 if (result.event) savePracticeEvents([result.event]);
                 if (result.events) savePracticeEvents(result.events);
                 return;
@@ -608,12 +615,23 @@
               showPractice(result);
               if (!result.retry && !result.done) {
                 const next = await api("practice/next", {});
-                if (questionEpoch === connectionEpoch) showPractice(next);
+                if (
+                  questionEpoch === connectionEpoch &&
+                  questionTopic === topicEpoch
+                )
+                  showPractice(next);
               }
             } catch (e) {
-              if (questionEpoch === connectionEpoch) fail(e.message);
+              if (
+                questionEpoch === connectionEpoch &&
+                questionTopic === topicEpoch
+              )
+                fail(e.message);
             } finally {
-              if (questionEpoch === connectionEpoch)
+              if (
+                questionEpoch === connectionEpoch &&
+                questionTopic === topicEpoch
+              )
                 for (const node of $("practiceOptions").children)
                   node.disabled = false;
             }
@@ -623,7 +641,11 @@
         clearInterval(practiceTimer);
         if (v.deadline) {
           practiceTimer = setInterval(async () => {
-            if (questionEpoch !== connectionEpoch) return;
+            if (
+              questionEpoch !== connectionEpoch ||
+              questionTopic !== topicEpoch
+            )
+              return;
             const seconds = Math.max(
               0,
               Math.ceil((v.deadline - Date.now()) / 1000),
@@ -633,9 +655,17 @@
               clearInterval(practiceTimer);
               try {
                 const result = await api("practice/finish", {});
-                if (questionEpoch === connectionEpoch) showPractice(result);
+                if (
+                  questionEpoch === connectionEpoch &&
+                  questionTopic === topicEpoch
+                )
+                  showPractice(result);
               } catch (e) {
-                if (questionEpoch === connectionEpoch) fail(e.message);
+                if (
+                  questionEpoch === connectionEpoch &&
+                  questionTopic === topicEpoch
+                )
+                  fail(e.message);
               }
             }
           }, 1000);
@@ -644,6 +674,7 @@
     }
     async function startPracticeBlock() {
       const epoch = connectionEpoch;
+      const topic = topicEpoch;
       const v = await api("practice/start", {
         ids: [$("topic").value],
         mode: $("practiceMode").value,
@@ -652,7 +683,8 @@
         seconds: Number($("blockSeconds").value || 450),
         events: data.events,
       });
-      if (epoch !== connectionEpoch) return { done: true, canceled: true };
+      if (epoch !== connectionEpoch || topic !== topicEpoch)
+        return { done: true, canceled: true };
       $("practiceFeedback").replaceChildren();
       showPractice(v);
       return v;
@@ -715,9 +747,10 @@
     };
     $("practiceEnd").onclick = async () => {
       const epoch = connectionEpoch;
+      const topic = topicEpoch;
       try {
         const v = await api("practice/finish", {});
-        if (epoch !== connectionEpoch) return;
+        if (epoch !== connectionEpoch || topic !== topicEpoch) return;
         showPractice(v);
         if (dc?.readyState === "open")
           ask(
@@ -955,7 +988,7 @@
       const old = $("topic").value;
       const matches = topics.filter((t) =>
         words.every((word) =>
-          (t.title + " " + t.domain + " " + t.source)
+          (t.id + " " + t.title + " " + t.domain + " " + t.source)
             .toLowerCase()
             .includes(word),
         ),
@@ -982,13 +1015,17 @@
     async function refreshEvidence() {
       if (!$("topic").value) return;
       const selected = $("topic").value;
+      const context = topicEpoch;
       const v = await api("context", {
         ids: [selected],
         progress: stats(),
         history: data.checkpoint || "",
       });
-      if (selected !== $("topic").value) return;
-      entries = v.entries;
+      if (selected !== $("topic").value || context !== topicEpoch) return;
+      renderEvidence(v.entries);
+    }
+    function renderEvidence(selectedEntries) {
+      entries = selectedEntries;
       $("sources").replaceChildren();
       $("lookupUrl").replaceChildren();
       const urls = new Set();
@@ -1104,13 +1141,89 @@
       log("user", text);
       state("Thinking…");
     }
-    async function tool(e, epoch = connectionEpoch) {
-      if (epoch !== connectionEpoch || seen.has(e.call_id)) return;
+    async function tool(e, epoch = connectionEpoch, context = topicEpoch) {
+      if (
+        epoch !== connectionEpoch ||
+        context !== topicEpoch ||
+        seen.has(e.call_id)
+      )
+        return;
       seen.add(e.call_id);
       let output = { ok: false };
       try {
         const a = JSON.parse(e.arguments);
-        if (
+        if (e.name === "search_library") {
+          output = await api("library/search", a);
+        } else if (e.name === "select_library_topic") {
+          if (!topics.some((t) => t.id === a.topic_id))
+            throw Error(
+              "Unknown library topic. Search the library for a valid topic ID.",
+            );
+          const selected = await api("library/select", {
+            topic_id: a.topic_id,
+            progress: stats(),
+            history: { recent: [], checkpoint: "", plan: [] },
+          });
+          if (epoch !== connectionEpoch || context !== topicEpoch) return;
+          // Commit only a successful switch. Failed requests leave the old
+          // case usable; successful requests invalidate queued old-context work.
+          context = ++topicEpoch;
+          $("filter").value = "";
+          $("topic").replaceChildren();
+          for (const t of topics) {
+            const option = document.createElement("option");
+            option.value = t.id;
+            option.textContent = t.title + " · " + t.domain;
+            $("topic").append(option);
+          }
+          $("topic").value = selected.topic.id;
+          activeTopic = selected.topic.id;
+          $("practiceMode").value = "teaching";
+          $("practiceScope").value = "selected";
+          practiceRunning = false;
+          practiceCurrent = null;
+          clearInterval(practiceTimer);
+          $("practiceOptions").replaceChildren();
+          $("practiceFeedback").replaceChildren();
+          $("practiceQuestion").textContent =
+            "Selected " +
+            selected.topic.title +
+            ". Ask a question or start practice.";
+          $("practiceTimer").textContent = "";
+          $("unreviewedQuestion").textContent = "";
+          $("unreviewedFeedback").textContent = "";
+          $("unreviewedOptions").replaceChildren();
+          data.history = [];
+          data.checkpoint = "";
+          data.plan = [];
+          data.lessonTopic = activeTopic;
+          $("topicStatus").textContent =
+            "Studying " +
+            selected.topic.title +
+            " · " +
+            topics.length +
+            " library topics available.";
+          $("practiceStart").disabled = false;
+          renderEvidence(selected.entries);
+          persist();
+          send({
+            type: "session.update",
+            session: {
+              type: "realtime",
+              instructions: selected.instructions,
+              tools: selected.tools,
+              tool_choice: "auto",
+            },
+          });
+          output = {
+            ok: true,
+            topic: selected.topic,
+            entries: selected.entries,
+            version: selected.version,
+            notice:
+              "The active topic and selected medical evidence have changed. Continue with this topic only; prior-topic questions and checkpoints are inactive.",
+          };
+        } else if (
           [
             "get_practice_question",
             "answer_practice_question",
@@ -1125,11 +1238,11 @@
             mark_practice_assisted: "assist",
           }[e.name];
           output = await api("practice/" + action, a);
-          if (epoch !== connectionEpoch) return;
+          if (epoch !== connectionEpoch || context !== topicEpoch) return;
           showPractice(output);
         } else if (e.name === "record_learning") {
           await api("learning", a);
-          if (epoch !== connectionEpoch) return;
+          if (epoch !== connectionEpoch || context !== topicEpoch) return;
           const dedup =
             activeTopic + ":" + voiceSessionId + ":" + a.question_id;
           if (!data.events.some((v) => v.dedup === dedup)) {
@@ -1158,7 +1271,8 @@
       } catch (e) {
         output = { ok: false, error: e.message };
       }
-      if (epoch !== connectionEpoch) return;
+      if (epoch !== connectionEpoch || context !== topicEpoch) return;
+      toolOutputs.set(e.call_id, { context, name: e.name });
       send({
         type: "conversation.item.create",
         item: {
@@ -1176,6 +1290,13 @@
       } catch {
         return;
       }
+      const responseId = e.response_id || e.response?.id;
+      if (e.type === "response.created" && responseId)
+        responseTopics.set(responseId, topicEpoch);
+      const context = responseTopics.get(responseId) ?? topicEpoch;
+      // A topic-changing tool may finish in the old response; its continuation
+      // is allowed below only when its tool output belongs to the new context.
+      if (context !== topicEpoch && e.type !== "response.done") return;
       if (e.type === "error") {
         fail(e.error?.message || "Voice error");
         state("Error");
@@ -1203,15 +1324,27 @@
         }
       }
       if (e.type === "response.function_call_arguments.done")
-        toolChain = toolChain.then(() => tool(e, epoch));
+        toolChain = toolChain.then(() => tool(e, epoch, context));
       if (e.type === "response.done") {
-        if (
-          e.response?.output?.some((o) => o.type === "function_call") &&
-          !e.response.output.some((o) => o.type === "message")
-        )
+        if (e.response?.output?.some((o) => o.type === "function_call"))
           toolChain.then(() => {
-            if (epoch === connectionEpoch) send({ type: "response.create" });
+            const completed = e.response.output
+              .map((o) => toolOutputs.get(o.call_id))
+              .filter((result) => result?.context === topicEpoch);
+            if (
+              epoch === connectionEpoch &&
+              completed.length &&
+              (!e.response.output.some((o) => o.type === "message") ||
+                completed.some((result) =>
+                  ["search_library", "select_library_topic"].includes(
+                    result.name,
+                  ),
+                ))
+            )
+              send({ type: "response.create" });
+            for (const o of e.response.output) toolOutputs.delete(o.call_id);
           });
+        if (context !== topicEpoch) return;
         state("Listening…");
         if (e.response?.status === "failed")
           fail(
@@ -1222,6 +1355,8 @@
     }
     function stop() {
       connectionEpoch++;
+      responseTopics.clear();
+      toolOutputs.clear();
       clearTimeout(sessionTimer);
       connecting = false;
       const oldPc = pc,
@@ -1383,9 +1518,14 @@
       )
         return;
       const epoch = connectionEpoch;
+      const topic = topicEpoch;
       try {
-        const v = await api("lookup", { url, approved: true });
-        if (epoch !== connectionEpoch) return;
+        const v = await api("lookup", {
+          url,
+          approved: true,
+          topic_id: $("topic").value,
+        });
+        if (epoch !== connectionEpoch || topic !== topicEpoch) return;
         $("lookupResult").textContent =
           v.notice + "\nAccessed " + v.accessed + "\n" + v.text;
         if (dc?.readyState === "open") {

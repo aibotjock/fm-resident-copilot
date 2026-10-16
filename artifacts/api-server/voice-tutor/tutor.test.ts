@@ -165,7 +165,16 @@ test("Realtime handshake uses the existing server key and configured evidence wi
     assert.equal(config.type, "realtime");
     assert.equal(config.audio.input.turn_detection.interrupt_response, true);
     assert.ok(config.instructions.includes(version));
-    assert.equal(config.tools.length, 6);
+    assert.deepEqual(config.tools.map((tool: any) => tool.name).sort(), [
+      "answer_practice_question",
+      "finish_practice",
+      "get_practice_question",
+      "mark_practice_assisted",
+      "record_learning",
+      "save_lesson",
+      "search_library",
+      "select_library_topic",
+    ]);
     return new Response("v=0\r\nmock-answer", {
       headers: { "content-type": "application/sdp" },
     });
@@ -432,15 +441,22 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
     nodes.get("topic").options.every((o: any) => /asthma/i.test(o.textContent)),
   );
   const asthmaId = nodes.get("topic").value;
+  // Begin on the original first topic to reproduce the reported hypertension lock.
+  nodes.get("filter").value = "";
+  nodes.get("filter").oninput();
+  nodes.get("topic").value = topics[0].id;
+  nodes.get("topic").onchange();
+  assert.equal(nodes.get("topic").value, topics[0].id);
   nodes.get("practiceScope").value = "mixed";
   nodes.get("practiceMode").value = "teaching";
   vm.runInContext(
     `
+    globalThis.outgoing = [];
     globalThis.track = {enabled:true,stopped:false,stop(){this.stopped=true}};
     globalThis.navigator={mediaDevices:{getUserMedia:async()=>({getAudioTracks:()=>[track],getTracks:()=>[track]})}};
     globalThis.crypto={randomUUID:()=>"test-voice-session"};
     globalThis.RTCPeerConnection=class {
-      createDataChannel(){this.channel={readyState:"open",send(){},close(){}};return this.channel;}
+      createDataChannel(){this.channel={readyState:"open",send(message){outgoing.push(JSON.parse(message))},close(){}};return this.channel;}
       async createOffer(){return {sdp:"v=0\\r\\nmock-offer"};}
       async setLocalDescription(){}
       async setRemoteDescription(){this.channel.onopen?.();}
@@ -462,6 +478,250 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
     nodes.get("topic").disabled,
     false,
     "dropdown stays enabled during voice",
+  );
+  const emit = (event: unknown) => {
+    sandbox.incomingEvent = event;
+    vm.runInContext("onEvent({data:JSON.stringify(incomingEvent)})", sandbox);
+  };
+  const dispatchTool = async (
+    name: string,
+    args: unknown,
+    id: string,
+    queueOldCheckpoint = false,
+  ) => {
+    emit({ type: "response.created", response: { id } });
+    emit({
+      type: "response.function_call_arguments.done",
+      response_id: id,
+      name,
+      call_id: id + "-call",
+      arguments: JSON.stringify(args),
+    });
+    if (queueOldCheckpoint)
+      emit({
+        type: "response.function_call_arguments.done",
+        response_id: id,
+        name: "save_lesson",
+        call_id: id + "-old-checkpoint",
+        arguments: JSON.stringify({
+          checkpoint: "Stale queued hypertension",
+          plan: [],
+        }),
+      });
+    emit({
+      type: "response.done",
+      response: {
+        id,
+        output: [
+          // Library navigation must continue even after "I'll look for that."
+          { type: "message", role: "assistant", content: [] },
+          { type: "function_call", call_id: id + "-call" },
+          ...(queueOldCheckpoint
+            ? [{ type: "function_call", call_id: id + "-old-checkpoint" }]
+            : []),
+        ],
+      },
+    });
+    await vm.runInContext("toolChain", sandbox);
+    const messages: any[] = vm.runInContext("outgoing", sandbox);
+    const result = messages.find((m) => m.item?.call_id === id + "-call");
+    assert.ok(result, "every accepted library tool must receive a result");
+    return JSON.parse(result.item.output);
+  };
+  const beforeSearch = vm.runInContext("activeTopic", sandbox);
+  const found = await dispatchTool(
+    "search_library",
+    { query: "asthma" },
+    "search-asthma",
+  );
+  assert.ok(found.topics.some((topic: any) => topic.id === asthmaId));
+  assert.ok(found.total > 0);
+  assert.equal(vm.runInContext("activeTopic", sandbox), beforeSearch);
+  assert.equal(vm.runInContext("track.stopped", sandbox), false);
+  assert.equal(
+    vm.runInContext("outgoing.some(m => m.type === 'session.update')", sandbox),
+    false,
+    "catalog search must not change the clinical context",
+  );
+  const noMatch = await dispatchTool(
+    "search_library",
+    { query: "no-such-topic-xyz" },
+    "search-empty",
+  );
+  assert.equal(noMatch.total, 0);
+  assert.equal(noMatch.topics.length, 0);
+  const invalidSelection = await dispatchTool(
+    "select_library_topic",
+    { topic_id: "fake-topic" },
+    "select-invalid",
+  );
+  assert.equal(invalidSelection.ok, false);
+  assert.match(invalidSelection.error, /Unknown library topic/);
+  assert.equal(vm.runInContext("activeTopic", sandbox), beforeSearch);
+
+  const beforeFailedSelectionFetch = sandbox.fetch;
+  const originalTopicEpoch = vm.runInContext("topicEpoch", sandbox);
+  const originalPractice = vm.runInContext("practiceCurrent.id", sandbox);
+  sandbox.fetch = async (path: string, opts: any) =>
+    path === "/api/library/select"
+      ? new Response(
+          JSON.stringify({ error: "Temporary library request failure" }),
+          {
+            status: 500,
+            headers: { "content-type": "application/json" },
+          },
+        )
+      : beforeFailedSelectionFetch(path, opts);
+  const failedSelection = await dispatchTool(
+    "select_library_topic",
+    { topic_id: asthmaId },
+    "select-server-error",
+  );
+  assert.equal(failedSelection.ok, false);
+  assert.match(failedSelection.error, /Temporary library request failure/);
+  assert.equal(vm.runInContext("topicEpoch", sandbox), originalTopicEpoch);
+  assert.equal(vm.runInContext("activeTopic", sandbox), beforeSearch);
+  assert.equal(
+    vm.runInContext("practiceCurrent.id", sandbox),
+    originalPractice,
+  );
+  assert.equal(vm.runInContext("practiceRunning", sandbox), true);
+  assert.equal(nodes.get("practiceOptions").children[0].disabled, false);
+  assert.equal(vm.runInContext("track.stopped", sandbox), false);
+  sandbox.fetch = beforeFailedSelectionFetch;
+
+  // Keep an old practice answer in flight across a voice-driven context change.
+  const beforeSwitchFetch = sandbox.fetch;
+  let releaseOldAnswer!: () => void, oldAnswerArrived!: () => void;
+  const oldAnswerPending = new Promise<void>((r) => (oldAnswerArrived = r));
+  sandbox.fetch = async (path: string, opts: any) => {
+    const response = await beforeSwitchFetch(path, opts);
+    if (path === "/api/practice/answer") {
+      oldAnswerArrived();
+      await new Promise<void>((r) => (releaseOldAnswer = r));
+    }
+    return response;
+  };
+  const oldCase = bank.find(
+    (q) => q.id === vm.runInContext("practiceCurrent.id", sandbox),
+  )!;
+  const oldAnswer = nodes
+    .get("practiceOptions")
+    .children[(oldCase.answer + 1) % oldCase.options.length].onclick();
+  await oldAnswerPending;
+
+  vm.runInContext(
+    `data.checkpoint="Old hypertension case";data.plan=["Old hypertension plan"];data.history=[{role:"assistant",content:"Old hypertension teaching"}];`,
+    sandbox,
+  );
+  const selectedByVoice = await dispatchTool(
+    "select_library_topic",
+    { topic_id: asthmaId },
+    "select-asthma",
+    true,
+  );
+  assert.equal(selectedByVoice.ok, true);
+  assert.equal(selectedByVoice.topic.id, asthmaId);
+  assert.equal(selectedByVoice.entries[0].key, asthmaId);
+  assert.ok(selectedByVoice.entries[0].content.length > 0);
+  assert.equal(vm.runInContext("activeTopic", sandbox), asthmaId);
+  assert.equal(nodes.get("practiceMode").value, "teaching");
+  assert.equal(nodes.get("practiceScope").value, "selected");
+  assert.equal(nodes.get("topic").value, asthmaId);
+  assert.equal(nodes.get("filter").value, "");
+  assert.equal(nodes.get("topic").options.length, 156);
+  assert.match(nodes.get("topicStatus").textContent, /Studying.*Asthma/i);
+  assert.ok(nodes.get("sources").children.length > 0);
+  assert.equal(vm.runInContext("entries[0].key", sandbox), asthmaId);
+  assert.equal(vm.runInContext("data.checkpoint", sandbox), "");
+  assert.equal(vm.runInContext("data.plan.length", sandbox), 0);
+  assert.equal(vm.runInContext("data.history.length", sandbox), 0);
+  assert.equal(vm.runInContext("data.lessonTopic", sandbox), asthmaId);
+  assert.equal(vm.runInContext("practiceCurrent", sandbox), null);
+  assert.equal(vm.runInContext("practiceRunning", sandbox), false);
+  assert.equal(nodes.get("practiceOptions").children.length, 0);
+  assert.equal(nodes.get("practiceFeedback").children.length, 0);
+  assert.equal(nodes.get("practiceTimer").textContent, "");
+  const switchedQuestion = nodes.get("practiceQuestion").textContent;
+  releaseOldAnswer();
+  await oldAnswer;
+  sandbox.fetch = beforeSwitchFetch;
+  assert.equal(nodes.get("practiceQuestion").textContent, switchedQuestion);
+  assert.equal(nodes.get("practiceFeedback").children.length, 0);
+  assert.equal(nodes.get("practiceOptions").children.length, 0);
+  assert.equal(vm.runInContext("track.stopped", sandbox), false);
+  assert.equal(vm.runInContext("!!pc", sandbox), true);
+  const sent: any[] = vm.runInContext("outgoing", sandbox);
+  const updateAt = sent.findIndex((m) => m.type === "session.update");
+  const selectedOutputAt = sent.findIndex(
+    (m) => m.item?.call_id === "select-asthma-call",
+  );
+  assert.ok(updateAt >= 0 && updateAt < selectedOutputAt);
+  assert.ok(
+    sent[updateAt].session.instructions.includes("[REF " + asthmaId + "]"),
+  );
+  assert.ok(!sent[updateAt].session.instructions.includes("Old hypertension"));
+  assert.ok(
+    sent[updateAt].session.tools.some((t: any) => t.name === "search_library"),
+  );
+  assert.equal(sent[updateAt].session.tool_choice, "auto");
+  assert.equal(sent[selectedOutputAt + 1].type, "response.create");
+
+  // Old response events must not restore its checkpoint, transcript or case.
+  emit({
+    type: "response.function_call_arguments.done",
+    response_id: "search-asthma",
+    name: "save_lesson",
+    call_id: "late-hypertension-save",
+    arguments: JSON.stringify({ checkpoint: "Stale hypertension", plan: [] }),
+  });
+  emit({
+    type: "response.output_audio_transcript.done",
+    response_id: "search-asthma",
+    item_id: "old-hypertension-transcript",
+    transcript: "Stale hypertension transcript",
+  });
+  const countBeforeOldDone = vm.runInContext("outgoing.length", sandbox);
+  emit({
+    type: "response.done",
+    response: {
+      id: "search-asthma",
+      output: [{ type: "function_call", call_id: "late-hypertension-save" }],
+    },
+  });
+  await vm.runInContext("toolChain", sandbox);
+  assert.equal(vm.runInContext("data.checkpoint", sandbox), "");
+  assert.equal(vm.runInContext("data.history.length", sandbox), 0);
+  assert.equal(vm.runInContext("outgoing.length", sandbox), countBeforeOldDone);
+
+  // An old source fetch settling after the voice switch must not replace asthma.
+  const priorFetch = sandbox.fetch;
+  let releaseContext!: () => void, contextArrived!: () => void;
+  const contextPending = new Promise<void>((r) => (contextArrived = r));
+  sandbox.fetch = async (path: string, opts: any) => {
+    const response = await priorFetch(path, opts);
+    if (path === "/api/context") {
+      contextArrived();
+      await new Promise<void>((r) => (releaseContext = r));
+    }
+    return response;
+  };
+  const pendingEvidence = vm.runInContext("refreshEvidence()", sandbox);
+  await contextPending;
+  await dispatchTool(
+    "select_library_topic",
+    { topic_id: topics[0].id },
+    "select-back",
+  );
+  releaseContext();
+  await pendingEvidence;
+  assert.equal(vm.runInContext("entries[0].key", sandbox), topics[0].id);
+  assert.equal(vm.runInContext("activeTopic", sandbox), topics[0].id);
+  sandbox.fetch = priorFetch;
+  await dispatchTool(
+    "select_library_topic",
+    { topic_id: asthmaId },
+    "select-asthma-again",
   );
   nodes.get("filter").value = "diabetes";
   nodes.get("filter").oninput();

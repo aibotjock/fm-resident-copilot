@@ -25,6 +25,10 @@ or repoint either existing service without separate user authorization.
 - Realtime WebRTC voice, natural interruption, mute/unmute, end, typed input,
   listening/thinking/speaking states, browser noise suppression and echo cancellation.
 - Topic selection across all 156 retained entries; random topic and weak-topic selection.
+- Spoken library discovery and topic switching: every voice session receives the
+  complete 156-topic catalog plus tools to search the stored library and load a
+  different topic's evidence without ending the microphone connection. Catalog
+  metadata is not clinical evidence; only the loaded entries support teaching.
 - Evidence-bound assessment tools; local progress, per-skill records, weak-area
   emphasis, checkpoints, resumable lesson plans, progress export/import/clear.
 - Device-local persistence, not account sync. AI assessments are not validated scores.
@@ -176,3 +180,29 @@ unreviewed, unscored practice even without voice. Each stem supplies its own
 definition and numbers; feedback follows that arithmetic only. No clinical source
 was added, and these do not count as reviewed Foundations coverage. Ethics and
 policy teaching still requires support in approved source material.
+
+## Spoken library navigation repair — 2026-10-16
+
+The original voice session loaded only its selected topic and exposed no library
+search or topic-loading tool. The first dropdown entry was hypertension, so the
+tutor could not discover the rest of the library during conversation even though
+the page could list all 156 topics.
+
+Voice sessions now include the complete topic catalog and `search_library` /
+`select_library_topic` tools. Searches rank stored topic titles before matches in
+the retained content; they return metadata without loading medical evidence. A
+successful selection loads that exact topic's evidence, updates Realtime session
+instructions on the existing connection, shows its sources and clears the old
+practice question/checkpoint. A failed selection leaves the old practice usable.
+Delayed context requests and voice handshakes cannot restore the previous topic.
+Searches also continue correctly when a model response includes both a short
+spoken introduction and a tool call. No external research or content refresh is
+involved in library navigation.
+
+Validation: 24 automated tests pass, including authenticated search/select APIs,
+the initial session catalog, searches for asthma/diabetes/COPD/UTI, no-match and
+invalid-input recovery, live-connection tool dispatch with a simulated microphone,
+failed selection recovery, and delayed old-topic replies/handshakes. The tutor
+TypeScript check and bundle build pass. Real-device microphone/audio and actual
+model tool-choice behavior remain unverified; Chromium installation again failed
+in this environment. Clinical source content and the non-voice app are unchanged.
