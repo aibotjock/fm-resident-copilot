@@ -1,81 +1,68 @@
-import {
-  insertChunksBatch,
-  clearChunks,
-  getChunkCount,
-  setMetadata,
-  getMetadata,
-  type GuidelineChunk,
-} from "./store";
+import { createHash } from "node:crypto";
+import { getChunkCount, getMetadata, replaceReviewedIndex } from "./store";
 import { SEED_CHUNKS } from "./sources/seed-data";
-import { fetchUSPSTFChunks } from "./sources/uspstf-ingest";
+import audit from "./sources/source-audit-2026-10-15.json";
+import {
+  buildReviewedExcerpts,
+  isReviewedCurrent,
+  REVIEW_AS_OF,
+  type AuditRecord,
+} from "./review-policy";
 
-const INGEST_VERSION = "v10";
-const BATCH_SIZE = 100;
+const records = audit.records as AuditRecord[];
+const REVIEWED_EXCERPTS = buildReviewedExcerpts(records, SEED_CHUNKS);
+const INGEST_VERSION =
+  "review-" +
+  REVIEW_AS_OF +
+  "-" +
+  createHash("sha256")
+    .update(JSON.stringify(REVIEWED_EXCERPTS))
+    .digest("hex")
+    .slice(0, 10);
+let ingestion: Promise<void> | null = null;
 
-async function ingestChunks(
-  chunks: GuidelineChunk[],
-  label: string
-): Promise<number> {
-  for (let i = 0; i < chunks.length; i += BATCH_SIZE) {
-    const batch = chunks.slice(i, i + BATCH_SIZE);
-    await insertChunksBatch(batch);
-    console.log(
-      `[RAG] ${label}: ${Math.min(i + BATCH_SIZE, chunks.length)}/${chunks.length} chunks stored`
-    );
-  }
-  return chunks.length;
+export function getContentReviewStatus() {
+  const current = REVIEWED_EXCERPTS.filter((c) => isReviewedCurrent(c));
+  return {
+    status: "partial_review" as const,
+    asOf: REVIEW_AS_OF,
+    originalEntries: SEED_CHUNKS.length,
+    checkedExcerpts: current.length,
+    pendingEntries: records.filter((r) => r.status !== "verified").length,
+    supersededEntries: records.filter((r) => r.status === "superseded").length,
+    quarantinedEntries: records.filter((r) => r.status !== "verified").length,
+    latestReviewAt: REVIEW_AS_OF,
+    liveUpdates: false,
+    reviewWindowDays: 90,
+    limitation:
+      "Source checks cover only the listed excerpts. Full topic reviews and independent clinical review of generated answers are incomplete. Historical saved answers and flashcards are not automatically reverified.",
+  };
 }
 
-export async function runIngestion(force = false): Promise<void> {
-  const existingVersion = await getMetadata("ingest_version");
-  if (!force && existingVersion === INGEST_VERSION) {
-    console.log("[RAG] Already ingested at version", INGEST_VERSION);
-    return;
-  }
-
-  console.log("[RAG] Clearing previous index...");
-  await clearChunks();
-
-  console.log("[RAG] Starting full guideline ingestion (FTS mode)...");
-  const start = Date.now();
-
-  let totalChunks = 0;
-
-  totalChunks += await ingestChunks(SEED_CHUNKS, "Seed guidelines");
-
-  try {
-    console.log("[RAG] Fetching live USPSTF recommendations...");
-    const uspstfChunks = await fetchUSPSTFChunks();
-    console.log(`[RAG] Fetched ${uspstfChunks.length} USPSTF chunks`);
-    totalChunks += await ingestChunks(uspstfChunks, "USPSTF");
-  } catch (err) {
-    console.error("[RAG] USPSTF fetch failed, continuing without:", err);
-  }
-
-  await setMetadata("ingest_version", INGEST_VERSION);
-  await setMetadata("ingest_timestamp", new Date().toISOString());
-  await setMetadata("total_chunks", totalChunks.toString());
-
-  const elapsed = ((Date.now() - start) / 1000).toFixed(1);
-  console.log(
-    `[RAG] Ingestion complete: ${totalChunks} chunks in ${elapsed}s`
+export async function isReviewedIndexReady(): Promise<boolean> {
+  return (
+    (await getMetadata("ingest_version")) === INGEST_VERSION &&
+    (await getChunkCount()) === REVIEWED_EXCERPTS.length
   );
 }
 
-export async function ensureIngested(): Promise<void> {
+export async function runIngestion(force = false): Promise<void> {
+  if (ingestion) return ingestion;
+  ingestion = (async () => {
+    if (!force && (await isReviewedIndexReady())) return;
+    await replaceReviewedIndex(REVIEWED_EXCERPTS, INGEST_VERSION);
+    console.log(
+      `[references] Published ${REVIEWED_EXCERPTS.length} checked excerpts; historical unverified text is inactive.`,
+    );
+  })();
   try {
-    const existingVersion = await getMetadata("ingest_version");
-    if (existingVersion === INGEST_VERSION) {
-      const count = await getChunkCount();
-      if (count > 0) {
-        console.log(
-          `[RAG] Index ready: ${count} chunks at version ${INGEST_VERSION}`
-        );
-        return;
-      }
-    }
-    await runIngestion();
-  } catch (err) {
-    console.error("[RAG] Failed to ensure ingestion:", err);
+    await ingestion;
+  } finally {
+    ingestion = null;
   }
+}
+
+export async function ensureIngested(): Promise<void> {
+  // Fail startup when publication fails rather than advertising a current index.
+  await runIngestion();
 }

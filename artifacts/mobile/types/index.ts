@@ -61,8 +61,10 @@ export interface CitationEntry {
   source: string;
   year?: string;
   guideline?: string;
-  confidence: "direct" | "peripheral" | "outside";
+  confidence: "direct" | "peripheral" | "outside" | "unverified";
   note?: string;
+  url?: string;
+  reviewedAt?: string;
 }
 
 export interface CitationMetadata {
@@ -70,6 +72,9 @@ export interface CitationMetadata {
   weight: string;
   citations: CitationEntry[];
   limitation: string | null;
+  asOf?: string;
+  reviewStatus?: string;
+  checkedExcerpts?: number;
 }
 
 export interface ABFMDomainCoverage {

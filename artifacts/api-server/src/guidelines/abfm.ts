@@ -106,7 +106,7 @@ export const ABFM_DOMAINS: ABFMDomain[] = [
     primarySources: ["AAFP", "USPSTF"],
     secondarySources: [],
     limitationNote:
-      "ASH (American Society of Hematology) and ASCO/NCCN oncology guidelines are not fully indexed. Core hematology content (iron deficiency, B12/folate, thrombocytopenia, VTE, CRC screening) is covered from AAFP and USPSTF sources.",
+      "Full topic coverage is incomplete. Consult the checked-excerpt status and cited source scope; source eligibility does not establish indexed coverage.",
   },
   {
     id: "geriatrics",
@@ -131,7 +131,7 @@ export function getDomainById(id: string): ABFMDomain | undefined {
 export function getDomainList(): string {
   return ABFM_DOMAINS.map(
     (d) =>
-      `- ${d.name} (~${d.weight}% of exam) | Primary sources: ${d.primarySources.join(", ")}${d.limitationNote ? ` | NOTE: ${d.limitationNote}` : ""}`
+      `- Study topic: ${d.name} | Eligible sources: ${d.primarySources.join(", ")}${d.limitationNote ? ` | NOTE: ${d.limitationNote}` : ""}`
   ).join("\n");
 }
 

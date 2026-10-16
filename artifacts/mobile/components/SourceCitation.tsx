@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Linking,
   Pressable,
   StyleSheet,
   Text,
@@ -39,7 +40,34 @@ const CONFIDENCE_CONFIG = {
     icon: "alert-circle" as const,
     description: "This specific question is not addressed in the indexed guideline sources.",
   },
+  unverified: {
+    label: "Coverage unverified",
+    color: "#64748B",
+    bg: "#F1F5F9",
+    darkBg: "#1E293B",
+    icon: "help-circle" as const,
+    description: "The source coverage has not been verified for this question.",
+  },
 };
+
+function confidenceConfig(confidence: unknown) {
+  switch (confidence) {
+    case "direct": return CONFIDENCE_CONFIG.direct;
+    case "peripheral": return CONFIDENCE_CONFIG.peripheral;
+    case "outside": return CONFIDENCE_CONFIG.outside;
+    default: return CONFIDENCE_CONFIG.unverified;
+  }
+}
+
+function safeSourceUrl(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" || url.protocol === "http:" ? url.href : null;
+  } catch {
+    return null;
+  }
+}
 
 function ConfidenceBadge({
   entry,
@@ -48,7 +76,7 @@ function ConfidenceBadge({
   entry: CitationEntry;
   isDark: boolean;
 }) {
-  const cfg = CONFIDENCE_CONFIG[entry.confidence];
+  const cfg = confidenceConfig(entry.confidence);
   return (
     <View
       style={[
@@ -76,7 +104,8 @@ function CitationRow({
   isDark: boolean;
   theme: typeof Colors.light;
 }) {
-  const cfg = CONFIDENCE_CONFIG[entry.confidence];
+  const cfg = confidenceConfig(entry.confidence);
+  const sourceUrl = safeSourceUrl(entry.url);
   return (
     <View style={[styles.citationRow, { borderColor: theme.border }]}>
       <View
@@ -112,6 +141,24 @@ function CitationRow({
             {entry.note}
           </Text>
         )}
+        {sourceUrl && (
+          <Pressable
+            accessibilityRole="link"
+            accessibilityLabel={`Open source guideline for ${entry.source}`}
+            onPress={() => { void Linking.openURL(sourceUrl).catch(() => {}); }}
+            style={styles.sourceLink}
+          >
+            <Text style={[styles.sourceUrl, { color: theme.tint }]} numberOfLines={2}>
+              {sourceUrl}
+            </Text>
+            <Ionicons name="open-outline" size={12} color={theme.tint} />
+          </Pressable>
+        )}
+        {entry.reviewedAt && (
+          <Text style={[styles.reviewDate, { color: theme.textSecondary }]}>
+            Source checked {entry.reviewedAt}
+          </Text>
+        )}
       </View>
     </View>
   );
@@ -125,7 +172,7 @@ export function SourceCitation({ metadata }: SourceCitationProps) {
 
   const hasLimitation = !!metadata.limitation;
   const hasOutside = metadata.citations.some((c) => c.confidence === "outside");
-  const allDirect = metadata.citations.every((c) => c.confidence === "direct");
+  const allDirect = metadata.citations.length > 0 && metadata.citations.every((c) => c.confidence === "direct");
 
   const overallColor = hasOutside || hasLimitation
     ? "#EF4444"
@@ -136,8 +183,8 @@ export function SourceCitation({ metadata }: SourceCitationProps) {
   const overallLabel = hasOutside || hasLimitation
     ? "Partial coverage — see limitation"
     : allDirect
-    ? "Fully addressed by indexed sources"
-    : "Addressed — see source details";
+    ? "Source excerpts cited — verify details"
+    : "Review source coverage";
 
   const overallIcon = hasOutside || hasLimitation
     ? ("alert-circle" as const)
@@ -176,13 +223,8 @@ export function SourceCitation({ metadata }: SourceCitationProps) {
                 { color: overallColor, fontFamily: "Inter_600SemiBold" },
               ]}
             >
-              ABFM · {metadata.domain}
+              Study topic · {metadata.domain}
             </Text>
-            {metadata.weight && (
-              <Text style={[styles.weightText, { color: overallColor }]}>
-                {metadata.weight} of exam
-              </Text>
-            )}
           </View>
         </View>
         <View style={styles.headerRight}>
@@ -235,7 +277,7 @@ export function SourceCitation({ metadata }: SourceCitationProps) {
               { color: theme.textTertiary, fontFamily: "Inter_600SemiBold" },
             ]}
           >
-            INDEXED SOURCES CONSULTED
+            CITED SOURCE EXCERPTS
           </Text>
 
           <View style={styles.citationsList}>
@@ -250,7 +292,7 @@ export function SourceCitation({ metadata }: SourceCitationProps) {
           </View>
 
           <Text style={[styles.disclaimer, { color: theme.textTertiary }]}>
-            Responses are limited to indexed guideline sources only. If not addressed, the limitation is stated. This tool does not replace clinical judgment or direct consultation of source guidelines.
+            AI answers can contain errors. Check source-review dates and verify recommendations directly with the guideline publisher.
           </Text>
         </View>
       )}
@@ -294,11 +336,6 @@ const styles = StyleSheet.create({
   domainText: {
     fontSize: 10,
     letterSpacing: 0.3,
-  },
-  weightText: {
-    fontSize: 10,
-    fontFamily: "Inter_400Regular",
-    opacity: 0.75,
   },
   overallLabel: {
     fontSize: 11,
@@ -378,6 +415,24 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontFamily: "Inter_400Regular",
     lineHeight: 15,
+  },
+  sourceLink: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+    paddingVertical: 6,
+  },
+  sourceUrl: {
+    flexShrink: 1,
+    fontSize: 11,
+    lineHeight: 16,
+    fontFamily: "Inter_400Regular",
+    textDecorationLine: "underline",
+  },
+  reviewDate: {
+    fontSize: 10,
+    lineHeight: 15,
+    fontFamily: "Inter_400Regular",
   },
   disclaimer: {
     fontSize: 10,

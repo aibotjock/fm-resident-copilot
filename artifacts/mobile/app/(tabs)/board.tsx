@@ -17,6 +17,7 @@ import * as Haptics from "expo-haptics";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/colors";
 import { ConditionGrid } from "@/components/ConditionGrid";
+import { ReferenceStatus } from "@/components/ReferenceStatus";
 import { VignetteCard } from "@/components/VignetteCard";
 import type { VignetteQuestion } from "@/components/VignetteCard";
 import { useApp } from "@/context/AppContext";
@@ -28,7 +29,7 @@ const MODE_LABEL = "Board Prep";
 const QUICK_PROMPTS = [
   { label: "Screening Guidelines", prompt: "What are USPSTF screening recommendations I must know for ABFM boards?" },
   { label: "Common Traps", prompt: "What are the most commonly tested clinical traps on the ABFM exam?" },
-  { label: "HTN Management", prompt: "Board pearls for hypertension management — JNC 8 vs ACC/AHA 2017 targets and key numbers" },
+  { label: "HTN Management", prompt: "Current guideline-based hypertension management: presentation, diagnosis, next test, treatment sequence, and supported doses with checked sources." },
   { label: "Preventive Care", prompt: "High-yield preventive medicine pearls for ABFM boards including vaccine schedules and cancer screening" },
   { label: "DM Type 2", prompt: "ABFM board pearls: diabetes management, A1C targets, SGLT2/GLP-1 indications, and microvascular complications" },
   { label: "CV Risk", prompt: "Board pearls: ACC/AHA cardiovascular risk reduction — statins, aspirin indications, and ASCVD calculator" },
@@ -183,6 +184,8 @@ export default function BoardPrepScreen() {
               {tabMode === "study" ? "Pass the Boards" : "Vignette Practice"}
             </Text>
           </View>
+
+          <ReferenceStatus />
 
           <View style={[styles.tabToggle, { backgroundColor: theme.surfaceSecondary }]}>
             <Pressable

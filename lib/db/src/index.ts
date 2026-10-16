@@ -35,8 +35,17 @@ export async function initializeRestoredDatabase(): Promise<void> {
       content_tsv tsvector GENERATED ALWAYS AS
         (to_tsvector('english', coalesce(guideline_title, '') || ' ' || coalesce(content, ''))) STORED
     );
+    ALTER TABLE fm_copilot_restored.guideline_chunks
+      ADD COLUMN IF NOT EXISTS review_status text NOT NULL DEFAULT 'unreviewed',
+      ADD COLUMN IF NOT EXISTS reviewed_at date,
+      ADD COLUMN IF NOT EXISTS publication_date text,
+      ADD COLUMN IF NOT EXISTS review_note text,
+      ADD COLUMN IF NOT EXISTS reviewed_tsv tsvector GENERATED ALWAYS AS
+        (to_tsvector('english', coalesce(guideline_title, '') || ' ' || coalesce(section, '') || ' ' || coalesce(content, ''))) STORED;
     CREATE INDEX IF NOT EXISTS restored_guideline_fts_idx
       ON fm_copilot_restored.guideline_chunks USING gin(content_tsv);
+    CREATE INDEX IF NOT EXISTS restored_reviewed_fts_idx
+      ON fm_copilot_restored.guideline_chunks USING gin(reviewed_tsv);
     CREATE TABLE IF NOT EXISTS fm_copilot_restored.rag_metadata (
       key text PRIMARY KEY,
       value text NOT NULL,

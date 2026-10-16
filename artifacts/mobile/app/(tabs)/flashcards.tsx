@@ -17,6 +17,7 @@ import * as Haptics from "expo-haptics";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/colors";
 import { ConditionGrid } from "@/components/ConditionGrid";
+import { ReferenceStatus } from "@/components/ReferenceStatus";
 import { useApp } from "@/context/AppContext";
 
 const MODE = "flashcards" as const;
@@ -114,6 +115,8 @@ export default function FlashcardsScreen() {
             </Text>
           </View>
 
+          <ReferenceStatus />
+
           <View
             style={[
               styles.previewCard,
@@ -126,14 +129,14 @@ export default function FlashcardsScreen() {
             <View style={styles.previewCardInner}>
               <Ionicons name="help-circle" size={20} color={MODE_COLOR} />
               <Text style={[styles.previewText, { color: isDark ? "#C4B5FD" : Colors.flashcardsDark }]}>
-                What is the first-line agent for stage 1 hypertension in a non-Black patient without CKD?
+                How are new study flashcards supported?
               </Text>
             </View>
             <View style={[styles.previewDivider, { borderColor: `${MODE_COLOR}30` }]} />
             <View style={styles.previewCardInner}>
               <Ionicons name="checkmark-circle" size={20} color={Colors.boardPrep} />
               <Text style={[styles.previewAnswer, { color: isDark ? "#6EE7B7" : Colors.boardPrepDark }]}>
-                Thiazide diuretic (e.g. chlorthalidone) or ACE inhibitor/ARB or long-acting CCB — per ACC/AHA 2017
+                Generated cards use checked reference excerpts. Missing recommendations or dosing must be marked unavailable.
               </Text>
             </View>
           </View>

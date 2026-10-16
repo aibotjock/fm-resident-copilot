@@ -24,12 +24,12 @@ const PANELS: OnboardingPanel[] = [
   {
     icon: "shield-checkmark",
     color: Colors.pointOfCare,
-    title: "Guideline-Grounded Answers",
-    subtitle: "Evidence from the sources that matter",
+    title: "Guideline Reference Library",
+    subtitle: "Check the evidence behind each answer",
     bullets: [
-      "Answers grounded in 120+ indexed guideline chunks from ACC/AHA, ADA, IDSA, AAP, ACOG, USPSTF, and 15 other bodies",
+      "The reference library is being checked against reputable guideline publishers. The home screen shows checked excerpts and entries still pending review.",
       "Citations link answers to reference sources. AI can make mistakes; verify important details against current guidance.",
-      "When a question falls outside indexed sources, the app says so explicitly",
+      "Review source dates and stated limitations. A cited guideline may not address every part of your question.",
     ],
   },
   {
@@ -53,7 +53,7 @@ const PANELS: OnboardingPanel[] = [
     bullets: [
       "This tool is for educational and decision-support purposes only. It is not a substitute for clinical judgment, real-time clinical decision support systems, or direct patient care protocols.",
       "Do not use this tool as the sole basis for clinical decisions. Verify all answers against your institution's resources and current guidelines.",
-      "Guideline content is periodically updated. Always confirm that you are referencing the most current version of any guideline before applying it to patient care.",
+      "Live guideline updates are currently unavailable. Check the displayed review status and verify the latest guidance directly with the source publisher.",
     ],
   },
 ];

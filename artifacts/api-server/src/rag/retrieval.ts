@@ -26,7 +26,9 @@ export async function retrieveContext(
       .map(
         (c, i) =>
           `[REF ${i + 1}] ${c.source} — ${c.guideline_title} (${c.guideline_year})\n` +
-          `ABFM Domain: ${c.abfm_domain} | Section: ${c.section}\n` +
+          `Study topic category: ${c.abfm_domain} | Section: ${c.section}\n` +
+          `Review status: ${c.review_status} | Source checked: ${c.reviewed_at} | Publication date: ${c.publication_date ?? c.guideline_year ?? "not established"}\n` +
+          `Scope: ${c.review_note ?? "Checked excerpt only; not a complete clinical guideline or proof of currentness after the check date."}\n` +
           (c.url ? `URL: ${c.url}\n` : "") +
           `\n${c.content}`
       )
