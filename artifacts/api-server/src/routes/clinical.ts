@@ -1,5 +1,5 @@
 import { Router, type IRouter, type Request, type Response } from "express";
-import { openai, CLINICAL_MODEL } from "@workspace/integrations-openai-ai-server";
+import { openai, CLINICAL_MODEL } from "@workspace/integrations-openai-ai-server/client";
 import { getDomainList } from "../guidelines/abfm";
 import { getUSPSTFContext } from "../guidelines/uspstf";
 import { retrieveContext } from "../rag/retrieval";

@@ -1,4 +1,4 @@
-import { openai } from "@workspace/integrations-openai-ai-server";
+import { openai } from "@workspace/integrations-openai-ai-server/client";
 
 const EMBED_MODEL = "text-embedding-3-small";
 const MAX_INPUT_CHARS = 8000;
