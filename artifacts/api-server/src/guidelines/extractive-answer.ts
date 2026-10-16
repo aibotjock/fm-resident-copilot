@@ -128,7 +128,8 @@ export function parseExtractionPlan(
             : heading === "THIRD-LINE TREATMENT"
               ? "third"
               : null;
-      // A model cannot create a treatment hierarchy just by choosing a heading.
+      // Withhold an unsupported tier without discarding independently supported
+      // diagnosis/dosing selections. Reference/index failures above still fail closed.
       if (
         tier &&
         indices.some(
@@ -138,7 +139,7 @@ export function parseExtractionPlan(
             ),
         )
       )
-        return null;
+        continue;
       selections.push({ ref, sentences: [...new Set(indices)] as number[] });
     }
     plan[heading as (typeof OVERVIEW_SECTIONS)[number]] = selections;
@@ -170,7 +171,9 @@ export function renderExtractiveAnswer(options: {
     const selections = plan?.[heading] ?? [];
     sections.push(`## ${heading}`);
     if (heading === "DOSING & SPECIAL POPULATIONS") {
-      sections.push("Medication details not stated in these checked summaries are unverified. Confirm the indication, patient group, dose, units, route, frequency, duration, titration, maximum, monitoring, contraindications and renal/hepatic/pregnancy instructions in the complete applicable source; missing information does not mean no adjustment is needed.");
+      sections.push(
+        "Medication details not stated in these checked summaries are unverified. Confirm the indication, patient group, dose, units, route, frequency, duration, titration, maximum, monitoring, contraindications and renal/hepatic/pregnancy instructions in the complete applicable source; missing information does not mean no adjustment is needed.",
+      );
     }
     if (
       heading === "SECOND-LINE TREATMENT" ||

@@ -100,16 +100,42 @@ test("selection cannot manufacture a treatment hierarchy from an unranked regime
     "SECOND-LINE TREATMENT",
     "THIRD-LINE TREATMENT",
   ]) {
-    assert.equal(
+    assert.deepEqual(
       parseExtractionPlan(
         JSON.stringify({
           sections: { [heading]: [{ ref: 1, sentences: [2] }] },
         }),
         references,
       ),
-      null,
+      { [heading]: [] },
     );
   }
+});
+
+test("an unsupported treatment tier cannot hide supported diagnosis and dosing", () => {
+  const result = render(
+    JSON.stringify({
+      sections: {
+        DIAGNOSIS: [{ ref: 1, sentences: [1] }],
+        "SECOND-LINE TREATMENT": [{ ref: 1, sentences: [2] }],
+        "DOSING & SPECIAL POPULATIONS": [{ ref: 1, sentences: [2] }],
+      },
+    }),
+  );
+  assert.doesNotMatch(result, /selection was unavailable or invalid/);
+  assert.match(
+    result,
+    /Diagnosis: use NAAT at the relevant exposure site\. \[REF 1\]/,
+  );
+  assert.match(
+    result,
+    /doxycycline 100 mg orally twice daily for 7 days\. \[REF 1\]/,
+  );
+  const tier = result
+    .split("## SECOND-LINE TREATMENT")[1]
+    .split("## THIRD-LINE TREATMENT")[0];
+  assert.doesNotMatch(tier, /doxycycline/);
+  assert.match(tier, /Not established/);
 });
 
 test("sentence segmentation preserves decimal doses and full original scope context", () => {
