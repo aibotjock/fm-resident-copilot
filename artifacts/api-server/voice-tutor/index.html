@@ -222,6 +222,10 @@
               placeholder="Asthma, screening, diabetes…"
             /><label for="topic">Study topic</label
             ><select id="topic"></select>
+            <small id="topicStatus" role="status"
+              >Search by condition or study topic. Searching pauses the current
+              conversation.</small
+            >
             <div class="row">
               <button id="random">Random topic</button
               ><button id="weak">Focus on a weak area</button>
@@ -624,6 +628,7 @@
       }
     }
     async function startPracticeBlock() {
+      const epoch = connectionEpoch;
       const v = await api("practice/start", {
         ids: [$("topic").value],
         mode: $("practiceMode").value,
@@ -632,6 +637,7 @@
         seconds: Number($("blockSeconds").value || 450),
         events: data.events,
       });
+      if (epoch !== connectionEpoch) return { done: true, canceled: true };
       $("practiceFeedback").replaceChildren();
       showPractice(v);
       return v;
@@ -900,21 +906,61 @@
         $("plans").append(li);
       }
     }
+    function resetTopicSession() {
+      const wasActive = !!pc || connecting || practiceRunning;
+      stop();
+      practiceRunning = false;
+      practiceCurrent = null;
+      clearInterval(practiceTimer);
+      $("practiceOptions").replaceChildren();
+      $("practiceFeedback").replaceChildren();
+      $("practiceQuestion").textContent =
+        "Choose a topic, then start a conversation or practice block.";
+      $("practiceTimer").textContent = "";
+      data.history = [];
+      if (wasActive) state("Paused for topic selection");
+    }
+    function clearTopicEvidence() {
+      entries = [];
+      $("sources").replaceChildren();
+      $("lookupUrl").replaceChildren();
+      $("lookupResult").textContent = "";
+      $("lookup").disabled = true;
+    }
     function selectTopics() {
-      const query = $("filter").value.toLowerCase(),
-        old = $("topic").value;
+      const wasActive = !!pc || connecting || practiceRunning;
+      fail("");
+      const words = $("filter")
+        .value.trim()
+        .toLowerCase()
+        .split(/\s+/)
+        .filter(Boolean);
+      const old = $("topic").value;
+      const matches = topics.filter((t) =>
+        words.every((word) =>
+          (t.title + " " + t.domain + " " + t.source)
+            .toLowerCase()
+            .includes(word),
+        ),
+      );
       $("topic").replaceChildren();
-      for (const t of topics.filter((t) =>
-        (t.title + " " + t.domain).toLowerCase().includes(query),
-      )) {
+      for (const t of matches) {
         const o = document.createElement("option");
         o.value = t.id;
         o.textContent = t.title + " · " + t.domain;
         $("topic").append(o);
       }
-      if ([...$("topic").options].some((o) => o.value === old))
-        $("topic").value = old;
-      refreshEvidence().catch((e) => fail(e.message));
+      if (matches.some((t) => t.id === old)) $("topic").value = old;
+      else $("topic").value = matches[0]?.id || "";
+      if (wasActive || old !== $("topic").value) resetTopicSession();
+      $("start").disabled = !matches.length;
+      $("practiceStart").disabled = !matches.length;
+      $("topicStatus").textContent = matches.length
+        ? matches.length +
+          " matching topics. Choose one, then Start conversation or Start practice."
+        : "No matching topics. Try a condition name or clear the search.";
+      clearTopicEvidence();
+      if (matches.length) refreshEvidence().catch((e) => fail(e.message));
     }
     async function refreshEvidence() {
       if (!$("topic").value) return;
@@ -1003,17 +1049,13 @@
         clearInterval(practiceTimer);
       };
     $("topic").onchange = () => {
-      stop();
-      practiceRunning = false;
-      clearInterval(practiceTimer);
-      data.history = [];
+      resetTopicSession();
+      clearTopicEvidence();
       persist();
       refreshEvidence().catch((e) => fail(e.message));
     };
     function choose(id) {
-      stop();
-      practiceRunning = false;
-      clearInterval(practiceTimer);
+      resetTopicSession();
       $("filter").value = "";
       selectTopics();
       $("topic").value = id;
@@ -1045,8 +1087,8 @@
       log("user", text);
       state("Thinking…");
     }
-    async function tool(e) {
-      if (seen.has(e.call_id)) return;
+    async function tool(e, epoch = connectionEpoch) {
+      if (epoch !== connectionEpoch || seen.has(e.call_id)) return;
       seen.add(e.call_id);
       let output = { ok: false };
       try {
@@ -1066,9 +1108,11 @@
             mark_practice_assisted: "assist",
           }[e.name];
           output = await api("practice/" + action, a);
+          if (epoch !== connectionEpoch) return;
           showPractice(output);
         } else if (e.name === "record_learning") {
           await api("learning", a);
+          if (epoch !== connectionEpoch) return;
           const dedup =
             activeTopic + ":" + voiceSessionId + ":" + a.question_id;
           if (!data.events.some((v) => v.dedup === dedup)) {
@@ -1097,6 +1141,7 @@
       } catch (e) {
         output = { ok: false, error: e.message };
       }
+      if (epoch !== connectionEpoch) return;
       send({
         type: "conversation.item.create",
         item: {
@@ -1107,6 +1152,7 @@
       });
     }
     function onEvent(event) {
+      const epoch = connectionEpoch;
       let e;
       try {
         e = JSON.parse(event.data);
@@ -1140,13 +1186,15 @@
         }
       }
       if (e.type === "response.function_call_arguments.done")
-        toolChain = toolChain.then(() => tool(e));
+        toolChain = toolChain.then(() => tool(e, epoch));
       if (e.type === "response.done") {
         if (
           e.response?.output?.some((o) => o.type === "function_call") &&
           !e.response.output.some((o) => o.type === "message")
         )
-          toolChain.then(() => send({ type: "response.create" }));
+          toolChain.then(() => {
+            if (epoch === connectionEpoch) send({ type: "response.create" });
+          });
         state("Listening…");
         if (e.response?.status === "failed")
           fail(
@@ -1159,17 +1207,25 @@
       connectionEpoch++;
       clearTimeout(sessionTimer);
       connecting = false;
-      dc?.close();
-      pc?.close();
-      stream?.getTracks().forEach((t) => t.stop());
-      $("audio").srcObject = null;
+      const oldPc = pc,
+        oldDc = dc,
+        oldStream = stream;
       pc = dc = stream = null;
+      if (oldPc) oldPc.onconnectionstatechange = null;
+      if (oldDc) {
+        oldDc.onmessage = null;
+        oldDc.onopen = null;
+      }
+      oldDc?.close();
+      oldPc?.close();
+      oldStream?.getTracks().forEach((t) => t.stop());
+      $("audio").srcObject = null;
       muted = false;
       $("mute").textContent = "Mute mic";
       $("mute").setAttribute("aria-pressed", "false");
       for (const id of ["mute", "stop", "case", "quiz", "plan", "send"])
         $(id).disabled = true;
-      $("start").disabled = false;
+      $("start").disabled = !$("topic").value;
       $("topic").disabled = false;
       $("filter").disabled = false;
       state("Ready");
@@ -1180,12 +1236,11 @@
       const epoch = ++connectionEpoch;
       $("start").disabled = true;
       $("stop").disabled = false;
-      $("topic").disabled = true;
-      $("filter").disabled = true;
       fail("");
       state("Connecting…");
       try {
         if (!practiceRunning) await startPracticeBlock();
+        if (epoch !== connectionEpoch) return;
         if (!navigator.mediaDevices?.getUserMedia || !window.RTCPeerConnection)
           throw Error("Voice requires a supported browser over HTTPS.");
         const media = await navigator.mediaDevices.getUserMedia({
@@ -1290,6 +1345,10 @@
       );
     $("typed").onsubmit = (e) => {
       e.preventDefault();
+      if (dc?.readyState !== "open") {
+        fail("Start a conversation before sending a message.");
+        return;
+      }
       if ($("text").value.trim()) {
         ask($("text").value.trim());
         $("text").value = "";

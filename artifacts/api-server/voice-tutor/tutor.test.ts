@@ -287,7 +287,7 @@ test("browser controls mute capture and release every track on end", async () =>
   nodes.get("stop").onclick();
   assert.equal(vm.runInContext("track.stopped", sandbox), true);
   assert.equal(vm.runInContext("stream", sandbox), null);
-  assert.equal(nodes.get("start").disabled, false);
+  assert.equal(nodes.get("start").disabled, true); // No topic has been selected in this fixture.
 });
 
 test("practice HTTP API enforces delayed assessment feedback and selected-source grading boundaries", async () => {
@@ -386,7 +386,11 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
     console,
     alert() {},
     fetch: async (path: string, opts: any) =>
-      request(path, opts.body ? JSON.parse(opts.body) : undefined),
+      path === "/api/session"
+        ? new Response("v=0\r\nmock-sdp", {
+            headers: { "content-type": "application/sdp" },
+          })
+        : request(path, opts.body ? JSON.parse(opts.body) : undefined),
     confirm: () => true,
   });
   vm.runInContext(
@@ -420,6 +424,80 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
   nodes.get("code").value = "test-only-private-code-123456789";
   await nodes.get("login").onsubmit({ preventDefault() {} });
   assert.match(nodes.get("bankCoverage").textContent, /26 original/);
+  assert.equal(nodes.get("topic").options.length, 156);
+  nodes.get("filter").value = "  AsThMa  ";
+  nodes.get("filter").oninput();
+  assert.ok(nodes.get("topic").options.length > 0);
+  assert.ok(
+    nodes.get("topic").options.every((o: any) => /asthma/i.test(o.textContent)),
+  );
+  const asthmaId = nodes.get("topic").value;
+  nodes.get("practiceScope").value = "mixed";
+  nodes.get("practiceMode").value = "teaching";
+  vm.runInContext(
+    `
+    globalThis.track = {enabled:true,stopped:false,stop(){this.stopped=true}};
+    globalThis.navigator={mediaDevices:{getUserMedia:async()=>({getAudioTracks:()=>[track],getTracks:()=>[track]})}};
+    globalThis.crypto={randomUUID:()=>"test-voice-session"};
+    globalThis.RTCPeerConnection=class {
+      createDataChannel(){this.channel={readyState:"open",send(){},close(){}};return this.channel;}
+      async createOffer(){return {sdp:"v=0\\r\\nmock-offer"};}
+      async setLocalDescription(){}
+      async setRemoteDescription(){this.channel.onopen?.();}
+      close(){}
+      addTrack(){}
+    };
+    window.RTCPeerConnection=RTCPeerConnection;
+  `,
+    sandbox,
+  );
+  await nodes.get("start").onclick();
+  assert.equal(vm.runInContext("!!pc", sandbox), true);
+  assert.equal(
+    nodes.get("filter").disabled,
+    false,
+    "search stays enabled during voice",
+  );
+  assert.equal(
+    nodes.get("topic").disabled,
+    false,
+    "dropdown stays enabled during voice",
+  );
+  nodes.get("filter").value = "diabetes";
+  nodes.get("filter").oninput();
+  assert.equal(vm.runInContext("track.stopped", sandbox), true);
+  assert.equal(vm.runInContext("pc", sandbox), null);
+  assert.notEqual(nodes.get("topic").value, asthmaId);
+  assert.equal(vm.runInContext("practiceCurrent", sandbox), null);
+  nodes.get("filter").value = "no-such-topic-xyz";
+  nodes.get("filter").oninput();
+  assert.equal(nodes.get("topic").options.length, 0);
+  assert.equal(nodes.get("start").disabled, true);
+  assert.equal(nodes.get("practiceStart").disabled, true);
+  assert.match(nodes.get("topicStatus").textContent, /No matching/);
+  assert.equal(nodes.get("sources").children.length, 0);
+  nodes.get("filter").value = "";
+  nodes.get("filter").oninput();
+  assert.equal(nodes.get("topic").options.length, 156);
+  assert.equal(nodes.get("start").disabled, false);
+  const selected = nodes.get("topic").options[1].value;
+  nodes.get("topic").value = selected;
+  nodes.get("topic").onchange();
+  assert.equal(nodes.get("topic").value, selected);
+  assert.equal(nodes.get("start").disabled, false);
+  nodes.get("random").onclick();
+  assert.ok(topics.some((t) => t.id === nodes.get("topic").value));
+  nodes.get("weak").onclick();
+  assert.match(nodes.get("error").textContent, /No weak areas/);
+  // Permission failures must restore all topic controls and stop connection setup.
+  vm.runInContext(
+    `navigator.mediaDevices.getUserMedia=async()=>{throw Error("Microphone denied")}`,
+    sandbox,
+  );
+  await nodes.get("start").onclick();
+  assert.match(nodes.get("error").textContent, /Microphone denied/);
+  assert.equal(nodes.get("filter").disabled, false);
+  assert.equal(nodes.get("topic").disabled, false);
   nodes.get("practiceScope").value = "mixed";
   nodes.get("practiceMode").value = "teaching";
   nodes.get("blockSize").value = "1";
@@ -454,4 +532,39 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
   assert.equal(reports[0].comparisons[2].difference, -70);
   assert.equal(reports[0].comparisons[2].sameLevel, false);
   assert.match(nodes.get("iteComparisons").children[0].textContent, /2025/);
+
+  let exported: Blob | undefined;
+  sandbox.Blob = Blob;
+  sandbox.URL = class extends URL {
+    static createObjectURL(blob: Blob) {
+      exported = blob;
+      return "blob:test-export";
+    }
+    static revokeObjectURL() {}
+  };
+  nodes.get("export").onclick();
+  const archive = await exported!.text();
+  assert.equal(JSON.parse(archive).iteReports[0].score, reports[0].score);
+  nodes.get("clear").onclick();
+  assert.equal(vm.runInContext("data.events.length", sandbox), 0);
+  await nodes
+    .get("importFile")
+    .onchange({
+      target: { files: [{ size: archive.length, text: async () => archive }] },
+    });
+  assert.equal(vm.runInContext("data.iteReports.length", sandbox), 1);
+  assert.ok(vm.runInContext("data.events.length", sandbox) > 0);
+  const checkpoint = vm.runInContext("data.checkpoint", sandbox);
+  vm.runInContext(
+    `onEvent({data:JSON.stringify({type:"response.function_call_arguments.done",call_id:"stale-call",name:"save_lesson",arguments:JSON.stringify({checkpoint:"stale checkpoint",plan:[]})})});stop();`,
+    sandbox,
+  );
+  await vm.runInContext("toolChain", sandbox);
+  assert.equal(vm.runInContext("data.checkpoint", sandbox), checkpoint);
+  vm.runInContext(
+    `$("text").value="Keep my draft";$("typed").onsubmit({preventDefault(){}});`,
+    sandbox,
+  );
+  assert.equal(nodes.get("text").value, "Keep my draft");
+  assert.match(nodes.get("error").textContent, /Start a conversation/);
 });
