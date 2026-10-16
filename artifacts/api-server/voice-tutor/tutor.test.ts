@@ -335,7 +335,8 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
     vm = await import("node:vm"),
     { bank } = await import("./practice");
   const nodes = new Map<string, any>(),
-    saved = new Map<string, string>();
+    saved = new Map<string, string>(),
+    apiCalls: Array<{ path: string; body: any }> = [];
   function makeNode(id = ""): any {
     const n: any = {
       id,
@@ -394,12 +395,15 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
     URL,
     console,
     alert() {},
-    fetch: async (path: string, opts: any) =>
-      path === "/api/session"
+    fetch: async (path: string, opts: any) => {
+      const body = opts.body ? JSON.parse(opts.body) : undefined;
+      apiCalls.push({ path, body });
+      return path === "/api/session"
         ? new Response("v=0\r\nmock-sdp", {
             headers: { "content-type": "application/sdp" },
           })
-        : request(path, opts.body ? JSON.parse(opts.body) : undefined),
+        : request(path, body);
+    },
     confirm: () => true,
   });
   vm.runInContext(
@@ -453,7 +457,10 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
     `
     globalThis.outgoing = [];
     globalThis.track = {enabled:true,stopped:false,stop(){this.stopped=true}};
-    globalThis.navigator={mediaDevices:{getUserMedia:async()=>({getAudioTracks:()=>[track],getTracks:()=>[track]})}};
+    globalThis.navigator={mediaDevices:{getUserMedia:async()=>{
+      track={enabled:true,stopped:false,stop(){this.stopped=true}};
+      return {getAudioTracks:()=>[track],getTracks:()=>[track]};
+    }}};
     globalThis.crypto={randomUUID:()=>"test-voice-session"};
     globalThis.RTCPeerConnection=class {
       createDataChannel(){this.channel={readyState:"open",send(message){outgoing.push(JSON.parse(message))},close(){}};return this.channel;}
@@ -467,7 +474,44 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
   `,
     sandbox,
   );
+  // Conversation starts are guided cases; scored practice requires its own button.
   await nodes.get("start").onclick();
+  const freshSession = apiCalls.find((call) => call.path === "/api/session");
+  assert.equal(freshSession?.body.guided, true);
+  assert.equal(
+    apiCalls.some((call) => call.path === "/api/practice/start"),
+    false,
+  );
+  assert.equal(vm.runInContext("practiceRunning", sandbox), false);
+  assert.equal(vm.runInContext("practiceCurrent", sandbox), null);
+  const initialMessages: any[] = vm.runInContext("outgoing", sandbox);
+  const initialPrompt = initialMessages.find(
+    (message) => message.item?.role === "user",
+  ).item.content[0].text;
+  assert.match(initialPrompt, /guided, unscored clinical case/);
+  assert.match(initialPrompt, /introduction\/vignette/);
+  assert.ok(!initialPrompt.includes("get_practice_question"));
+  nodes.get("case").onclick();
+  const caseMessages: any[] = vm.runInContext("outgoing", sandbox);
+  assert.match(
+    caseMessages.at(-2).item.content[0].text,
+    /same guided clinical case.*next unfinished stage/,
+  );
+  nodes.get("stop").onclick();
+  assert.equal(vm.runInContext("track.stopped", sandbox), true);
+
+  await nodes.get("practiceStart").onclick();
+  assert.equal(vm.runInContext("practiceRunning", sandbox), true);
+  await nodes.get("start").onclick();
+  const reviewedSession = apiCalls
+    .filter((call) => call.path === "/api/session")
+    .at(-1);
+  assert.equal(reviewedSession?.body.guided, false);
+  const reviewedMessages: any[] = vm.runInContext("outgoing", sandbox);
+  assert.match(
+    reviewedMessages.at(-2).item.content[0].text,
+    /active reviewed practice block.*get_practice_question/,
+  );
   assert.equal(vm.runInContext("!!pc", sandbox), true);
   assert.equal(
     nodes.get("filter").disabled,

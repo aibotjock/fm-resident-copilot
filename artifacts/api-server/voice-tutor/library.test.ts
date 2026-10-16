@@ -422,3 +422,105 @@ test(
     }
   },
 );
+
+test("explicit reviewed voice practice preserves assessment, while a successful guided session starts one unscored case and clears old scoring", async () => {
+  const api = await unlocked();
+  const started = await api("/api/practice/start", {
+    ids: [hypertension],
+    mode: "assessment",
+    scope: "mixed",
+    limit: 3,
+  });
+  assert.equal(started.status, 200);
+  const first: any = await started.json();
+  assert.ok(first.question?.id);
+  const previousFetch = globalThis.fetch;
+  const previousKey = process.env.OPENAI_API_KEY;
+  process.env.OPENAI_API_KEY = "test-only-guided-case-session-key";
+  const prompts: string[] = [];
+  let rejectGuidedHandshake = false;
+  globalThis.fetch = (async (url: any, options: any) => {
+    assert.equal(String(url), "https://api.openai.com/v1/realtime/calls");
+    prompts.push(JSON.parse(options.body.get("session")).instructions);
+    if (rejectGuidedHandshake)
+      return new Response("not available", { status: 503 });
+    return new Response("v=0\r\nmock-guided-case-answer", {
+      headers: { "content-type": "application/sdp" },
+    });
+  }) as any;
+  const connect = (guided: boolean) =>
+    api("/api/session", {
+      ids: [hypertension],
+      progress: {},
+      history: [],
+      sdp: "v=0\r\nmock-guided-case-offer",
+      guided,
+    });
+  try {
+    assert.equal((await connect(false)).status, 200);
+    assert.ok(
+      prompts[0].includes("Session format: EXPLICIT REVIEWED PRACTICE"),
+    );
+    assert.ok(prompts[0].includes("Practice mode: assessment"));
+    assert.ok(prompts[0].includes("Reviewed mixed-block answer rationales"));
+    assert.ok(!prompts[0].includes("Session format: GUIDED CASE"));
+    let next = await api("/api/practice/next", {});
+    assert.equal(next.status, 200);
+    assert.equal(((await next.json()) as any).question.id, first.question.id);
+
+    // A rejected voice connection must not discard the learner's assessment.
+    rejectGuidedHandshake = true;
+    assert.equal((await connect(true)).status, 502);
+    next = await api("/api/practice/next", {});
+    assert.equal(next.status, 200);
+    assert.equal(((await next.json()) as any).question.id, first.question.id);
+
+    rejectGuidedHandshake = false;
+    assert.equal((await connect(true)).status, 200);
+    const guided = prompts[2];
+    assert.ok(
+      guided.includes(
+        "Session format: GUIDED CASE, original unscored teaching",
+      ),
+    );
+    assert.ok(guided.includes("Practice mode: teaching"));
+    assert.ok(!guided.includes("Reviewed mixed-block answer rationales"));
+    let previousStage = -1;
+    for (const stage of [
+      "1. INTRODUCTION / VIGNETTE:",
+      "2. DIFFERENTIAL DIAGNOSIS:",
+      "3. NEXT BEST TEST:",
+      "4. DIAGNOSIS:",
+      "5. FIRST-LINE TREATMENT:",
+      "6. SECOND-LINE TREATMENT:",
+      "7. DOSING IF NEEDED:",
+      "8. CONCLUSION:",
+    ]) {
+      const stageIndex = guided.indexOf(stage);
+      assert.ok(
+        stageIndex > previousStage,
+        `${stage} must follow the preceding guided stage`,
+      );
+      previousStage = stageIndex;
+    }
+    assert.ok(guided.includes("only when the selected source establishes it"));
+    assert.ok(
+      guided.includes(
+        "only to the extent explicitly supplied by the selected source",
+      ),
+    );
+    assert.ok(guided.includes("Ask ONE question at a time"));
+    assert.ok(
+      guided.includes(
+        "do not call get_practice_question simply to begin or advance a guided case",
+      ),
+    );
+    next = await api("/api/practice/next", {});
+    assert.equal(next.status, 400);
+    assert.match(((await next.json()) as any).error, /Start a practice block/);
+  } finally {
+    globalThis.fetch = previousFetch;
+    if (previousKey === undefined) delete process.env.OPENAI_API_KEY;
+    else process.env.OPENAI_API_KEY = previousKey;
+  }
+});

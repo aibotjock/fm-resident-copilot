@@ -1386,13 +1386,13 @@
       if (connecting || pc || !$("topic").value) return;
       connecting = true;
       const epoch = ++connectionEpoch;
+      const guided = !practiceRunning;
       $("start").disabled = true;
       $("stop").disabled = false;
       fail("");
       state("Connecting…");
       try {
-        if (!practiceRunning) await startPracticeBlock();
-        if (epoch !== connectionEpoch) return;
+        if (guided) $("practiceMode").value = "teaching";
         if (!navigator.mediaDevices?.getUserMedia || !window.RTCPeerConnection)
           throw Error("Voice requires a supported browser over HTTPS.");
         const media = await navigator.mediaDevices.getUserMedia({
@@ -1437,9 +1437,11 @@
             $(id).disabled = false;
           state("Listening…");
           ask(
-            data.lessonTopic === activeTopic && data.checkpoint
-              ? "Resume my learning plan. Use get_practice_question to present the current reviewed practice question, or offer unscored teaching if none is available."
-              : "Use get_practice_question to present the current reviewed ABFM-style case. Ask one question and wait. Follow the selected teaching or assessment mode.",
+            guided
+              ? data.lessonTopic === activeTopic && data.checkpoint
+                ? "Resume my saved guided clinical case at its next unfinished stage. Keep it unscored, follow the ordered clinical reasoning stages, ask one question and wait; do not start an unrelated case or a scored practice block."
+                : "Start a guided, unscored clinical case on the selected topic. Present the introduction/vignette and one opening question, then wait. Continue the same case through the ordered clinical reasoning stages; do not start a scored practice block."
+              : "Resume the active reviewed practice block. Use get_practice_question to present the current reviewed question, ask one question and wait, and preserve the selected teaching or assessment mode.",
           );
           sessionTimer = setTimeout(
             () => {
@@ -1454,6 +1456,7 @@
         const answer = await api("session", {
           sdp: offer.sdp,
           ids: [$("topic").value],
+          guided,
           progress: stats(),
           history: {
             recent: data.history,
@@ -1485,7 +1488,7 @@
     };
     $("case").onclick = () =>
       ask(
-        "Continue this case with the next concise ABFM-style question and plausible answer choices; wait for my answer.",
+        "Continue the same guided clinical case at its next unfinished stage, asking one question and waiting for my answer. Do not start a random or unrelated case. If an explicit reviewed practice block is active, preserve its teaching or assessment rules.",
       );
     $("quiz").onclick = () =>
       ask(

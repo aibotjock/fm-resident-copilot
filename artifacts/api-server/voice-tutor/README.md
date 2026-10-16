@@ -199,10 +199,26 @@ Searches also continue correctly when a model response includes both a short
 spoken introduction and a tool call. No external research or content refresh is
 involved in library navigation.
 
-Validation: 24 automated tests pass, including authenticated search/select APIs,
+Validation: 25 automated tests pass, including authenticated search/select APIs,
 the initial session catalog, searches for asthma/diabetes/COPD/UTI, no-match and
 invalid-input recovery, live-connection tool dispatch with a simulated microphone,
 failed selection recovery, and delayed old-topic replies/handshakes. The tutor
 TypeScript check and bundle build pass. Real-device microphone/audio and actual
 model tool-choice behavior remain unverified; Chromium installation again failed
 in this environment. Clinical source content and the non-voice app are unchanged.
+
+## Guided case flow — 2026-10-16
+
+Start conversation begins or resumes one original unscored case, moving through
+the vignette, differential diagnosis, next best test, diagnosis, first-line
+treatment, supported second-line treatment, dosing when needed and supported,
+and a concluding synthesis. The tutor asks one question at a time and waits for
+the learner's reasoning. A missing or inapplicable step is identified briefly;
+it does not justify inventing clinical facts. Checkpoints retain the current
+stage and pending question. Generated teaching remains unscored.
+
+Start practice still opens the explicit reviewed teaching/assessment path.
+Normal conversation no longer starts a scored block automatically; successfully
+starting a guided voice session clears any stale scored block on the server.
+The ordered guided progression is a model instruction, not a verified guarantee
+of every generated conversation. Actual spoken cases still require review.

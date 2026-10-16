@@ -56,6 +56,7 @@ app.get("/api/healthz", (_req, res) =>
     accessConfigured: !!process.env.FM_TUTOR_ACCESS_TOKEN,
     libraryTopics: topics.length,
     libraryNavigation: "voice-search-and-select-v1",
+    guidedCase: "vignette-to-conclusion-v1",
   }),
 );
 app.get("/learning.js", async (_req, res) =>
@@ -277,14 +278,17 @@ app.post("/api/session", async (req, res) => {
     return;
   }
   let prompt: string;
+  const guided = req.body.guided === true;
+  const practice = guided ? undefined : session.practice;
   try {
     prompt = instructions(
       req.body.ids,
       req.body.progress,
       req.body.history,
-      session.practice?.mode || "teaching",
+      practice?.mode || "teaching",
+      guided,
     );
-    if (session.practice?.scope === "mixed") {
+    if (practice?.scope === "mixed") {
       prompt +=
         "\nReviewed mixed-block answer rationales may use ONLY the scoped evidence claims supplied by practice tools. Do not extend other medical claims beyond selected LIBRARY.\n";
       // Tools return the exact source for each scored answer; no whole unreviewed corpus is added.
@@ -359,6 +363,7 @@ app.post("/api/session", async (req, res) => {
       return;
     }
     session.ids = req.body.ids;
+    if (guided) session.practice = undefined;
     res.type("application/sdp").send(await response.text());
   } catch {
     res.status(502).json({
