@@ -165,7 +165,7 @@ test("Realtime handshake uses the existing server key and configured evidence wi
     assert.equal(config.type, "realtime");
     assert.equal(config.audio.input.turn_detection.interrupt_response, true);
     assert.ok(config.instructions.includes(version));
-    assert.equal(config.tools.length, 2);
+    assert.equal(config.tools.length, 6);
     return new Response("v=0\r\nmock-answer", {
       headers: { "content-type": "application/sdp" },
     });
@@ -187,7 +187,16 @@ test("Realtime handshake uses the existing server key and configured evidence wi
       evidence_ids: [topics[0].id],
       note: "hint used",
     });
-    assert.equal(result.status, 200);
+    assert.equal(result.status, 400);
+    const unscored = await request("/api/learning", {
+      question_id: "u1",
+      topic_id: topics[0].id,
+      skill: "diagnosis",
+      result: "unscored",
+      evidence_ids: [topics[0].id],
+      note: "Generated teaching, not verified scoring",
+    });
+    assert.equal(unscored.status, 200);
   } finally {
     globalThis.fetch = originalFetch;
     if (old === undefined) delete process.env.OPENAI_API_KEY;
@@ -253,11 +262,17 @@ test("browser controls mute capture and release every track on end", async () =>
     },
     setTimeout,
     clearTimeout,
+    setInterval,
+    clearInterval,
     console,
   });
   const html = readFileSync(
     "artifacts/api-server/voice-tutor/index.html",
     "utf8",
+  );
+  vm.runInContext(
+    readFileSync("artifacts/api-server/voice-tutor/dist/learning.js", "utf8"),
+    sandbox,
   );
   vm.runInContext(html.match(/<script>([\s\S]*?)<\/script>/)![1], sandbox);
   vm.runInContext(
@@ -273,4 +288,170 @@ test("browser controls mute capture and release every track on end", async () =>
   assert.equal(vm.runInContext("track.stopped", sandbox), true);
   assert.equal(vm.runInContext("stream", sandbox), null);
   assert.equal(nodes.get("start").disabled, false);
+});
+
+test("practice HTTP API enforces delayed assessment feedback and selected-source grading boundaries", async () => {
+  const start = await request("/api/practice/start", {
+    ids: [topics[0].id],
+    mode: "assessment",
+    scope: "mixed",
+    limit: 2,
+    seconds: 60,
+  });
+  assert.equal(start.status, 200);
+  const first: any = await start.json();
+  assert.ok(first.question);
+  assert.equal(first.question.answer, undefined);
+  const hint = await request("/api/practice/assist", {});
+  assert.equal(hint.status, 400);
+  const answer = await request("/api/practice/answer", {
+    question_id: first.question.id,
+    choice: "A",
+    confidence: "high",
+  });
+  assert.equal(answer.status, 200);
+  assert.deepEqual(await answer.json(), { recorded: true, mode: "assessment" });
+  const stale = await request("/api/practice/answer", {
+    question_id: first.question.id,
+    choice: "A",
+  });
+  assert.equal(stale.status, 400);
+  const end: any = await (await request("/api/practice/finish", {})).json();
+  assert.equal(end.results.length, 1);
+  assert.ok(end.results[0].rationale);
+  assert.ok(end.results[0].source.url.startsWith("https://"));
+});
+test("tutor interface executes teaching, ITE cohort comparison and local persistence flows", async () => {
+  const { readFileSync } = await import("node:fs"),
+    vm = await import("node:vm"),
+    { bank } = await import("./practice");
+  const nodes = new Map<string, any>(),
+    saved = new Map<string, string>();
+  function makeNode(id = ""): any {
+    const n: any = {
+      id,
+      textContent: "",
+      value: "",
+      disabled: false,
+      children: [],
+      classList: { add() {}, remove() {}, toggle() {} },
+      setAttribute() {},
+      append(...children: any[]) {
+        this.children.push(...children);
+        if ((id === "topic" || id === "lookupUrl") && !this.value)
+          this.value = children[0]?.value || "";
+      },
+      replaceChildren(...children: any[]) {
+        this.children = children;
+        if (id === "topic" || id === "lookupUrl") this.value = "";
+      },
+      click() {
+        this.onclick?.();
+      },
+    };
+    Object.defineProperty(n, "options", {
+      get() {
+        return n.children;
+      },
+    });
+    return n;
+  }
+  const sandbox = vm.createContext({
+    document: {
+      getElementById(id: string) {
+        if (!nodes.has(id)) nodes.set(id, makeNode(id));
+        return nodes.get(id);
+      },
+      createElement() {
+        return makeNode();
+      },
+      createTextNode(s: string) {
+        return s;
+      },
+    },
+    localStorage: {
+      getItem(k: string) {
+        return saved.get(k) || null;
+      },
+      setItem(k: string, v: string) {
+        saved.set(k, v);
+      },
+    },
+    window: { addEventListener() {} },
+    setTimeout,
+    clearTimeout,
+    setInterval,
+    clearInterval,
+    URL,
+    console,
+    alert() {},
+    fetch: async (path: string, opts: any) =>
+      request(path, opts.body ? JSON.parse(opts.body) : undefined),
+    confirm: () => true,
+  });
+  vm.runInContext(
+    readFileSync("artifacts/api-server/voice-tutor/dist/learning.js", "utf8"),
+    sandbox,
+  );
+  vm.runInContext(
+    readFileSync("artifacts/api-server/voice-tutor/index.html", "utf8").match(
+      /<script>([\s\S]*?)<\/script>/,
+    )![1],
+    sandbox,
+  );
+  for (const id of [
+    "code",
+    "practiceScope",
+    "practiceMode",
+    "blockSize",
+    "blockSeconds",
+    "confidence",
+    "errorType",
+    "iteYear",
+    "itePGY",
+    "iteScore",
+    "iteMean1",
+    "iteMean2",
+    "iteMean3",
+    "iteSource",
+    "iteSourceLabel",
+  ])
+    if (!nodes.has(id)) nodes.set(id, makeNode(id));
+  nodes.get("code").value = "test-only-private-code-123456789";
+  await nodes.get("login").onsubmit({ preventDefault() {} });
+  assert.match(nodes.get("bankCoverage").textContent, /26 original/);
+  nodes.get("practiceScope").value = "mixed";
+  nodes.get("practiceMode").value = "teaching";
+  nodes.get("blockSize").value = "1";
+  nodes.get("blockSeconds").value = "60";
+  await nodes.get("practiceStart").onclick();
+  const id = vm.runInContext("practiceCurrent.id", sandbox),
+    q = bank.find((q) => q.id === id)!;
+  nodes.get("confidence").value = "high";
+  nodes.get("errorType").value = "knowledge_gap";
+  await nodes
+    .get("practiceOptions")
+    .children[(q.answer + 1) % q.options.length].onclick();
+  assert.match(nodes.get("practiceFeedback").textContent, /Re-read/);
+  await nodes.get("practiceOptions").children[q.answer].onclick();
+  assert.match(nodes.get("practiceQuestion").textContent, /Block complete/);
+  assert.match(nodes.get("retention").textContent, /first attempts: 0 \/ 1/);
+  const values: any = {
+    iteYear: "2025",
+    itePGY: "1",
+    iteScore: "430",
+    iteMean1: "400",
+    iteMean2: "450",
+    iteMean3: "500",
+    iteSource: "https://portfolio.theabfm.org/report",
+    iteSourceLabel: "Synthetic test fixture — not real national data",
+  };
+  for (const [k, v] of Object.entries(values)) nodes.get(k).value = v;
+  nodes.get("iteSave").onclick();
+  const reports = JSON.parse(saved.get("fm-tutor-progress-v1")!).iteReports;
+  assert.equal(reports[0].comparisons[0].difference, 30);
+  assert.equal(reports[0].comparisons[0].sameLevel, true);
+  assert.equal(reports[0].comparisons[2].difference, -70);
+  assert.equal(reports[0].comparisons[2].sameLevel, false);
+  assert.match(nodes.get("iteComparisons").children[0].textContent, /2025/);
 });

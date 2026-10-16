@@ -11,7 +11,7 @@
     "start:railway": "node artifacts/api-server/dist/index.cjs",
     "build:tutor": "node artifacts/api-server/voice-tutor/build.mjs",
     "start:tutor": "node artifacts/api-server/voice-tutor/dist/server.cjs",
-    "test:tutor": "FM_TUTOR_TEST=1 pnpm --filter @workspace/api-server exec node --import tsx --test voice-tutor/tutor.test.ts"
+    "test:tutor": "pnpm build:tutor && FM_TUTOR_TEST=1 pnpm --filter @workspace/api-server exec node --import tsx --test voice-tutor/tutor.test.ts voice-tutor/learning.test.ts"
   },
   "private": true,
   "devDependencies": {

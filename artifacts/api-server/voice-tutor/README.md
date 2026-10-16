@@ -78,8 +78,8 @@ For Railway, create a **separate service**, source this experimental branch, bui
 `pnpm build:tutor`, start `pnpm start:tutor`, health check `/api/healthz`. Use a
 Railway reference variable to the existing service's `OPENAI_API_KEY`; do not copy
 it into chat, the repository or the browser. No `DATABASE_URL` is needed. Provide
-a separate private tutor access code through service variables. This branch has
-not been deployed and no existing Railway configuration was changed.
+a separate private tutor access code through service variables. The baseline tutor
+was deployed separately; the learning-loop update below is not yet deployed.
 
 The server exchanges SDP with OpenAI; it never sends the permanent key to the
 browser. Access uses an HttpOnly, SameSite=Strict, one-hour cookie. The private
@@ -111,3 +111,68 @@ https://developers.openai.com/api/docs/guides/voice-webrtc?voice-api=realtime
 
 No changes to existing app start/build commands: the tutor uses separate commands.
 Rollback is stopping/deleting only the independent experimental service, if deployed.
+
+## Learning-loop update — 2026-10-16
+
+- The reviewed practice path contains 26 original items, with immutable server-side
+  answer keys, scoped stored evidence IDs, rationales and clinical transfer prompts.
+  "Snapshot claim checked" means checked against that specific retained correction;
+  it does **not** mean new independent guideline verification, clinical validation,
+  commercial rights clearance or ABFM endorsement. No source snapshot was refreshed.
+- Teaching offers a single retry; assistance is recorded before a hint. Assessment
+  has a configurable block length/time limit and releases answer feedback only at
+  completion or explicit end. New assessment blocks exclude previously answered
+  item IDs in supplied device history. The bank is small and can be exhausted.
+- Unreviewed questions remain available as explicitly unscored practice, per the
+  owner's instruction. Missing review alone does not block teaching. Missing source
+  content is still disclosed; the tutor cannot invent a supported clinical answer.
+- Review intervals are implementation defaults (1, 3, 7, 14, 30 days), not a validated
+  individualized algorithm. Only delayed, unassisted success on a different item
+  for the same concept counts toward the delayed-retrieval indicator. No clinical
+  competence, exam percentile or pass probability is inferred from these signals.
+- Mixed practice uses deficit scheduling against the official five-domain targets;
+  weak/due concepts receive priority within the selected domain. The current bank
+  covers four domains; Foundations of Care has no reviewed items. That missing 5%
+  is displayed rather than claimed as covered or silently replaced with other topics.
+- Optional confidence and self-reported error categories distinguish knowledge gaps,
+  misreading, next-step errors, missed contraindications and reasoning difficulties.
+  Unknown causes/confidence remain unknown. Clinical transfer exercises are unscored.
+- The mobile ITE form now distinguishes exam calendar year from PGY and accepts
+  scaled scores, percentiles, percent-correct values, optional separately labeled
+  domain percentages, and additional category names copied exactly from the report.
+  Existing legacy records are retained with their original interpretation.
+- ITE comparisons use the same exam year, metric and domain. Your own PGY is the
+  primary comparison; other PGYs are explicitly contextual. No raw/scale conversion,
+  normal-distribution percentile inference or practice-to-ITE conversion is made.
+- National means must be transcribed from an attributed official ABFM source.
+  No 2025 national means were verified or seeded in this change. The official 2025
+  score-handbook URL was not retrievable, so the form is flexible entry rather than
+  a claim to reproduce that report exactly. Source URLs and report values are
+  user-entered, not independently authenticated. The native report form and tutor
+  store data separately on the local device; account sync is not implemented.
+
+Official exam-format and domain references checked 2026-10-16:
+- https://www.theabfm.org/become-certified/in-training-exam/
+- https://www.theabfm.org/family-medicine-exam-blueprint/
+- https://www.theabfm.org/app/uploads/2024/07/2024-07_ITE-Content-Outline.pdf
+
+These references describe the exam/blueprint; they do not supply verified 2025
+national cohort means. Publicly inaccessible score-handbook data were not invented.
+
+Validation: 16 focused tests cover scoring, delayed feedback, timeouts, fresh-item
+exclusion, spacing, confidence/error signals, year/PGY/metric comparisons, interface
+handlers and persistence, private access, source approval and simulated voice handshake.
+Tutor and mobile TypeScript checks pass; the tutor bundle and Expo web export build.
+A real browser rendering test was attempted but Chromium could not be installed in
+this environment. DOM-handler tests use a simulated document, not real rendering.
+Real microphone use, timing and clinical review of generated conversations remain pending.
+
+All changes are on the experimental branch. The full mobile ITE correction requires
+an app build from this branch; deploying only the standalone tutor does not change
+the main app's ITE form. No merge or main-service deployment is part of this update.
+
+Five original, self-contained Foundations statistics exercises are available as
+unreviewed, unscored practice even without voice. Each stem supplies its own
+definition and numbers; feedback follows that arithmetic only. No clinical source
+was added, and these do not count as reviewed Foundations coverage. Ethics and
+policy teaching still requires support in approved source material.

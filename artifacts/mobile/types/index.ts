@@ -89,6 +89,13 @@ export interface ITEScore {
   year: 1 | 2 | 3;
   takenDate: string;
   scores: Record<string, number>;
+  format?: "activity_2025" | "legacy";
+  examYear?: number;
+  scoreMetric?: "scaled" | "percentile" | "percent_correct";
+  overallScore?: number;
+  domainPercentages?: Record<string, number>;
+  percentageKind?: "percent_correct" | "percentile" | "report_percentage_unspecified";
+  benchmarks?: import("../utils/ite").ITEBenchmark[];
   createdAt: number;
 }
 

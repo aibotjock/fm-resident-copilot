@@ -1,3 +1,12 @@
+import {
+  bank,
+  startPractice,
+  nextPractice,
+  answerPractice,
+  finishPractice,
+  type Practice,
+} from "./practice";
+import { BLUEPRINT } from "./learning";
 import express from "express";
 import { randomBytes, timingSafeEqual } from "node:crypto";
 import { readFile } from "node:fs/promises";
@@ -23,7 +32,13 @@ app.use((_req, res, next) => {
 });
 const sessions = new Map<
   string,
-  { expires: number; calls: number; busy: boolean; ids: string[] }
+  {
+    expires: number;
+    calls: number;
+    busy: boolean;
+    ids: string[];
+    practice?: Practice;
+  }
 >();
 setInterval(() => {
   for (const [k, v] of sessions) if (v.expires < Date.now()) sessions.delete(k);
@@ -38,6 +53,16 @@ app.get("/api/healthz", (_req, res) =>
     ),
     accessConfigured: !!process.env.FM_TUTOR_ACCESS_TOKEN,
   }),
+);
+app.get("/learning.js", async (_req, res) =>
+  res
+    .type("js")
+    .send(
+      await readFile(
+        "artifacts/api-server/voice-tutor/dist/learning.js",
+        "utf8",
+      ),
+    ),
 );
 app.get("/", async (_req, res) =>
   res
@@ -118,6 +143,12 @@ app.get("/api/topics", (_req, res) =>
     version,
     voiceEnrollment: false,
     externalLookup: "explicit-official-url-only",
+    practice: {
+      count: bank.length,
+      blueprint: BLUEPRINT,
+      coveredDomains: [...new Set(bank.map((q) => q.domain))],
+      review: "snapshot_claim_checked; independent clinical review pending",
+    },
   }),
 );
 app.post("/api/context", (req, res) => {
@@ -138,7 +169,65 @@ app.post("/api/context", (req, res) => {
     res.status(400).json({ error: "Select valid library topics" });
   }
 });
+app.post("/api/practice/start", (req, res) => {
+  try {
+    topicEvidence(req.body.ids);
+    const p = startPractice(req.body, req.body.ids);
+    const history = Array.isArray(req.body.events)
+      ? req.body.events
+          .filter(
+            (e: any) =>
+              bank.some(
+                (q) =>
+                  q.id === e.question_id &&
+                  q.concept_id === e.concept_id &&
+                  q.domain === e.domain &&
+                  q.topic_id === e.topic_id,
+              ) &&
+              ["correct", "incorrect", "assisted"].includes(e.result) &&
+              typeof e.first_correct === "boolean" &&
+              typeof e.assisted === "boolean" &&
+              Number.isFinite(Date.parse(e.at)),
+          )
+          .slice(-2000)
+      : [];
+    p.events = history;
+    res.locals.session.practice = p;
+    res.json(nextPractice(p));
+  } catch (e) {
+    res.status(400).json({ error: (e as Error).message });
+  }
+});
+app.post("/api/practice/:action", (req, res) => {
+  try {
+    const p: Practice = res.locals.session.practice;
+    if (!p) throw Error("Start a practice block first.");
+    if (req.params.action === "next") res.json(nextPractice(p));
+    else if (req.params.action === "answer")
+      res.json(answerPractice(p, req.body));
+    else if (req.params.action === "finish") res.json(finishPractice(p));
+    else if (req.params.action === "assist") {
+      if (p.mode !== "teaching" || !p.current)
+        throw Error(
+          "Hints are unavailable in this mode or no question is active.",
+        );
+      p.current.assisted = true;
+      res.json({ assisted: true, question_id: p.current.q.id });
+    } else res.status(404).json({ error: "Unknown practice action" });
+  } catch (e) {
+    res.status(400).json({ error: (e as Error).message });
+  }
+});
 app.post("/api/learning", (req, res) => {
+  if (req.body.result !== "unscored") {
+    res
+      .status(400)
+      .json({
+        error:
+          "Generated teaching is unscored. Use reviewed practice for scoring.",
+      });
+    return;
+  }
   if (!validLearning(req.body, res.locals.session.ids)) {
     res
       .status(400)
@@ -150,17 +239,25 @@ app.post("/api/learning", (req, res) => {
 app.post("/api/session", async (req, res) => {
   const session = res.locals.session;
   if (session.busy || session.calls >= 10) {
-    res
-      .status(429)
-      .json({
-        error:
-          "Session limit reached; wait for the current connection or unlock again later",
-      });
+    res.status(429).json({
+      error:
+        "Session limit reached; wait for the current connection or unlock again later",
+    });
     return;
   }
   let prompt: string;
   try {
-    prompt = instructions(req.body.ids, req.body.progress, req.body.history);
+    prompt = instructions(
+      req.body.ids,
+      req.body.progress,
+      req.body.history,
+      session.practice?.mode || "teaching",
+    );
+    if (session.practice?.scope === "mixed") {
+      prompt +=
+        "\nReviewed mixed-block answer rationales may use ONLY the scoped evidence claims supplied by practice tools. Do not extend other medical claims beyond selected LIBRARY.\n";
+      // Tools return the exact source for each scored answer; no whole unreviewed corpus is added.
+    }
     if (
       typeof req.body.sdp !== "string" ||
       req.body.sdp.length > 60000 ||
@@ -173,12 +270,10 @@ app.post("/api/session", async (req, res) => {
   }
   const key = process.env.OPENAI_API_KEY || process.env.OPEAI_API_KEY;
   if (!key) {
-    res
-      .status(503)
-      .json({
-        error:
-          "Existing deployed OpenAI key is not configured on this separate tutor service",
-      });
+    res.status(503).json({
+      error:
+        "Existing deployed OpenAI key is not configured on this separate tutor service",
+    });
     return;
   }
   session.busy = true;
@@ -219,21 +314,17 @@ app.post("/api/session", async (req, res) => {
       signal: AbortSignal.timeout(25000),
     });
     if (!response.ok) {
-      res
-        .status(502)
-        .json({
-          error: `OpenAI voice connection failed (${response.status}); verify Realtime model access and billing on the existing key`,
-        });
+      res.status(502).json({
+        error: `OpenAI voice connection failed (${response.status}); verify Realtime model access and billing on the existing key`,
+      });
       return;
     }
     session.ids = req.body.ids;
     res.type("application/sdp").send(await response.text());
   } catch {
-    res
-      .status(502)
-      .json({
-        error: "Voice service could not be reached; retry the connection",
-      });
+    res.status(502).json({
+      error: "Voice service could not be reached; retry the connection",
+    });
   } finally {
     session.busy = false;
   }
@@ -246,12 +337,10 @@ app.post("/api/lookup", async (req, res) => {
     res.locals.session.ids.length ? res.locals.session.ids : [topics[0].id],
   ).flatMap((e) => (e.evidence_records || []).map((r) => r.url));
   if (approved !== true || typeof url !== "string" || !allowed.includes(url)) {
-    res
-      .status(403)
-      .json({
-        error:
-          "Explicit approval and an exact listed official evidence URL are required",
-      });
+    res.status(403).json({
+      error:
+        "Explicit approval and an exact listed official evidence URL are required",
+    });
     return;
   }
   const session = res.locals.session;
@@ -299,12 +388,10 @@ app.post("/api/lookup", async (req, res) => {
         "Approved external lookup only; not a verified summary or library update. Open the official page to confirm applicability.",
     });
   } catch {
-    res
-      .status(502)
-      .json({
-        error:
-          "Official page could not be read safely (redirect, format, size, access or timeout); open its source link instead",
-      });
+    res.status(502).json({
+      error:
+        "Official page could not be read safely (redirect, format, size, access or timeout); open its source link instead",
+    });
   }
 });
 app.use((_req, res) =>

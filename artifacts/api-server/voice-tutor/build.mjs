@@ -6,3 +6,11 @@ await build({
   format: "cjs",
   outfile: "artifacts/api-server/voice-tutor/dist/server.cjs",
 });
+
+await build({
+  entryPoints: ["artifacts/api-server/voice-tutor/learning.ts"],
+  bundle: true,
+  format: "iife",
+  globalName: "FMLearning",
+  outfile: "artifacts/api-server/voice-tutor/dist/learning.js",
+});

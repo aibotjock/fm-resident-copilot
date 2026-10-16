@@ -1,3 +1,4 @@
+import { ITEReportForm, ITEReportView } from "@/components/ITEReport";
 import React, { useMemo, useState } from "react";
 import {
   Alert,
@@ -87,9 +88,7 @@ export default function ProgressScreen() {
   const [activeTab, setActiveTab] = useState<ProgressTab>("coverage");
   const [dueSnapshot, setDueSnapshot] = useState<SRSCard[]>([]);
   const [showITEModal, setShowITEModal] = useState(false);
-  const [iteYear, setIteYear] = useState<1 | 2 | 3>(1);
-  const [iteDateTaken, setIteDateTaken] = useState("");
-  const [iteInputs, setIteInputs] = useState<Record<string, string>>({});
+
 
   const dueCards = getDueCards();
   const totalCards = srsCards.length;
@@ -123,11 +122,13 @@ export default function ProgressScreen() {
 
   const latestITE = useMemo(() => {
     if (iteScores.length === 0) return null;
-    return [...iteScores].sort((a, b) => b.createdAt - a.createdAt)[0];
+    return [...iteScores].sort((a, b) => Number(b.examYear || b.takenDate) - Number(a.examYear || a.takenDate) || b.createdAt - a.createdAt)[0];
   }, [iteScores]);
 
   const priorityDomains = useMemo(() => {
     if (!latestITE) return domainStats.slice(0, 3).map((d) => d.domain);
+    if (latestITE.format === "activity_2025") return Object.entries(latestITE.scores).sort((a,b)=>a[1]-b[1]).slice(0,3).map(([name])=>name);
+    if (latestITE.scoreMetric && latestITE.scoreMetric !== "percentile") return domainStats.slice(0, 3).map((d) => d.domain);
     return ABFM_ITE_SECTIONS.filter((section) => {
       const score = latestITE.scores[section];
       return typeof score === "number" && score < 50;
@@ -162,31 +163,6 @@ export default function ProgressScreen() {
         },
       ]
     );
-  };
-
-  const handleSaveITE = async () => {
-    const scores: Record<string, number> = {};
-    let hasAny = false;
-    for (const section of ABFM_ITE_SECTIONS) {
-      const val = parseInt(iteInputs[section] ?? "", 10);
-      if (!isNaN(val) && val >= 0 && val <= 99) {
-        scores[section] = val;
-        hasAny = true;
-      }
-    }
-    if (!hasAny) {
-      Alert.alert("No scores entered", "Please enter at least one section score.");
-      return;
-    }
-    await saveITEScore({
-      year: iteYear,
-      takenDate: iteDateTaken || new Date().getFullYear().toString(),
-      scores,
-    });
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-    setShowITEModal(false);
-    setIteInputs({});
-    setIteDateTaken("");
   };
 
   const handleDeleteITE = (id: string) => {
@@ -390,8 +366,8 @@ export default function ProgressScreen() {
                   { color: "#F59E0B", fontFamily: "Inter_600SemiBold" },
                 ]}
               >
-                {latestITE
-                  ? "PRIORITY — LOWEST ITE DOMAINS"
+                {latestITE?.format === "activity_2025" ? "REVIEW — LOWEST REPORTED ACTIVITY SCORES" : latestITE && (!latestITE.scoreMetric || latestITE.scoreMetric === "percentile")
+                  ? "PRIORITY — LOWEST LEGACY TOPIC PERCENTILES"
                   : "HIGHEST WEIGHT — START HERE"}
               </Text>
             </View>
@@ -681,7 +657,7 @@ export default function ProgressScreen() {
               </View>
             ) : (
               [...iteScores]
-                .sort((a, b) => b.createdAt - a.createdAt)
+                .sort((a, b) => Number(b.examYear || b.takenDate) - Number(a.examYear || a.takenDate) || b.createdAt - a.createdAt)
                 .map((ite) => (
                   <View
                     key={ite.id}
@@ -704,7 +680,7 @@ export default function ProgressScreen() {
                             },
                           ]}
                         >
-                          ITE Year {ite.year}
+                          PGY-{ite.year}
                         </Text>
                         <Text
                           style={[
@@ -731,61 +707,7 @@ export default function ProgressScreen() {
                         />
                       </Pressable>
                     </View>
-                    {ABFM_ITE_SECTIONS.filter(
-                      (s) => typeof ite.scores[s] === "number"
-                    ).map((section) => {
-                      const pct = ite.scores[section];
-                      const color = iteColor(pct, isDark);
-                      return (
-                        <View key={section} style={styles.iteScoreRow}>
-                          <Text
-                            style={[
-                              styles.iteSectionName,
-                              {
-                                color: theme.text,
-                                fontFamily: "Inter_400Regular",
-                              },
-                            ]}
-                            numberOfLines={1}
-                          >
-                            {section}
-                          </Text>
-                          <View style={styles.iteScoreRight}>
-                            <View
-                              style={[
-                                styles.iteBarTrack,
-                                {
-                                  backgroundColor: isDark
-                                    ? "#1E293B"
-                                    : "#F1F5F9",
-                                },
-                              ]}
-                            >
-                              <View
-                                style={[
-                                  styles.iteBarFill,
-                                  {
-                                    width: `${pct}%` as any,
-                                    backgroundColor: color,
-                                  },
-                                ]}
-                              />
-                            </View>
-                            <Text
-                              style={[
-                                styles.iteScoreNum,
-                                {
-                                  color,
-                                  fontFamily: "Inter_600SemiBold",
-                                },
-                              ]}
-                            >
-                              {pct}th
-                            </Text>
-                          </View>
-                        </View>
-                      );
-                    })}
+                    <ITEReportView report={ite} />
                   </View>
                 ))
             )}
@@ -1045,151 +967,18 @@ export default function ProgressScreen() {
             >
               Enter ITE Scores
             </Text>
-            <Pressable
-              onPress={handleSaveITE}
-              style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}
-            >
-              <Text
-                style={[
-                  styles.modalSave,
-                  {
-                    color: Colors.boardPrep,
-                    fontFamily: "Inter_600SemiBold",
-                  },
-                ]}
-              >
-                Save
-              </Text>
-            </Pressable>
+            <Text style={{color:theme.textSecondary}}>Save below</Text>
           </View>
 
           <ScrollView
             contentContainerStyle={styles.modalScroll}
             showsVerticalScrollIndicator={false}
           >
-            <Text
-              style={[
-                styles.modalInstruction,
-                {
-                  color: theme.textSecondary,
-                  fontFamily: "Inter_400Regular",
-                },
-              ]}
-            >
-              Use only report scores that match these topic categories (0–99). Current ABFM activity-domain scores are not interchangeable.
-            </Text>
-
-            <View style={styles.modalField}>
-              <Text
-                style={[
-                  styles.modalLabel,
-                  { color: theme.textTertiary },
-                ]}
-              >
-                ITE YEAR
-              </Text>
-              <View style={styles.yearRow}>
-                {([1, 2, 3] as const).map((y) => (
-                  <Pressable
-                    key={y}
-                    onPress={() => setIteYear(y)}
-                    style={[
-                      styles.yearBtn,
-                      {
-                        backgroundColor:
-                          iteYear === y
-                            ? Colors.boardPrep
-                            : theme.surfaceSecondary,
-                        borderColor:
-                          iteYear === y
-                            ? Colors.boardPrep
-                            : theme.border,
-                      },
-                    ]}
-                  >
-                    <Text
-                      style={[
-                        styles.yearBtnText,
-                        {
-                          color: iteYear === y ? "#fff" : theme.text,
-                          fontFamily:
-                            iteYear === y
-                              ? "Inter_600SemiBold"
-                              : "Inter_400Regular",
-                        },
-                      ]}
-                    >
-                      Year {y}
-                    </Text>
-                  </Pressable>
-                ))}
-              </View>
-            </View>
-
-            <View style={styles.modalField}>
-              <Text
-                style={[
-                  styles.modalLabel,
-                  { color: theme.textTertiary },
-                ]}
-              >
-                YEAR TAKEN (e.g. 2024)
-              </Text>
-              <TextInput
-                style={[
-                  styles.modalInput,
-                  {
-                    backgroundColor: theme.surfaceSecondary,
-                    color: theme.text,
-                    borderColor: theme.border,
-                  },
-                ]}
-                placeholder="e.g. 2024"
-                placeholderTextColor={theme.textTertiary}
-                value={iteDateTaken}
-                onChangeText={setIteDateTaken}
-                keyboardType="numeric"
-                maxLength={4}
-              />
-            </View>
-
-            <Text
-              style={[styles.modalLabel, { color: theme.textTertiary }]}
-            >
-              SECTION PERCENTILE SCORES (0–99)
-            </Text>
-
-            {ABFM_ITE_SECTIONS.map((section) => (
-              <View key={section} style={styles.scoreField}>
-                <Text
-                  style={[
-                    styles.scoreSectionName,
-                    { color: theme.text, fontFamily: "Inter_400Regular" },
-                  ]}
-                  numberOfLines={2}
-                >
-                  {section}
-                </Text>
-                <TextInput
-                  style={[
-                    styles.scoreInput,
-                    {
-                      backgroundColor: theme.surfaceSecondary,
-                      color: theme.text,
-                      borderColor: theme.border,
-                    },
-                  ]}
-                  placeholder="—"
-                  placeholderTextColor={theme.textTertiary}
-                  value={iteInputs[section] ?? ""}
-                  onChangeText={(val) =>
-                    setIteInputs((prev) => ({ ...prev, [section]: val }))
-                  }
-                  keyboardType="numeric"
-                  maxLength={2}
-                />
-              </View>
-            ))}
+            <ITEReportForm onSave={async (report) => {
+              await saveITEScore(report);
+              setShowITEModal(false);
+              Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+            }} />
           </ScrollView>
         </KeyboardAvoidingView>
       </Modal>

@@ -227,6 +227,72 @@
               ><button id="weak">Focus on a weak area</button>
             </div>
             <small id="version"></small>
+            <label for="practiceMode">Practice mode</label
+            ><select id="practiceMode">
+              <option value="teaching">
+                Teaching — hint, retry, brief explanation
+              </option>
+              <option value="assessment">
+                Assessment — timed, feedback at block end
+              </option>
+            </select>
+            <label for="practiceScope">Coverage</label
+            ><select id="practiceScope">
+              <option value="selected">Selected topic</option>
+              <option value="mixed">Mixed blueprint practice</option>
+            </select>
+            <label for="blockSize">Questions per block</label
+            ><input id="blockSize" type="number" min="1" max="20" value="5" />
+            <label for="blockSeconds">Assessment time (seconds)</label
+            ><input
+              id="blockSeconds"
+              type="number"
+              min="60"
+              max="1200"
+              value="450"
+            />
+            <p id="bankCoverage"></p>
+            <div class="row">
+              <button id="practiceStart">Start practice block</button
+              ><button id="practiceEnd">End block & review</button
+              ><label for="unreviewedScope">Unreviewed practice area</label
+              ><select id="unreviewedScope">
+                <option value="foundations">
+                  Foundations: self-contained statistics exercises
+                </option>
+                <option value="selected">
+                  Selected clinical topic
+                </option></select
+              ><button id="unreviewedPractice">
+                Unreviewed questions (unscored)</button
+              ><button id="reviewDue">Review due concept</button>
+            </div>
+            <div id="practiceQuestion" aria-live="polite"></div>
+            <div id="practiceOptions" class="row"></div>
+            <label for="confidence">Your confidence (optional)</label
+            ><select id="confidence">
+              <option value="unspecified">Not specified</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+            <label for="errorType"
+              >If retrying, what went wrong? (optional)</label
+            ><select id="errorType">
+              <option value="uncertain">Unsure / not specified</option>
+              <option value="knowledge_gap">Knowledge gap</option>
+              <option value="case_misread">Misread the case</option>
+              <option value="wrong_next_step">Wrong next step</option>
+              <option value="missed_contraindication">
+                Missed contraindication
+              </option>
+              <option value="reasoning_gap">Reasoning gap</option>
+            </select>
+            <div id="unreviewedQuestion"></div>
+            <div id="unreviewedOptions" class="row"></div>
+            <p id="unreviewedFeedback"></p>
+            <div id="practiceFeedback" aria-live="polite"></div>
+            <small id="practiceTimer"></small>
             <div id="orb" class="orb" aria-hidden="true"></div>
             <div id="state" role="status">Ready</div>
             <div class="row">
@@ -268,6 +334,50 @@
           <div class="card">
             <h2>Your learning plan</h2>
             <div id="progress"></div>
+            <div id="retention"></div>
+            <div id="blueprintCoverage"></div>
+            <h2>ITE report comparison</h2>
+            <p>
+              <small
+                >Use the corrected report form in the main app's experimental
+                build for full report history. Here you can save year-specific
+                overall comparisons. Values stay on this device. No national
+                averages are prefilled.</small
+              >
+            </p>
+            <label for="iteYear">Exam calendar year</label
+            ><input id="iteYear" type="number" value="2025" />
+            <label for="itePGY">Your PGY when examined</label
+            ><select id="itePGY">
+              <option value="1">PGY-1</option>
+              <option value="2">PGY-2</option>
+              <option value="3">PGY-3</option>
+            </select>
+            <label for="iteScore">Your three-digit overall scaled score</label
+            ><input id="iteScore" inputmode="decimal" />
+            <label for="iteMean1"
+              >PGY-1 national scaled-score mean (optional)</label
+            ><input id="iteMean1" inputmode="decimal" />
+            <label for="iteMean2"
+              >PGY-2 national scaled-score mean (optional)</label
+            ><input id="iteMean2" inputmode="decimal" />
+            <label for="iteMean3"
+              >PGY-3 national scaled-score mean (optional)</label
+            ><input id="iteMean3" inputmode="decimal" />
+            <label for="iteSource">Official ABFM benchmark source URL</label
+            ><input id="iteSource" type="url" />
+            <label for="iteSourceLabel">Source title, table/page</label
+            ><input id="iteSourceLabel" />
+            <button id="iteSave">Save year-specific comparison</button>
+            <div id="iteComparisons"></div>
+            <p>
+              <a
+                href="https://www.theabfm.org/become-certified/in-training-exam/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Official ITE reports and resources</a
+              >
+            </p>
             <p id="checkpoint"></p>
             <ul id="plans"></ul>
             <small
@@ -319,6 +429,7 @@
     </div>
     <audio id="audio" autoplay></audio>
   </main>
+  <script src="/learning.js"></script>
   <script>
     const $ = (id) => document.getElementById(id),
       storage = "fm-tutor-progress-v1";
@@ -344,7 +455,10 @@
       caption = new Map(),
       messages = [],
       connectionEpoch = 0,
-      voiceSessionId = "";
+      voiceSessionId = "",
+      practiceCurrent = null,
+      practiceRunning = false,
+      practiceTimer = null;
     function persist() {
       try {
         localStorage.setItem(storage, JSON.stringify(data));
@@ -393,6 +507,267 @@
         ? r.text()
         : r.json();
     }
+    function savePracticeEvents(events) {
+      for (const e of events || []) {
+        const dedup = "reviewed:" + e.question_id + ":" + e.at;
+        if (!data.events.some((v) => v.dedup === dedup))
+          data.events.push({ ...e, dedup });
+      }
+      data.events = data.events.slice(-2000);
+      persist();
+    }
+    function showPractice(v) {
+      if (v.events) savePracticeEvents(v.events);
+      if (v.event) savePracticeEvents([v.event]);
+      if (v.done) {
+        practiceRunning = false;
+        practiceCurrent = null;
+        clearInterval(practiceTimer);
+        $("practiceQuestion").textContent = v.gap
+          ? v.gap +
+            " You can still use Unreviewed questions (unscored) in the voice conversation."
+          : "Block complete. Review below.";
+        $("practiceOptions").replaceChildren();
+        $("practiceTimer").textContent = "";
+      }
+      if (v.retry) {
+        $("practiceFeedback").textContent = v.hint;
+        return;
+      }
+      if (v.feedback || v.results) {
+        $("practiceFeedback").replaceChildren();
+        for (const f of v.results || [v.feedback]) {
+          const p = document.createElement("p"),
+            a = document.createElement("a");
+          p.textContent =
+            f.stem +
+            " Answer " +
+            f.correct_option +
+            ". " +
+            f.rationale +
+            " Reasoning practice (unscored): " +
+            f.transfer +
+            " ";
+          a.textContent =
+            "Stored evidence " +
+            f.source.id +
+            " · checked " +
+            f.source.lastChecked;
+          a.href = f.source.url;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          p.append(a);
+          $("practiceFeedback").append(p);
+        }
+      }
+      if (v.question) {
+        practiceCurrent = v.question;
+        practiceRunning = true;
+        $("practiceQuestion").textContent =
+          v.question.domain + " — " + v.question.stem;
+        const review = document.createElement("small"),
+          source = document.createElement("a");
+        review.textContent = v.question.review_note + " ";
+        source.textContent =
+          "Question evidence: " +
+          v.question.source.id +
+          " (" +
+          v.question.source.lastChecked +
+          ")";
+        source.href = v.question.source.url;
+        source.target = "_blank";
+        source.rel = "noopener noreferrer";
+        review.append(source);
+        $("practiceQuestion").append(review);
+        $("practiceOptions").replaceChildren();
+        $("confidence").value = "unspecified";
+        $("errorType").value = "uncertain";
+        v.question.options.forEach((option, i) => {
+          const b = document.createElement("button");
+          b.textContent = String.fromCharCode(65 + i) + ". " + option;
+          b.onclick = async () => {
+            for (const node of $("practiceOptions").children)
+              node.disabled = true;
+            try {
+              const result = await api("practice/answer", {
+                question_id: v.question.id,
+                choice: String.fromCharCode(65 + i),
+                confidence: $("confidence").value,
+                error_type: $("errorType").value,
+              });
+              showPractice(result);
+              if (!result.retry && !result.done)
+                showPractice(await api("practice/next", {}));
+            } catch (e) {
+              fail(e.message);
+            } finally {
+              for (const node of $("practiceOptions").children)
+                node.disabled = false;
+            }
+          };
+          $("practiceOptions").append(b);
+        });
+        clearInterval(practiceTimer);
+        if (v.deadline) {
+          practiceTimer = setInterval(async () => {
+            const seconds = Math.max(
+              0,
+              Math.ceil((v.deadline - Date.now()) / 1000),
+            );
+            $("practiceTimer").textContent = seconds + " seconds remaining";
+            if (seconds === 0) {
+              clearInterval(practiceTimer);
+              showPractice(await api("practice/finish", {}));
+            }
+          }, 1000);
+        }
+      }
+    }
+    async function startPracticeBlock() {
+      const v = await api("practice/start", {
+        ids: [$("topic").value],
+        mode: $("practiceMode").value,
+        scope: $("practiceScope").value,
+        limit: Number($("blockSize").value || 5),
+        seconds: Number($("blockSeconds").value || 450),
+        events: data.events,
+      });
+      $("practiceFeedback").replaceChildren();
+      showPractice(v);
+      return v;
+    }
+    let draftIndex = 0;
+    $("unreviewedPractice").onclick = () => {
+      if ($("practiceMode").value === "assessment") {
+        fail(
+          "End the assessment block and select Teaching mode before unreviewed practice.",
+        );
+        return;
+      }
+      if ($("unreviewedScope").value === "foundations") {
+        const q =
+          FMLearning.UNREVIEWED_FOUNDATIONS[
+            draftIndex++ % FMLearning.UNREVIEWED_FOUNDATIONS.length
+          ];
+        $("unreviewedQuestion").textContent =
+          "Unreviewed practice — unscored. Source: definitions and numbers supplied in this original exercise. " +
+          q.stem;
+        $("unreviewedFeedback").textContent = "";
+        $("unreviewedOptions").replaceChildren();
+        q.options.forEach((o, i) => {
+          const b = document.createElement("button");
+          b.textContent = String.fromCharCode(65 + i) + ". " + o;
+          b.onclick = () => {
+            $("unreviewedFeedback").textContent =
+              (i === q.answer
+                ? "That matches the supplied calculation. "
+                : "Recheck the supplied definition. ") +
+              q.rationale +
+              " Unreviewed exercise; excluded from scored progress.";
+          };
+          $("unreviewedOptions").append(b);
+        });
+        if (dc?.readyState === "open")
+          ask(
+            "I request this original unreviewed, unscored Foundations exercise. Present it and wait for my answer; do not add it to scored progress. Definitions and numbers are supplied in the stem. Exercise data: " +
+              JSON.stringify(q),
+          );
+        return;
+      }
+      if (dc?.readyState !== "open") {
+        fail(
+          "Start the voice conversation to use unreviewed clinical-topic questions.",
+        );
+        return;
+      }
+      ask(
+        "I explicitly request an unreviewed, unscored ABFM-style question from this topic. Note the review gap briefly and continue. Use only supported approved content; do not grade this into my scored progress.",
+      );
+    };
+    $("practiceStart").onclick = async () => {
+      stop();
+      try {
+        await startPracticeBlock();
+      } catch (e) {
+        fail(e.message);
+      }
+    };
+    $("practiceEnd").onclick = async () => {
+      try {
+        const v = await api("practice/finish", {});
+        showPractice(v);
+        if (dc?.readyState === "open")
+          ask(
+            "I ended the practice block. Summarize these server-graded results briefly: " +
+              JSON.stringify(v),
+          );
+      } catch (e) {
+        fail(e.message);
+      }
+    };
+    $("reviewDue").onclick = () => {
+      const due = FMLearning.reviewQueue(data.events).find(
+        (r) => r.due <= Date.now(),
+      );
+      if (due) {
+        choose(due.topic_id);
+        $("practiceScope").value = "selected";
+      } else
+        fail(
+          "No concepts are due yet. A missed concept returns after one day; independent successes extend the interval.",
+        );
+    };
+    $("iteSave").onclick = () => {
+      try {
+        const examYear = Number($("iteYear").value),
+          pgy = Number($("itePGY").value),
+          score = FMLearning.reportValue($("iteScore").value, "scaled");
+        if (
+          !Number.isInteger(examYear) ||
+          examYear < 2000 ||
+          examYear > new Date().getFullYear() ||
+          ![1, 2, 3].includes(pgy) ||
+          score === undefined
+        )
+          throw Error(
+            "Enter the exam year, your PGY then and reported overall scaled score.",
+          );
+        const comparisons = [];
+        for (const level of [1, 2, 3]) {
+          const mean = FMLearning.reportValue(
+            $("iteMean" + level).value,
+            "scaled",
+          );
+          if (mean !== undefined) {
+            const benchmark = {
+              examYear,
+              pgy: level,
+              metric: "scaled",
+              domain: "Overall",
+              mean,
+              sourceUrl: $("iteSource").value,
+              sourceLabel: $("iteSourceLabel").value,
+            };
+            comparisons.push({
+              benchmark,
+              ...FMLearning.compareITE(
+                score,
+                { examYear, pgy, metric: "scaled", domain: "Overall" },
+                benchmark,
+                true,
+              ),
+            });
+          }
+        }
+        data.iteReports = [
+          ...(data.iteReports || []),
+          { examYear, pgy, score, comparisons },
+        ].slice(-30);
+        persist();
+      } catch (e) {
+        fail(e.message);
+      }
+    };
     function stats() {
       const result = {};
       for (const e of data.events) {
@@ -425,6 +800,70 @@
     function renderProgress() {
       const s = stats(),
         weak = weakTopics();
+      const summary = FMLearning.learningSummary(data.events),
+        queue = FMLearning.reviewQueue(data.events);
+      $("retention").textContent =
+        "Reviewed-item first attempts: " +
+        summary.first_attempt_correct +
+        " / " +
+        summary.total +
+        " · delayed independent successes: " +
+        summary.delayed_correct +
+        " · high-confidence misses: " +
+        summary.high_confidence_misses +
+        " · due concepts: " +
+        queue.filter((r) => r.due <= Date.now()).length +
+        ". Error signals: " +
+        Object.entries(summary.errors)
+          .map(([k, v]) => k.replaceAll("_", " ") + " " + v)
+          .join(", ") +
+        ". Not a competency or ITE score.";
+      $("blueprintCoverage").textContent = Object.entries(FMLearning.BLUEPRINT)
+        .map(
+          ([d, w]) =>
+            d +
+            ": " +
+            (summary.domains[d] || 0) +
+            " completed / " +
+            w +
+            "% target",
+        )
+        .join("; ");
+      $("iteComparisons").replaceChildren();
+      for (const r of [...(data.iteReports || [])].sort(
+        (a, b) => b.examYear - a.examYear,
+      )) {
+        const p = document.createElement("p");
+        p.textContent =
+          r.examYear +
+          " · your PGY-" +
+          r.pgy +
+          " score " +
+          r.score +
+          ". " +
+          (r.comparisons.length
+            ? r.comparisons
+                .map(
+                  (c) =>
+                    (c.sameLevel ? "Same-level" : "Other-level context") +
+                    " PGY-" +
+                    c.benchmark.pgy +
+                    " mean " +
+                    c.benchmark.mean +
+                    ", difference " +
+                    (c.difference >= 0 ? "+" : "") +
+                    c.difference +
+                    "; " +
+                    c.benchmark.sourceLabel +
+                    " (" +
+                    c.benchmark.sourceUrl +
+                    ")",
+                )
+                .join("; ")
+            : "National comparison unavailable.") +
+          " User-transcribed source data; no inferred percentile or pass probability.";
+        $("iteComparisons").append(p);
+      }
       $("progress").replaceChildren();
       const p = document.createElement("p");
       p.textContent = weak.length
@@ -539,6 +978,13 @@
         $("code").value = "";
         const v = await api("topics");
         topics = v.topics;
+        $("bankCoverage").textContent =
+          v.practice.count +
+          " original snapshot-checked items. Independent clinical review and full-bank coverage remain pending. Missing reviewed domains: " +
+          Object.keys(v.practice.blueprint)
+            .filter((d) => !v.practice.coveredDomains.includes(d))
+            .join(", ") +
+          ". Unreviewed generated teaching is unscored.";
         $("version").textContent = "Frozen library: " + v.version;
         $("unlock").classList.add("hidden");
         $("workspace").classList.remove("hidden");
@@ -550,14 +996,24 @@
       }
     };
     $("filter").oninput = selectTopics;
+    for (const id of ["practiceMode", "practiceScope"])
+      $(id).onchange = () => {
+        stop();
+        practiceRunning = false;
+        clearInterval(practiceTimer);
+      };
     $("topic").onchange = () => {
       stop();
+      practiceRunning = false;
+      clearInterval(practiceTimer);
       data.history = [];
       persist();
       refreshEvidence().catch((e) => fail(e.message));
     };
     function choose(id) {
       stop();
+      practiceRunning = false;
+      clearInterval(practiceTimer);
       $("filter").value = "";
       selectTopics();
       $("topic").value = id;
@@ -595,7 +1051,23 @@
       let output = { ok: false };
       try {
         const a = JSON.parse(e.arguments);
-        if (e.name === "record_learning") {
+        if (
+          [
+            "get_practice_question",
+            "answer_practice_question",
+            "finish_practice",
+            "mark_practice_assisted",
+          ].includes(e.name)
+        ) {
+          const action = {
+            get_practice_question: "next",
+            answer_practice_question: "answer",
+            finish_practice: "finish",
+            mark_practice_assisted: "assist",
+          }[e.name];
+          output = await api("practice/" + action, a);
+          showPractice(output);
+        } else if (e.name === "record_learning") {
           await api("learning", a);
           const dedup =
             activeTopic + ":" + voiceSessionId + ":" + a.question_id;
@@ -713,6 +1185,7 @@
       fail("");
       state("Connecting…");
       try {
+        if (!practiceRunning) await startPracticeBlock();
         if (!navigator.mediaDevices?.getUserMedia || !window.RTCPeerConnection)
           throw Error("Voice requires a supported browser over HTTPS.");
         const media = await navigator.mediaDevices.getUserMedia({
@@ -758,8 +1231,8 @@
           state("Listening…");
           ask(
             data.lessonTopic === activeTopic && data.checkpoint
-              ? "Resume our saved case; briefly restate the current question."
-              : "Start a concise, realistic ABFM-style patient case for this topic, with plausible answer choices; ask one question and wait.",
+              ? "Resume my learning plan. Use get_practice_question to present the current reviewed practice question, or offer unscored teaching if none is available."
+              : "Use get_practice_question to present the current reviewed ABFM-style case. Ask one question and wait. Follow the selected teaching or assessment mode.",
           );
           sessionTimer = setTimeout(
             () => {
@@ -780,6 +1253,9 @@
             checkpoint:
               data.lessonTopic === $("topic").value ? data.checkpoint : "",
             plan: data.plan,
+            dueReviews: FMLearning.reviewQueue(data.events).slice(0, 15),
+            summary: FMLearning.learningSummary(data.events),
+            iteReports: data.iteReports || [],
           },
         });
         if (epoch !== connectionEpoch) return;
@@ -800,7 +1276,10 @@
       $("mute").setAttribute("aria-pressed", String(muted));
       state("Listening…");
     };
-    $("case").onclick = () => ask("Continue this case with the next concise ABFM-style question and plausible answer choices; wait for my answer.");
+    $("case").onclick = () =>
+      ask(
+        "Continue this case with the next concise ABFM-style question and plausible answer choices; wait for my answer.",
+      );
     $("quiz").onclick = () =>
       ask(
         "I explicitly request a high-yield ABFM-style quiz on this topic, emphasizing my weak areas. Use concise realistic cases and plausible answer choices. One question at a time.",
@@ -887,11 +1366,17 @@
           )
         )
           throw Error("Invalid progress file");
+        stop();
+        practiceRunning = false;
+        clearInterval(practiceTimer);
         data = {
           events: v.events.slice(-2000),
           checkpoint: v.checkpoint.slice(0, 2000),
           plan: v.plan.filter((s) => typeof s === "string").slice(0, 10),
           history: [],
+          iteReports: Array.isArray(v.iteReports)
+            ? v.iteReports.slice(-30)
+            : [],
           lessonTopic: typeof v.lessonTopic === "string" ? v.lessonTopic : "",
         };
         persist();
@@ -902,6 +1387,8 @@
     $("clear").onclick = () => {
       if (confirm("Clear this browser’s tutor progress and transcript?")) {
         stop();
+        practiceRunning = false;
+        clearInterval(practiceTimer);
         data = { events: [], checkpoint: "", plan: [], history: [] };
         $("log").replaceChildren();
         persist();
