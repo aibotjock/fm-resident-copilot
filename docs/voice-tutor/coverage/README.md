@@ -12,9 +12,9 @@ pnpm test:tutor
 pnpm exec tsc -p artifacts/api-server/voice-tutor/tsconfig.json --noEmit
 ```
 
-The inventory contains 489 named medication entities. It is a lexicon-assisted audit, not a comprehensive formulary, a unique-active-ingredient count, or 489 verified dosing monographs. Combination entities and component ingredients can coexist; brand aliases are collapsed. All inventory entries can be traced to original topic text or stored regimen lessons. The audit is reproducible for the saved inventory; it does not prove that the lexicon found every drug mention.
+The inventory contains 490 named medication entities. It is a lexicon-assisted audit, not a comprehensive formulary, a unique-active-ingredient count, or 490 verified dosing monographs. Combination entities and component ingredients can coexist; brand aliases are collapsed. All inventory entries can be traced to original topic text or stored regimen lessons. The audit is reproducible for the saved inventory; it does not prove that the lexicon found every drug mention.
 
-There are 11 stored selective safety profiles across 13 regimen lessons. The six antibiotics are amoxicillin, penicillin V, cephalexin, doxycycline, azithromycin and ceftriaxone; the others are metformin, sertraline, lisinopril, spironolactone and apixaban. These profiles are source-checked within their stated scope, not exhaustive medication safety reviews. In particular, absence of a hepatic dose rule is not a claim that no adjustment or precaution exists. The initial profile report is `../MEDICATION_ORGAN_SAFETY_2026-10-17.md`.
+There are 23 selective safety profiles across 34 medication regimen lessons. Of these, 27 antibiotic regimen lessons cover 18 antibiotics, compared with six antibiotic lessons previously. Added areas include cystitis, outpatient CAP, BV, trichomoniasis, adult giardiasis, early/late latent syphilis, outpatient PID and initial nonfulminant CDI. The inventory is searchable discovery; it does not count as stored regimen coverage. Contraindications, organ guidance, interactions, monitoring and gaps remain formulation- and population-specific. Oral vancomycin evidence does not supply an IV protocol. Combination regimens load all component profiles explicitly. Independent clinician/pharmacist review is pending.
 
 The expanded criteria section contains source-specific facts and gaps for every entry. Some are rule summaries, while purpose-and-interpretation entries explicitly withhold calculation because full tables, eligibility or instrument items are absent. Neither category is a validated calculator. `audit.json` records the exact counts and per-entry source sections. General AAFP curriculum pointers were replaced with rule-specific evidence; no discovery placeholder is counted as complete rule coverage.
 
@@ -54,7 +54,7 @@ Only original concise factual paraphrases and links are stored. Proprietary calc
 
 ## Validation and remaining limits
 
-- Tutor build and 41 automated checks pass after the GCS addition.
+- Tutor build and 44 automated checks pass after the GCS addition.
 - Dedicated voice-tutor TypeScript configuration passes.
 - Executed browser-handler tests cover criteria search/navigation, scope notes, source display, medication name search, exact product confirmation, label provenance, clearing stale context and avoiding source-text persistence.
 - API tests cover authentication, explicit source loading, returned-product restrictions, context invalidation and assessment isolation.
@@ -62,4 +62,10 @@ Only original concise factual paraphrases and links are stored. Proprietary calc
 - Live DailyMed lookups were exercised for metformin, cephalexin and apixaban during implementation. These samples do not validate every indexed product.
 - No provider-backed voice call, real-device audio QA, independent clinician/pharmacist review or comprehensive external-source freshness surveillance was performed. Passing software checks does not establish clinical accuracy of all generated teaching.
 
-Publication of this update to the public repository was rejected by automatic approval review pending explicit authorization. No alternative publishing route is used. Finish and commit locally for review, then obtain that authorization before pushing or changing the deployed source. The original live source pin is `211d3db4a1f51e2f741e2df9445af377ebb0f044`; preserve it for a reversible source-pin rollback if needed. No rollback is needed merely to add these features.
+The user authorized publishing and deployment to the existing voice-tutor private-test service. Main and the non-voice service remain outside this release. Previous voice source pin `e356e38ba11d89e974e0dd3f8a3a3396772d4dd2` is the rollback point. A deployment result must be verified separately before reporting it live.
+
+## Antibiotic expansion checks
+
+Every stored medication lesson has explicitly matched safety profiles, a full scoped prescription, original factual paraphrases and exact source links/sections. Condition-linked regimens now enter ordinary guided condition cases, while assessment context remains isolated. The interface shows actual antibiotic regimen and drug counts separately from searchable medication names. No universal escalation ladder is implied.
+
+Source differences remain visible: nitrofurantoin label renal cutoff and 7-day course versus the 5-day uncomplicated-cystitis guideline course; metronidazole pregnancy/alcohol label differences from CDC; newer ATS outpatient CAP duration versus older SFVA and label courses. Missing organ guidance remains an explicit gap, not an instruction to use the usual dose. These additions are selective educational snapshots, not a comprehensive formulary or proof of overall clinical completeness.

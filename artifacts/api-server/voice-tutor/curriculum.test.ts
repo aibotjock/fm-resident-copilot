@@ -13,6 +13,8 @@ import {
   medicationSafetyInstructions,
   matchingMedicationSafety,
   criteriaForTopics,
+  regimensForTopics,
+  curriculumCatalog,
 } from "./curriculum";
 import {
   medicationInventory,
@@ -22,6 +24,95 @@ import {
 import { antibioticCoverage } from "./coverage";
 import { learningSummary } from "./learning";
 process.env.FM_TUTOR_ACCESS_TOKEN = "curriculum-test-private-code-123456";
+
+test("antibiotic expansion counts actual regimens and loads every combination component", () => {
+  const catalog = curriculumCatalog();
+  assert.equal(catalog.medicationRegimenCount, 34);
+  assert.equal(catalog.antibioticRegimenCount, 27);
+  assert.equal(catalog.antibioticDrugCount, 18);
+  for (const l of lessons.filter((l) => l.regimen)) {
+    assert.deepEqual(
+      l.medication_safety!.map((p) => p.drug).sort(),
+      [...l.medication_names!].sort(),
+      l.id,
+    );
+  }
+  assert.deepEqual(
+    matchingMedicationSafety("amoxicillin-clavulanate").map((p) => p.drug),
+    ["amoxicillin-clavulanate"],
+  );
+  assert.deepEqual(
+    matchingMedicationSafety(
+      "IV vancomycin with oral levofloxacin for sepsis",
+    ).filter((p) => p.drug === "vancomycin"),
+    [],
+  );
+  assert.equal(
+    lessons.find((l) => l.id === "med-amoxclav-cystitis")!.medication_safety!
+      .length,
+    1,
+  );
+});
+
+test("condition cases load scoped antibiotic prescriptions without leaking into assessments", () => {
+  const uti = topics.find((t) => t.title === "UTI Diagnosis and Treatment")!;
+  assert.equal(regimensForTopics([uti.id]).length, 5);
+  const guided = instructions([uti.id], {}, [], "teaching", true);
+  assert.match(guided, /CONDITION-LINKED STORED REGIMENS/);
+  assert.match(guided, /med-fosfomycin-cystitis/);
+  assert.ok(!guided.includes('"id":"med-fidaxomicin-cdi"'));
+  assert.ok(
+    !instructions([uti.id], {}, [], "assessment", false).includes(
+      "CONDITION-LINKED STORED REGIMENS",
+    ),
+  );
+  assert.match(
+    curriculumInstructions("med-pid-outpatient"),
+    /LABEL-METRONIDAZOLE/,
+  );
+  assert.match(
+    curriculumInstructions("med-pid-outpatient"),
+    /LABEL-DOXYCYCLINE/,
+  );
+  assert.match(
+    curriculumInstructions("med-pid-outpatient"),
+    /LABEL-CEFTRIAXONE/,
+  );
+});
+
+test("expanded regimens preserve route, sex, organ thresholds and conflicting source scopes", () => {
+  const get = (id: string) => lessons.find((l) => l.id === id)!;
+  assert.match(get("med-vancomycin-cdi").regimen!.route, /oral/);
+  assert.match(get("med-vancomycin-cdi").gaps.join(" "), /Not a fulminant/);
+  assert.equal(
+    get("med-metronidazole-trich-women").regimen!.duration,
+    "7 days",
+  );
+  assert.equal(
+    get("med-metronidazole-trich-men").regimen!.duration,
+    "single dose",
+  );
+  assert.match(
+    get("med-benzathine-penicillin-latent").regimen!.duration,
+    /7.2 million/,
+  );
+  assert.match(
+    get("med-nitrofurantoin-cystitis").medication_safety![0].renal.guidance,
+    /CrCl <60/,
+  );
+  assert.match(
+    get("med-metronidazole-bv").medication_safety![0].hepatic.guidance,
+    /50%/,
+  );
+  assert.equal(
+    get("med-fosfomycin-cystitis").medication_safety![0].renal.status,
+    "not_established",
+  );
+  assert.match(get("med-amoxicillin-cap").regimen!.duration, /ATS 2025/);
+  assert.ok(
+    get("med-amoxicillin-cap").source_ids.includes("ATS-CAP-DURATION-2025"),
+  );
+});
 function request(path: string, body?: unknown, cookie = ""): Promise<Response> {
   return new Promise((resolve) => {
     const raw = body === undefined ? undefined : JSON.stringify(body);
@@ -120,7 +211,7 @@ test("all stored medication regimens expose contraindications and scoped organ-s
       }
     }
   }
-  assert.equal(medicationSafetyProfiles.length, 11);
+  assert.equal(medicationSafetyProfiles.length, 23);
 });
 
 test("organ safety keeps unknown guidance, age limits and indication-specific rules explicit", () => {
@@ -220,11 +311,11 @@ test("criteria have rule-specific provenance and do not mix score versions or un
 });
 
 test("broad medication inventory reports names separately from checked safety and supports topic filtering", () => {
-  assert.equal(medicationInventory.length, 489);
+  assert.equal(medicationInventory.length, 490);
   assert.equal(
     medicationInventory.filter((m) => m.status === "scoped_safety_profile")
       .length,
-    11,
+    23,
   );
   assert.equal(
     new Set(medicationInventory.map((m) => m.id)).size,
@@ -501,9 +592,9 @@ test("coverage never upgrades an antibiotic mention or partial STI scope to comp
   const rows = antibioticCoverage();
   assert.equal(rows.length, 156);
   const pneumonia = rows.find((r) => r.title.includes("CAP Severity"))!;
-  assert.equal(pneumonia.status, "complete_regimen_not_verified");
+  assert.equal(pneumonia.status, "scoped_regimens_available");
   const sti = rows.find((r) => r.title.includes("Gonorrhea, Chlamydia"))!;
-  assert.match(sti.scope, /not syphilis/);
+  assert.ok(sti.lesson_ids.includes("med-benzathine-penicillin-early"));
   assert.ok(sti.lesson_ids.length);
   const strep = rows.find((r) => r.title.includes("Acute Pharyngitis"))!;
   assert.equal(strep.lesson_ids.length, 3);

@@ -345,8 +345,8 @@ ozanimod
 patiromer|veltassa
 pegloticase|krystexxa
 pembrolizumab
-penicillin V|penicillin v
 penicillin G benzathine|benzathine penicillin
+penicillin V|penicillin v
 peramivir
 phentermine
 phenytoin
@@ -444,6 +444,7 @@ tetracycline
 ticagrelor
 tildrakizumab
 timolol
+tinidazole
 tiotropium
 tirzepatide|mounjaro|zepbound
 tocilizumab

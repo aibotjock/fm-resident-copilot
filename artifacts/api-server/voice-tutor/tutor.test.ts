@@ -956,7 +956,7 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
   const scoredBefore = vm.runInContext("data.events.length", sandbox);
   nodes.get("learningTrack").value = "medication";
   nodes.get("learningTrack").onchange();
-  assert.equal(nodes.get("curriculumLesson").options.length, 13);
+  assert.equal(nodes.get("curriculumLesson").options.length, 34);
   nodes.get("curriculumFilter").value = "amoxicillin";
   nodes.get("curriculumFilter").oninput();
   assert.equal(nodes.get("curriculumLesson").value, "med-amoxicillin-strep");

@@ -528,7 +528,7 @@
     ],
     "id": "amoxicillin",
     "status": "scoped_safety_profile",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "amoxicillin-clavulanate",
@@ -566,8 +566,8 @@
       }
     ],
     "id": "amoxicillin-clavulanate",
-    "status": "reference_required",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "status": "scoped_safety_profile",
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "amphetamine",
@@ -701,7 +701,7 @@
     ],
     "id": "apixaban",
     "status": "scoped_safety_profile",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "apremilast",
@@ -976,7 +976,7 @@
     ],
     "id": "azithromycin",
     "status": "scoped_safety_profile",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "bacitracin",
@@ -1652,11 +1652,26 @@
         "topic_id": "2f82084e6568d27af2976c52",
         "title": "AOM Diagnosis and Antibiotic Management",
         "matched_names": ["cefpodoxime"]
+      },
+      {
+        "topic_id": "2ddb34532433626f2090b51b",
+        "title": "Linked antibiotic condition lesson",
+        "matched_names": ["cefpodoxime"]
+      },
+      {
+        "topic_id": "6bdba761b977cff2f575e630",
+        "title": "Linked antibiotic condition lesson",
+        "matched_names": ["cefpodoxime"]
+      },
+      {
+        "topic_id": "32eb6b827a214017ef2f5ff6",
+        "title": "Linked antibiotic condition lesson",
+        "matched_names": ["cefpodoxime"]
       }
     ],
     "id": "cefpodoxime",
-    "status": "reference_required",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "status": "scoped_safety_profile",
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "ceftriaxone",
@@ -1705,7 +1720,7 @@
     ],
     "id": "ceftriaxone",
     "status": "scoped_safety_profile",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "cefuroxime",
@@ -1786,7 +1801,7 @@
     ],
     "id": "cephalexin",
     "status": "scoped_safety_profile",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "certolizumab",
@@ -1980,11 +1995,21 @@
         "topic_id": "e5021602c5fa3b870962bdff",
         "title": "Acute Pharyngitis — Group A Streptococcus Diagnosis and Treatment",
         "matched_names": ["clindamycin"]
+      },
+      {
+        "topic_id": "5730fd3e11038f2d150db93f",
+        "title": "Linked antibiotic condition lesson",
+        "matched_names": ["clindamycin"]
+      },
+      {
+        "topic_id": "a975e3f80c0dc6fd5af510b9",
+        "title": "Linked antibiotic condition lesson",
+        "matched_names": ["clindamycin"]
       }
     ],
     "id": "clindamycin",
-    "status": "reference_required",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "status": "scoped_safety_profile",
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "clobetasol",
@@ -2982,7 +3007,7 @@
     ],
     "id": "doxycycline",
     "status": "scoped_safety_profile",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "dronedarone",
@@ -3663,8 +3688,8 @@
       }
     ],
     "id": "fidaxomicin",
-    "status": "reference_required",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "status": "scoped_safety_profile",
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "finasteride",
@@ -3881,8 +3906,8 @@
       }
     ],
     "id": "fosfomycin",
-    "status": "reference_required",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "status": "scoped_safety_profile",
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "fosphenytoin",
@@ -5049,8 +5074,8 @@
       }
     ],
     "id": "levofloxacin",
-    "status": "reference_required",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "status": "scoped_safety_profile",
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "levonorgestrel",
@@ -5234,7 +5259,7 @@
     "topics": [],
     "id": "lisinopril",
     "status": "scoped_safety_profile",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "lithium",
@@ -5568,7 +5593,7 @@
     ],
     "id": "metformin",
     "status": "scoped_safety_profile",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "methadone",
@@ -5813,11 +5838,16 @@
         "topic_id": "e46fde2a2f267760c4ca55ef",
         "title": "C. difficile Classification and Antibiotic Treatment",
         "matched_names": ["metronidazole"]
+      },
+      {
+        "topic_id": "a975e3f80c0dc6fd5af510b9",
+        "title": "Linked antibiotic condition lesson",
+        "matched_names": ["metronidazole"]
       }
     ],
     "id": "metronidazole",
-    "status": "reference_required",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "status": "scoped_safety_profile",
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "miconazole",
@@ -6252,8 +6282,8 @@
       }
     ],
     "id": "nitrofurantoin",
-    "status": "reference_required",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "status": "scoped_safety_profile",
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "nivolumab",
@@ -6662,8 +6692,8 @@
       }
     ],
     "id": "penicillin-g-benzathine",
-    "status": "reference_required",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "status": "scoped_safety_profile",
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "penicillin V",
@@ -6677,7 +6707,7 @@
     ],
     "id": "penicillin-v",
     "status": "scoped_safety_profile",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "peramivir",
@@ -7906,7 +7936,7 @@
     ],
     "id": "sertraline",
     "status": "scoped_safety_profile",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "sevelamer",
@@ -8096,7 +8126,7 @@
     ],
     "id": "spironolactone",
     "status": "scoped_safety_profile",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "sulfadiazine",
@@ -8756,8 +8786,8 @@
       }
     ],
     "id": "trimethoprim-sulfamethoxazole",
-    "status": "reference_required",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "status": "scoped_safety_profile",
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "trospium",
@@ -8980,8 +9010,8 @@
       }
     ],
     "id": "vancomycin",
-    "status": "reference_required",
-    "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+    "status": "scoped_safety_profile",
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   },
   {
     "name": "vardenafil",
@@ -9308,5 +9338,24 @@
     "id": "zuranolone",
     "status": "reference_required",
     "notice": "Name found in stored teaching or a medication lesson; not a claim of current availability, approval, complete dosing or verified safety."
+  },
+  {
+    "name": "tinidazole",
+    "aliases": ["tinidazole"],
+    "topics": [
+      {
+        "topic_id": "5730fd3e11038f2d150db93f",
+        "title": "Linked antibiotic condition lesson",
+        "matched_names": ["tinidazole"]
+      },
+      {
+        "topic_id": "a975e3f80c0dc6fd5af510b9",
+        "title": "Linked antibiotic condition lesson",
+        "matched_names": ["tinidazole"]
+      }
+    ],
+    "id": "tinidazole",
+    "status": "scoped_safety_profile",
+    "notice": "A formulation-specific safety teaching profile is stored. Check the selected lesson: other routes, formulations and indications may require reference lookup."
   }
 ]

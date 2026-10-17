@@ -7,6 +7,7 @@ import {
   curriculumInstructions,
   lessons,
   medicationSafetyInstructions,
+  regimenInstructions,
   criteriaInstructions,
 } from "./curriculum";
 export const version = CANDIDATE_VERSION;
@@ -118,6 +119,7 @@ LIBRARY snapshot ${version}; review incomplete:
 ${entries.map((e) => `[REF ${e.key}] ${e.source} | ${e.guideline_title} | ${e.guideline_year}\nReview ${e.review}. LIMITATIONS: ${e.limitations}\n${e.content}\n${JSON.stringify(e.evidence_records)}`).join("\n\n")}
 ${guided && !specialist ? medicationSafetyInstructions(entries.map((e) => e.content).join("\n")) : ""}
 ${guided && !specialist ? criteriaInstructions(entries.map((e) => e.key)) : ""}
+${guided && !specialist ? regimenInstructions(entries.map((e) => e.key)) : ""}
 ${specialist}`;
 }
 export const tools = [

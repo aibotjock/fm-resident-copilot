@@ -38,6 +38,7 @@ export type Lesson = {
   reveals?: string[];
   medication_safety?: MedicationSafety[];
   topic_ids?: string[];
+  medication_names?: string[];
   criteria_ids?: string[];
   study_scope?: "rule_summary" | "purpose_and_interpretation";
   practice_cases?: {
@@ -52,13 +53,13 @@ export type Lesson = {
     explanation: string;
   }[];
 };
-export const curriculumVersion = "medication-reference-criteria-2026-10-17-v3";
+export const curriculumVersion = "antibiotic-regimens-2026-10-17-v4";
 export const lessons = (
   [...content.lessons, ...expansion.lessons] as Lesson[]
 ).map((lesson) => {
   const medication_safety = content.medication_safety_profiles.filter((p) =>
     lesson.regimen
-      ? lesson.regimen.drug.toLowerCase().startsWith(p.drug.toLowerCase())
+      ? lesson.medication_names?.includes(p.drug)
       : lesson.track === "safety" &&
         p.source_ids.some((id) => lesson.source_ids.includes(id)),
   );
@@ -81,12 +82,44 @@ Use only explicitly loaded evidence for each drug, formulation, population and i
 Retain exact source ID, URL, section, source date when known and access date. Give exact provenance on request; do not routinely read citations aloud. Keep citation IDs in the written transcript. Access date is not guideline publication date and does not prove latest evidence or approval. Never claim AAFP/ABFM endorsement without documented evidence. Disease guidance determines indication-specific antibiotic selection/duration; product labeling supplies scoped safety. If sources disagree, identify the conflict and their scopes, never silently blend regimens. Historical label STI doses must not override the loaded CDC regimen. Commercial sources are not connected.`;
 
 export function matchingMedicationSafety(text: string) {
-  return medicationSafetyProfiles.filter((p) =>
-    new RegExp(
+  // Match longer combination names first, so amoxicillin-clavulanate does
+  // not load the amoxicillin-alone profile for the same text occurrence.
+  let remaining = text;
+  const matched = new Set<string>();
+  for (const p of [...medicationSafetyProfiles].sort(
+    (a, b) => b.drug.length - a.drug.length,
+  )) {
+    if (
+      p.drug === "vancomycin" &&
+      !/\boral\s+vancomycin\b|\bvancomycin\s+(?:oral|PO)\b|difficile|\bCDI\b/i.test(
+        text,
+      )
+    )
+      continue;
+    const pattern = new RegExp(
       `\\b${p.drug.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`,
-      "i",
-    ).test(text),
+      "gi",
+    );
+    if (pattern.test(remaining)) {
+      matched.add(p.drug);
+      remaining = remaining.replace(pattern, " ");
+    }
+  }
+  return medicationSafetyProfiles.filter((p) => matched.has(p.drug));
+}
+
+export function regimensForTopics(ids: string[]) {
+  return lessons.filter(
+    (l) =>
+      l.track === "medication" && l.topic_ids?.some((id) => ids.includes(id)),
   );
+}
+
+export function regimenInstructions(ids: string[]) {
+  const selected = regimensForTopics(ids);
+  if (!selected.length) return "";
+  const sourceIds = new Set(selected.flatMap((l) => l.source_ids));
+  return `\nCONDITION-LINKED STORED REGIMENS: These scoped medication lessons are additional loaded evidence for this condition. Select only a regimen whose indication, population, severity, formulation and source scope match the simulated case. Alternatives are conditional choices, not a universal first/second/third-line ladder. Ask ONE prescribing or safety question, wait for the learner, then explain. Never mix separate courses or present all regimens as interchangeable. Explicitly retain historical/institutional snapshots, source conflicts and evidence gaps. A drug-name mention alone does not load any additional regimen. When a medication lesson and the base topic conflict on the same explicitly sourced claim, explain the discrepancy and use the scoped source-backed regimen; do not blend them.\n${JSON.stringify(selected)}\nLOADED REGIMEN SOURCES: ${JSON.stringify(clinicalSources.filter((s) => sourceIds.has(s.id)))}\n`;
 }
 
 export function medicationSafetyInstructions(text: string) {
@@ -126,6 +159,18 @@ export function curriculumCatalog() {
     references: referenceRegistry,
     medicationInventoryCount: expansion.medication_inventory_count,
     medicationSafetyProfileCount: medicationSafetyProfiles.length,
+    medicationRegimenCount: lessons.filter((l) => l.track === "medication")
+      .length,
+    antibioticRegimenCount: lessons.filter(
+      (l) => l.track === "medication" && l.tags.includes("antibiotic"),
+    ).length,
+    antibioticDrugCount: new Set(
+      lessons
+        .filter(
+          (l) => l.track === "medication" && l.tags.includes("antibiotic"),
+        )
+        .flatMap((l) => l.medication_names || []),
+    ).size,
     criteria: lessons
       .filter((l) => l.track === "criteria")
       .map((l) => ({

@@ -1689,8 +1689,14 @@
         topics = v.topics;
         curriculum = await api("curriculum");
         $("medicationCount").textContent =
+          curriculum.antibioticRegimenCount +
+          " stored antibiotic regimen lessons across " +
+          curriculum.antibioticDrugCount +
+          " antibiotics; " +
+          curriculum.medicationRegimenCount +
+          " total medication regimen lessons. " +
           curriculum.medicationInventoryCount +
-          " named medication entities; " +
+          " searchable medication names; " +
           curriculum.medicationSafetyProfileCount +
           " have scoped checked safety profiles. Other entries require source lookup. Names include historical mentions; availability and formulation require checking.";
         renderReferenceRegistry();

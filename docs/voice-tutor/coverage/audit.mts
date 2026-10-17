@@ -42,9 +42,19 @@ const report = {
   countingLimit:
     "Lexicon-assisted named entities, not a comprehensive formulary or unique-active-ingredient count; combination entities and components coexist. Brand aliases are collapsed. Mentions and label lookup do not constitute checked dosing coverage.",
   storedSafetyProfiles: base.medication_safety_profiles.length,
-  originalRegimenLessons: base.lessons.filter(
+  storedRegimenLessons: base.lessons.filter(
     (l: any) => l.track === "medication",
   ).length,
+  antibioticRegimenLessons: base.lessons.filter(
+    (l: any) => l.track === "medication" && l.tags.includes("antibiotic"),
+  ).length,
+  antibioticDrugs: new Set(
+    base.lessons
+      .filter(
+        (l: any) => l.track === "medication" && l.tags.includes("antibiotic"),
+      )
+      .flatMap((l: any) => l.medication_names || []),
+  ).size,
   criteriaEntries: criteria.length,
   criteriaWithScopedFacts: criteria.filter((l: any) => l.facts.length).length,
   criteriaOverviews: criteria.filter(

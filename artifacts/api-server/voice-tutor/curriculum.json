@@ -164,6 +164,248 @@
       "access_date": "2026-10-17",
       "review": "source_checked; independent clinical review pending",
       "reuse": "Original concise factual paraphrase with attribution; no copied tables, monographs or vendor database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "LABEL-AMOXCLAV",
+      "organization": "DailyMed / product prescribing information",
+      "title": "amoxicillin-clavulanate immediate-release tablets",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=77b82fac-3f6e-44c9-8dcc-362f01ad7a4b",
+      "sections": "2.2, 2.6, 2.8; 4; 5.4; 7; 8.7",
+      "source_date": "2026-09",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "LABEL-TMP-SMX",
+      "organization": "DailyMed / product prescribing information",
+      "title": "sulfamethoxazole and trimethoprim tablets",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=abe0d2d5-4879-4b4e-9b57-47ea83a17ba0",
+      "sections": "Contraindications; precautions, drug interactions; dosage: renal impairment",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "LABEL-NITROFURANTOIN",
+      "organization": "DailyMed / product prescribing information",
+      "title": "nitrofurantoin monohydrate/macrocrystals capsules",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0631d961-ef23-8f2a-e063-6294a90aa0a8",
+      "sections": "Indications; contraindications; warnings; drug interactions; dosage",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "LABEL-FOSFOMYCIN",
+      "organization": "DailyMed / product prescribing information",
+      "title": "fosfomycin tromethamine oral granules",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=36bca22f-49ea-42ce-926b-035c42eb6038",
+      "sections": "Clinical pharmacology: renal insufficiency; indications; contraindications; interactions; dosage/preparation",
+      "source_date": "2026-09-10",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "LABEL-LEVOFLOXACIN",
+      "organization": "DailyMed / product prescribing information",
+      "title": "levofloxacin tablets",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b9dc8bf3-97d9-4d1c-9a68-3ae553acdada",
+      "sections": "1.3; 2.1, 2.3, 2.4; 4; boxed warning; 5; 7; 8.7; 14.3",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "LABEL-CEFPODOXIME",
+      "organization": "DailyMed / product prescribing information",
+      "title": "cefpodoxime proxetil tablets",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5b42e396-942d-2637-e063-6294a90aca98",
+      "sections": "Contraindications; precautions/drug interactions; dosage: renal dysfunction/cirrhosis",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "LABEL-METRONIDAZOLE",
+      "organization": "DailyMed / product prescribing information",
+      "title": "metronidazole tablets",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e5850e05-7d71-3210-e053-2a95a90a0837",
+      "sections": "Clinical pharmacology; contraindications; precautions: renal/hepatic, drug interactions; dosage",
+      "source_date": "2022-08-12",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "LABEL-CLINDAMYCIN",
+      "organization": "DailyMed / product prescribing information",
+      "title": "clindamycin hydrochloride capsules",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=afeb96ed-7c2e-72d3-e053-2995a90a4ed3",
+      "sections": "Boxed warning; contraindications; clinical pharmacology; precautions: general, interactions, laboratory tests",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "LABEL-TINIDAZOLE",
+      "organization": "DailyMed / product prescribing information",
+      "title": "Tindamax oral tablets",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a0d01539-8413-4703-94cc-d221918630a1",
+      "sections": "2.3, 2.4, 2.6; 4; 5.1; 7; 8.6, 8.7",
+      "source_date": "2021-12",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "LABEL-FIDAXOMICIN",
+      "organization": "DailyMed / product prescribing information",
+      "title": "Dificid tablets",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=dd966338-c820-4270-b704-09ef75fa3ceb",
+      "sections": "2.2; 4; 5; 7.1; 12.3 specific populations",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "LABEL-VANCOMYCIN-ORAL",
+      "organization": "DailyMed / product prescribing information",
+      "title": "vancomycin hydrochloride capsules",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bc737938-ae36-460b-a2a8-609f3fe59156",
+      "sections": "1; 2.1; 4; 5.1-5.4",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "LABEL-BENZATHINE-PENICILLIN",
+      "organization": "DailyMed / product prescribing information",
+      "title": "Bicillin L-A injection suspension",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=012d46f1-d0a0-4676-a879-cd320297ab16",
+      "sections": "Contraindications; warnings: administration/anaphylaxis; precautions; dosage",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "IDSA-CYSTITIS-2010",
+      "organization": "IDSA / ESCMID",
+      "title": "2010 update: acute uncomplicated cystitis in women",
+      "url": "https://academic.oup.com/cid/article/52/5/e103/388285",
+      "sections": "Executive summary recommendations 1-3, 6; population scope",
+      "source_date": "2011-03-01",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "CDC-ADULT-OUTPATIENT",
+      "organization": "CDC",
+      "title": "Adult outpatient antibiotic prescribing",
+      "url": "https://www.cdc.gov/antibiotic-use/hcp/clinical-care/adult-outpatient.html",
+      "sections": "Acute uncomplicated cystitis; acute rhinosinusitis",
+      "source_date": "2024-04-16",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "UCSF-SFVA-CAP",
+      "organization": "UCSF IDMP / SFVA",
+      "title": "Community acquired pneumonia: SFVA institutional guidance",
+      "url": "https://idmp.ucsf.edu/content/community-acquired-pneumonia-cap-treatment-guidelines-sfva",
+      "sections": "Outpatient empiric CAP treatment; suggested duration",
+      "source_date": "2023-11-29",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "CDC-BV",
+      "organization": "CDC",
+      "title": "Symptomatic bacterial vaginosis",
+      "url": "https://www.cdc.gov/std/treatment-guidelines/BV.htm",
+      "sections": "Treatment; special considerations; follow-up",
+      "source_date": "2021",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "CDC-TRICH",
+      "organization": "CDC",
+      "title": "Trichomoniasis",
+      "url": "https://www.cdc.gov/std/treatment-guidelines/trichomoniasis.htm",
+      "sections": "Treatment; special considerations; follow-up",
+      "source_date": "2021",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "CDC-SYPHILIS-EARLY",
+      "organization": "CDC",
+      "title": "Primary and secondary syphilis",
+      "url": "https://www.cdc.gov/std/treatment-guidelines/p-and-s-syphilis.htm",
+      "sections": "Treatment; special considerations; follow-up",
+      "source_date": "2021",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "CDC-SYPHILIS-LATENT",
+      "organization": "CDC",
+      "title": "Latent syphilis",
+      "url": "https://www.cdc.gov/std/treatment-guidelines/latent-syphilis.htm",
+      "sections": "Treatment; special considerations; follow-up",
+      "source_date": "2021",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "CDC-PID",
+      "organization": "CDC",
+      "title": "Pelvic inflammatory disease",
+      "url": "https://www.cdc.gov/std/treatment-guidelines/pid.htm",
+      "sections": "Treatment; special considerations; follow-up",
+      "source_date": "2021",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "IDSA-CDI-2021",
+      "organization": "IDSA / SHEA",
+      "title": "2021 focused update: adult C. difficile infection",
+      "url": "https://www.idsociety.org/practice-guideline/clostridioides-difficile-2021-focused-update/",
+      "sections": "Initial CDI episode recommendation; fidaxomicin vs vancomycin; fulminant exclusion",
+      "source_date": "2021-06-14",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase of selected sections; no copied prescribing tables."
+    },
+    {
+      "id": "ATS-CAP-DURATION-2025",
+      "organization": "American Thoracic Society",
+      "title": "2025 CAP update: official society summary",
+      "url": "https://site.thoracic.org/press-releases/treatment-with-antibiotics-and-steroids-in-adults-with-pneumonia-addressed-in-latest-clinical-practice-guideline",
+      "sections": "Question 3: outpatient antibiotic duration; individualization",
+      "source_date": "2025-11-11",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_summary; independent clinical review pending",
+      "reuse": "Brief original factual paraphrase and reference link; no guideline tables or full text copied."
     }
   ],
   "references": [
@@ -296,7 +538,9 @@
         "duration": "10 days",
         "adjustment": "Alternative: 25 mg/kg per dose twice daily, capped at 500 mg per dose.",
         "maximum": "1000 mg per once-daily dose"
-      }
+      },
+      "medication_names": ["amoxicillin"],
+      "topic_ids": ["e5021602c5fa3b870962bdff"]
     },
     {
       "id": "med-penicillin-strep",
@@ -338,7 +582,9 @@
         "duration": "10 days",
         "adjustment": "Another listed adult schedule: 250 mg four times daily.",
         "maximum": "No broader maximum established here"
-      }
+      },
+      "medication_names": ["penicillin V"],
+      "topic_ids": ["e5021602c5fa3b870962bdff"]
     },
     {
       "id": "med-cephalexin-strep",
@@ -381,7 +627,9 @@
         "duration": "10 days",
         "adjustment": "Avoid with immediate-type penicillin hypersensitivity.",
         "maximum": "500 mg per dose"
-      }
+      },
+      "medication_names": ["cephalexin"],
+      "topic_ids": ["e5021602c5fa3b870962bdff"]
     },
     {
       "id": "med-doxycycline-chlamydia",
@@ -426,7 +674,9 @@
         "duration": "7 days",
         "adjustment": "Pregnancy requires the pregnancy-specific regimen.",
         "maximum": "No escalation or broader maximum established here"
-      }
+      },
+      "medication_names": ["doxycycline"],
+      "topic_ids": ["5730fd3e11038f2d150db93f", "a975e3f80c0dc6fd5af510b9"]
     },
     {
       "id": "med-azithromycin-pregnancy",
@@ -471,7 +721,9 @@
         "duration": "one dose",
         "adjustment": "Listed alternative: amoxicillin 500 mg orally three times daily for 7 days.",
         "maximum": "1 g for this single-dose regimen"
-      }
+      },
+      "medication_names": ["azithromycin"],
+      "topic_ids": ["5730fd3e11038f2d150db93f", "a975e3f80c0dc6fd5af510b9"]
     },
     {
       "id": "med-ceftriaxone-gonorrhea",
@@ -516,7 +768,9 @@
         "duration": "one dose",
         "adjustment": "If chlamydia has not been excluded, add the appropriate chlamydia regimen; doxycycline 100 mg orally twice daily for 7 days applies to nonpregnant patients.",
         "maximum": "Weight-specific dose above"
-      }
+      },
+      "medication_names": ["ceftriaxone"],
+      "topic_ids": ["5730fd3e11038f2d150db93f", "a975e3f80c0dc6fd5af510b9"]
     },
     {
       "id": "med-metformin-ir",
@@ -559,7 +813,8 @@
         "duration": "Ongoing therapy; increase by 500 mg weekly as tolerated and indicated",
         "adjustment": "Do not initiate at eGFR 30–45; contraindicated below 30 mL/min/1.73 m².",
         "maximum": "2550 mg/day in divided doses for this specific label"
-      }
+      },
+      "medication_names": ["metformin"]
     },
     {
       "id": "med-metformin-er",
@@ -602,7 +857,8 @@
         "duration": "Ongoing therapy; increase by 500 mg weekly as indicated",
         "adjustment": "Swallow whole. Same renal restrictions as IR.",
         "maximum": "2000 mg once daily for this product"
-      }
+      },
+      "medication_names": ["metformin"]
     },
     {
       "id": "med-sertraline-mdd",
@@ -649,7 +905,8 @@
         "duration": "Ongoing; increases of 25–50 mg no more frequently than weekly",
         "adjustment": "Mild hepatic impairment: half the usual starting dose and therapeutic range; moderate/severe impairment: not recommended.",
         "maximum": "200 mg/day"
-      }
+      },
+      "medication_names": ["sertraline"]
     },
     {
       "id": "med-lisinopril-htn",
@@ -694,7 +951,8 @@
         "duration": "Ongoing; titrate to blood pressure response",
         "adjustment": "Start 5 mg with diuretic use; CrCl 10–30: halve initial dose; below 10 or dialysis: 2.5 mg initially.",
         "maximum": "Usual range 20–40 mg/day; 80 mg has been used without greater effect"
-      }
+      },
+      "medication_names": ["lisinopril"]
     },
     {
       "id": "med-spironolactone-hf",
@@ -739,7 +997,8 @@
         "duration": "Ongoing; may increase to 50 mg daily when indicated and tolerated",
         "adjustment": "eGFR 30–50: consider 25 mg every other day.",
         "maximum": "50 mg/day in the supplied labeled titration"
-      }
+      },
+      "medication_names": ["spironolactone"]
     },
     {
       "id": "med-apixaban-af",
@@ -785,7 +1044,8 @@
         "duration": "Ongoing; duration depends on the indication and reassessment",
         "adjustment": "Use 2.5 mg twice daily when at least TWO apply: age ≥80 years, weight ≤60 kg, serum creatinine ≥1.5 mg/dL.",
         "maximum": "No dose escalation taught here"
-      }
+      },
+      "medication_names": ["apixaban"]
     },
     {
       "id": "med-apixaban-vte",
@@ -829,7 +1089,8 @@
         "duration": "10 mg twice daily for 7 days, then 5 mg twice daily",
         "adjustment": "Do not substitute the AF age/weight/creatinine rule for this regimen.",
         "maximum": "Indication-specific regimen; no further escalation supplied"
-      }
+      },
+      "medication_names": ["apixaban"]
     },
     {
       "id": "safe-siadh",
@@ -1162,6 +1423,1020 @@
         "Monitoring, follow-up, escalation and contingency plan",
         "30–60 second oral synthesis, feedback and retry"
       ]
+    },
+    {
+      "id": "med-nitrofurantoin-cystitis",
+      "track": "medication",
+      "title": "Nitrofurantoin — uncomplicated cystitis",
+      "tags": [
+        "nitrofurantoin",
+        "antibiotic",
+        "Acute uncomplicated cystitis in a healthy nonpregnant premenopausal woman",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": [
+        "CDC-ADULT-OUTPATIENT",
+        "IDSA-CYSTITIS-2010",
+        "LABEL-NITROFURANTOIN"
+      ],
+      "topic_ids": ["2ddb34532433626f2090b51b"],
+      "medication_names": ["nitrofurantoin"],
+      "facts": [
+        "CDC lists nitrofurantoin, TMP-SMX and fosfomycin as first-line options within this population. The 5-day course comes from IDSA, whereas this label uses 7 days; identify the source-specific difference.",
+        "Not a pyelonephritis or perinephric-abscess regimen."
+      ],
+      "gaps": [
+        "Label CrCl <60 contraindication is retained explicitly; lower-threshold clinical protocols are not loaded. Not pregnancy, male UTI, prophylaxis or renal tissue infection guidance."
+      ],
+      "opening": "A simulated patient has Acute uncomplicated cystitis in a healthy nonpregnant premenopausal woman. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Acute uncomplicated cystitis in a healthy nonpregnant premenopausal woman",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "nitrofurantoin",
+        "dose": "100 mg monohydrate/macrocrystals",
+        "route": "oral",
+        "frequency": "every 12 hours",
+        "duration": "5 days",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-tmp-smx-cystitis",
+      "track": "medication",
+      "title": "TMP-SMX — uncomplicated cystitis",
+      "tags": [
+        "trimethoprim-sulfamethoxazole",
+        "antibiotic",
+        "Acute uncomplicated cystitis in a healthy nonpregnant premenopausal woman",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": [
+        "CDC-ADULT-OUTPATIENT",
+        "IDSA-CYSTITIS-2010",
+        "LABEL-TMP-SMX"
+      ],
+      "topic_ids": ["2ddb34532433626f2090b51b"],
+      "medication_names": ["trimethoprim-sulfamethoxazole"],
+      "facts": [
+        "Use for a known susceptible isolate or acceptable local resistance; CDC specifies local resistance <20% for empiric first-line use."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ],
+      "opening": "A simulated patient has Acute uncomplicated cystitis in a healthy nonpregnant premenopausal woman. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Acute uncomplicated cystitis in a healthy nonpregnant premenopausal woman",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "trimethoprim-sulfamethoxazole",
+        "dose": "160 mg trimethoprim / 800 mg sulfamethoxazole (1 DS tablet)",
+        "route": "oral",
+        "frequency": "every 12 hours",
+        "duration": "3 days",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-fosfomycin-cystitis",
+      "track": "medication",
+      "title": "Fosfomycin — uncomplicated cystitis",
+      "tags": [
+        "fosfomycin",
+        "antibiotic",
+        "Acute uncomplicated cystitis in a healthy nonpregnant premenopausal woman",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": [
+        "CDC-ADULT-OUTPATIENT",
+        "IDSA-CYSTITIS-2010",
+        "LABEL-FOSFOMYCIN"
+      ],
+      "topic_ids": ["2ddb34532433626f2090b51b"],
+      "medication_names": ["fosfomycin"],
+      "facts": [
+        "Oral sachet is not for pyelonephritis; do not take dry or repeat daily for one episode."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ],
+      "opening": "A simulated patient has Acute uncomplicated cystitis in a healthy nonpregnant premenopausal woman. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Acute uncomplicated cystitis in a healthy nonpregnant premenopausal woman",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "fosfomycin",
+        "dose": "3 g (one sachet dissolved in water)",
+        "route": "oral",
+        "frequency": "once",
+        "duration": "single dose",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-amoxclav-cystitis",
+      "track": "medication",
+      "title": "Amoxicillin-clavulanate — cystitis alternative",
+      "tags": [
+        "amoxicillin-clavulanate",
+        "antibiotic",
+        "Acute uncomplicated cystitis in a healthy nonpregnant premenopausal woman",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": [
+        "IDSA-CYSTITIS-2010",
+        "CDC-ADULT-OUTPATIENT",
+        "LABEL-AMOXCLAV"
+      ],
+      "topic_ids": ["2ddb34532433626f2090b51b"],
+      "medication_names": ["amoxicillin-clavulanate"],
+      "facts": [
+        "Alternative when preferred agents cannot be used and organism susceptibility supports it. IDSA allows beta-lactam courses of 3-7 days; this lesson uses the 7-day option with labeled adult mild/moderate-infection dosing.",
+        "Do not substitute amoxicillin alone or extend this regimen to pyelonephritis."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ],
+      "opening": "A simulated patient has Acute uncomplicated cystitis in a healthy nonpregnant premenopausal woman. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Acute uncomplicated cystitis in a healthy nonpregnant premenopausal woman",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "amoxicillin-clavulanate",
+        "dose": "500 mg / 125 mg immediate-release tablet",
+        "route": "oral",
+        "frequency": "every 12 hours",
+        "duration": "7 days",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-cefpodoxime-cystitis",
+      "track": "medication",
+      "title": "Cefpodoxime — cystitis alternative",
+      "tags": [
+        "cefpodoxime",
+        "antibiotic",
+        "Acute uncomplicated cystitis in a healthy nonpregnant premenopausal woman",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["IDSA-CYSTITIS-2010", "LABEL-CEFPODOXIME"],
+      "topic_ids": ["2ddb34532433626f2090b51b"],
+      "medication_names": ["cefpodoxime"],
+      "facts": [
+        "Alternative when preferred agents cannot be used; dose and 7-day course are from the label. Culture and local susceptibility matter."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ],
+      "opening": "A simulated patient has Acute uncomplicated cystitis in a healthy nonpregnant premenopausal woman. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Acute uncomplicated cystitis in a healthy nonpregnant premenopausal woman",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "cefpodoxime",
+        "dose": "100 mg tablet with food",
+        "route": "oral",
+        "frequency": "every 12 hours",
+        "duration": "7 days",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-amoxicillin-cap",
+      "track": "medication",
+      "title": "Amoxicillin — outpatient CAP",
+      "tags": [
+        "amoxicillin",
+        "antibiotic",
+        "Outpatient community-acquired pneumonia (SFVA institutional snapshot)",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": [
+        "UCSF-SFVA-CAP",
+        "LABEL-AMOXICILLIN",
+        "ATS-CAP-DURATION-2025"
+      ],
+      "topic_ids": ["6bdba761b977cff2f575e630", "32eb6b827a214017ef2f5ff6"],
+      "medication_names": ["amoxicillin"],
+      "facts": [
+        "SFVA alternative monotherapy for previously healthy adults with no antibiotics in the prior 3 months; comorbidity changes the regimen.",
+        "Newer ATS guidance conditionally suggests 3 to fewer than 5 days for clinically stable adult outpatients; individualize rather than enforcing the older SFVA minimum."
+      ],
+      "gaps": [
+        "Drug selection/dose reflects the dated SFVA scope. Newer ATS duration guidance differs from SFVA and product-label courses; name the chosen source. Full stability/exclusion criteria, severe/ICU disease, MRSA and Pseudomonas protocols are not loaded."
+      ],
+      "opening": "A simulated patient has Outpatient community-acquired pneumonia (SFVA institutional snapshot). Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Outpatient community-acquired pneumonia (SFVA institutional snapshot)",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "amoxicillin",
+        "dose": "1 g",
+        "route": "oral",
+        "frequency": "every 8 hours",
+        "duration": "ATS 2025: minimum 3 and fewer than 5 days only for clinically stable, eligible adult outpatients; individualize. Older SFVA snapshot: minimum 5, usually 5-7 days.",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-doxycycline-cap",
+      "track": "medication",
+      "title": "Doxycycline — outpatient CAP",
+      "tags": [
+        "doxycycline",
+        "antibiotic",
+        "Outpatient community-acquired pneumonia (SFVA institutional snapshot)",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": [
+        "UCSF-SFVA-CAP",
+        "UCSF-DOXYCYCLINE",
+        "LABEL-DOXYCYCLINE",
+        "ATS-CAP-DURATION-2025"
+      ],
+      "topic_ids": ["6bdba761b977cff2f575e630", "32eb6b827a214017ef2f5ff6"],
+      "medication_names": ["doxycycline"],
+      "facts": [
+        "SFVA preferred monotherapy for previously healthy adults with no antibiotics in the prior 3 months.",
+        "Newer ATS guidance conditionally suggests 3 to fewer than 5 days for clinically stable adult outpatients; individualize rather than enforcing the older SFVA minimum."
+      ],
+      "gaps": [
+        "Drug selection/dose reflects the dated SFVA scope. Newer ATS duration guidance differs from SFVA and product-label courses; name the chosen source. Full stability/exclusion criteria, severe/ICU disease, MRSA and Pseudomonas protocols are not loaded."
+      ],
+      "opening": "A simulated patient has Outpatient community-acquired pneumonia (SFVA institutional snapshot). Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Outpatient community-acquired pneumonia (SFVA institutional snapshot)",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "doxycycline",
+        "dose": "100 mg",
+        "route": "oral",
+        "frequency": "every 12 hours",
+        "duration": "ATS 2025: minimum 3 and fewer than 5 days only for clinically stable, eligible adult outpatients; individualize. Older SFVA snapshot: minimum 5, usually 5-7 days.",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-cefpodoxime-doxycycline-cap",
+      "track": "medication",
+      "title": "Cefpodoxime + doxycycline — CAP with comorbidities",
+      "tags": [
+        "cefpodoxime",
+        "doxycycline",
+        "antibiotic",
+        "Outpatient community-acquired pneumonia (SFVA institutional snapshot)",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": [
+        "UCSF-SFVA-CAP",
+        "LABEL-CEFPODOXIME",
+        "UCSF-DOXYCYCLINE",
+        "LABEL-DOXYCYCLINE",
+        "ATS-CAP-DURATION-2025"
+      ],
+      "topic_ids": ["6bdba761b977cff2f575e630", "32eb6b827a214017ef2f5ff6"],
+      "medication_names": ["cefpodoxime", "doxycycline"],
+      "facts": [
+        "SFVA combination option for comorbidities or antibiotic exposure within 3 months; cefpodoxime alone does not reproduce this combination.",
+        "Newer ATS guidance conditionally suggests 3 to fewer than 5 days for clinically stable adult outpatients; individualize rather than enforcing the older SFVA minimum."
+      ],
+      "gaps": [
+        "Drug selection/dose reflects the dated SFVA scope. Newer ATS duration guidance differs from SFVA and product-label courses; name the chosen source. Full stability/exclusion criteria, severe/ICU disease, MRSA and Pseudomonas protocols are not loaded."
+      ],
+      "opening": "A simulated patient has Outpatient community-acquired pneumonia (SFVA institutional snapshot). Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Outpatient community-acquired pneumonia (SFVA institutional snapshot)",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "cefpodoxime + doxycycline",
+        "dose": "cefpodoxime 200 mg tablet with food PLUS doxycycline 100 mg",
+        "route": "oral",
+        "frequency": "both every 12 hours",
+        "duration": "ATS 2025: minimum 3 and fewer than 5 days only for clinically stable, eligible adult outpatients; individualize. Older SFVA snapshot: minimum 5, usually 5-7 days.",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-levofloxacin-cap",
+      "track": "medication",
+      "title": "Levofloxacin — adult CAP 5-day label regimen",
+      "tags": [
+        "levofloxacin",
+        "antibiotic",
+        "Adult CAP within the label-defined 5-day susceptible-pathogen scope",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": [
+        "UCSF-SFVA-CAP",
+        "LABEL-LEVOFLOXACIN",
+        "ATS-CAP-DURATION-2025"
+      ],
+      "topic_ids": ["6bdba761b977cff2f575e630", "32eb6b827a214017ef2f5ff6"],
+      "medication_names": ["levofloxacin"],
+      "facts": [
+        "SFVA lists levofloxacin as an alternative monotherapy for comorbid outpatient CAP; assess serious fluoroquinolone risks and local stewardship restrictions. Label 5-day regimen excludes MDR pneumococcal isolates.",
+        "Newer ATS guidance conditionally suggests 3 to fewer than 5 days for clinically stable adult outpatients; individualize rather than enforcing the older SFVA minimum.",
+        "The named lesson retains the label-defined 5-day course; do not silently relabel it a 3-day product regimen."
+      ],
+      "gaps": [
+        "Drug selection/dose reflects the dated SFVA scope. Newer ATS duration guidance differs from SFVA and product-label courses; name the chosen source. Full stability/exclusion criteria, severe/ICU disease, MRSA and Pseudomonas protocols are not loaded."
+      ],
+      "opening": "A simulated patient has Adult CAP within the label-defined 5-day susceptible-pathogen scope. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Adult CAP within the label-defined 5-day susceptible-pathogen scope",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "levofloxacin",
+        "dose": "750 mg",
+        "route": "oral",
+        "frequency": "every 24 hours",
+        "duration": "5 days",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-metronidazole-bv",
+      "track": "medication",
+      "title": "Metronidazole — bacterial vaginosis",
+      "tags": [
+        "metronidazole",
+        "antibiotic",
+        "Symptomatic bacterial vaginosis",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["CDC-BV", "LABEL-METRONIDAZOLE"],
+      "topic_ids": ["5730fd3e11038f2d150db93f", "a975e3f80c0dc6fd5af510b9"],
+      "medication_names": ["metronidazole"],
+      "facts": [
+        "CDC recommended oral option; do not extrapolate oral safety to vaginal formulations."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ],
+      "opening": "A simulated patient has Symptomatic bacterial vaginosis. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Symptomatic bacterial vaginosis",
+        "population": "Nonpregnant adults; normal organ function for the usual regimen. Pregnancy-specific decisions require separate source reconciliation.",
+        "drug": "metronidazole",
+        "dose": "500 mg",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "7 days",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-clindamycin-bv",
+      "track": "medication",
+      "title": "Clindamycin — BV oral alternative",
+      "tags": [
+        "clindamycin",
+        "antibiotic",
+        "Symptomatic bacterial vaginosis",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["CDC-BV", "LABEL-CLINDAMYCIN"],
+      "topic_ids": ["5730fd3e11038f2d150db93f", "a975e3f80c0dc6fd5af510b9"],
+      "medication_names": ["clindamycin"],
+      "facts": [
+        "CDC alternative oral regimen, not the vaginal cream regimen. Assess C. difficile risk."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ],
+      "opening": "A simulated patient has Symptomatic bacterial vaginosis. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Symptomatic bacterial vaginosis",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "clindamycin",
+        "dose": "300 mg",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "7 days",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-tinidazole-bv",
+      "track": "medication",
+      "title": "Tinidazole — BV alternative",
+      "tags": [
+        "tinidazole",
+        "antibiotic",
+        "Symptomatic bacterial vaginosis in a nonpregnant adult woman",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["CDC-BV", "LABEL-TINIDAZOLE"],
+      "topic_ids": ["5730fd3e11038f2d150db93f", "a975e3f80c0dc6fd5af510b9"],
+      "medication_names": ["tinidazole"],
+      "facts": [
+        "CDC alternative: a separate supported option is 1 g orally daily for 5 days. Avoid during pregnancy."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ],
+      "opening": "A simulated patient has Symptomatic bacterial vaginosis in a nonpregnant adult woman. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Symptomatic bacterial vaginosis in a nonpregnant adult woman",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "tinidazole",
+        "dose": "2 g with food",
+        "route": "oral",
+        "frequency": "once daily",
+        "duration": "2 days",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-metronidazole-trich-women",
+      "track": "medication",
+      "title": "Metronidazole — trichomoniasis in women",
+      "tags": [
+        "metronidazole",
+        "antibiotic",
+        "Confirmed trichomoniasis in an adult woman",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["CDC-TRICH", "LABEL-METRONIDAZOLE"],
+      "topic_ids": ["5730fd3e11038f2d150db93f", "a975e3f80c0dc6fd5af510b9"],
+      "medication_names": ["metronidazole"],
+      "facts": [
+        "Treat partners, avoid intercourse until both have completed treatment and symptoms resolve; retest sexually active women around 3 months. Vaginal gel is not recommended for trichomoniasis."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ],
+      "opening": "A simulated patient has Confirmed trichomoniasis in an adult woman. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Confirmed trichomoniasis in an adult woman",
+        "population": "Nonpregnant adults; normal organ function for the usual regimen. Pregnancy-specific decisions require separate source reconciliation.",
+        "drug": "metronidazole",
+        "dose": "500 mg",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "7 days",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-metronidazole-trich-men",
+      "track": "medication",
+      "title": "Metronidazole — trichomoniasis in men",
+      "tags": [
+        "metronidazole",
+        "antibiotic",
+        "Confirmed trichomoniasis in an adult man",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["CDC-TRICH", "LABEL-METRONIDAZOLE"],
+      "topic_ids": ["5730fd3e11038f2d150db93f", "a975e3f80c0dc6fd5af510b9"],
+      "medication_names": ["metronidazole"],
+      "facts": [
+        "This male regimen differs from the recommended multidose regimen for women. Partner treatment remains essential."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ],
+      "opening": "A simulated patient has Confirmed trichomoniasis in an adult man. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Confirmed trichomoniasis in an adult man",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "metronidazole",
+        "dose": "2 g",
+        "route": "oral",
+        "frequency": "once",
+        "duration": "single dose",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-tinidazole-trich",
+      "track": "medication",
+      "title": "Tinidazole — trichomoniasis alternative",
+      "tags": [
+        "tinidazole",
+        "antibiotic",
+        "Trichomoniasis in a nonpregnant adult",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["CDC-TRICH", "LABEL-TINIDAZOLE"],
+      "topic_ids": ["5730fd3e11038f2d150db93f", "a975e3f80c0dc6fd5af510b9"],
+      "medication_names": ["tinidazole"],
+      "facts": ["CDC alternative for women or men; avoid in pregnancy."],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ],
+      "opening": "A simulated patient has Trichomoniasis in a nonpregnant adult. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Trichomoniasis in a nonpregnant adult",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "tinidazole",
+        "dose": "2 g with food",
+        "route": "oral",
+        "frequency": "once",
+        "duration": "single dose",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-tinidazole-giardia",
+      "track": "medication",
+      "title": "Tinidazole — adult giardiasis",
+      "tags": [
+        "tinidazole",
+        "antibiotic",
+        "Confirmed adult giardiasis",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["LABEL-TINIDAZOLE"],
+      "topic_ids": [],
+      "medication_names": ["tinidazole"],
+      "facts": ["Labeled adult regimen; not a pediatric dosing lesson."],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ],
+      "opening": "A simulated patient has Confirmed adult giardiasis. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Confirmed adult giardiasis",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "tinidazole",
+        "dose": "2 g with food",
+        "route": "oral",
+        "frequency": "once",
+        "duration": "single dose",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-benzathine-penicillin-early",
+      "track": "medication",
+      "title": "Benzathine penicillin G — primary/secondary syphilis",
+      "tags": [
+        "penicillin G benzathine",
+        "antibiotic",
+        "Primary or secondary syphilis in an adult without neurologic/ocular/otic involvement",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["CDC-SYPHILIS-EARLY", "LABEL-BENZATHINE-PENICILLIN"],
+      "topic_ids": ["5730fd3e11038f2d150db93f", "a975e3f80c0dc6fd5af510b9"],
+      "medication_names": ["penicillin G benzathine"],
+      "facts": [
+        "Use Bicillin L-A deep IM, never IV. Evaluate neurologic/ocular/otic symptoms; that disease requires a different regimen. Follow clinical and serologic response."
+      ],
+      "gaps": [
+        "Pregnancy, congenital infection and neurosyphilis require separate scoped guidance. Do not substitute Bicillin C-R or aqueous IV penicillin."
+      ],
+      "opening": "A simulated patient has Primary or secondary syphilis in an adult without neurologic/ocular/otic involvement. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Primary or secondary syphilis in an adult without neurologic/ocular/otic involvement",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "penicillin G benzathine",
+        "dose": "2.4 million units",
+        "route": "deep intramuscular",
+        "frequency": "once",
+        "duration": "single dose",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-benzathine-penicillin-latent",
+      "track": "medication",
+      "title": "Benzathine penicillin G — late latent syphilis",
+      "tags": [
+        "penicillin G benzathine",
+        "antibiotic",
+        "Late latent syphilis or syphilis of unknown duration in an adult",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["CDC-SYPHILIS-LATENT", "LABEL-BENZATHINE-PENICILLIN"],
+      "topic_ids": ["5730fd3e11038f2d150db93f", "a975e3f80c0dc6fd5af510b9"],
+      "medication_names": ["penicillin G benzathine"],
+      "facts": [
+        "Early latent disease instead uses a single 2.4-million-unit dose; establish stage rather than using a positive serology alone."
+      ],
+      "gaps": [
+        "Pregnancy, missed-dose timing, penicillin allergy and neurologic/ocular/otic involvement require additional scoped guidance."
+      ],
+      "opening": "A simulated patient has Late latent syphilis or syphilis of unknown duration in an adult. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Late latent syphilis or syphilis of unknown duration in an adult",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "penicillin G benzathine",
+        "dose": "2.4 million units per dose",
+        "route": "deep intramuscular",
+        "frequency": "at 1-week intervals",
+        "duration": "3 doses; 7.2 million units total",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-pid-outpatient",
+      "track": "medication",
+      "title": "Ceftriaxone + doxycycline + metronidazole — outpatient PID",
+      "tags": [
+        "ceftriaxone",
+        "doxycycline",
+        "metronidazole",
+        "antibiotic",
+        "Mild-to-moderate acute PID suitable for outpatient treatment",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": [
+        "CDC-PID",
+        "LABEL-CEFTRIAXONE",
+        "UCSF-DOXYCYCLINE",
+        "LABEL-DOXYCYCLINE",
+        "LABEL-METRONIDAZOLE"
+      ],
+      "topic_ids": ["5730fd3e11038f2d150db93f", "a975e3f80c0dc6fd5af510b9"],
+      "medication_names": ["ceftriaxone", "doxycycline", "metronidazole"],
+      "facts": [
+        "With documented gonorrhea and weight >150 kg CDC specifies ceftriaxone 1 g. Reevaluate if not improving within 72 hours.",
+        "This is a combination; no component alone is the PID regimen."
+      ],
+      "gaps": [
+        "Not for pregnancy, severe illness, tubo-ovarian abscess, inability to tolerate outpatient therapy or failure to exclude surgical emergencies; evaluate admission criteria separately."
+      ],
+      "opening": "A simulated patient has Mild-to-moderate acute PID suitable for outpatient treatment. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Mild-to-moderate acute PID suitable for outpatient treatment",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "ceftriaxone + doxycycline + metronidazole",
+        "dose": "ceftriaxone 500 mg IM once PLUS doxycycline 100 mg orally twice daily PLUS metronidazole 500 mg orally twice daily",
+        "route": "ceftriaxone IM; doxycycline and metronidazole oral",
+        "frequency": "ceftriaxone once; oral agents every 12 hours",
+        "duration": "ceftriaxone one dose; both oral agents 14 days",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-fidaxomicin-cdi",
+      "track": "medication",
+      "title": "Fidaxomicin — initial nonfulminant C. difficile",
+      "tags": [
+        "fidaxomicin",
+        "antibiotic",
+        "Initial nonfulminant C. difficile infection in an adult",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["IDSA-CDI-2021", "LABEL-FIDAXOMICIN"],
+      "topic_ids": ["e46fde2a2f267760c4ca55ef"],
+      "medication_names": ["fidaxomicin"],
+      "facts": [
+        "IDSA/SHEA conditionally prefers fidaxomicin over a standard vancomycin course when resources allow; oral vancomycin remains acceptable."
+      ],
+      "gaps": [
+        "Not fulminant disease or a recurrence taper/extended-pulse regimen. Diagnosis and recurrence-prevention decisions need additional evidence."
+      ],
+      "opening": "A simulated patient has Initial nonfulminant C. difficile infection in an adult. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Initial nonfulminant C. difficile infection in an adult",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "fidaxomicin",
+        "dose": "200 mg tablet",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "10 days",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
+    },
+    {
+      "id": "med-vancomycin-cdi",
+      "track": "medication",
+      "title": "Vancomycin oral — initial nonfulminant C. difficile",
+      "tags": [
+        "vancomycin",
+        "antibiotic",
+        "Initial nonfulminant C. difficile infection in an adult",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "kidney",
+        "liver",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["IDSA-CDI-2021", "LABEL-VANCOMYCIN-ORAL"],
+      "topic_ids": ["e46fde2a2f267760c4ca55ef"],
+      "medication_names": ["vancomycin"],
+      "facts": [
+        "Acceptable alternative to fidaxomicin for initial nonfulminant disease. Oral capsules treat intestinal infection; IV vancomycin is not interchangeable for CDI."
+      ],
+      "gaps": [
+        "Not a fulminant CDI, taper/pulse, IV systemic-infection or AUC-monitoring protocol."
+      ],
+      "opening": "A simulated patient has Initial nonfulminant C. difficile infection in an adult. Before selecting treatment, what patient factor would you clarify first?",
+      "stages": [
+        "Establish indication, severity, patient factors and whether an antibiotic is needed.",
+        "Elicit the full supported prescription, one question at a time.",
+        "Ask about contraindications and allergy type before explaining.",
+        "Change renal function and ask for the supported dose/interval decision.",
+        "Change hepatic severity and distinguish adjustment, avoidance, monitoring and missing evidence.",
+        "Check interactions, monitoring, follow-up and a supported alternative; revisit one decision."
+      ],
+      "regimen": {
+        "indication": "Initial nonfulminant C. difficile infection in an adult",
+        "population": "Adults; normal organ function for the usual regimen.",
+        "drug": "vancomycin",
+        "dose": "125 mg capsule",
+        "route": "oral",
+        "frequency": "four times daily",
+        "duration": "10 days",
+        "adjustment": "Apply only the attached formulation-specific renal/hepatic profiles; do not substitute a different indication or population.",
+        "maximum": "This is the stated indication regimen, not a universal maximum. No additional maximum is established in this lesson."
+      }
     }
   ],
   "gaps": [
@@ -1437,6 +2712,299 @@
       "monitoring": ["Assess bleeding and interacting medicines."],
       "gaps": [
         "No invented Child-Pugh B dose. Dialysis recommendations rely on pharmacokinetics, not demonstrated clinical equivalence. Interaction adjustment rules are not fully loaded."
+      ]
+    },
+    {
+      "drug": "amoxicillin-clavulanate",
+      "source_ids": ["LABEL-AMOXCLAV"],
+      "population": "Adults; stated formulation and indication only.",
+      "contraindications": [
+        "Serious beta-lactam hypersensitivity; prior amoxicillin-clavulanate-associated cholestatic jaundice/hepatic dysfunction."
+      ],
+      "renal": {
+        "status": "adjustment_required",
+        "guidance": "Label GFR 10 to <30 mL/min: 250/125 or 500/125 mg every 12 hours; <10: every 24 hours, chosen by severity. Do not use 875/125 mg below 30. Not an extended-release table."
+      },
+      "hepatic": {
+        "status": "caution_monitor",
+        "guidance": "Monitor liver function in hepatic impairment; prior drug-associated liver injury is contraindicated, not a dose-reduction problem."
+      },
+      "interactions": [
+        "Probenecid not recommended; oral anticoagulants may prolong prothrombin time; allopurinol increases rash risk."
+      ],
+      "monitoring": [
+        "Check allergy, renal function and formulation ratio; tablets with different clavulanate ratios are not interchangeable."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ]
+    },
+    {
+      "drug": "trimethoprim-sulfamethoxazole",
+      "source_ids": ["LABEL-TMP-SMX"],
+      "population": "Adults; stated formulation and indication only.",
+      "contraindications": [
+        "Sulfonamide/trimethoprim hypersensitivity, prior associated immune thrombocytopenia, folate-deficiency megaloblastic anemia, age <2 months, marked hepatic damage, unmonitorable severe renal insufficiency, or dofetilide coadministration."
+      ],
+      "renal": {
+        "status": "adjustment_required",
+        "guidance": "CrCl >30 mL/min: usual regimen; 15-30: half the usual regimen; <15: use not recommended."
+      },
+      "hepatic": {
+        "status": "contraindicated",
+        "guidance": "Marked hepatic damage is contraindicated; no Child-Pugh adjustment table loaded."
+      },
+      "interactions": [
+        "Dofetilide is contraindicated. Potassium-raising agents increase hyperkalemia risk; monitor warfarin anticoagulation."
+      ],
+      "monitoring": [
+        "Monitor potassium, renal function and blood counts as appropriate; stop and evaluate serious rash."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ]
+    },
+    {
+      "drug": "nitrofurantoin",
+      "source_ids": ["LABEL-NITROFURANTOIN"],
+      "population": "Adults; stated formulation and indication only.",
+      "contraindications": [
+        "Hypersensitivity; anuria/oliguria or label-defined significant renal impairment; prior associated cholestatic jaundice/hepatic dysfunction; term pregnancy 38-42 weeks/labor; neonates <1 month."
+      ],
+      "renal": {
+        "status": "avoid_use",
+        "guidance": "This product label contraindicates CrCl <60 mL/min. Some clinical protocols use different thresholds: do not silently replace this label threshold or infer a reduced-dose regimen. A lower-threshold protocol is not loaded here."
+      },
+      "hepatic": {
+        "status": "caution_monitor",
+        "guidance": "Prior associated liver injury is contraindicated; otherwise monitor for hepatotoxicity and withdraw for hepatitis. No numeric liver adjustment loaded."
+      },
+      "interactions": [
+        "Magnesium trisilicate antacids reduce absorption; probenecid can reduce urinary secretion and increase toxicity."
+      ],
+      "monitoring": [
+        "Watch for pulmonary symptoms, neuropathy, liver injury and G6PD-associated hemolysis."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ]
+    },
+    {
+      "drug": "fosfomycin",
+      "source_ids": ["LABEL-FOSFOMYCIN"],
+      "population": "Adults; stated formulation and indication only.",
+      "contraindications": ["Known fosfomycin hypersensitivity."],
+      "renal": {
+        "status": "not_established",
+        "guidance": "Renal impairment prolongs elimination and decreases urinary recovery; no quantitative renal-adjustment regimen is established in the loaded label."
+      },
+      "hepatic": {
+        "status": "not_established",
+        "guidance": "No quantitative hepatic adjustment is established in the loaded sections; this does not establish hepatic safety."
+      },
+      "interactions": [
+        "Metoclopramide reduces fosfomycin exposure and urinary excretion."
+      ],
+      "monitoring": [
+        "Reassess persistent symptoms; do not repeat daily doses for one cystitis episode."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ]
+    },
+    {
+      "drug": "levofloxacin",
+      "source_ids": ["LABEL-LEVOFLOXACIN"],
+      "population": "Adults; stated formulation and indication only.",
+      "contraindications": [
+        "Hypersensitivity to levofloxacin or another quinolone."
+      ],
+      "renal": {
+        "status": "adjustment_required",
+        "guidance": "For the adult 750 mg every-24-hour regimen only: CrCl 20-49 mL/min, 750 mg every 48 hours; CrCl 10-19, 750 mg once then 500 mg every 48 hours. Other baseline doses need their own table."
+      },
+      "hepatic": {
+        "status": "not_established",
+        "guidance": "Hepatic pharmacokinetics not studied; limited metabolism suggests little effect, not a validated Child-Pugh dosing rule."
+      },
+      "interactions": [
+        "Separate metal cations/sucralfate by at least 2 hours; monitor INR with warfarin and glucose with antidiabetic agents."
+      ],
+      "monitoring": [
+        "Boxed tendon, neuropathy and CNS risks; avoid in myasthenia gravis. Assess QT, aortic risk and serious adverse effects."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ]
+    },
+    {
+      "drug": "cefpodoxime",
+      "source_ids": ["LABEL-CEFPODOXIME"],
+      "population": "Adults; stated formulation and indication only.",
+      "contraindications": ["Known allergy to cefpodoxime or cephalosporins."],
+      "renal": {
+        "status": "adjustment_required",
+        "guidance": "Adult severe renal impairment, CrCl <30 mL/min: extend the usual interval to every 24 hours."
+      },
+      "hepatic": {
+        "status": "no_adjustment",
+        "guidance": "Label states no adjustment in studied cirrhosis with or without ascites; do not extrapolate to every form of acute liver failure."
+      },
+      "interactions": [
+        "Antacids/H2 blockers can reduce absorption; probenecid increases exposure."
+      ],
+      "monitoring": [
+        "Take tablets with food; assess allergy and renal function."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ]
+    },
+    {
+      "drug": "metronidazole",
+      "source_ids": ["LABEL-METRONIDAZOLE", "CDC-BV", "CDC-TRICH"],
+      "population": "Adults; stated formulation and indication only.",
+      "contraindications": [
+        "Nitroimidazole hypersensitivity; disulfiram within 2 weeks; Cockayne syndrome. Label also prohibits alcohol/propylene glycol during treatment and for 3 days after.",
+        "This label contraindicates first-trimester treatment of trichomoniasis; CDC differs. Pregnancy treatment is outside this lesson scope and requires reconciling that conflict."
+      ],
+      "renal": {
+        "status": "caution_monitor",
+        "guidance": "Single-dose parent pharmacokinetics are unchanged by renal impairment, but metabolites accumulate in ESRD: monitor adverse effects. Dialysis timing needs separate guidance."
+      },
+      "hepatic": {
+        "status": "adjustment_required",
+        "guidance": "Child-Pugh C: reduce dose by 50%; mild/moderate impairment: no reduction, monitor adverse effects."
+      },
+      "interactions": [
+        "Warfarin potentiation and lithium toxicity require monitoring. CDC BV guidance differs from the label on alcohol avoidance; disclose that disagreement, do not blend it."
+      ],
+      "monitoring": [
+        "Evaluate new neurologic symptoms; distinguish CDC indication regimen from historical label STI regimens."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ]
+    },
+    {
+      "drug": "clindamycin",
+      "source_ids": ["LABEL-CLINDAMYCIN"],
+      "population": "Adults; stated formulation and indication only.",
+      "contraindications": [
+        "Prior hypersensitivity to clindamycin or lincomycin."
+      ],
+      "renal": {
+        "status": "no_adjustment",
+        "guidance": "No renal dose modification required; AKI can still occur, particularly with other nephrotoxins."
+      },
+      "hepatic": {
+        "status": "caution_monitor",
+        "guidance": "Half-life can increase in moderate/severe liver disease; adjustment may not be necessary, but monitor liver enzymes in severe disease. No Child-Pugh reduction formula."
+      },
+      "interactions": [
+        "May potentiate neuromuscular blockers; strong CYP3A4 inhibitors/inducers can alter exposure."
+      ],
+      "monitoring": [
+        "Boxed C. difficile colitis risk; assess significant diarrhea. During prolonged therapy monitor blood counts, liver and renal function."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ]
+    },
+    {
+      "drug": "tinidazole",
+      "source_ids": ["LABEL-TINIDAZOLE", "CDC-BV", "CDC-TRICH"],
+      "population": "Adults; stated formulation and indication only.",
+      "contraindications": [
+        "Nitroimidazole hypersensitivity or Cockayne syndrome."
+      ],
+      "renal": {
+        "status": "no_adjustment",
+        "guidance": "No adjustment for renal impairment, including studied CrCl <22 mL/min; dialysis is a separate timing/supplemental-dose issue."
+      },
+      "hepatic": {
+        "status": "caution_monitor",
+        "guidance": "Hepatic pharmacokinetics unstudied; administer cautiously in hepatic dysfunction. Do not transfer metronidazole Child-Pugh reductions."
+      },
+      "interactions": [
+        "Label advises avoiding alcohol during treatment and for 3 days afterward; CDC BV guidance differs. Review anticoagulants and lithium."
+      ],
+      "monitoring": [
+        "Stop for abnormal neurologic signs. CDC advises avoiding tinidazole in pregnancy."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ]
+    },
+    {
+      "drug": "fidaxomicin",
+      "source_ids": ["LABEL-FIDAXOMICIN"],
+      "population": "Adults; stated formulation and indication only.",
+      "contraindications": [
+        "Hypersensitivity to fidaxomicin or product ingredients."
+      ],
+      "renal": {
+        "status": "no_adjustment",
+        "guidance": "No renal dose adjustment recommended by label."
+      },
+      "hepatic": {
+        "status": "not_established",
+        "guidance": "Hepatic impairment has not been evaluated; substantial hepatic metabolism is not expected. No validated hepatic reduction table."
+      },
+      "interactions": [
+        "Label permits P-gp inhibitors such as cyclosporine without dose adjustment despite increased plasma exposure."
+      ],
+      "monitoring": [
+        "Evaluate hypersensitivity and clinical response; minimal systemic absorption does not treat systemic infections."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ]
+    },
+    {
+      "drug": "vancomycin",
+      "source_ids": ["LABEL-VANCOMYCIN-ORAL"],
+      "population": "Adults receiving ORAL capsules for intestinal infection; never an IV vancomycin profile.",
+      "contraindications": ["Known vancomycin hypersensitivity."],
+      "renal": {
+        "status": "caution_monitor",
+        "guidance": "ORAL capsules only: monitor renal function; colitis/renal insufficiency can increase systemic exposure, and serum monitoring may be appropriate. No IV dose or AUC protocol is supplied."
+      },
+      "hepatic": {
+        "status": "not_established",
+        "guidance": "No quantitative hepatic adjustment is established in the loaded sections; this does not establish hepatic safety."
+      },
+      "interactions": [
+        "Other nephrotoxic/ototoxic drugs, including aminoglycosides, warrant exposure/toxicity assessment."
+      ],
+      "monitoring": [
+        "Renal injury may appear during or after oral treatment; assess hearing risk when appropriate."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
+      ]
+    },
+    {
+      "drug": "penicillin G benzathine",
+      "source_ids": ["LABEL-BENZATHINE-PENICILLIN"],
+      "population": "Adults; stated formulation and indication only.",
+      "contraindications": ["Prior hypersensitivity to penicillins."],
+      "renal": {
+        "status": "not_established",
+        "guidance": "Renal impairment may delay penicillin excretion; no quantitative adjustment for this depot regimen is established in the loaded sections."
+      },
+      "hepatic": {
+        "status": "not_established",
+        "guidance": "No quantitative hepatic adjustment is established in the loaded sections; this does not establish hepatic safety."
+      },
+      "interactions": [
+        "Probenecid prolongs penicillin levels; tetracyclines may antagonize bactericidal activity."
+      ],
+      "monitoring": [
+        "Deep IM only; inadvertent IV/intra-arterial injection can be fatal. Check exact Bicillin L-A formulation and allergy."
+      ],
+      "gaps": [
+        "Selective adult teaching only. Other indications, children, pregnancy/lactation and dialysis require separately scoped evidence; the interaction list is not exhaustive."
       ]
     }
   ]
