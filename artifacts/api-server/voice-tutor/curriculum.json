@@ -38,7 +38,7 @@
       "organization": "DailyMed / manufacturer labeling",
       "title": "Metformin IR and ER",
       "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0ff1ba75-3c86-4baf-a6b1-1bb883839866",
-      "sections": "2.1, 2.3, 2.4; 4; 5.1",
+      "sections": "2.1, 2.3-2.4; 4; 5.1-5.2; 7; 8.6-8.7",
       "source_date": null,
       "access_date": "2026-10-17",
       "review": "source_checked; independent clinical review pending",
@@ -49,7 +49,7 @@
       "organization": "DailyMed / manufacturer labeling",
       "title": "Sertraline tablets",
       "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bdbcb3ce-e424-43eb-9f1a-77eda4dfbdaa",
-      "sections": "2.1, 2.4; 4; 5.2, 5.4, 5.8; 7.1",
+      "sections": "2.1, 2.4-2.5; 4; 5.1-5.3, 5.8; 7.1; 8.6-8.7",
       "source_date": null,
       "access_date": "2026-10-17",
       "review": "source_checked; independent clinical review pending",
@@ -60,7 +60,7 @@
       "organization": "DailyMed / manufacturer labeling",
       "title": "Lisinopril tablets",
       "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f2e09150-22f2-4028-b214-917d686200ad",
-      "sections": "2.1, 2.4; 4; 5; 7.3",
+      "sections": "2.1, 2.4; 4; 5.1, 5.3-5.6; 7.1, 7.3-7.4, 7.8",
       "source_date": "2026-08",
       "access_date": "2026-10-17",
       "review": "source_checked; independent clinical review pending",
@@ -71,7 +71,7 @@
       "organization": "DailyMed / manufacturer labeling",
       "title": "Spironolactone tablets",
       "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fe044bd2-cb08-4cfd-a3d5-a4809d05aa62",
-      "sections": "2.2; 4; 5.1; 7.1",
+      "sections": "2.2; 4; 5.1-5.2; 7.1; 8.6-8.7",
       "source_date": "2025-06",
       "access_date": "2026-10-17",
       "review": "source_checked; independent clinical review pending",
@@ -82,11 +82,88 @@
       "organization": "DailyMed / manufacturer labeling",
       "title": "Eliquis apixaban tablets",
       "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e9481622-7cc6-418a-acb6-c5450daae9b0",
-      "sections": "2.1; 4; 5.2; 7.1, 7.3",
+      "sections": "2.1; 4; 5.2; 7.1-7.3; 8.6-8.7",
       "source_date": null,
       "access_date": "2026-10-17",
       "review": "source_checked; independent clinical review pending",
       "reuse": "Original scoped paraphrase; no vendor database copied. Verify applicable terms before expanded ingestion."
+    },
+    {
+      "id": "LABEL-AMOXICILLIN",
+      "organization": "DailyMed / manufacturer labeling",
+      "title": "Amoxicillin capsules",
+      "url": "https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1d0d8bc4-137e-ef10-e063-6294a90acf62",
+      "sections": "2.5; 4; 5",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase with attribution; no copied tables, monographs or vendor database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "LABEL-PENICILLIN-V",
+      "organization": "DailyMed / manufacturer labeling",
+      "title": "Penicillin V potassium",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b0744674-ddf7-4022-be2f-2a22bef0d379",
+      "sections": "Clinical pharmacology; Contraindications; Warnings",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase with attribution; no copied tables, monographs or vendor database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "LABEL-CEPHALEXIN",
+      "organization": "DailyMed / manufacturer labeling",
+      "title": "Cephalexin capsules",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f957ea27-2906-40c7-ac03-eb2f742473a0",
+      "sections": "2.3; 4; 5.4-5.5; 7",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase with attribution; no copied tables, monographs or vendor database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "LABEL-DOXYCYCLINE",
+      "organization": "DailyMed / manufacturer labeling",
+      "title": "Doxycycline hyclate capsules",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=bed39bae-64c2-44b4-9c95-682ead4e6738",
+      "sections": "Contraindications; Precautions / Drug interactions; Adverse reactions",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase with attribution; no copied tables, monographs or vendor database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "LABEL-AZITHROMYCIN",
+      "organization": "DailyMed / manufacturer labeling",
+      "title": "Azithromycin tablets",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=943b9246-7733-44b1-875c-91d2ade78ac4",
+      "sections": "4; 5.2; 5.4; 7.2; 12.3",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase with attribution; no copied tables, monographs or vendor database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "LABEL-CEFTRIAXONE",
+      "organization": "DailyMed / manufacturer labeling",
+      "title": "Ceftriaxone injection (IM/IV vial)",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=7bed9b33-29e3-4f04-9766-43a21c7ad47a",
+      "sections": "Contraindications; Precautions / Patients with Renal or Hepatic Impairment; Clinical pharmacology",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase with attribution; no copied tables, monographs or vendor database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "UCSF-DOXYCYCLINE",
+      "organization": "UCSF IDMP",
+      "title": "UCSF adult doxycycline dosing",
+      "url": "https://idmp.ucsf.edu/content/doxycycline",
+      "sections": "Adult non-dialysis; Intermittent and continuous hemodialysis",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase with attribution; no copied tables, monographs or vendor database. No blanket redistribution license claimed."
     }
   ],
   "references": [
@@ -166,6 +243,13 @@
       "url": "https://www.accessdata.fda.gov/scripts/cder/daf/",
       "status": "public_reference_link_only",
       "notice": "Reference metadata only; no claim that this database is connected or its content loaded."
+    },
+    {
+      "name": "Nebraska Medicine / UNMC Antimicrobial Stewardship",
+      "role": "Supplementary institutional antimicrobial and renal dosing guidance",
+      "url": "https://www.unmc.edu/intmed/divisions/id/asp/index.html",
+      "status": "public_reference_link_only",
+      "notice": "Reference link only; no Nebraska dosing protocol loaded. Public reading access does not establish commercial redistribution rights."
     }
   ],
   "lessons": [
@@ -173,22 +257,34 @@
       "id": "med-amoxicillin-strep",
       "track": "medication",
       "title": "Amoxicillin — confirmed group A strep pharyngitis",
-      "tags": ["amoxicillin", "antibiotic", "pediatric", "pharyngitis"],
-      "source_ids": ["CDC-STREP"],
+      "tags": [
+        "amoxicillin",
+        "antibiotic",
+        "pediatric",
+        "pharyngitis",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "liver",
+        "kidney",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["CDC-STREP", "LABEL-AMOXICILLIN"],
       "facts": [
         "Penicillin or amoxicillin is preferred for confirmed group A strep. Do not treat viral pharyngitis."
       ],
       "gaps": [
-        "Renal adjustment and liquid concentration are not supplied by this CDC page."
+        "Do not infer hepatic safety from a missing adjustment. Dialysis and smaller-child renal dosing need a separately scoped regimen; interactions are not comprehensively loaded."
       ],
       "opening": "For patients with confirmed group a strep pharyngitis, explain the indication and write the complete amoxicillin regimen. What patient factors must you check first?",
       "stages": [
-        "Indication and patient factors",
-        "Drug and formulation",
-        "Dose, route and frequency",
-        "Duration or titration and maximum",
-        "Safety checkpoint and adjustments",
-        "Supported alternatives, monitoring and concise prescription"
+        "Indication, patient factors and full usual regimen",
+        "Contraindications and allergy phenotype",
+        "Renal function measure, threshold and dose/interval decision",
+        "Hepatic severity, adjustment versus avoid-use warning",
+        "Interactions and supported monitoring",
+        "Changed simulated patient: retry safety decision and concise prescription"
       ],
       "regimen": {
         "indication": "Amoxicillin — confirmed group A strep pharyngitis",
@@ -206,20 +302,31 @@
       "id": "med-penicillin-strep",
       "track": "medication",
       "title": "Penicillin V — adult strep pharyngitis",
-      "tags": ["penicillin", "antibiotic", "pharyngitis"],
-      "source_ids": ["CDC-STREP"],
+      "tags": [
+        "penicillin",
+        "antibiotic",
+        "pharyngitis",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "liver",
+        "kidney",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["CDC-STREP", "LABEL-PENICILLIN-V"],
       "facts": [],
       "gaps": [
-        "Pediatric schedules and renal adjustment require their specific source."
+        "No supported renal, hepatic or dialysis schedule here; do not turn missing guidance into a no-adjustment claim. Interaction details not loaded."
       ],
       "opening": "For adolescents and adults with confirmed group a strep, explain the indication and write the complete penicillin V regimen. What patient factors must you check first?",
       "stages": [
-        "Indication and patient factors",
-        "Drug and formulation",
-        "Dose, route and frequency",
-        "Duration or titration and maximum",
-        "Safety checkpoint and adjustments",
-        "Supported alternatives, monitoring and concise prescription"
+        "Indication, patient factors and full usual regimen",
+        "Contraindications and allergy phenotype",
+        "Renal function measure, threshold and dose/interval decision",
+        "Hepatic severity, adjustment versus avoid-use warning",
+        "Interactions and supported monitoring",
+        "Changed simulated patient: retry safety decision and concise prescription"
       ],
       "regimen": {
         "indication": "Penicillin V — adult strep pharyngitis",
@@ -237,20 +344,32 @@
       "id": "med-cephalexin-strep",
       "track": "medication",
       "title": "Cephalexin — strep with selected penicillin allergy",
-      "tags": ["cephalexin", "antibiotic", "allergy", "pediatric"],
-      "source_ids": ["CDC-STREP"],
+      "tags": [
+        "cephalexin",
+        "antibiotic",
+        "allergy",
+        "pediatric",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "liver",
+        "kidney",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["CDC-STREP", "LABEL-CEPHALEXIN"],
       "facts": [],
       "gaps": [
-        "Not a blanket alternative for all penicillin allergies. Renal adjustments not supplied."
+        "Hemodialysis and renal dosing below age 15 are not established in this label table. Retain CDC immediate-type penicillin-allergy avoidance for the strep lesson."
       ],
       "opening": "For patients with confirmed strep and a suitable non-immediate penicillin allergy history, explain the indication and write the complete cephalexin regimen. What patient factors must you check first?",
       "stages": [
-        "Indication and patient factors",
-        "Drug and formulation",
-        "Dose, route and frequency",
-        "Duration or titration and maximum",
-        "Safety checkpoint and adjustments",
-        "Supported alternatives, monitoring and concise prescription"
+        "Indication, patient factors and full usual regimen",
+        "Contraindications and allergy phenotype",
+        "Renal function measure, threshold and dose/interval decision",
+        "Hepatic severity, adjustment versus avoid-use warning",
+        "Interactions and supported monitoring",
+        "Changed simulated patient: retry safety decision and concise prescription"
       ],
       "regimen": {
         "indication": "Cephalexin — strep with selected penicillin allergy",
@@ -268,22 +387,34 @@
       "id": "med-doxycycline-chlamydia",
       "track": "medication",
       "title": "Doxycycline — uncomplicated chlamydia",
-      "tags": ["doxycycline", "antibiotic", "STI"],
-      "source_ids": ["CDC-CHLAMYDIA"],
+      "tags": [
+        "doxycycline",
+        "antibiotic",
+        "STI",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "liver",
+        "kidney",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["CDC-CHLAMYDIA", "UCSF-DOXYCYCLINE", "LABEL-DOXYCYCLINE"],
       "facts": [
         "Retest approximately 3 months after treatment; address sex partners and reinfection risk."
       ],
       "gaps": [
-        "Do not extend this regimen to complicated infection or children."
+        "Do not extend this regimen to complicated infection or children.",
+        "No validated liver-severity dosing schedule or exact monitoring interval loaded; do not infer unrestricted hepatic safety. Do not generalize adult dosing to children."
       ],
       "opening": "For nonpregnant adolescents and adults with uncomplicated chlamydia, explain the indication and write the complete doxycycline regimen. What patient factors must you check first?",
       "stages": [
-        "Indication and patient factors",
-        "Drug and formulation",
-        "Dose, route and frequency",
-        "Duration or titration and maximum",
-        "Safety checkpoint and adjustments",
-        "Supported alternatives, monitoring and concise prescription"
+        "Indication, patient factors and full usual regimen",
+        "Contraindications and allergy phenotype",
+        "Renal function measure, threshold and dose/interval decision",
+        "Hepatic severity, adjustment versus avoid-use warning",
+        "Interactions and supported monitoring",
+        "Changed simulated patient: retry safety decision and concise prescription"
       ],
       "regimen": {
         "indication": "Doxycycline — uncomplicated chlamydia",
@@ -301,22 +432,34 @@
       "id": "med-azithromycin-pregnancy",
       "track": "medication",
       "title": "Azithromycin — chlamydia in pregnancy",
-      "tags": ["azithromycin", "antibiotic", "pregnancy", "STI"],
-      "source_ids": ["CDC-CHLAMYDIA"],
+      "tags": [
+        "azithromycin",
+        "antibiotic",
+        "pregnancy",
+        "STI",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "liver",
+        "kidney",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["CDC-CHLAMYDIA", "LABEL-AZITHROMYCIN"],
       "facts": [
         "In pregnancy, test of cure at approximately 4 weeks and retesting at 3 months are recommended."
       ],
       "gaps": [
-        "Interaction and hepatic assessment require additional drug-specific evidence."
+        "No Child-Pugh-based dose reduction or dialysis protocol established here."
       ],
       "opening": "For pregnant patients with chlamydia, explain the indication and write the complete azithromycin regimen. What patient factors must you check first?",
       "stages": [
-        "Indication and patient factors",
-        "Drug and formulation",
-        "Dose, route and frequency",
-        "Duration or titration and maximum",
-        "Safety checkpoint and adjustments",
-        "Supported alternatives, monitoring and concise prescription"
+        "Indication, patient factors and full usual regimen",
+        "Contraindications and allergy phenotype",
+        "Renal function measure, threshold and dose/interval decision",
+        "Hepatic severity, adjustment versus avoid-use warning",
+        "Interactions and supported monitoring",
+        "Changed simulated patient: retry safety decision and concise prescription"
       ],
       "regimen": {
         "indication": "Azithromycin — chlamydia in pregnancy",
@@ -334,22 +477,34 @@
       "id": "med-ceftriaxone-gonorrhea",
       "track": "medication",
       "title": "Ceftriaxone — uncomplicated gonorrhea",
-      "tags": ["ceftriaxone", "antibiotic", "STI"],
-      "source_ids": ["CDC-GONORRHEA"],
+      "tags": [
+        "ceftriaxone",
+        "antibiotic",
+        "STI",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "liver",
+        "kidney",
+        "interactions",
+        "monitoring"
+      ],
+      "source_ids": ["CDC-GONORRHEA", "LABEL-CEFTRIAXONE"],
       "facts": [
         "Pharyngeal infection requires test of cure at 7–14 days; uncomplicated urogenital/rectal infection ordinarily does not after recommended treatment."
       ],
       "gaps": [
-        "Pregnancy, severe allergy, dissemination and treatment failure need their own pathway."
+        "Pregnancy, severe allergy, dissemination and treatment failure need their own pathway.",
+        "The 2 g/day ceiling is not the gonorrhea prescription or a universal maximum for all indications. Do not use older label STI dosing instead of CDC guidance."
       ],
       "opening": "For adolescents and adults with uncomplicated cervical, urethral or rectal gonorrhea, explain the indication and write the complete ceftriaxone regimen. What patient factors must you check first?",
       "stages": [
-        "Indication and patient factors",
-        "Drug and formulation",
-        "Dose, route and frequency",
-        "Duration or titration and maximum",
-        "Safety checkpoint and adjustments",
-        "Supported alternatives, monitoring and concise prescription"
+        "Indication, patient factors and full usual regimen",
+        "Contraindications and allergy phenotype",
+        "Renal function measure, threshold and dose/interval decision",
+        "Hepatic severity, adjustment versus avoid-use warning",
+        "Interactions and supported monitoring",
+        "Changed simulated patient: retry safety decision and concise prescription"
       ],
       "regimen": {
         "indication": "Ceftriaxone — uncomplicated gonorrhea",
@@ -367,20 +522,32 @@
       "id": "med-metformin-ir",
       "track": "medication",
       "title": "Metformin immediate release — adult type 2 diabetes",
-      "tags": ["metformin", "diabetes", "renal", "IR"],
+      "tags": [
+        "metformin",
+        "diabetes",
+        "renal",
+        "IR",
+        "contraindications",
+        "hepatic",
+        "liver",
+        "kidney",
+        "interactions",
+        "monitoring"
+      ],
       "source_ids": ["LABEL-METFORMIN"],
       "facts": [],
       "gaps": [
-        "Do not generalize this product maximum to every formulation. Disease-based treatment sequencing is not established by labeling."
+        "Do not generalize this product maximum to every formulation. Disease-based treatment sequencing is not established by labeling.",
+        "No liver-based reduced-dose regimen is established. This profile is not an exhaustive interaction or contrast protocol."
       ],
       "opening": "For adults with type 2 diabetes and appropriate renal function, explain the indication and write the complete metformin immediate-release tablets regimen. What patient factors must you check first?",
       "stages": [
-        "Indication and patient factors",
-        "Drug and formulation",
-        "Dose, route and frequency",
-        "Duration or titration and maximum",
-        "Safety checkpoint and adjustments",
-        "Supported alternatives, monitoring and concise prescription"
+        "Indication, patient factors and full usual regimen",
+        "Contraindications and allergy phenotype",
+        "Renal function measure, threshold and dose/interval decision",
+        "Hepatic severity, adjustment versus avoid-use warning",
+        "Interactions and supported monitoring",
+        "Changed simulated patient: retry safety decision and concise prescription"
       ],
       "regimen": {
         "indication": "Metformin immediate release — adult type 2 diabetes",
@@ -398,20 +565,32 @@
       "id": "med-metformin-er",
       "track": "medication",
       "title": "Metformin extended release — adult type 2 diabetes",
-      "tags": ["metformin", "diabetes", "renal", "ER"],
+      "tags": [
+        "metformin",
+        "diabetes",
+        "renal",
+        "ER",
+        "contraindications",
+        "hepatic",
+        "liver",
+        "kidney",
+        "interactions",
+        "monitoring"
+      ],
       "source_ids": ["LABEL-METFORMIN"],
       "facts": [],
       "gaps": [
-        "Not interchangeable dosing instructions with every extended-release product."
+        "Not interchangeable dosing instructions with every extended-release product.",
+        "No liver-based reduced-dose regimen is established. This profile is not an exhaustive interaction or contrast protocol."
       ],
       "opening": "For adults with type 2 diabetes and appropriate renal function, explain the indication and write the complete metformin extended-release tablets regimen. What patient factors must you check first?",
       "stages": [
-        "Indication and patient factors",
-        "Drug and formulation",
-        "Dose, route and frequency",
-        "Duration or titration and maximum",
-        "Safety checkpoint and adjustments",
-        "Supported alternatives, monitoring and concise prescription"
+        "Indication, patient factors and full usual regimen",
+        "Contraindications and allergy phenotype",
+        "Renal function measure, threshold and dose/interval decision",
+        "Hepatic severity, adjustment versus avoid-use warning",
+        "Interactions and supported monitoring",
+        "Changed simulated patient: retry safety decision and concise prescription"
       ],
       "regimen": {
         "indication": "Metformin extended release — adult type 2 diabetes",
@@ -429,22 +608,36 @@
       "id": "med-sertraline-mdd",
       "track": "medication",
       "title": "Sertraline tablets — adult major depression",
-      "tags": ["sertraline", "SSRI", "depression", "SIADH", "sodium"],
+      "tags": [
+        "sertraline",
+        "SSRI",
+        "depression",
+        "SIADH",
+        "sodium",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "liver",
+        "kidney",
+        "interactions",
+        "monitoring"
+      ],
       "source_ids": ["LABEL-SERTRALINE"],
       "facts": [
         "Screen for bipolar history. MAOI coadministration or switching within 14 days is contraindicated."
       ],
       "gaps": [
-        "Other indications and formulations can have different starts; fixed treatment duration and sodium monitoring interval are not supplied."
+        "Other indications and formulations can have different starts; fixed treatment duration and sodium monitoring interval are not supplied.",
+        "Not recommended in moderate/severe hepatic disease is distinct from a formal section-4 contraindication. No dialysis-specific regimen loaded."
       ],
       "opening": "For adults with major depressive disorder, explain the indication and write the complete sertraline tablets regimen. What patient factors must you check first?",
       "stages": [
-        "Indication and patient factors",
-        "Drug and formulation",
-        "Dose, route and frequency",
-        "Duration or titration and maximum",
-        "Safety checkpoint and adjustments",
-        "Supported alternatives, monitoring and concise prescription"
+        "Indication, patient factors and full usual regimen",
+        "Contraindications and allergy phenotype",
+        "Renal function measure, threshold and dose/interval decision",
+        "Hepatic severity, adjustment versus avoid-use warning",
+        "Interactions and supported monitoring",
+        "Changed simulated patient: retry safety decision and concise prescription"
       ],
       "regimen": {
         "indication": "Sertraline tablets — adult major depression",
@@ -462,22 +655,34 @@
       "id": "med-lisinopril-htn",
       "track": "medication",
       "title": "Lisinopril — adult hypertension",
-      "tags": ["lisinopril", "ACE inhibitor", "hypertension", "renal"],
+      "tags": [
+        "lisinopril",
+        "ACE inhibitor",
+        "hypertension",
+        "renal",
+        "contraindications",
+        "hepatic",
+        "liver",
+        "kidney",
+        "interactions",
+        "monitoring"
+      ],
       "source_ids": ["LABEL-LISINOPRIL"],
       "facts": [
         "Monitor renal function and potassium. NSAIDs can worsen renal function, particularly with volume depletion."
       ],
       "gaps": [
-        "Usual range is not an absolute maximum. Pregnancy and angioedema history require safety review."
+        "Usual range is not an absolute maximum. Pregnancy and angioedema history require safety review.",
+        "Renal guidance concerns initial dose; titrate only within the supported indication. No hepatic reduced-dose regimen established."
       ],
       "opening": "For adults with hypertension, explain the indication and write the complete lisinopril regimen. What patient factors must you check first?",
       "stages": [
-        "Indication and patient factors",
-        "Drug and formulation",
-        "Dose, route and frequency",
-        "Duration or titration and maximum",
-        "Safety checkpoint and adjustments",
-        "Supported alternatives, monitoring and concise prescription"
+        "Indication, patient factors and full usual regimen",
+        "Contraindications and allergy phenotype",
+        "Renal function measure, threshold and dose/interval decision",
+        "Hepatic severity, adjustment versus avoid-use warning",
+        "Interactions and supported monitoring",
+        "Changed simulated patient: retry safety decision and concise prescription"
       ],
       "regimen": {
         "indication": "Lisinopril — adult hypertension",
@@ -495,22 +700,34 @@
       "id": "med-spironolactone-hf",
       "track": "medication",
       "title": "Spironolactone — labeled heart failure dosing",
-      "tags": ["spironolactone", "heart failure", "potassium", "renal"],
+      "tags": [
+        "spironolactone",
+        "heart failure",
+        "potassium",
+        "renal",
+        "contraindications",
+        "hepatic",
+        "liver",
+        "kidney",
+        "interactions",
+        "monitoring"
+      ],
       "source_ids": ["LABEL-SPIRONOLACTONE"],
       "facts": [
         "Check potassium within one week of starting or titration and regularly thereafter. Hyperkalemia, Addison disease and concomitant eplerenone are contraindications."
       ],
       "gaps": [
-        "A full contemporary heart failure guideline and individualized monitoring frequency are separate requirements."
+        "A full contemporary heart failure guideline and individualized monitoring frequency are separate requirements.",
+        "HF initiation below eGFR 30 or on dialysis needs additional guidance; do not infer safety from omission. Hepatic precautions do not define a Child-Pugh reduction."
       ],
       "opening": "For adults within the labeled heart failure indication, explain the indication and write the complete spironolactone regimen. What patient factors must you check first?",
       "stages": [
-        "Indication and patient factors",
-        "Drug and formulation",
-        "Dose, route and frequency",
-        "Duration or titration and maximum",
-        "Safety checkpoint and adjustments",
-        "Supported alternatives, monitoring and concise prescription"
+        "Indication, patient factors and full usual regimen",
+        "Contraindications and allergy phenotype",
+        "Renal function measure, threshold and dose/interval decision",
+        "Hepatic severity, adjustment versus avoid-use warning",
+        "Interactions and supported monitoring",
+        "Changed simulated patient: retry safety decision and concise prescription"
       ],
       "regimen": {
         "indication": "Spironolactone — labeled heart failure dosing",
@@ -528,22 +745,35 @@
       "id": "med-apixaban-af",
       "track": "medication",
       "title": "Apixaban — nonvalvular atrial fibrillation",
-      "tags": ["apixaban", "anticoagulant", "AF", "bleeding"],
+      "tags": [
+        "apixaban",
+        "anticoagulant",
+        "AF",
+        "bleeding",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "liver",
+        "kidney",
+        "interactions",
+        "monitoring"
+      ],
       "source_ids": ["LABEL-APIXABAN"],
       "facts": [
         "Active pathological bleeding is a contraindication. NSAIDs and other hemostasis-affecting drugs increase bleeding risk."
       ],
       "gaps": [
-        "These reduction criteria do not define acute VTE dosing. Dialysis, hepatic impairment and strong CYP3A4/P-gp interactions require additional review."
+        "These reduction criteria do not define acute VTE dosing. Dialysis, hepatic impairment and strong CYP3A4/P-gp interactions require additional review.",
+        "No invented Child-Pugh B dose. Dialysis recommendations rely on pharmacokinetics, not demonstrated clinical equivalence. Interaction adjustment rules are not fully loaded."
       ],
       "opening": "For adults with nonvalvular atrial fibrillation, explain the indication and write the complete apixaban regimen. What patient factors must you check first?",
       "stages": [
-        "Indication and patient factors",
-        "Drug and formulation",
-        "Dose, route and frequency",
-        "Duration or titration and maximum",
-        "Safety checkpoint and adjustments",
-        "Supported alternatives, monitoring and concise prescription"
+        "Indication, patient factors and full usual regimen",
+        "Contraindications and allergy phenotype",
+        "Renal function measure, threshold and dose/interval decision",
+        "Hepatic severity, adjustment versus avoid-use warning",
+        "Interactions and supported monitoring",
+        "Changed simulated patient: retry safety decision and concise prescription"
       ],
       "regimen": {
         "indication": "Apixaban — nonvalvular atrial fibrillation",
@@ -561,20 +791,33 @@
       "id": "med-apixaban-vte",
       "track": "medication",
       "title": "Apixaban — adult acute DVT or PE",
-      "tags": ["apixaban", "anticoagulant", "DVT", "PE"],
+      "tags": [
+        "apixaban",
+        "anticoagulant",
+        "DVT",
+        "PE",
+        "contraindications",
+        "renal",
+        "hepatic",
+        "liver",
+        "kidney",
+        "interactions",
+        "monitoring"
+      ],
       "source_ids": ["LABEL-APIXABAN"],
       "facts": [],
       "gaps": [
-        "Total treatment duration and patient selection require VTE-specific guidance. Not an unstable-PE protocol."
+        "Total treatment duration and patient selection require VTE-specific guidance. Not an unstable-PE protocol.",
+        "No invented Child-Pugh B dose. Dialysis recommendations rely on pharmacokinetics, not demonstrated clinical equivalence. Interaction adjustment rules are not fully loaded."
       ],
       "opening": "For adults with dvt or pe appropriate for this drug, explain the indication and write the complete apixaban regimen. What patient factors must you check first?",
       "stages": [
-        "Indication and patient factors",
-        "Drug and formulation",
-        "Dose, route and frequency",
-        "Duration or titration and maximum",
-        "Safety checkpoint and adjustments",
-        "Supported alternatives, monitoring and concise prescription"
+        "Indication, patient factors and full usual regimen",
+        "Contraindications and allergy phenotype",
+        "Renal function measure, threshold and dose/interval decision",
+        "Hepatic severity, adjustment versus avoid-use warning",
+        "Interactions and supported monitoring",
+        "Changed simulated patient: retry safety decision and concise prescription"
       ],
       "regimen": {
         "indication": "Apixaban — adult acute DVT or PE",
@@ -926,6 +1169,275 @@
     "Independent clinician/pharmacist review pending; original lessons are unscored.",
     "Commercial databases are not connected. Public availability alone does not establish redistribution rights.",
     "Dedicated pregnancy, breastfeeding, pediatric and dialysis expansion beyond the explicit loaded claims remains pending.",
-    "Snapshots are dated, not continuously updated; new evidence requires scoped review before a new release."
+    "Snapshots are dated, not continuously updated; new evidence requires scoped review before a new release.",
+    "Medication safety covers 11 named drugs across 13 existing regimen lessons; other medicines require their own scoped evidence. Contraindication examples and interactions are not an exhaustive drug checker. No AAFP/ABFM endorsement is claimed."
+  ],
+  "medication_safety_profiles": [
+    {
+      "drug": "amoxicillin",
+      "source_ids": ["LABEL-AMOXICILLIN"],
+      "population": "Renal table: adults and pediatric patients aged at least 3 months weighing greater than 40 kg; not a renal protocol for smaller children.",
+      "contraindications": [
+        "Serious prior hypersensitivity to amoxicillin or another beta-lactam is a labeled contraindication."
+      ],
+      "renal": {
+        "status": "adjustment_required",
+        "guidance": "Label uses GFR in mL/min: below 30, avoid the 875 mg dose. At GFR 10-30 use 250 or 500 mg every 12 hours; below 10, every 24 hours, depending on infection severity. This is an organ-adjustment reference, not a replacement indication-specific regimen."
+      },
+      "hepatic": {
+        "status": "not_established",
+        "guidance": "No quantitative hepatic adjustment is established in the loaded sections."
+      },
+      "interactions": [],
+      "monitoring": [
+        "Assess allergy history and renal function before applying the supported regimen."
+      ],
+      "gaps": [
+        "Do not infer hepatic safety from a missing adjustment. Dialysis and smaller-child renal dosing need a separately scoped regimen; interactions are not comprehensively loaded."
+      ]
+    },
+    {
+      "drug": "penicillin V",
+      "source_ids": ["LABEL-PENICILLIN-V"],
+      "population": "Oral penicillin V; retain CDC strep indication and population.",
+      "contraindications": [
+        "Previous hypersensitivity to a penicillin is a labeled contraindication."
+      ],
+      "renal": {
+        "status": "not_established",
+        "guidance": "The label describes delayed elimination in kidney impairment but supplies no quantitative renal adjustment in this extract."
+      },
+      "hepatic": {
+        "status": "not_established",
+        "guidance": "No quantitative hepatic adjustment is supplied by this extract."
+      },
+      "interactions": [],
+      "monitoring": [
+        "Check hypersensitivity history; obtain drug-specific guidance when organ dysfunction is present."
+      ],
+      "gaps": [
+        "No supported renal, hepatic or dialysis schedule here; do not turn missing guidance into a no-adjustment claim. Interaction details not loaded."
+      ]
+    },
+    {
+      "drug": "cephalexin",
+      "source_ids": ["LABEL-CEPHALEXIN"],
+      "population": "Renal table applies to adults and children at least 15 years old; younger children require separate guidance.",
+      "contraindications": [
+        "Known cephalexin or cephalosporin hypersensitivity is contraindicated."
+      ],
+      "renal": {
+        "status": "adjustment_required",
+        "guidance": "Label uses CrCl (mL/min): at least 60, no adjustment; 30-59, maximum 1 g/day; 15-29, 250 mg every 8-12 hours; 5-14 without dialysis, 250 mg every 24 hours; 1-4 without dialysis, 250 mg every 48-60 hours."
+      },
+      "hepatic": {
+        "status": "precaution",
+        "guidance": "Renal or hepatic impairment increases prolonged-prothrombin-time risk; monitor patients at risk. No quantitative hepatic schedule is supplied."
+      },
+      "interactions": [
+        "Cephalexin can increase metformin exposure; monitor and consider metformin adjustment."
+      ],
+      "monitoring": [
+        "Monitor renal function; reduce dose in renal impairment to limit seizure risk. Monitor prothrombin time in susceptible patients."
+      ],
+      "gaps": [
+        "Hemodialysis and renal dosing below age 15 are not established in this label table. Retain CDC immediate-type penicillin-allergy avoidance for the strep lesson."
+      ]
+    },
+    {
+      "drug": "doxycycline",
+      "source_ids": ["UCSF-DOXYCYCLINE", "LABEL-DOXYCYCLINE"],
+      "population": "UCSF adult adjustment guidance; CDC determines the chlamydia regimen and pregnancy exclusions.",
+      "contraindications": [
+        "Tetracycline hypersensitivity is contraindicated."
+      ],
+      "renal": {
+        "status": "no_adjustment",
+        "guidance": "UCSF adult guidance specifies no renal adjustment, including intermittent or continuous hemodialysis."
+      },
+      "hepatic": {
+        "status": "precaution",
+        "guidance": "Rare hepatotoxicity is reported in labeling; no quantitative hepatic schedule is supplied."
+      },
+      "interactions": [
+        "Aluminum/calcium/magnesium antacids and iron reduce absorption. Anticoagulant dosage may need review."
+      ],
+      "monitoring": [
+        "Review interacting products and hepatic adverse effects when relevant."
+      ],
+      "gaps": [
+        "No validated liver-severity dosing schedule or exact monitoring interval loaded; do not infer unrestricted hepatic safety. Do not generalize adult dosing to children."
+      ]
+    },
+    {
+      "drug": "azithromycin",
+      "source_ids": ["LABEL-AZITHROMYCIN"],
+      "population": "Oral tablets; retain the CDC pregnancy-specific chlamydia regimen.",
+      "contraindications": [
+        "Macrolide/ketolide hypersensitivity, or previous azithromycin-associated cholestatic jaundice/hepatic dysfunction, is contraindicated."
+      ],
+      "renal": {
+        "status": "not_established",
+        "guidance": "No complete renal or dialysis adjustment schedule is included in this profile; do not infer a reduction from pharmacokinetic observations alone."
+      },
+      "hepatic": {
+        "status": "precaution",
+        "guidance": "Hepatic-impairment pharmacokinetics are not established. Severe hepatotoxicity is reported; stop if hepatitis signs or symptoms occur. Prior azithromycin-related liver injury is a contraindication, distinct from general liver impairment."
+      },
+      "interactions": [
+        "Consider QT-prolonging drugs and proarrhythmic conditions. Warfarin requires prothrombin-time monitoring."
+      ],
+      "monitoring": ["Review QT risk and symptoms of hepatic injury."],
+      "gaps": [
+        "No Child-Pugh-based dose reduction or dialysis protocol established here."
+      ]
+    },
+    {
+      "drug": "ceftriaxone",
+      "source_ids": ["LABEL-CEFTRIAXONE"],
+      "population": "IM/IV vial safety; CDC, not the older label gonorrhea dose, determines the current STI regimen.",
+      "contraindications": [
+        "Known cephalosporin hypersensitivity is contraindicated. Neonatal contraindications include hyperbilirubinemia and need for IV calcium; do not extend adult teaching to neonates.",
+        "Do not give lidocaine-containing ceftriaxone solution intravenously; check lidocaine contraindications before IM use with that diluent."
+      ],
+      "renal": {
+        "status": "no_adjustment",
+        "guidance": "Isolated renal impairment generally needs no adjustment at usual adult doses up to 2 g/day. Combined significant renal and hepatic dysfunction requires caution and a maximum of 2 g/day."
+      },
+      "hepatic": {
+        "status": "precaution",
+        "guidance": "Isolated hepatic dysfunction generally needs no adjustment; combined significant renal dysfunction limits dosing to 2 g/day."
+      },
+      "interactions": [
+        "Do not mix or simultaneously infuse with calcium-containing IV solutions. Neonatal restrictions differ."
+      ],
+      "monitoring": [
+        "Monitor prothrombin time with low vitamin K stores or impaired synthesis, including chronic hepatic disease."
+      ],
+      "gaps": [
+        "The 2 g/day ceiling is not the gonorrhea prescription or a universal maximum for all indications. Do not use older label STI dosing instead of CDC guidance."
+      ]
+    },
+    {
+      "drug": "metformin",
+      "source_ids": ["LABEL-METFORMIN"],
+      "population": "Adult IR/ER lessons; formulation-specific starting doses and maxima remain separate.",
+      "contraindications": [
+        "Contraindicated with eGFR below 30 mL/min/1.73 m2, metabolic acidosis including DKA, or hypersensitivity."
+      ],
+      "renal": {
+        "status": "adjustment_required",
+        "guidance": "Use eGFR (mL/min/1.73 m2): do not initiate at 30-45; reassess continuation if it falls below 45; discontinue below 30."
+      },
+      "hepatic": {
+        "status": "avoid_use",
+        "guidance": "Label advises avoiding clinical or laboratory evidence of hepatic disease because of lactic-acidosis risk; this is an avoid-use warning, not a Child-Pugh dose reduction."
+      },
+      "interactions": [
+        "Excess alcohol and drugs increasing metformin accumulation or acidosis risk need review."
+      ],
+      "monitoring": [
+        "Check eGFR before starting and at least annually, more often if at risk. Follow the separate contrast-hold instructions when applicable."
+      ],
+      "gaps": [
+        "No liver-based reduced-dose regimen is established. This profile is not an exhaustive interaction or contrast protocol."
+      ]
+    },
+    {
+      "drug": "sertraline",
+      "source_ids": ["LABEL-SERTRALINE"],
+      "population": "Adult tablet MDD lesson; do not apply tablet rules to other formulations without checking.",
+      "contraindications": [
+        "MAOIs or use within 14 days of stopping an MAOI, including linezolid/IV methylene blue; pimozide; and sertraline hypersensitivity are contraindications."
+      ],
+      "renal": {
+        "status": "no_adjustment",
+        "guidance": "No adjustment for mild through severe renal impairment."
+      },
+      "hepatic": {
+        "status": "adjustment_required",
+        "guidance": "Mild hepatic impairment (Child-Pugh 5-6): halve the recommended starting dose and therapeutic range/maximum. Moderate or severe hepatic impairment: use is not recommended."
+      },
+      "interactions": [
+        "Other serotonergic drugs increase serotonin-syndrome risk; anticoagulants/antiplatelets increase bleeding risk."
+      ],
+      "monitoring": [
+        "Monitor for hyponatremia and serotonin syndrome when relevant; monitor clinical worsening and suicidal thoughts."
+      ],
+      "gaps": [
+        "Not recommended in moderate/severe hepatic disease is distinct from a formal section-4 contraindication. No dialysis-specific regimen loaded."
+      ]
+    },
+    {
+      "drug": "lisinopril",
+      "source_ids": ["LABEL-LISINOPRIL"],
+      "population": "Adult hypertension; renal starting doses depend on indication.",
+      "contraindications": [
+        "Prior ACE-inhibitor angioedema/hypersensitivity or hereditary/idiopathic angioedema; aliskiren with diabetes; neprilysin inhibitors or switching within 36 hours are contraindicated."
+      ],
+      "renal": {
+        "status": "adjustment_required",
+        "guidance": "CrCl above 30 mL/min: no adjustment. CrCl 10-30: halve the usual initial dose (hypertension: 5 mg daily). Below 10 or hemodialysis: initial 2.5 mg daily."
+      },
+      "hepatic": {
+        "status": "precaution",
+        "guidance": "Stop for jaundice or marked liver-enzyme elevations and evaluate; no quantitative hepatic dose schedule is provided."
+      },
+      "interactions": ["Potassium-raising drugs and NSAIDs require review."],
+      "monitoring": [
+        "Monitor renal function, potassium and blood pressure. Pregnancy carries a fetal-toxicity warning; discontinue when detected."
+      ],
+      "gaps": [
+        "Renal guidance concerns initial dose; titrate only within the supported indication. No hepatic reduced-dose regimen established."
+      ]
+    },
+    {
+      "drug": "spironolactone",
+      "source_ids": ["LABEL-SPIRONOLACTONE"],
+      "population": "Adult heart-failure lesson; do not substitute cirrhotic-ascites dosing for HF dosing.",
+      "contraindications": [
+        "Hyperkalemia, Addison disease and concomitant eplerenone are contraindicated."
+      ],
+      "renal": {
+        "status": "adjustment_required",
+        "guidance": "HF: potassium at most 5 mEq/L and eGFR above 50 mL/min/1.73 m2: initial 25 mg daily. At eGFR 30-50 consider initial 25 mg every other day."
+      },
+      "hepatic": {
+        "status": "precaution",
+        "guidance": "Cirrhosis with ascites: initiate in hospital; fluid/electrolyte shifts can worsen encephalopathy or precipitate coma."
+      },
+      "interactions": [
+        "ACE inhibitors/ARBs, potassium supplements and potassium salt substitutes increase hyperkalemia risk."
+      ],
+      "monitoring": [
+        "Check potassium within 1 week of initiation/titration and regularly thereafter; monitor renal function and volume status."
+      ],
+      "gaps": [
+        "HF initiation below eGFR 30 or on dialysis needs additional guidance; do not infer safety from omission. Hepatic precautions do not define a Child-Pugh reduction."
+      ]
+    },
+    {
+      "drug": "apixaban",
+      "source_ids": ["LABEL-APIXABAN"],
+      "population": "Adult AF and VTE lessons; renal rules differ by indication.",
+      "contraindications": [
+        "Active pathological bleeding and severe apixaban hypersensitivity are contraindicated."
+      ],
+      "renal": {
+        "status": "indication_specific",
+        "guidance": "AF: reduce to 2.5 mg twice daily only if at least two: age at least 80, weight at most 60 kg, serum creatinine at least 1.5 mg/dL. Adult VTE labeling recommends no renal adjustment; do not apply AF criteria. ESRD/dialysis and CrCl below 15 lack clinical-trial efficacy/safety data."
+      },
+      "hepatic": {
+        "status": "indication_specific",
+        "guidance": "Child-Pugh A: no adjustment; B: label cannot provide a dose recommendation; C: not recommended."
+      },
+      "interactions": [
+        "Combined strong P-gp/CYP3A4 inhibitors/inducers and other anticoagulants/antiplatelets require the separate labeled interaction pathway."
+      ],
+      "monitoring": ["Assess bleeding and interacting medicines."],
+      "gaps": [
+        "No invented Child-Pugh B dose. Dialysis recommendations rely on pharmacokinetics, not demonstrated clinical equivalence. Interaction adjustment rules are not fully loaded."
+      ]
+    }
   ]
 }

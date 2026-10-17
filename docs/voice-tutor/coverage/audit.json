@@ -1,0 +1,5251 @@
+{
+  "auditDate": "2026-10-17",
+  "originalTopics": 156,
+  "namedMedicationEntities": 489,
+  "countingLimit": "Lexicon-assisted named entities, not a comprehensive formulary or unique-active-ingredient count; combination entities and components coexist. Brand aliases are collapsed. Mentions and label lookup do not constitute checked dosing coverage.",
+  "storedSafetyProfiles": 11,
+  "originalRegimenLessons": 13,
+  "criteriaEntries": 57,
+  "criteriaWithScopedFacts": 57,
+  "criteriaOverviews": 18,
+  "supplementalConditions": 12,
+  "totalSpecialistLessons": 95,
+  "unresolvedNames": [],
+  "criteria": [
+    {
+      "id": "criteria-ottawa-ankle",
+      "title": "Ottawa ankle rule",
+      "scope": "rule_summary",
+      "topicIds": ["condition-ankle-foot-trauma"],
+      "gaps": [
+        "Acute ankle injury only; assess eligibility and clinical red flags. Do not use a negative rule to exclude tendon injury or all occult injuries."
+      ],
+      "sources": [
+        {
+          "id": "RULE-OTTAWA-ANKLE",
+          "organization": "AAFP / AFP",
+          "title": "Update on acute ankle sprains",
+          "url": "https://www.aafp.org/afp/2012/0615/p1170",
+          "sections": "Ottawa ankle and foot rules",
+          "source_date": "2012",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-ottawa-foot",
+      "title": "Ottawa foot rule",
+      "scope": "rule_summary",
+      "topicIds": ["condition-ankle-foot-trauma"],
+      "gaps": [
+        "Use the foot rule for the midfoot zone, not the ankle rule. A negative result does not exclude every injury or override clinical red flags."
+      ],
+      "sources": [
+        {
+          "id": "RULE-OTTAWA-ANKLE",
+          "organization": "AAFP / AFP",
+          "title": "Update on acute ankle sprains",
+          "url": "https://www.aafp.org/afp/2012/0615/p1170",
+          "sections": "Ottawa ankle and foot rules",
+          "source_date": "2012",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-ottawa-knee",
+      "title": "Ottawa knee rule",
+      "scope": "rule_summary",
+      "topicIds": ["b98cb30bc8af3f16463a9cd5"],
+      "gaps": [
+        "Acute trauma rule, not a chronic-knee-pain or ligament-injury rule. Do not silently replace AND with OR in the two weight-bearing time points."
+      ],
+      "sources": [
+        {
+          "id": "RULE-OTTAWA-KNEE",
+          "organization": "AAFP / AFP",
+          "title": "Evaluating the patient with a knee injury",
+          "url": "https://www.aafp.org/pubs/afp/issues/2005/0315/p1169.html",
+          "sections": "Ottawa Knee Rule",
+          "source_date": "2005",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-lights",
+      "title": "Light’s criteria",
+      "scope": "rule_summary",
+      "topicIds": ["01314bf2a8b85f87e526ffd8"],
+      "gaps": [
+        "Classification does not establish etiology. Diuresed heart failure may be misclassified; interpret with clinical context."
+      ],
+      "sources": [
+        {
+          "id": "RULE-LIGHT",
+          "organization": "AAFP / AFP",
+          "title": "Pleural effusion: diagnostic approach in adults",
+          "url": "https://www.aafp.org/pubs/afp/issues/2023/1100/pleural-effusion.pdf",
+          "sections": "Pleural fluid analysis / Light criteria",
+          "source_date": "2023",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-wells-pe",
+      "title": "Wells PE score (two-level)",
+      "scope": "rule_summary",
+      "topicIds": [
+        "40e4301b89061f5840a80445",
+        "efb458f5da0e31d6ee0d0c4a",
+        "5d902756f3ca5862621193b9",
+        "2a1c729c2ab75c5392d71c2c"
+      ],
+      "gaps": [
+        "Pretest probability is not diagnosis. Follow the applicable imaging/D-dimer pathway; do not apply unmodified in pregnancy or an unstable patient."
+      ],
+      "sources": [
+        {
+          "id": "RULE-WELLS",
+          "organization": "NICE NG158",
+          "title": "Venous thromboembolic diseases",
+          "url": "https://www.nice.org.uk/guidance/ng158/chapter/Recommendations",
+          "sections": "Tables 1 and 2; DVT/PE diagnostic pathways",
+          "source_date": null,
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-wells-dvt",
+      "title": "Wells DVT score (two-level)",
+      "scope": "rule_summary",
+      "topicIds": ["40e4301b89061f5840a80445", "efb458f5da0e31d6ee0d0c4a"],
+      "gaps": [
+        "Calf comparison location and the complete clinical pathway must be checked in the source; a score alone neither diagnoses nor excludes DVT."
+      ],
+      "sources": [
+        {
+          "id": "RULE-WELLS",
+          "organization": "NICE NG158",
+          "title": "Venous thromboembolic diseases",
+          "url": "https://www.nice.org.uk/guidance/ng158/chapter/Recommendations",
+          "sections": "Tables 1 and 2; DVT/PE diagnostic pathways",
+          "source_date": null,
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-perc",
+      "title": "PERC",
+      "scope": "rule_summary",
+      "topicIds": ["5d902756f3ca5862621193b9", "2a1c729c2ab75c5392d71c2c"],
+      "gaps": [
+        "Do not use in higher pretest probability, as a severity score, or as a general pregnancy rule. A positive criterion does not diagnose PE; it means this rule does not exclude PE. Exact recent-trauma definitions require the source."
+      ],
+      "sources": [
+        {
+          "id": "RULE-PERC",
+          "organization": "AAFP / AFP",
+          "title": "PERC in low-risk patients",
+          "url": "https://www.aafp.org/afp/2018/0815/p250",
+          "sections": "Eight rule-out criteria and population",
+          "source_date": "2018",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-curb65",
+      "title": "CURB-65",
+      "scope": "rule_summary",
+      "topicIds": ["6bdba761b977cff2f575e630", "32eb6b827a214017ef2f5ff6"],
+      "gaps": [
+        "Do not substitute BUN in mg/dL for urea in mmol/L without explicit conversion. Oxygenation, pregnancy, frailty and home support may change disposition. Exact risk/action bands require a scoped pathway."
+      ],
+      "sources": [
+        {
+          "id": "RULE-CURB",
+          "organization": "NICE NG250",
+          "title": "Pneumonia diagnosis and management",
+          "url": "https://www.nice.org.uk/guidance/ng250/chapter/recommendations",
+          "sections": "CRB65 and CURB65 severity assessment",
+          "source_date": "2025",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-crb65",
+      "title": "CRB-65",
+      "scope": "rule_summary",
+      "topicIds": ["6bdba761b977cff2f575e630", "32eb6b827a214017ef2f5ff6"],
+      "gaps": [
+        "Not interchangeable with CURB-65 or a sole disposition rule. Local referral thresholds need the applicable guideline."
+      ],
+      "sources": [
+        {
+          "id": "RULE-CURB",
+          "organization": "NICE NG250",
+          "title": "Pneumonia diagnosis and management",
+          "url": "https://www.nice.org.uk/guidance/ng250/chapter/recommendations",
+          "sections": "CRB65 and CURB65 severity assessment",
+          "source_date": "2025",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-centor",
+      "title": "Centor criteria",
+      "scope": "rule_summary",
+      "topicIds": ["e5021602c5fa3b870962bdff"],
+      "gaps": [
+        "Do not import the NICE empirical-antibiotic threshold into the CDC-based US testing pathway. Follow loaded CDC testing/treatment guidance."
+      ],
+      "sources": [
+        {
+          "id": "RULE-SORE-THROAT",
+          "organization": "NICE NG84",
+          "title": "Acute sore throat",
+          "url": "https://www.nice.org.uk/guidance/ng84/chapter/terms-used-in-the-guideline",
+          "sections": "Terms used / FeverPAIN and Centor",
+          "source_date": "2018",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-feverpain",
+      "title": "FeverPAIN",
+      "scope": "rule_summary",
+      "topicIds": ["e5021602c5fa3b870962bdff"],
+      "gaps": [
+        "A UK sore-throat tool; do not silently merge its antibiotic pathway with CDC recommendations or equate it with confirmed bacterial infection."
+      ],
+      "sources": [
+        {
+          "id": "RULE-SORE-THROAT",
+          "organization": "NICE NG84",
+          "title": "Acute sore throat",
+          "url": "https://www.nice.org.uk/guidance/ng84/chapter/terms-used-in-the-guideline",
+          "sections": "Terms used / FeverPAIN and Centor",
+          "source_date": "2018",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-cha2ds2vasc",
+      "title": "CHA2DS2-VASc",
+      "scope": "rule_summary",
+      "topicIds": ["0991eab0731643e71d870626", "b0f8ba79b7482c62dc6ddf37"],
+      "gaps": [
+        "Stroke risk is population-dependent; female sex is a modifier. Use the applicable AF anticoagulation guideline, not the number alone or a VTE dosing rule."
+      ],
+      "sources": [
+        {
+          "id": "RULE-AF",
+          "organization": "ACC/AHA/ACCP/HRS",
+          "title": "2023 atrial fibrillation guideline",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11104284/",
+          "sections": "Risk stratification and bleeding risk",
+          "source_date": "2023",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-hasbled",
+      "title": "HAS-BLED",
+      "scope": "purpose_and_interpretation",
+      "topicIds": ["0991eab0731643e71d870626", "b0f8ba79b7482c62dc6ddf37"],
+      "gaps": [
+        "Full point definitions and laboratory thresholds are not loaded in this concise entry; do not calculate an unsupported total."
+      ],
+      "sources": [
+        {
+          "id": "RULE-AF",
+          "organization": "ACC/AHA/ACCP/HRS",
+          "title": "2023 atrial fibrillation guideline",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11104284/",
+          "sections": "Risk stratification and bleeding risk",
+          "source_date": "2023",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-kdigo-aki",
+      "title": "KDIGO AKI definition",
+      "scope": "rule_summary",
+      "topicIds": ["869fb13544c67a28e07f816b"],
+      "gaps": [
+        "Definition is not the complete stage table or dialysis indication. The 2026 draft is not treated as a final approved guideline."
+      ],
+      "sources": [
+        {
+          "id": "RULE-AKI",
+          "organization": "KDIGO",
+          "title": "AKI definition and staging summary",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4057151/",
+          "sections": "Definition and staging of AKI",
+          "source_date": "2013",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-kdigo-ckd",
+      "title": "CKD definition and chronicity",
+      "scope": "rule_summary",
+      "topicIds": ["a5480cb869f2409add578fa7", "238e9c2143ee237582a6ce2b"],
+      "gaps": [
+        "Separate diagnosis, G/A staging, drug-specific renal dosing and dialysis indications. The public-review medication chapter update is not treated as final."
+      ],
+      "sources": [
+        {
+          "id": "RULE-CKD",
+          "organization": "KDIGO",
+          "title": "2024 CKD guideline",
+          "url": "https://kdigo.org/wp-content/uploads/2024/03/KDIGO-2024-CKD-Guideline.pdf",
+          "sections": "Table 1; GFR and albuminuria categories",
+          "source_date": "2024",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-diabetes",
+      "title": "Diabetes diagnostic criteria",
+      "scope": "rule_summary",
+      "topicIds": [
+        "19fcd6ed9d652e4403ee405f",
+        "28649bf08a4f7e9ba97e7b73",
+        "f4db07485bb4c7e9a18a2eb8",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "gaps": [
+        "A1c can be unreliable in altered red-cell turnover or hemoglobin variants; gestational testing uses different criteria."
+      ],
+      "sources": [
+        {
+          "id": "RULE-DIABETES",
+          "organization": "NIH / NIDDK",
+          "title": "Diabetes tests and diagnosis",
+          "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/tests-diagnosis",
+          "sections": "Diagnostic tests and confirmation",
+          "source_date": null,
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-prediabetes",
+      "title": "Prediabetes thresholds",
+      "scope": "rule_summary",
+      "topicIds": [
+        "19fcd6ed9d652e4403ee405f",
+        "28649bf08a4f7e9ba97e7b73",
+        "f4db07485bb4c7e9a18a2eb8",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "gaps": [
+        "These are adult nonpregnant diagnostic categories, not gestational diabetes thresholds or a complete treatment indication."
+      ],
+      "sources": [
+        {
+          "id": "RULE-DIABETES",
+          "organization": "NIH / NIDDK",
+          "title": "Diabetes tests and diagnosis",
+          "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/tests-diagnosis",
+          "sections": "Diagnostic tests and confirmation",
+          "source_date": null,
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-dka",
+      "title": "Adult DKA diagnostic criteria",
+      "scope": "rule_summary",
+      "topicIds": [
+        "19fcd6ed9d652e4403ee405f",
+        "28649bf08a4f7e9ba97e7b73",
+        "987f012c13d2d35b9097dc05",
+        "f4db07485bb4c7e9a18a2eb8",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "gaps": [
+        "Euglycemic DKA is possible. This entry is not a full potassium/insulin/fluid protocol and does not apply pediatric pathways."
+      ],
+      "sources": [
+        {
+          "id": "RULE-HYPERGLYCEMIC",
+          "organization": "ADA/EASD/AACE/JBDS/DTS",
+          "title": "Hyperglycemic crises consensus",
+          "url": "https://diabetesjournals.org/care/article/47/8/1257/156808/Hyperglycemic-Crises-in-Adults-With-Diabetes-A",
+          "sections": "DKA and HHS diagnostic criteria",
+          "source_date": "2024",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-hhs",
+      "title": "Adult HHS diagnostic criteria",
+      "scope": "rule_summary",
+      "topicIds": [
+        "19fcd6ed9d652e4403ee405f",
+        "28649bf08a4f7e9ba97e7b73",
+        "987f012c13d2d35b9097dc05",
+        "f4db07485bb4c7e9a18a2eb8",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "gaps": [
+        "Distinguish effective and total osmolality. Mixed DKA/HHS is possible. No treatment rate or disposition is implied by this definition alone."
+      ],
+      "sources": [
+        {
+          "id": "RULE-HYPERGLYCEMIC",
+          "organization": "ADA/EASD/AACE/JBDS/DTS",
+          "title": "Hyperglycemic crises consensus",
+          "url": "https://diabetesjournals.org/care/article/47/8/1257/156808/Hyperglycemic-Crises-in-Adults-With-Diabetes-A",
+          "sections": "DKA and HHS diagnostic criteria",
+          "source_date": "2024",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-sepsis-screening",
+      "title": "Sepsis screening and qSOFA limitations",
+      "scope": "purpose_and_interpretation",
+      "topicIds": ["f150bbe6c1e6e7a61ad5475c"],
+      "gaps": [
+        "Full NEWS2, MEWS and SIRS scoring tables are not loaded here. Do not use an absent or low qSOFA score to exclude sepsis or delay assessment."
+      ],
+      "sources": [
+        {
+          "id": "RULE-SEPSIS-2026",
+          "organization": "SCCM / Surviving Sepsis Campaign",
+          "title": "2026 adult sepsis guideline",
+          "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+          "sections": "Screening recommendations",
+          "source_date": "2026",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-rome-ibs",
+      "title": "Rome IV IBS criteria",
+      "scope": "rule_summary",
+      "topicIds": ["cb5139fea23d1cbd8a23151b"],
+      "gaps": [
+        "Check alarm features and alternative disease. Relation to defecation does not require improvement with defecation."
+      ],
+      "sources": [
+        {
+          "id": "RULE-ROME",
+          "organization": "AAFP / AFP",
+          "title": "IBS questions and answers",
+          "url": "https://www.aafp.org/afp/2021/0615/p727",
+          "sections": "Rome IV diagnostic criteria",
+          "source_date": "2021",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-head-cchr",
+      "title": "Canadian CT Head Rule",
+      "scope": "rule_summary",
+      "topicIds": ["condition-minor-head-injury"],
+      "gaps": [
+        "Establish original minor-head-injury eligibility and exclusions before using a negative rule. Full dangerous-mechanism operational definitions are not loaded; do not infer a negative rule from an undefined mechanism. Do not extrapolate to children, anticoagulated patients or every head strike. The PubMed rendering of the abstract loses equality signs; the publisher abstract and ACEP 2023 clarify at least 2 episodes and at least 65 years."
+      ],
+      "sources": [
+        {
+          "id": "RULE-HEAD",
+          "organization": "ACEP",
+          "title": "2023 adult mild TBI clinical policy",
+          "url": "https://www.acep.org/siteassets/new-pdfs/clinical-policies/mtbi2023.pdf",
+          "sections": "Table 1 and decision-rule eligibility",
+          "source_date": "2023",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        },
+        {
+          "id": "RULE-CCHR-ORIGINAL",
+          "organization": "Stiell et al. / Lancet",
+          "title": "Canadian CT Head Rule derivation",
+          "url": "https://www.sciencedirect.com/science/article/pii/S014067360004561X",
+          "sections": "Abstract; high- and medium-risk criteria",
+          "source_date": "2001",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original concise factual paraphrase and source link; no copied chart or proprietary calculator."
+        }
+      ]
+    },
+    {
+      "id": "criteria-head-new-orleans",
+      "title": "New Orleans criteria",
+      "scope": "rule_summary",
+      "topicIds": ["condition-minor-head-injury"],
+      "gaps": [
+        "Do not apply a negative rule outside original GCS/injury eligibility, to children, or to exclude CT in anticoagulated patients. A CT indication is not a diagnosis of intracranial injury."
+      ],
+      "sources": [
+        {
+          "id": "RULE-HEAD",
+          "organization": "ACEP",
+          "title": "2023 adult mild TBI clinical policy",
+          "url": "https://www.acep.org/siteassets/new-pdfs/clinical-policies/mtbi2023.pdf",
+          "sections": "Table 1 and decision-rule eligibility",
+          "source_date": "2023",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        },
+        {
+          "id": "RULE-NEW-ORLEANS",
+          "organization": "Haydel et al. / NEJM",
+          "title": "New Orleans head CT criteria",
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJM200007133430204",
+          "sections": "Study population; seven CT predictors",
+          "source_date": "2000",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original concise factual paraphrase and source link; no copied chart or proprietary calculator."
+        }
+      ]
+    },
+    {
+      "id": "criteria-cspine",
+      "title": "Canadian C-spine rule",
+      "scope": "rule_summary",
+      "topicIds": ["condition-cervical-trauma"],
+      "gaps": [
+        "Apply only to an alert, reliable appropriate trauma population; do not force movement or assess rotation before excluding high-risk features. NICE cautions that application to children is difficult. This is not an instruction to clear every patient with normal rotation."
+      ],
+      "sources": [
+        {
+          "id": "RULE-CSPINE",
+          "organization": "NICE NG41",
+          "title": "Spinal injury assessment",
+          "url": "https://www.nice.org.uk/guidance/ng41/chapter/Recommendations",
+          "sections": "Canadian C-spine rule; 1.1 and 1.4",
+          "source_date": null,
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-pecarn",
+      "title": "PECARN pediatric head-injury pathways",
+      "scope": "rule_summary",
+      "topicIds": ["condition-minor-head-injury"],
+      "gaps": [
+        "This summarizes very-low-risk criteria, not every high/intermediate-risk action branch or exclusion. Infants under 3 months, suspected abuse, deterioration, bleeding disorders, shunts and unreliable assessment need particular consideration. Do not invent an individual risk percentage or force CT for every positive finding."
+      ],
+      "sources": [
+        {
+          "id": "RULE-PEDIATRIC-HEAD",
+          "organization": "CDC",
+          "title": "Pediatric mild TBI safety checklist",
+          "url": "https://www.cdc.gov/traumatic-brain-injury/hcp/clinical-guidance/pediatric-mtbi.html",
+          "sections": "Use validated decision rules; risk factors",
+          "source_date": null,
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        },
+        {
+          "id": "RULE-PECARN-ORIGINAL",
+          "organization": "PECARN / Kuppermann et al.",
+          "title": "Pediatric head-injury prediction-rule prospective cohort",
+          "url": "https://www.pecarn.org/studyDatasets/documents/Kuppermann_2009_The-Lancet_000.pdf",
+          "sections": "Abstract; Figure 3 and footnotes",
+          "source_date": "2009",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original concise factual paraphrase and source link; no copied chart or proprietary calculator."
+        }
+      ]
+    },
+    {
+      "id": "criteria-stopbang",
+      "title": "STOP-BANG and OSA testing",
+      "scope": "purpose_and_interpretation",
+      "topicIds": ["83683036fed9f441672179be"],
+      "gaps": [
+        "Questionnaire items, point thresholds and reuse permissions are not reproduced here; use the original instrument. Do not infer OSA diagnosis from screening score alone."
+      ],
+      "sources": [
+        {
+          "id": "RULE-OSA",
+          "organization": "AAFP / AFP",
+          "title": "Obstructive sleep apnea in adults",
+          "url": "https://www.aafp.org/afp/2024/0700/obstructive-sleep-apnea",
+          "sections": "Screening and diagnostic testing",
+          "source_date": "2024",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent review pending",
+          "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+        }
+      ]
+    },
+    {
+      "id": "criteria-mcisaac",
+      "title": "McIsaac / modified Centor",
+      "scope": "rule_summary",
+      "topicIds": ["e5021602c5fa3b870962bdff"],
+      "gaps": [
+        "Age-45 boundary wording differs between the IDSA displayed table (>45) and AFP 2023 (45 and older). Do not assign an exact age-45 point from this summary; resolve against the selected validated version. Do not apply to children under 3 or replace testing/complication assessment with the score."
+      ],
+      "sources": [
+        {
+          "id": "RULE-MCISAAC",
+          "organization": "IDSA",
+          "title": "2025 GAS pharyngitis risk-assessment guideline",
+          "url": "https://www.idsociety.org/practice-guideline/streptococcal-pharyngitis2/",
+          "sections": "Recommendation and remarks; Table 2",
+          "source_date": "2025-10-14",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-heart",
+      "title": "HEART chest-pain score",
+      "scope": "rule_summary",
+      "topicIds": ["ef5cb09a2cdd4d8c89e3a189"],
+      "gaps": [
+        "This is the explicitly named AFP 2018 version. Other HEART/HEAR versions differ at age boundaries and in ECG/troponin scoring. Do not silently combine tables; identify the source version before calculating, especially at age 45 or 65. Current assay-specific pathways govern testing intervals; do not transplant old troponin intervals to high-sensitivity assays. Risk-factor definitions and patient exclusions must be established for a full pathway."
+      ],
+      "sources": [
+        {
+          "id": "RULE-HEART",
+          "organization": "AAFP / AFP; ACC",
+          "title": "HEART score and contemporary ED chest-pain pathway",
+          "url": "https://www.aafp.org/afp/2018/0715/p72",
+          "sections": "HEART table; accelerated diagnostic protocol; use alongside RULE-HEART-ACC",
+          "source_date": "2018",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        },
+        {
+          "id": "RULE-HEART-ACC",
+          "organization": "American College of Cardiology",
+          "title": "2022 expert consensus: ED acute chest pain",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10691881/",
+          "sections": "Section 5.5.1-5.5.3; Table 3",
+          "source_date": "2022",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief paraphrase and source link; no reproduced table."
+        }
+      ]
+    },
+    {
+      "id": "criteria-timi",
+      "title": "TIMI ACS risk score",
+      "scope": "rule_summary",
+      "topicIds": ["ef5cb09a2cdd4d8c89e3a189"],
+      "gaps": [
+        "Do not confuse this with the different STEMI TIMI score, use it to exclude ACS alone, or derive treatment/discharge from a total without a supported contemporary pathway. Exact event rates are not loaded."
+      ],
+      "sources": [
+        {
+          "id": "RULE-TIMI",
+          "organization": "Antman et al. / JAMA",
+          "title": "TIMI UA/NSTEMI risk-score derivation",
+          "url": "https://jamanetwork.com/journals/jama/fullarticle/192996",
+          "sections": "Risk-score variables; Table 1",
+          "source_date": "2000",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-nexus-cspine",
+      "title": "NEXUS cervical-spine criteria",
+      "scope": "rule_summary",
+      "topicIds": ["condition-cervical-trauma"],
+      "gaps": [
+        "Do not use for penetrating trauma or substitute it for a reliable examination. Pediatric and older-adult applicability require particular care; this summary does not supply a pediatric clearance protocol or an imaging modality."
+      ],
+      "sources": [
+        {
+          "id": "RULE-NEXUS-CSPINE",
+          "organization": "NEXUS investigators / NEJM",
+          "title": "NEXUS cervical-spine validation",
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJM200007133430203",
+          "sections": "Decision instrument; eligibility and study methods",
+          "source_date": "2000",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-nexus-head",
+      "title": "NEXUS Head CT",
+      "scope": "rule_summary",
+      "topicIds": ["condition-minor-head-injury"],
+      "gaps": [
+        "Exact study exclusions and eligibility must accompany use. This is adult teaching, not a pediatric protocol; clinical deterioration overrides reassurance from a score."
+      ],
+      "sources": [
+        {
+          "id": "RULE-NEXUS-HEAD",
+          "organization": "ACEP",
+          "title": "2023 mild traumatic brain injury clinical policy",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10617828/",
+          "sections": "Table 1; Questions 1 recommendations",
+          "source_date": "2023",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-ottawa-sah",
+      "title": "Ottawa subarachnoid hemorrhage rule",
+      "scope": "rule_summary",
+      "topicIds": ["condition-acute-severe-headache"],
+      "gaps": [
+        "Exact age boundary verified against original JAMA Box 2 (>=40); an indexed later PDF rendering omitted the equality sign. Do not extend the rule beyond its eligibility or use it as a substitute for evaluation of other headache emergencies. The complete downstream CT/LP/angiography pathway is not loaded."
+      ],
+      "sources": [
+        {
+          "id": "RULE-OTTAWA-SAH",
+          "organization": "Perry et al. / CMAJ",
+          "title": "Ottawa SAH rule prospective validation",
+          "url": "https://www.cmaj.ca/content/189/45/E1379",
+          "sections": "Figure 1; eligibility/exclusions",
+          "source_date": "2017",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        },
+        {
+          "id": "RULE-OTTAWA-SAH-ORIGINAL",
+          "organization": "Perry et al. / JAMA",
+          "title": "Ottawa SAH rule development and validation",
+          "url": "https://jamanetwork.com/journals/jama/fullarticle/1741823",
+          "sections": "Box 2: complete Ottawa SAH rule",
+          "source_date": "2013",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original concise factual paraphrase and source link; no copied chart or proprietary calculator."
+        }
+      ]
+    },
+    {
+      "id": "criteria-psi",
+      "title": "Pneumonia Severity Index",
+      "scope": "purpose_and_interpretation",
+      "topicIds": ["6bdba761b977cff2f575e630", "32eb6b827a214017ef2f5ff6"],
+      "gaps": [
+        "Full PSI point table and risk classes are not loaded; use a sourced externally supplied score for interpretation only. The 2025 ATS update addresses selected additional CAP questions; this entry cites the 2019 hospitalization recommendation, not a blanket claim that all 2019 treatment remains current."
+      ],
+      "sources": [
+        {
+          "id": "RULE-PSI",
+          "organization": "ATS / IDSA",
+          "title": "Adult community-acquired pneumonia guideline",
+          "url": "https://www.thoracic.org/statements/guideline-implementation-tools/diagnosis-and-treatment-of-cap.php",
+          "sections": "2019 guideline Question 6: hospitalization decisions",
+          "source_date": "2019",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-sofa",
+      "title": "SOFA and Sepsis-3 organ dysfunction",
+      "scope": "purpose_and_interpretation",
+      "topicIds": ["f150bbe6c1e6e7a61ad5475c"],
+      "gaps": [
+        "Full six-organ point table, vasopressor doses and respiratory-support rules are not loaded; do not compute SOFA from memory. This is the original SOFA/Sepsis-3 definition, not a claim to implement subsequent SOFA revisions."
+      ],
+      "sources": [
+        {
+          "id": "RULE-SOFA",
+          "organization": "Sepsis-3 consensus / JAMA",
+          "title": "Third international consensus definitions of sepsis",
+          "url": "https://jamanetwork.com/journals/jama/fullarticle/2492881",
+          "sections": "SOFA table and organ-dysfunction definition",
+          "source_date": "2016",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-sirs",
+      "title": "SIRS criteria",
+      "scope": "rule_summary",
+      "topicIds": ["b27a6ec631ebd20975fe6923", "f150bbe6c1e6e7a61ad5475c"],
+      "gaps": [
+        "SIRS can occur without infection; absence does not exclude sepsis. Do not use adult thresholds for children. Contemporary screening recommendations are separately sourced in RULE-SEPSIS."
+      ],
+      "sources": [
+        {
+          "id": "RULE-SIRS",
+          "organization": "Sepsis-3 consensus / JAMA",
+          "title": "SIRS criteria and distinction from sepsis",
+          "url": "https://jamanetwork.com/journals/jama/fullarticle/2492881",
+          "sections": "Box 1; SIRS limitations",
+          "source_date": "2016",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-news2",
+      "title": "NEWS2 deterioration score",
+      "scope": "purpose_and_interpretation",
+      "topicIds": ["f150bbe6c1e6e7a61ad5475c"],
+      "gaps": [
+        "The complete scoring chart and oxygen-scale eligibility are not reproduced. Do not calculate a total, change oxygen scales or invent a response schedule from these overview facts; use the unmodified official chart and local escalation policy."
+      ],
+      "sources": [
+        {
+          "id": "RULE-NEWS2",
+          "organization": "Royal College of Physicians",
+          "title": "National Early Warning Score 2",
+          "url": "https://rcp.ac.uk/resources/national-early-warning-score-news-2/",
+          "sections": "Physiological parameters; NEWS2 chart and implementation guidance",
+          "source_date": "2017",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-qsofa",
+      "title": "qSOFA — prognosis and limitations",
+      "scope": "rule_summary",
+      "topicIds": ["f150bbe6c1e6e7a61ad5475c"],
+      "gaps": [
+        "Do not use qSOFA as the sole sepsis screening tool; the separately loaded 2026 SCCM guidance favors other screening systems. Do not apply adult thresholds to children."
+      ],
+      "sources": [
+        {
+          "id": "RULE-QSOFA",
+          "organization": "Sepsis-3 consensus / JAMA",
+          "title": "qSOFA and its screening limitations",
+          "url": "https://jamanetwork.com/journals/jama/fullarticle/2492881",
+          "sections": "qSOFA clinical criteria",
+          "source_date": "2016",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-abcdn",
+      "title": "ABCD2 TIA risk score",
+      "scope": "purpose_and_interpretation",
+      "topicIds": ["d343a7ce9d7c3e21231ae953"],
+      "gaps": [
+        "Point assignments and risk bands are not loaded. Do not calculate a total or use a low score to defer evaluation, exclude TIA, or determine discharge alone."
+      ],
+      "sources": [
+        {
+          "id": "RULE-ABCDN",
+          "organization": "American Heart Association",
+          "title": "2023 TIA emergency-department scientific statement",
+          "url": "https://professional.heart.org/en/science-news/diagnosis-workup-risk-reduction-of-transient-ischemic-attack-in-the-emergency-department-setting",
+          "sections": "Risk assessment; Top Things to Know",
+          "source_date": "2023",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-frax",
+      "title": "FRAX fracture risk",
+      "scope": "purpose_and_interpretation",
+      "topicIds": ["d84b7a7cd635042f0edaea6d", "484628e89b72062756f8ebea"],
+      "gaps": [
+        "Do not calculate FRAX from memory or treat these US intervention thresholds as universal international diagnostic criteria. Use the official model; treatment decisions also incorporate fracture history and factors the model omits."
+      ],
+      "sources": [
+        {
+          "id": "RULE-FRAX",
+          "organization": "Bone Health & Osteoporosis Foundation",
+          "title": "Clinician guide to osteoporosis prevention/treatment",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9546973/",
+          "sections": "Pharmacologic treatment recommendations; FRAX limitations",
+          "source_date": "2022",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-phq9",
+      "title": "PHQ-9 depression severity",
+      "scope": "purpose_and_interpretation",
+      "topicIds": [
+        "b80fa5428e1b5d012ff874f9",
+        "c01f968dc7a165d03f09705d",
+        "8bd7f71cdb97c05eabce00f3"
+      ],
+      "gaps": [
+        "Questionnaire items and complete administration/scoring instructions are not reproduced. Use a validated instrument; do not fabricate item responses or rule out self-harm risk from a low total."
+      ],
+      "sources": [
+        {
+          "id": "RULE-PHQ9",
+          "organization": "Kroenke et al.; USPSTF",
+          "title": "PHQ-9 validation and depression screening",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/11556941/",
+          "sections": "Results: severity cut points",
+          "source_date": "2001",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        },
+        {
+          "id": "RULE-DEPRESSION-SCREEN",
+          "organization": "USPSTF",
+          "title": "Depression and suicide risk in adults: screening",
+          "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/screening-depression-suicide-risk-adults",
+          "sections": "Practice considerations: positive screening evaluation",
+          "source_date": "2023",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link."
+        }
+      ]
+    },
+    {
+      "id": "criteria-gad7",
+      "title": "GAD-7 anxiety severity",
+      "scope": "purpose_and_interpretation",
+      "topicIds": ["e11c0100b9e067c0971a0f8b"],
+      "gaps": [
+        "Questionnaire items/administration are not loaded; do not create an altered instrument or diagnose GAD solely from a total. Diagnostic duration and exclusions require separate assessment."
+      ],
+      "sources": [
+        {
+          "id": "RULE-GAD7",
+          "organization": "Spitzer et al. / Archives of Internal Medicine",
+          "title": "GAD-7 original validation",
+          "url": "https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/410326/",
+          "sections": "Scale interpretation and cut points",
+          "source_date": "2006",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-atlanta",
+      "title": "Revised Atlanta pancreatitis criteria",
+      "scope": "rule_summary",
+      "topicIds": ["b27a6ec631ebd20975fe6923"],
+      "gaps": [
+        "Modified Marshall organ-failure scoring and collection terminology/time-course details are not fully loaded; do not calculate organ failure or equate an enzyme value with severity."
+      ],
+      "sources": [
+        {
+          "id": "RULE-ATLANTA",
+          "organization": "International consensus / Gut",
+          "title": "Revised Atlanta acute pancreatitis classification",
+          "url": "https://doi.org/10.1136/gutjnl-2012-302779",
+          "sections": "Diagnosis; severity definitions",
+          "source_date": "2012",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-bisap",
+      "title": "BISAP pancreatitis severity",
+      "scope": "rule_summary",
+      "topicIds": ["b27a6ec631ebd20975fe6923"],
+      "gaps": [
+        "Use the original operational definitions for impaired mental status and SIRS; score-specific mortality percentages and a treatment/disposition algorithm are not loaded. Do not wait for a score before responding to deterioration."
+      ],
+      "sources": [
+        {
+          "id": "RULE-BISAP",
+          "organization": "Wu et al. / Gut",
+          "title": "BISAP acute pancreatitis mortality prediction",
+          "url": "https://gut.bmj.com/content/57/12/1698",
+          "sections": "Results; five variables within first 24 hours",
+          "source_date": "2008",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-duke",
+      "title": "Duke-ISCVID endocarditis criteria",
+      "scope": "purpose_and_interpretation",
+      "topicIds": ["condition-endocarditis"],
+      "gaps": [
+        "Complete microbiology, imaging, surgical, minor and rejection definitions are not loaded. Use only explicitly supplied correctly classified criteria in exercises; do not classify a culture or image from memory. Subsequent living-document updates must be checked before clinical application."
+      ],
+      "sources": [
+        {
+          "id": "RULE-DUKE",
+          "organization": "ISCVID",
+          "title": "2023 Duke-ISCVID infective endocarditis criteria",
+          "url": "https://academic.oup.com/cid/article/77/4/518/7151107",
+          "sections": "Tables 1-2: definite and possible clinical IE",
+          "source_date": "2023",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-jones",
+      "title": "Jones acute rheumatic fever criteria",
+      "scope": "purpose_and_interpretation",
+      "topicIds": ["condition-rheumatic-fever"],
+      "gaps": [
+        "Complete risk-stratified major/minor definitions and recurrent-episode alternatives are not loaded. Practice interpreting supplied classified findings only; do not count the same joint manifestation as both major and minor or substitute the older surveillance definition."
+      ],
+      "sources": [
+        {
+          "id": "RULE-JONES",
+          "organization": "CDC / AHA revised Jones",
+          "title": "Diagnosis of acute rheumatic fever",
+          "url": "https://www.cdc.gov/group-a-strep/hcp/clinical-guidance/diagnosing-acute-rheumatic-fever.html",
+          "sections": "Initial and recurrent illness; risk-population criteria",
+          "source_date": "2015 criteria; current CDC page",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-glasgow-blatchford",
+      "title": "Glasgow-Blatchford upper GI bleeding score",
+      "scope": "purpose_and_interpretation",
+      "topicIds": ["condition-upper-gi-bleeding"],
+      "gaps": [
+        "Full input-to-point table is not loaded: interpret a supplied verified score, do not calculate from memory. Ongoing bleeding, instability or other admission needs override score-only reassurance. NICE CG141 uses a more restrictive example of 0; preserve guideline-specific thresholds."
+      ],
+      "sources": [
+        {
+          "id": "RULE-GLASGOW-BLATCHFORD",
+          "organization": "American College of Gastroenterology",
+          "title": "2021 upper GI/ulcer bleeding guideline",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33929377/",
+          "sections": "Abstract: very-low-risk ED assessment",
+          "source_date": "2021",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-child-pugh",
+      "title": "Child-Pugh liver severity",
+      "scope": "purpose_and_interpretation",
+      "topicIds": ["e683adfa3084ddbf052e76d4"],
+      "gaps": [
+        "Complete input thresholds and condition-specific variants are not loaded. Do not compute a total from memory or reduce every drug by a generic percentage; use the individual label/guideline and stated hepatic category."
+      ],
+      "sources": [
+        {
+          "id": "RULE-CHILD-PUGH",
+          "organization": "AASLD",
+          "title": "Child-Pugh and MELD score overview",
+          "url": "https://www.aasld.org/liver-fellow-network/core-series/back-basics/evolution-meld-scores",
+          "sections": "Table 1: variables and class ranges",
+          "source_date": null,
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-meld",
+      "title": "MELD liver prognosis",
+      "scope": "purpose_and_interpretation",
+      "topicIds": ["e683adfa3084ddbf052e76d4"],
+      "gaps": [
+        "Equation coefficients, input floors/caps, dialysis handling, age rules and allocation exceptions are not loaded; do not compute or substitute versions. Use the current HRSA OPTN calculator and policies for allocation-specific questions."
+      ],
+      "sources": [
+        {
+          "id": "RULE-MELD",
+          "organization": "AASLD / HRSA OPTN",
+          "title": "MELD score versions and official allocation tools",
+          "url": "https://www.aasld.org/liver-fellow-network/core-series/back-basics/evolution-meld-scores",
+          "sections": "Table 1 and MELD evolution",
+          "source_date": null,
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        },
+        {
+          "id": "RULE-MELD-OPTN",
+          "organization": "HRSA / OPTN",
+          "title": "Official allocation calculators",
+          "url": "https://www.hrsa.gov/optn/data-calculators/allocation-calculators",
+          "sections": "MELD calculator and current policy links",
+          "source_date": null,
+          "access_date": "2026-10-17",
+          "review": "official_tool_link; equation not reproduced",
+          "reuse": "Link only; no calculator code copied."
+        }
+      ]
+    },
+    {
+      "id": "criteria-beers",
+      "title": "Beers medication appropriateness",
+      "scope": "purpose_and_interpretation",
+      "topicIds": ["705853617382d5d197607796"],
+      "gaps": [
+        "The full drug tables and renal thresholds are not reproduced. Do not invent a drug-specific Beers recommendation from this overview; consult the cited criteria and individual label."
+      ],
+      "sources": [
+        {
+          "id": "RULE-BEERS",
+          "organization": "American Geriatrics Society",
+          "title": "2023 AGS Beers criteria overview",
+          "url": "https://www.americangeriatrics.org/media-center/news/many-older-adults-take-multiple-medications-updated-ags-beers-criteriar-will-help",
+          "sections": "Five lists; person-centered medication decisions",
+          "source_date": "2023",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-rotterdam",
+      "title": "Rotterdam PCOS criteria",
+      "scope": "rule_summary",
+      "topicIds": ["21e49eb7d934d92789644bee"],
+      "gaps": [
+        "Age/postmenarche definitions, assay-specific AMH cutoffs and full exclusion workup are not loaded. Do not invent a universal AMH value, use adult ovarian criteria in adolescents, or require imaging when the other two adult criteria are established."
+      ],
+      "sources": [
+        {
+          "id": "RULE-ROTTERDAM",
+          "organization": "International PCOS guideline group / Monash",
+          "title": "2023 international PCOS diagnostic recommendations",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10505534/",
+          "sections": "Diagnostic algorithm; adult versus adolescent criteria",
+          "source_date": "2023",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-asthma",
+      "title": "Asthma objective diagnostic criteria",
+      "scope": "rule_summary",
+      "topicIds": ["ae8313ae8e54ea25af25ca48"],
+      "gaps": [
+        "This is one diagnostic test, not the entire algorithm. A single negative test does not exclude asthma; testing conditions, current treatment and alternative objective tests matter. Do not apply adult absolute-volume thresholds to children."
+      ],
+      "sources": [
+        {
+          "id": "RULE-ASTHMA",
+          "organization": "GINA",
+          "title": "2026 GINA strategy report",
+          "url": "https://ginasthma.org/wp-content/uploads/2026/05/GINA-2026-Strategy-Report-WMS.pdf",
+          "sections": "Diagnosis; positive bronchodilator response",
+          "source_date": "2026",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-copd",
+      "title": "COPD spirometric diagnosis",
+      "scope": "rule_summary",
+      "topicIds": ["38266a21ba131875fcb5fc6e", "55eee87a230e72744bb75406"],
+      "gaps": [
+        "The fixed ratio has age-related limitations; borderline results may need repeat testing. Spirometry alone does not supply a complete differential, symptom/exacerbation classification or treatment plan."
+      ],
+      "sources": [
+        {
+          "id": "RULE-COPD",
+          "organization": "GOLD",
+          "title": "2026 GOLD strategy report",
+          "url": "https://goldcopd.org/wp-content/uploads/2025/11/GOLD-REPORT-2026-v1.2-20Nov2025_WMV.pdf",
+          "sections": "Diagnosis: spirometric confirmation",
+          "source_date": "2026",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-osteoporosis",
+      "title": "DXA osteoporosis diagnostic criteria",
+      "scope": "rule_summary",
+      "topicIds": ["d84b7a7cd635042f0edaea6d", "484628e89b72062756f8ebea"],
+      "gaps": [
+        "Site selection, artifacts and secondary causes matter. Do not apply older-adult T-score categories unchanged to premenopausal women or younger men; Z-score interpretation and clinical context differ. FRAX intervention thresholds are separate from the DXA definition."
+      ],
+      "sources": [
+        {
+          "id": "RULE-OSTEOPOROSIS",
+          "organization": "Bone Health & Osteoporosis Foundation",
+          "title": "DXA diagnostic and treatment criteria",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9546973/",
+          "sections": "Diagnosis; T-score sites and younger-adult limits",
+          "source_date": "2022",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-dsm-mdd",
+      "title": "Depression diagnostic assessment — NIMH overview",
+      "scope": "purpose_and_interpretation",
+      "topicIds": [
+        "b80fa5428e1b5d012ff874f9",
+        "c01f968dc7a165d03f09705d",
+        "8bd7f71cdb97c05eabce00f3"
+      ],
+      "gaps": [
+        "This NIMH overview does not reproduce the full DSM symptom checklist, count or exclusions. Do not label it a complete DSM diagnostic algorithm; assess bipolar history and safety using separately supported guidance. A positive screen is not the diagnosis."
+      ],
+      "sources": [
+        {
+          "id": "RULE-DSM-MDD",
+          "organization": "NIMH",
+          "title": "Depression diagnostic assessment overview",
+          "url": "https://www.nimh.nih.gov/health/publications/depression",
+          "sections": "How is depression diagnosed?",
+          "source_date": null,
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-dsm-adhd",
+      "title": "ADHD diagnostic assessment — CDC overview",
+      "scope": "purpose_and_interpretation",
+      "topicIds": [
+        "24d26ec9f06fa18142c75c41",
+        "7f99cb1adf4d1fca94c8b5bc",
+        "f9c2dedbdeec241b762cd01c"
+      ],
+      "gaps": [
+        "The complete symptom-item checklist, subtype specifications and exclusions are not reproduced. Counts alone do not diagnose ADHD; do not construct an altered diagnostic instrument."
+      ],
+      "sources": [
+        {
+          "id": "RULE-DSM-ADHD",
+          "organization": "CDC / AAP",
+          "title": "ADHD diagnostic evaluation",
+          "url": "https://www.cdc.gov/adhd/hcp/treatment-recommendations/",
+          "sections": "Diagnosis: symptom counts; duration and settings",
+          "source_date": null,
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-dsm-gad",
+      "title": "Generalized anxiety diagnostic assessment",
+      "scope": "rule_summary",
+      "topicIds": ["e11c0100b9e067c0971a0f8b"],
+      "gaps": [
+        "This is an adult-oriented diagnostic summary, not the complete DSM exclusions or a pediatric symptom-count rule. Do not substitute a GAD-7 total for diagnostic assessment."
+      ],
+      "sources": [
+        {
+          "id": "RULE-DSM-GAD",
+          "organization": "NIMH",
+          "title": "Generalized anxiety disorder diagnostic overview",
+          "url": "https://www.nimh.nih.gov/health/publications/generalized-anxiety-disorder-gad",
+          "sections": "How is generalized anxiety disorder diagnosed?",
+          "source_date": "2025",
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+        }
+      ]
+    },
+    {
+      "id": "criteria-glasgow-coma",
+      "title": "Glasgow Coma Scale (GCS)",
+      "scope": "rule_summary",
+      "topicIds": [
+        "condition-minor-head-injury",
+        "condition-acute-severe-headache",
+        "f150bbe6c1e6e7a61ad5475c"
+      ],
+      "gaps": [
+        "This is standard GCS, not a full pediatric adaptation or GCS-P. Sedation, intoxication, language barriers and pre-existing impairment affect interpretation. A total alone does not identify the cause of impaired consciousness or dictate a universal airway/disposition action."
+      ],
+      "sources": [
+        {
+          "id": "RULE-GCS",
+          "organization": "Glasgow Coma Scale / NHS Greater Glasgow and Clyde",
+          "title": "Structured GCS assessment aid",
+          "url": "https://www.glasgowcomascale.org/downloads/GCS-Assessment-Aid-English.pdf",
+          "sections": "Eye, verbal and best motor response tables; NT entries",
+          "source_date": null,
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original concise factual paraphrase and source link; no copied chart or proprietary calculator."
+        },
+        {
+          "id": "RULE-GCS-FAQ",
+          "organization": "Glasgow Coma Scale",
+          "title": "GCS assessment limitations and recording",
+          "url": "https://www.glasgowcomascale.org/faq/",
+          "sections": "Intubation; non-testable components; young children",
+          "source_date": null,
+          "access_date": "2026-10-17",
+          "review": "source_checked_scoped_facts; independent clinical review pending",
+          "reuse": "Original concise factual paraphrase and source link; no copied chart or proprietary calculator."
+        }
+      ]
+    }
+  ],
+  "medications": [
+    {
+      "name": "abacavir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["14853013858f52710cf8c438"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "abaloparatide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["484628e89b72062756f8ebea"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "abrocitinib",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["c1e6f4dbaf1f814886f749b4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "acamprosate",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "ae4356e0a8eb26c6f5aaaf68",
+        "01ea94e9eb3e17fea18b8fb6"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "acetaminophen",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "8f866f880ca46fb9b05852ec",
+        "afd4e73f566771236244da9e",
+        "1f6bf28ef41936b2bf1a6fe7",
+        "83683036fed9f441672179be",
+        "b68763ff1074bb34e3145f6a",
+        "975086463277541de876a5fb"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "acyclovir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["5730fd3e11038f2d150db93f"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "adalimumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6476dd0112c5ae4da94d8fd9",
+        "b6e19bd7d7b54a0366a09910",
+        "84b1bf9ba7bc75c32d29b3ac"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "adapalene",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["2366048fed415597a1e6ddf7"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "adefovir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["58855301bd0c37c04e595952"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "adenosine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "01314bf2a8b85f87e526ffd8",
+        "5e52ccdf271d1b982840007b"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "albuterol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "55eee87a230e72744bb75406",
+        "ae8313ae8e54ea25af25ca48",
+        "e022477e05cc6f8402d1f08f",
+        "ecd067fc751b97138d43736f",
+        "975086463277541de876a5fb",
+        "6a2a1974711a138a1f8ad775"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "alendronate",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d84b7a7cd635042f0edaea6d",
+        "484628e89b72062756f8ebea"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "alfuzosin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["343fc9962eb724d699b9b57a"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "alirocumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b1b511c35620b4a1dd16daed"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "allopurinol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d71d8d92f76212db6a1440e2",
+        "36aa0220426fdbf5cdf2f531",
+        "855ac9a4d5701b1face436b8"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "alosetron",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["cb5139fea23d1cbd8a23151b"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "alprostadil",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e01158b5b8592c65321a77e5"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "alteplase",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "efb458f5da0e31d6ee0d0c4a",
+        "7008d14d9deb4d9870389b58",
+        "b68763ff1074bb34e3145f6a",
+        "5d902756f3ca5862621193b9",
+        "2a1c729c2ab75c5392d71c2c"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "amantadine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["126dd87c2e42da616a7addf0"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ambrisentan",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["3c6b8eb22500a03ac847263f"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "amiodarone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "5a4309a877d4cf0fe647595c",
+        "bbe227faef08387f885e1ba2",
+        "b0f8ba79b7482c62dc6ddf37",
+        "b09eb0456642983e6e51f415",
+        "455f44ea62338464acb4e839",
+        "5e52ccdf271d1b982840007b"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "amitriptyline",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "fedff6acf8f4139378afe4a4",
+        "2d391f19afa83b98e0dd157b",
+        "705853617382d5d197607796",
+        "baa7047b9ab15608b3779264",
+        "845570f0a3acc13072dd67f5"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "amlodipine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["7b3bc91b203a6ba9b9dffcc4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "amoxicillin",
+      "status": "scoped_safety_profile",
+      "matchingOriginalTopicIds": [
+        "6bdba761b977cff2f575e630",
+        "2ddb34532433626f2090b51b",
+        "fdaa20c363417cdb5ae01447",
+        "9fda7b4fd8868ca12f720875",
+        "4eaa461b63792973bcfd48d6",
+        "32eb6b827a214017ef2f5ff6",
+        "2f82084e6568d27af2976c52",
+        "a975e3f80c0dc6fd5af510b9",
+        "0b8d5d9a43c0e0b514fbc87c",
+        "e5021602c5fa3b870962bdff"
+      ],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "amoxicillin-clavulanate",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6bdba761b977cff2f575e630",
+        "2ddb34532433626f2090b51b",
+        "9fda7b4fd8868ca12f720875",
+        "32eb6b827a214017ef2f5ff6",
+        "2f82084e6568d27af2976c52",
+        "0b8d5d9a43c0e0b514fbc87c"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "amphetamine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "24d26ec9f06fa18142c75c41",
+        "7f99cb1adf4d1fca94c8b5bc"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "amphotericin B",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["14853013858f52710cf8c438"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ampicillin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6bdba761b977cff2f575e630",
+        "b2bbc2f97a648adbee968a3a",
+        "e5021602c5fa3b870962bdff"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ampicillin-sulbactam",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6bdba761b977cff2f575e630",
+        "b2bbc2f97a648adbee968a3a"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "anifrolumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["51c0ce7aa1c0cdba659438a6"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "apixaban",
+      "status": "scoped_safety_profile",
+      "matchingOriginalTopicIds": [
+        "0991eab0731643e71d870626",
+        "40e4301b89061f5840a80445",
+        "705853617382d5d197607796",
+        "b0f8ba79b7482c62dc6ddf37",
+        "efb458f5da0e31d6ee0d0c4a",
+        "d343a7ce9d7c3e21231ae953",
+        "2a1c729c2ab75c5392d71c2c"
+      ],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "apremilast",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b6e19bd7d7b54a0366a09910"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "aripiprazole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d64fb9ae5abefbc2a4e2219d",
+        "b3f3fc759b716b77dff57300"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "aspirin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "1833de3a0a8d11c05918101a",
+        "8f866f880ca46fb9b05852ec",
+        "4b804af2df6204b59311cd8a",
+        "705853617382d5d197607796",
+        "fce45904af5902aa443590de",
+        "4fb3b68714218ad37f46d200",
+        "855ac9a4d5701b1face436b8",
+        "7008d14d9deb4d9870389b58",
+        "b68763ff1074bb34e3145f6a",
+        "d343a7ce9d7c3e21231ae953"
+      ],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "atenolol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "5a4309a877d4cf0fe647595c",
+        "d1ab8a3ccb8bba02d64d6fec"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "atomoxetine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "24d26ec9f06fa18142c75c41",
+        "f9c2dedbdeec241b762cd01c"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "atorvastatin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "b1b511c35620b4a1dd16daed",
+        "b09eb0456642983e6e51f415",
+        "7008d14d9deb4d9870389b58",
+        "d343a7ce9d7c3e21231ae953"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "atropine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["5e52ccdf271d1b982840007b"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "avanafil",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e01158b5b8592c65321a77e5"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "azathioprine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "c1e6f4dbaf1f814886f749b4",
+        "84b1bf9ba7bc75c32d29b3ac",
+        "b27a6ec631ebd20975fe6923",
+        "455f44ea62338464acb4e839",
+        "51c0ce7aa1c0cdba659438a6"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "azithromycin",
+      "status": "scoped_safety_profile",
+      "matchingOriginalTopicIds": [
+        "6bdba761b977cff2f575e630",
+        "5730fd3e11038f2d150db93f",
+        "9fda7b4fd8868ca12f720875",
+        "32eb6b827a214017ef2f5ff6",
+        "14853013858f52710cf8c438",
+        "a975e3f80c0dc6fd5af510b9",
+        "e5021602c5fa3b870962bdff",
+        "975086463277541de876a5fb",
+        "5e52ccdf271d1b982840007b"
+      ],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "bacitracin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b821e47430d34cb4039f7869"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "baloxavir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["01e74c2bdc2c12a5317d35cc"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "baricitinib",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6476dd0112c5ae4da94d8fd9",
+        "c1e6f4dbaf1f814886f749b4"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "belimumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["51c0ce7aa1c0cdba659438a6"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "benralizumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["ae8313ae8e54ea25af25ca48"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "benzoyl peroxide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["2366048fed415597a1e6ddf7"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "benztropine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d64fb9ae5abefbc2a4e2219d"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "betamethasone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b6e19bd7d7b54a0366a09910"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "bezlotoxumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e46fde2a2f267760c4ca55ef"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "bictegravir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "2a2b083c27ed2d29a121ea71",
+        "14853013858f52710cf8c438"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "bisacodyl",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e45605f707dfd708cbfc7710"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "bismuth",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["fdaa20c363417cdb5ae01447"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "bisoprolol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "02d3e10d8a376e913553a92a",
+        "b0f8ba79b7482c62dc6ddf37"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "bivalirudin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["7008d14d9deb4d9870389b58"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "bleomycin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["455f44ea62338464acb4e839"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "brexanolone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["8bd7f71cdb97c05eabce00f3"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "bromocriptine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d64fb9ae5abefbc2a4e2219d"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "budesonide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "e022477e05cc6f8402d1f08f",
+        "84b1bf9ba7bc75c32d29b3ac"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "buprenorphine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "78fcea65772245b721a028ef",
+        "afd4e73f566771236244da9e",
+        "1f6bf28ef41936b2bf1a6fe7",
+        "01ea94e9eb3e17fea18b8fb6"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "bupropion",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "c01f968dc7a165d03f09705d",
+        "3253c10853cb3ac924610443",
+        "79b366eff4be9bba86df429f",
+        "b3f3fc759b716b77dff57300",
+        "7020b67af28c22e3d988509e"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "buspirone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e11c0100b9e067c0971a0f8b"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "butalbital",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["8f866f880ca46fb9b05852ec"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cabotegravir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["14853013858f52710cf8c438"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "caffeine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "e4d6c888cc96576851754495",
+        "8f866f880ca46fb9b05852ec",
+        "343fc9962eb724d699b9b57a",
+        "67d2bbec55e92bf617518a3d",
+        "5e52ccdf271d1b982840007b"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "calcipotriene",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b6e19bd7d7b54a0366a09910"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "calcitonin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["6a2a1974711a138a1f8ad775"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "calcitriol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["238e9c2143ee237582a6ce2b"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "canagliflozin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "28649bf08a4f7e9ba97e7b73",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "candesartan",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["0b0875050601a7f17d1bb91e"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "capsaicin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["361aa710d0bf02fdc2f2e719"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "carbamazepine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "e1f0595f65bebe11b7d7905e",
+        "d3f9cb0faf2560f2bb8783f6",
+        "4fb3b68714218ad37f46d200",
+        "6a2a1974711a138a1f8ad775"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "carbidopa",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["126dd87c2e42da616a7addf0"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "carisoprodol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["705853617382d5d197607796"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "carvedilol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "02d3e10d8a376e913553a92a",
+        "b0f8ba79b7482c62dc6ddf37",
+        "e683adfa3084ddbf052e76d4"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cefazolin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "c9e723bcc75b3c40e1d657f0",
+        "b2bbc2f97a648adbee968a3a"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cefdinir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "9fda7b4fd8868ca12f720875",
+        "2f82084e6568d27af2976c52"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cefepime",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["6bdba761b977cff2f575e630"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cefixime",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["a975e3f80c0dc6fd5af510b9"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cefotaxime",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e683adfa3084ddbf052e76d4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cefpodoxime",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "9fda7b4fd8868ca12f720875",
+        "2f82084e6568d27af2976c52"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ceftriaxone",
+      "status": "scoped_safety_profile",
+      "matchingOriginalTopicIds": [
+        "6bdba761b977cff2f575e630",
+        "2ddb34532433626f2090b51b",
+        "5730fd3e11038f2d150db93f",
+        "9fda7b4fd8868ca12f720875",
+        "4eaa461b63792973bcfd48d6",
+        "32eb6b827a214017ef2f5ff6",
+        "a975e3f80c0dc6fd5af510b9",
+        "e683adfa3084ddbf052e76d4"
+      ],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "cefuroxime",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "9fda7b4fd8868ca12f720875",
+        "4eaa461b63792973bcfd48d6",
+        "2f82084e6568d27af2976c52"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "celecoxib",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d71d8d92f76212db6a1440e2"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cemiplimab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["8a4ade79e44ef2dfb3054abc"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cephalexin",
+      "status": "scoped_safety_profile",
+      "matchingOriginalTopicIds": [
+        "2ddb34532433626f2090b51b",
+        "c9e723bcc75b3c40e1d657f0",
+        "b2bbc2f97a648adbee968a3a",
+        "e5021602c5fa3b870962bdff"
+      ],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "certolizumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6476dd0112c5ae4da94d8fd9",
+        "84b1bf9ba7bc75c32d29b3ac"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "chlordiazepoxide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["ae4356e0a8eb26c6f5aaaf68"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "chlorpheniramine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["705853617382d5d197607796"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "chlorpropamide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["705853617382d5d197607796"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "chlorthalidone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["7b3bc91b203a6ba9b9dffcc4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ciclopirox",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["7b6384c8ffe6a70b805e9664"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cilostazol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["4b804af2df6204b59311cd8a"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ciprofloxacin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6bdba761b977cff2f575e630",
+        "2ddb34532433626f2090b51b"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cisplatin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["869fb13544c67a28e07f816b"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cladribine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["9d330bd049e4ead404ff7551"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "clarithromycin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "fdaa20c363417cdb5ae01447",
+        "d71d8d92f76212db6a1440e2"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "clindamycin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "c9e723bcc75b3c40e1d657f0",
+        "2366048fed415597a1e6ddf7",
+        "2f82084e6568d27af2976c52",
+        "e5021602c5fa3b870962bdff"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "clobetasol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b821e47430d34cb4039f7869"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "clomiphene",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["21e49eb7d934d92789644bee"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "clonazepam",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "e11c0100b9e067c0971a0f8b",
+        "e1f0595f65bebe11b7d7905e",
+        "705853617382d5d197607796"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "clonidine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "24d26ec9f06fa18142c75c41",
+        "5d7b2b3ee6db2050e0bea8d2",
+        "f9c2dedbdeec241b762cd01c"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "clopidogrel",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "4b804af2df6204b59311cd8a",
+        "7008d14d9deb4d9870389b58",
+        "b68763ff1074bb34e3145f6a",
+        "d343a7ce9d7c3e21231ae953"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "clotrimazole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["7b6384c8ffe6a70b805e9664"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "clozapine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d64fb9ae5abefbc2a4e2219d",
+        "126dd87c2e42da616a7addf0",
+        "78c7b208908e6fcb9fae9078"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "codeine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["975086463277541de876a5fb"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "colchicine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d71d8d92f76212db6a1440e2",
+        "855ac9a4d5701b1face436b8"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "conivaptan",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["6a2a1974711a138a1f8ad775"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "crisaborole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["c1e6f4dbaf1f814886f749b4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "crizanlizumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d12d2aad5bf457ce9caacbf7"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cromolyn",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["ecd067fc751b97138d43736f"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cyanocobalamin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["eeb76ce1abc7f04994b1c5dd"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cyclobenzaprine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "78fcea65772245b721a028ef",
+        "2d391f19afa83b98e0dd157b",
+        "705853617382d5d197607796"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cyclophosphamide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d87b4dc2381bb5d3430c14ba",
+        "455f44ea62338464acb4e839",
+        "51c0ce7aa1c0cdba659438a6"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "cyclosporine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d71d8d92f76212db6a1440e2",
+        "b6e19bd7d7b54a0366a09910",
+        "c1e6f4dbaf1f814886f749b4",
+        "855ac9a4d5701b1face436b8"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "dabigatran",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "0991eab0731643e71d870626",
+        "40e4301b89061f5840a80445",
+        "705853617382d5d197607796",
+        "b0f8ba79b7482c62dc6ddf37",
+        "efb458f5da0e31d6ee0d0c4a",
+        "d343a7ce9d7c3e21231ae953"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "dantrolene",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d64fb9ae5abefbc2a4e2219d"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "dapagliflozin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "02d3e10d8a376e913553a92a",
+        "28649bf08a4f7e9ba97e7b73",
+        "a5480cb869f2409add578fa7",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "deferasirox",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d12d2aad5bf457ce9caacbf7"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "deferoxamine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d12d2aad5bf457ce9caacbf7"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "denosumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d84b7a7cd635042f0edaea6d",
+        "484628e89b72062756f8ebea"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "deucravacitinib",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b6e19bd7d7b54a0366a09910"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "deutetrabenazine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d64fb9ae5abefbc2a4e2219d"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "dexmedetomidine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["91860482599a5ce318137d3d"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "dextroamphetamine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["f9c2dedbdeec241b762cd01c"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "dextromethorphan",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["975086463277541de876a5fb"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "dextrose",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "19fcd6ed9d652e4403ee405f",
+        "28649bf08a4f7e9ba97e7b73",
+        "987f012c13d2d35b9097dc05",
+        "d64fb9ae5abefbc2a4e2219d",
+        "066fa456f857157bfc33458f",
+        "e1f0595f65bebe11b7d7905e",
+        "ae4356e0a8eb26c6f5aaaf68",
+        "343fc9962eb724d699b9b57a",
+        "baa7047b9ab15608b3779264",
+        "01314bf2a8b85f87e526ffd8",
+        "579555b0028ef6d2ce35a141",
+        "4fb3b68714218ad37f46d200",
+        "f150bbe6c1e6e7a61ad5475c",
+        "b68763ff1074bb34e3145f6a",
+        "2407e0d474247dae94aefddc",
+        "e01158b5b8592c65321a77e5",
+        "1aba1bdc6c5dc0f514e5252a",
+        "f4db07485bb4c7e9a18a2eb8",
+        "51c0ce7aa1c0cdba659438a6",
+        "6a2a1974711a138a1f8ad775",
+        "cf87f492fd93c4c0da849ead",
+        "d343a7ce9d7c3e21231ae953"
+      ],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "diazepam",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "ae4356e0a8eb26c6f5aaaf68",
+        "705853617382d5d197607796",
+        "579555b0028ef6d2ce35a141"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "diclofenac",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "78fcea65772245b721a028ef",
+        "361aa710d0bf02fdc2f2e719"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "dicloxacillin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["c9e723bcc75b3c40e1d657f0"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "dicyclomine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["cb5139fea23d1cbd8a23151b"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "difamilast",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["c1e6f4dbaf1f814886f749b4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "digoxin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "5a4309a877d4cf0fe647595c",
+        "b0f8ba79b7482c62dc6ddf37",
+        "5e52ccdf271d1b982840007b"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "diltiazem",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "02d3e10d8a376e913553a92a",
+        "5a4309a877d4cf0fe647595c",
+        "b0f8ba79b7482c62dc6ddf37"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "diphenhydramine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d64fb9ae5abefbc2a4e2219d",
+        "705853617382d5d197607796",
+        "67d2bbec55e92bf617518a3d"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "dipyridamole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b68763ff1074bb34e3145f6a"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "disulfiram",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "ae4356e0a8eb26c6f5aaaf68",
+        "01ea94e9eb3e17fea18b8fb6"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "dobutamine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["f150bbe6c1e6e7a61ad5475c"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "docusate",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["126dd87c2e42da616a7addf0"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "dolutegravir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["2a2b083c27ed2d29a121ea71"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "donanemab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["f7dc62275bab8a1b087fd4eb"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "donepezil",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["f7dc62275bab8a1b087fd4eb"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "dopamine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "126dd87c2e42da616a7addf0",
+        "f150bbe6c1e6e7a61ad5475c",
+        "5e52ccdf271d1b982840007b"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "doxepin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "705853617382d5d197607796",
+        "67d2bbec55e92bf617518a3d"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "doxycycline",
+      "status": "scoped_safety_profile",
+      "matchingOriginalTopicIds": [
+        "6bdba761b977cff2f575e630",
+        "5730fd3e11038f2d150db93f",
+        "c9e723bcc75b3c40e1d657f0",
+        "2366048fed415597a1e6ddf7",
+        "b2bbc2f97a648adbee968a3a",
+        "4eaa461b63792973bcfd48d6",
+        "32eb6b827a214017ef2f5ff6",
+        "a975e3f80c0dc6fd5af510b9",
+        "0b8d5d9a43c0e0b514fbc87c"
+      ],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "dronedarone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b0f8ba79b7482c62dc6ddf37"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "drospirenone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d3f9cb0faf2560f2bb8783f6"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "dulaglutide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "28649bf08a4f7e9ba97e7b73",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "duloxetine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "c01f968dc7a165d03f09705d",
+        "e11c0100b9e067c0971a0f8b",
+        "78fcea65772245b721a028ef",
+        "361aa710d0bf02fdc2f2e719",
+        "2d391f19afa83b98e0dd157b",
+        "be04c79bed5896452e318e52",
+        "1f6bf28ef41936b2bf1a6fe7",
+        "845570f0a3acc13072dd67f5"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "dupilumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "ae8313ae8e54ea25af25ca48",
+        "c1e6f4dbaf1f814886f749b4"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "dutasteride",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["343fc9962eb724d699b9b57a"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "edoxaban",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "0991eab0731643e71d870626",
+        "40e4301b89061f5840a80445",
+        "efb458f5da0e31d6ee0d0c4a",
+        "d343a7ce9d7c3e21231ae953",
+        "2a1c729c2ab75c5392d71c2c"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "elagolix",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["c3e4c827305165c2665116cf"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "eletriptan",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["8f866f880ca46fb9b05852ec"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "eltrombopag",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e00fad6303c1d4210fc17cd4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "empagliflozin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "02d3e10d8a376e913553a92a",
+        "0b0875050601a7f17d1bb91e",
+        "28649bf08a4f7e9ba97e7b73",
+        "a5480cb869f2409add578fa7",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "enalapril",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["02d3e10d8a376e913553a92a"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "enoxaparin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "40e4301b89061f5840a80445",
+        "efb458f5da0e31d6ee0d0c4a",
+        "7008d14d9deb4d9870389b58",
+        "2a1c729c2ab75c5392d71c2c"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "entacapone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["126dd87c2e42da616a7addf0"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "entecavir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["58855301bd0c37c04e595952"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "epinephrine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "f150bbe6c1e6e7a61ad5475c",
+        "5e52ccdf271d1b982840007b"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "eplerenone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "02d3e10d8a376e913553a92a",
+        "7008d14d9deb4d9870389b58"
+      ],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "epoprostenol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["3c6b8eb22500a03ac847263f"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "eptinezumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["fedff6acf8f4139378afe4a4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "erenumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["fedff6acf8f4139378afe4a4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "erythromycin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["2366048fed415597a1e6ddf7"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "escitalopram",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "b80fa5428e1b5d012ff874f9",
+        "c01f968dc7a165d03f09705d",
+        "e11c0100b9e067c0971a0f8b",
+        "5d7b2b3ee6db2050e0bea8d2"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "esomeprazole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e4d6c888cc96576851754495"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "estriol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["066fa456f857157bfc33458f"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "eszopiclone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "705853617382d5d197607796",
+        "67d2bbec55e92bf617518a3d"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "etanercept",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6476dd0112c5ae4da94d8fd9",
+        "b6e19bd7d7b54a0366a09910"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ethosuximide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e1f0595f65bebe11b7d7905e"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "etonogestrel",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d8bf681b69d0c383720757c2",
+        "d3f9cb0faf2560f2bb8783f6"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "evolocumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b1b511c35620b4a1dd16daed"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ezetimibe",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b1b511c35620b4a1dd16daed"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "famciclovir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["5730fd3e11038f2d150db93f"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "famotidine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e4d6c888cc96576851754495"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "febuxostat",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d71d8d92f76212db6a1440e2",
+        "855ac9a4d5701b1face436b8"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "fenofibrate",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["78c7b208908e6fcb9fae9078"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "fentanyl",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "1f6bf28ef41936b2bf1a6fe7",
+        "e45605f707dfd708cbfc7710"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ferumoxytol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["02f573fdf000c1d54825440d"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "fezolinetant",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["5d7b2b3ee6db2050e0bea8d2"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "fidaxomicin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e46fde2a2f267760c4ca55ef"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "finasteride",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "343fc9962eb724d699b9b57a",
+        "21e49eb7d934d92789644bee"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "finerenone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "a5480cb869f2409add578fa7",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "fingolimod",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["9d330bd049e4ead404ff7551"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "flecainide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "5a4309a877d4cf0fe647595c",
+        "b0f8ba79b7482c62dc6ddf37"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "fluconazole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["14853013858f52710cf8c438"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "fludrocortisone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["baa7047b9ab15608b3779264"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "fluoxetine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "c01f968dc7a165d03f09705d",
+        "8bd7f71cdb97c05eabce00f3",
+        "01d1d3dfeec121d4a6118eb7"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "fluphenazine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d64fb9ae5abefbc2a4e2219d"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "fluticasone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "e4d6c888cc96576851754495",
+        "e022477e05cc6f8402d1f08f",
+        "ecd067fc751b97138d43736f"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "fondaparinux",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["7008d14d9deb4d9870389b58"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "formoterol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "55eee87a230e72744bb75406",
+        "ae8313ae8e54ea25af25ca48",
+        "e022477e05cc6f8402d1f08f",
+        "ecd067fc751b97138d43736f"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "fosfomycin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["2ddb34532433626f2090b51b"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "fosphenytoin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e1f0595f65bebe11b7d7905e"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "fremanezumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["fedff6acf8f4139378afe4a4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "furosemide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "b27a6ec631ebd20975fe6923",
+        "e683adfa3084ddbf052e76d4"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "gabapentin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "5d7b2b3ee6db2050e0bea8d2",
+        "01ea94e9eb3e17fea18b8fb6",
+        "845570f0a3acc13072dd67f5"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "galantamine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["f7dc62275bab8a1b087fd4eb"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "galcanezumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["fedff6acf8f4139378afe4a4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "gemfibrozil",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["78c7b208908e6fcb9fae9078"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "gentamicin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "5730fd3e11038f2d150db93f",
+        "a975e3f80c0dc6fd5af510b9"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "glatiramer",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["9d330bd049e4ead404ff7551"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "glecaprevir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["4305478ddd88b3f6bd74c298"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "glimepiride",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["cf87f492fd93c4c0da849ead"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "glipizide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "705853617382d5d197607796",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "glucagon",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["987f012c13d2d35b9097dc05"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "glyburide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "705853617382d5d197607796",
+        "2407e0d474247dae94aefddc"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "glycopyrrolate",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["55eee87a230e72744bb75406"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "golimumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6476dd0112c5ae4da94d8fd9",
+        "84b1bf9ba7bc75c32d29b3ac"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "griseofulvin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["7b6384c8ffe6a70b805e9664"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "guanfacine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "24d26ec9f06fa18142c75c41",
+        "f9c2dedbdeec241b762cd01c"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "guselkumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b6e19bd7d7b54a0366a09910"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "haloperidol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d64fb9ae5abefbc2a4e2219d",
+        "2c3b5d90c15718c54f61b431",
+        "b3f3fc759b716b77dff57300",
+        "91860482599a5ce318137d3d",
+        "e45605f707dfd708cbfc7710",
+        "5e52ccdf271d1b982840007b"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "heparin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "40e4301b89061f5840a80445",
+        "e00fad6303c1d4210fc17cd4",
+        "5d902756f3ca5862621193b9"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "hydralazine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["1833de3a0a8d11c05918101a"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "hydrochlorothiazide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["7b3bc91b203a6ba9b9dffcc4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "hydrocortisone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "bbe227faef08387f885e1ba2",
+        "c1e6f4dbaf1f814886f749b4",
+        "f150bbe6c1e6e7a61ad5475c",
+        "d1ab8a3ccb8bba02d64d6fec"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "hydromorphone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "b27a6ec631ebd20975fe6923",
+        "d12d2aad5bf457ce9caacbf7"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "hydroxychloroquine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "361aa710d0bf02fdc2f2e719",
+        "51c0ce7aa1c0cdba659438a6"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "hydroxyurea",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d12d2aad5bf457ce9caacbf7"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "hydroxyzine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "705853617382d5d197607796",
+        "b821e47430d34cb4039f7869"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "hyoscine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["cb5139fea23d1cbd8a23151b"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ibuprofen",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "78fcea65772245b721a028ef",
+        "8f866f880ca46fb9b05852ec"
+      ],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "icosapent ethyl",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["78c7b208908e6fcb9fae9078"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "idarucizumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["40e4301b89061f5840a80445"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "iloprost",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["3c6b8eb22500a03ac847263f"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "imatinib",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["fe3f3a9c66d0f1100a00c33f"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "imipramine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["705853617382d5d197607796"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "imiquimod",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "7fd2a61d888e7362f05dff43",
+        "8a4ade79e44ef2dfb3054abc",
+        "d10ab71daa6fee3f570eadeb"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "indacaterol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["55eee87a230e72744bb75406"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "indomethacin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d71d8d92f76212db6a1440e2",
+        "855ac9a4d5701b1face436b8"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "infliximab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6476dd0112c5ae4da94d8fd9",
+        "b6e19bd7d7b54a0366a09910",
+        "84b1bf9ba7bc75c32d29b3ac"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "insulin aspart",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "987f012c13d2d35b9097dc05",
+        "2407e0d474247dae94aefddc",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "insulin degludec",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["987f012c13d2d35b9097dc05"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "insulin detemir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "987f012c13d2d35b9097dc05",
+        "2407e0d474247dae94aefddc",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "insulin glargine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "987f012c13d2d35b9097dc05",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "insulin glulisine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "987f012c13d2d35b9097dc05",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "insulin lispro",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "987f012c13d2d35b9097dc05",
+        "2407e0d474247dae94aefddc",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ipilimumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d10ab71daa6fee3f570eadeb"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ipratropium",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "55eee87a230e72744bb75406",
+        "ae8313ae8e54ea25af25ca48",
+        "e022477e05cc6f8402d1f08f"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "isotretinoin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "2366048fed415597a1e6ddf7",
+        "78c7b208908e6fcb9fae9078"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "itraconazole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["7b6384c8ffe6a70b805e9664"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ixekizumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b6e19bd7d7b54a0366a09910"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ketorolac",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "36aa0220426fdbf5cdf2f531",
+        "d12d2aad5bf457ce9caacbf7"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "labetalol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "7b3bc91b203a6ba9b9dffcc4",
+        "1833de3a0a8d11c05918101a",
+        "b68763ff1074bb34e3145f6a"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "lacosamide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e1f0595f65bebe11b7d7905e"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "lactulose",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e683adfa3084ddbf052e76d4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "lamivudine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["58855301bd0c37c04e595952"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "lamotrigine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6b1e9d231e4632c2a6134e3b",
+        "e1f0595f65bebe11b7d7905e",
+        "b3f3fc759b716b77dff57300"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "lansoprazole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e4d6c888cc96576851754495"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "lasmiditan",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["8f866f880ca46fb9b05852ec"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "lecanemab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["f7dc62275bab8a1b087fd4eb"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "lemborexant",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["67d2bbec55e92bf617518a3d"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "letrozole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["21e49eb7d934d92789644bee"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "leucovorin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["14853013858f52710cf8c438"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "leuprolide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["c3e4c827305165c2665116cf"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "levalbuterol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["55eee87a230e72744bb75406"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "levetiracetam",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e1f0595f65bebe11b7d7905e"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "levodopa",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["126dd87c2e42da616a7addf0"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "levofloxacin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6bdba761b977cff2f575e630",
+        "2ddb34532433626f2090b51b",
+        "32eb6b827a214017ef2f5ff6",
+        "0b8d5d9a43c0e0b514fbc87c"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "levonorgestrel",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d8bf681b69d0c383720757c2",
+        "d3f9cb0faf2560f2bb8783f6"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "levothyroxine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "bbe227faef08387f885e1ba2",
+        "d1ab8a3ccb8bba02d64d6fec"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "lidocaine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["5e52ccdf271d1b982840007b"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "linaclotide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["cb5139fea23d1cbd8a23151b"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "linagliptin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["cf87f492fd93c4c0da849ead"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "linezolid",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6bdba761b977cff2f575e630",
+        "e00fad6303c1d4210fc17cd4",
+        "32eb6b827a214017ef2f5ff6"
+      ],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "liothyronine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["bbe227faef08387f885e1ba2"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "liraglutide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "28649bf08a4f7e9ba97e7b73",
+        "79b366eff4be9bba86df429f",
+        "7020b67af28c22e3d988509e",
+        "f4db07485bb4c7e9a18a2eb8",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "lisdexamfetamine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "24d26ec9f06fa18142c75c41",
+        "7f99cb1adf4d1fca94c8b5bc",
+        "f9c2dedbdeec241b762cd01c"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "lisinopril",
+      "status": "scoped_safety_profile",
+      "matchingOriginalTopicIds": [],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "lithium",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "bbe227faef08387f885e1ba2",
+        "6b1e9d231e4632c2a6134e3b",
+        "b3f3fc759b716b77dff57300"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "loperamide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["cb5139fea23d1cbd8a23151b"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "lorazepam",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "e11c0100b9e067c0971a0f8b",
+        "e1f0595f65bebe11b7d7905e",
+        "ae4356e0a8eb26c6f5aaaf68",
+        "705853617382d5d197607796",
+        "e45605f707dfd708cbfc7710"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "lovastatin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "b1b511c35620b4a1dd16daed",
+        "b09eb0456642983e6e51f415"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "lubiprostone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["cb5139fea23d1cbd8a23151b"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "lurasidone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d64fb9ae5abefbc2a4e2219d",
+        "b3f3fc759b716b77dff57300"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "macitentan",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["3c6b8eb22500a03ac847263f"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "mannitol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["6a2a1974711a138a1f8ad775"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "medroxyprogesterone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d3f9cb0faf2560f2bb8783f6",
+        "c3e4c827305165c2665116cf"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "megestrol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["705853617382d5d197607796"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "melatonin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "705853617382d5d197607796",
+        "91860482599a5ce318137d3d",
+        "67d2bbec55e92bf617518a3d"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "memantine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["f7dc62275bab8a1b087fd4eb"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "mepolizumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "ae8313ae8e54ea25af25ca48",
+        "e022477e05cc6f8402d1f08f"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "meropenem",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["f150bbe6c1e6e7a61ad5475c"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "mesalamine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["84b1bf9ba7bc75c32d29b3ac"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "metformin",
+      "status": "scoped_safety_profile",
+      "matchingOriginalTopicIds": [
+        "28649bf08a4f7e9ba97e7b73",
+        "a5480cb869f2409add578fa7",
+        "708b11229f6abbf0fe039e47",
+        "869fb13544c67a28e07f816b",
+        "eeb76ce1abc7f04994b1c5dd",
+        "21e49eb7d934d92789644bee",
+        "2407e0d474247dae94aefddc",
+        "845570f0a3acc13072dd67f5",
+        "1aba1bdc6c5dc0f514e5252a",
+        "f4db07485bb4c7e9a18a2eb8",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "methadone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "afd4e73f566771236244da9e",
+        "1f6bf28ef41936b2bf1a6fe7",
+        "01ea94e9eb3e17fea18b8fb6",
+        "5e52ccdf271d1b982840007b"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "methimazole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d1ab8a3ccb8bba02d64d6fec"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "methocarbamol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "78fcea65772245b721a028ef",
+        "705853617382d5d197607796"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "methotrexate",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6476dd0112c5ae4da94d8fd9",
+        "b6e19bd7d7b54a0366a09910",
+        "c1e6f4dbaf1f814886f749b4",
+        "84b1bf9ba7bc75c32d29b3ac",
+        "eeb76ce1abc7f04994b1c5dd",
+        "51c0ce7aa1c0cdba659438a6"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "methyldopa",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["7b3bc91b203a6ba9b9dffcc4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "methylnaltrexone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e45605f707dfd708cbfc7710"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "methylphenidate",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "24d26ec9f06fa18142c75c41",
+        "7f99cb1adf4d1fca94c8b5bc",
+        "f9c2dedbdeec241b762cd01c"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "methylprednisolone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "9d330bd049e4ead404ff7551",
+        "51c0ce7aa1c0cdba659438a6"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "metoclopramide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["8f866f880ca46fb9b05852ec"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "metoprolol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "02d3e10d8a376e913553a92a",
+        "5a4309a877d4cf0fe647595c",
+        "fedff6acf8f4139378afe4a4",
+        "b0f8ba79b7482c62dc6ddf37",
+        "7008d14d9deb4d9870389b58"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "metronidazole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "5730fd3e11038f2d150db93f",
+        "fdaa20c363417cdb5ae01447",
+        "b27a6ec631ebd20975fe6923",
+        "e46fde2a2f267760c4ca55ef"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "miconazole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["7b6384c8ffe6a70b805e9664"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "midazolam",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["579555b0028ef6d2ce35a141"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "milnacipran",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "2d391f19afa83b98e0dd157b",
+        "1f6bf28ef41936b2bf1a6fe7"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "minocycline",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["2366048fed415597a1e6ddf7"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "mirabegron",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "705853617382d5d197607796",
+        "be04c79bed5896452e318e52"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "mirtazapine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["c01f968dc7a165d03f09705d"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "montelukast",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["ecd067fc751b97138d43736f"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "morphine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "b27a6ec631ebd20975fe6923",
+        "1f6bf28ef41936b2bf1a6fe7",
+        "d12d2aad5bf457ce9caacbf7",
+        "e45605f707dfd708cbfc7710"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "moxifloxacin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["6bdba761b977cff2f575e630"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "mycophenolate",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "c1e6f4dbaf1f814886f749b4",
+        "51c0ce7aa1c0cdba659438a6"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "n-acetylcysteine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["455f44ea62338464acb4e839"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "nadolol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "e683adfa3084ddbf052e76d4",
+        "5e52ccdf271d1b982840007b"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "nafcillin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "c9e723bcc75b3c40e1d657f0",
+        "b2bbc2f97a648adbee968a3a"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "naloxone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "afd4e73f566771236244da9e",
+        "1f6bf28ef41936b2bf1a6fe7",
+        "01ea94e9eb3e17fea18b8fb6"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "naltrexone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "afd4e73f566771236244da9e",
+        "ae4356e0a8eb26c6f5aaaf68",
+        "79b366eff4be9bba86df429f",
+        "1f6bf28ef41936b2bf1a6fe7",
+        "01ea94e9eb3e17fea18b8fb6",
+        "7020b67af28c22e3d988509e"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "naproxen",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d71d8d92f76212db6a1440e2",
+        "78fcea65772245b721a028ef",
+        "8f866f880ca46fb9b05852ec",
+        "855ac9a4d5701b1face436b8"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "naratriptan",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["8f866f880ca46fb9b05852ec"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "natalizumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["9d330bd049e4ead404ff7551"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "neomycin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b821e47430d34cb4039f7869"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "nicardipine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b68763ff1074bb34e3145f6a"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "nicotine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["3253c10853cb3ac924610443"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "nifedipine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "7b3bc91b203a6ba9b9dffcc4",
+        "1833de3a0a8d11c05918101a"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "nintedanib",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["455f44ea62338464acb4e839"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "nitrofurantoin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "2ddb34532433626f2090b51b",
+        "455f44ea62338464acb4e839"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "nivolumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d10ab71daa6fee3f570eadeb"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "norepinephrine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "c01f968dc7a165d03f09705d",
+        "f150bbe6c1e6e7a61ad5475c"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "norethindrone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d3f9cb0faf2560f2bb8783f6",
+        "c3e4c827305165c2665116cf"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "norfloxacin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e683adfa3084ddbf052e76d4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "norgestrel",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d3f9cb0faf2560f2bb8783f6"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "nortriptyline",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "705853617382d5d197607796",
+        "845570f0a3acc13072dd67f5"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ocrelizumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["9d330bd049e4ead404ff7551"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "octreotide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e683adfa3084ddbf052e76d4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "olanzapine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d64fb9ae5abefbc2a4e2219d",
+        "b3f3fc759b716b77dff57300",
+        "78c7b208908e6fcb9fae9078"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "omalizumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "ae8313ae8e54ea25af25ca48",
+        "e022477e05cc6f8402d1f08f"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "omeprazole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e4d6c888cc96576851754495"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ondansetron",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "e45605f707dfd708cbfc7710",
+        "5e52ccdf271d1b982840007b"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "opicapone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["126dd87c2e42da616a7addf0"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "orlistat",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "79b366eff4be9bba86df429f",
+        "1aba1bdc6c5dc0f514e5252a",
+        "7020b67af28c22e3d988509e"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "oseltamivir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["01e74c2bdc2c12a5317d35cc"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "oxacillin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b2bbc2f97a648adbee968a3a"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "oxcarbazepine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e1f0595f65bebe11b7d7905e"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "oxybutynin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "705853617382d5d197607796",
+        "be04c79bed5896452e318e52"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "oxycodone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e45605f707dfd708cbfc7710"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "oxymetazoline",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["0b8d5d9a43c0e0b514fbc87c"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ozanimod",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["84b1bf9ba7bc75c32d29b3ac"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "patiromer",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["238e9c2143ee237582a6ce2b"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "pegloticase",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d71d8d92f76212db6a1440e2"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "pembrolizumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "8a4ade79e44ef2dfb3054abc",
+        "d10ab71daa6fee3f570eadeb"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "penicillin G benzathine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "5730fd3e11038f2d150db93f",
+        "a975e3f80c0dc6fd5af510b9"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "penicillin V",
+      "status": "scoped_safety_profile",
+      "matchingOriginalTopicIds": ["e5021602c5fa3b870962bdff"],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "peramivir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["01e74c2bdc2c12a5317d35cc"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "phentermine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "79b366eff4be9bba86df429f",
+        "1aba1bdc6c5dc0f514e5252a",
+        "7020b67af28c22e3d988509e"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "phenytoin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "e1f0595f65bebe11b7d7905e",
+        "ae4356e0a8eb26c6f5aaaf68",
+        "eeb76ce1abc7f04994b1c5dd",
+        "d3f9cb0faf2560f2bb8783f6"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "pibrentasvir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["4305478ddd88b3f6bd74c298"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "pimavanserin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["126dd87c2e42da616a7addf0"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "pimecrolimus",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "b6e19bd7d7b54a0366a09910",
+        "c1e6f4dbaf1f814886f749b4",
+        "b821e47430d34cb4039f7869"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "pioglitazone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["fe2a6aae9c51381211945338"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "piperacillin-tazobactam",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6bdba761b977cff2f575e630",
+        "c9e723bcc75b3c40e1d657f0",
+        "f150bbe6c1e6e7a61ad5475c"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "pirfenidone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["455f44ea62338464acb4e839"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "plecanatide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["cb5139fea23d1cbd8a23151b"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "polyethylene glycol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "cb5139fea23d1cbd8a23151b",
+        "126dd87c2e42da616a7addf0"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "pramipexole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["126dd87c2e42da616a7addf0"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "prasugrel",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["7008d14d9deb4d9870389b58"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "pravastatin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "b1b511c35620b4a1dd16daed",
+        "b09eb0456642983e6e51f415"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "prazosin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["01d1d3dfeec121d4a6118eb7"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "prednisone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "55eee87a230e72744bb75406",
+        "d71d8d92f76212db6a1440e2",
+        "e00fad6303c1d4210fc17cd4",
+        "855ac9a4d5701b1face436b8",
+        "9d330bd049e4ead404ff7551",
+        "b821e47430d34cb4039f7869",
+        "51c0ce7aa1c0cdba659438a6"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "pregabalin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "2d391f19afa83b98e0dd157b",
+        "845570f0a3acc13072dd67f5"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "probenecid",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["855ac9a4d5701b1face436b8"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "procainamide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["5e52ccdf271d1b982840007b"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "prochlorperazine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "8f866f880ca46fb9b05852ec",
+        "e45605f707dfd708cbfc7710"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "progesterone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["21e49eb7d934d92789644bee"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "propafenone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "5a4309a877d4cf0fe647595c",
+        "b0f8ba79b7482c62dc6ddf37"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "propofol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["91860482599a5ce318137d3d"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "propranolol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "e11c0100b9e067c0971a0f8b",
+        "fedff6acf8f4139378afe4a4",
+        "baa7047b9ab15608b3779264",
+        "d1ab8a3ccb8bba02d64d6fec",
+        "e683adfa3084ddbf052e76d4",
+        "5e52ccdf271d1b982840007b"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "pyrazinamide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["855ac9a4d5701b1face436b8"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "pyrimethamine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["14853013858f52710cf8c438"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "quetiapine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6b1e9d231e4632c2a6134e3b",
+        "d64fb9ae5abefbc2a4e2219d",
+        "2c3b5d90c15718c54f61b431",
+        "126dd87c2e42da616a7addf0",
+        "b3f3fc759b716b77dff57300",
+        "91860482599a5ce318137d3d",
+        "5e52ccdf271d1b982840007b"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "quinidine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e00fad6303c1d4210fc17cd4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "quinine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e00fad6303c1d4210fc17cd4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "raloxifene",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d84b7a7cd635042f0edaea6d",
+        "90ef5b35753f78f343ca9159"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ramelteon",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "91860482599a5ce318137d3d",
+        "67d2bbec55e92bf617518a3d"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ranitidine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e4d6c888cc96576851754495"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "rasagiline",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["126dd87c2e42da616a7addf0"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "resmetirom",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["fe2a6aae9c51381211945338"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ribavirin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["4305478ddd88b3f6bd74c298"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "rifabutin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["fdaa20c363417cdb5ae01447"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "rifampin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "869fb13544c67a28e07f816b",
+        "d3f9cb0faf2560f2bb8783f6"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "rifaximin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "cb5139fea23d1cbd8a23151b",
+        "e683adfa3084ddbf052e76d4"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "rilpivirine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["14853013858f52710cf8c438"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "rimegepant",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["8f866f880ca46fb9b05852ec"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "riociguat",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["3c6b8eb22500a03ac847263f"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "risankizumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "b6e19bd7d7b54a0366a09910",
+        "84b1bf9ba7bc75c32d29b3ac"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "risedronate",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d84b7a7cd635042f0edaea6d",
+        "484628e89b72062756f8ebea"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "risperidone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d64fb9ae5abefbc2a4e2219d"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "rituximab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "58855301bd0c37c04e595952",
+        "fe3f3a9c66d0f1100a00c33f"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "rivaroxaban",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "0991eab0731643e71d870626",
+        "40e4301b89061f5840a80445",
+        "705853617382d5d197607796",
+        "b0f8ba79b7482c62dc6ddf37",
+        "efb458f5da0e31d6ee0d0c4a",
+        "d343a7ce9d7c3e21231ae953",
+        "2a1c729c2ab75c5392d71c2c"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "rivastigmine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "f7dc62275bab8a1b087fd4eb",
+        "126dd87c2e42da616a7addf0"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "rizatriptan",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["8f866f880ca46fb9b05852ec"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "roflumilast",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "55eee87a230e72744bb75406",
+        "b6e19bd7d7b54a0366a09910"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "romiplostim",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e00fad6303c1d4210fc17cd4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "romosozumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["484628e89b72062756f8ebea"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ropinirole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["126dd87c2e42da616a7addf0"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "rosuvastatin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "b1b511c35620b4a1dd16daed",
+        "b09eb0456642983e6e51f415",
+        "7008d14d9deb4d9870389b58",
+        "d343a7ce9d7c3e21231ae953"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "rotigotine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["126dd87c2e42da616a7addf0"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ruxolitinib",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["c1e6f4dbaf1f814886f749b4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "sacubitril-valsartan",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["02d3e10d8a376e913553a92a"],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "safinamide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["126dd87c2e42da616a7addf0"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "salicylic acid",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b6e19bd7d7b54a0366a09910"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "salmeterol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "55eee87a230e72744bb75406",
+        "ecd067fc751b97138d43736f"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "sarilumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["6476dd0112c5ae4da94d8fd9"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "secukinumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b6e19bd7d7b54a0366a09910"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "selegiline",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["126dd87c2e42da616a7addf0"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "selexipag",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["3c6b8eb22500a03ac847263f"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "semaglutide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "28649bf08a4f7e9ba97e7b73",
+        "a5480cb869f2409add578fa7",
+        "79b366eff4be9bba86df429f",
+        "fe2a6aae9c51381211945338",
+        "1aba1bdc6c5dc0f514e5252a",
+        "7020b67af28c22e3d988509e",
+        "f4db07485bb4c7e9a18a2eb8",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "senna",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e45605f707dfd708cbfc7710"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "sertraline",
+      "status": "scoped_safety_profile",
+      "matchingOriginalTopicIds": [
+        "b80fa5428e1b5d012ff874f9",
+        "c01f968dc7a165d03f09705d",
+        "e11c0100b9e067c0971a0f8b",
+        "8bd7f71cdb97c05eabce00f3",
+        "01d1d3dfeec121d4a6118eb7"
+      ],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "sevelamer",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["238e9c2143ee237582a6ce2b"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "sildenafil",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "3c6b8eb22500a03ac847263f",
+        "e01158b5b8592c65321a77e5"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "silodosin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["343fc9962eb724d699b9b57a"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "simvastatin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "b1b511c35620b4a1dd16daed",
+        "b09eb0456642983e6e51f415"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "sitagliptin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["cf87f492fd93c4c0da849ead"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "sofosbuvir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["4305478ddd88b3f6bd74c298"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "solifenacin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["be04c79bed5896452e318e52"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "sonidegib",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["8a4ade79e44ef2dfb3054abc"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "sotalol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "5a4309a877d4cf0fe647595c",
+        "b0f8ba79b7482c62dc6ddf37"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "spironolactone",
+      "status": "scoped_safety_profile",
+      "matchingOriginalTopicIds": [
+        "7b3bc91b203a6ba9b9dffcc4",
+        "02d3e10d8a376e913553a92a",
+        "0b0875050601a7f17d1bb91e",
+        "2366048fed415597a1e6ddf7",
+        "21e49eb7d934d92789644bee",
+        "7008d14d9deb4d9870389b58",
+        "e683adfa3084ddbf052e76d4",
+        "6a2a1974711a138a1f8ad775"
+      ],
+      "foundInRegimenLessons": true
+    },
+    {
+      "name": "sulfadiazine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["14853013858f52710cf8c438"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "sulfasalazine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["eeb76ce1abc7f04994b1c5dd"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "sumatriptan",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["8f866f880ca46fb9b05852ec"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "suvorexant",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["67d2bbec55e92bf617518a3d"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tacrolimus",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "b6e19bd7d7b54a0366a09910",
+        "c1e6f4dbaf1f814886f749b4",
+        "b821e47430d34cb4039f7869"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tadalafil",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "343fc9962eb724d699b9b57a",
+        "3c6b8eb22500a03ac847263f",
+        "e01158b5b8592c65321a77e5"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tamoxifen",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["90ef5b35753f78f343ca9159"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tamsulosin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "343fc9962eb724d699b9b57a",
+        "36aa0220426fdbf5cdf2f531"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tapentadol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["845570f0a3acc13072dd67f5"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tavaborole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["7b6384c8ffe6a70b805e9664"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tazarotene",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["2366048fed415597a1e6ddf7"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tenecteplase",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "7008d14d9deb4d9870389b58",
+        "b68763ff1074bb34e3145f6a"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tenofovir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "2a2b083c27ed2d29a121ea71",
+        "14853013858f52710cf8c438",
+        "58855301bd0c37c04e595952"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "terbinafine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["7b6384c8ffe6a70b805e9664"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "teriflunomide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["9d330bd049e4ead404ff7551"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "teriparatide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d84b7a7cd635042f0edaea6d",
+        "484628e89b72062756f8ebea"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "testosterone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "21e49eb7d934d92789644bee",
+        "e01158b5b8592c65321a77e5"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tetracycline",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "fdaa20c363417cdb5ae01447",
+        "2366048fed415597a1e6ddf7",
+        "b27a6ec631ebd20975fe6923"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ticagrelor",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["7008d14d9deb4d9870389b58"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tildrakizumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["b6e19bd7d7b54a0366a09910"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "timolol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["fedff6acf8f4139378afe4a4"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tiotropium",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "55eee87a230e72744bb75406",
+        "ae8313ae8e54ea25af25ca48",
+        "ecd067fc751b97138d43736f"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tirzepatide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "28649bf08a4f7e9ba97e7b73",
+        "79b366eff4be9bba86df429f",
+        "7020b67af28c22e3d988509e",
+        "f4db07485bb4c7e9a18a2eb8",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tocilizumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["6476dd0112c5ae4da94d8fd9"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tofacitinib",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6476dd0112c5ae4da94d8fd9",
+        "84b1bf9ba7bc75c32d29b3ac"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tolterodine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "705853617382d5d197607796",
+        "be04c79bed5896452e318e52"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tolvaptan",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["6a2a1974711a138a1f8ad775"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "topiramate",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "fedff6acf8f4139378afe4a4",
+        "79b366eff4be9bba86df429f",
+        "d3f9cb0faf2560f2bb8783f6",
+        "1aba1bdc6c5dc0f514e5252a",
+        "7020b67af28c22e3d988509e"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tramadol",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "78fcea65772245b721a028ef",
+        "361aa710d0bf02fdc2f2e719",
+        "845570f0a3acc13072dd67f5"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "trazodone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "c01f968dc7a165d03f09705d",
+        "baa7047b9ab15608b3779264",
+        "67d2bbec55e92bf617518a3d"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "tretinoin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["2366048fed415597a1e6ddf7"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "triamcinolone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "2366048fed415597a1e6ddf7",
+        "b821e47430d34cb4039f7869"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "trimethoprim",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["eeb76ce1abc7f04994b1c5dd"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "trimethoprim-sulfamethoxazole",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "2ddb34532433626f2090b51b",
+        "c9e723bcc75b3c40e1d657f0",
+        "2a2b083c27ed2d29a121ea71",
+        "b2bbc2f97a648adbee968a3a",
+        "2f82084e6568d27af2976c52",
+        "14853013858f52710cf8c438",
+        "0b8d5d9a43c0e0b514fbc87c",
+        "e5021602c5fa3b870962bdff",
+        "e683adfa3084ddbf052e76d4"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "trospium",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["be04c79bed5896452e318e52"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ubrogepant",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["8f866f880ca46fb9b05852ec"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ulipristal",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d8bf681b69d0c383720757c2",
+        "d3f9cb0faf2560f2bb8783f6"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "umeclidinium",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["55eee87a230e72744bb75406"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "upadacitinib",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6476dd0112c5ae4da94d8fd9",
+        "c1e6f4dbaf1f814886f749b4",
+        "84b1bf9ba7bc75c32d29b3ac"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ustekinumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["84b1bf9ba7bc75c32d29b3ac"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "valacyclovir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["5730fd3e11038f2d150db93f"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "valbenazine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d64fb9ae5abefbc2a4e2219d"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "valganciclovir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["14853013858f52710cf8c438"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "valproic acid",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6b1e9d231e4632c2a6134e3b",
+        "fedff6acf8f4139378afe4a4",
+        "e1f0595f65bebe11b7d7905e",
+        "b27a6ec631ebd20975fe6923",
+        "4fb3b68714218ad37f46d200",
+        "b3f3fc759b716b77dff57300"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "vancomycin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "6bdba761b977cff2f575e630",
+        "c9e723bcc75b3c40e1d657f0",
+        "869fb13544c67a28e07f816b",
+        "e00fad6303c1d4210fc17cd4",
+        "32eb6b827a214017ef2f5ff6",
+        "e46fde2a2f267760c4ca55ef",
+        "f150bbe6c1e6e7a61ad5475c"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "vardenafil",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e01158b5b8592c65321a77e5"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "varenicline",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["3253c10853cb3ac924610443"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "vasopressin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "f150bbe6c1e6e7a61ad5475c",
+        "6a2a1974711a138a1f8ad775"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "vedolizumab",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["84b1bf9ba7bc75c32d29b3ac"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "velpatasvir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["4305478ddd88b3f6bd74c298"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "venlafaxine",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "c01f968dc7a165d03f09705d",
+        "e11c0100b9e067c0971a0f8b",
+        "fedff6acf8f4139378afe4a4",
+        "5d7b2b3ee6db2050e0bea8d2",
+        "01d1d3dfeec121d4a6118eb7"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "verapamil",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "02d3e10d8a376e913553a92a",
+        "5a4309a877d4cf0fe647595c",
+        "b0f8ba79b7482c62dc6ddf37",
+        "5e52ccdf271d1b982840007b"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "vismodegib",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["8a4ade79e44ef2dfb3054abc"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "voclosporin",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["51c0ce7aa1c0cdba659438a6"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "vonoprazan",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["fdaa20c363417cdb5ae01447"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "voxelotor",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d12d2aad5bf457ce9caacbf7"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "voxilaprevir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["4305478ddd88b3f6bd74c298"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "zaleplon",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "705853617382d5d197607796",
+        "67d2bbec55e92bf617518a3d"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "zanamivir",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["01e74c2bdc2c12a5317d35cc"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "ziprasidone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["d64fb9ae5abefbc2a4e2219d"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "zoledronic acid",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "d84b7a7cd635042f0edaea6d",
+        "484628e89b72062756f8ebea",
+        "6a2a1974711a138a1f8ad775"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "zolpidem",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": [
+        "705853617382d5d197607796",
+        "67d2bbec55e92bf617518a3d"
+      ],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "zonisamide",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["e1f0595f65bebe11b7d7905e"],
+      "foundInRegimenLessons": false
+    },
+    {
+      "name": "zuranolone",
+      "status": "reference_required",
+      "matchingOriginalTopicIds": ["8bd7f71cdb97c05eabce00f3"],
+      "foundInRegimenLessons": false
+    }
+  ]
+}

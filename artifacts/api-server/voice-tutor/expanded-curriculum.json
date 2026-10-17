@@ -1,0 +1,2503 @@
+{
+  "sources": [
+    {
+      "id": "RULE-OTTAWA-ANKLE",
+      "organization": "AAFP / AFP",
+      "title": "Update on acute ankle sprains",
+      "url": "https://www.aafp.org/afp/2012/0615/p1170",
+      "sections": "Ottawa ankle and foot rules",
+      "source_date": "2012",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-OTTAWA-KNEE",
+      "organization": "AAFP / AFP",
+      "title": "Evaluating the patient with a knee injury",
+      "url": "https://www.aafp.org/pubs/afp/issues/2005/0315/p1169.html",
+      "sections": "Ottawa Knee Rule",
+      "source_date": "2005",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-LIGHT",
+      "organization": "AAFP / AFP",
+      "title": "Pleural effusion: diagnostic approach in adults",
+      "url": "https://www.aafp.org/pubs/afp/issues/2023/1100/pleural-effusion.pdf",
+      "sections": "Pleural fluid analysis / Light criteria",
+      "source_date": "2023",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-WELLS",
+      "organization": "NICE NG158",
+      "title": "Venous thromboembolic diseases",
+      "url": "https://www.nice.org.uk/guidance/ng158/chapter/Recommendations",
+      "sections": "Tables 1 and 2; DVT/PE diagnostic pathways",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-PERC",
+      "organization": "AAFP / AFP",
+      "title": "PERC in low-risk patients",
+      "url": "https://www.aafp.org/afp/2018/0815/p250",
+      "sections": "Eight rule-out criteria and population",
+      "source_date": "2018",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-CURB",
+      "organization": "NICE NG250",
+      "title": "Pneumonia diagnosis and management",
+      "url": "https://www.nice.org.uk/guidance/ng250/chapter/recommendations",
+      "sections": "CRB65 and CURB65 severity assessment",
+      "source_date": "2025",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-SORE-THROAT",
+      "organization": "NICE NG84",
+      "title": "Acute sore throat",
+      "url": "https://www.nice.org.uk/guidance/ng84/chapter/terms-used-in-the-guideline",
+      "sections": "Terms used / FeverPAIN and Centor",
+      "source_date": "2018",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-AF",
+      "organization": "ACC/AHA/ACCP/HRS",
+      "title": "2023 atrial fibrillation guideline",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11104284/",
+      "sections": "Risk stratification and bleeding risk",
+      "source_date": "2023",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-AKI",
+      "organization": "KDIGO",
+      "title": "AKI definition and staging summary",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4057151/",
+      "sections": "Definition and staging of AKI",
+      "source_date": "2013",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-CKD",
+      "organization": "KDIGO",
+      "title": "2024 CKD guideline",
+      "url": "https://kdigo.org/wp-content/uploads/2024/03/KDIGO-2024-CKD-Guideline.pdf",
+      "sections": "Table 1; GFR and albuminuria categories",
+      "source_date": "2024",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-DIABETES",
+      "organization": "NIH / NIDDK",
+      "title": "Diabetes tests and diagnosis",
+      "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/tests-diagnosis",
+      "sections": "Diagnostic tests and confirmation",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-HYPERGLYCEMIC",
+      "organization": "ADA/EASD/AACE/JBDS/DTS",
+      "title": "Hyperglycemic crises consensus",
+      "url": "https://diabetesjournals.org/care/article/47/8/1257/156808/Hyperglycemic-Crises-in-Adults-With-Diabetes-A",
+      "sections": "DKA and HHS diagnostic criteria",
+      "source_date": "2024",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-SEPSIS-2026",
+      "organization": "SCCM / Surviving Sepsis Campaign",
+      "title": "2026 adult sepsis guideline",
+      "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+      "sections": "Screening recommendations",
+      "source_date": "2026",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-ROME",
+      "organization": "AAFP / AFP",
+      "title": "IBS questions and answers",
+      "url": "https://www.aafp.org/afp/2021/0615/p727",
+      "sections": "Rome IV diagnostic criteria",
+      "source_date": "2021",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-HEAD",
+      "organization": "ACEP",
+      "title": "2023 adult mild TBI clinical policy",
+      "url": "https://www.acep.org/siteassets/new-pdfs/clinical-policies/mtbi2023.pdf",
+      "sections": "Table 1 and decision-rule eligibility",
+      "source_date": "2023",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-CSPINE",
+      "organization": "NICE NG41",
+      "title": "Spinal injury assessment",
+      "url": "https://www.nice.org.uk/guidance/ng41/chapter/Recommendations",
+      "sections": "Canadian C-spine rule; 1.1 and 1.4",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-PEDIATRIC-HEAD",
+      "organization": "CDC",
+      "title": "Pediatric mild TBI safety checklist",
+      "url": "https://www.cdc.gov/traumatic-brain-injury/hcp/clinical-guidance/pediatric-mtbi.html",
+      "sections": "Use validated decision rules; risk factors",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-OSA",
+      "organization": "AAFP / AFP",
+      "title": "Obstructive sleep apnea in adults",
+      "url": "https://www.aafp.org/afp/2024/0700/obstructive-sleep-apnea",
+      "sections": "Screening and diagnostic testing",
+      "source_date": "2024",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original concise factual summary and source link; no proprietary calculator or questionnaire reproduced. Check terms before expanded ingestion."
+    },
+    {
+      "id": "RULE-MCISAAC",
+      "organization": "IDSA",
+      "title": "2025 GAS pharyngitis risk-assessment guideline",
+      "url": "https://www.idsociety.org/practice-guideline/streptococcal-pharyngitis2/",
+      "sections": "Recommendation and remarks; Table 2",
+      "source_date": "2025-10-14",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-HEART",
+      "organization": "AAFP / AFP; ACC",
+      "title": "HEART score and contemporary ED chest-pain pathway",
+      "url": "https://www.aafp.org/afp/2018/0715/p72",
+      "sections": "HEART table; accelerated diagnostic protocol; use alongside RULE-HEART-ACC",
+      "source_date": "2018",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-TIMI",
+      "organization": "Antman et al. / JAMA",
+      "title": "TIMI UA/NSTEMI risk-score derivation",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/192996",
+      "sections": "Risk-score variables; Table 1",
+      "source_date": "2000",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-NEXUS-CSPINE",
+      "organization": "NEXUS investigators / NEJM",
+      "title": "NEXUS cervical-spine validation",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJM200007133430203",
+      "sections": "Decision instrument; eligibility and study methods",
+      "source_date": "2000",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-NEXUS-HEAD",
+      "organization": "ACEP",
+      "title": "2023 mild traumatic brain injury clinical policy",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10617828/",
+      "sections": "Table 1; Questions 1 recommendations",
+      "source_date": "2023",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-OTTAWA-SAH",
+      "organization": "Perry et al. / CMAJ",
+      "title": "Ottawa SAH rule prospective validation",
+      "url": "https://www.cmaj.ca/content/189/45/E1379",
+      "sections": "Figure 1; eligibility/exclusions",
+      "source_date": "2017",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-PSI",
+      "organization": "ATS / IDSA",
+      "title": "Adult community-acquired pneumonia guideline",
+      "url": "https://www.thoracic.org/statements/guideline-implementation-tools/diagnosis-and-treatment-of-cap.php",
+      "sections": "2019 guideline Question 6: hospitalization decisions",
+      "source_date": "2019",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-SOFA",
+      "organization": "Sepsis-3 consensus / JAMA",
+      "title": "Third international consensus definitions of sepsis",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/2492881",
+      "sections": "SOFA table and organ-dysfunction definition",
+      "source_date": "2016",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-SIRS",
+      "organization": "Sepsis-3 consensus / JAMA",
+      "title": "SIRS criteria and distinction from sepsis",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/2492881",
+      "sections": "Box 1; SIRS limitations",
+      "source_date": "2016",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-NEWS2",
+      "organization": "Royal College of Physicians",
+      "title": "National Early Warning Score 2",
+      "url": "https://rcp.ac.uk/resources/national-early-warning-score-news-2/",
+      "sections": "Physiological parameters; NEWS2 chart and implementation guidance",
+      "source_date": "2017",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-QSOFA",
+      "organization": "Sepsis-3 consensus / JAMA",
+      "title": "qSOFA and its screening limitations",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/2492881",
+      "sections": "qSOFA clinical criteria",
+      "source_date": "2016",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-ABCDN",
+      "organization": "American Heart Association",
+      "title": "2023 TIA emergency-department scientific statement",
+      "url": "https://professional.heart.org/en/science-news/diagnosis-workup-risk-reduction-of-transient-ischemic-attack-in-the-emergency-department-setting",
+      "sections": "Risk assessment; Top Things to Know",
+      "source_date": "2023",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-FRAX",
+      "organization": "Bone Health & Osteoporosis Foundation",
+      "title": "Clinician guide to osteoporosis prevention/treatment",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9546973/",
+      "sections": "Pharmacologic treatment recommendations; FRAX limitations",
+      "source_date": "2022",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-PHQ9",
+      "organization": "Kroenke et al.; USPSTF",
+      "title": "PHQ-9 validation and depression screening",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11556941/",
+      "sections": "Results: severity cut points",
+      "source_date": "2001",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-GAD7",
+      "organization": "Spitzer et al. / Archives of Internal Medicine",
+      "title": "GAD-7 original validation",
+      "url": "https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/410326/",
+      "sections": "Scale interpretation and cut points",
+      "source_date": "2006",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-ATLANTA",
+      "organization": "International consensus / Gut",
+      "title": "Revised Atlanta acute pancreatitis classification",
+      "url": "https://doi.org/10.1136/gutjnl-2012-302779",
+      "sections": "Diagnosis; severity definitions",
+      "source_date": "2012",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-BISAP",
+      "organization": "Wu et al. / Gut",
+      "title": "BISAP acute pancreatitis mortality prediction",
+      "url": "https://gut.bmj.com/content/57/12/1698",
+      "sections": "Results; five variables within first 24 hours",
+      "source_date": "2008",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-DUKE",
+      "organization": "ISCVID",
+      "title": "2023 Duke-ISCVID infective endocarditis criteria",
+      "url": "https://academic.oup.com/cid/article/77/4/518/7151107",
+      "sections": "Tables 1-2: definite and possible clinical IE",
+      "source_date": "2023",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-JONES",
+      "organization": "CDC / AHA revised Jones",
+      "title": "Diagnosis of acute rheumatic fever",
+      "url": "https://www.cdc.gov/group-a-strep/hcp/clinical-guidance/diagnosing-acute-rheumatic-fever.html",
+      "sections": "Initial and recurrent illness; risk-population criteria",
+      "source_date": "2015 criteria; current CDC page",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-GLASGOW-BLATCHFORD",
+      "organization": "American College of Gastroenterology",
+      "title": "2021 upper GI/ulcer bleeding guideline",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33929377/",
+      "sections": "Abstract: very-low-risk ED assessment",
+      "source_date": "2021",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-CHILD-PUGH",
+      "organization": "AASLD",
+      "title": "Child-Pugh and MELD score overview",
+      "url": "https://www.aasld.org/liver-fellow-network/core-series/back-basics/evolution-meld-scores",
+      "sections": "Table 1: variables and class ranges",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-MELD",
+      "organization": "AASLD / HRSA OPTN",
+      "title": "MELD score versions and official allocation tools",
+      "url": "https://www.aasld.org/liver-fellow-network/core-series/back-basics/evolution-meld-scores",
+      "sections": "Table 1 and MELD evolution",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-BEERS",
+      "organization": "American Geriatrics Society",
+      "title": "2023 AGS Beers criteria overview",
+      "url": "https://www.americangeriatrics.org/media-center/news/many-older-adults-take-multiple-medications-updated-ags-beers-criteriar-will-help",
+      "sections": "Five lists; person-centered medication decisions",
+      "source_date": "2023",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-ROTTERDAM",
+      "organization": "International PCOS guideline group / Monash",
+      "title": "2023 international PCOS diagnostic recommendations",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10505534/",
+      "sections": "Diagnostic algorithm; adult versus adolescent criteria",
+      "source_date": "2023",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-ASTHMA",
+      "organization": "GINA",
+      "title": "2026 GINA strategy report",
+      "url": "https://ginasthma.org/wp-content/uploads/2026/05/GINA-2026-Strategy-Report-WMS.pdf",
+      "sections": "Diagnosis; positive bronchodilator response",
+      "source_date": "2026",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-COPD",
+      "organization": "GOLD",
+      "title": "2026 GOLD strategy report",
+      "url": "https://goldcopd.org/wp-content/uploads/2025/11/GOLD-REPORT-2026-v1.2-20Nov2025_WMV.pdf",
+      "sections": "Diagnosis: spirometric confirmation",
+      "source_date": "2026",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-OSTEOPOROSIS",
+      "organization": "Bone Health & Osteoporosis Foundation",
+      "title": "DXA diagnostic and treatment criteria",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9546973/",
+      "sections": "Diagnosis; T-score sites and younger-adult limits",
+      "source_date": "2022",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-DSM-MDD",
+      "organization": "NIMH",
+      "title": "Depression diagnostic assessment overview",
+      "url": "https://www.nimh.nih.gov/health/publications/depression",
+      "sections": "How is depression diagnosed?",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-DSM-ADHD",
+      "organization": "CDC / AAP",
+      "title": "ADHD diagnostic evaluation",
+      "url": "https://www.cdc.gov/adhd/hcp/treatment-recommendations/",
+      "sections": "Diagnosis: symptom counts; duration and settings",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "RULE-DSM-GAD",
+      "organization": "NIMH",
+      "title": "Generalized anxiety disorder diagnostic overview",
+      "url": "https://www.nimh.nih.gov/health/publications/generalized-anxiety-disorder-gad",
+      "sections": "How is generalized anxiety disorder diagnosed?",
+      "source_date": "2025",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link only; no copied chart, questionnaire, proprietary calculator or licensed database. No blanket redistribution license claimed."
+    },
+    {
+      "id": "CONDITION-RHINITIS",
+      "organization": "AAFP / AFP",
+      "title": "Allergic rhinitis",
+      "url": "https://www.aafp.org/afp/2023/0500/allergic-rhinitis",
+      "sections": "Treatment / intranasal corticosteroids",
+      "source_date": "2023",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original brief factual summary and attribution only; no copied monograph or treatment table."
+    },
+    {
+      "id": "CONDITION-OTITIS-EXTERNA",
+      "organization": "AAFP / AFP",
+      "title": "Acute otitis externa",
+      "url": "https://www.aafp.org/afp/2023/0200/acute-otitis-externa",
+      "sections": "Diagnosis and treatment",
+      "source_date": "2023",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original brief factual summary and attribution only; no copied monograph or treatment table."
+    },
+    {
+      "id": "CONDITION-CONSTIPATION",
+      "organization": "AGA / ACG",
+      "title": "Chronic idiopathic constipation",
+      "url": "https://gastro.org/clinical-guidance/pharmacological-management-of-chronic-idiopathic-constipation-cic/",
+      "sections": "Recommendations",
+      "source_date": "2023",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original brief factual summary and attribution only; no copied monograph or treatment table."
+    },
+    {
+      "id": "CONDITION-VVC",
+      "organization": "CDC",
+      "title": "Vulvovaginal candidiasis",
+      "url": "https://www.cdc.gov/std/treatment-guidelines/candidiasis.htm",
+      "sections": "Uncomplicated infection; Pregnancy",
+      "source_date": "2021",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original brief factual summary and attribution only; no copied monograph or treatment table."
+    },
+    {
+      "id": "CONDITION-ANAPHYLAXIS",
+      "organization": "AAAAI",
+      "title": "Anaphylaxis recognition and treatment",
+      "url": "https://www.aaaai.org/conditions-treatments/allergies/anaphylaxis",
+      "sections": "Symptoms, diagnosis and immediate management",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent review pending",
+      "reuse": "Original brief factual summary with source link; no copied instrument."
+    },
+    {
+      "id": "RULE-HEART-ACC",
+      "organization": "American College of Cardiology",
+      "title": "2022 expert consensus: ED acute chest pain",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10691881/",
+      "sections": "Section 5.5.1-5.5.3; Table 3",
+      "source_date": "2022",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief paraphrase and source link; no reproduced table."
+    },
+    {
+      "id": "RULE-DEPRESSION-SCREEN",
+      "organization": "USPSTF",
+      "title": "Depression and suicide risk in adults: screening",
+      "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/screening-depression-suicide-risk-adults",
+      "sections": "Practice considerations: positive screening evaluation",
+      "source_date": "2023",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original brief factual paraphrase and source link."
+    },
+    {
+      "id": "RULE-MELD-OPTN",
+      "organization": "HRSA / OPTN",
+      "title": "Official allocation calculators",
+      "url": "https://www.hrsa.gov/optn/data-calculators/allocation-calculators",
+      "sections": "MELD calculator and current policy links",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "official_tool_link; equation not reproduced",
+      "reuse": "Link only; no calculator code copied."
+    },
+    {
+      "id": "RULE-CCHR-ORIGINAL",
+      "organization": "Stiell et al. / Lancet",
+      "title": "Canadian CT Head Rule derivation",
+      "url": "https://www.sciencedirect.com/science/article/pii/S014067360004561X",
+      "sections": "Abstract; high- and medium-risk criteria",
+      "source_date": "2001",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase and source link; no copied chart or proprietary calculator."
+    },
+    {
+      "id": "RULE-NEW-ORLEANS",
+      "organization": "Haydel et al. / NEJM",
+      "title": "New Orleans head CT criteria",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJM200007133430204",
+      "sections": "Study population; seven CT predictors",
+      "source_date": "2000",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase and source link; no copied chart or proprietary calculator."
+    },
+    {
+      "id": "RULE-PECARN-ORIGINAL",
+      "organization": "PECARN / Kuppermann et al.",
+      "title": "Pediatric head-injury prediction-rule prospective cohort",
+      "url": "https://www.pecarn.org/studyDatasets/documents/Kuppermann_2009_The-Lancet_000.pdf",
+      "sections": "Abstract; Figure 3 and footnotes",
+      "source_date": "2009",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase and source link; no copied chart or proprietary calculator."
+    },
+    {
+      "id": "RULE-OTTAWA-SAH-ORIGINAL",
+      "organization": "Perry et al. / JAMA",
+      "title": "Ottawa SAH rule development and validation",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/1741823",
+      "sections": "Box 2: complete Ottawa SAH rule",
+      "source_date": "2013",
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase and source link; no copied chart or proprietary calculator."
+    },
+    {
+      "id": "RULE-GCS",
+      "organization": "Glasgow Coma Scale / NHS Greater Glasgow and Clyde",
+      "title": "Structured GCS assessment aid",
+      "url": "https://www.glasgowcomascale.org/downloads/GCS-Assessment-Aid-English.pdf",
+      "sections": "Eye, verbal and best motor response tables; NT entries",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase and source link; no copied chart or proprietary calculator."
+    },
+    {
+      "id": "RULE-GCS-FAQ",
+      "organization": "Glasgow Coma Scale",
+      "title": "GCS assessment limitations and recording",
+      "url": "https://www.glasgowcomascale.org/faq/",
+      "sections": "Intubation; non-testable components; young children",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked_scoped_facts; independent clinical review pending",
+      "reuse": "Original concise factual paraphrase and source link; no copied chart or proprietary calculator."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "criteria-ottawa-ankle",
+      "track": "criteria",
+      "title": "Ottawa ankle rule",
+      "tags": ["ottawa ankle rule", "criteria", "decision rule"],
+      "topic_ids": ["condition-ankle-foot-trauma"],
+      "source_ids": ["RULE-OTTAWA-ANKLE"],
+      "facts": [
+        "After acute ankle injury, ankle radiography is indicated with malleolar-zone pain plus either posterior-edge/tip tenderness at the medial or lateral malleolus, or inability to bear weight for four steps both immediately after injury and at evaluation. A positive rule prompts imaging, not a fracture diagnosis."
+      ],
+      "gaps": [
+        "Acute ankle injury only; assess eligibility and clinical red flags. Do not use a negative rule to exclude tendon injury or all occult injuries."
+      ],
+      "opening": "For Ottawa ankle rule, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-ottawa-foot",
+      "track": "criteria",
+      "title": "Ottawa foot rule",
+      "tags": ["ottawa foot rule", "criteria", "decision rule"],
+      "topic_ids": ["condition-ankle-foot-trauma"],
+      "source_ids": ["RULE-OTTAWA-ANKLE"],
+      "facts": [
+        "After acute midfoot injury, foot radiography is indicated with midfoot-zone pain plus navicular tenderness, base-of-fifth-metatarsal tenderness, or inability to take four steps both immediately and at evaluation."
+      ],
+      "gaps": [
+        "Use the foot rule for the midfoot zone, not the ankle rule. A negative result does not exclude every injury or override clinical red flags."
+      ],
+      "opening": "For Ottawa foot rule, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-ottawa-knee",
+      "track": "criteria",
+      "title": "Ottawa knee rule",
+      "tags": ["ottawa knee rule", "criteria", "decision rule"],
+      "topic_ids": ["b98cb30bc8af3f16463a9cd5"],
+      "source_ids": ["RULE-OTTAWA-KNEE"],
+      "facts": [
+        "For acute knee trauma, radiography is indicated by any: age at least 55, isolated patellar tenderness, fibular-head tenderness, inability to flex to 90 degrees, or inability to bear weight for four steps both immediately and at evaluation."
+      ],
+      "gaps": [
+        "Acute trauma rule, not a chronic-knee-pain or ligament-injury rule. Do not silently replace AND with OR in the two weight-bearing time points."
+      ],
+      "opening": "For Ottawa knee rule, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-lights",
+      "track": "criteria",
+      "title": "Light’s criteria",
+      "tags": ["light’s criteria", "criteria", "decision rule"],
+      "topic_ids": ["01314bf2a8b85f87e526ffd8"],
+      "source_ids": ["RULE-LIGHT"],
+      "facts": [
+        "Pleural fluid is exudative if ANY is present: pleural/serum protein ratio >0.5; pleural/serum LDH ratio >0.6; pleural LDH > two-thirds the laboratory upper limit of normal serum LDH. The third criterion uses the serum reference limit, not the measured serum value."
+      ],
+      "gaps": [
+        "Classification does not establish etiology. Diuresed heart failure may be misclassified; interpret with clinical context."
+      ],
+      "opening": "For Light’s criteria, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-wells-pe",
+      "track": "criteria",
+      "title": "Wells PE score (two-level)",
+      "tags": ["wells pe score (two-level)", "criteria", "decision rule"],
+      "topic_ids": [
+        "40e4301b89061f5840a80445",
+        "efb458f5da0e31d6ee0d0c4a",
+        "5d902756f3ca5862621193b9",
+        "2a1c729c2ab75c5392d71c2c"
+      ],
+      "source_ids": ["RULE-WELLS"],
+      "facts": [
+        "PE Wells: DVT signs 3; PE more likely than alternative 3; heart rate >100 adds 1.5; immobilization >3 days or surgery in previous 4 weeks 1.5; prior DVT/PE 1.5; hemoptysis 1; malignancy treated within 6 months or palliative 1. More than 4 is PE likely; at most 4 is unlikely."
+      ],
+      "gaps": [
+        "Pretest probability is not diagnosis. Follow the applicable imaging/D-dimer pathway; do not apply unmodified in pregnancy or an unstable patient."
+      ],
+      "opening": "For Wells PE score (two-level), first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-wells-dvt",
+      "track": "criteria",
+      "title": "Wells DVT score (two-level)",
+      "tags": ["wells dvt score (two-level)", "criteria", "decision rule"],
+      "topic_ids": ["40e4301b89061f5840a80445", "efb458f5da0e31d6ee0d0c4a"],
+      "source_ids": ["RULE-WELLS"],
+      "facts": [
+        "DVT Wells: 1 each for active cancer, leg paralysis/paresis/recent cast, bed rest at least 3 days or major surgery within 12 weeks, deep-vein tenderness, entire-leg swelling, calf difference at least 3 cm, symptomatic-leg pitting edema, nonvaricose collateral veins, or prior DVT. Subtract 2 for an equally likely alternative. At least 2: likely; at most 1: unlikely."
+      ],
+      "gaps": [
+        "Calf comparison location and the complete clinical pathway must be checked in the source; a score alone neither diagnoses nor excludes DVT."
+      ],
+      "opening": "For Wells DVT score (two-level), first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-perc",
+      "track": "criteria",
+      "title": "PERC",
+      "tags": ["perc", "criteria", "decision rule"],
+      "topic_ids": ["5d902756f3ca5862621193b9", "2a1c729c2ab75c5392d71c2c"],
+      "source_ids": ["RULE-PERC"],
+      "facts": [
+        "Only after establishing low clinical probability, PERC-negative requires all eight: age <50, pulse <100/min, room-air oxygen saturation at least 95%, no unilateral leg swelling, no hemoptysis, no recent surgery/trauma, no prior DVT/PE, and no exogenous estrogen."
+      ],
+      "gaps": [
+        "Do not use in higher pretest probability, as a severity score, or as a general pregnancy rule. A positive criterion does not diagnose PE; it means this rule does not exclude PE. Exact recent-trauma definitions require the source."
+      ],
+      "opening": "For PERC, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-curb65",
+      "track": "criteria",
+      "title": "CURB-65",
+      "tags": ["curb-65", "criteria", "decision rule"],
+      "topic_ids": ["6bdba761b977cff2f575e630", "32eb6b827a214017ef2f5ff6"],
+      "source_ids": ["RULE-CURB"],
+      "facts": [
+        "Adult CAP: 1 each for confusion, urea >7 mmol/L, respiratory rate at least 30/min, systolic BP <90 or diastolic BP at most 60 mmHg, and age at least 65. This estimates mortality risk and supports, but does not replace, disposition judgment."
+      ],
+      "gaps": [
+        "Do not substitute BUN in mg/dL for urea in mmol/L without explicit conversion. Oxygenation, pregnancy, frailty and home support may change disposition. Exact risk/action bands require a scoped pathway."
+      ],
+      "opening": "For CURB-65, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-crb65",
+      "track": "criteria",
+      "title": "CRB-65",
+      "tags": ["crb-65", "criteria", "decision rule"],
+      "topic_ids": ["6bdba761b977cff2f575e630", "32eb6b827a214017ef2f5ff6"],
+      "source_ids": ["RULE-CURB"],
+      "facts": [
+        "Primary-care adult CAP assessment uses confusion, respiratory rate at least 30, systolic BP <90 or diastolic BP at most 60, and age at least 65, one point each; it omits urea."
+      ],
+      "gaps": [
+        "Not interchangeable with CURB-65 or a sole disposition rule. Local referral thresholds need the applicable guideline."
+      ],
+      "opening": "For CRB-65, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-centor",
+      "track": "criteria",
+      "title": "Centor criteria",
+      "tags": ["centor criteria", "criteria", "decision rule"],
+      "topic_ids": ["e5021602c5fa3b870962bdff"],
+      "source_ids": ["RULE-SORE-THROAT"],
+      "facts": [
+        "One point each: tonsillar exudate, tender anterior cervical nodes, fever history over 38 C, and absence of cough. This estimates likelihood, not proof, of group A strep."
+      ],
+      "gaps": [
+        "Do not import the NICE empirical-antibiotic threshold into the CDC-based US testing pathway. Follow loaded CDC testing/treatment guidance."
+      ],
+      "opening": "For Centor criteria, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-feverpain",
+      "track": "criteria",
+      "title": "FeverPAIN",
+      "tags": ["feverpain", "criteria", "decision rule"],
+      "topic_ids": ["e5021602c5fa3b870962bdff"],
+      "source_ids": ["RULE-SORE-THROAT"],
+      "facts": [
+        "One point each: fever in the previous 24 hours, tonsillar purulence, attendance within 3 days of symptom onset, severely inflamed tonsils, and no cough or coryza."
+      ],
+      "gaps": [
+        "A UK sore-throat tool; do not silently merge its antibiotic pathway with CDC recommendations or equate it with confirmed bacterial infection."
+      ],
+      "opening": "For FeverPAIN, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-cha2ds2vasc",
+      "track": "criteria",
+      "title": "CHA2DS2-VASc",
+      "tags": ["cha2ds2-vasc", "criteria", "decision rule"],
+      "topic_ids": ["0991eab0731643e71d870626", "b0f8ba79b7482c62dc6ddf37"],
+      "source_ids": ["RULE-AF"],
+      "facts": [
+        "Two points each for age at least 75 and prior stroke/TIA/systemic embolism; one each for HF/LV dysfunction, hypertension, diabetes, vascular disease, age 65-74, and female sex category. Age groups are mutually exclusive."
+      ],
+      "gaps": [
+        "Stroke risk is population-dependent; female sex is a modifier. Use the applicable AF anticoagulation guideline, not the number alone or a VTE dosing rule."
+      ],
+      "opening": "For CHA2DS2-VASc, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-hasbled",
+      "track": "criteria",
+      "title": "HAS-BLED",
+      "tags": ["has-bled", "criteria", "decision rule"],
+      "topic_ids": ["0991eab0731643e71d870626", "b0f8ba79b7482c62dc6ddf37"],
+      "source_ids": ["RULE-AF"],
+      "facts": [
+        "Bleeding-risk assessment considers hypertension, abnormal renal/liver function, stroke, bleeding, labile INR, older age, and relevant drugs/alcohol. A bleeding score should identify modifiable risks and must not be used alone to deny indicated anticoagulation."
+      ],
+      "gaps": [
+        "Full point definitions and laboratory thresholds are not loaded in this concise entry; do not calculate an unsupported total."
+      ],
+      "opening": "First explain the purpose and limitations of this tool. This lesson provides an overview or supplied-result interpretation; do not reconstruct missing scoring inputs.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported overview facts",
+        "Interpret a supplied result",
+        "Missing evidence and limitations",
+        "Case-specific recap"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-kdigo-aki",
+      "track": "criteria",
+      "title": "KDIGO AKI definition",
+      "tags": ["kdigo aki definition", "criteria", "decision rule"],
+      "topic_ids": ["869fb13544c67a28e07f816b"],
+      "source_ids": ["RULE-AKI"],
+      "facts": [
+        "AKI is defined by serum creatinine rise at least 0.3 mg/dL within 48 hours, or at least 1.5 times baseline within 7 days, or urine output <0.5 mL/kg/hour for 6 hours."
+      ],
+      "gaps": [
+        "Definition is not the complete stage table or dialysis indication. The 2026 draft is not treated as a final approved guideline."
+      ],
+      "opening": "For KDIGO AKI definition, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-kdigo-ckd",
+      "track": "criteria",
+      "title": "CKD definition and chronicity",
+      "tags": ["ckd definition and chronicity", "criteria", "decision rule"],
+      "topic_ids": ["a5480cb869f2409add578fa7", "238e9c2143ee237582a6ce2b"],
+      "source_ids": ["RULE-CKD"],
+      "facts": [
+        "CKD requires kidney structure/function abnormalities for at least 3 months with health implications; criteria include eGFR <60 mL/min/1.73 m2 or markers of kidney damage. A single low eGFR does not establish chronicity."
+      ],
+      "gaps": [
+        "Separate diagnosis, G/A staging, drug-specific renal dosing and dialysis indications. The public-review medication chapter update is not treated as final."
+      ],
+      "opening": "For CKD definition and chronicity, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-diabetes",
+      "track": "criteria",
+      "title": "Diabetes diagnostic criteria",
+      "tags": ["diabetes diagnostic criteria", "criteria", "decision rule"],
+      "topic_ids": [
+        "19fcd6ed9d652e4403ee405f",
+        "28649bf08a4f7e9ba97e7b73",
+        "f4db07485bb4c7e9a18a2eb8",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "source_ids": ["RULE-DIABETES"],
+      "facts": [
+        "Diabetes thresholds: A1c at least 6.5%, fasting plasma glucose at least 126 mg/dL, or 2-hour 75-g OGTT glucose at least 200 mg/dL; random glucose at least 200 mg/dL requires classic symptoms or hyperglycemic crisis. Confirm abnormal testing when hyperglycemia is not unequivocal."
+      ],
+      "gaps": [
+        "A1c can be unreliable in altered red-cell turnover or hemoglobin variants; gestational testing uses different criteria."
+      ],
+      "opening": "For Diabetes diagnostic criteria, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-prediabetes",
+      "track": "criteria",
+      "title": "Prediabetes thresholds",
+      "tags": ["prediabetes thresholds", "criteria", "decision rule"],
+      "topic_ids": [
+        "19fcd6ed9d652e4403ee405f",
+        "28649bf08a4f7e9ba97e7b73",
+        "f4db07485bb4c7e9a18a2eb8",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "source_ids": ["RULE-DIABETES"],
+      "facts": [
+        "Prediabetes: A1c 5.7-6.4%, fasting plasma glucose 100-125 mg/dL, or 2-hour OGTT 140-199 mg/dL."
+      ],
+      "gaps": [
+        "These are adult nonpregnant diagnostic categories, not gestational diabetes thresholds or a complete treatment indication."
+      ],
+      "opening": "For Prediabetes thresholds, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-dka",
+      "track": "criteria",
+      "title": "Adult DKA diagnostic criteria",
+      "tags": ["adult dka diagnostic criteria", "criteria", "decision rule"],
+      "topic_ids": [
+        "19fcd6ed9d652e4403ee405f",
+        "28649bf08a4f7e9ba97e7b73",
+        "987f012c13d2d35b9097dc05",
+        "f4db07485bb4c7e9a18a2eb8",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "source_ids": ["RULE-HYPERGLYCEMIC"],
+      "facts": [
+        "All three are needed: glucose at least 200 mg/dL OR diabetes history; beta-hydroxybutyrate at least 3 mmol/L OR urine ketones at least 2+; pH <7.3 OR bicarbonate <18 mmol/L."
+      ],
+      "gaps": [
+        "Euglycemic DKA is possible. This entry is not a full potassium/insulin/fluid protocol and does not apply pediatric pathways."
+      ],
+      "opening": "For Adult DKA diagnostic criteria, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-hhs",
+      "track": "criteria",
+      "title": "Adult HHS diagnostic criteria",
+      "tags": ["adult hhs diagnostic criteria", "criteria", "decision rule"],
+      "topic_ids": [
+        "19fcd6ed9d652e4403ee405f",
+        "28649bf08a4f7e9ba97e7b73",
+        "987f012c13d2d35b9097dc05",
+        "f4db07485bb4c7e9a18a2eb8",
+        "cf87f492fd93c4c0da849ead"
+      ],
+      "source_ids": ["RULE-HYPERGLYCEMIC"],
+      "facts": [
+        "All four: plasma glucose at least 600 mg/dL; effective osmolality >300 mOsm/kg OR total osmolality >320; beta-hydroxybutyrate <3 mmol/L or urine ketones <2+; pH at least 7.3 and bicarbonate at least 15 mmol/L."
+      ],
+      "gaps": [
+        "Distinguish effective and total osmolality. Mixed DKA/HHS is possible. No treatment rate or disposition is implied by this definition alone."
+      ],
+      "opening": "For Adult HHS diagnostic criteria, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-sepsis-screening",
+      "track": "criteria",
+      "title": "Sepsis screening and qSOFA limitations",
+      "tags": [
+        "sepsis screening and qsofa limitations",
+        "criteria",
+        "decision rule"
+      ],
+      "topic_ids": ["f150bbe6c1e6e7a61ad5475c"],
+      "source_ids": ["RULE-SEPSIS-2026"],
+      "facts": [
+        "The 2026 SSC adult guideline recommends NEWS/NEWS2, MEWS or SIRS over qSOFA as a single inpatient screening tool. Sepsis cannot be ruled in or out by a single biomarker or diagnostic test."
+      ],
+      "gaps": [
+        "Full NEWS2, MEWS and SIRS scoring tables are not loaded here. Do not use an absent or low qSOFA score to exclude sepsis or delay assessment."
+      ],
+      "opening": "First explain the purpose and limitations of this tool. This lesson provides an overview or supplied-result interpretation; do not reconstruct missing scoring inputs.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported overview facts",
+        "Interpret a supplied result",
+        "Missing evidence and limitations",
+        "Case-specific recap"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-rome-ibs",
+      "track": "criteria",
+      "title": "Rome IV IBS criteria",
+      "tags": ["rome iv ibs criteria", "criteria", "decision rule"],
+      "topic_ids": ["cb5139fea23d1cbd8a23151b"],
+      "source_ids": ["RULE-ROME"],
+      "facts": [
+        "Recurrent abdominal pain averaging at least 1 day/week during the last 3 months, symptom onset at least 6 months earlier, associated with at least two: relation to defecation, change in stool frequency, or change in stool form."
+      ],
+      "gaps": [
+        "Check alarm features and alternative disease. Relation to defecation does not require improvement with defecation."
+      ],
+      "opening": "For Rome IV IBS criteria, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-head-cchr",
+      "track": "criteria",
+      "title": "Canadian CT Head Rule",
+      "tags": ["canadian ct head rule", "criteria", "decision rule"],
+      "topic_ids": ["condition-minor-head-injury"],
+      "source_ids": ["RULE-HEAD", "RULE-CCHR-ORIGINAL"],
+      "facts": [
+        "ACEP recommends the Canadian CT Head Rule as decision support in eligible adults with minor head injury. Apply its original inclusion/exclusion criteria; anticoagulant/antiplatelet use can limit safe rule-out.",
+        "For the CCHR version described in the original published abstract, five high-risk features are GCS below 15 at 2 hours, suspected open skull fracture, basal skull-fracture signs, at least 2 vomiting episodes, or age at least 65. Two additional medium-risk features are pre-impact amnesia over 30 minutes or a dangerous mechanism. High-risk features target neurosurgical intervention; medium-risk features address clinically important brain injury."
+      ],
+      "gaps": [
+        "Establish original minor-head-injury eligibility and exclusions before using a negative rule. Full dangerous-mechanism operational definitions are not loaded; do not infer a negative rule from an undefined mechanism. Do not extrapolate to children, anticoagulated patients or every head strike. The PubMed rendering of the abstract loses equality signs; the publisher abstract and ACEP 2023 clarify at least 2 episodes and at least 65 years."
+      ],
+      "opening": "For Canadian CT Head Rule, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-head-new-orleans",
+      "track": "criteria",
+      "title": "New Orleans criteria",
+      "tags": ["new orleans criteria", "criteria", "decision rule"],
+      "topic_ids": ["condition-minor-head-injury"],
+      "source_ids": ["RULE-HEAD", "RULE-NEW-ORLEANS"],
+      "facts": [
+        "ACEP identifies New Orleans criteria as an alternative adult minor-head-injury CT decision tool, with lower specificity than the Canadian CT Head Rule.",
+        "In the original eligible minor-head-injury population with GCS 15 and a normal brief neurologic examination after loss of consciousness, any of seven findings supports CT: headache, vomiting, age over 60, drug/alcohol intoxication, short-term memory deficit, trauma above the clavicles, or seizure."
+      ],
+      "gaps": [
+        "Do not apply a negative rule outside original GCS/injury eligibility, to children, or to exclude CT in anticoagulated patients. A CT indication is not a diagnosis of intracranial injury."
+      ],
+      "opening": "For New Orleans criteria, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-cspine",
+      "track": "criteria",
+      "title": "Canadian C-spine rule",
+      "tags": ["canadian c-spine rule", "criteria", "decision rule"],
+      "topic_ids": ["condition-cervical-trauma"],
+      "source_ids": ["RULE-CSPINE"],
+      "facts": [
+        "The adult Canadian C-spine assessment is ordered: high-risk features (age at least 65, dangerous mechanism or limb paresthesias) lead to imaging without testing neck rotation. NICE examples of dangerous mechanism include a fall over 1 m or 5 steps, axial loading, high-speed collision, rollover/ejection, motorized recreation or bicycle/horse injury.",
+        "Only with no high-risk feature, look for a low-risk feature permitting safe range-of-motion assessment: minor rear-end collision, comfortable sitting, ambulatory since injury, absent midline tenderness or delayed neck pain. No low-risk feature supports imaging. When safe to assess, inability to actively rotate 45 degrees in both directions supports imaging."
+      ],
+      "gaps": [
+        "Apply only to an alert, reliable appropriate trauma population; do not force movement or assess rotation before excluding high-risk features. NICE cautions that application to children is difficult. This is not an instruction to clear every patient with normal rotation."
+      ],
+      "opening": "For Canadian C-spine rule, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-pecarn",
+      "track": "criteria",
+      "title": "PECARN pediatric head-injury pathways",
+      "tags": [
+        "pecarn pediatric head-injury pathways",
+        "criteria",
+        "decision rule"
+      ],
+      "topic_ids": ["condition-minor-head-injury"],
+      "source_ids": ["RULE-PEDIATRIC-HEAD", "RULE-PECARN-ORIGINAL"],
+      "facts": [
+        "CDC recommends validated pediatric head-injury rules to guide imaging decisions; CT is not routinely used to diagnose pediatric mild TBI.",
+        "PECARN very-low-risk assessment separates children under 2 from those aged 2 and older after eligible minor blunt trauma (GCS 14-15, assessed within 24 hours). Under 2: normal mental status, no scalp hematoma except frontal, no loss of consciousness or less than 5 seconds, nonsevere mechanism, no palpable skull fracture, and normal behavior per parent. Age 2 and older: normal mental status, no loss of consciousness, no vomiting, nonsevere mechanism, no basilar skull-fracture signs, and no severe headache.",
+        "Severe mechanism includes ejection/rollover or another passenger death, pedestrian or unhelmeted bicyclist struck by motor vehicle, high-impact head strike, or a fall over 0.9 m under age 2 and over 1.5 m in the older branch. Failing very-low-risk criteria does not automatically mandate CT; observation versus imaging depends on the complete branch and context."
+      ],
+      "gaps": [
+        "This summarizes very-low-risk criteria, not every high/intermediate-risk action branch or exclusion. Infants under 3 months, suspected abuse, deterioration, bleeding disorders, shunts and unreliable assessment need particular consideration. Do not invent an individual risk percentage or force CT for every positive finding."
+      ],
+      "opening": "For PECARN pediatric head-injury pathways, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-stopbang",
+      "track": "criteria",
+      "title": "STOP-BANG and OSA testing",
+      "tags": ["stop-bang and osa testing", "criteria", "decision rule"],
+      "topic_ids": ["83683036fed9f441672179be"],
+      "source_ids": ["RULE-OSA"],
+      "facts": [
+        "STOP-BANG is a screening tool, not a diagnostic test. Adult OSA diagnosis relies on sleep testing interpreted with symptoms and clinical context."
+      ],
+      "gaps": [
+        "Questionnaire items, point thresholds and reuse permissions are not reproduced here; use the original instrument. Do not infer OSA diagnosis from screening score alone."
+      ],
+      "opening": "First explain the purpose and limitations of this tool. This lesson provides an overview or supplied-result interpretation; do not reconstruct missing scoring inputs.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported overview facts",
+        "Interpret a supplied result",
+        "Missing evidence and limitations",
+        "Case-specific recap"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-mcisaac",
+      "track": "criteria",
+      "title": "McIsaac / modified Centor",
+      "tags": ["mcisaac / modified centor", "criteria", "decision rule"],
+      "topic_ids": ["e5021602c5fa3b870962bdff"],
+      "source_ids": ["RULE-MCISAAC"],
+      "facts": [
+        "IDSA conditionally suggests a clinical score to help decide which patients aged at least 3 years with sore throat need GAS testing; a score estimates probability and does not itself confirm GAS or justify an invented antibiotic regimen. Consider testing high-risk patients even with a low score.",
+        "McIsaac adds one each for absent cough, tender swollen anterior cervical nodes, temperature over 38 C, and tonsillar swelling/exudate. The age modification adds 1 at ages 3-14 and 0 at 15-44; older age subtracts 1. IDSA Table 2 labels low 0-1, intermediate 2-3, high 4-5."
+      ],
+      "gaps": [
+        "Age-45 boundary wording differs between the IDSA displayed table (>45) and AFP 2023 (45 and older). Do not assign an exact age-45 point from this summary; resolve against the selected validated version. Do not apply to children under 3 or replace testing/complication assessment with the score."
+      ],
+      "opening": "For McIsaac / modified Centor, first establish eligibility and the source version. When would it apply, and what limitation would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-heart",
+      "track": "criteria",
+      "title": "HEART chest-pain score",
+      "tags": ["heart chest-pain score", "criteria", "decision rule"],
+      "topic_ids": ["ef5cb09a2cdd4d8c89e3a189"],
+      "source_ids": ["RULE-HEART", "RULE-HEART-ACC"],
+      "facts": [
+        "HEART stratifies risk in adults with possible ACS in an emergency-department evaluation; its five domains are history, ECG, age, cardiac risk factors and troponin. Each contributes 0-2 points; the total spans 0-10. It does not establish ACS or evaluate every dangerous cause of chest pain.",
+        "Version pinned to the 2018 AFP table: history low/moderate/high suspicion gives 0/1/2; ECG normal/nonspecific repolarization/significant ST depression gives 0/1/2. Age at most 45 / over 45 but under 65 / at least 65 gives 0/1/2. No / 1-2 / at least 3 risk factors or atherosclerotic disease gives 0/1/2. Troponin at most the assay normal limit / over 1 but under 3 times / at least 3 times gives 0/1/2.",
+        "The AFP table bands are 0-3, 4-6 and 7-10 for lower, intermediate and higher risk. A low score alone is not discharge clearance; distinguish the complete HEART Pathway, serial troponins, ECG and clinical assessment.",
+        "ACC 2022 distinguishes the modified HEART/HEAR score, which omits troponin from the point total, from the original five-domain score; troponin testing remains part of the clinical pathway. Do not blend a modified score with the original table. In eligible patients, nonischemic ECG and appropriate serial troponins accompany risk assessment; high-sensitivity assay rule-out pathways may not require a risk score in every case."
+      ],
+      "gaps": [
+        "This is the explicitly named AFP 2018 version. Other HEART/HEAR versions differ at age boundaries and in ECG/troponin scoring. Do not silently combine tables; identify the source version before calculating, especially at age 45 or 65. Current assay-specific pathways govern testing intervals; do not transplant old troponin intervals to high-sensitivity assays. Risk-factor definitions and patient exclusions must be established for a full pathway."
+      ],
+      "opening": "For HEART chest-pain score, first establish eligibility and the source version. When would it apply, and what limitation would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-timi",
+      "track": "criteria",
+      "title": "TIMI ACS risk score",
+      "tags": ["timi acs risk score", "criteria", "decision rule"],
+      "topic_ids": ["ef5cb09a2cdd4d8c89e3a189"],
+      "source_ids": ["RULE-TIMI"],
+      "facts": [
+        "The UA/NSTEMI TIMI score gives 1 each for age at least 65, at least 3 CAD risk factors, known coronary stenosis at least 50%, ST deviation, at least 2 anginal episodes in the preceding 24 hours, aspirin in the previous 7 days, and elevated cardiac markers: total 0-7. It is a prognostic tool developed in unstable angina/NSTEMI populations."
+      ],
+      "gaps": [
+        "Do not confuse this with the different STEMI TIMI score, use it to exclude ACS alone, or derive treatment/discharge from a total without a supported contemporary pathway. Exact event rates are not loaded."
+      ],
+      "opening": "For TIMI ACS risk score, first establish eligibility and the source version. When would it apply, and what limitation would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-nexus-cspine",
+      "track": "criteria",
+      "title": "NEXUS cervical-spine criteria",
+      "tags": ["nexus cervical-spine criteria", "criteria", "decision rule"],
+      "topic_ids": ["condition-cervical-trauma"],
+      "source_ids": ["RULE-NEXUS-CSPINE"],
+      "facts": [
+        "In eligible blunt-trauma patients, NEXUS low-risk clearance requires all five: no posterior midline cervical tenderness, no focal neurologic deficit, normal alertness, no intoxication, and no painful distracting injury. An unknown or failed criterion is not a negative rule."
+      ],
+      "gaps": [
+        "Do not use for penetrating trauma or substitute it for a reliable examination. Pediatric and older-adult applicability require particular care; this summary does not supply a pediatric clearance protocol or an imaging modality."
+      ],
+      "opening": "For NEXUS cervical-spine criteria, first establish eligibility and the source version. When would it apply, and what limitation would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-nexus-head",
+      "track": "criteria",
+      "title": "NEXUS Head CT",
+      "tags": ["nexus head ct", "criteria", "decision rule"],
+      "topic_ids": ["condition-minor-head-injury"],
+      "source_ids": ["RULE-NEXUS-HEAD"],
+      "facts": [
+        "NEXUS Head CT identifies elevated-risk features after eligible blunt head injury: skull-fracture evidence, scalp hematoma, neurologic deficit, abnormal alertness, abnormal behavior, persistent vomiting, coagulopathy, or age at least 65. Low-risk classification requires absence of all eight and an appropriate population.",
+        "ACEP favors the Canadian CT Head Rule for decision support; NEXUS Head CT and New Orleans are alternatives with lower specificity. Do not rely on these tools to exclude CT in anticoagulated patients or those taking antiplatelets other than aspirin alone."
+      ],
+      "gaps": [
+        "Exact study exclusions and eligibility must accompany use. This is adult teaching, not a pediatric protocol; clinical deterioration overrides reassurance from a score."
+      ],
+      "opening": "For NEXUS Head CT, first establish eligibility and the source version. When would it apply, and what limitation would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-ottawa-sah",
+      "track": "criteria",
+      "title": "Ottawa subarachnoid hemorrhage rule",
+      "tags": [
+        "ottawa subarachnoid hemorrhage rule",
+        "criteria",
+        "decision rule"
+      ],
+      "topic_ids": ["condition-acute-severe-headache"],
+      "source_ids": ["RULE-OTTAWA-SAH", "RULE-OTTAWA-SAH-ORIGINAL"],
+      "facts": [
+        "The Ottawa SAH rule applies to alert patients older than 15 with a new severe nontraumatic headache reaching maximum intensity within 1 hour. Exclude new neurologic deficits, previous aneurysm/SAH/brain tumor, or established recurrent similar headaches (at least 3 episodes over at least 6 months).",
+        "In that eligible population, investigate if any: age at least 40, neck pain/stiffness, witnessed loss of consciousness, exertional onset, instantly peaking thunderclap headache, or limited neck flexion. A positive rule prompts investigation; it does not diagnose hemorrhage."
+      ],
+      "gaps": [
+        "Exact age boundary verified against original JAMA Box 2 (>=40); an indexed later PDF rendering omitted the equality sign. Do not extend the rule beyond its eligibility or use it as a substitute for evaluation of other headache emergencies. The complete downstream CT/LP/angiography pathway is not loaded."
+      ],
+      "opening": "For an acute severe headache, first establish Ottawa SAH rule eligibility and exclusions. What would make this rule inappropriate?",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported concepts and known limitations",
+        "Interpret supplied classified findings or a verified result",
+        "Supported next step and missing evidence",
+        "Retry with a changed simulated context"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-psi",
+      "track": "criteria",
+      "title": "Pneumonia Severity Index",
+      "tags": ["pneumonia severity index", "criteria", "decision rule"],
+      "topic_ids": ["6bdba761b977cff2f575e630", "32eb6b827a214017ef2f5ff6"],
+      "source_ids": ["RULE-PSI"],
+      "facts": [
+        "For adults with CAP, the ATS/IDSA hospitalization recommendation uses a validated prediction rule plus clinical judgment and prefers PSI over CURB-65. A mortality prediction score does not capture every reason for admission, such as inability to take oral therapy or poor home support."
+      ],
+      "gaps": [
+        "Full PSI point table and risk classes are not loaded; use a sourced externally supplied score for interpretation only. The 2025 ATS update addresses selected additional CAP questions; this entry cites the 2019 hospitalization recommendation, not a blanket claim that all 2019 treatment remains current."
+      ],
+      "opening": "For Pneumonia Severity Index, what is its purpose, who is it for, and what can it not establish? This lesson has overview or supplied-result interpretation only; its full calculation inputs are not loaded.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported concepts and known limitations",
+        "Interpret supplied classified findings or a verified result",
+        "Supported next step and missing evidence",
+        "Retry with a changed simulated context"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-sofa",
+      "track": "criteria",
+      "title": "SOFA and Sepsis-3 organ dysfunction",
+      "tags": [
+        "sofa and sepsis-3 organ dysfunction",
+        "criteria",
+        "decision rule"
+      ],
+      "topic_ids": ["f150bbe6c1e6e7a61ad5475c"],
+      "source_ids": ["RULE-SOFA"],
+      "facts": [
+        "Sepsis-3 operationalizes infection-associated organ dysfunction as an acute SOFA increase of at least 2. SOFA assesses respiratory, coagulation, hepatic, cardiovascular, neurologic and renal function. Baseline is not automatically zero when pre-existing dysfunction is known."
+      ],
+      "gaps": [
+        "Full six-organ point table, vasopressor doses and respiratory-support rules are not loaded; do not compute SOFA from memory. This is the original SOFA/Sepsis-3 definition, not a claim to implement subsequent SOFA revisions."
+      ],
+      "opening": "For SOFA and Sepsis-3 organ dysfunction, what is its purpose, who is it for, and what can it not establish? This lesson has overview or supplied-result interpretation only; its full calculation inputs are not loaded.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported concepts and known limitations",
+        "Interpret supplied classified findings or a verified result",
+        "Supported next step and missing evidence",
+        "Retry with a changed simulated context"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-sirs",
+      "track": "criteria",
+      "title": "SIRS criteria",
+      "tags": ["sirs criteria", "criteria", "decision rule"],
+      "topic_ids": ["b27a6ec631ebd20975fe6923", "f150bbe6c1e6e7a61ad5475c"],
+      "source_ids": ["RULE-SIRS"],
+      "facts": [
+        "Adult SIRS is at least 2 of: temperature over 38 or under 36 C; heart rate over 90/min; respiratory rate over 20/min or PaCO2 under 32 mmHg; WBC over 12,000 or under 4,000/mm3 or over 10% immature forms. These are inflammatory-response criteria, not proof of infection or the modern definition of sepsis."
+      ],
+      "gaps": [
+        "SIRS can occur without infection; absence does not exclude sepsis. Do not use adult thresholds for children. Contemporary screening recommendations are separately sourced in RULE-SEPSIS."
+      ],
+      "opening": "For SIRS criteria, first establish eligibility and the source version. When would it apply, and what limitation would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-news2",
+      "track": "criteria",
+      "title": "NEWS2 deterioration score",
+      "tags": ["news2 deterioration score", "criteria", "decision rule"],
+      "topic_ids": ["f150bbe6c1e6e7a61ad5475c"],
+      "source_ids": ["RULE-NEWS2"],
+      "facts": [
+        "NEWS2 tracks acute illness severity using respiratory rate, oxygen saturation, systolic pressure, pulse, consciousness/new confusion and temperature; supplemental oxygen also affects scoring. It supports detecting deterioration, not identifying a single diagnosis."
+      ],
+      "gaps": [
+        "The complete scoring chart and oxygen-scale eligibility are not reproduced. Do not calculate a total, change oxygen scales or invent a response schedule from these overview facts; use the unmodified official chart and local escalation policy."
+      ],
+      "opening": "For NEWS2 deterioration score, what is its purpose, who is it for, and what can it not establish? This lesson has overview or supplied-result interpretation only; its full calculation inputs are not loaded.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported concepts and known limitations",
+        "Interpret supplied classified findings or a verified result",
+        "Supported next step and missing evidence",
+        "Retry with a changed simulated context"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-qsofa",
+      "track": "criteria",
+      "title": "qSOFA — prognosis and limitations",
+      "tags": [
+        "qsofa — prognosis and limitations",
+        "criteria",
+        "decision rule"
+      ],
+      "topic_ids": ["f150bbe6c1e6e7a61ad5475c"],
+      "source_ids": ["RULE-QSOFA"],
+      "facts": [
+        "Adult qSOFA assigns 1 each for respiratory rate at least 22/min, systolic pressure at most 100 mmHg and altered mentation; 2 or more flags increased risk in suspected infection. It is a prognostic warning, not a sepsis diagnosis or exclusion test."
+      ],
+      "gaps": [
+        "Do not use qSOFA as the sole sepsis screening tool; the separately loaded 2026 SCCM guidance favors other screening systems. Do not apply adult thresholds to children."
+      ],
+      "opening": "For qSOFA — prognosis and limitations, first establish eligibility and the source version. When would it apply, and what limitation would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-abcdn",
+      "track": "criteria",
+      "title": "ABCD2 TIA risk score",
+      "tags": ["abcd2 tia risk score", "criteria", "decision rule"],
+      "topic_ids": ["d343a7ce9d7c3e21231ae953"],
+      "source_ids": ["RULE-ABCDN"],
+      "facts": [
+        "ABCD2 estimates short-term stroke risk after TIA using age, blood pressure, clinical features, symptom duration and diabetes. Suspected TIA needs urgent assessment even if symptoms resolve; risk scores accompany brain/vascular evaluation and clinical judgment."
+      ],
+      "gaps": [
+        "Point assignments and risk bands are not loaded. Do not calculate a total or use a low score to defer evaluation, exclude TIA, or determine discharge alone."
+      ],
+      "opening": "For ABCD2 TIA risk score, what is its purpose, who is it for, and what can it not establish? This lesson has overview or supplied-result interpretation only; its full calculation inputs are not loaded.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported concepts and known limitations",
+        "Interpret supplied classified findings or a verified result",
+        "Supported next step and missing evidence",
+        "Retry with a changed simulated context"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-frax",
+      "track": "criteria",
+      "title": "FRAX fracture risk",
+      "tags": ["frax fracture risk", "criteria", "decision rule"],
+      "topic_ids": ["d84b7a7cd635042f0edaea6d", "484628e89b72062756f8ebea"],
+      "source_ids": ["RULE-FRAX"],
+      "facts": [
+        "FRAX estimates 10-year hip and major osteoporotic fracture probability using a country-specific model, with or without femoral-neck BMD. In US postmenopausal women and men aged at least 50 with osteopenia at the hip, BHOF treatment considerations include hip probability at least 3% or major osteoporotic probability at least 20%."
+      ],
+      "gaps": [
+        "Do not calculate FRAX from memory or treat these US intervention thresholds as universal international diagnostic criteria. Use the official model; treatment decisions also incorporate fracture history and factors the model omits."
+      ],
+      "opening": "For FRAX fracture risk, what is its purpose, who is it for, and what can it not establish? This lesson has overview or supplied-result interpretation only; its full calculation inputs are not loaded.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported concepts and known limitations",
+        "Interpret supplied classified findings or a verified result",
+        "Supported next step and missing evidence",
+        "Retry with a changed simulated context"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-phq9",
+      "track": "criteria",
+      "title": "PHQ-9 depression severity",
+      "tags": ["phq-9 depression severity", "criteria", "decision rule"],
+      "topic_ids": [
+        "b80fa5428e1b5d012ff874f9",
+        "c01f968dc7a165d03f09705d",
+        "8bd7f71cdb97c05eabce00f3"
+      ],
+      "source_ids": ["RULE-PHQ9", "RULE-DEPRESSION-SCREEN"],
+      "facts": [
+        "For an already obtained PHQ-9 total, the original validation associates thresholds 5, 10, 15 and 20 with mild, moderate, moderately severe and severe symptom burden. A positive screen needs diagnostic evaluation; severity bands alone do not establish major depression or suicide risk."
+      ],
+      "gaps": [
+        "Questionnaire items and complete administration/scoring instructions are not reproduced. Use a validated instrument; do not fabricate item responses or rule out self-harm risk from a low total."
+      ],
+      "opening": "For PHQ-9 depression severity, what is its purpose, who is it for, and what can it not establish? This lesson has overview or supplied-result interpretation only; its full calculation inputs are not loaded.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported concepts and known limitations",
+        "Interpret supplied classified findings or a verified result",
+        "Supported next step and missing evidence",
+        "Retry with a changed simulated context"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-gad7",
+      "track": "criteria",
+      "title": "GAD-7 anxiety severity",
+      "tags": ["gad-7 anxiety severity", "criteria", "decision rule"],
+      "topic_ids": ["e11c0100b9e067c0971a0f8b"],
+      "source_ids": ["RULE-GAD7"],
+      "facts": [
+        "GAD-7 is a screening/severity measure rather than a standalone diagnosis. For an already obtained valid total, 5, 10 and 15 are the original proposed mild, moderate and severe cut points; a score of 10 or more warrants further assessment in the validation setting."
+      ],
+      "gaps": [
+        "Questionnaire items/administration are not loaded; do not create an altered instrument or diagnose GAD solely from a total. Diagnostic duration and exclusions require separate assessment."
+      ],
+      "opening": "For GAD-7 anxiety severity, what is its purpose, who is it for, and what can it not establish? This lesson has overview or supplied-result interpretation only; its full calculation inputs are not loaded.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported concepts and known limitations",
+        "Interpret supplied classified findings or a verified result",
+        "Supported next step and missing evidence",
+        "Retry with a changed simulated context"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-atlanta",
+      "track": "criteria",
+      "title": "Revised Atlanta pancreatitis criteria",
+      "tags": [
+        "revised atlanta pancreatitis criteria",
+        "criteria",
+        "decision rule"
+      ],
+      "topic_ids": ["b27a6ec631ebd20975fe6923"],
+      "source_ids": ["RULE-ATLANTA"],
+      "facts": [
+        "Acute pancreatitis diagnosis requires 2 of 3: characteristic acute pain, amylase/lipase at least 3 times the upper normal limit, and characteristic imaging. If pain and enzymes establish diagnosis, imaging is not automatically required solely to meet a third criterion.",
+        "Revised Atlanta: mild has no organ failure or local/systemic complications; moderately severe has transient organ failure resolving within 48 hours and/or local/systemic complications without persistent failure; severe has persistent organ failure beyond 48 hours."
+      ],
+      "gaps": [
+        "Modified Marshall organ-failure scoring and collection terminology/time-course details are not fully loaded; do not calculate organ failure or equate an enzyme value with severity."
+      ],
+      "opening": "For Revised Atlanta pancreatitis criteria, first establish eligibility and the source version. When would it apply, and what limitation would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-bisap",
+      "track": "criteria",
+      "title": "BISAP pancreatitis severity",
+      "tags": ["bisap pancreatitis severity", "criteria", "decision rule"],
+      "topic_ids": ["b27a6ec631ebd20975fe6923"],
+      "source_ids": ["RULE-BISAP"],
+      "facts": [
+        "BISAP gives 1 each within the initial 24 hours for BUN over 25 mg/dL, impaired mental status, SIRS, age over 60 and pleural effusion: total 0-5. It predicts mortality risk; it does not diagnose pancreatitis or define persistent organ failure."
+      ],
+      "gaps": [
+        "Use the original operational definitions for impaired mental status and SIRS; score-specific mortality percentages and a treatment/disposition algorithm are not loaded. Do not wait for a score before responding to deterioration."
+      ],
+      "opening": "For BISAP pancreatitis severity, first establish eligibility and the source version. When would it apply, and what limitation would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-duke",
+      "track": "criteria",
+      "title": "Duke-ISCVID endocarditis criteria",
+      "tags": [
+        "duke-iscvid endocarditis criteria",
+        "criteria",
+        "decision rule"
+      ],
+      "topic_ids": ["condition-endocarditis"],
+      "source_ids": ["RULE-DUKE"],
+      "facts": [
+        "In the 2023 Duke-ISCVID clinical classification, definite IE is 2 major, or 1 major plus 3 minor, or 5 minor criteria; possible IE is 1 major plus 1 minor, or 3 minor. Pathologic criteria provide a separate route to definite IE. This is diagnostic classification, not a treatment prescription."
+      ],
+      "gaps": [
+        "Complete microbiology, imaging, surgical, minor and rejection definitions are not loaded. Use only explicitly supplied correctly classified criteria in exercises; do not classify a culture or image from memory. Subsequent living-document updates must be checked before clinical application."
+      ],
+      "opening": "For Duke-ISCVID endocarditis criteria, what is its purpose, who is it for, and what can it not establish? This lesson has overview or supplied-result interpretation only; its full calculation inputs are not loaded.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported concepts and known limitations",
+        "Interpret supplied classified findings or a verified result",
+        "Supported next step and missing evidence",
+        "Retry with a changed simulated context"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-jones",
+      "track": "criteria",
+      "title": "Jones acute rheumatic fever criteria",
+      "tags": [
+        "jones acute rheumatic fever criteria",
+        "criteria",
+        "decision rule"
+      ],
+      "topic_ids": ["condition-rheumatic-fever"],
+      "source_ids": ["RULE-JONES"],
+      "facts": [
+        "For an initial episode, revised Jones generally requires evidence of preceding GAS plus 2 major or 1 major and 2 minor manifestations. Risk population affects what qualifies as major/minor. Chorea and indolent carditis can present with exceptions to the usual preceding-infection evidence."
+      ],
+      "gaps": [
+        "Complete risk-stratified major/minor definitions and recurrent-episode alternatives are not loaded. Practice interpreting supplied classified findings only; do not count the same joint manifestation as both major and minor or substitute the older surveillance definition."
+      ],
+      "opening": "For Jones acute rheumatic fever criteria, what is its purpose, who is it for, and what can it not establish? This lesson has overview or supplied-result interpretation only; its full calculation inputs are not loaded.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported concepts and known limitations",
+        "Interpret supplied classified findings or a verified result",
+        "Supported next step and missing evidence",
+        "Retry with a changed simulated context"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-glasgow-blatchford",
+      "track": "criteria",
+      "title": "Glasgow-Blatchford upper GI bleeding score",
+      "tags": [
+        "glasgow-blatchford upper gi bleeding score",
+        "criteria",
+        "decision rule"
+      ],
+      "topic_ids": ["condition-upper-gi-bleeding"],
+      "source_ids": ["RULE-GLASGOW-BLATCHFORD"],
+      "facts": [
+        "Glasgow-Blatchford is a pre-endoscopy upper-GI-bleeding risk tool. ACG suggests identifying very-low-risk patients, such as GBS 0-1, who may be discharged with outpatient follow-up after appropriate assessment."
+      ],
+      "gaps": [
+        "Full input-to-point table is not loaded: interpret a supplied verified score, do not calculate from memory. Ongoing bleeding, instability or other admission needs override score-only reassurance. NICE CG141 uses a more restrictive example of 0; preserve guideline-specific thresholds."
+      ],
+      "opening": "For Glasgow-Blatchford upper GI bleeding score, what is its purpose, who is it for, and what can it not establish? This lesson has overview or supplied-result interpretation only; its full calculation inputs are not loaded.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported concepts and known limitations",
+        "Interpret supplied classified findings or a verified result",
+        "Supported next step and missing evidence",
+        "Retry with a changed simulated context"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-child-pugh",
+      "track": "criteria",
+      "title": "Child-Pugh liver severity",
+      "tags": ["child-pugh liver severity", "criteria", "decision rule"],
+      "topic_ids": ["e683adfa3084ddbf052e76d4"],
+      "source_ids": ["RULE-CHILD-PUGH"],
+      "facts": [
+        "Child-Pugh uses bilirubin, albumin, PT/INR, ascites and encephalopathy. For a correctly obtained total, A is 5-6, B is 7-9 and C is 10-15. It describes liver-disease severity; it is not a universal medication dose-adjustment formula."
+      ],
+      "gaps": [
+        "Complete input thresholds and condition-specific variants are not loaded. Do not compute a total from memory or reduce every drug by a generic percentage; use the individual label/guideline and stated hepatic category."
+      ],
+      "opening": "For Child-Pugh liver severity, what is its purpose, who is it for, and what can it not establish? This lesson has overview or supplied-result interpretation only; its full calculation inputs are not loaded.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported concepts and known limitations",
+        "Interpret supplied classified findings or a verified result",
+        "Supported next step and missing evidence",
+        "Retry with a changed simulated context"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-meld",
+      "track": "criteria",
+      "title": "MELD liver prognosis",
+      "tags": ["meld liver prognosis", "criteria", "decision rule"],
+      "topic_ids": ["e683adfa3084ddbf052e76d4"],
+      "source_ids": ["RULE-MELD", "RULE-MELD-OPTN"],
+      "facts": [
+        "MELD estimates prognosis in advanced liver disease. Original MELD uses bilirubin, INR and creatinine; MELD-Na adds sodium; MELD 3.0 additionally includes albumin and sex. The versions are not interchangeable and do not prescribe a generic hepatic drug reduction."
+      ],
+      "gaps": [
+        "Equation coefficients, input floors/caps, dialysis handling, age rules and allocation exceptions are not loaded; do not compute or substitute versions. Use the current HRSA OPTN calculator and policies for allocation-specific questions."
+      ],
+      "opening": "For MELD liver prognosis, what is its purpose, who is it for, and what can it not establish? This lesson has overview or supplied-result interpretation only; its full calculation inputs are not loaded.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported concepts and known limitations",
+        "Interpret supplied classified findings or a verified result",
+        "Supported next step and missing evidence",
+        "Retry with a changed simulated context"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-beers",
+      "track": "criteria",
+      "title": "Beers medication appropriateness",
+      "tags": ["beers medication appropriateness", "criteria", "decision rule"],
+      "topic_ids": ["705853617382d5d197607796"],
+      "source_ids": ["RULE-BEERS"],
+      "facts": [
+        "AGS Beers identifies potentially inappropriate medications in older adults, including drugs to avoid generally, disease-specific concerns, use-with-caution situations, interactions and kidney-function-dependent concerns. It supports individualized medication review, not automatic discontinuation or a claim that every listed drug is absolutely contraindicated."
+      ],
+      "gaps": [
+        "The full drug tables and renal thresholds are not reproduced. Do not invent a drug-specific Beers recommendation from this overview; consult the cited criteria and individual label."
+      ],
+      "opening": "For Beers medication appropriateness, what is its purpose, who is it for, and what can it not establish? This lesson has overview or supplied-result interpretation only; its full calculation inputs are not loaded.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported concepts and known limitations",
+        "Interpret supplied classified findings or a verified result",
+        "Supported next step and missing evidence",
+        "Retry with a changed simulated context"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-rotterdam",
+      "track": "criteria",
+      "title": "Rotterdam PCOS criteria",
+      "tags": ["rotterdam pcos criteria", "criteria", "decision rule"],
+      "topic_ids": ["21e49eb7d934d92789644bee"],
+      "source_ids": ["RULE-ROTTERDAM"],
+      "facts": [
+        "The 2023 adult PCOS framework requires 2 of ovulatory dysfunction, clinical/biochemical hyperandrogenism, and polycystic ovarian morphology, after exclusion of alternative causes. AMH may substitute for ultrasound assessment of morphology in adults under the guideline algorithm; it is not a standalone diagnosis.",
+        "Adolescents require both ovulatory dysfunction and hyperandrogenism; ultrasound/AMH are not recommended for adolescent diagnosis."
+      ],
+      "gaps": [
+        "Age/postmenarche definitions, assay-specific AMH cutoffs and full exclusion workup are not loaded. Do not invent a universal AMH value, use adult ovarian criteria in adolescents, or require imaging when the other two adult criteria are established."
+      ],
+      "opening": "For Rotterdam PCOS criteria, first establish eligibility and the source version. When would it apply, and what limitation would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-asthma",
+      "track": "criteria",
+      "title": "Asthma objective diagnostic criteria",
+      "tags": [
+        "asthma objective diagnostic criteria",
+        "criteria",
+        "decision rule"
+      ],
+      "topic_ids": ["ae8313ae8e54ea25af25ca48"],
+      "source_ids": ["RULE-ASTHMA"],
+      "facts": [
+        "Asthma diagnosis combines variable respiratory symptoms with evidence of variable expiratory airflow. GINA 2026 retains an adult positive bronchodilator response of FEV1 increasing at least 12% AND at least 200 mL from baseline as supportive evidence in a compatible presentation."
+      ],
+      "gaps": [
+        "This is one diagnostic test, not the entire algorithm. A single negative test does not exclude asthma; testing conditions, current treatment and alternative objective tests matter. Do not apply adult absolute-volume thresholds to children."
+      ],
+      "opening": "For Asthma objective diagnostic criteria, first establish eligibility and the source version. When would it apply, and what limitation would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-copd",
+      "track": "criteria",
+      "title": "COPD spirometric diagnosis",
+      "tags": ["copd spirometric diagnosis", "criteria", "decision rule"],
+      "topic_ids": ["38266a21ba131875fcb5fc6e", "55eee87a230e72744bb75406"],
+      "source_ids": ["RULE-COPD"],
+      "facts": [
+        "GOLD 2026 requires post-bronchodilator FEV1/FVC below 0.70 to establish persistent airflow obstruction in a clinically compatible patient with symptoms/risk exposures. An isolated pre-bronchodilator value does not establish COPD."
+      ],
+      "gaps": [
+        "The fixed ratio has age-related limitations; borderline results may need repeat testing. Spirometry alone does not supply a complete differential, symptom/exacerbation classification or treatment plan."
+      ],
+      "opening": "For COPD spirometric diagnosis, first establish eligibility and the source version. When would it apply, and what limitation would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-osteoporosis",
+      "track": "criteria",
+      "title": "DXA osteoporosis diagnostic criteria",
+      "tags": [
+        "dxa osteoporosis diagnostic criteria",
+        "criteria",
+        "decision rule"
+      ],
+      "topic_ids": ["d84b7a7cd635042f0edaea6d", "484628e89b72062756f8ebea"],
+      "source_ids": ["RULE-OSTEOPOROSIS"],
+      "facts": [
+        "In postmenopausal women and men aged at least 50, a DXA T-score at most -2.5 at an accepted diagnostic site supports osteoporosis; low bone mass is between -1.0 and -2.5. Fracture history can establish treatment need even without an osteoporotic T-score."
+      ],
+      "gaps": [
+        "Site selection, artifacts and secondary causes matter. Do not apply older-adult T-score categories unchanged to premenopausal women or younger men; Z-score interpretation and clinical context differ. FRAX intervention thresholds are separate from the DXA definition."
+      ],
+      "opening": "For DXA osteoporosis diagnostic criteria, first establish eligibility and the source version. When would it apply, and what limitation would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "criteria-dsm-mdd",
+      "track": "criteria",
+      "title": "Depression diagnostic assessment — NIMH overview",
+      "tags": [
+        "major depressive episode criteria",
+        "criteria",
+        "decision rule"
+      ],
+      "topic_ids": [
+        "b80fa5428e1b5d012ff874f9",
+        "c01f968dc7a165d03f09705d",
+        "8bd7f71cdb97c05eabce00f3"
+      ],
+      "source_ids": ["RULE-DSM-MDD"],
+      "facts": [
+        "Depression assessment establishes symptoms most of the day nearly every day for at least 2 weeks, including depressed mood or loss of interest/pleasure, and functional impact. Children/adolescents may show irritability. Medication effects and medical mimics must be considered."
+      ],
+      "gaps": [
+        "This NIMH overview does not reproduce the full DSM symptom checklist, count or exclusions. Do not label it a complete DSM diagnostic algorithm; assess bipolar history and safety using separately supported guidance. A positive screen is not the diagnosis."
+      ],
+      "opening": "For Major depressive episode criteria, what is its purpose, who is it for, and what can it not establish? This lesson has overview or supplied-result interpretation only; its full calculation inputs are not loaded.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported concepts and known limitations",
+        "Interpret supplied classified findings or a verified result",
+        "Supported next step and missing evidence",
+        "Retry with a changed simulated context"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-dsm-adhd",
+      "track": "criteria",
+      "title": "ADHD diagnostic assessment — CDC overview",
+      "tags": ["adhd diagnostic criteria", "criteria", "decision rule"],
+      "topic_ids": [
+        "24d26ec9f06fa18142c75c41",
+        "7f99cb1adf4d1fca94c8b5bc",
+        "f9c2dedbdeec241b762cd01c"
+      ],
+      "source_ids": ["RULE-DSM-ADHD"],
+      "facts": [
+        "ADHD evaluation requires developmentally inappropriate persistent symptoms and impairment, with information from multiple settings and exclusion of mimics. CDC describes at least 6 symptoms in an applicable inattention or hyperactivity/impulsivity domain through age 16, and at least 5 from age 17; symptoms persist at least 6 months, several began before 12, and several occur in at least 2 settings."
+      ],
+      "gaps": [
+        "The complete symptom-item checklist, subtype specifications and exclusions are not reproduced. Counts alone do not diagnose ADHD; do not construct an altered diagnostic instrument."
+      ],
+      "opening": "For ADHD diagnostic criteria, what is its purpose, who is it for, and what can it not establish? This lesson has overview or supplied-result interpretation only; its full calculation inputs are not loaded.",
+      "stages": [
+        "Purpose and eligibility",
+        "Supported concepts and known limitations",
+        "Interpret supplied classified findings or a verified result",
+        "Supported next step and missing evidence",
+        "Retry with a changed simulated context"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "purpose_and_interpretation"
+    },
+    {
+      "id": "criteria-dsm-gad",
+      "track": "criteria",
+      "title": "Generalized anxiety diagnostic assessment",
+      "tags": ["gad diagnostic criteria", "criteria", "decision rule"],
+      "topic_ids": ["e11c0100b9e067c0971a0f8b"],
+      "source_ids": ["RULE-DSM-GAD"],
+      "facts": [
+        "NIMH describes difficult-to-control worry on most days for at least 6 months with at least 3 of restlessness/on-edge, fatigue, concentration difficulty, irritability, muscle tension or sleep problems. Assess functional impact and alternative physical or mental causes."
+      ],
+      "gaps": [
+        "This is an adult-oriented diagnostic summary, not the complete DSM exclusions or a pediatric symptom-count rule. Do not substitute a GAD-7 total for diagnostic assessment."
+      ],
+      "opening": "For GAD diagnostic criteria, first establish eligibility and the source version. When would it apply, and what limitation would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "coverage_status": "scoped_facts_available",
+      "study_scope": "rule_summary"
+    },
+    {
+      "id": "condition-ankle-foot-trauma",
+      "track": "condition",
+      "title": "Acute ankle and foot injury",
+      "tags": ["acute ankle and foot injury", "condition"],
+      "topic_ids": [],
+      "source_ids": ["RULE-OTTAWA-ANKLE"],
+      "facts": [
+        "Use the appropriate Ottawa rule to support radiography decisions in acute ankle/midfoot injury; a positive rule does not establish fracture."
+      ],
+      "gaps": [
+        "Scope is initial evidence-based assessment and linked rules; full trauma management, drug regimens and special populations require their exact sources."
+      ],
+      "opening": "For Acute ankle and foot injury, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "criteria_ids": ["criteria-ottawa-ankle", "criteria-ottawa-foot"]
+    },
+    {
+      "id": "condition-minor-head-injury",
+      "track": "condition",
+      "title": "Minor head injury and concussion",
+      "tags": ["minor head injury and concussion", "condition"],
+      "topic_ids": [],
+      "source_ids": ["RULE-HEAD", "RULE-PEDIATRIC-HEAD"],
+      "facts": [
+        "Adult and pediatric head-injury decision rules have different eligibility; do not apply an adult CT rule to a child. CDC advises against routine CT to diagnose pediatric mild TBI."
+      ],
+      "gaps": [
+        "Scope is initial evidence-based assessment and linked rules; full trauma management, drug regimens and special populations require their exact sources."
+      ],
+      "opening": "For Minor head injury and concussion, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "criteria_ids": [
+        "criteria-head-cchr",
+        "criteria-head-new-orleans",
+        "criteria-pecarn",
+        "criteria-nexus-head",
+        "criteria-glasgow-coma"
+      ]
+    },
+    {
+      "id": "condition-cervical-trauma",
+      "track": "condition",
+      "title": "Acute cervical-spine trauma",
+      "tags": ["acute cervical-spine trauma", "condition"],
+      "topic_ids": [],
+      "source_ids": ["RULE-CSPINE"],
+      "facts": [
+        "Assess high-risk factors before active neck-rotation testing; do not let a decision rule delay stabilization of suspected spinal injury."
+      ],
+      "gaps": [
+        "Scope is initial evidence-based assessment and linked rules; full trauma management, drug regimens and special populations require their exact sources."
+      ],
+      "opening": "For Acute cervical-spine trauma, first explain when the rule or lesson applies and what it is intended to decide. What eligibility or exclusion would you check before using it?",
+      "stages": [
+        "Purpose and eligibility",
+        "Inputs, units and exact thresholds",
+        "Apply to a coherent simulated case",
+        "Interpretation and supported next action",
+        "Exclusions, limitations and a changed-case retry"
+      ],
+      "criteria_ids": ["criteria-cspine", "criteria-nexus-cspine"]
+    },
+    {
+      "id": "condition-rhinitis",
+      "track": "condition",
+      "title": "Allergic rhinitis",
+      "tags": ["allergic rhinitis", "condition"],
+      "topic_ids": [],
+      "source_ids": ["CONDITION-RHINITIS"],
+      "facts": [
+        "Intranasal corticosteroids are first-line treatment for allergic rhinitis. Match treatment to symptom pattern, exposure and patient preferences."
+      ],
+      "gaps": [
+        "Specific product dosing, contraindications and renal/hepatic precautions require an exact drug label."
+      ],
+      "opening": "For Allergic rhinitis, what presentation supports the diagnosis, and which red flags or alternatives must you assess first?",
+      "stages": [
+        "Presentation and differential",
+        "Supported diagnostic steps",
+        "Initial management",
+        "Medication regimen and safety only with explicit source support",
+        "Follow-up, limitations and case synthesis"
+      ]
+    },
+    {
+      "id": "condition-otitis-externa",
+      "track": "condition",
+      "title": "Acute otitis externa",
+      "tags": ["acute otitis externa", "condition"],
+      "topic_ids": [],
+      "source_ids": ["CONDITION-OTITIS-EXTERNA"],
+      "facts": [
+        "Acute otitis externa involves ear-canal inflammation, typically with tragus/pinna tenderness or canal edema/redness. Topical antimicrobials are first-line for uncomplicated disease; routine oral antibiotics are not the default."
+      ],
+      "gaps": [
+        "Assess tympanic-membrane status and spread beyond the canal. Exact drop choice, concentration, contraindications and dosing need product-specific evidence."
+      ],
+      "opening": "For Acute otitis externa, what presentation supports the diagnosis, and which red flags or alternatives must you assess first?",
+      "stages": [
+        "Presentation and differential",
+        "Supported diagnostic steps",
+        "Initial management",
+        "Medication regimen and safety only with explicit source support",
+        "Follow-up, limitations and case synthesis"
+      ]
+    },
+    {
+      "id": "condition-constipation",
+      "track": "condition",
+      "title": "Chronic idiopathic constipation",
+      "tags": ["chronic idiopathic constipation", "condition"],
+      "topic_ids": [],
+      "source_ids": ["CONDITION-CONSTIPATION"],
+      "facts": [
+        "The AGA/ACG adult chronic idiopathic constipation guideline recommends polyethylene glycol over management without PEG. Distinguish CIC from IBS-C, secondary causes and alarm symptoms."
+      ],
+      "gaps": [
+        "Dose, formulation, renal/hepatic precautions and escalation require exact product labeling and the applicable recommendation; do not extrapolate this adult lesson to children."
+      ],
+      "opening": "For Chronic idiopathic constipation, what presentation supports the diagnosis, and which red flags or alternatives must you assess first?",
+      "stages": [
+        "Presentation and differential",
+        "Supported diagnostic steps",
+        "Initial management",
+        "Medication regimen and safety only with explicit source support",
+        "Follow-up, limitations and case synthesis"
+      ]
+    },
+    {
+      "id": "condition-vvc",
+      "track": "condition",
+      "title": "Vulvovaginal candidiasis",
+      "tags": ["vulvovaginal candidiasis", "condition"],
+      "topic_ids": [],
+      "source_ids": ["CONDITION-VVC"],
+      "facts": [
+        "Vaginal symptoms alone do not reliably establish candidiasis. Pregnancy uses topical azoles for 7 days; oral fluconazole is not recommended during pregnancy by this guideline."
+      ],
+      "gaps": [
+        "Separate uncomplicated, severe, recurrent and non-albicans disease; exact nonpregnant regimens, interactions and organ adjustments require their scoped sources."
+      ],
+      "opening": "For Vulvovaginal candidiasis, what presentation supports the diagnosis, and which red flags or alternatives must you assess first?",
+      "stages": [
+        "Presentation and differential",
+        "Supported diagnostic steps",
+        "Initial management",
+        "Medication regimen and safety only with explicit source support",
+        "Follow-up, limitations and case synthesis"
+      ]
+    },
+    {
+      "id": "condition-anaphylaxis",
+      "track": "condition",
+      "title": "Anaphylaxis recognition and initial management",
+      "tags": ["anaphylaxis", "allergy", "epinephrine", "condition"],
+      "topic_ids": [],
+      "source_ids": ["CONDITION-ANAPHYLAXIS"],
+      "facts": [
+        "Anaphylaxis requires immediate treatment, including prompt epinephrine and emergency assessment. Do not substitute an antihistamine for epinephrine in suspected anaphylaxis."
+      ],
+      "gaps": [
+        "Exact diagnostic-criteria versions, epinephrine product dose/route, observation and risk-specific follow-up require their applicable source; do not invent a universal regimen."
+      ],
+      "opening": "A patient develops sudden symptoms after an allergen exposure. What findings would make anaphylaxis your immediate concern, and what initial action is supported?",
+      "stages": [
+        "Recognition and immediate threats",
+        "Supported initial action",
+        "Source-specific medication dose and safety",
+        "Reassessment and emergency disposition",
+        "Follow-up and evidence limits"
+      ]
+    },
+    {
+      "id": "condition-endocarditis",
+      "track": "condition",
+      "title": "Suspected infective endocarditis — diagnostic classification",
+      "tags": [
+        "suspected infective endocarditis — diagnostic classification",
+        "diagnosis",
+        "criteria"
+      ],
+      "topic_ids": [],
+      "criteria_ids": ["criteria-duke"],
+      "source_ids": ["RULE-DUKE"],
+      "facts": [
+        "In the 2023 Duke-ISCVID clinical classification, definite IE is 2 major, or 1 major plus 3 minor, or 5 minor criteria; possible IE is 1 major plus 1 minor, or 3 minor. Pathologic criteria provide a separate route to definite IE. This is diagnostic classification, not a treatment prescription."
+      ],
+      "gaps": [
+        "This is a scoped diagnostic/risk-assessment lesson, not a complete management protocol. Medication regimens, resuscitation details and a full diagnostic workup require separately loaded evidence.",
+        "Complete microbiology, imaging, surgical, minor and rejection definitions are not loaded. Use only explicitly supplied correctly classified criteria in exercises; do not classify a culture or image from memory. Subsequent living-document updates must be checked before clinical application."
+      ],
+      "opening": "Begin with a simulated presentation and ask which immediate concerns and eligibility checks matter before applying the linked diagnostic or risk tool.",
+      "stages": [
+        "Presentation and urgency",
+        "Differential and missing data",
+        "Appropriate criteria and limitations",
+        "Interpret supplied findings",
+        "Evidence-supported next step and recap"
+      ],
+      "coverage_status": "scoped_facts_available"
+    },
+    {
+      "id": "condition-rheumatic-fever",
+      "track": "condition",
+      "title": "Acute rheumatic fever — diagnostic assessment",
+      "tags": [
+        "acute rheumatic fever — diagnostic assessment",
+        "diagnosis",
+        "criteria"
+      ],
+      "topic_ids": [],
+      "criteria_ids": ["criteria-jones"],
+      "source_ids": ["RULE-JONES"],
+      "facts": [
+        "For an initial episode, revised Jones generally requires evidence of preceding GAS plus 2 major or 1 major and 2 minor manifestations. Risk population affects what qualifies as major/minor. Chorea and indolent carditis can present with exceptions to the usual preceding-infection evidence."
+      ],
+      "gaps": [
+        "This is a scoped diagnostic/risk-assessment lesson, not a complete management protocol. Medication regimens, resuscitation details and a full diagnostic workup require separately loaded evidence.",
+        "Complete risk-stratified major/minor definitions and recurrent-episode alternatives are not loaded. Practice interpreting supplied classified findings only; do not count the same joint manifestation as both major and minor or substitute the older surveillance definition."
+      ],
+      "opening": "Begin with a simulated presentation and ask which immediate concerns and eligibility checks matter before applying the linked diagnostic or risk tool.",
+      "stages": [
+        "Presentation and urgency",
+        "Differential and missing data",
+        "Appropriate criteria and limitations",
+        "Interpret supplied findings",
+        "Evidence-supported next step and recap"
+      ],
+      "coverage_status": "scoped_facts_available"
+    },
+    {
+      "id": "condition-upper-gi-bleeding",
+      "track": "condition",
+      "title": "Upper GI bleeding — risk assessment",
+      "tags": ["upper gi bleeding — risk assessment", "diagnosis", "criteria"],
+      "topic_ids": [],
+      "criteria_ids": ["criteria-glasgow-blatchford"],
+      "source_ids": ["RULE-GLASGOW-BLATCHFORD"],
+      "facts": [
+        "Glasgow-Blatchford is a pre-endoscopy upper-GI-bleeding risk tool. ACG suggests identifying very-low-risk patients, such as GBS 0-1, who may be discharged with outpatient follow-up after appropriate assessment."
+      ],
+      "gaps": [
+        "This is a scoped diagnostic/risk-assessment lesson, not a complete management protocol. Medication regimens, resuscitation details and a full diagnostic workup require separately loaded evidence.",
+        "Full input-to-point table is not loaded: interpret a supplied verified score, do not calculate from memory. Ongoing bleeding, instability or other admission needs override score-only reassurance. NICE CG141 uses a more restrictive example of 0; preserve guideline-specific thresholds."
+      ],
+      "opening": "Begin with a simulated presentation and ask which immediate concerns and eligibility checks matter before applying the linked diagnostic or risk tool.",
+      "stages": [
+        "Presentation and urgency",
+        "Differential and missing data",
+        "Appropriate criteria and limitations",
+        "Interpret supplied findings",
+        "Evidence-supported next step and recap"
+      ],
+      "coverage_status": "scoped_facts_available"
+    },
+    {
+      "id": "condition-acute-severe-headache",
+      "track": "condition",
+      "title": "New acute severe headache — SAH rule eligibility",
+      "tags": [
+        "new acute severe headache — sah rule eligibility",
+        "diagnosis",
+        "criteria"
+      ],
+      "topic_ids": [],
+      "criteria_ids": ["criteria-ottawa-sah", "criteria-glasgow-coma"],
+      "source_ids": ["RULE-OTTAWA-SAH"],
+      "facts": [
+        "The Ottawa SAH rule applies to alert patients older than 15 with a new severe nontraumatic headache reaching maximum intensity within 1 hour. Exclude new neurologic deficits, previous aneurysm/SAH/brain tumor, or established recurrent similar headaches (at least 3 episodes over at least 6 months).",
+        "In that eligible population, investigate if any: age at least 40, neck pain/stiffness, witnessed loss of consciousness, exertional onset, instantly peaking thunderclap headache, or limited neck flexion. A positive rule prompts investigation; it does not diagnose hemorrhage."
+      ],
+      "gaps": [
+        "Exact age boundary verified against original JAMA Box 2 (>=40); an indexed later PDF rendering omitted the equality sign. Do not extend the rule beyond its eligibility or use it as a substitute for evaluation of other headache emergencies. The complete downstream CT/LP/angiography pathway is not loaded.",
+        "Complete management and medication protocols require separately loaded evidence."
+      ],
+      "opening": "Begin with a simulated presentation and ask which immediate concerns and eligibility checks matter before applying the linked diagnostic or risk tool.",
+      "stages": [
+        "Presentation and urgency",
+        "Differential and missing data",
+        "Appropriate criteria and limitations",
+        "Interpret supplied findings",
+        "Evidence-supported next step and recap"
+      ],
+      "coverage_status": "scoped_facts_available"
+    },
+    {
+      "id": "criteria-glasgow-coma",
+      "track": "criteria",
+      "title": "Glasgow Coma Scale (GCS)",
+      "tags": [
+        "glasgow",
+        "coma",
+        "gcs",
+        "consciousness",
+        "trauma",
+        "neurologic"
+      ],
+      "topic_ids": [
+        "condition-minor-head-injury",
+        "condition-acute-severe-headache",
+        "f150bbe6c1e6e7a61ad5475c"
+      ],
+      "source_ids": ["RULE-GCS", "RULE-GCS-FAQ"],
+      "study_scope": "rule_summary",
+      "coverage_status": "scoped_facts_available",
+      "facts": [
+        "GCS records eye, verbal and best motor responses separately. Eye: spontaneous 4, to sound 3, to pressure 2, none 1. Verbal: oriented 5, confused 4, words 3, sounds 2, none 1. Motor: obeys commands 6, localizes 5, normal flexion 4, abnormal flexion 3, extension 2, none 1.",
+        "When all components are testable, sum E+V+M for a total 3-15, but report the individual responses and trends. If intubation, local injury, paralysis or another factor prevents assessment, record that component as not testable (NT); do not assign a false 1 or manufacture a numeric total."
+      ],
+      "gaps": [
+        "This is standard GCS, not a full pediatric adaptation or GCS-P. Sedation, intoxication, language barriers and pre-existing impairment affect interpretation. A total alone does not identify the cause of impaired consciousness or dictate a universal airway/disposition action."
+      ],
+      "opening": "I will describe a simulated patient. Identify the eye, verbal and motor responses one at a time, then give a total only if all three are testable. Explain your reasoning before I give feedback.",
+      "stages": [
+        "Purpose and testability",
+        "Eye response",
+        "Verbal response",
+        "Best motor response",
+        "Component reporting, total if testable, trends and limitations"
+      ],
+      "practice_cases": [
+        {
+          "id": "gcs-confused",
+          "presentation": "Simulated adult: eyes open before you speak; speaks coherently but gives the wrong location/date; follows a two-part command. No interfering factors.",
+          "components": {
+            "eye": 4,
+            "verbal": 4,
+            "motor": 6
+          },
+          "total": 14,
+          "explanation": "Spontaneous eye opening E4, confused coherent speech V4, obeying commands M6. Report E4 V4 M6, total 14."
+        },
+        {
+          "id": "gcs-flexion",
+          "presentation": "Simulated adult: opens eyes only to pressure, makes only groaning sounds, and shows rapid normal flexion of the arm without localizing to the head/neck stimulus. No interfering factors.",
+          "components": {
+            "eye": 2,
+            "verbal": 2,
+            "motor": 4
+          },
+          "total": 8,
+          "explanation": "Eye response to pressure E2, sounds V2, normal flexion M4: total 8. Normal flexion differs from localization and abnormal flexion."
+        },
+        {
+          "id": "gcs-intubated",
+          "presentation": "Simulated adult: endotracheal tube prevents speech; opens eyes to sound and follows a two-part command. Eye and motor responses are otherwise testable.",
+          "components": {
+            "eye": 3,
+            "verbal": "NT",
+            "motor": 6
+          },
+          "total": null,
+          "explanation": "Report E3 VNT M6 and the intubation limitation. Do not substitute V1 or manufacture a total."
+        }
+      ]
+    }
+  ],
+  "medication_inventory_count": 489,
+  "audit_date": "2026-10-17"
+}

@@ -13,8 +13,16 @@ import {
   clinicalSources,
   lessonById,
   lessons,
+  medicationSafetyProfiles,
 } from "./curriculum";
 import { antibioticCoverage } from "./coverage";
+import {
+  medicationInventory,
+  medicationSearch,
+  searchOfficialLabels,
+  readOfficialLabel,
+  type LabelChoice,
+} from "./medication-reference";
 import express from "express";
 import { randomBytes, timingSafeEqual } from "node:crypto";
 import { readFile } from "node:fs/promises";
@@ -48,6 +56,8 @@ const sessions = new Map<
     ids: string[];
     contextRevision: number;
     practice?: Practice;
+    labelChoices?: { revision: number; choices: LabelChoice[] };
+    referenceCalls?: number;
   }
 >();
 setInterval(() => {
@@ -67,6 +77,16 @@ app.get("/api/healthz", (_req, res) =>
     guidedCase: "vignette-to-conclusion-v1",
     curriculumVersion,
     curriculumLessons: lessons.length,
+    medicationSafetyProfiles: medicationSafetyProfiles.length,
+    medicationInventory: medicationInventory.length,
+    criteriaEntries: lessons.filter((l) => l.track === "criteria").length,
+    criteriaOverviews: lessons.filter(
+      (l) =>
+        l.track === "criteria" &&
+        l.study_scope === "purpose_and_interpretation",
+    ).length,
+    supplementalConditions: lessons.filter((l) => l.track === "condition")
+      .length,
   }),
 );
 app.get("/learning.js", async (_req, res) =>
@@ -193,6 +213,90 @@ app.get("/api/curriculum", (_req, res) =>
     antibioticCoverage: antibioticCoverage(),
   }),
 );
+app.post("/api/medications/search", (req, res) => {
+  try {
+    res.json({
+      medications: medicationSearch(req.body.query, req.body.topic_id),
+      total: medicationInventory.length,
+      notice:
+        "Inventory of named drug entities, not a verified formulary. Brand aliases are collapsed; some combination entities and component names coexist. Names alone are not dosing evidence.",
+    });
+  } catch (e) {
+    res.status(400).json({ error: (e as Error).message });
+  }
+});
+app.post("/api/medications/labels", async (req, res) => {
+  const session = res.locals.session;
+  if (req.body.approved !== true) {
+    res.status(403).json({ error: "Approve this official label search first" });
+    return;
+  }
+  if ((session.referenceCalls || 0) >= 20) {
+    res.status(429).json({ error: "Reference request limit reached" });
+    return;
+  }
+  session.referenceCalls = (session.referenceCalls || 0) + 1;
+  const revision = session.contextRevision;
+  try {
+    const result = await searchOfficialLabels(req.body.drug_id);
+    if (revision !== session.contextRevision) {
+      res
+        .status(409)
+        .json({ error: "Topic changed during reference search; search again" });
+      return;
+    }
+    session.labelChoices = { revision, choices: result.choices };
+    res.json(result);
+  } catch (e) {
+    res.status(502).json({ error: (e as Error).message });
+  }
+});
+app.post("/api/medications/load", async (req, res) => {
+  const session = res.locals.session;
+  const revision = session.contextRevision;
+  if (req.body.approved !== true || req.body.formulation_confirmed !== true) {
+    res.status(403).json({
+      error: "Confirm this exact product, formulation and route before loading",
+    });
+    return;
+  }
+  if (session.practice) {
+    res.status(409).json({
+      error:
+        "Finish reviewed practice before loading supplementary teaching evidence",
+    });
+    return;
+  }
+  const choice =
+    session.labelChoices?.revision === revision
+      ? session.labelChoices.choices.find(
+          (c: LabelChoice) => c.setid === req.body.setid,
+        )
+      : undefined;
+  if (!choice) {
+    res.status(403).json({
+      error: "Choose an exact label returned by this session's current search",
+    });
+    return;
+  }
+  if ((session.referenceCalls || 0) >= 20) {
+    res.status(429).json({ error: "Reference request limit reached" });
+    return;
+  }
+  session.referenceCalls = (session.referenceCalls || 0) + 1;
+  try {
+    const result = await readOfficialLabel(choice);
+    if (revision !== session.contextRevision) {
+      res
+        .status(409)
+        .json({ error: "Topic changed during lookup; no evidence loaded" });
+      return;
+    }
+    res.json(result);
+  } catch (e) {
+    res.status(502).json({ error: (e as Error).message });
+  }
+});
 app.post("/api/curriculum/search", (req, res) => {
   if (typeof req.body.query !== "string" || req.body.query.length > 200) {
     res.status(400).json({ error: "Search with at most 200 characters" });

@@ -9,7 +9,16 @@ import {
   clinicalSources,
   curriculumInstructions,
   scheduleCurriculumReview,
+  medicationSafetyProfiles,
+  medicationSafetyInstructions,
+  matchingMedicationSafety,
+  criteriaForTopics,
 } from "./curriculum";
+import {
+  medicationInventory,
+  medicationSearch,
+  extractLabelSections,
+} from "./medication-reference";
 import { antibioticCoverage } from "./coverage";
 import { learningSummary } from "./learning";
 process.env.FM_TUTOR_ACCESS_TOKEN = "curriculum-test-private-code-123456";
@@ -92,6 +101,304 @@ test("curriculum data preserves scoped regimens, source provenance and clinical 
     lessons.find((l) => l.id === "safe-maoi")!.category,
     "contraindication",
   );
+});
+
+test("all stored medication regimens expose contraindications and scoped organ-safety evidence", () => {
+  const sources = new Map(clinicalSources.map((s) => [s.id, s]));
+  for (const lesson of lessons.filter((l) => l.track === "medication")) {
+    assert.ok(lesson.medication_safety?.length, lesson.id);
+    for (const profile of lesson.medication_safety!) {
+      assert.ok(profile.contraindications.length, lesson.id);
+      assert.ok(profile.renal.status && profile.renal.guidance);
+      assert.ok(profile.hepatic.status && profile.hepatic.guidance);
+      assert.ok(profile.population && profile.gaps.length);
+      for (const id of profile.source_ids) {
+        const source = sources.get(id)!;
+        assert.ok(source?.url && source.sections && source.access_date, id);
+        assert.ok(lesson.source_ids.includes(id), id);
+        assert.ok(!source.organization.includes("Lexidrug"));
+      }
+    }
+  }
+  assert.equal(medicationSafetyProfiles.length, 11);
+});
+
+test("organ safety keeps unknown guidance, age limits and indication-specific rules explicit", () => {
+  const profile = (drug: string) =>
+    medicationSafetyProfiles.find((p) => p.drug === drug)!;
+  assert.equal(profile("penicillin V").renal.status, "not_established");
+  assert.equal(profile("doxycycline").renal.status, "no_adjustment");
+  assert.match(profile("cephalexin").population, /at least 15/);
+  assert.match(profile("cephalexin").renal.guidance, /maximum 1 g\/day/);
+  assert.equal(profile("metformin").hepatic.status, "avoid_use");
+  assert.match(profile("sertraline").hepatic.guidance, /halve/);
+  assert.match(profile("apixaban").renal.guidance, /do not apply AF criteria/);
+  assert.match(profile("apixaban").hepatic.guidance, /B: label cannot provide/);
+  assert.match(profile("ceftriaxone").population, /CDC, not the older label/);
+});
+
+test("ordinary guided lessons load matching drug safety only and assessments remain unchanged", () => {
+  assert.deepEqual(
+    matchingMedicationSafety("metformin-like-word").map((p) => p.drug),
+    ["metformin"],
+  );
+  assert.deepEqual(matchingMedicationSafety("unrelated asthma lesson"), []);
+  assert.deepEqual(matchingMedicationSafety("pseudoamoxicillin"), []);
+  const loaded = medicationSafetyInstructions("amoxicillin");
+  assert.match(loaded, /LABEL-AMOXICILLIN/);
+  assert.ok(!loaded.includes('"id":"LABEL-APIXABAN"'));
+  assert.match(loaded, /Missing guidance is NOT no adjustment needed/);
+  assert.match(loaded, /BEFORE explaining/);
+  assert.match(loaded, /Access date is not guideline publication date/);
+  const guided = instructions([topics[0].id], {}, [], "teaching", true);
+  assert.match(guided, /MEDICATION SAFETY PRACTICE/);
+  const assessed = instructions([topics[0].id], {}, [], "assessment", false);
+  assert.ok(!assessed.includes("MEDICATION SAFETY PRACTICE"));
+});
+
+test("criteria are searchable separately and condition-linked facts preserve rule limits", () => {
+  const pleural = topics.find((t) => /Pleural Effusion/.test(t.title))!;
+  const linked = criteriaForTopics([pleural.id]);
+  assert.ok(linked.some((l) => l.id === "criteria-lights"));
+  const prompt = instructions([pleural.id], {}, [], "teaching", true);
+  assert.match(prompt, /CONDITION-SPECIFIC CRITERIA/);
+  assert.match(prompt, /two-thirds the laboratory upper limit/);
+  assert.ok(
+    !instructions([pleural.id], {}, [], "assessment", false).includes(
+      "LOADED CRITERIA SOURCES",
+    ),
+  );
+  assert.ok(
+    !criteriaForTopics([topics[0].id]).some((l) => l.id === "criteria-lights"),
+  );
+  const ankle = lessons.find((l) => l.id === "criteria-ottawa-ankle")!;
+  assert.match(ankle.facts.join(" "), /both immediately/);
+  assert.match(ankle.facts.join(" "), /not a fracture diagnosis/);
+  const duke = lessons.find((l) => l.id === "criteria-duke")!;
+  assert.match(duke.facts.join(" "), /2 major.*3 minor.*5 minor/);
+  assert.equal(duke.study_scope, "purpose_and_interpretation");
+  assert.match(
+    curriculumInstructions(duke.id),
+    /supplied verified result only/,
+  );
+  assert.match(
+    curriculumInstructions("condition-ankle-foot-trauma"),
+    /criteria-ottawa-foot/,
+  );
+});
+
+test("criteria have rule-specific provenance and do not mix score versions or unrelated populations", () => {
+  const criteria = lessons.filter((l) => l.track === "criteria");
+  assert.equal(criteria.length, 57);
+  for (const l of criteria) {
+    assert.ok(l.facts.length, l.id);
+    assert.ok(l.topic_ids?.length, `${l.id}: condition integration`);
+    assert.ok(!l.source_ids.some((id) => id.includes("PENDING")), l.id);
+    for (const id of l.source_ids) {
+      const s = clinicalSources.find((s) => s.id === id)!;
+      assert.ok(s.sections && s.access_date, id);
+      assert.ok(!s.url.includes("curriculum-guidelines"), id);
+    }
+  }
+  const heart = lessons.find((l) => l.id === "criteria-heart")!;
+  assert.match(heart.facts.join(" "), /omits troponin/);
+  assert.match(heart.gaps.join(" "), /age 45 or 65/);
+  const lupus = topics.find((t) => /Systemic Lupus/.test(t.title))!;
+  assert.ok(!criteriaForTopics([lupus.id]).some((l) => l.id === heart.id));
+  const gdm = topics.find((t) => /Gestational Diabetes/.test(t.title))!;
+  assert.ok(
+    !criteriaForTopics([gdm.id]).some((l) => l.id === "criteria-diabetes"),
+  );
+  for (const id of ["criteria-psi", "criteria-news2", "criteria-child-pugh"]) {
+    const l = lessons.find((l) => l.id === id)!;
+    assert.equal(l.study_scope, "purpose_and_interpretation");
+    assert.match(
+      curriculumInstructions(id),
+      /Never ask the learner to calculate missing points/,
+    );
+  }
+});
+
+test("broad medication inventory reports names separately from checked safety and supports topic filtering", () => {
+  assert.equal(medicationInventory.length, 489);
+  assert.equal(
+    medicationInventory.filter((m) => m.status === "scoped_safety_profile")
+      .length,
+    11,
+  );
+  assert.equal(
+    new Set(medicationInventory.map((m) => m.id)).size,
+    medicationInventory.length,
+  );
+  assert.ok(medicationSearch("Eliquis").some((m) => m.name === "apixaban"));
+  assert.deepEqual(medicationSearch("impossible-medication-zzzz"), []);
+  assert.throws(() => medicationSearch({}));
+  const med = medicationInventory.find((m) => m.name === "apixaban")!;
+  assert.ok(med.topics.length);
+  assert.ok(medicationSearch("apixaban", med.topics[0].topic_id).length);
+  assert.equal(medicationSearch("apixaban", "unknown-topic").length, 0);
+});
+
+test("GCS recognition exercises distinguish response components and untestable totals", () => {
+  const gcs = lessons.find((l) => l.id === "criteria-glasgow-coma")!;
+  const cases = gcs.practice_cases!;
+  assert.equal(cases.length, 3);
+  for (const c of cases) {
+    const values = Object.values(c.components);
+    if (values.includes("NT")) assert.equal(c.total, null);
+    else
+      assert.equal(
+        c.total,
+        values.reduce<number>((sum, v) => sum + Number(v), 0),
+      );
+  }
+  assert.equal(cases.find((c) => c.id === "gcs-flexion")!.components.motor, 4);
+  assert.match(
+    curriculumInstructions(gcs.id),
+    /Keep components, total and explanation hidden until the learner attempts/,
+  );
+  assert.match(
+    curriculumInstructions(gcs.id),
+    /Never score a not-testable response as 1/,
+  );
+  assert.ok(
+    criteriaForTopics(["condition-minor-head-injury"]).some(
+      (l) => l.id === gcs.id,
+    ),
+  );
+});
+
+test("label extraction preserves complete table cells and rejects unsafe or nonhuman documents", () => {
+  const xml = `<document><code displayName="HUMAN PRESCRIPTION DRUG LABEL"/><section><title>2 DOSAGE</title><text><table><tr><th>CrCl mL/min</th><th>Dose</th></tr><tr><td>&lt;30</td><td>250 mg q12h</td></tr></table></text></section><section><title>5.1 Lactic acidosis</title><text>Warnings apply.<script>evil()</script></text></section></document>`;
+  const result = extractLabelSections(xml);
+  assert.match(result.sections[0].text, /CrCl mL\/min \| Dose \|/);
+  assert.match(result.sections[0].text, /<30 \| 250 mg q12h/);
+  assert.ok(!result.sections.some((s) => s.text.includes("evil()")));
+  assert.ok(result.sections.some((s) => /Lactic/.test(s.title)));
+  assert.throws(() => extractLabelSections("<!DOCTYPE x><document/>"));
+  assert.throws(() =>
+    extractLabelSections(xml.replace("HUMAN PRESCRIPTION", "VETERINARY")),
+  );
+  const huge = xml.replace("Warnings apply.", "x".repeat(21000));
+  assert.ok(extractLabelSections(huge).omitted.includes("5.1 Lactic acidosis"));
+  const nested =
+    '<document><code displayName="HUMAN PRESCRIPTION DRUG LABEL"/><section><title>5 WARNINGS</title><component><section><title>5.1 Renal</title><text>Child section only</text></section></component></section></document>';
+  assert.deepEqual(extractLabelSections(nested).sections, [
+    { title: "5.1 Renal", text: "Child section only" },
+  ]);
+});
+
+test("medication reference endpoints require session approval, exact returned product and no active assessment", async () => {
+  assert.equal(
+    (await request("/api/medications/search", { query: "metformin" })).status,
+    401,
+  );
+  const api = await unlocked();
+  assert.equal(
+    (
+      await api("/api/medications/labels", {
+        drug_id: "metformin",
+        approved: false,
+      })
+    ).status,
+    403,
+  );
+  assert.equal(
+    (
+      await api("/api/medications/load", {
+        setid: "arbitrary",
+        approved: true,
+        formulation_confirmed: true,
+      })
+    ).status,
+    403,
+  );
+  assert.equal(
+    (await api("/api/medications/search", { query: {} })).status,
+    400,
+  );
+  const originalFetch = globalThis.fetch;
+  let fetched = 0;
+  const setid = "5073c482-952c-400c-afff-64380f133bc8";
+  globalThis.fetch = (async (url: any) => {
+    fetched++;
+    const u = new URL(String(url));
+    assert.equal(u.hostname, "dailymed.nlm.nih.gov");
+    if (u.pathname.endsWith(".json"))
+      return new Response(
+        JSON.stringify({
+          data: [
+            {
+              setid,
+              title: "METFORMIN TABLET",
+              published_date: "Oct 16, 2026",
+              spl_version: 4,
+            },
+          ],
+        }),
+      );
+    return new Response(
+      '<document><code displayName="HUMAN PRESCRIPTION DRUG LABEL"/><section><title>4 CONTRAINDICATIONS</title><text>Source-scoped example only</text></section></document>',
+    );
+  }) as any;
+  try {
+    const search = await api("/api/medications/labels", {
+      drug_id: "metformin",
+      approved: true,
+    });
+    assert.equal(search.status, 200);
+    const countBefore = fetched;
+    assert.equal(
+      (
+        await api("/api/medications/load", {
+          setid,
+          approved: true,
+          formulation_confirmed: false,
+        })
+      ).status,
+      403,
+    );
+    assert.equal(fetched, countBefore);
+    const loaded = await api("/api/medications/load", {
+      setid,
+      approved: true,
+      formulation_confirmed: true,
+    });
+    assert.equal(loaded.status, 200);
+    const body: any = await loaded.json();
+    assert.ok(body.url.includes(setid));
+    assert.ok(body.accessed);
+    assert.match(body.notice, /not independently checked/);
+    await api("/api/library/select", { topic_id: topics[1].id });
+    assert.equal(
+      (
+        await api("/api/medications/load", {
+          setid,
+          approved: true,
+          formulation_confirmed: true,
+        })
+      ).status,
+      403,
+    );
+    await api("/api/practice/start", {
+      ids: [topics[0].id],
+      mode: "assessment",
+      scope: "mixed",
+      limit: 2,
+    });
+    assert.equal(
+      (
+        await api("/api/medications/load", {
+          setid,
+          approved: true,
+          formulation_confirmed: true,
+        })
+      ).status,
+      409,
+    );
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
 });
 
 test("new endpoints require authentication and specialist search does not claim clinical evidence", async () => {

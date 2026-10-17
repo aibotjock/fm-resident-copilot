@@ -351,14 +351,28 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
       append(...children: any[]) {
         this.children.push(...children);
         if (
-          ["topic", "lookupUrl", "curriculumLesson"].includes(id) &&
+          [
+            "topic",
+            "lookupUrl",
+            "curriculumLesson",
+            "medicationChoice",
+            "medicationLabelChoice",
+          ].includes(id) &&
           !this.value
         )
           this.value = children[0]?.value || "";
       },
       replaceChildren(...children: any[]) {
         this.children = children;
-        if (["topic", "lookupUrl", "curriculumLesson"].includes(id))
+        if (
+          [
+            "topic",
+            "lookupUrl",
+            "curriculumLesson",
+            "medicationChoice",
+            "medicationLabelChoice",
+          ].includes(id)
+        )
           this.value = "";
       },
       click() {
@@ -404,6 +418,34 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
     fetch: async (path: string, opts: any) => {
       const body = opts.body ? JSON.parse(opts.body) : undefined;
       apiCalls.push({ path, body });
+      if (path === "/api/medications/labels")
+        return Response.json({
+          choices: [
+            {
+              setid: "5073c482-952c-400c-afff-64380f133bc8",
+              title: "METFORMIN TABLET — UI fixture",
+              published_date: "Oct 16, 2026",
+            },
+          ],
+          notice: "Choose the exact product",
+        });
+      if (path === "/api/medications/load")
+        return Response.json({
+          title: "METFORMIN TABLET — UI fixture",
+          published_date: "Oct 16, 2026",
+          spl_version: "4",
+          label_effective_date: "20261016",
+          accessed: "2026-10-17",
+          url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5073c482-952c-400c-afff-64380f133bc8",
+          sections: [
+            {
+              title: "4 CONTRAINDICATIONS",
+              text: "UNIQUE-SESSION-SOURCE-FIXTURE",
+            },
+          ],
+          omitted: [],
+          notice: "Missing sections are gaps",
+        });
       return path === "/api/session"
         ? new Response("v=0\r\nmock-sdp", {
             headers: { "content-type": "application/sdp" },
@@ -919,6 +961,14 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
   nodes.get("curriculumFilter").oninput();
   assert.equal(nodes.get("curriculumLesson").value, "med-amoxicillin-strep");
   assert.ok(nodes.get("curriculumSources").children.length);
+  const safetyNotes = nodes
+    .get("curriculumNotes")
+    .children.map((p: any) => p.textContent)
+    .join("\n");
+  assert.match(safetyNotes, /Contraindication:/);
+  assert.match(safetyNotes, /Renal \(adjustment required\)/);
+  assert.match(safetyNotes, /Hepatic \(not established\)/);
+  assert.match(safetyNotes, /LABEL-AMOXICILLIN/);
   nodes.get("curriculumFilter").value = "absent-medication-zzzz";
   nodes.get("curriculumFilter").oninput();
   assert.equal(nodes.get("curriculumLesson").options.length, 0);
@@ -1003,18 +1053,16 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
   const specialistArchive = await exported!.text();
   assert.equal(JSON.parse(specialistArchive).curriculumReviews.length, 1);
   nodes.get("clear").onclick();
-  await nodes
-    .get("importFile")
-    .onchange({
-      target: {
-        files: [
-          {
-            size: specialistArchive.length,
-            text: async () => specialistArchive,
-          },
-        ],
-      },
-    });
+  await nodes.get("importFile").onchange({
+    target: {
+      files: [
+        {
+          size: specialistArchive.length,
+          text: async () => specialistArchive,
+        },
+      ],
+    },
+  });
   assert.equal(vm.runInContext("data.curriculumReviews.length", sandbox), 1);
   assert.equal(
     vm.runInContext(
@@ -1024,4 +1072,63 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
     "Safety stage 3",
   );
   assert.equal(vm.runInContext("data.events.length", sandbox), scoredBefore);
+  // Navigate a rule through the real UI handlers, then exercise product-selection guards.
+  nodes.get("curriculumFilter").value = "";
+  nodes.get("learningTrack").value = "criteria";
+  nodes.get("learningTrack").onchange();
+  assert.equal(nodes.get("curriculumLesson").options.length, 57);
+  nodes.get("curriculumFilter").value = "HEART";
+  nodes.get("curriculumFilter").oninput();
+  assert.equal(nodes.get("curriculumLesson").value, "criteria-heart");
+  assert.ok(
+    nodes
+      .get("curriculumNotes")
+      .children.some((n: any) => /omits troponin/.test(n.textContent)),
+  );
+  nodes.get("curriculumFilter").value = "NEWS2";
+  nodes.get("curriculumFilter").oninput();
+  assert.ok(
+    nodes
+      .get("curriculumNotes")
+      .children.some((n: any) =>
+        /Full calculation inputs are not loaded/.test(n.textContent),
+      ),
+  );
+  vm.runInContext(
+    '["medicationQuery","medicationChoice","medicationLabelChoice","medicationTopicOnly","medicationProductConfirmed"].forEach(id=>document.getElementById(id))',
+    sandbox,
+  );
+  nodes.get("medicationQuery").value = "metformin";
+  await nodes.get("medicationSearch").onclick();
+  assert.equal(nodes.get("medicationChoice").value, "metformin");
+  await nodes.get("medicationLabels").onclick();
+  assert.ok(nodes.get("medicationLabelChoice").value);
+  const loads = () =>
+    apiCalls.filter((c) => c.path === "/api/medications/load").length;
+  const beforeLoad = loads();
+  await nodes.get("medicationLoad").onclick();
+  assert.equal(
+    loads(),
+    beforeLoad,
+    "formulation confirmation required before load",
+  );
+  nodes.get("medicationProductConfirmed").checked = true;
+  await nodes.get("medicationLoad").onclick();
+  assert.match(
+    nodes.get("medicationResult").textContent,
+    /Version 4.*Label effective date 20261016/,
+  );
+  assert.match(
+    nodes.get("medicationResult").textContent,
+    /UNIQUE-SESSION-SOURCE-FIXTURE/,
+  );
+  assert.ok(
+    [...saved.values()].every(
+      (v) => !v.includes("UNIQUE-SESSION-SOURCE-FIXTURE"),
+    ),
+    "source text not persisted",
+  );
+  nodes.get("topic").onchange();
+  assert.equal(nodes.get("medicationResult").textContent, "");
+  assert.equal(nodes.get("medicationProductConfirmed").checked, false);
 });

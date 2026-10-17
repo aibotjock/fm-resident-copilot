@@ -1,6 +1,14 @@
 import content from "./curriculum.json";
+import expansion from "./expanded-curriculum.json";
 
-export type Track = "medication" | "safety" | "advanced";
+export type Track =
+  | "medication"
+  | "safety"
+  | "advanced"
+  | "criteria"
+  | "condition";
+export type MedicationSafety =
+  (typeof content.medication_safety_profiles)[number];
 export type Lesson = {
   id: string;
   track: Track;
@@ -28,11 +36,82 @@ export type Lesson = {
     | "adverse_effect"
     | "prescribing_pitfall";
   reveals?: string[];
+  medication_safety?: MedicationSafety[];
+  topic_ids?: string[];
+  criteria_ids?: string[];
+  study_scope?: "rule_summary" | "purpose_and_interpretation";
+  practice_cases?: {
+    id: string;
+    presentation: string;
+    components: {
+      eye: number | string;
+      verbal: number | string;
+      motor: number | string;
+    };
+    total: number | null;
+    explanation: string;
+  }[];
 };
-export const curriculumVersion = "medication-synthesis-2026-10-17-v1";
-export const lessons = content.lessons as Lesson[];
+export const curriculumVersion = "medication-reference-criteria-2026-10-17-v3";
+export const lessons = (
+  [...content.lessons, ...expansion.lessons] as Lesson[]
+).map((lesson) => {
+  const medication_safety = content.medication_safety_profiles.filter((p) =>
+    lesson.regimen
+      ? lesson.regimen.drug.toLowerCase().startsWith(p.drug.toLowerCase())
+      : lesson.track === "safety" &&
+        p.source_ids.some((id) => lesson.source_ids.includes(id)),
+  );
+  return {
+    ...lesson,
+    medication_safety,
+    source_ids: [
+      ...new Set([
+        ...lesson.source_ids,
+        ...medication_safety.flatMap((p) => p.source_ids),
+      ]),
+    ],
+  };
+});
 export const referenceRegistry = content.references;
-export const clinicalSources = content.sources;
+export const clinicalSources = [...content.sources, ...expansion.sources];
+export const medicationSafetyProfiles = content.medication_safety_profiles;
+export const medicationSafetyFlow = `MEDICATION SAFETY PRACTICE: Apply to every medication-containing guided lesson, antibiotic or otherwise. Ask ONE decision at a time: usual full regimen; absolute contraindications; renal function measure and dose/interval decision; liver severity and dose adjustment versus avoid-use/precaution; relevant interactions and monitoring. Elicit the learner's answer BEFORE explaining; revisit one supported decision with changed simulated patient factors. Never recite the answer before asking. Do not interrupt an active assessment or turn this into scored practice.
+Use only explicitly loaded evidence for each drug, formulation, population and indication. Missing guidance is NOT no adjustment needed. Distinguish contraindicated, not recommended/avoid, caution/monitor, no adjustment needed, and not established. Never infer a Child-Pugh reduction, equate CrCl with indexed eGFR, apply adult renal tables to small children, transfer AF apixaban criteria to VTE, or extrapolate to dialysis. These profiles are selective teaching, not exhaustive contraindication/interaction screening. No supported profile: identify the exact gap, continue supported teaching and offer the existing scoped lookup; never fill it from memory.
+Retain exact source ID, URL, section, source date when known and access date. Give exact provenance on request; do not routinely read citations aloud. Keep citation IDs in the written transcript. Access date is not guideline publication date and does not prove latest evidence or approval. Never claim AAFP/ABFM endorsement without documented evidence. Disease guidance determines indication-specific antibiotic selection/duration; product labeling supplies scoped safety. If sources disagree, identify the conflict and their scopes, never silently blend regimens. Historical label STI doses must not override the loaded CDC regimen. Commercial sources are not connected.`;
+
+export function matchingMedicationSafety(text: string) {
+  return medicationSafetyProfiles.filter((p) =>
+    new RegExp(
+      `\\b${p.drug.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`,
+      "i",
+    ).test(text),
+  );
+}
+
+export function medicationSafetyInstructions(text: string) {
+  const profiles = matchingMedicationSafety(text);
+  const ids = new Set(profiles.flatMap((p) => p.source_ids));
+  return `\n${medicationSafetyFlow}\nADDITIONAL LOADED MEDICATION SAFETY EVIDENCE (only the following drug profiles are medical evidence; cite [MED source_id]): ${JSON.stringify(profiles)}\nLOADED MEDICATION SAFETY SOURCES: ${JSON.stringify(clinicalSources.filter((s) => ids.has(s.id)))}\n`;
+}
+export function criteriaForTopics(ids: string[]) {
+  return lessons.filter(
+    (l) =>
+      l.track === "criteria" && l.topic_ids?.some((id) => ids.includes(id)),
+  );
+}
+export function criteriaInstructions(ids: string[], explicit: string[] = []) {
+  const selected = lessons.filter(
+    (l) =>
+      l.track === "criteria" &&
+      (explicit.includes(l.id) || l.topic_ids?.some((id) => ids.includes(id))),
+  );
+  if (!selected.length) return "";
+  const sourceIds = new Set(
+    selected.filter((l) => l.facts.length).flatMap((l) => l.source_ids),
+  );
+  return `\nCONDITION-SPECIFIC CRITERIA: Integrate a relevant supported rule at the diagnostic, testing, severity, treatment or disposition stage of this same condition lesson. Ask whether it applies, then elicit the inputs/interpretation BEFORE explaining. One question at a time; do not change topics or force every listed rule into every case. These are original unscored exercises. Separate screening, diagnosis, prognosis, classification and treatment criteria. Eligibility and exclusions come before calculation. A positive imaging rule is not a fracture diagnosis. An absent input or incomplete rule is not a negative result. Never calculate a missing score from memory or invent accuracy/exam-frequency claims. Source dates are not proof of current endorsement. Entries with no facts are discovery metadata ONLY and must be described as source verification pending. Do not teach those rule details unless separate explicitly loaded evidence supports them. Cite [MED source_id] for the following scoped facts; exact links/sections available on request.\n${JSON.stringify(selected.map((l) => ({ id: l.id, title: l.title, study_scope: l.study_scope, facts: l.facts, gaps: l.gaps, source_ids: l.facts.length ? l.source_ids : [] })))}\nLOADED CRITERIA SOURCES: ${JSON.stringify(clinicalSources.filter((s) => sourceIds.has(s.id)))}\n`;
+}
 export function lessonById(id: unknown) {
   if (typeof id !== "string") throw Error("Choose a valid curriculum lesson");
   const lesson = lessons.find((l) => l.id === id);
@@ -45,8 +124,21 @@ export function curriculumCatalog() {
     lessons,
     sources: clinicalSources,
     references: referenceRegistry,
+    medicationInventoryCount: expansion.medication_inventory_count,
+    medicationSafetyProfileCount: medicationSafetyProfiles.length,
+    criteria: lessons
+      .filter((l) => l.track === "criteria")
+      .map((l) => ({
+        id: l.id,
+        title: l.title,
+        topic_ids: l.topic_ids,
+        study_scope: l.study_scope,
+        status: l.facts.length
+          ? "scoped_facts_available"
+          : "source_verification_pending",
+      })),
     notice:
-      "Source-checked educational starter set; independent clinician/pharmacist review pending. Not a comprehensive drug database. Generated teaching and self-ratings are unscored.",
+      "Educational snapshots and source-directed study; check each entry's scope and evidence gaps. An overview or rule summary is not a complete validated calculator. Independent clinician/pharmacist review pending; generated teaching and self-ratings are unscored.",
     gaps: content.gaps,
   };
 }
@@ -67,6 +159,12 @@ export function curriculumInstructions(id: unknown) {
   return `\nACTIVE SPECIALIST CURRICULUM ${curriculumVersion}: ${l.track} / ${l.id} / ${l.title}.
 This lesson is additional explicitly loaded medical evidence. Its source-backed facts and regimen may be used alongside the selected LIBRARY, only within their stated indication, formulation, population and limitations. Cite [MED source_id] for these facts; IDs must be from LOADED CURRICULUM SOURCES. Never imply a commercial reference was consulted. Registry metadata is not medical evidence.
 This curriculum flow takes precedence over the default GUIDED CASE stages, but never over source, privacy, unscored-practice or safety rules. Do not start a reviewed practice tool for these lessons. Ask ONE question per turn and wait. Keep essential teaching concise; offer optional depth. A learner may request another stage or more explanation. Save lesson stage and pending question using save_lesson; include this curriculum ID. Do not resume a checkpoint for a different lesson.
+${medicationSafetyFlow}
+Scoped medication safety evidence: ${JSON.stringify(l.medication_safety || [])}
+RECOGNITION AND SCORING EXERCISES: ${JSON.stringify(l.practice_cases || [])}. These are simulated case premises, not clinical evidence. Choose one case, present only its presentation and ask for ONE component at a time, then the total if all components are testable. Keep components, total and explanation hidden until the learner attempts the answer. Explain a mismatch with the loaded source, offer a retry with another case, and keep this recognition practice unscored and outside exam statistics. Never score a not-testable response as 1 or invent a total when total is null.
+CRITERIA TRACK: Study scope for this entry: ${l.study_scope || "scoped summary"}. A purpose_and_interpretation entry has no complete calculation table: teach purpose/eligibility and interpret a supplied verified result only. Never ask the learner to calculate missing points or reconstruct missing diagnostic checklists. Use the loaded rule facts only. First establish purpose, population and exclusions, then ask for inputs/thresholds, interpretation and a supported next step. Revisit with changed simulated values. A partial summary is not a complete validated calculator. Enforce each entry study_scope: purpose_and_interpretation means no full calculation inputs are loaded; use supplied verified results or classified findings only. If facts are empty, explain that this is a discovery entry with verification pending; do not invent the missing rule. Offer available sourced criteria or the listed source link.
+ADDITIONAL CONDITION TRACK: Use the original guided case stages within this condition, using only these scoped facts and linked criteria; do not teach unrelated currently selected base-topic evidence as if it described this condition. Missing dosing or workup steps remain gaps.
+${l.track === "condition" ? criteriaInstructions([], l.criteria_ids) : ""}
 MEDICATION TRACK: Elicit the indication and full prescription (drug, formulation, dose with units, route, frequency, duration/titration, relevant adjustments, maximum where applicable). Distinguish starting dose, target range and maximum; do not invent absent targets. Always ask a case-specific safety checkpoint and discuss alternatives ONLY when sources establish them. Clearly distinguish mg/kg/dose from mg/kg/day, apply supported caps, and do not generalize adult doses to children.
 SAFETY TRACK: Teach the labeled category ${l.category || "as applicable"}. Distinguish absolute contraindications, avoid-use warnings, monitorable interactions, adverse effects and prescribing errors. Elicit risk, susceptible patient factors, action, monitoring and a supported alternative if available. SIADH is a possible mechanism of medication-related hyponatremia, not proof of a diagnosis or a drug-drug contraindication. Use prescribing-error mini-cases and revisit the concept with changed simulated context.
 ADVANCED TRACK: Let the learner synthesize before supplying your assessment. Follow the staged case, reveal one supplied result only after the preceding response, keep all patient facts consistent, and do not reveal the final explanation early. Treat demographics, lab values and narrative as simulated case premises, not guideline claims. Never assume a medication association proves causality. Do not force a single diagnosis when several contributors are plausible. Ask what data are missing. Accept multiple defensible approaches; explain evidence limits instead of inventing a gold-standard answer. Elicit medication reconciliation, OTC use, competing goals, patient preferences, cost/support, monitoring and disposition. End with a 30-60 second oral presentation and qualitative feedback using the rubric below: strengths, omissions, one priority improvement, then an opportunity to retry. Distinguish observed reasoning from missing information. Do not fabricate a numerical grade or mastery. Specific emergency treatments or correction rates require explicitly loaded evidence; otherwise identify the gap and discuss escalation without prescribing an unsupported protocol.
