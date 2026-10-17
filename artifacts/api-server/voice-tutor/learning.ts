@@ -1,4 +1,5 @@
 import iteHelpers from "../../mobile/utils/ite";
+export { scheduleCurriculumReview } from "./curriculum";
 export const { ITE_ACTIVITY_DOMAINS, reportValue, compareITE } = iteHelpers;
 export const BLUEPRINT = {
   "Acute Care and Diagnosis": 35,

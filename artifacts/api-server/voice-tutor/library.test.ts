@@ -104,7 +104,7 @@ test("voice health identifies catalog navigation and private endpoints reject un
   );
 });
 
-test("initial context exposes all catalog metadata, eight tools, and only selected-topic evidence", async () => {
+test("initial context exposes all catalog metadata, ten tools, and only selected-topic evidence", async () => {
   const api = await unlocked();
   const response = await api("/api/context", {
     ids: [hypertension],
@@ -119,7 +119,7 @@ test("initial context exposes all catalog metadata, eight tools, and only select
     [hypertension],
   );
   assertPromptCatalog(context.instructions, hypertension);
-  assert.equal(context.tools.length, 8);
+  assert.equal(context.tools.length, 10);
   for (const name of ["search_library", "select_library_topic"])
     assert.ok(context.tools.some((tool: any) => tool.name === name));
 });
@@ -135,7 +135,7 @@ test("initial Realtime handshake receives the full catalog and working navigatio
     assert.equal(String(url), "https://api.openai.com/v1/realtime/calls");
     const session = JSON.parse(options.body.get("session"));
     assertPromptCatalog(session.instructions, hypertension);
-    assert.equal(session.tools.length, 8);
+    assert.equal(session.tools.length, 10);
     assert.equal(session.tool_choice, "auto");
     const search = session.tools.find(
       (tool: any) => tool.name === "search_library",
@@ -328,7 +328,7 @@ test("selecting asthma loads fresh evidence, changes learning validation, and cl
     ),
   );
   assert.ok(selected.instructions.includes("Practice mode: teaching"));
-  assert.equal(selected.tools.length, 8);
+  assert.equal(selected.tools.length, 10);
   // A slow preview from the old dropdown selection can arrive after a spoken
   // topic switch. Loading that preview must never restore the old active scope.
   const staleContext = await api("/api/context", {

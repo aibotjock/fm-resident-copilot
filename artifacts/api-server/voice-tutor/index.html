@@ -231,6 +231,76 @@
               ><button id="weak">Focus on a weak area</button>
             </div>
             <small id="version"></small>
+            <details open class="card">
+              <summary>Medication &amp; advanced learning</summary>
+              <label for="learningTrack">Learning section</label>
+              <select id="learningTrack">
+                <option value="guided">Original guided topic</option>
+                <option value="medication">
+                  Medication regimens &amp; antibiotics
+                </option>
+                <option value="safety">
+                  Medication safety &amp; common pitfalls
+                </option>
+                <option value="advanced">Advanced clinical synthesis</option>
+              </select>
+              <div id="curriculumControls" class="hidden">
+                <label for="curriculumFilter"
+                  >Find by medication, condition or consequence</label
+                >
+                <input
+                  id="curriculumFilter"
+                  placeholder="SIADH, renal, antibiotics, bleeding…"
+                />
+                <label for="curriculumLesson">Lesson or case</label>
+                <select id="curriculumLesson"></select>
+                <p id="curriculumStatus" role="status"></p>
+                <div id="curriculumPreview"></div>
+                <button id="curriculumReveal">Reveal next case finding</button>
+                <p id="curriculumFinding" aria-live="polite"></p>
+                <details>
+                  <summary>Show teaching notes &amp; evidence gaps</summary>
+                  <div id="curriculumNotes"></div>
+                </details>
+                <div id="curriculumSources"></div>
+                <label for="curriculumRating"
+                  >Self-assessment after studying (unscored)</label
+                >
+                <select id="curriculumRating">
+                  <option value="again">Again</option>
+                  <option value="hard">Hard</option>
+                  <option value="good">Good</option>
+                  <option value="easy">Easy</option>
+                </select>
+                <button id="curriculumReview">
+                  Schedule this lesson for review
+                </button>
+                <button id="curriculumDue">Open next due lesson</button>
+                <p id="curriculumReviewStatus" role="status"></p>
+              </div>
+              <details>
+                <summary>
+                  Antibiotic coverage across the existing library
+                </summary>
+                <p>
+                  A topic or an antibiotic mention does not establish that
+                  antibiotics are indicated. Coverage below describes checked
+                  dosing support, not prescribing advice.
+                </p>
+                <label for="coverageFilter"
+                  >Find a condition (blank shows antimicrobial-related
+                  topics)</label
+                ><input
+                  id="coverageFilter"
+                  placeholder="Pneumonia, UTI, sinusitis…"
+                />
+                <div id="antibioticCoverage"></div>
+              </details>
+              <details>
+                <summary>Reference coverage &amp; access</summary>
+                <div id="referenceRegistry"></div>
+              </details>
+            </details>
             <label for="practiceMode">Practice mode</label
             ><select id="practiceMode">
               <option value="teaching">
@@ -445,6 +515,11 @@
       data && Array.isArray(data.events)
         ? data
         : { events: [], checkpoint: "", plan: [], history: [] };
+    $("learningTrack").value = "guided";
+    let curriculum = null,
+      revealIndex = 0;
+    const curriculumId = () =>
+      $("learningTrack").value === "guided" ? "" : $("curriculumLesson").value;
     let topics = [],
       entries = [],
       pc,
@@ -466,6 +541,269 @@
       practiceCurrent = null,
       practiceRunning = false,
       practiceTimer = null;
+    function moduleLesson() {
+      return curriculum?.lessons.find((l) => l.id === curriculumId());
+    }
+    function restoreCurriculumCheckpoint() {
+      const old = data.curriculumCheckpoints?.[curriculumId()];
+      data.checkpoint = old?.checkpoint || "";
+      data.plan = old?.plan || [];
+      data.lessonTopic = $("topic").value;
+      data.lessonCurriculum = curriculumId();
+    }
+    function selectCurriculumLessons() {
+      resetTopicSession();
+      const old = $("curriculumLesson").value;
+      const words = $("curriculumFilter")
+        .value.toLowerCase()
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+      const matches = (curriculum?.lessons || []).filter(
+        (l) =>
+          l.track === $("learningTrack").value &&
+          words.every((w) =>
+            (l.title + " " + l.tags.join(" ")).toLowerCase().includes(w),
+          ),
+      );
+      $("curriculumLesson").replaceChildren();
+      for (const l of matches) {
+        const o = document.createElement("option");
+        o.value = l.id;
+        o.textContent = l.title;
+        $("curriculumLesson").append(o);
+      }
+      if (matches.some((l) => l.id === old)) $("curriculumLesson").value = old;
+      restoreCurriculumCheckpoint();
+      renderCurriculumLesson();
+      persist();
+    }
+    function renderLookupChoices() {
+      const lesson = moduleLesson();
+      const sources = [
+        ...entries.flatMap((e) => e.evidence_records || []),
+        ...(curriculum?.sources || []).filter((s) =>
+          lesson?.source_ids.includes(s.id),
+        ),
+      ];
+      $("lookupUrl").replaceChildren();
+      for (const url of [...new Set(sources.map((s) => s.url))]) {
+        const source = sources.find((s) => s.url === url),
+          option = document.createElement("option");
+        option.value = url;
+        option.textContent = source.organization + " — " + source.title;
+        $("lookupUrl").append(option);
+      }
+      $("lookup").disabled = !sources.length;
+      $("lookupResult").textContent = "";
+    }
+    function renderCurriculumLesson() {
+      const l = moduleLesson();
+      const specialist = $("learningTrack").value !== "guided";
+      $("curriculumControls").classList.toggle("hidden", !specialist);
+      $("curriculumStatus").textContent = specialist
+        ? l
+          ? curriculum.notice
+          : "No matching lesson. Clear the search or choose another section."
+        : "";
+      $("start").disabled = !$("topic").value || (specialist && !l);
+      $("curriculumReview").disabled = !l;
+      $("curriculumPreview").textContent = l?.opening || "";
+      $("curriculumNotes").replaceChildren();
+      $("curriculumSources").replaceChildren();
+      $("curriculumFinding").textContent = "";
+      $("curriculumReviewStatus").textContent = "";
+      renderLookupChoices();
+      revealIndex = 0;
+      $("curriculumReveal").disabled = !l?.reveals?.length;
+      if (!l) return;
+      function note(text) {
+        const p = document.createElement("p");
+        p.textContent = text;
+        $("curriculumNotes").append(p);
+      }
+      if (l.category)
+        note("Safety classification: " + l.category.replaceAll("_", " "));
+      if (l.regimen)
+        for (const [key, value] of Object.entries(l.regimen))
+          note(key + ": " + value);
+      for (const fact of l.facts) note(fact);
+      for (const gap of l.gaps) note("Evidence gap: " + gap);
+      note("Lesson flow: " + l.stages.join(" → "));
+      for (const source of curriculum.sources.filter((x) =>
+        l.source_ids.includes(x.id),
+      )) {
+        const p = document.createElement("p"),
+          a = document.createElement("a");
+        a.href = source.url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = source.title + " [MED " + source.id + "]";
+        p.append(
+          a,
+          document.createTextNode(
+            " · " +
+              source.sections +
+              " · Source date: " +
+              (source.source_date || "see label") +
+              " · Checked: " +
+              source.access_date,
+          ),
+        );
+        $("curriculumSources").append(p);
+      }
+      const review = (data.curriculumReviews || [])
+        .filter((r) => r.lesson_id === l.id)
+        .at(-1);
+      $("curriculumReviewStatus").textContent = review
+        ? "Self-assessed review due " +
+          new Date(review.due).toLocaleDateString() +
+          ". Excluded from exam scores."
+        : "Self-assessed review is separate from scored practice.";
+    }
+    function renderAntibioticCoverage() {
+      $("antibioticCoverage").replaceChildren();
+      const q = $("coverageFilter").value.toLowerCase().trim();
+      const rows = (curriculum?.antibioticCoverage || []).filter((r) =>
+        q ? r.title.toLowerCase().includes(q) : r.antimicrobial_signal,
+      );
+      if (!rows.length) {
+        $("antibioticCoverage").textContent =
+          "No matching topic. This does not establish that antibiotics are never indicated.";
+        return;
+      }
+      for (const r of rows) {
+        const p = document.createElement("p"),
+          b = document.createElement("button");
+        b.textContent = "Study topic";
+        b.onclick = () => {
+          $("learningTrack").value = "guided";
+          selectCurriculumLessons();
+          choose(r.topic_id);
+        };
+        p.append(
+          document.createTextNode(
+            r.title +
+              " — " +
+              (r.lesson_ids.length
+                ? "Scoped regimen lessons available. "
+                : "Complete regimen not verified. ") +
+              r.scope +
+              " ",
+          ),
+          b,
+        );
+        for (const id of r.lesson_ids) {
+          const l = curriculum.lessons.find((l) => l.id === id),
+            btn = document.createElement("button");
+          btn.textContent = l.title;
+          btn.onclick = () => {
+            $("learningTrack").value = l.track;
+            $("curriculumFilter").value = "";
+            selectCurriculumLessons();
+            $("curriculumLesson").value = id;
+            restoreCurriculumCheckpoint();
+            renderCurriculumLesson();
+            persist();
+          };
+          p.append(btn);
+        }
+        $("antibioticCoverage").append(p);
+      }
+    }
+    $("coverageFilter").oninput = renderAntibioticCoverage;
+    function renderReferenceRegistry() {
+      if (!curriculum) return;
+      $("referenceRegistry").replaceChildren();
+      const notice = document.createElement("p");
+      notice.textContent = curriculum.gaps.join(" ");
+      $("referenceRegistry").append(notice);
+      for (const r of curriculum.references) {
+        const p = document.createElement("p"),
+          a = document.createElement("a");
+        a.href = r.url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = r.name;
+        p.append(
+          a,
+          document.createTextNode(
+            " · " +
+              r.role +
+              " · " +
+              (r.status === "commercial_access_not_configured"
+                ? "Subscription content not connected"
+                : "Reference link; content not loaded"),
+          ),
+        );
+        $("referenceRegistry").append(p);
+      }
+    }
+    $("learningTrack").onchange = () => {
+      $("curriculumFilter").value = "";
+      selectCurriculumLessons();
+    };
+    $("curriculumFilter").oninput = selectCurriculumLessons;
+    $("curriculumLesson").onchange = () => {
+      resetTopicSession();
+      restoreCurriculumCheckpoint();
+      renderCurriculumLesson();
+      persist();
+    };
+    $("curriculumReveal").onclick = () => {
+      const l = moduleLesson();
+      if (!l || !l.reveals?.[revealIndex]) return;
+      $("curriculumFinding").textContent = l.reveals[revealIndex++];
+      $("curriculumReveal").disabled = revealIndex >= l.reveals.length;
+    };
+    $("curriculumReview").onclick = () => {
+      try {
+        const previous = (data.curriculumReviews || [])
+          .filter((r) => r.lesson_id === curriculumId())
+          .at(-1);
+        const review = FMLearning.scheduleCurriculumReview(
+          curriculumId(),
+          $("curriculumRating").value,
+          previous?.interval,
+        );
+        data.curriculumReviews = [
+          ...(data.curriculumReviews || []),
+          review,
+        ].slice(-1000);
+        persist();
+        $("curriculumReviewStatus").textContent =
+          "Self-assessed review due " +
+          new Date(review.due).toLocaleDateString() +
+          ". Excluded from exam scores.";
+      } catch (e) {
+        fail(e.message);
+      }
+    };
+    $("curriculumDue").onclick = () => {
+      const latest = new Map();
+      for (const r of data.curriculumReviews || [])
+        if (
+          curriculum?.lessons.some((l) => l.id === r.lesson_id) &&
+          Number.isFinite(Date.parse(r.due))
+        )
+          latest.set(r.lesson_id, r);
+      const due = [...latest.values()]
+        .filter((r) => Date.parse(r.due) <= Date.now())
+        .sort((a, b) => Date.parse(a.due) - Date.parse(b.due))[0];
+      if (!due) {
+        $("curriculumReviewStatus").textContent =
+          "No self-assessed lessons are due yet.";
+        return;
+      }
+      const l = curriculum.lessons.find((l) => l.id === due.lesson_id);
+      $("learningTrack").value = l.track;
+      $("curriculumFilter").value = "";
+      selectCurriculumLessons();
+      $("curriculumLesson").value = l.id;
+      restoreCurriculumCheckpoint();
+      renderCurriculumLesson();
+      persist();
+    };
     function persist() {
       try {
         localStorage.setItem(storage, JSON.stringify(data));
@@ -673,6 +1011,10 @@
       }
     }
     async function startPracticeBlock() {
+      if (curriculumId()) {
+        $("learningTrack").value = "guided";
+        selectCurriculumLessons();
+      }
       const epoch = connectionEpoch;
       const topic = topicEpoch;
       const v = await api("practice/start", {
@@ -1018,6 +1360,7 @@
       const context = topicEpoch;
       const v = await api("context", {
         ids: [selected],
+        curriculum_id: curriculumId(),
         progress: stats(),
         history: data.checkpoint || "",
       });
@@ -1070,6 +1413,7 @@
       }
       $("lookup").disabled = !urls.size;
       $("lookupResult").textContent = "";
+      renderLookupChoices();
     }
     $("login").onsubmit = async (e) => {
       e.preventDefault();
@@ -1078,6 +1422,9 @@
         $("code").value = "";
         const v = await api("topics");
         topics = v.topics;
+        curriculum = await api("curriculum");
+        renderReferenceRegistry();
+        renderAntibioticCoverage();
         $("bankCoverage").textContent =
           v.practice.count +
           " original snapshot-checked items. Independent clinical review and full-bank coverage remain pending. Missing reviewed domains: " +
@@ -1152,7 +1499,58 @@
       let output = { ok: false };
       try {
         const a = JSON.parse(e.arguments);
-        if (e.name === "search_library") {
+        if (e.name === "search_curriculum") {
+          output = await api("curriculum/search", a);
+        } else if (e.name === "select_curriculum_lesson") {
+          const selected = await api("curriculum/select", {
+            ...a,
+            ids: [$("topic").value],
+            progress: stats(),
+          });
+          if (epoch !== connectionEpoch || context !== topicEpoch) return;
+          context = ++topicEpoch;
+          $("learningTrack").value = selected.lesson.track;
+          $("curriculumFilter").value = "";
+          $("curriculumLesson").replaceChildren();
+          for (const l of curriculum.lessons.filter(
+            (l) => l.track === selected.lesson.track,
+          )) {
+            const o = document.createElement("option");
+            o.value = l.id;
+            o.textContent = l.title;
+            $("curriculumLesson").append(o);
+          }
+          $("curriculumLesson").value = selected.lesson.id;
+          practiceRunning = false;
+          practiceCurrent = null;
+          clearInterval(practiceTimer);
+          $("practiceOptions").replaceChildren();
+          $("practiceFeedback").replaceChildren();
+          $("practiceQuestion").textContent =
+            "Specialist teaching is unscored.";
+          data.history = [];
+          data.checkpoint = "";
+          data.plan = [];
+          data.lessonTopic = activeTopic;
+          data.lessonCurriculum = selected.lesson.id;
+          renderCurriculumLesson();
+          persist();
+          send({
+            type: "session.update",
+            session: {
+              type: "realtime",
+              instructions: selected.instructions,
+              tools: selected.tools,
+              tool_choice: "auto",
+            },
+          });
+          output = {
+            ok: true,
+            lesson: selected.lesson,
+            notice:
+              "New specialist evidence loaded. The old case and checkpoint are inactive. Start the opening question and wait.",
+          };
+        } else if (e.name === "search_library") {
           output = await api("library/search", a);
         } else if (e.name === "select_library_topic") {
           if (!topics.some((t) => t.id === a.topic_id))
@@ -1178,6 +1576,9 @@
           }
           $("topic").value = selected.topic.id;
           activeTopic = selected.topic.id;
+          $("learningTrack").value = "guided";
+          data.lessonCurriculum = "";
+          renderCurriculumLesson();
           $("practiceMode").value = "teaching";
           $("practiceScope").value = "selected";
           practiceRunning = false;
@@ -1265,6 +1666,14 @@
           data.checkpoint = a.checkpoint.slice(0, 2000);
           data.plan = a.plan.slice(0, 10).map((s) => s.slice(0, 500));
           data.lessonTopic = activeTopic;
+          data.lessonCurriculum = curriculumId();
+          if (curriculumId()) {
+            data.curriculumCheckpoints ||= {};
+            data.curriculumCheckpoints[curriculumId()] = {
+              checkpoint: data.checkpoint,
+              plan: data.plan,
+            };
+          }
           persist();
           output = { ok: true };
         }
@@ -1336,9 +1745,12 @@
               completed.length &&
               (!e.response.output.some((o) => o.type === "message") ||
                 completed.some((result) =>
-                  ["search_library", "select_library_topic"].includes(
-                    result.name,
-                  ),
+                  [
+                    "search_library",
+                    "select_library_topic",
+                    "search_curriculum",
+                    "select_curriculum_lesson",
+                  ].includes(result.name),
                 ))
             )
               send({ type: "response.create" });
@@ -1377,13 +1789,21 @@
       $("mute").setAttribute("aria-pressed", "false");
       for (const id of ["mute", "stop", "case", "quiz", "plan", "send"])
         $(id).disabled = true;
-      $("start").disabled = !$("topic").value;
+      $("start").disabled =
+        !$("topic").value ||
+        ($("learningTrack").value !== "guided" && !moduleLesson());
       $("topic").disabled = false;
       $("filter").disabled = false;
       state("Ready");
     }
     $("start").onclick = async () => {
-      if (connecting || pc || !$("topic").value) return;
+      if (
+        connecting ||
+        pc ||
+        !$("topic").value ||
+        ($("learningTrack").value !== "guided" && !moduleLesson())
+      )
+        return;
       connecting = true;
       const epoch = ++connectionEpoch;
       const guided = !practiceRunning;
@@ -1437,11 +1857,16 @@
             $(id).disabled = false;
           state("Listening…");
           ask(
-            guided
-              ? data.lessonTopic === activeTopic && data.checkpoint
-                ? "Resume my saved guided clinical case at its next unfinished stage. Keep it unscored, follow the ordered clinical reasoning stages, ask one question and wait; do not start an unrelated case or a scored practice block."
-                : "Start a guided, unscored clinical case on the selected topic. Present the introduction/vignette and one opening question, then wait. Continue the same case through the ordered clinical reasoning stages; do not start a scored practice block."
-              : "Resume the active reviewed practice block. Use get_practice_question to present the current reviewed question, ask one question and wait, and preserve the selected teaching or assessment mode.",
+            guided && curriculumId()
+              ? (data.lessonCurriculum === curriculumId() && data.checkpoint
+                  ? "Resume the saved specialist lesson at its unfinished stage. "
+                  : "Start the selected specialist lesson using its supplied opening. ") +
+                  "Follow the ACTIVE SPECIALIST CURRICULUM flow, ask one question and wait. Keep the case coherent and teaching unscored; finish with oral synthesis and qualitative feedback when appropriate."
+              : guided
+                ? data.lessonTopic === activeTopic && data.checkpoint
+                  ? "Resume my saved guided clinical case at its next unfinished stage. Keep it unscored, follow the ordered clinical reasoning stages, ask one question and wait; do not start an unrelated case or a scored practice block."
+                  : "Start a guided, unscored clinical case on the selected topic. Present the introduction/vignette and one opening question, then wait. Continue the same case through the ordered clinical reasoning stages; do not start a scored practice block."
+                : "Resume the active reviewed practice block. Use get_practice_question to present the current reviewed question, ask one question and wait, and preserve the selected teaching or assessment mode.",
           );
           sessionTimer = setTimeout(
             () => {
@@ -1457,11 +1882,15 @@
           sdp: offer.sdp,
           ids: [$("topic").value],
           guided,
+          curriculum_id: guided ? curriculumId() : undefined,
           progress: stats(),
           history: {
             recent: data.history,
             checkpoint:
-              data.lessonTopic === $("topic").value ? data.checkpoint : "",
+              data.lessonTopic === $("topic").value &&
+              (data.lessonCurriculum || "") === curriculumId()
+                ? data.checkpoint
+                : "",
             plan: data.plan,
             dueReviews: FMLearning.reviewQueue(data.events).slice(0, 15),
             summary: FMLearning.learningSummary(data.events),
@@ -1527,6 +1956,7 @@
           url,
           approved: true,
           topic_id: $("topic").value,
+          curriculum_id: curriculumId(),
         });
         if (epoch !== connectionEpoch || topic !== topicEpoch) return;
         $("lookupResult").textContent =
@@ -1599,6 +2029,43 @@
             ? v.iteReports.slice(-30)
             : [],
           lessonTopic: typeof v.lessonTopic === "string" ? v.lessonTopic : "",
+          lessonCurriculum:
+            typeof v.lessonCurriculum === "string" ? v.lessonCurriculum : "",
+          curriculumReviews: Array.isArray(v.curriculumReviews)
+            ? v.curriculumReviews
+                .filter(
+                  (r) =>
+                    curriculum?.lessons.some((l) => l.id === r.lesson_id) &&
+                    ["again", "hard", "good", "easy"].includes(r.rating) &&
+                    Number.isFinite(Date.parse(r.due)) &&
+                    Number.isFinite(r.interval),
+                )
+                .slice(-1000)
+            : [],
+          curriculumCheckpoints:
+            v.curriculumCheckpoints &&
+            typeof v.curriculumCheckpoints === "object" &&
+            !Array.isArray(v.curriculumCheckpoints)
+              ? Object.fromEntries(
+                  Object.entries(v.curriculumCheckpoints)
+                    .filter(
+                      ([id, value]) =>
+                        curriculum?.lessons.some((l) => l.id === id) &&
+                        typeof value?.checkpoint === "string" &&
+                        Array.isArray(value.plan),
+                    )
+                    .map(([id, value]) => [
+                      id,
+                      {
+                        checkpoint: value.checkpoint.slice(0, 2000),
+                        plan: value.plan
+                          .filter((x) => typeof x === "string")
+                          .slice(0, 10)
+                          .map((x) => x.slice(0, 500)),
+                      },
+                    ]),
+                )
+              : {},
         };
         persist();
       } catch (e) {

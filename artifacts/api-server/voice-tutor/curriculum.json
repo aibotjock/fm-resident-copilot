@@ -1,0 +1,931 @@
+{
+  "sources": [
+    {
+      "id": "CDC-STREP",
+      "organization": "CDC",
+      "title": "Group A streptococcal pharyngitis",
+      "url": "https://www.cdc.gov/group-a-strep/hcp/clinical-guidance/strep-throat.html",
+      "sections": "Testing; Recommended antibiotics; Penicillin allergy",
+      "source_date": "2025-11-18",
+      "access_date": "2026-10-17",
+      "review": "source_checked; independent clinical review pending",
+      "reuse": "Original scoped paraphrase; no vendor database copied. Verify applicable terms before expanded ingestion."
+    },
+    {
+      "id": "CDC-CHLAMYDIA",
+      "organization": "CDC",
+      "title": "Chlamydial infections",
+      "url": "https://www.cdc.gov/std/treatment-guidelines/chlamydia.htm",
+      "sections": "Treatment; Pregnancy; Follow-up",
+      "source_date": "2021",
+      "access_date": "2026-10-17",
+      "review": "source_checked; independent clinical review pending",
+      "reuse": "Original scoped paraphrase; no vendor database copied. Verify applicable terms before expanded ingestion."
+    },
+    {
+      "id": "CDC-GONORRHEA",
+      "organization": "CDC",
+      "title": "Gonococcal infections in adolescents and adults",
+      "url": "https://www.cdc.gov/std/treatment-guidelines/gonorrhea-adults.htm",
+      "sections": "Uncomplicated infection; Follow-up",
+      "source_date": "2021",
+      "access_date": "2026-10-17",
+      "review": "source_checked; independent clinical review pending",
+      "reuse": "Original scoped paraphrase; no vendor database copied. Verify applicable terms before expanded ingestion."
+    },
+    {
+      "id": "LABEL-METFORMIN",
+      "organization": "DailyMed / manufacturer labeling",
+      "title": "Metformin IR and ER",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0ff1ba75-3c86-4baf-a6b1-1bb883839866",
+      "sections": "2.1, 2.3, 2.4; 4; 5.1",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked; independent clinical review pending",
+      "reuse": "Original scoped paraphrase; no vendor database copied. Verify applicable terms before expanded ingestion."
+    },
+    {
+      "id": "LABEL-SERTRALINE",
+      "organization": "DailyMed / manufacturer labeling",
+      "title": "Sertraline tablets",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bdbcb3ce-e424-43eb-9f1a-77eda4dfbdaa",
+      "sections": "2.1, 2.4; 4; 5.2, 5.4, 5.8; 7.1",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked; independent clinical review pending",
+      "reuse": "Original scoped paraphrase; no vendor database copied. Verify applicable terms before expanded ingestion."
+    },
+    {
+      "id": "LABEL-LISINOPRIL",
+      "organization": "DailyMed / manufacturer labeling",
+      "title": "Lisinopril tablets",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f2e09150-22f2-4028-b214-917d686200ad",
+      "sections": "2.1, 2.4; 4; 5; 7.3",
+      "source_date": "2026-08",
+      "access_date": "2026-10-17",
+      "review": "source_checked; independent clinical review pending",
+      "reuse": "Original scoped paraphrase; no vendor database copied. Verify applicable terms before expanded ingestion."
+    },
+    {
+      "id": "LABEL-SPIRONOLACTONE",
+      "organization": "DailyMed / manufacturer labeling",
+      "title": "Spironolactone tablets",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fe044bd2-cb08-4cfd-a3d5-a4809d05aa62",
+      "sections": "2.2; 4; 5.1; 7.1",
+      "source_date": "2025-06",
+      "access_date": "2026-10-17",
+      "review": "source_checked; independent clinical review pending",
+      "reuse": "Original scoped paraphrase; no vendor database copied. Verify applicable terms before expanded ingestion."
+    },
+    {
+      "id": "LABEL-APIXABAN",
+      "organization": "DailyMed / manufacturer labeling",
+      "title": "Eliquis apixaban tablets",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e9481622-7cc6-418a-acb6-c5450daae9b0",
+      "sections": "2.1; 4; 5.2; 7.1, 7.3",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "source_checked; independent clinical review pending",
+      "reuse": "Original scoped paraphrase; no vendor database copied. Verify applicable terms before expanded ingestion."
+    }
+  ],
+  "references": [
+    {
+      "name": "Lexidrug",
+      "role": "General medication dosing",
+      "url": "https://www.wolterskluwer.com/en/solutions/uptodate/enterprise/lexidrug",
+      "status": "commercial_access_not_configured",
+      "notice": "Reference metadata only; no claim that this database is connected or its content loaded."
+    },
+    {
+      "name": "Micromedex",
+      "role": "Alternative general drug reference",
+      "url": "https://www.merative.com/clinical-decision-support/micromedex",
+      "status": "commercial_access_not_configured",
+      "notice": "Reference metadata only; no claim that this database is connected or its content loaded."
+    },
+    {
+      "name": "AHFS",
+      "role": "Alternative general drug reference",
+      "url": "https://www.ashp.org/products-and-services/ahfs-di",
+      "status": "commercial_access_not_configured",
+      "notice": "Reference metadata only; no claim that this database is connected or its content loaded."
+    },
+    {
+      "name": "Clinical Pharmacology",
+      "role": "Alternative general drug reference",
+      "url": "https://www.elsevier.com/products/clinicalkey/clinical-pharmacology",
+      "status": "commercial_access_not_configured",
+      "notice": "Reference metadata only; no claim that this database is connected or its content loaded."
+    },
+    {
+      "name": "Sanford Guide",
+      "role": "Antibiotic decisions and dosing",
+      "url": "https://www.sanfordguide.com/products/antimicrobial-therapy",
+      "status": "commercial_access_not_configured",
+      "notice": "Reference metadata only; no claim that this database is connected or its content loaded."
+    },
+    {
+      "name": "Johns Hopkins ABX Guide",
+      "role": "Supplementary antibiotics",
+      "url": "https://www.hopkinsguides.com/hopkins/home",
+      "status": "commercial_access_not_configured",
+      "notice": "Reference metadata only; no claim that this database is connected or its content loaded."
+    },
+    {
+      "name": "AAP Red Book Online",
+      "role": "Pediatric infections",
+      "url": "https://publications.aap.org/redbook",
+      "status": "commercial_access_not_configured",
+      "notice": "Reference metadata only; no claim that this database is connected or its content loaded."
+    },
+    {
+      "name": "UCSF IDMP",
+      "role": "Institution-specific antimicrobial/renal guidance",
+      "url": "https://idmp.ucsf.edu/adult-antimicrobial-dosing-non-dialysis",
+      "status": "public_reference_link_only",
+      "notice": "Reference metadata only; no claim that this database is connected or its content loaded."
+    },
+    {
+      "name": "NIH LactMed",
+      "role": "Breastfeeding drug exposure and alternatives",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK501922/",
+      "status": "public_reference_link_only",
+      "notice": "Reference metadata only; no claim that this database is connected or its content loaded."
+    },
+    {
+      "name": "IDSA",
+      "role": "Disease-specific infection guidelines",
+      "url": "https://www.idsociety.org/practice-guideline/all-practice-guidelines/",
+      "status": "public_reference_link_only",
+      "notice": "Reference metadata only; no claim that this database is connected or its content loaded."
+    },
+    {
+      "name": "FDA Drugs@FDA",
+      "role": "FDA-approved prescribing information",
+      "url": "https://www.accessdata.fda.gov/scripts/cder/daf/",
+      "status": "public_reference_link_only",
+      "notice": "Reference metadata only; no claim that this database is connected or its content loaded."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "med-amoxicillin-strep",
+      "track": "medication",
+      "title": "Amoxicillin — confirmed group A strep pharyngitis",
+      "tags": ["amoxicillin", "antibiotic", "pediatric", "pharyngitis"],
+      "source_ids": ["CDC-STREP"],
+      "facts": [
+        "Penicillin or amoxicillin is preferred for confirmed group A strep. Do not treat viral pharyngitis."
+      ],
+      "gaps": [
+        "Renal adjustment and liquid concentration are not supplied by this CDC page."
+      ],
+      "opening": "For patients with confirmed group a strep pharyngitis, explain the indication and write the complete amoxicillin regimen. What patient factors must you check first?",
+      "stages": [
+        "Indication and patient factors",
+        "Drug and formulation",
+        "Dose, route and frequency",
+        "Duration or titration and maximum",
+        "Safety checkpoint and adjustments",
+        "Supported alternatives, monitoring and concise prescription"
+      ],
+      "regimen": {
+        "indication": "Amoxicillin — confirmed group A strep pharyngitis",
+        "population": "Patients with confirmed group A strep pharyngitis",
+        "drug": "amoxicillin",
+        "dose": "50 mg/kg per dose",
+        "route": "oral",
+        "frequency": "once daily",
+        "duration": "10 days",
+        "adjustment": "Alternative: 25 mg/kg per dose twice daily, capped at 500 mg per dose.",
+        "maximum": "1000 mg per once-daily dose"
+      }
+    },
+    {
+      "id": "med-penicillin-strep",
+      "track": "medication",
+      "title": "Penicillin V — adult strep pharyngitis",
+      "tags": ["penicillin", "antibiotic", "pharyngitis"],
+      "source_ids": ["CDC-STREP"],
+      "facts": [],
+      "gaps": [
+        "Pediatric schedules and renal adjustment require their specific source."
+      ],
+      "opening": "For adolescents and adults with confirmed group a strep, explain the indication and write the complete penicillin V regimen. What patient factors must you check first?",
+      "stages": [
+        "Indication and patient factors",
+        "Drug and formulation",
+        "Dose, route and frequency",
+        "Duration or titration and maximum",
+        "Safety checkpoint and adjustments",
+        "Supported alternatives, monitoring and concise prescription"
+      ],
+      "regimen": {
+        "indication": "Penicillin V — adult strep pharyngitis",
+        "population": "Adolescents and adults with confirmed group A strep",
+        "drug": "penicillin V",
+        "dose": "500 mg",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "10 days",
+        "adjustment": "Another listed adult schedule: 250 mg four times daily.",
+        "maximum": "No broader maximum established here"
+      }
+    },
+    {
+      "id": "med-cephalexin-strep",
+      "track": "medication",
+      "title": "Cephalexin — strep with selected penicillin allergy",
+      "tags": ["cephalexin", "antibiotic", "allergy", "pediatric"],
+      "source_ids": ["CDC-STREP"],
+      "facts": [],
+      "gaps": [
+        "Not a blanket alternative for all penicillin allergies. Renal adjustments not supplied."
+      ],
+      "opening": "For patients with confirmed strep and a suitable non-immediate penicillin allergy history, explain the indication and write the complete cephalexin regimen. What patient factors must you check first?",
+      "stages": [
+        "Indication and patient factors",
+        "Drug and formulation",
+        "Dose, route and frequency",
+        "Duration or titration and maximum",
+        "Safety checkpoint and adjustments",
+        "Supported alternatives, monitoring and concise prescription"
+      ],
+      "regimen": {
+        "indication": "Cephalexin — strep with selected penicillin allergy",
+        "population": "Patients with confirmed strep and a suitable non-immediate penicillin allergy history",
+        "drug": "cephalexin",
+        "dose": "20 mg/kg per dose",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "10 days",
+        "adjustment": "Avoid with immediate-type penicillin hypersensitivity.",
+        "maximum": "500 mg per dose"
+      }
+    },
+    {
+      "id": "med-doxycycline-chlamydia",
+      "track": "medication",
+      "title": "Doxycycline — uncomplicated chlamydia",
+      "tags": ["doxycycline", "antibiotic", "STI"],
+      "source_ids": ["CDC-CHLAMYDIA"],
+      "facts": [
+        "Retest approximately 3 months after treatment; address sex partners and reinfection risk."
+      ],
+      "gaps": [
+        "Do not extend this regimen to complicated infection or children."
+      ],
+      "opening": "For nonpregnant adolescents and adults with uncomplicated chlamydia, explain the indication and write the complete doxycycline regimen. What patient factors must you check first?",
+      "stages": [
+        "Indication and patient factors",
+        "Drug and formulation",
+        "Dose, route and frequency",
+        "Duration or titration and maximum",
+        "Safety checkpoint and adjustments",
+        "Supported alternatives, monitoring and concise prescription"
+      ],
+      "regimen": {
+        "indication": "Doxycycline — uncomplicated chlamydia",
+        "population": "Nonpregnant adolescents and adults with uncomplicated chlamydia",
+        "drug": "doxycycline",
+        "dose": "100 mg",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "7 days",
+        "adjustment": "Pregnancy requires the pregnancy-specific regimen.",
+        "maximum": "No escalation or broader maximum established here"
+      }
+    },
+    {
+      "id": "med-azithromycin-pregnancy",
+      "track": "medication",
+      "title": "Azithromycin — chlamydia in pregnancy",
+      "tags": ["azithromycin", "antibiotic", "pregnancy", "STI"],
+      "source_ids": ["CDC-CHLAMYDIA"],
+      "facts": [
+        "In pregnancy, test of cure at approximately 4 weeks and retesting at 3 months are recommended."
+      ],
+      "gaps": [
+        "Interaction and hepatic assessment require additional drug-specific evidence."
+      ],
+      "opening": "For pregnant patients with chlamydia, explain the indication and write the complete azithromycin regimen. What patient factors must you check first?",
+      "stages": [
+        "Indication and patient factors",
+        "Drug and formulation",
+        "Dose, route and frequency",
+        "Duration or titration and maximum",
+        "Safety checkpoint and adjustments",
+        "Supported alternatives, monitoring and concise prescription"
+      ],
+      "regimen": {
+        "indication": "Azithromycin — chlamydia in pregnancy",
+        "population": "Pregnant patients with chlamydia",
+        "drug": "azithromycin",
+        "dose": "1 g",
+        "route": "oral",
+        "frequency": "single dose",
+        "duration": "one dose",
+        "adjustment": "Listed alternative: amoxicillin 500 mg orally three times daily for 7 days.",
+        "maximum": "1 g for this single-dose regimen"
+      }
+    },
+    {
+      "id": "med-ceftriaxone-gonorrhea",
+      "track": "medication",
+      "title": "Ceftriaxone — uncomplicated gonorrhea",
+      "tags": ["ceftriaxone", "antibiotic", "STI"],
+      "source_ids": ["CDC-GONORRHEA"],
+      "facts": [
+        "Pharyngeal infection requires test of cure at 7–14 days; uncomplicated urogenital/rectal infection ordinarily does not after recommended treatment."
+      ],
+      "gaps": [
+        "Pregnancy, severe allergy, dissemination and treatment failure need their own pathway."
+      ],
+      "opening": "For adolescents and adults with uncomplicated cervical, urethral or rectal gonorrhea, explain the indication and write the complete ceftriaxone regimen. What patient factors must you check first?",
+      "stages": [
+        "Indication and patient factors",
+        "Drug and formulation",
+        "Dose, route and frequency",
+        "Duration or titration and maximum",
+        "Safety checkpoint and adjustments",
+        "Supported alternatives, monitoring and concise prescription"
+      ],
+      "regimen": {
+        "indication": "Ceftriaxone — uncomplicated gonorrhea",
+        "population": "Adolescents and adults with uncomplicated cervical, urethral or rectal gonorrhea",
+        "drug": "ceftriaxone",
+        "dose": "500 mg if weight is below 150 kg; 1 g if weight is at least 150 kg",
+        "route": "intramuscular",
+        "frequency": "single dose",
+        "duration": "one dose",
+        "adjustment": "If chlamydia has not been excluded, add the appropriate chlamydia regimen; doxycycline 100 mg orally twice daily for 7 days applies to nonpregnant patients.",
+        "maximum": "Weight-specific dose above"
+      }
+    },
+    {
+      "id": "med-metformin-ir",
+      "track": "medication",
+      "title": "Metformin immediate release — adult type 2 diabetes",
+      "tags": ["metformin", "diabetes", "renal", "IR"],
+      "source_ids": ["LABEL-METFORMIN"],
+      "facts": [],
+      "gaps": [
+        "Do not generalize this product maximum to every formulation. Disease-based treatment sequencing is not established by labeling."
+      ],
+      "opening": "For adults with type 2 diabetes and appropriate renal function, explain the indication and write the complete metformin immediate-release tablets regimen. What patient factors must you check first?",
+      "stages": [
+        "Indication and patient factors",
+        "Drug and formulation",
+        "Dose, route and frequency",
+        "Duration or titration and maximum",
+        "Safety checkpoint and adjustments",
+        "Supported alternatives, monitoring and concise prescription"
+      ],
+      "regimen": {
+        "indication": "Metformin immediate release — adult type 2 diabetes",
+        "population": "Adults with type 2 diabetes and appropriate renal function",
+        "drug": "metformin immediate-release tablets",
+        "dose": "500 mg with meals",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "Ongoing therapy; increase by 500 mg weekly as tolerated and indicated",
+        "adjustment": "Do not initiate at eGFR 30–45; contraindicated below 30 mL/min/1.73 m².",
+        "maximum": "2550 mg/day in divided doses for this specific label"
+      }
+    },
+    {
+      "id": "med-metformin-er",
+      "track": "medication",
+      "title": "Metformin extended release — adult type 2 diabetes",
+      "tags": ["metformin", "diabetes", "renal", "ER"],
+      "source_ids": ["LABEL-METFORMIN"],
+      "facts": [],
+      "gaps": [
+        "Not interchangeable dosing instructions with every extended-release product."
+      ],
+      "opening": "For adults with type 2 diabetes and appropriate renal function, explain the indication and write the complete metformin extended-release tablets regimen. What patient factors must you check first?",
+      "stages": [
+        "Indication and patient factors",
+        "Drug and formulation",
+        "Dose, route and frequency",
+        "Duration or titration and maximum",
+        "Safety checkpoint and adjustments",
+        "Supported alternatives, monitoring and concise prescription"
+      ],
+      "regimen": {
+        "indication": "Metformin extended release — adult type 2 diabetes",
+        "population": "Adults with type 2 diabetes and appropriate renal function",
+        "drug": "metformin extended-release tablets",
+        "dose": "500 mg with evening meal",
+        "route": "oral",
+        "frequency": "once daily",
+        "duration": "Ongoing therapy; increase by 500 mg weekly as indicated",
+        "adjustment": "Swallow whole. Same renal restrictions as IR.",
+        "maximum": "2000 mg once daily for this product"
+      }
+    },
+    {
+      "id": "med-sertraline-mdd",
+      "track": "medication",
+      "title": "Sertraline tablets — adult major depression",
+      "tags": ["sertraline", "SSRI", "depression", "SIADH", "sodium"],
+      "source_ids": ["LABEL-SERTRALINE"],
+      "facts": [
+        "Screen for bipolar history. MAOI coadministration or switching within 14 days is contraindicated."
+      ],
+      "gaps": [
+        "Other indications and formulations can have different starts; fixed treatment duration and sodium monitoring interval are not supplied."
+      ],
+      "opening": "For adults with major depressive disorder, explain the indication and write the complete sertraline tablets regimen. What patient factors must you check first?",
+      "stages": [
+        "Indication and patient factors",
+        "Drug and formulation",
+        "Dose, route and frequency",
+        "Duration or titration and maximum",
+        "Safety checkpoint and adjustments",
+        "Supported alternatives, monitoring and concise prescription"
+      ],
+      "regimen": {
+        "indication": "Sertraline tablets — adult major depression",
+        "population": "Adults with major depressive disorder",
+        "drug": "sertraline tablets",
+        "dose": "50 mg",
+        "route": "oral",
+        "frequency": "once daily",
+        "duration": "Ongoing; increases of 25–50 mg no more frequently than weekly",
+        "adjustment": "Mild hepatic impairment: half the usual starting dose and therapeutic range; moderate/severe impairment: not recommended.",
+        "maximum": "200 mg/day"
+      }
+    },
+    {
+      "id": "med-lisinopril-htn",
+      "track": "medication",
+      "title": "Lisinopril — adult hypertension",
+      "tags": ["lisinopril", "ACE inhibitor", "hypertension", "renal"],
+      "source_ids": ["LABEL-LISINOPRIL"],
+      "facts": [
+        "Monitor renal function and potassium. NSAIDs can worsen renal function, particularly with volume depletion."
+      ],
+      "gaps": [
+        "Usual range is not an absolute maximum. Pregnancy and angioedema history require safety review."
+      ],
+      "opening": "For adults with hypertension, explain the indication and write the complete lisinopril regimen. What patient factors must you check first?",
+      "stages": [
+        "Indication and patient factors",
+        "Drug and formulation",
+        "Dose, route and frequency",
+        "Duration or titration and maximum",
+        "Safety checkpoint and adjustments",
+        "Supported alternatives, monitoring and concise prescription"
+      ],
+      "regimen": {
+        "indication": "Lisinopril — adult hypertension",
+        "population": "Adults with hypertension",
+        "drug": "lisinopril",
+        "dose": "10 mg",
+        "route": "oral",
+        "frequency": "once daily",
+        "duration": "Ongoing; titrate to blood pressure response",
+        "adjustment": "Start 5 mg with diuretic use; CrCl 10–30: halve initial dose; below 10 or dialysis: 2.5 mg initially.",
+        "maximum": "Usual range 20–40 mg/day; 80 mg has been used without greater effect"
+      }
+    },
+    {
+      "id": "med-spironolactone-hf",
+      "track": "medication",
+      "title": "Spironolactone — labeled heart failure dosing",
+      "tags": ["spironolactone", "heart failure", "potassium", "renal"],
+      "source_ids": ["LABEL-SPIRONOLACTONE"],
+      "facts": [
+        "Check potassium within one week of starting or titration and regularly thereafter. Hyperkalemia, Addison disease and concomitant eplerenone are contraindications."
+      ],
+      "gaps": [
+        "A full contemporary heart failure guideline and individualized monitoring frequency are separate requirements."
+      ],
+      "opening": "For adults within the labeled heart failure indication, explain the indication and write the complete spironolactone regimen. What patient factors must you check first?",
+      "stages": [
+        "Indication and patient factors",
+        "Drug and formulation",
+        "Dose, route and frequency",
+        "Duration or titration and maximum",
+        "Safety checkpoint and adjustments",
+        "Supported alternatives, monitoring and concise prescription"
+      ],
+      "regimen": {
+        "indication": "Spironolactone — labeled heart failure dosing",
+        "population": "Adults within the labeled heart failure indication",
+        "drug": "spironolactone",
+        "dose": "25 mg when potassium is at most 5.0 mEq/L and eGFR is above 50",
+        "route": "oral",
+        "frequency": "once daily",
+        "duration": "Ongoing; may increase to 50 mg daily when indicated and tolerated",
+        "adjustment": "eGFR 30–50: consider 25 mg every other day.",
+        "maximum": "50 mg/day in the supplied labeled titration"
+      }
+    },
+    {
+      "id": "med-apixaban-af",
+      "track": "medication",
+      "title": "Apixaban — nonvalvular atrial fibrillation",
+      "tags": ["apixaban", "anticoagulant", "AF", "bleeding"],
+      "source_ids": ["LABEL-APIXABAN"],
+      "facts": [
+        "Active pathological bleeding is a contraindication. NSAIDs and other hemostasis-affecting drugs increase bleeding risk."
+      ],
+      "gaps": [
+        "These reduction criteria do not define acute VTE dosing. Dialysis, hepatic impairment and strong CYP3A4/P-gp interactions require additional review."
+      ],
+      "opening": "For adults with nonvalvular atrial fibrillation, explain the indication and write the complete apixaban regimen. What patient factors must you check first?",
+      "stages": [
+        "Indication and patient factors",
+        "Drug and formulation",
+        "Dose, route and frequency",
+        "Duration or titration and maximum",
+        "Safety checkpoint and adjustments",
+        "Supported alternatives, monitoring and concise prescription"
+      ],
+      "regimen": {
+        "indication": "Apixaban — nonvalvular atrial fibrillation",
+        "population": "Adults with nonvalvular atrial fibrillation",
+        "drug": "apixaban",
+        "dose": "5 mg",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "Ongoing; duration depends on the indication and reassessment",
+        "adjustment": "Use 2.5 mg twice daily when at least TWO apply: age ≥80 years, weight ≤60 kg, serum creatinine ≥1.5 mg/dL.",
+        "maximum": "No dose escalation taught here"
+      }
+    },
+    {
+      "id": "med-apixaban-vte",
+      "track": "medication",
+      "title": "Apixaban — adult acute DVT or PE",
+      "tags": ["apixaban", "anticoagulant", "DVT", "PE"],
+      "source_ids": ["LABEL-APIXABAN"],
+      "facts": [],
+      "gaps": [
+        "Total treatment duration and patient selection require VTE-specific guidance. Not an unstable-PE protocol."
+      ],
+      "opening": "For adults with dvt or pe appropriate for this drug, explain the indication and write the complete apixaban regimen. What patient factors must you check first?",
+      "stages": [
+        "Indication and patient factors",
+        "Drug and formulation",
+        "Dose, route and frequency",
+        "Duration or titration and maximum",
+        "Safety checkpoint and adjustments",
+        "Supported alternatives, monitoring and concise prescription"
+      ],
+      "regimen": {
+        "indication": "Apixaban — adult acute DVT or PE",
+        "population": "Adults with DVT or PE appropriate for this drug",
+        "drug": "apixaban",
+        "dose": "10 mg initially, then 5 mg",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "10 mg twice daily for 7 days, then 5 mg twice daily",
+        "adjustment": "Do not substitute the AF age/weight/creatinine rule for this regimen.",
+        "maximum": "Indication-specific regimen; no further escalation supplied"
+      }
+    },
+    {
+      "id": "safe-siadh",
+      "track": "safety",
+      "title": "SSRI-associated hyponatremia / possible SIADH",
+      "tags": ["sertraline", "SIADH", "hyponatremia", "falls", "diuretic"],
+      "source_ids": ["LABEL-SERTRALINE"],
+      "category": "adverse_effect",
+      "opening": "An older patient taking sertraline and a diuretic develops new weakness and unsteadiness. What medication-related risk belongs in your differential?",
+      "facts": [
+        "SSRIs can cause hyponatremia, often associated with SIADH. Older age, diuretic use and volume depletion raise risk. Symptomatic hyponatremia requires stopping sertraline and appropriate medical intervention."
+      ],
+      "gaps": [
+        "Do not diagnose SIADH from medication exposure alone. Full diagnostic criteria and correction protocols are not loaded."
+      ],
+      "stages": [
+        "Identify the prescribing concern",
+        "Classify contraindication, precaution, adverse effect or error",
+        "Identify susceptible patients and other causes",
+        "Choose a supported action and monitoring",
+        "Discuss a supported alternative or identify its evidence gap",
+        "Explain the pitfall back in one sentence"
+      ]
+    },
+    {
+      "id": "safe-maoi",
+      "track": "safety",
+      "title": "Sertraline plus MAOI / washout",
+      "tags": ["sertraline", "MAOI", "linezolid", "serotonin"],
+      "source_ids": ["LABEL-SERTRALINE"],
+      "category": "contraindication",
+      "opening": "A proposed prescription starts sertraline five days after stopping an MAOI antidepressant. What must be corrected?",
+      "facts": [
+        "MAOIs and sertraline must be separated by at least 14 days; coadministration is contraindicated because of serotonin syndrome risk."
+      ],
+      "gaps": [
+        "Urgent linezolid management needs the full special-case label instructions; do not reduce that situation to routine washout advice."
+      ],
+      "stages": [
+        "Identify the prescribing concern",
+        "Classify contraindication, precaution, adverse effect or error",
+        "Identify susceptible patients and other causes",
+        "Choose a supported action and monitoring",
+        "Discuss a supported alternative or identify its evidence gap",
+        "Explain the pitfall back in one sentence"
+      ]
+    },
+    {
+      "id": "safe-metformin-renal",
+      "track": "safety",
+      "title": "Metformin: initiation versus continuation in CKD",
+      "tags": ["metformin", "renal", "CKD", "lactic acidosis"],
+      "source_ids": ["LABEL-METFORMIN"],
+      "category": "contraindication",
+      "opening": "A patient with type 2 diabetes and eGFR 28 has a new metformin order. Identify the issue; how would your reasoning differ at eGFR 40?",
+      "facts": [
+        "eGFR below 30 is contraindicated. Initiation at 30–45 is not recommended; reassess continued therapy when eGFR drops below 45."
+      ],
+      "gaps": [
+        "Alternative diabetes treatment requires disease-specific guidance."
+      ],
+      "stages": [
+        "Identify the prescribing concern",
+        "Classify contraindication, precaution, adverse effect or error",
+        "Identify susceptible patients and other causes",
+        "Choose a supported action and monitoring",
+        "Discuss a supported alternative or identify its evidence gap",
+        "Explain the pitfall back in one sentence"
+      ]
+    },
+    {
+      "id": "safe-metformin-contrast",
+      "track": "safety",
+      "title": "Metformin and iodinated contrast",
+      "tags": ["metformin", "contrast", "renal"],
+      "source_ids": ["LABEL-METFORMIN"],
+      "category": "precaution",
+      "opening": "A metformin-treated patient with eGFR 50 is scheduled for iodinated contrast. What does this product label require?",
+      "facts": [
+        "Hold at/before contrast for eGFR 30–60, relevant liver disease/alcoholism/heart failure history, or intra-arterial contrast. Recheck eGFR after 48 hours and restart if stable."
+      ],
+      "gaps": [
+        "This is the product-label rule; radiology guidance may differ. Do not claim all sources agree or that every contrast exposure requires a hold."
+      ],
+      "stages": [
+        "Identify the prescribing concern",
+        "Classify contraindication, precaution, adverse effect or error",
+        "Identify susceptible patients and other causes",
+        "Choose a supported action and monitoring",
+        "Discuss a supported alternative or identify its evidence gap",
+        "Explain the pitfall back in one sentence"
+      ]
+    },
+    {
+      "id": "safe-ace-arni",
+      "track": "safety",
+      "title": "ACE inhibitor / sacubitril-valsartan transition",
+      "tags": ["lisinopril", "sacubitril", "valsartan", "angioedema"],
+      "source_ids": ["LABEL-LISINOPRIL"],
+      "category": "contraindication",
+      "opening": "A patient is prescribed sacubitril/valsartan on the same day as the last lisinopril dose. What transition error do you identify?",
+      "facts": [
+        "Lisinopril and neprilysin inhibitors are contraindicated together. Allow 36 hours when switching to or from sacubitril/valsartan."
+      ],
+      "gaps": ["The replacement drug dose is not supplied."],
+      "stages": [
+        "Identify the prescribing concern",
+        "Classify contraindication, precaution, adverse effect or error",
+        "Identify susceptible patients and other causes",
+        "Choose a supported action and monitoring",
+        "Discuss a supported alternative or identify its evidence gap",
+        "Explain the pitfall back in one sentence"
+      ]
+    },
+    {
+      "id": "safe-potassium",
+      "track": "safety",
+      "title": "Spironolactone with potassium-raising therapy",
+      "tags": ["spironolactone", "ACE inhibitor", "potassium", "hyperkalemia"],
+      "source_ids": ["LABEL-SPIRONOLACTONE"],
+      "category": "precaution",
+      "opening": "A heart failure patient takes spironolactone, an ACE inhibitor and a potassium supplement. How do you assess safety without calling every combination absolutely contraindicated?",
+      "facts": [
+        "Potassium-raising agents increase hyperkalemia risk. Spironolactone requires early and ongoing potassium monitoring; pre-existing hyperkalemia is contraindicated."
+      ],
+      "gaps": [
+        "Combination decisions require indication, renal function, potassium and monitoring capacity. Do not invent a universal stop threshold."
+      ],
+      "stages": [
+        "Identify the prescribing concern",
+        "Classify contraindication, precaution, adverse effect or error",
+        "Identify susceptible patients and other causes",
+        "Choose a supported action and monitoring",
+        "Discuss a supported alternative or identify its evidence gap",
+        "Explain the pitfall back in one sentence"
+      ]
+    },
+    {
+      "id": "safe-nsaid-renal",
+      "track": "safety",
+      "title": "NSAID exposure with ACE inhibitor and volume depletion",
+      "tags": ["NSAID", "ibuprofen", "lisinopril", "diuretic", "AKI"],
+      "source_ids": ["LABEL-LISINOPRIL"],
+      "category": "precaution",
+      "opening": "A patient on lisinopril and a diuretic adds OTC ibuprofen during poor oral intake. What risk and missing information need attention?",
+      "facts": [
+        "ACE inhibitor plus NSAID can worsen renal function, especially in older, volume-depleted or renally impaired patients."
+      ],
+      "gaps": [
+        "Medication contribution is plausible, not proof of AKI etiology. Fluid strategy needs assessment and further evidence."
+      ],
+      "stages": [
+        "Identify the prescribing concern",
+        "Classify contraindication, precaution, adverse effect or error",
+        "Identify susceptible patients and other causes",
+        "Choose a supported action and monitoring",
+        "Discuss a supported alternative or identify its evidence gap",
+        "Explain the pitfall back in one sentence"
+      ]
+    },
+    {
+      "id": "safe-anticoagulant",
+      "track": "safety",
+      "title": "Apixaban and additional bleeding risks",
+      "tags": ["apixaban", "NSAID", "aspirin", "bleeding"],
+      "source_ids": ["LABEL-APIXABAN"],
+      "category": "precaution",
+      "opening": "A patient taking apixaban adds an OTC NSAID. What risk must be discussed and what would you ask next?",
+      "facts": [
+        "NSAIDs and other drugs affecting hemostasis raise bleeding risk. Active pathological bleeding is a contraindication."
+      ],
+      "gaps": [
+        "Do not abruptly stop anticoagulation for every interaction; balance thrombosis and bleeding. Reversal protocols are not loaded."
+      ],
+      "stages": [
+        "Identify the prescribing concern",
+        "Classify contraindication, precaution, adverse effect or error",
+        "Identify susceptible patients and other causes",
+        "Choose a supported action and monitoring",
+        "Discuss a supported alternative or identify its evidence gap",
+        "Explain the pitfall back in one sentence"
+      ]
+    },
+    {
+      "id": "safe-pediatric-units",
+      "track": "safety",
+      "title": "Pediatric mg/kg/dose versus mg/kg/day",
+      "tags": ["amoxicillin", "pediatric", "units", "dose"],
+      "source_ids": ["CDC-STREP"],
+      "category": "prescribing_pitfall",
+      "opening": "A 20-kg child with confirmed strep is prescribed amoxicillin 50 mg/kg twice daily using the once-daily CDC schedule. Identify and correct the frequency error.",
+      "facts": [
+        "The CDC once-daily schedule is 50 mg/kg per dose, capped at 1000 mg; the alternative is 25 mg/kg per dose twice daily, capped at 500 mg per dose, for 10 days."
+      ],
+      "gaps": [
+        "No liquid volume calculation without the actual product concentration."
+      ],
+      "stages": [
+        "Identify the prescribing concern",
+        "Classify contraindication, precaution, adverse effect or error",
+        "Identify susceptible patients and other causes",
+        "Choose a supported action and monitoring",
+        "Discuss a supported alternative or identify its evidence gap",
+        "Explain the pitfall back in one sentence"
+      ]
+    },
+    {
+      "id": "advanced-confusion",
+      "track": "advanced",
+      "title": "Confusion, falls and polypharmacy",
+      "tags": ["SIADH", "sodium", "sertraline", "diuretic", "multimorbidity"],
+      "source_ids": ["LABEL-SERTRALINE"],
+      "opening": "A 76-year-old woman with depression, hypertension and osteoarthritis has new unsteadiness and difficulty concentrating. Sertraline was recently increased; she also takes a diuretic and uses OTC pain remedies. She lives alone. Give a one-sentence problem representation and identify the first safety concern.",
+      "reveals": [
+        "After the initial differential: simulated sodium is 124 mmol/L; glucose 106 mg/dL.",
+        "After discussing next tests: baseline sodium was 138 one month earlier; oral intake has been poor. Serum/urine osmolality and volume assessment are not yet available.",
+        "Before the plan: she prioritizes staying independent and has difficulty arranging transportation."
+      ],
+      "facts": [
+        "Sertraline-associated hyponatremia is a source-supported possible contributor; the case does not establish SIADH or exclude other causes."
+      ],
+      "gaps": [
+        "Full hyponatremia differential, diagnostic thresholds and treatment protocols need additional evidence. No correction-rate teaching from this case."
+      ],
+      "stages": [
+        "One-sentence problem representation",
+        "Immediate threats and level of care",
+        "Ranked differential and contributory conditions/medications",
+        "Targeted tests and revise differential after new findings",
+        "Most likely explanation and remaining uncertainty",
+        "Problem-based plan, reconciliation and possible deprescribing",
+        "Competing treatment goals, patient preferences and practical constraints",
+        "Monitoring, follow-up, escalation and contingency plan",
+        "30–60 second oral synthesis, feedback and retry"
+      ]
+    },
+    {
+      "id": "advanced-kidney",
+      "track": "advanced",
+      "title": "Kidney function decline with competing chronic treatments",
+      "tags": ["AKI", "CKD", "metformin", "lisinopril", "NSAID", "diuretic"],
+      "source_ids": ["LABEL-LISINOPRIL", "LABEL-METFORMIN"],
+      "opening": "A 68-year-old man with diabetes, hypertension and CKD reports poor intake and new dizziness. His list includes metformin, lisinopril, a diuretic and recently added OTC ibuprofen. What links these details, and what needs attention first?",
+      "reveals": [
+        "After the differential: simulated creatinine is 2.3 mg/dL compared with 1.2 previously; current reported eGFR is 28.",
+        "After test planning: he is still taking all listed medicines and cannot name the OTC doses.",
+        "Before the plan: he fears losing blood pressure control if medicines are changed and has limited access to repeat laboratory testing."
+      ],
+      "facts": [
+        "Medication exposure and volume depletion may contribute; do not assume a single cause. Metformin renal restrictions and the ACE inhibitor/NSAID warning are loaded."
+      ],
+      "gaps": [
+        "A full AKI diagnostic/management guideline is not loaded. eGFR during changing renal function requires caution; do not turn the value into an automated dose calculator."
+      ],
+      "stages": [
+        "One-sentence problem representation",
+        "Immediate threats and level of care",
+        "Ranked differential and contributory conditions/medications",
+        "Targeted tests and revise differential after new findings",
+        "Most likely explanation and remaining uncertainty",
+        "Problem-based plan, reconciliation and possible deprescribing",
+        "Competing treatment goals, patient preferences and practical constraints",
+        "Monitoring, follow-up, escalation and contingency plan",
+        "30–60 second oral synthesis, feedback and retry"
+      ]
+    },
+    {
+      "id": "advanced-bleeding",
+      "track": "advanced",
+      "title": "Fatigue and possible bleeding during anticoagulation",
+      "tags": ["apixaban", "bleeding", "AF", "NSAID", "anemia"],
+      "source_ids": ["LABEL-APIXABAN"],
+      "opening": "An 82-year-old woman with nonvalvular AF, CKD and arthritis reports new fatigue and easy bruising. She takes apixaban and recently added OTC ibuprofen. How do you prioritize the differential and immediate assessment?",
+      "reveals": [
+        "After initial assessment: simulated weight is 58 kg and serum creatinine is 1.6 mg/dL; she reports taking apixaban 5 mg twice daily.",
+        "After discussing tests: simulated hemoglobin is 8.6 g/dL compared with 12.0 previously; she then reports dark stools.",
+        "Before the plan: she strongly fears another stroke and is worried about medication costs."
+      ],
+      "facts": [
+        "Reconcile the anticoagulant indication and AF reduction criteria. Medication risks do not by themselves prove the bleeding source."
+      ],
+      "gaps": [
+        "GI bleeding diagnosis, transfusion thresholds, interruption/reversal and restarting anticoagulation require additional guideline evidence. Prioritize escalation reasoning without inventing a protocol."
+      ],
+      "stages": [
+        "One-sentence problem representation",
+        "Immediate threats and level of care",
+        "Ranked differential and contributory conditions/medications",
+        "Targeted tests and revise differential after new findings",
+        "Most likely explanation and remaining uncertainty",
+        "Problem-based plan, reconciliation and possible deprescribing",
+        "Competing treatment goals, patient preferences and practical constraints",
+        "Monitoring, follow-up, escalation and contingency plan",
+        "30–60 second oral synthesis, feedback and retry"
+      ]
+    },
+    {
+      "id": "advanced-heart-failure",
+      "track": "advanced",
+      "title": "Heart failure, CKD and a complicated medication transition",
+      "tags": [
+        "heart failure",
+        "CKD",
+        "lisinopril",
+        "spironolactone",
+        "sacubitril",
+        "potassium"
+      ],
+      "source_ids": ["LABEL-LISINOPRIL", "LABEL-SPIRONOLACTONE"],
+      "opening": "A 70-year-old man with reduced-ejection-fraction heart failure, hypertension and CKD brings conflicting medication lists after a care transition. Lisinopril, spironolactone, potassium supplements and a new sacubitril/valsartan order all appear. What must you clarify before recommending a plan?",
+      "reveals": [
+        "After reconciliation: he took lisinopril this morning and has not started the new prescription.",
+        "After targeted testing: simulated potassium is 5.4 mEq/L and eGFR is 38.",
+        "Before the plan: he cannot afford frequent laboratory visits and wants the simplest workable schedule."
+      ],
+      "facts": [
+        "The ACE inhibitor/ARNI transition and potassium-raising therapy require separate safety assessments. Avoid treating every combination as an absolute contraindication."
+      ],
+      "gaps": [
+        "Comprehensive heart failure sequencing, emergency potassium management and sacubitril/valsartan dosing need additional evidence."
+      ],
+      "stages": [
+        "One-sentence problem representation",
+        "Immediate threats and level of care",
+        "Ranked differential and contributory conditions/medications",
+        "Targeted tests and revise differential after new findings",
+        "Most likely explanation and remaining uncertainty",
+        "Problem-based plan, reconciliation and possible deprescribing",
+        "Competing treatment goals, patient preferences and practical constraints",
+        "Monitoring, follow-up, escalation and contingency plan",
+        "30–60 second oral synthesis, feedback and retry"
+      ]
+    }
+  ],
+  "gaps": [
+    "Starter set, not all drugs or all diseases; existing 156-topic library remains available.",
+    "Independent clinician/pharmacist review pending; original lessons are unscored.",
+    "Commercial databases are not connected. Public availability alone does not establish redistribution rights.",
+    "Dedicated pregnancy, breastfeeding, pediatric and dialysis expansion beyond the explicit loaded claims remains pending.",
+    "Snapshots are dated, not continuously updated; new evidence requires scoped review before a new release."
+  ]
+}

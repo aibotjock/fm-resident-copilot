@@ -7,6 +7,14 @@ import {
   type Practice,
 } from "./practice";
 import { BLUEPRINT } from "./learning";
+import {
+  curriculumCatalog,
+  curriculumVersion,
+  clinicalSources,
+  lessonById,
+  lessons,
+} from "./curriculum";
+import { antibioticCoverage } from "./coverage";
 import express from "express";
 import { randomBytes, timingSafeEqual } from "node:crypto";
 import { readFile } from "node:fs/promises";
@@ -57,6 +65,8 @@ app.get("/api/healthz", (_req, res) =>
     libraryTopics: topics.length,
     libraryNavigation: "voice-search-and-select-v1",
     guidedCase: "vignette-to-conclusion-v1",
+    curriculumVersion,
+    curriculumLessons: lessons.length,
   }),
 );
 app.get("/learning.js", async (_req, res) =>
@@ -163,6 +173,9 @@ app.post("/api/context", (req, res) => {
       req.body.ids,
       req.body.progress,
       req.body.history,
+      "teaching",
+      true,
+      req.body.curriculum_id,
     );
     res.json({
       instructions: prompt,
@@ -172,6 +185,64 @@ app.post("/api/context", (req, res) => {
     });
   } catch {
     res.status(400).json({ error: "Select valid library topics" });
+  }
+});
+app.get("/api/curriculum", (_req, res) =>
+  res.json({
+    ...curriculumCatalog(),
+    antibioticCoverage: antibioticCoverage(),
+  }),
+);
+app.post("/api/curriculum/search", (req, res) => {
+  if (typeof req.body.query !== "string" || req.body.query.length > 200) {
+    res.status(400).json({ error: "Search with at most 200 characters" });
+    return;
+  }
+  const words: string[] = req.body.query
+    .toLowerCase()
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+  const matches = lessons.filter((l) =>
+    words.every((w) =>
+      `${l.title} ${l.track} ${l.tags.join(" ")}`.toLowerCase().includes(w),
+    ),
+  );
+  res.json({
+    lessons: matches.map(({ id, title, track, tags }) => ({
+      id,
+      title,
+      track,
+      tags,
+    })),
+    total: matches.length,
+  });
+});
+app.post("/api/curriculum/select", (req, res) => {
+  try {
+    const lesson = lessonById(req.body.lesson_id);
+    const ids = req.body.ids || res.locals.session.ids;
+    const prompt = instructions(
+      ids,
+      req.body.progress,
+      [],
+      "teaching",
+      true,
+      lesson.id,
+    );
+    res.locals.session.contextRevision++;
+    res.locals.session.ids = ids;
+    res.locals.session.practice = undefined;
+    res.json({
+      lesson,
+      instructions: prompt,
+      tools,
+      version: curriculumVersion,
+    });
+  } catch {
+    res
+      .status(400)
+      .json({ error: "Choose a valid specialist lesson and library topic" });
   }
 });
 app.post("/api/library/search", (req, res) => {
@@ -287,6 +358,7 @@ app.post("/api/session", async (req, res) => {
       req.body.history,
       practice?.mode || "teaching",
       guided,
+      guided ? req.body.curriculum_id : undefined,
     );
     if (practice?.scope === "mixed") {
       prompt +=
@@ -384,8 +456,17 @@ app.post("/api/lookup", async (req, res) => {
         ? res.locals.session.ids
         : [req.body.topic_id],
     ).flatMap((e) => (e.evidence_records || []).map((r) => r.url));
+    if (req.body.curriculum_id) {
+      const lesson = lessonById(req.body.curriculum_id);
+      allowed.push(
+        ...clinicalSources
+          .filter((s) => lesson.source_ids.includes(s.id))
+          .map((s) => s.url),
+      );
+    }
   } catch {
     // Invalid or absent topic selection authorizes no external URL.
+    allowed = [];
   }
   if (approved !== true || typeof url !== "string" || !allowed.includes(url)) {
     res.status(403).json({

@@ -172,7 +172,9 @@ test("Realtime handshake uses the existing server key and configured evidence wi
       "mark_practice_assisted",
       "record_learning",
       "save_lesson",
+      "search_curriculum",
       "search_library",
+      "select_curriculum_lesson",
       "select_library_topic",
     ]);
     return new Response("v=0\r\nmock-answer", {
@@ -348,12 +350,16 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
       setAttribute() {},
       append(...children: any[]) {
         this.children.push(...children);
-        if ((id === "topic" || id === "lookupUrl") && !this.value)
+        if (
+          ["topic", "lookupUrl", "curriculumLesson"].includes(id) &&
+          !this.value
+        )
           this.value = children[0]?.value || "";
       },
       replaceChildren(...children: any[]) {
         this.children = children;
-        if (id === "topic" || id === "lookupUrl") this.value = "";
+        if (["topic", "lookupUrl", "curriculumLesson"].includes(id))
+          this.value = "";
       },
       click() {
         this.onclick?.();
@@ -903,4 +909,119 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
   );
   assert.equal(nodes.get("practiceOptions").children.length, 0);
   sandbox.fetch = originalFetch;
+
+  // Specialist controls run through the same application and mocked voice channel.
+  const scoredBefore = vm.runInContext("data.events.length", sandbox);
+  nodes.get("learningTrack").value = "medication";
+  nodes.get("learningTrack").onchange();
+  assert.equal(nodes.get("curriculumLesson").options.length, 13);
+  nodes.get("curriculumFilter").value = "amoxicillin";
+  nodes.get("curriculumFilter").oninput();
+  assert.equal(nodes.get("curriculumLesson").value, "med-amoxicillin-strep");
+  assert.ok(nodes.get("curriculumSources").children.length);
+  nodes.get("curriculumFilter").value = "absent-medication-zzzz";
+  nodes.get("curriculumFilter").oninput();
+  assert.equal(nodes.get("curriculumLesson").options.length, 0);
+  assert.equal(nodes.get("start").disabled, true);
+  assert.equal(nodes.get("curriculumSources").children.length, 0);
+  nodes.get("learningTrack").value = "safety";
+  nodes.get("learningTrack").onchange();
+  nodes.get("curriculumFilter").value = "SIADH";
+  nodes.get("curriculumFilter").oninput();
+  assert.equal(nodes.get("curriculumLesson").value, "safe-siadh");
+  vm.runInContext('$("curriculumRating").value = "good"', sandbox);
+  nodes.get("curriculumReview").onclick();
+  assert.equal(vm.runInContext("data.curriculumReviews.length", sandbox), 1);
+  assert.equal(vm.runInContext("data.events.length", sandbox), scoredBefore);
+  assert.match(
+    nodes.get("curriculumReviewStatus").textContent,
+    /Excluded from exam scores/,
+  );
+  nodes.get("learningTrack").value = "advanced";
+  nodes.get("learningTrack").onchange();
+  assert.equal(nodes.get("curriculumLesson").options.length, 4);
+  nodes.get("curriculumReveal").onclick();
+  assert.match(nodes.get("curriculumFinding").textContent, /124/);
+  nodes.get("curriculumReveal").onclick();
+  assert.match(nodes.get("curriculumFinding").textContent, /138/);
+  nodes.get("curriculumReveal").onclick();
+  assert.equal(nodes.get("curriculumReveal").disabled, true);
+  apiCalls.length = 0;
+  vm.runInContext(
+    `navigator.mediaDevices.getUserMedia=async()=>{track={enabled:true,stopped:false,stop(){this.stopped=true}};return {getTracks:()=>[track],getAudioTracks:()=>[track]};}`,
+    sandbox,
+  );
+  await nodes.get("start").onclick();
+  const specialistSession = apiCalls.find((c) => c.path === "/api/session");
+  assert.equal(specialistSession?.body.curriculum_id, "advanced-confusion");
+  assert.equal(specialistSession?.body.guided, true);
+  vm.runInContext(
+    `outgoing.length=0;
+    onEvent({data:JSON.stringify({type:"response.created",response:{id:"specialist-switch"}})});
+    onEvent({data:JSON.stringify({type:"response.function_call_arguments.done",response_id:"specialist-switch",call_id:"new-specialist",name:"select_curriculum_lesson",arguments:JSON.stringify({lesson_id:"safe-siadh"})})});
+    onEvent({data:JSON.stringify({type:"response.done",response:{id:"specialist-switch",output:[{type:"message"},{type:"function_call",call_id:"new-specialist"}]}})});`,
+    sandbox,
+  );
+  await vm.runInContext("toolChain", sandbox);
+  await Promise.resolve();
+  assert.equal(nodes.get("curriculumLesson").value, "safe-siadh");
+  assert.equal(nodes.get("learningTrack").value, "safety");
+  assert.ok(
+    vm.runInContext(
+      "outgoing.some(m=>m.type==='session.update' && m.session.instructions.includes('ACTIVE SPECIALIST CURRICULUM'))",
+      sandbox,
+    ),
+  );
+  assert.ok(
+    vm.runInContext("outgoing.some(m=>m.type==='response.create')", sandbox),
+  );
+  vm.runInContext(
+    `tool({call_id:"specialist-checkpoint",name:"save_lesson",arguments:JSON.stringify({checkpoint:"Safety stage 3",plan:["monitoring"]})})`,
+    sandbox,
+  );
+  assert.equal(
+    vm.runInContext(
+      "data.curriculumCheckpoints['safe-siadh'].checkpoint",
+      sandbox,
+    ),
+    "Safety stage 3",
+  );
+  nodes.get("learningTrack").value = "advanced";
+  nodes.get("learningTrack").onchange();
+  nodes.get("learningTrack").value = "safety";
+  nodes.get("learningTrack").onchange();
+  nodes.get("curriculumLesson").value = "safe-siadh";
+  nodes.get("curriculumLesson").onchange();
+  assert.equal(vm.runInContext("data.checkpoint", sandbox), "Safety stage 3");
+  vm.runInContext(
+    "data.curriculumReviews[0].due='2020-01-01T00:00:00Z'",
+    sandbox,
+  );
+  nodes.get("curriculumDue").onclick();
+  assert.equal(nodes.get("curriculumLesson").value, "safe-siadh");
+  nodes.get("export").onclick();
+  const specialistArchive = await exported!.text();
+  assert.equal(JSON.parse(specialistArchive).curriculumReviews.length, 1);
+  nodes.get("clear").onclick();
+  await nodes
+    .get("importFile")
+    .onchange({
+      target: {
+        files: [
+          {
+            size: specialistArchive.length,
+            text: async () => specialistArchive,
+          },
+        ],
+      },
+    });
+  assert.equal(vm.runInContext("data.curriculumReviews.length", sandbox), 1);
+  assert.equal(
+    vm.runInContext(
+      "data.curriculumCheckpoints['safe-siadh'].checkpoint",
+      sandbox,
+    ),
+    "Safety stage 3",
+  );
+  assert.equal(vm.runInContext("data.events.length", sandbox), scoredBefore);
 });
