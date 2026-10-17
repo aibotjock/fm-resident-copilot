@@ -9,6 +9,9 @@ import {
   clinicalSources,
   regimenInstructions,
   antibioticPathways,
+  matchingMedicationSafety,
+  medicationSafetyProfiles,
+  searchCurriculum,
 } from "./curriculum";
 import { antibioticCoverage } from "./coverage";
 import { instructions, topics } from "./core";
@@ -36,6 +39,100 @@ test("all audited original/supplemental entries have explicit relevance and ever
     (r) => r.title === "Blood Pressure Classification and Thresholds",
   )!;
   assert.equal(bp.antimicrobial_signal, false);
+});
+
+test("pediatric courses retain daily versus per-dose units and distinct disease durations", () => {
+  const get = (id: string) => lessons.find((l) => l.id === id)!.regimen!;
+  assert.match(get("abx-sinus-amox-peds").dose, /45 mg\/kg per dose/);
+  assert.equal(get("abx-sinus-amox-peds").duration, "10 days");
+  assert.equal(get("abx-cap-amox-peds").duration, "5 days");
+  assert.match(get("abx-cap-ceftriaxone-peds").population, />3 months/);
+  assert.match(get("abx-lyme-em-doxy-peds").dose, /per DAY divided into 2/);
+  assert.match(get("abx-lyme-arthritis-doxy-peds").population, />=8 years/);
+  assert.equal(get("abx-lyme-arthritis-doxy-peds").duration, "28 days");
+  assert.match(get("abx-lyme-neuro-ceftriaxone-peds").maximum, /2 g\/day/);
+  assert.match(get("abx-pertussis-tmpsmx-peds").population, />=2 months/);
+});
+
+test("IV component matching and search never substitute oral route profiles", () => {
+  for (const drug of ["vancomycin", "metronidazole", "clindamycin"]) {
+    for (const wording of [`IV ${drug}`, `intravenous ${drug}`, `${drug} IV`])
+      assert.deepEqual(
+        matchingMedicationSafety(wording).map((p) => p.drug),
+        [`${drug} IV`],
+      );
+  }
+  assert.deepEqual(
+    matchingMedicationSafety("oral vancomycin").map((p) => p.drug),
+    ["vancomycin"],
+  );
+  const cdi = lessons.find((l) => l.id === "abx-cdi-fulminant")!;
+  assert.deepEqual(cdi.medication_safety!.map((p) => p.drug).sort(), [
+    "metronidazole IV",
+    "vancomycin",
+  ]);
+  assert.ok(
+    medicationSearch("IV vancomycin").some((m) =>
+      m.regimen_lesson_ids.includes("abx-gbs-vanc"),
+    ),
+  );
+  assert.ok(
+    searchCurriculum("pediatric sinusitis").lessons.some(
+      (l) => l.id === "abx-sinus-amox-peds",
+    ),
+  );
+});
+
+test("HIV treatment, maintenance and primary prevention cannot collapse to the same dose", () => {
+  const get = (id: string) => lessons.find((l) => l.id === id)!;
+  assert.match(
+    get("abx-hiv-toxo-treatment").regimen!.dose,
+    /TMP 5 mg\/kg per DOSE/,
+  );
+  assert.match(get("abx-hiv-toxo-treatment").regimen!.duration, /6 weeks/);
+  assert.equal(
+    get("abx-hiv-toxo-maintenance").regimen!.frequency,
+    "twice daily",
+  );
+  assert.equal(get("abx-hiv-toxo-proph").regimen!.frequency, "once daily");
+  assert.equal(get("abx-hiv-mac-proph").regimen!.frequency, "once weekly");
+  assert.match(
+    get("abx-hiv-mac-proph").facts.join(" "),
+    /No primary prophylaxis if ART starts immediately/,
+  );
+  assert.equal(get("abx-hiv-mac-treatment").medication_safety!.length, 2);
+  assert.match(get("abx-hiv-mac-treatment").regimen!.duration, /12 months/);
+});
+
+test("allergy, indexed renal measures and unsupported organ tables remain scoped", () => {
+  const profile = (drug: string) =>
+    medicationSafetyProfiles.find((p) => p.drug === drug)!;
+  assert.match(profile("cefadroxil").population, /mL\/min\/1.73 m2/);
+  assert.match(
+    profile("cefuroxime axetil").renal.guidance,
+    /Do not extrapolate to children/,
+  );
+  assert.match(
+    profile("cefuroxime axetil").interactions.join(" "),
+    /axetil >=1 h before or >=2 h after/,
+  );
+  assert.match(
+    profile("cefazolin").contraindications.join(" "),
+    /guideline permits selected low-risk/,
+  );
+  assert.match(
+    profile("vancomycin IV").renal.guidance,
+    /No universal fixed renal dose/,
+  );
+  assert.equal(profile("ethambutol").renal.status, "individualize_monitor");
+  const prenatal = antibioticPathways.find((p) =>
+    p.title.includes("Prenatal"),
+  )!;
+  assert.ok(!prenatal.pending_scenarios.join(" ").includes("prostatitis"));
+  const atopic = antibioticPathways.find((p) =>
+    p.title.includes("Atopic Dermatitis"),
+  )!;
+  assert.ok(!atopic.pending_scenarios.join(" ").includes("osteomyelitis"));
 });
 
 test("new condition regimens have full component safety/provenance and no orphan topic mappings", () => {
@@ -140,10 +237,11 @@ test("medication and condition navigation expose actual newly stored lessons", (
   assert.equal(medicationSearch("cefdinir", topics[0].id).length, 0);
 });
 
-test("coverage keeps the undosed perianal complication and specialist exclusions explicit", () => {
+test("coverage loads the scoped perianal course and keeps specialist exclusions explicit", () => {
   const ibd = antibioticCoverage().find((r) => r.title.startsWith("Crohn's"))!;
-  assert.equal(ibd.status, "pathway_only_regimens_pending");
-  assert.match(ibd.pending_scenarios.join(" "), /perianal-abscess/);
+  assert.equal(ibd.status, "scoped_regimens_available");
+  assert.ok(ibd.lesson_ids.includes("abx-perianal-inpatient"));
+  assert.match(ibd.pending_scenarios.join(" "), /Crohn fistula/);
   assert.ok(antibioticPathways.some((r) => r.pending_scenarios.length));
   const lyme = topics.find((t) => t.title.startsWith("Lyme Disease"))!;
   assert.ok(regimensForTopics([lyme.id]).some((l) => l.id === "abx-lyme-pep"));

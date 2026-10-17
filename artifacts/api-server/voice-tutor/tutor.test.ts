@@ -985,7 +985,7 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
   const scoredBefore = vm.runInContext("data.events.length", sandbox);
   nodes.get("learningTrack").value = "medication";
   nodes.get("learningTrack").onchange();
-  assert.equal(nodes.get("curriculumLesson").options.length, 94);
+  assert.equal(nodes.get("curriculumLesson").options.length, 130);
   for (const [query, expected] of [
     ["pyelonephritis", "abx-pyelo-levo"],
     ["inpatient pneumonia", "abx-cap-ward"],

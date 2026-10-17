@@ -1,5 +1,5 @@
 {
-  "version": "antibiotic-conditions-2026-10-17-v5",
+  "version": "antibiotic-conditions-2026-10-17-v6",
   "sources": [
     {
       "id": "EXP-AOM",
@@ -638,6 +638,215 @@
       "access_date": "2026-10-17",
       "review": "Source checked for stated extract; independent clinical review pending",
       "reuse": "Original scoped paraphrase; no vendor database copied."
+    },
+    {
+      "id": "EXP-SINUS-PEDS",
+      "organization": "UCSF IDMP",
+      "title": "Pediatric acute bacterial sinusitis",
+      "url": "https://idmp.ucsf.edu/content/acute-bacterial-sinusitis-0",
+      "sections": "Pediatric diagnosis, observation, first-choice dosing and duration",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-CAP-PEDS",
+      "organization": "UCSF IDMP",
+      "title": "Pediatric community-acquired pneumonia",
+      "url": "https://idmp.ucsf.edu/content/community-acquired-pneumonia",
+      "sections": "Outpatient and uncomplicated inpatient therapy",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-ACNE-NICE",
+      "organization": "NICE",
+      "title": "Acne vulgaris NG198",
+      "url": "https://www.nice.org.uk/guidance/ng198/chapter/Recommendations",
+      "sections": "1.5.2 table 1, doxycycline footnote; 1.5.11-1.5.13 review and antibiotic duration",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-MAC",
+      "organization": "NIH ClinicalInfo",
+      "title": "Disseminated Mycobacterium avium complex disease",
+      "url": "https://clinicalinfo.hiv.gov/en/guidelines/hiv-clinical-guidelines-adult-and-adolescent-opportunistic-infections/disseminated",
+      "sections": "Primary prophylaxis indications; preferred treatment; duration and discontinuation",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-PERIANAL-WSES",
+      "organization": "WSES/GAIS/WSIS/SIS-E/AAST",
+      "title": "Global clinical pathways for skin and soft tissue infections",
+      "url": "https://link.springer.com/article/10.1186/s13017-022-00406-2",
+      "sections": "Perianal and perirectal abscesses; selected inpatient regimen with normal renal function",
+      "source_date": "2022-01-15",
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-DFI",
+      "organization": "IWGDF/IDSA",
+      "title": "Diabetes-related foot infections",
+      "url": "https://www.idsociety.org/practice-guideline/diabetic-foot-infections/",
+      "sections": "Recommendations 11-16, 18-20: antibiotic eligibility, selection, duration and surgery",
+      "source_date": "2023-10-02",
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-VANC-AUC",
+      "organization": "ASHP/IDSA/PIDS/SIDP",
+      "title": "Therapeutic monitoring of vancomycin for serious MRSA infections",
+      "url": "https://www.idsociety.org/practice-guideline/vancomycin/",
+      "sections": "Executive summary: invasive MRSA AUC target and early monitoring",
+      "source_date": "2020-03-19",
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-PROSTATITIS",
+      "organization": "NICE",
+      "title": "Acute prostatitis NG110",
+      "url": "https://www.nice.org.uk/guidance/ng110/chapter/recommendations",
+      "sections": "1.1 prescribing/reassessment, 1.3.4 review; table 1 adult oral therapy",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-PERTUSSIS-CURRENT",
+      "organization": "CDC",
+      "title": "Treatment of pertussis",
+      "url": "https://www.cdc.gov/pertussis/hcp/clinical-care/index.html",
+      "sections": "Treatment timeline; infant macrolide safety",
+      "source_date": "2025-12-02",
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-PERTUSSIS-PEP",
+      "organization": "CDC",
+      "title": "Postexposure antimicrobial prophylaxis",
+      "url": "https://www.cdc.gov/pertussis/php/postexposure-prophylaxis/index.html",
+      "sections": "Household contacts and high-risk contacts",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-LABEL-CEFUROXIME",
+      "organization": "DailyMed / manufacturer FDA labeling",
+      "title": "Cefuroxime axetil oral tablet",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bc9200d2-4a6d-4847-ba85-8e9d378390de",
+      "sections": "2.5, 4, 7, 12.3",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-LABEL-CEFADROXIL",
+      "organization": "DailyMed / manufacturer FDA labeling",
+      "title": "Cefadroxil oral tablet",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4674a05c-fdef-4737-a4b8-e3229bdada9d",
+      "sections": "Contraindications; precautions; dosage and administration, renal impairment",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-LABEL-CLARITHROMYCIN",
+      "organization": "DailyMed / manufacturer FDA labeling",
+      "title": "Clarithromycin immediate-release oral tablet",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1cb8a78a-0f07-49e8-a23e-a77628006209",
+      "sections": "2.6-2.7, 4, 5, 7, 8.6",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-LABEL-CIPROFLOXACIN",
+      "organization": "DailyMed / manufacturer FDA labeling",
+      "title": "Ciprofloxacin oral tablet",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3e4402d4-e0d3-9846-3e81-ed46f34137fe",
+      "sections": "2.3 table 4; 4, 5, 7, 8.7",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-LABEL-CEFAZOLIN",
+      "organization": "DailyMed / manufacturer FDA labeling",
+      "title": "Cefazolin for injection",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=79787707-c84f-f229-e053-2a91aa0a1f16",
+      "sections": "2.3, 4, 5, 7",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-LABEL-CLINDA-IV",
+      "organization": "DailyMed / manufacturer FDA labeling",
+      "title": "Clindamycin phosphate injection",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9e545c9d-dc39-584c-e053-2995a90afda4",
+      "sections": "Contraindications; renal/hepatic impairment; precautions; IV dilution and infusion rates",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-LABEL-VANC-IV",
+      "organization": "DailyMed / manufacturer FDA labeling",
+      "title": "Vancomycin hydrochloride injection",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=caf22ccb-df75-45ea-a1d0-ccb2d37272fb",
+      "sections": "2.1, 2.4, 4, 5, 7",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-LABEL-METRO-IV",
+      "organization": "DailyMed / manufacturer FDA labeling",
+      "title": "Metronidazole injection",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=902ab25b-d493-495a-884e-96b080e9f72d",
+      "sections": "Contraindications; precautions, hepatic/renal impairment and interactions",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
+    },
+    {
+      "id": "EXP-LABEL-ETHAMBUTOL",
+      "organization": "DailyMed / manufacturer FDA labeling",
+      "title": "Ethambutol hydrochloride tablets",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3f6428d6-3745-4337-ad78-ebfff9f49135",
+      "sections": "Contraindications; precautions; drug interactions; dosage and administration",
+      "source_date": null,
+      "access_date": "2026-10-17",
+      "review": "Source checked for the stated scope; independent clinical/pharmacist review pending.",
+      "reuse": "Original concise structured paraphrase; consult linked source for full guidance."
     }
   ],
   "medication_safety_profiles": [
@@ -965,6 +1174,227 @@
       ],
       "gaps": [
         "Selective safety extract; verify unlisted interactions, pregnancy/lactation, pediatric organ dysfunction and dialysis separately. Missing evidence is not no adjustment needed."
+      ]
+    },
+    {
+      "drug": "cefuroxime axetil",
+      "source_ids": ["EXP-LABEL-CEFUROXIME"],
+      "population": "Oral axetil; adult renal table only. Tablet and suspension are not mg-for-mg interchangeable.",
+      "contraindications": [
+        "Known beta-lactam hypersensitivity per selected product label."
+      ],
+      "renal": {
+        "status": "adjust_interval",
+        "guidance": "Adult CrCl >=30 mL/min: usual interval; 10 to <30: standard dose q24h; <10 off HD: q48h; HD: additional standard dose after dialysis. Do not extrapolate to children."
+      },
+      "hepatic": {
+        "status": "not_established",
+        "guidance": "No hepatic dose table established in this extract; hepatic dysfunction is reported, so verify individual use."
+      },
+      "interactions": [
+        "Avoid H2 blockers/PPIs; give axetil >=1 h before or >=2 h after short-acting antacid. Probenecid coadministration not recommended."
+      ],
+      "monitoring": [
+        "Allergy, diarrhea and renal function; verify formulation."
+      ],
+      "gaps": [
+        "Selective safety extract; unlisted interactions and excluded populations need separate review. Missing evidence is not no adjustment needed."
+      ]
+    },
+    {
+      "drug": "cefadroxil",
+      "source_ids": ["EXP-LABEL-CEFADROXIL"],
+      "population": "Oral; adult renal table uses CrCl mL/min/1.73 m2 as printed in label, not interchangeable with unindexed CrCl.",
+      "contraindications": [
+        "Cephalosporin allergy; CDC GAS guidance excludes immediate penicillin hypersensitivity."
+      ],
+      "renal": {
+        "status": "adjust_interval",
+        "guidance": "Adult renal label: initial 1000 mg, then 500 mg q36h at CrCl 0-10, q24h at 10-25, q12h at 25-50; >50 usual dosing. Overlapping endpoints in label require pharmacist confirmation."
+      },
+      "hepatic": {
+        "status": "not_established",
+        "guidance": "No hepatic adjustment table in selected label; hepatic dysfunction is reported."
+      },
+      "interactions": [
+        "Check full interaction list separately; not exhaustively extracted."
+      ],
+      "monitoring": [
+        "Kidney function, allergy, diarrhea, accumulation-related seizures."
+      ],
+      "gaps": [
+        "Pediatric organ dysfunction and dialysis regimen not established here; choose measurable oral formulation for weight dosing."
+      ]
+    },
+    {
+      "drug": "clarithromycin",
+      "source_ids": ["EXP-LABEL-CLARITHROMYCIN"],
+      "population": "Immediate-release oral; verify formulation and complete interaction screen.",
+      "contraindications": [
+        "Macrolide hypersensitivity; prior clarithromycin-associated cholestatic jaundice/hepatic dysfunction.",
+        "Contraindicated with cisapride, pimozide, lomitapide, lovastatin, simvastatin, ergot alkaloids, lurasidone; colchicine if renal/hepatic impairment."
+      ],
+      "renal": {
+        "status": "adjust_dose",
+        "guidance": "CrCl <30 mL/min: reduce 50%. With atazanavir/ritonavir regimens: CrCl 30-60 reduce 50%, <30 reduce 75%. Atazanavir also requires interaction-specific reduction; reconcile rather than stack reductions."
+      },
+      "hepatic": {
+        "status": "conditional_no_adjustment",
+        "guidance": "Hepatic impairment with normal renal function: no adjustment per label; prior drug-associated hepatic dysfunction remains contraindicated."
+      },
+      "interactions": [
+        "Strong CYP3A4 interactions: ART, QT-prolonging drugs, colchicine, calcium-channel blockers; full screen required."
+      ],
+      "monitoring": [
+        "Avoid in known QT prolongation, significant bradycardia, uncorrected low K/Mg or QT-prolonging drugs; assess liver symptoms, renal function and coronary disease risk. Pregnancy is not recommended unless no appropriate alternative."
+      ],
+      "gaps": [
+        "Selective safety extract; unlisted interactions and excluded populations need separate review. Missing evidence is not no adjustment needed."
+      ]
+    },
+    {
+      "drug": "ciprofloxacin",
+      "source_ids": ["EXP-LABEL-CIPROFLOXACIN"],
+      "population": "Adult oral immediate-release tablet; not otic ciprofloxacin/dexamethasone.",
+      "contraindications": [
+        "Quinolone/component hypersensitivity; concomitant tizanidine."
+      ],
+      "renal": {
+        "status": "adjust_interval",
+        "guidance": "Adult CrCl 30-50 mL/min: 250-500 mg q12h; 5-29: 250-500 mg q18h; HD/PD: 250-500 mg q24h after dialysis. Match indication and severity."
+      },
+      "hepatic": {
+        "status": "limited_evidence",
+        "guidance": "Stable chronic cirrhosis showed no significant PK change; acute hepatic insufficiency not adequately studied."
+      },
+      "interactions": [
+        "Check cations/antacids, theophylline, warfarin, QT drugs and other CYP1A2 interactions."
+      ],
+      "monitoring": [
+        "Tendon injury, neuropathy/CNS effects, myasthenia gravis worsening, dysglycemia, QT risk, renal function; stop/review serious reactions."
+      ],
+      "gaps": [
+        "Selective safety extract; unlisted interactions and excluded populations need separate review. Missing evidence is not no adjustment needed."
+      ]
+    },
+    {
+      "drug": "cefazolin",
+      "source_ids": ["EXP-LABEL-CEFAZOLIN"],
+      "population": "Adult injectable; obstetric guideline versus product-label allergy scope must be explicitly reconciled.",
+      "contraindications": [
+        "Selected label lists cefazolin/cephalosporin, penicillin or other beta-lactam hypersensitivity; CDC GBS guideline permits selected low-risk penicillin histories. Confirm allergy phenotype and local obstetric protocol; never apply to severe delayed reactions."
+      ],
+      "renal": {
+        "status": "adjust_interval",
+        "guidance": "After appropriate initial loading: CrCl >=55 mL/min usual; 35-54 full dose q8h or longer; 11-34 half usual dose q12h; <=10 half usual dose q18-24h. Dialysis needs separate protocol."
+      },
+      "hepatic": {
+        "status": "not_established",
+        "guidance": "No dedicated hepatic adjustment table in selected extract; assess patient and monitor."
+      },
+      "interactions": [
+        "Probenecid reduces renal excretion; verify full interaction list."
+      ],
+      "monitoring": [
+        "Renal function, allergy, diarrhea; coagulation risk where relevant."
+      ],
+      "gaps": [
+        "Selective safety extract; unlisted interactions and excluded populations need separate review. Missing evidence is not no adjustment needed."
+      ]
+    },
+    {
+      "drug": "clindamycin IV",
+      "source_ids": ["EXP-LABEL-CLINDA-IV"],
+      "population": "Clindamycin phosphate IV, diluted infusion; not an undiluted bolus.",
+      "contraindications": ["Clindamycin/lincomycin hypersensitivity."],
+      "renal": {
+        "status": "conditional_no_adjustment",
+        "guidance": "Mild/moderate renal disease: no schedule modification. Markedly reduced function prolongs half-life; HD/PD do not effectively remove drug."
+      },
+      "hepatic": {
+        "status": "conditional_no_adjustment",
+        "guidance": "Mild/moderate hepatic disease: no schedule modification. Severe disease needs monitoring and individual review."
+      },
+      "interactions": ["Neuromuscular blockers; CYP3A4 inhibitors/inducers."],
+      "monitoring": [
+        "C difficile diarrhea, periodic CBC and liver/kidney function with prolonged therapy. Infuse <=30 mg/min; 900 mg over at least 30 min."
+      ],
+      "gaps": [
+        "Selective safety extract; unlisted interactions and excluded populations need separate review. Missing evidence is not no adjustment needed."
+      ]
+    },
+    {
+      "drug": "vancomycin IV",
+      "source_ids": ["EXP-LABEL-VANC-IV"],
+      "population": "Systemic IV therapy only; oral CDI and obstetric prophylaxis have different goals.",
+      "contraindications": ["Vancomycin hypersensitivity."],
+      "renal": {
+        "status": "individualize_monitor",
+        "guidance": "Adjust in renal impairment using serum concentrations and kidney function; changing renal function and dialysis require a validated pharmacy protocol. No universal fixed renal dose."
+      },
+      "hepatic": {
+        "status": "not_established",
+        "guidance": "No hepatic adjustment table established here; do not infer a Child-Pugh dose."
+      },
+      "interactions": [
+        "Other nephrotoxic/ototoxic drugs; piperacillin-tazobactam increases AKI incidence; anesthetic agents increase infusion reactions."
+      ],
+      "monitoring": [
+        "Serum concentrations, renal function, hearing symptoms, CBC with prolonged use; diluted IV infusion >=60 min, longer for larger doses per indication/protocol."
+      ],
+      "gaps": [
+        "Selective safety extract; unlisted interactions and excluded populations need separate review. Missing evidence is not no adjustment needed."
+      ]
+    },
+    {
+      "drug": "metronidazole IV",
+      "source_ids": ["EXP-LABEL-METRO-IV"],
+      "population": "Adult IV formulation; route-specific label.",
+      "contraindications": [
+        "Nitroimidazole hypersensitivity; Cockayne syndrome; disulfiram within prior 2 weeks.",
+        "Selected IV label directs avoiding alcohol/propylene glycol during and for 72 h after therapy."
+      ],
+      "renal": {
+        "status": "monitor_or_supplement",
+        "guidance": "Mild/moderate renal impairment: no adjustment. Severe impairment/ESRD: monitor accumulation; HD may require supplementation; PD monitor toxicity."
+      },
+      "hepatic": {
+        "status": "adjust_dose",
+        "guidance": "Child-Pugh C: reduce dose 50%; A/B: no adjustment but monitor. Severe hepatic encephalopathy needs individual reduction and CNS monitoring."
+      },
+      "interactions": [
+        "Warfarin: monitor INR; lithium: monitor lithium/creatinine; avoid busulfan unless benefit outweighs risk."
+      ],
+      "monitoring": [
+        "Neurologic symptoms, hepatic function and CBC during prolonged/repeated courses; formulation sodium load."
+      ],
+      "gaps": [
+        "Selective safety extract; unlisted interactions and excluded populations need separate review. Missing evidence is not no adjustment needed."
+      ]
+    },
+    {
+      "drug": "ethambutol",
+      "source_ids": ["EXP-LABEL-ETHAMBUTOL"],
+      "population": "Adult oral; MAC indication/dose comes from NIH, not the label TB course.",
+      "contraindications": [
+        "Hypersensitivity; known optic neuritis unless specialist judges use justified; inability to recognize/report visual changes."
+      ],
+      "renal": {
+        "status": "individualize_monitor",
+        "guidance": "Marked accumulation in renal insufficiency; reduce/individualize by serum levels and renal function with specialist/pharmacy. No numeric renal table loaded."
+      },
+      "hepatic": {
+        "status": "monitor",
+        "guidance": "Baseline and periodic hepatic assessment; no numeric Child-Pugh adjustment established in this extract."
+      },
+      "interactions": [
+        "Avoid aluminum hydroxide antacids for >=4 h after ethambutol."
+      ],
+      "monitoring": [
+        "Baseline/periodic visual acuity and color discrimination; promptly report visual change. Renal, hepatic and hematopoietic function."
+      ],
+      "gaps": [
+        "Selective safety extract; unlisted interactions and excluded populations need separate review. Missing evidence is not no adjustment needed."
       ]
     }
   ],
@@ -2329,7 +2759,12 @@
       ],
       "source_ids": ["CDC-PID"],
       "topic_ids": ["5730fd3e11038f2d150db93f", "a975e3f80c0dc6fd5af510b9"],
-      "medication_names": ["ceftriaxone", "doxycycline", "metronidazole"],
+      "medication_names": [
+        "ceftriaxone",
+        "doxycycline",
+        "metronidazole",
+        "metronidazole IV"
+      ],
       "facts": [
         "Pregnancy requires obstetric/ID management rather than automatic use of this regimen. Abscess may require drainage."
       ],
@@ -2446,7 +2881,7 @@
       ],
       "source_ids": ["EXP-CDI", "IDSA-CDI-2021"],
       "topic_ids": ["e46fde2a2f267760c4ca55ef"],
-      "medication_names": ["vancomycin", "metronidazole"],
+      "medication_names": ["vancomycin", "metronidazole IV"],
       "facts": [
         "If ileus, rectal vancomycin 500 mg in approximately 100 mL normal saline every 6 h may be added under specialist protocol. Surgical assessment is urgent. IV vancomycin does not replace enteral therapy."
       ],
@@ -3245,6 +3680,1273 @@
         "adjustment": "Apply each loaded component safety profile; do not extrapolate to excluded populations.",
         "maximum": "No separate maximum established in this scoped source; use the stated regimen."
       }
+    },
+    {
+      "id": "abx-sinus-amox-peds",
+      "track": "medication",
+      "title": "Amoxicillin — pediatric bacterial sinusitis",
+      "tags": ["antibiotic", "regimen", "amoxicillin"],
+      "topic_ids": ["0b8d5d9a43c0e0b514fbc87c"],
+      "medication_names": ["amoxicillin"],
+      "source_ids": ["EXP-SINUS-PEDS"],
+      "facts": [
+        "Persistent symptoms alone can be observed with follow-up; distinguish severe onset and worsening after improvement."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Amoxicillin — pediatric bacterial sinusitis, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Amoxicillin — pediatric bacterial sinusitis",
+        "population": "Children 1-18 years; nonsevere bacterial sinusitis when antibiotics chosen",
+        "drug": "amoxicillin",
+        "dose": "45 mg/kg per dose",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "10 days",
+        "maximum": "1000 mg/dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-sinus-amoxclav-peds",
+      "track": "medication",
+      "title": "Amoxicillin-clavulanate — severe pediatric bacterial sinusitis",
+      "tags": ["antibiotic", "regimen", "amoxicillin-clavulanate"],
+      "topic_ids": ["0b8d5d9a43c0e0b514fbc87c"],
+      "medication_names": ["amoxicillin-clavulanate"],
+      "source_ids": ["EXP-SINUS-PEDS"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Orbital/intracranial complications and high-risk allergy require separate management.",
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Amoxicillin-clavulanate — severe pediatric bacterial sinusitis, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Amoxicillin-clavulanate — severe pediatric bacterial sinusitis",
+        "population": "Children 1-18 years; severe bacterial sinusitis",
+        "drug": "amoxicillin-clavulanate",
+        "dose": "45 mg amoxicillin/kg per dose; verify suitable formulation",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "10 days",
+        "maximum": "2000 mg amoxicillin/dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-cap-amox-peds",
+      "track": "medication",
+      "title": "Amoxicillin — pediatric outpatient pneumonia",
+      "tags": ["antibiotic", "regimen", "amoxicillin"],
+      "topic_ids": ["6bdba761b977cff2f575e630", "32eb6b827a214017ef2f5ff6"],
+      "medication_names": ["amoxicillin"],
+      "source_ids": ["EXP-CAP-PEDS"],
+      "facts": [
+        "Preschool CAP is often viral; antibiotics require suspected bacterial disease."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Amoxicillin — pediatric outpatient pneumonia, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Amoxicillin — pediatric outpatient pneumonia",
+        "population": "Children >=3 months; outpatient typical bacterial CAP",
+        "drug": "amoxicillin",
+        "dose": "45 mg/kg per dose",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "5 days",
+        "maximum": "1000 mg/dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-cap-azithro-peds",
+      "track": "medication",
+      "title": "Azithromycin — pediatric atypical pneumonia",
+      "tags": ["antibiotic", "regimen", "azithromycin"],
+      "topic_ids": ["6bdba761b977cff2f575e630", "32eb6b827a214017ef2f5ff6"],
+      "medication_names": ["azithromycin"],
+      "source_ids": ["EXP-CAP-PEDS"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Azithromycin — pediatric atypical pneumonia, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Azithromycin — pediatric atypical pneumonia",
+        "population": "Children >5 years; suspected atypical bacterial CAP",
+        "drug": "azithromycin",
+        "dose": "10 mg/kg day 1; 5 mg/kg days 2-5",
+        "route": "oral",
+        "frequency": "once daily",
+        "duration": "5 days",
+        "maximum": "500 mg day 1; 250 mg/day days 2-5",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-cap-ceftriaxone-peds",
+      "track": "medication",
+      "title": "Ceftriaxone — pediatric inpatient pneumonia allergy alternative",
+      "tags": ["antibiotic", "regimen", "ceftriaxone"],
+      "topic_ids": ["6bdba761b977cff2f575e630", "32eb6b827a214017ef2f5ff6"],
+      "medication_names": ["ceftriaxone"],
+      "source_ids": ["EXP-CAP-PEDS"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Not neonatal, high-risk allergy, empyema or unstable MRSA disease.",
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Ceftriaxone — pediatric inpatient pneumonia allergy alternative, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Ceftriaxone — pediatric inpatient pneumonia allergy alternative",
+        "population": "Children >3 months; uncomplicated inpatient bacterial CAP with lower-risk penicillin allergy",
+        "drug": "ceftriaxone",
+        "dose": "50 mg/kg per dose",
+        "route": "IV",
+        "frequency": "every 24 hours",
+        "duration": "7 days total; switch to appropriate enteral therapy when clinically suitable",
+        "maximum": "2000 mg/dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-lyme-em-cefuroxime-adult",
+      "track": "medication",
+      "title": "Cefuroxime axetil — adult erythema migrans",
+      "tags": ["antibiotic", "regimen", "cefuroxime axetil"],
+      "topic_ids": ["4eaa461b63792973bcfd48d6"],
+      "medication_names": ["cefuroxime axetil"],
+      "source_ids": ["EXP-LYME-EM"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Verify pediatric formulation; tablet/suspension substitution is not mg-for-mg.",
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Cefuroxime axetil — adult erythema migrans, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Cefuroxime axetil — adult erythema migrans",
+        "population": "Adults with early cutaneous Lyme disease",
+        "drug": "cefuroxime axetil",
+        "dose": "500 mg per dose",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "14 days",
+        "maximum": "Use stated dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-lyme-em-cefuroxime-peds",
+      "track": "medication",
+      "title": "Cefuroxime axetil — peds erythema migrans",
+      "tags": ["antibiotic", "regimen", "cefuroxime axetil"],
+      "topic_ids": ["4eaa461b63792973bcfd48d6"],
+      "medication_names": ["cefuroxime axetil"],
+      "source_ids": ["EXP-LYME-EM"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Verify pediatric formulation; tablet/suspension substitution is not mg-for-mg.",
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Cefuroxime axetil — peds erythema migrans, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Cefuroxime axetil — peds erythema migrans",
+        "population": "Children with early cutaneous Lyme disease",
+        "drug": "cefuroxime axetil",
+        "dose": "30 mg/kg per DAY divided into 2 doses",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "14 days",
+        "maximum": "500 mg/dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-lyme-em-doxy-peds",
+      "track": "medication",
+      "title": "Doxycycline — pediatric erythema migrans",
+      "tags": ["antibiotic", "regimen", "doxycycline"],
+      "topic_ids": ["4eaa461b63792973bcfd48d6"],
+      "medication_names": ["doxycycline"],
+      "source_ids": ["EXP-LYME-EM"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Doxycycline — pediatric erythema migrans, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Doxycycline — pediatric erythema migrans",
+        "population": "Children with early cutaneous Lyme disease; individual pregnancy/organ review",
+        "drug": "doxycycline",
+        "dose": "4.4 mg/kg per DAY divided into 2 doses",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "10-14 days; prefer shorter effective course",
+        "maximum": "100 mg/dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-lyme-arthritis-cefuroxime-adult",
+      "track": "medication",
+      "title": "Cefuroxime axetil — adult Lyme arthritis",
+      "tags": ["antibiotic", "regimen", "cefuroxime axetil"],
+      "topic_ids": ["4eaa461b63792973bcfd48d6"],
+      "medication_names": ["cefuroxime axetil"],
+      "source_ids": ["EXP-LYME-ARTH"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Cefuroxime axetil — adult Lyme arthritis, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Cefuroxime axetil — adult Lyme arthritis",
+        "population": "Adults with initial Lyme arthritis",
+        "drug": "cefuroxime axetil",
+        "dose": "500 mg per dose",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "28 days",
+        "maximum": "Use stated dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-lyme-arthritis-cefuroxime-peds",
+      "track": "medication",
+      "title": "Cefuroxime axetil — peds Lyme arthritis",
+      "tags": ["antibiotic", "regimen", "cefuroxime axetil"],
+      "topic_ids": ["4eaa461b63792973bcfd48d6"],
+      "medication_names": ["cefuroxime axetil"],
+      "source_ids": ["EXP-LYME-ARTH"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Cefuroxime axetil — peds Lyme arthritis, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Cefuroxime axetil — peds Lyme arthritis",
+        "population": "Children with initial Lyme arthritis",
+        "drug": "cefuroxime axetil",
+        "dose": "30 mg/kg per DAY divided into 2 doses",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "28 days",
+        "maximum": "500 mg/dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-lyme-arthritis-amox-peds",
+      "track": "medication",
+      "title": "Amoxicillin — pediatric Lyme arthritis",
+      "tags": ["antibiotic", "regimen", "amoxicillin"],
+      "topic_ids": ["4eaa461b63792973bcfd48d6"],
+      "medication_names": ["amoxicillin"],
+      "source_ids": ["EXP-LYME-ARTH"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Amoxicillin — pediatric Lyme arthritis, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Amoxicillin — pediatric Lyme arthritis",
+        "population": "Children with initial Lyme arthritis",
+        "drug": "amoxicillin",
+        "dose": "50 mg/kg per DAY divided into 3 doses",
+        "route": "oral",
+        "frequency": "three times daily",
+        "duration": "28 days",
+        "maximum": "500 mg/dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-lyme-arthritis-doxy-peds",
+      "track": "medication",
+      "title": "Doxycycline — pediatric Lyme arthritis",
+      "tags": ["antibiotic", "regimen", "doxycycline"],
+      "topic_ids": ["4eaa461b63792973bcfd48d6"],
+      "medication_names": ["doxycycline"],
+      "source_ids": ["EXP-LYME-ARTH"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Doxycycline — pediatric Lyme arthritis, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Doxycycline — pediatric Lyme arthritis",
+        "population": "Children >=8 years with initial Lyme arthritis",
+        "drug": "doxycycline",
+        "dose": "4.4 mg/kg per DAY divided into 2 doses",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "28 days",
+        "maximum": "100 mg/dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-lyme-arthritis-ceftriaxone-adult",
+      "track": "medication",
+      "title": "Ceftriaxone — adult Lyme arthritis after no oral response",
+      "tags": ["antibiotic", "regimen", "ceftriaxone"],
+      "topic_ids": ["4eaa461b63792973bcfd48d6"],
+      "medication_names": ["ceftriaxone"],
+      "source_ids": ["EXP-LYME-ARTH"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Ceftriaxone — adult Lyme arthritis after no oral response, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Ceftriaxone — adult Lyme arthritis after no oral response",
+        "population": "Adults without response to initial oral course",
+        "drug": "ceftriaxone",
+        "dose": "2 g per dose",
+        "route": "IV",
+        "frequency": "once daily",
+        "duration": "14-28 days",
+        "maximum": "Use stated dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-lyme-arthritis-ceftriaxone-peds",
+      "track": "medication",
+      "title": "Ceftriaxone — peds Lyme arthritis after no oral response",
+      "tags": ["antibiotic", "regimen", "ceftriaxone"],
+      "topic_ids": ["4eaa461b63792973bcfd48d6"],
+      "medication_names": ["ceftriaxone"],
+      "source_ids": ["EXP-LYME-ARTH"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Ceftriaxone — peds Lyme arthritis after no oral response, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Ceftriaxone — peds Lyme arthritis after no oral response",
+        "population": "Children without response to initial oral course",
+        "drug": "ceftriaxone",
+        "dose": "50-75 mg/kg per dose",
+        "route": "IV",
+        "frequency": "once daily",
+        "duration": "14-28 days",
+        "maximum": "2 g/day",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-lyme-facial-doxy-peds",
+      "track": "medication",
+      "title": "Doxycycline — pediatric Lyme facial palsy",
+      "tags": ["antibiotic", "regimen", "doxycycline"],
+      "topic_ids": ["4eaa461b63792973bcfd48d6"],
+      "medication_names": ["doxycycline"],
+      "source_ids": ["EXP-LYME-NEURO"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Doxycycline — pediatric Lyme facial palsy, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Doxycycline — pediatric Lyme facial palsy",
+        "population": "Children any age; Lyme facial palsy",
+        "drug": "doxycycline",
+        "dose": "4.4 mg/kg per DAY divided into 2 doses",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "14-21 days",
+        "maximum": "100 mg/dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-lyme-neuro-doxy-peds",
+      "track": "medication",
+      "title": "Doxycycline — pediatric Lyme meningitis or radiculoneuritis",
+      "tags": ["antibiotic", "regimen", "doxycycline"],
+      "topic_ids": ["4eaa461b63792973bcfd48d6"],
+      "medication_names": ["doxycycline"],
+      "source_ids": ["EXP-LYME-NEURO"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Doxycycline — pediatric Lyme meningitis or radiculoneuritis, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Doxycycline — pediatric Lyme meningitis or radiculoneuritis",
+        "population": "Children any age; oral therapy suitable after severity assessment",
+        "drug": "doxycycline",
+        "dose": "4.4 mg/kg per DAY in 1 or 2 doses",
+        "route": "oral",
+        "frequency": "once daily or divided twice daily",
+        "duration": "14-21 days",
+        "maximum": "100 mg/dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-lyme-neuro-ceftriaxone-peds",
+      "track": "medication",
+      "title": "Ceftriaxone — pediatric neurologic Lyme disease",
+      "tags": ["antibiotic", "regimen", "ceftriaxone"],
+      "topic_ids": ["4eaa461b63792973bcfd48d6"],
+      "medication_names": ["ceftriaxone"],
+      "source_ids": ["EXP-LYME-NEURO"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Ceftriaxone — pediatric neurologic Lyme disease, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Ceftriaxone — pediatric neurologic Lyme disease",
+        "population": "Children any age; Lyme meningitis or radiculoneuritis needing IV therapy",
+        "drug": "ceftriaxone",
+        "dose": "50-75 mg/kg per dose",
+        "route": "IV",
+        "frequency": "once daily",
+        "duration": "14-21 days",
+        "maximum": "2 g/day",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-lyme-neuro-doxy-adult",
+      "track": "medication",
+      "title": "Doxycycline — adult Lyme meningitis or radiculoneuritis",
+      "tags": ["antibiotic", "regimen", "doxycycline"],
+      "topic_ids": ["4eaa461b63792973bcfd48d6"],
+      "medication_names": ["doxycycline"],
+      "source_ids": ["EXP-LYME-NEURO"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Doxycycline — adult Lyme meningitis or radiculoneuritis, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Doxycycline — adult Lyme meningitis or radiculoneuritis",
+        "population": "Adults suitable for oral treatment after severity assessment",
+        "drug": "doxycycline",
+        "dose": "200 mg per DAY in 1 or 2 doses",
+        "route": "oral",
+        "frequency": "once daily or divided twice daily",
+        "duration": "14-21 days",
+        "maximum": "Use the stated regimen; no separate maximum established here.",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-strep-cefadroxil",
+      "track": "medication",
+      "title": "Cefadroxil — GAS pharyngitis allergy alternative",
+      "tags": ["antibiotic", "regimen", "cefadroxil"],
+      "topic_ids": ["e5021602c5fa3b870962bdff"],
+      "medication_names": ["cefadroxil"],
+      "source_ids": ["CDC-STREP"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Cefadroxil — GAS pharyngitis allergy alternative, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Cefadroxil — GAS pharyngitis allergy alternative",
+        "population": "Confirmed GAS pharyngitis; no immediate penicillin hypersensitivity",
+        "drug": "cefadroxil",
+        "dose": "30 mg/kg per dose",
+        "route": "oral",
+        "frequency": "once daily",
+        "duration": "10 days",
+        "maximum": "1 g/dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-strep-clarithro",
+      "track": "medication",
+      "title": "Clarithromycin — GAS pharyngitis allergy alternative",
+      "tags": ["antibiotic", "regimen", "clarithromycin"],
+      "topic_ids": ["e5021602c5fa3b870962bdff"],
+      "medication_names": ["clarithromycin"],
+      "source_ids": ["CDC-STREP"],
+      "facts": ["Check local macrolide resistance and interactions."],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Clarithromycin — GAS pharyngitis allergy alternative, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Clarithromycin — GAS pharyngitis allergy alternative",
+        "population": "Confirmed GAS pharyngitis when an appropriate allergy alternative",
+        "drug": "clarithromycin",
+        "dose": "7.5 mg/kg per dose",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "10 days",
+        "maximum": "250 mg/dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-pertussis-azithro-infant",
+      "track": "medication",
+      "title": "Azithromycin — infant pertussis",
+      "tags": ["antibiotic", "regimen", "azithromycin"],
+      "topic_ids": ["975086463277541de876a5fb"],
+      "medication_names": ["azithromycin"],
+      "source_ids": ["EXP-PERTUSSIS", "EXP-PERTUSSIS-CURRENT"],
+      "facts": [
+        "For infants <1 month CDC favors azithromycin despite reported pyloric stenosis risk; monitor carefully."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Azithromycin — infant pertussis, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Azithromycin — infant pertussis",
+        "population": "Infants <6 months with pertussis",
+        "drug": "azithromycin",
+        "dose": "10 mg/kg per dose",
+        "route": "oral",
+        "frequency": "once daily",
+        "duration": "5 days",
+        "maximum": "Use the stated regimen; no separate maximum established here.",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-pertussis-azithro-peds",
+      "track": "medication",
+      "title": "Azithromycin — childhood pertussis",
+      "tags": ["antibiotic", "regimen", "azithromycin"],
+      "topic_ids": ["975086463277541de876a5fb"],
+      "medication_names": ["azithromycin"],
+      "source_ids": ["EXP-PERTUSSIS"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "The 2005 source uses <6 and >6 month boundaries; exactly 6 months requires confirmation rather than silent extrapolation.",
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Azithromycin — childhood pertussis, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Azithromycin — childhood pertussis",
+        "population": "Infants/children >6 months with pertussis",
+        "drug": "azithromycin",
+        "dose": "10 mg/kg day 1; 5 mg/kg days 2-5",
+        "route": "oral",
+        "frequency": "once daily",
+        "duration": "5 days",
+        "maximum": "500 mg day 1; 250 mg/day days 2-5",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-pertussis-tmpsmx-peds",
+      "track": "medication",
+      "title": "TMP-SMX — childhood pertussis macrolide alternative",
+      "tags": ["antibiotic", "regimen", "trimethoprim-sulfamethoxazole"],
+      "topic_ids": ["975086463277541de876a5fb"],
+      "medication_names": ["trimethoprim-sulfamethoxazole"],
+      "source_ids": ["EXP-PERTUSSIS", "EXP-PERTUSSIS-CURRENT"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Not for infants <2 months; pregnancy/lactation requires separate review.",
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for TMP-SMX — childhood pertussis macrolide alternative, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "TMP-SMX — childhood pertussis macrolide alternative",
+        "population": "Children >=2 months unable to use macrolides or with resistant pertussis",
+        "drug": "trimethoprim-sulfamethoxazole",
+        "dose": "TMP 8 mg/kg per DAY + SMX 40 mg/kg per DAY, divided into 2 doses",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "14 days",
+        "maximum": "Use the stated regimen; no separate maximum established here.",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-pertussis-tmpsmx-adult",
+      "track": "medication",
+      "title": "TMP-SMX — adult pertussis macrolide alternative",
+      "tags": ["antibiotic", "regimen", "trimethoprim-sulfamethoxazole"],
+      "topic_ids": ["975086463277541de876a5fb"],
+      "medication_names": ["trimethoprim-sulfamethoxazole"],
+      "source_ids": ["EXP-PERTUSSIS"],
+      "facts": [
+        "Confirm the named indication and patient eligibility before selecting this course."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for TMP-SMX — adult pertussis macrolide alternative, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "TMP-SMX — adult pertussis macrolide alternative",
+        "population": "Nonpregnant adults unable to use macrolides or with resistant pertussis",
+        "drug": "trimethoprim-sulfamethoxazole",
+        "dose": "TMP 160 mg + SMX 800 mg per dose",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "14 days",
+        "maximum": "Use the stated regimen; no separate maximum established here.",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-trich-recurrent-woman",
+      "track": "medication",
+      "title": "Metronidazole — recurrent trichomoniasis without reexposure",
+      "tags": ["antibiotic", "regimen", "metronidazole"],
+      "topic_ids": ["5730fd3e11038f2d150db93f", "a975e3f80c0dc6fd5af510b9"],
+      "medication_names": ["metronidazole"],
+      "source_ids": ["CDC-TRICH"],
+      "facts": [
+        "If reexposed to an untreated partner, repeat the original 500 mg twice-daily 7-day course instead; assess adherence and partner treatment."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Metronidazole — recurrent trichomoniasis without reexposure, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Metronidazole — recurrent trichomoniasis without reexposure",
+        "population": "Nonpregnant women failing 500 mg twice daily for 7 days; no reexposure",
+        "drug": "metronidazole",
+        "dose": "2 g per dose",
+        "route": "oral",
+        "frequency": "once daily",
+        "duration": "7 days",
+        "maximum": "Use the stated regimen; no separate maximum established here.",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-trich-persistent-man",
+      "track": "medication",
+      "title": "Metronidazole — persistent male trichomoniasis without reexposure",
+      "tags": ["antibiotic", "regimen", "metronidazole"],
+      "topic_ids": ["5730fd3e11038f2d150db93f", "a975e3f80c0dc6fd5af510b9"],
+      "medication_names": ["metronidazole"],
+      "source_ids": ["CDC-TRICH"],
+      "facts": [
+        "Reexposure after the single dose calls for repeating 2 g once; persistent failure needs specialist evaluation."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Metronidazole — persistent male trichomoniasis without reexposure, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Metronidazole — persistent male trichomoniasis without reexposure",
+        "population": "Men with persistent infection after 2 g once; no reexposure",
+        "drug": "metronidazole",
+        "dose": "500 mg per dose",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "7 days",
+        "maximum": "Use the stated regimen; no separate maximum established here.",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-hiv-toxo-treatment",
+      "track": "medication",
+      "title": "TMP-SMX — active HIV toxoplasma encephalitis",
+      "tags": ["antibiotic", "regimen", "trimethoprim-sulfamethoxazole"],
+      "topic_ids": ["2a2b083c27ed2d29a121ea71", "14853013858f52710cf8c438"],
+      "medication_names": ["trimethoprim-sulfamethoxazole"],
+      "source_ids": ["EXP-HIV-TOXO"],
+      "facts": [
+        "Acute neurologic illness needs urgent specialist management; this is not the prophylaxis dose."
+      ],
+      "gaps": [
+        "High-dose renal/dialysis adjustments and parenteral formulation require separate protocol.",
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for TMP-SMX — active HIV toxoplasma encephalitis, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "TMP-SMX — active HIV toxoplasma encephalitis",
+        "population": "Nonpregnant adults/adolescents with HIV and toxoplasma encephalitis; oral route suitable",
+        "drug": "trimethoprim-sulfamethoxazole",
+        "dose": "TMP 5 mg/kg per DOSE + SMX 25 mg/kg per DOSE",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "At least 6 weeks; longer if extensive disease/incomplete response, then maintenance",
+        "maximum": "Use the stated regimen; no separate maximum established here.",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-hiv-toxo-maintenance",
+      "track": "medication",
+      "title": "TMP-SMX — HIV toxoplasmosis secondary maintenance",
+      "tags": ["antibiotic", "regimen", "trimethoprim-sulfamethoxazole"],
+      "topic_ids": ["2a2b083c27ed2d29a121ea71", "14853013858f52710cf8c438"],
+      "medication_names": ["trimethoprim-sulfamethoxazole"],
+      "source_ids": ["EXP-HIV-TOXO"],
+      "facts": [
+        "Secondary maintenance is twice daily; primary prophylaxis is a different once-daily course."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for TMP-SMX — HIV toxoplasmosis secondary maintenance, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "TMP-SMX — HIV toxoplasmosis secondary maintenance",
+        "population": "Adults/adolescents after successful initial encephalitis treatment",
+        "drug": "trimethoprim-sulfamethoxazole",
+        "dose": "1 DS tablet (TMP 160 mg / SMX 800 mg)",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "Continue until initial course completed, asymptomatic and CD4 >200 cells/mm3 for >6 months on ART; restart if CD4 <200",
+        "maximum": "Use the stated regimen; no separate maximum established here.",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-hiv-mac-proph",
+      "track": "medication",
+      "title": "Azithromycin — selected HIV MAC primary prophylaxis",
+      "tags": ["antibiotic", "regimen", "azithromycin"],
+      "topic_ids": ["2a2b083c27ed2d29a121ea71", "14853013858f52710cf8c438"],
+      "medication_names": ["azithromycin"],
+      "source_ids": ["EXP-MAC"],
+      "facts": [
+        "No primary prophylaxis if ART starts immediately, regardless of CD4; assess for active MAC before monotherapy."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Azithromycin — selected HIV MAC primary prophylaxis, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Azithromycin — selected HIV MAC primary prophylaxis",
+        "population": "HIV, CD4 <50 cells/mm3 AND no ART, ongoing viremia or no suppressive ART option; exclude active MAC",
+        "drug": "azithromycin",
+        "dose": "1200 mg per dose",
+        "route": "oral",
+        "frequency": "once weekly",
+        "duration": "Until continuing fully suppressive ART",
+        "maximum": "Use the stated regimen; no separate maximum established here.",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-hiv-mac-treatment",
+      "track": "medication",
+      "title": "Clarithromycin + ethambutol — HIV disseminated MAC",
+      "tags": ["antibiotic", "regimen", "clarithromycin", "ethambutol"],
+      "topic_ids": ["2a2b083c27ed2d29a121ea71", "14853013858f52710cf8c438"],
+      "medication_names": ["clarithromycin", "ethambutol"],
+      "source_ids": ["EXP-MAC"],
+      "facts": [
+        "Test macrolide susceptibility; severe disease or resistance risk may require additional drugs. Never replace combination treatment with prophylaxis monotherapy."
+      ],
+      "gaps": [
+        "Rifabutin-containing severe/resistant courses and numeric ethambutol renal/dialysis tables need specialist protocol.",
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Clarithromycin + ethambutol — HIV disseminated MAC, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Clarithromycin + ethambutol — HIV disseminated MAC",
+        "population": "Adults/adolescents with confirmed disseminated MAC; specialist-directed combination",
+        "drug": "clarithromycin + ethambutol",
+        "dose": "clarithromycin 500 mg per dose PLUS ethambutol 15 mg/kg per dose",
+        "route": "oral",
+        "frequency": "clarithromycin twice daily; ethambutol once daily",
+        "duration": "Usually >=12 months; stop only after clinical resolution and sustained CD4 >100 for >=6 months on ART",
+        "maximum": "Use the stated regimen; no separate maximum established here.",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-acne-doxy",
+      "track": "medication",
+      "title": "Doxycycline — moderate to severe acne combination treatment",
+      "tags": ["antibiotic", "regimen", "doxycycline"],
+      "topic_ids": ["2366048fed415597a1e6ddf7"],
+      "medication_names": ["doxycycline"],
+      "source_ids": ["EXP-ACNE-NICE", "EXP-ACNE"],
+      "facts": [
+        "Use with topical adapalene/benzoyl peroxide or azelaic acid per NICE; avoid oral antibiotic monotherapy or simultaneous topical antibiotic. Courses >6 months are exceptional and need 3-monthly review."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Doxycycline — moderate to severe acne combination treatment, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Doxycycline — moderate to severe acne combination treatment",
+        "population": "Age >=12 years, not pregnant/breastfeeding; combine with nonantibiotic topical treatment",
+        "drug": "doxycycline",
+        "dose": "100 mg per dose",
+        "route": "oral",
+        "frequency": "once daily",
+        "duration": "Initial 12 weeks then review; if clear stop oral therapy; if improved but not clear consider up to 12 more weeks",
+        "maximum": "Use the stated regimen; no separate maximum established here.",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-gbs-cefazolin",
+      "track": "medication",
+      "title": "Cefazolin — GBS intrapartum prophylaxis low-risk allergy",
+      "tags": ["antibiotic", "regimen", "cefazolin"],
+      "topic_ids": ["066fa456f857157bfc33458f", "4fb3b68714218ad37f46d200"],
+      "medication_names": ["cefazolin"],
+      "source_ids": ["EXP-GBS"],
+      "facts": [
+        "Reconcile guideline allergy eligibility with selected product label and obstetric protocol; high-risk IgE/severe delayed histories follow another branch."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Cefazolin — GBS intrapartum prophylaxis low-risk allergy, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Cefazolin — GBS intrapartum prophylaxis low-risk allergy",
+        "population": "Laboring patient needing GBS prophylaxis; low-risk penicillin allergy history",
+        "drug": "cefazolin",
+        "dose": "2 g initial dose, then 1 g per dose",
+        "route": "IV",
+        "frequency": "then every 8 hours",
+        "duration": "Until delivery",
+        "maximum": "Use the stated regimen; no separate maximum established here.",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-gbs-clinda",
+      "track": "medication",
+      "title": "Clindamycin IV — GBS intrapartum prophylaxis susceptible isolate",
+      "tags": ["antibiotic", "regimen", "clindamycin IV"],
+      "topic_ids": ["066fa456f857157bfc33458f", "4fb3b68714218ad37f46d200"],
+      "medication_names": ["clindamycin IV"],
+      "source_ids": ["EXP-GBS"],
+      "facts": [
+        "Do not choose empirically when susceptibility is absent; verify susceptibility and resistance testing."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Clindamycin IV — GBS intrapartum prophylaxis susceptible isolate, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Clindamycin IV — GBS intrapartum prophylaxis susceptible isolate",
+        "population": "High-risk penicillin allergy; isolate susceptible to clindamycin with inducible resistance excluded as applicable",
+        "drug": "clindamycin IV",
+        "dose": "900 mg per dose",
+        "route": "IV infusion",
+        "frequency": "every 8 hours",
+        "duration": "Until delivery",
+        "maximum": "Use the stated regimen; no separate maximum established here.",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-gbs-vanc",
+      "track": "medication",
+      "title": "Vancomycin IV — GBS intrapartum prophylaxis high-risk allergy",
+      "tags": ["antibiotic", "regimen", "vancomycin IV"],
+      "topic_ids": ["066fa456f857157bfc33458f", "4fb3b68714218ad37f46d200"],
+      "medication_names": ["vancomycin IV"],
+      "source_ids": ["EXP-GBS"],
+      "facts": [
+        "Infuse at least 1 hour; doses >1 g require 500 mg per 30 minutes. This prophylaxis course is not an invasive MRSA AUC treatment regimen."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Vancomycin IV — GBS intrapartum prophylaxis high-risk allergy, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Vancomycin IV — GBS intrapartum prophylaxis high-risk allergy",
+        "population": "High-risk penicillin allergy with clindamycin resistance or unknown susceptibility; assess renal function",
+        "drug": "vancomycin IV",
+        "dose": "20 mg/kg per dose",
+        "route": "IV infusion",
+        "frequency": "every 8 hours with renal/protocol individualization",
+        "duration": "Until delivery",
+        "maximum": "2 g/dose",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-prostatitis-cipro",
+      "track": "medication",
+      "title": "Ciprofloxacin — acute bacterial prostatitis",
+      "tags": ["antibiotic", "regimen", "ciprofloxacin"],
+      "topic_ids": ["2ddb34532433626f2090b51b"],
+      "medication_names": ["ciprofloxacin"],
+      "source_ids": ["EXP-PROSTATITIS"],
+      "facts": [
+        "Urine culture guides therapy. Hospital assessment for sepsis/retention or failure to improve within 48 hours; fluoroquinolone restrictions and alternatives require individual review."
+      ],
+      "gaps": [
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Ciprofloxacin — acute bacterial prostatitis, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Ciprofloxacin — acute bacterial prostatitis",
+        "population": "Adults suitable for oral therapy after culture, severity and fluoroquinolone risk assessment",
+        "drug": "ciprofloxacin",
+        "dose": "500 mg per dose",
+        "route": "oral",
+        "frequency": "twice daily",
+        "duration": "14 days then review; stop or continue a further 14 days based on clinical assessment",
+        "maximum": "Use the stated regimen; no separate maximum established here.",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
+    },
+    {
+      "id": "abx-perianal-inpatient",
+      "track": "medication",
+      "title": "Ceftriaxone + IV metronidazole — selected perianal abscess",
+      "tags": ["antibiotic", "regimen", "ceftriaxone", "metronidazole IV"],
+      "topic_ids": ["84b1bf9ba7bc75c32d29b3ac"],
+      "medication_names": ["ceftriaxone", "metronidazole IV"],
+      "source_ids": ["EXP-PERIANAL-WSES"],
+      "facts": [
+        "Antibiotics are adjuncts for systemic illness, immunocompromise, incomplete source control, large abscess or significant cellulitis. Crohn fistulas require surgical/GI management."
+      ],
+      "gaps": [
+        "Not a universal outpatient/Crohn fistula regimen; oral formulation ambiguities in source were not converted to a guessed dose.",
+        "Independent clinical/pharmacist review pending; this lesson covers only its stated population and scenario."
+      ],
+      "opening": "Which patient is eligible for Ceftriaxone + IV metronidazole — selected perianal abscess, and what dose, route, interval and duration would you choose?",
+      "stages": [
+        "Confirm syndrome, severity, eligibility and whether antibiotics are indicated",
+        "Choose sourced first-line or conditional alternative",
+        "Give dose, formulation, route, interval and duration",
+        "Check allergy, contraindications, kidney and liver guidance for each component",
+        "Review interactions, monitoring, source control and follow-up",
+        "Changed patient factors: reassess choice and summarize"
+      ],
+      "regimen": {
+        "indication": "Ceftriaxone + IV metronidazole — selected perianal abscess",
+        "population": "Adults requiring inpatient antibiotics for perianal/perirectal abscess; normal renal function; prompt drainage/source control",
+        "drug": "ceftriaxone + metronidazole IV",
+        "dose": "ceftriaxone 2 g per dose PLUS metronidazole 500 mg per dose",
+        "route": "IV",
+        "frequency": "ceftriaxone every 24 hours; metronidazole every 8 hours",
+        "duration": "5 days; reassess and consider 7-10 days if symptoms unresolved",
+        "maximum": "Use the stated regimen; no separate maximum established here.",
+        "adjustment": "Apply loaded component safety by route and population; adult renal tables do not establish pediatric adjustments."
+      }
     }
   ],
   "pathways": [
@@ -3270,7 +4972,7 @@
         "Choose outpatient versus nonsevere inpatient versus severe CAP first; resistant-pathogen add-ons require risk assessment, cultures and de-escalation."
       ],
       "pending_scenarios": [
-        "Complete short-course stability/exclusion checklist; all pediatric, allergy and resistant-pathogen definitive courses."
+        "Neonatal disease, complicated pediatric CAP, high-risk allergy, and complete culture-directed resistant-pathogen courses; adult short-course exclusions."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3283,7 +4985,7 @@
         "Culture and anatomic/source control assessment determine cUTI selection. IDSA 2025 supports 5-7 day fluoroquinolone or 7 day non-fluoroquinolone courses only in eligible improving adults; pregnancy pyelonephritis remains 14 days."
       ],
       "pending_scenarios": [
-        "Bacterial prostatitis, obstructed infection, resistant pathogens, catheter-specific exclusions, dialysis and complete GBS allergy algorithm."
+        "Obstructed infection/source control, resistant pathogens, catheter-specific exclusions, chronic prostatitis and complete dialysis tables."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3296,7 +4998,7 @@
         "Separate uncomplicated STI, PID, disseminated disease and neurosyphilis. Pregnancy and treatment failure have distinct decisions."
       ],
       "pending_scenarios": [
-        "Gonorrhea aminoglycoside allergy option; recurrent/resistant trichomoniasis/BV; congenital syphilis, full pregnancy follow-up and all allergy protocols."
+        "Gonorrhea aminoglycoside alternative, suppressive recurrent BV, resistant trichomoniasis, congenital syphilis and complete pregnancy/allergy protocols."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3304,12 +5006,14 @@
       "topic_id": "c9e723bcc75b3c40e1d657f0",
       "title": "Cellulitis, Abscess, and Necrotizing Fasciitis",
       "relevance": "direct_or_conditional",
-      "source_ids": ["EXP-SSTI", "EXP-SSTI-UCSF"],
+      "source_ids": ["EXP-SSTI", "EXP-SSTI-UCSF", "EXP-DFI", "EXP-VANC-AUC"],
       "facts": [
-        "Separate nonpurulent cellulitis, drained abscess and surgical necrotizing infection; MRSA coverage is risk selected. Do not routinely give antibiotics to uninfected dermatitis."
+        "Separate nonpurulent cellulitis, drained abscess and surgical necrotizing infection; MRSA coverage is risk selected. Do not routinely give antibiotics to uninfected dermatitis.",
+        "Diabetic foot: no antibiotic for an uninfected ulcer. Soft-tissue infection usually 1-2 weeks; individual extension for extensive/slowly resolving disease. Positive bone margin after minor amputation: up to 3 weeks; unresected osteomyelitis: 6 weeks. Select drugs by severity, cultures and source control.",
+        "Serious invasive MRSA treated with IV vancomycin: AUC24 target 400-600 mg*h/L assuming MIC 1 mg/L, achieved in 24-48 hours with validated monitoring. This is not an oral CDI or routine mild-infection target."
       ],
       "pending_scenarios": [
-        "Diabetic-foot/osteomyelitis and chronic suppression; all severe allergy alternatives; IV vancomycin AUC protocols."
+        "Full culture-directed diabetic-foot/osteomyelitis drug courses, severe allergy alternatives and patient-specific IV vancomycin AUC/dialysis calculation."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3322,7 +5026,7 @@
         "Use organism, IgG, CD4, viral load and ART status to distinguish prophylaxis from active treatment."
       ],
       "pending_scenarios": [
-        "MAC prophylaxis/treatment; Toxoplasma active treatment, alternatives/G6PD, full high-dose renal/dialysis tables."
+        "Toxoplasma and PCP alternative combinations/G6PD screening, severe/resistant MAC courses, and full high-dose renal/dialysis tables."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3335,7 +5039,7 @@
         "Culture and anatomic/source control assessment determine cUTI selection. IDSA 2025 supports 5-7 day fluoroquinolone or 7 day non-fluoroquinolone courses only in eligible improving adults; pregnancy pyelonephritis remains 14 days."
       ],
       "pending_scenarios": [
-        "Bacterial prostatitis, obstructed infection, resistant pathogens, catheter-specific exclusions, dialysis and complete GBS allergy algorithm."
+        "Pregnancy-specific resistant UTI, severe delayed allergy/desensitization, and individualized GBS dosing in renal impairment."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3385,7 +5089,7 @@
         "Limit antibiotic exposure; concurrent benzoyl peroxide reduces resistance pressure."
       ],
       "pending_scenarios": [
-        "Systemic antibiotic dose/duration and pregnancy alternatives."
+        "Pregnancy-specific nonantibiotic selection and refractory acne/escalation assessment."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3398,7 +5102,7 @@
         "Separate nonpurulent cellulitis, drained abscess and surgical necrotizing infection; MRSA coverage is risk selected. Do not routinely give antibiotics to uninfected dermatitis."
       ],
       "pending_scenarios": [
-        "Diabetic-foot/osteomyelitis and chronic suppression; all severe allergy alternatives; IV vancomycin AUC protocols."
+        "Distinguish colonization from clinically infected eczema; culture-directed severe infection and pediatric dosing."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3406,12 +5110,14 @@
       "topic_id": "b2bbc2f97a648adbee968a3a",
       "title": "Cellulitis, Erysipelas, and Abscess Management",
       "relevance": "direct_or_conditional",
-      "source_ids": ["EXP-SSTI", "EXP-SSTI-UCSF"],
+      "source_ids": ["EXP-SSTI", "EXP-SSTI-UCSF", "EXP-DFI", "EXP-VANC-AUC"],
       "facts": [
-        "Separate nonpurulent cellulitis, drained abscess and surgical necrotizing infection; MRSA coverage is risk selected. Do not routinely give antibiotics to uninfected dermatitis."
+        "Separate nonpurulent cellulitis, drained abscess and surgical necrotizing infection; MRSA coverage is risk selected. Do not routinely give antibiotics to uninfected dermatitis.",
+        "Diabetic foot: no antibiotic for an uninfected ulcer. Soft-tissue infection usually 1-2 weeks; individual extension for extensive/slowly resolving disease. Positive bone margin after minor amputation: up to 3 weeks; unresected osteomyelitis: 6 weeks. Select drugs by severity, cultures and source control.",
+        "Serious invasive MRSA treated with IV vancomycin: AUC24 target 400-600 mg*h/L assuming MIC 1 mg/L, achieved in 24-48 hours with validated monitoring. This is not an oral CDI or routine mild-infection target."
       ],
       "pending_scenarios": [
-        "Diabetic-foot/osteomyelitis and chronic suppression; all severe allergy alternatives; IV vancomycin AUC protocols."
+        "Full culture-directed diabetic-foot/osteomyelitis drug courses, severe allergy alternatives and patient-specific IV vancomycin AUC/dialysis calculation."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3424,9 +5130,9 @@
         "Perianal abscess requires drainage; antibiotics are reserved for spreading cellulitis, systemic infection or immunosuppression. Routine luminal IBD is not an indication."
       ],
       "pending_scenarios": [
-        "Fully sourced perianal-abscess antibiotic selection/doses/duration; fistula biologic combination scope."
+        "Outpatient abscess antibiotic formulation and step-down selection; complex Crohn fistula, seton/biologic combination and resistant-pathogen courses."
       ],
-      "status": "pathway_only_regimens_pending"
+      "status": "scoped_lessons_available"
     },
     {
       "topic_id": "b27a6ec631ebd20975fe6923",
@@ -3453,10 +5159,11 @@
         "EXP-LYME-NEURO"
       ],
       "facts": [
-        "Use disease-specific dosing and age guidance; the old blanket under-eight doxycycline prohibition is superseded for eligible short-course Lyme indications."
+        "Use disease-specific dosing and age guidance; the old blanket under-eight doxycycline prohibition is superseded for eligible short-course Lyme indications.",
+        "After initial arthritis therapy: improving but persistent symptoms may justify observation or the same oral course again; no response favors IV ceftriaxone. Repeated courses do not automatically treat residual inflammatory arthritis."
       ],
       "pending_scenarios": [
-        "Full cefuroxime and pediatric neurologic/arthritis branches; refractory arthritis response thresholds; pregnancy selection."
+        "Pregnancy-specific selection, pediatric carditis alternatives and refractory arthritis specialist management; pediatric renal dysfunction."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3482,7 +5189,7 @@
         "Choose outpatient versus nonsevere inpatient versus severe CAP first; resistant-pathogen add-ons require risk assessment, cultures and de-escalation."
       ],
       "pending_scenarios": [
-        "Complete short-course stability/exclusion checklist; all pediatric, allergy and resistant-pathogen definitive courses."
+        "Neonatal disease, complicated pediatric CAP, high-risk allergy, and complete culture-directed resistant-pathogen courses; adult short-course exclusions."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3508,7 +5215,7 @@
         "Use organism, IgG, CD4, viral load and ART status to distinguish prophylaxis from active treatment."
       ],
       "pending_scenarios": [
-        "MAC prophylaxis/treatment; Toxoplasma active treatment, alternatives/G6PD, full high-dose renal/dialysis tables."
+        "Toxoplasma and PCP alternative combinations/G6PD screening, severe/resistant MAC courses, and full high-dose renal/dialysis tables."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3534,7 +5241,7 @@
         "Separate uncomplicated STI, PID, disseminated disease and neurosyphilis. Pregnancy and treatment failure have distinct decisions."
       ],
       "pending_scenarios": [
-        "Gonorrhea aminoglycoside allergy option; recurrent/resistant trichomoniasis/BV; congenital syphilis, full pregnancy follow-up and all allergy protocols."
+        "Gonorrhea aminoglycoside alternative, suppressive recurrent BV, resistant trichomoniasis, congenital syphilis and complete pregnancy/allergy protocols."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3560,7 +5267,7 @@
         "Do not give prophylactic antibiotics for sterile pancreatic necrosis. Infected necrosis needs agents penetrating necrosis, culture-directed care and source-control assessment."
       ],
       "pending_scenarios": [
-        "Carbapenem-sparing/resistant-pathogen alternatives; intervention timing and full organ-specific pathways."
+        "Source-specific empiric selection, resistant-pathogen coverage, source control and patient-specific organ/dialysis dosing."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3573,7 +5280,7 @@
         "Establish bacterial eligibility before prescribing; observe selected uncomplicated adults with reliable follow-up."
       ],
       "pending_scenarios": [
-        "Pediatric treatment; high-dose resistance risk; severe allergy/complication and failure branches."
+        "Adult high-dose resistance-risk formulation; severe allergy, complications and treatment-failure pathways."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3586,7 +5293,7 @@
         "Treat confirmed GAS; assess allergy phenotype and local resistance before a macrolide/clindamycin alternative."
       ],
       "pending_scenarios": [
-        "Cefadroxil/clarithromycin branches; full pediatric organ guidance."
+        "Pediatric organ dysfunction and recurrent/carrier-state assessment."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3594,12 +5301,14 @@
       "topic_id": "e683adfa3084ddbf052e76d4",
       "title": "Cirrhosis Complications — Varices, SBP, Hepatic Encephalopathy, and HCC Surveillance",
       "relevance": "direct_or_conditional",
-      "source_ids": ["EXP-SBP-DX", "EXP-SBP", "EXP-ASCITES"],
+      "source_ids": ["EXP-SBP-DX", "EXP-SBP", "EXP-ASCITES", "EXP-SBP-UW"],
       "facts": [
-        "Ascitic PMN >=250 cells/mm3 can support SBP despite negative culture; do not require positive culture. Cirrhotic GI bleeding is a conditional prophylaxis indication."
+        "Ascitic PMN >=250 cells/mm3 can support SBP despite negative culture; do not require positive culture. Cirrhotic GI bleeding is a conditional prophylaxis indication.",
+        "SBP adjunct albumin eligibility: serum creatinine >1 mg/dL, BUN >30 mg/dL or bilirubin >4 mg/dL; IV albumin 1.5 g/kg initially and 1 g/kg day 3. Assess volume status and local protocol.",
+        "Primary prophylaxis consideration requires ascitic protein <1.5 g/dL plus renal dysfunction (Cr >=1.2 mg/dL, BUN >=25 mg/dL or Na <=130 mEq/L) OR liver failure (Child-Pugh >=9 AND bilirubin >=3 mg/dL)."
       ],
       "pending_scenarios": [
-        "Nosocomial/resistant SBP; complete albumin eligibility/dosing and primary-prophylaxis thresholds."
+        "Nosocomial/resistant SBP drug regimens and individualized albumin monitoring; complete prophylaxis contraindication/cessation assessment."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3607,12 +5316,17 @@
       "topic_id": "975086463277541de876a5fb",
       "title": "Acute Bronchitis — Diagnosis and Antibiotic Avoidance",
       "relevance": "direct_or_conditional",
-      "source_ids": ["EXP-PERTUSSIS"],
+      "source_ids": [
+        "EXP-PERTUSSIS",
+        "EXP-PERTUSSIS-CURRENT",
+        "EXP-PERTUSSIS-PEP"
+      ],
       "facts": [
-        "Routine uncomplicated bronchitis does not warrant antibiotics; pertussis treatment and eligible PEP are separate indications."
+        "Routine uncomplicated bronchitis does not warrant antibiotics; pertussis treatment and eligible PEP are separate indications.",
+        "CDC treatment window: age >=1 year within 3 weeks of cough; infants <1 year and pregnant patients, especially near term, within 6 weeks. Household PEP is considered within 21 days of index cough onset; assess other high-risk exposures separately."
       ],
       "pending_scenarios": [
-        "Complete infant/pediatric and nonmacrolide regimens; current timing/PEP eligibility."
+        "Exact 6-month pertussis dosing boundary, pregnancy/nonmacrolide selection and uncommon resistant isolates."
       ],
       "status": "scoped_lessons_available"
     },
@@ -3664,7 +5378,7 @@
         "Ascitic PMN >=250 cells/mm3 can support SBP despite negative culture; do not require positive culture. Cirrhotic GI bleeding is a conditional prophylaxis indication."
       ],
       "pending_scenarios": [
-        "Fully structured SBP treatment plus albumin, resistant/nosocomial SBP and full high-risk primary prophylaxis eligibility."
+        "Resistant/nosocomial infection, oral prophylaxis step-down and severe beta-lactam allergy protocols; SBP treatment belongs to the cirrhosis pathway."
       ],
       "status": "scoped_lessons_available"
     }
@@ -4511,5 +6225,5 @@
       "relevance": "No direct antibacterial scope identified"
     }
   ],
-  "review": "Independent clinical/pharmacy validation pending; unresolved scenarios are explicit, not complete coverage."
+  "review": "Source-scoped curriculum expansion; selected regimens and safety evidence verified against linked primary sources. Independent clinical/pharmacy validation and condition-wide completeness remain pending."
 }

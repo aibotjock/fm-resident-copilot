@@ -124,7 +124,11 @@ Retain exact source ID, URL, section, source date when known and access date. Gi
 export function matchingMedicationSafety(text: string) {
   // Match longer combination names first, so amoxicillin-clavulanate does
   // not load the amoxicillin-alone profile for the same text occurrence.
-  let remaining = text;
+  // Canonicalize route-before-drug wording without borrowing the oral profile.
+  let remaining = text.replace(
+    /\b(?:IV|intravenous)\s+(vancomycin|clindamycin|metronidazole)\b/gi,
+    (_, drug: string) => `${drug} IV`,
+  );
   const matched = new Set<string>();
   for (const p of [...medicationSafetyProfiles].sort(
     (a, b) => b.drug.length - a.drug.length,
