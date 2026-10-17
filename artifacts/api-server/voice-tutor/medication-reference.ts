@@ -12,6 +12,12 @@ const names = [
   ]),
 ];
 const extraAliases: Record<string, string[]> = {
+  "ampicillin IV": ["IV ampicillin", "intravenous ampicillin"],
+  "atovaquone suspension": ["atovaquone", "Mepron"],
+  "dapsone oral": ["oral dapsone", "dapsone tablet"],
+  "metronidazole vaginal gel": ["vaginal metronidazole", "metronidazole gel 0.75%"],
+  "amoxicillin-clavulanate XR": ["Augmentin XR", "extended release amoxicillin clavulanate"],
+  "ofloxacin otic": ["ofloxacin ear drops"],
   "vancomycin IV": ["IV vancomycin", "intravenous vancomycin"],
   "clindamycin IV": ["IV clindamycin", "intravenous clindamycin"],
   "metronidazole IV": ["IV metronidazole", "intravenous metronidazole"],

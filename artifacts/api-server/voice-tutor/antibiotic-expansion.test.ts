@@ -142,7 +142,7 @@ test("new condition regimens have full component safety/provenance and no orphan
   ]);
   const sources = new Set(clinicalSources.map((s) => s.id));
   assert.equal(sources.size, clinicalSources.length);
-  for (const stored of expansion.lessons) {
+  for (const stored of expansion.lessons.filter((l) => l.track === "medication")) {
     const l = lessons.find((l) => l.id === stored.id)!;
     assert.ok(l.regimen && l.topic_ids!.length);
     assert.ok(
@@ -194,7 +194,7 @@ test("ordinary and supplemental teaching load new regimens without leaking into 
 });
 
 test("known antibiotic contradictions are removed only in voice teaching, preserving assessment snapshots", () => {
-  assert.equal(reconciliations.length, 10);
+  assert.equal(reconciliations.length, 11);
   for (const patch of reconciliations) {
     const base = CANDIDATE_ENTRIES.find((e) => e.key === patch.topic_id)!;
     assert.ok(base.content.includes(patch.old));
@@ -245,4 +245,45 @@ test("coverage loads the scoped perianal course and keeps specialist exclusions 
   assert.ok(antibioticPathways.some((r) => r.pending_scenarios.length));
   const lyme = topics.find((t) => t.title.startsWith("Lyme Disease"))!;
   assert.ok(regimensForTopics([lyme.id]).some((l) => l.id === "abx-lyme-pep"));
+});
+
+test("every previously open scenario has a searchable decision lesson loaded with its topic and representative courses", () => {
+  const decisions = lessons.filter((l) => l.id.startsWith("completion-"));
+  assert.equal(decisions.length, 26);
+  for (const row of expansion.pathways.filter((p) => p.pending_scenarios.length)) {
+    const linked = decisions.filter((l) => l.topic_ids?.includes(row.topic_id));
+    assert.ok(linked.length, row.title);
+    const topicPrompt = regimenInstructions([row.topic_id]);
+    for (const l of linked) {
+      assert.ok(searchCurriculum(l.title).lessons.some((r) => r.id === l.id));
+      assert.ok(l.facts.length >= 3 && l.gaps.length && l.stages.length >= 5);
+      assert.ok(!l.regimen, "decision exercises must not manufacture a fixed prescription");
+      for (const fact of l.facts) assert.ok(topicPrompt.includes(fact), l.id);
+      const selected = curriculumInstructions(l.id);
+      for (const regimen of regimensForTopics([row.topic_id]))
+        assert.ok(selected.includes(`"id":"${regimen.id}"`), `${l.id}: ${regimen.id}`);
+    }
+  }
+  const sepsis = regimenInstructions(["f150bbe6c1e6e7a61ad5475c"]);
+  assert.match(sepsis, /COMP-SEPSIS-2026/);
+  assert.ok(!antibioticPathways.find((p) => p.topic_id === "f150bbe6c1e6e7a61ad5475c")!.source_ids.includes("EXP-PANCREAS"));
+});
+
+test("new courses preserve neonatal units, pulse dates, source corrections and noninterchangeable formulations", () => {
+  const get = (id: string) => lessons.find((l) => l.id === id)!;
+  assert.match(get("abx-congenital-pen-g").regimen!.dose, /50,000 units\/kg per DOSE/);
+  assert.match(get("abx-congenital-pen-g").regimen!.frequency, /q12h.*first 7.*q8h/);
+  assert.match(get("abx-congenital-benzathine").regimen!.population, /normal complete.*certain follow-up/);
+  assert.match(get("abx-pcp-prima-clinda").regimen!.dose, /30 mg BASE/);
+  assert.match(get("abx-pcp-dapsone-proph").regimen!.population, /G6PD-normal.*negative Toxoplasma/);
+  assert.match(get("abx-cdi-fidax-pulse").regimen!.frequency, /7,9,11,13,15,17,19,21,23,25/);
+  assert.match(get("abx-hp-levo-rescue").regimen!.frequency, /ONCE daily/);
+  assert.match(get("abx-hp-vono-dual").regimen!.frequency, /amoxicillin TID/);
+  assert.match(get("abx-hp-vono-triple").regimen!.population, /confirmed clarithromycin susceptibility/);
+  assert.match(get("abx-sinus-xr").regimen!.dose, /1000 mg\/62.5 mg XR/);
+  assert.match(get("abx-pertussis-azithro-peds").regimen!.population, />=6 months/);
+  assert.match(get("abx-endo-enterococcus").regimen!.frequency, /ceftriaxone 2 g q12h/);
+  assert.match(get("abx-scd-acute-chest").regimen!.maximum, /Ceftriaxone 2 g\/day/);
+  assert.deepEqual(matchingMedicationSafety("IV ampicillin").map((p) => p.drug), ["ampicillin IV"]);
+  assert.ok(medicationSearch("Augmentin XR").some((m) => m.regimen_lesson_ids.includes("abx-sinus-xr")));
 });

@@ -27,9 +27,9 @@ process.env.FM_TUTOR_ACCESS_TOKEN = "curriculum-test-private-code-123456";
 
 test("antibiotic expansion counts actual regimens and loads every combination component", () => {
   const catalog = curriculumCatalog();
-  assert.equal(catalog.medicationRegimenCount, 130);
-  assert.equal(catalog.antibioticRegimenCount, 123);
-  assert.equal(catalog.antibioticDrugCount, 39);
+  assert.equal(catalog.medicationRegimenCount, 169);
+  assert.equal(catalog.antibioticRegimenCount, 162);
+  assert.equal(catalog.antibioticDrugCount, 52);
   for (const l of lessons.filter((l) => l.regimen)) {
     assert.deepEqual(
       l.medication_safety!.map((p) => p.drug).sort(),
@@ -56,7 +56,7 @@ test("antibiotic expansion counts actual regimens and loads every combination co
 
 test("condition cases load scoped antibiotic prescriptions without leaking into assessments", () => {
   const uti = topics.find((t) => t.title === "UTI Diagnosis and Treatment")!;
-  assert.equal(regimensForTopics([uti.id]).length, 11);
+  assert.equal(regimensForTopics([uti.id]).length, 12);
   const guided = instructions([uti.id], {}, [], "teaching", true);
   assert.match(guided, /CONDITION-LINKED STORED REGIMENS/);
   assert.match(guided, /med-fosfomycin-cystitis/);
@@ -211,7 +211,7 @@ test("all stored medication regimens expose contraindications and scoped organ-s
       }
     }
   }
-  assert.equal(medicationSafetyProfiles.length, 46);
+  assert.equal(medicationSafetyProfiles.length, 61);
 });
 
 test("organ safety keeps unknown guidance, age limits and indication-specific rules explicit", () => {
@@ -311,11 +311,11 @@ test("criteria have rule-specific provenance and do not mix score versions or un
 });
 
 test("broad medication inventory reports names separately from checked safety and supports topic filtering", () => {
-  assert.equal(medicationInventory.length, 501);
+  assert.equal(medicationInventory.length, 508);
   assert.equal(
     medicationInventory.filter((m) => m.status === "scoped_safety_profile")
       .length,
-    46,
+    61,
   );
   assert.equal(
     new Set(medicationInventory.map((m) => m.id)).size,
