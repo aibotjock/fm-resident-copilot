@@ -27,9 +27,9 @@ process.env.FM_TUTOR_ACCESS_TOKEN = "curriculum-test-private-code-123456";
 
 test("antibiotic expansion counts actual regimens and loads every combination component", () => {
   const catalog = curriculumCatalog();
-  assert.equal(catalog.medicationRegimenCount, 34);
-  assert.equal(catalog.antibioticRegimenCount, 27);
-  assert.equal(catalog.antibioticDrugCount, 18);
+  assert.equal(catalog.medicationRegimenCount, 94);
+  assert.equal(catalog.antibioticRegimenCount, 87);
+  assert.equal(catalog.antibioticDrugCount, 30);
   for (const l of lessons.filter((l) => l.regimen)) {
     assert.deepEqual(
       l.medication_safety!.map((p) => p.drug).sort(),
@@ -56,7 +56,7 @@ test("antibiotic expansion counts actual regimens and loads every combination co
 
 test("condition cases load scoped antibiotic prescriptions without leaking into assessments", () => {
   const uti = topics.find((t) => t.title === "UTI Diagnosis and Treatment")!;
-  assert.equal(regimensForTopics([uti.id]).length, 5);
+  assert.equal(regimensForTopics([uti.id]).length, 10);
   const guided = instructions([uti.id], {}, [], "teaching", true);
   assert.match(guided, /CONDITION-LINKED STORED REGIMENS/);
   assert.match(guided, /med-fosfomycin-cystitis/);
@@ -211,7 +211,7 @@ test("all stored medication regimens expose contraindications and scoped organ-s
       }
     }
   }
-  assert.equal(medicationSafetyProfiles.length, 23);
+  assert.equal(medicationSafetyProfiles.length, 37);
 });
 
 test("organ safety keeps unknown guidance, age limits and indication-specific rules explicit", () => {
@@ -311,11 +311,11 @@ test("criteria have rule-specific provenance and do not mix score versions or un
 });
 
 test("broad medication inventory reports names separately from checked safety and supports topic filtering", () => {
-  assert.equal(medicationInventory.length, 490);
+  assert.equal(medicationInventory.length, 495);
   assert.equal(
     medicationInventory.filter((m) => m.status === "scoped_safety_profile")
       .length,
-    23,
+    37,
   );
   assert.equal(
     new Set(medicationInventory.map((m) => m.id)).size,
@@ -597,7 +597,7 @@ test("coverage never upgrades an antibiotic mention or partial STI scope to comp
   assert.ok(sti.lesson_ids.includes("med-benzathine-penicillin-early"));
   assert.ok(sti.lesson_ids.length);
   const strep = rows.find((r) => r.title.includes("Acute Pharyngitis"))!;
-  assert.equal(strep.lesson_ids.length, 3);
+  assert.equal(strep.lesson_ids.length, 7);
   assert.ok(rows.every((r) => r.status !== ("complete" as any)));
 });
 

@@ -748,7 +748,10 @@
     function renderAntibioticCoverage() {
       $("antibioticCoverage").replaceChildren();
       const q = $("coverageFilter").value.toLowerCase().trim();
-      const rows = (curriculum?.antibioticCoverage || []).filter((r) =>
+      const rows = [
+        ...(curriculum?.antibioticCoverage || []),
+        ...(curriculum?.supplementalAntibioticCoverage || []),
+      ].filter((r) =>
         q ? r.title.toLowerCase().includes(q) : r.antimicrobial_signal,
       );
       if (!rows.length) {
@@ -763,7 +766,14 @@
         b.onclick = () => {
           $("learningTrack").value = "guided";
           selectCurriculumLessons();
-          choose(r.topic_id);
+          if (r.topic_id.startsWith("condition-")) {
+            $("learningTrack").value = "condition";
+            selectCurriculumLessons();
+            $("curriculumLesson").value = r.topic_id;
+            restoreCurriculumCheckpoint();
+            renderCurriculumLesson();
+            persist();
+          } else choose(r.topic_id);
         };
         p.append(
           document.createTextNode(
@@ -773,7 +783,9 @@
                 ? "Scoped regimen lessons available. "
                 : "Complete regimen not verified. ") +
               r.scope +
-              " ",
+              (r.pending_scenarios?.length
+                ? " Pending: " + r.pending_scenarios.join("; ") + ". "
+                : " "),
           ),
           b,
         );
@@ -1692,7 +1704,7 @@
           curriculum.antibioticRegimenCount +
           " stored antibiotic regimen lessons across " +
           curriculum.antibioticDrugCount +
-          " antibiotics; " +
+          " named antibacterial/combination entries; " +
           curriculum.medicationRegimenCount +
           " total medication regimen lessons. " +
           curriculum.medicationInventoryCount +

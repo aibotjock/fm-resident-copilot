@@ -14,7 +14,8 @@
     "library.test.ts",
     "curriculum.ts",
     "coverage.ts",
-    "curriculum.test.ts"
+    "curriculum.test.ts",
+    "antibiotic-expansion.test.ts"
   ],
   "references": [
     {

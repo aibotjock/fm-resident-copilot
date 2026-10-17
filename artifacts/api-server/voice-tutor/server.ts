@@ -76,6 +76,12 @@ app.get("/api/healthz", (_req, res) =>
     libraryNavigation: "voice-search-and-select-v1",
     guidedCase: "vignette-to-conclusion-v1",
     curriculumVersion,
+    releaseCommit:
+      process.env.RAILWAY_GIT_COMMIT_SHA ||
+      process.env.FM_TUTOR_RELEASE_COMMIT ||
+      null,
+    antibioticRegimenCount: curriculumCatalog().antibioticRegimenCount,
+    antibioticConditionPathways: curriculumCatalog().antibioticPathways.length,
     curriculumLessons: lessons.length,
     medicationSafetyProfiles: medicationSafetyProfiles.length,
     medicationInventory: medicationInventory.length,

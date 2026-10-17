@@ -1,22 +1,30 @@
 import { CANDIDATE_ENTRIES } from "../src/rag/sources/candidate";
-import { regimensForTopics } from "./curriculum";
+import {
+  regimensForTopics,
+  antibioticPathways,
+  antibioticRelevance,
+} from "./curriculum";
 
-// Discovery only. A mention of antibiotics is NOT an indication to prescribe.
-const signals =
-  /antibiotic|antimicrobial|\bCAP\b|\bUTI\b|\bSTI\b|cellulitis|abscess|necrotizing|h\. pylori|otitis|\bAOM\b|lyme|difficile|gonorrhea|chlamydia|syphilis|sepsis|bacterial rhinosinusitis|pharyngitis|\bSBP\b/i;
+// Explicit audit decisions, not antibiotic-name mentions or an ambiguous SBP regex.
 export function antibioticCoverage() {
   return CANDIDATE_ENTRIES.map((e) => {
     const linked = regimensForTopics([e.key]);
+    const decision = antibioticRelevance.find((r) => r.topic_id === e.key);
+    const pathway = antibioticPathways.find((r) => r.topic_id === e.key);
     return {
       topic_id: e.key,
       title: e.section,
-      antimicrobial_signal: signals.test(e.section + " " + e.content),
+      antimicrobial_signal: !!pathway,
+      relevance: decision?.relevance || "Not audited",
       status: linked.length
         ? "scoped_regimens_available"
-        : "complete_regimen_not_verified",
-      scope: linked.length
-        ? "Selected indication-specific regimens only; check each lesson's population, source date, formulation and gaps. This is not complete antibiotic coverage for the condition."
-        : "Stored topic remains available; no claim of a complete checked antibiotic regimen.",
+        : pathway
+          ? "pathway_only_regimens_pending"
+          : "no_direct_regimen_scope_identified",
+      scope: pathway
+        ? "Selected source-scoped teaching; condition-wide coverage and independent clinical review remain incomplete."
+        : "Audit found no direct antibacterial regimen scope in this topic; reassess if a specific infectious syndrome is established.",
+      pending_scenarios: pathway?.pending_scenarios || [],
       lesson_ids: linked.map((l) => l.id),
       official_lookup_urls: [
         ...new Set((e.evidence_records || []).map((r) => r.url)),

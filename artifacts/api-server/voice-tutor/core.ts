@@ -2,6 +2,7 @@ import {
   CANDIDATE_ENTRIES,
   CANDIDATE_VERSION,
 } from "../src/rag/sources/candidate";
+import { reconcileAntibioticTeaching } from "./teaching-evidence";
 import { CURRENT_ABFM_BLUEPRINT } from "../src/guidelines/abfm";
 import {
   curriculumInstructions,
@@ -96,7 +97,12 @@ export function instructions(
   guided = true,
   curriculumId?: unknown,
 ) {
-  const entries = topicEvidence(ids);
+  guided = guided && mode !== "assessment";
+  const rawEntries = topicEvidence(ids);
+  const entries =
+    guided && mode !== "assessment"
+      ? rawEntries.map(reconcileAntibioticTeaching)
+      : rawEntries;
   const specialist = guided ? curriculumInstructions(curriculumId) : "";
   return `You are the FM Copilot experimental voice tutor. Educational family medicine/ABFM preparation and clinical reasoning only; never patient-specific clinical advice. Never claim ABFM approval or actual exam content. Stay in medicine; redirect unrelated requests briefly.
 ${guided ? guidedCaseFlow : "Session format: EXPLICIT REVIEWED PRACTICE. Preserve the server question's facts, options, mode and grading; do not replace a scored question with an invented guided case."}

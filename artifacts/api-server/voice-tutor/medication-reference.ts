@@ -1,5 +1,74 @@
 import inventory from "./medication-inventory.json";
-export const medicationInventory = inventory;
+import {
+  lessons,
+  medicationSafetyProfiles,
+  antibioticRelevance,
+} from "./curriculum";
+// Derive navigation from actual lessons so newly taught drugs cannot disappear from search.
+const names = [
+  ...new Set([
+    ...inventory.map((m) => m.name),
+    ...medicationSafetyProfiles.map((p) => p.drug),
+  ]),
+];
+const extraAliases: Record<string, string[]> = {
+  "ciprofloxacin-dexamethasone otic": [
+    "Ciprodex",
+    "ciprofloxacin dexamethasone ear drops",
+  ],
+  "omeprazole-amoxicillin-rifabutin": ["Talicia", "rifabutin triple therapy"],
+  "clindamycin-benzoyl peroxide topical": [
+    "Acanya",
+    "clindamycin benzoyl peroxide",
+  ],
+  "penicillin G aqueous": [
+    "aqueous crystalline penicillin G",
+    "penicillin G IV",
+  ],
+};
+export const medicationInventory = names.map((name) => {
+  const original = inventory.find((m) => m.name === name);
+  const linked = lessons.filter(
+    (l) => l.regimen && l.medication_names?.includes(name),
+  );
+  const topicIds = [
+    ...new Set([
+      ...(original?.topics.map((t) => t.topic_id) || []),
+      ...linked.flatMap((l) => l.topic_ids || []),
+    ]),
+  ];
+  return {
+    name,
+    id:
+      original?.id ||
+      name
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, ""),
+    aliases: [
+      ...new Set([
+        name,
+        ...(original?.aliases || []),
+        ...(extraAliases[name] || []),
+      ]),
+    ],
+    topics: topicIds.map((topic_id) => ({
+      topic_id,
+      title:
+        antibioticRelevance.find((r) => r.topic_id === topic_id)?.title ||
+        original?.topics.find((t) => t.topic_id === topic_id)?.title ||
+        topic_id,
+      matched_names: [name],
+    })),
+    status: medicationSafetyProfiles.some((p) => p.drug === name)
+      ? "scoped_safety_profile"
+      : "reference_required",
+    notice:
+      original?.notice ||
+      "Scoped formulation-specific teaching; not complete prescribing evidence or a current-availability claim.",
+    regimen_lesson_ids: linked.map((l) => l.id),
+  };
+});
 export function medicationSearch(query: unknown, topic?: unknown) {
   if (typeof query !== "string" || query.length > 200)
     throw Error("Use a medication name of at most 200 characters");

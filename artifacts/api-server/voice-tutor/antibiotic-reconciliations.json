@@ -1,0 +1,62 @@
+[
+  {
+    "topic_id": "c9e723bcc75b3c40e1d657f0",
+    "old": "- Treatment: IMMEDIATE surgical debridement + broad-spectrum IV antibiotics (pip-tazo or carbapenems + clindamycin for toxin suppression); do NOT delay surgery for imaging",
+    "new": "- Treatment: urgent surgical debridement plus empiric MRSA-active and broad gram-negative/anaerobic therapy; an IDSA example is linezolid plus a carbapenem. Use the loaded component regimen and organ guidance. Do not delay surgery for imaging.",
+    "source_ids": ["EXP-SSTI"]
+  },
+  {
+    "topic_id": "c9e723bcc75b3c40e1d657f0",
+    "old": "(IDSA 2022)",
+    "new": "(legacy snapshot reconciled against IDSA 2014 and loaded UCSF guidance)",
+    "source_ids": ["EXP-SSTI"]
+  },
+  {
+    "topic_id": "c9e723bcc75b3c40e1d657f0",
+    "old": "- Streptococcal etiology (Groups A, B, C, G) — no MRSA coverage needed",
+    "new": "- Typical mild nonpurulent disease needs streptococcal coverage; MRSA-active coverage is conditional on risk/severity rather than universally unnecessary.",
+    "source_ids": ["EXP-SSTI"]
+  },
+  {
+    "topic_id": "c9e723bcc75b3c40e1d657f0",
+    "old": "extend to 14 days if slow improvement",
+    "new": "extend if not improved; reassess diagnosis, source control and severity rather than default to 14 days",
+    "source_ids": ["EXP-SSTI"]
+  },
+  {
+    "topic_id": "4eaa461b63792973bcfd48d6",
+    "old": "adults; NOT pregnant women or children <8 years",
+    "new": "adult regimen; pediatric short-course eligibility is disease-specific, including all-age high-risk prophylaxis; pregnancy decisions require individualized assessment",
+    "source_ids": ["EXP-LYME-PEP", "EXP-LYME-EM"]
+  },
+  {
+    "topic_id": "2f82084e6568d27af2976c52",
+    "old": "- Penicillin allergy (severe/anaphylaxis): clindamycin or TMP-SMX",
+    "new": "- High-risk beta-lactam allergy: assess phenotype and consult pediatric allergy/ASP guidance. Do not use TMP-SMX as a routine AOM alternative; resistance and pathogen coverage matter.",
+    "source_ids": ["EXP-AAP-AOM"]
+  },
+  {
+    "topic_id": "e683adfa3084ddbf052e76d4",
+    "old": "ascitic PMN ≥250/mm3 + positive culture",
+    "new": "ascitic PMN ≥250/mm3 after excluding a secondary intra-abdominal source; culture may be negative and is not required",
+    "source_ids": ["EXP-SBP-DX"]
+  },
+  {
+    "topic_id": "e683adfa3084ddbf052e76d4",
+    "old": "- Secondary prophylaxis (after SBP): norfloxacin 400 mg/day indefinitely",
+    "new": "- Secondary prophylaxis: select a locally available source-supported regimen such as daily TMP-SMX after individual risk review; do not assume US availability of norfloxacin.",
+    "source_ids": ["EXP-SBP"]
+  },
+  {
+    "topic_id": "2ddb34532433626f2090b51b",
+    "old": "- TMP-SMX DS × 14 days (if susceptibility known) OR\n- Oral beta-lactam × 10-14 days (less efficacious)",
+    "new": "- Duration reconciliation: IDSA 2025 suggests 7 days effective non-fluoroquinolone therapy for eligible improving cUTI/pyelonephritis. Short-course evidence has important exclusions; pregnancy pyelonephritis remains 14 days and suspected prostatitis/abscess/obstruction requires separate selection.",
+    "source_ids": ["EXP-CUTI", "EXP-PREG-UTI"]
+  },
+  {
+    "topic_id": "2ddb34532433626f2090b51b",
+    "old": "treat 7-14 days based on organism/severity",
+    "new": "individualize effective duration and catheter/source control; do not apply an automatic 7-14-day rule to all patients",
+    "source_ids": ["EXP-CUTI"]
+  }
+]
