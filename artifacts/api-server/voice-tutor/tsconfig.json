@@ -15,7 +15,8 @@
     "curriculum.ts",
     "coverage.ts",
     "curriculum.test.ts",
-    "antibiotic-expansion.test.ts"
+    "antibiotic-expansion.test.ts",
+    "build-acceptance.test.ts"
   ],
   "references": [
     {

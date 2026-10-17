@@ -1,0 +1,194 @@
+{
+  "checked_at_utc": "2026-10-17T20:53:04.709438+00:00",
+  "deployed_commit": "bbbfbb5a0f8534c7fd193d3543e946cfddc6dba4",
+  "automated": {
+    "tests": 60,
+    "passed": 60,
+    "failed": 0,
+    "all_original_topics_search_and_select": 156,
+    "all_specialist_lessons_search_and_select": 212,
+    "typescript": "pass",
+    "bundle_build": "pass",
+    "diff_whitespace": "pass"
+  },
+  "live_api": {
+    "tested_commit": "bbbfbb5a0f8534c7fd193d3543e946cfddc6dba4",
+    "checks": [
+      {
+        "check": "private curriculum denies unauthenticated access",
+        "status": "pass"
+      },
+      {
+        "check": "private context denies unauthenticated access",
+        "status": "pass"
+      },
+      {
+        "check": "expected deployed commit and credentials configured",
+        "status": "pass"
+      },
+      {
+        "check": "private login",
+        "status": "pass"
+      },
+      {
+        "check": "secure HttpOnly SameSite session cookie",
+        "status": "pass"
+      },
+      {
+        "check": "deployed lesson catalog has all five tracks and 212 lessons",
+        "status": "pass"
+      },
+      {
+        "check": "catalog is not browser cached",
+        "status": "pass"
+      },
+      {
+        "check": "live full library inventory",
+        "status": "pass"
+      },
+      {
+        "check": "pyelonephritis search",
+        "status": "pass"
+      },
+      {
+        "check": "pyelonephritis fresh evidence selection",
+        "status": "pass"
+      },
+      {
+        "check": "impatient pneumonia search",
+        "status": "pass"
+      },
+      {
+        "check": "impatient pneumonia fresh evidence selection",
+        "status": "pass"
+      },
+      {
+        "check": "sinusitis search",
+        "status": "pass"
+      },
+      {
+        "check": "sinusitis fresh evidence selection",
+        "status": "pass"
+      },
+      {
+        "check": "safe-siadh live specialist selection",
+        "status": "pass"
+      },
+      {
+        "check": "advanced-confusion live specialist selection",
+        "status": "pass"
+      },
+      {
+        "check": "advanced-kidney live specialist selection",
+        "status": "pass"
+      },
+      {
+        "check": "advanced-bleeding live specialist selection",
+        "status": "pass"
+      },
+      {
+        "check": "advanced-heart-failure live specialist selection",
+        "status": "pass"
+      },
+      {
+        "check": "criteria-glasgow-blatchford live specialist selection",
+        "status": "pass"
+      },
+      {
+        "check": "condition-otitis-externa live specialist selection",
+        "status": "pass"
+      },
+      {
+        "check": "abx-hiv-mac-treatment live specialist selection",
+        "status": "pass"
+      },
+      {
+        "check": "abx-gbs-vanc live specialist selection",
+        "status": "pass"
+      },
+      {
+        "check": "invalid lesson rejected",
+        "status": "pass"
+      },
+      {
+        "check": "invalid topic rejected",
+        "status": "pass"
+      },
+      {
+        "check": "medication lookup requires approval",
+        "status": "pass"
+      },
+      {
+        "check": "unselected product cannot be loaded",
+        "status": "pass"
+      },
+      {
+        "check": "unapproved external lookup denied",
+        "status": "pass"
+      },
+      {
+        "check": "malformed voice offer rejected before provider call",
+        "status": "pass"
+      },
+      {
+        "check": "reviewed practice hides answer before attempt",
+        "status": "pass"
+      },
+      {
+        "check": "teaching hint marks assistance",
+        "status": "pass"
+      },
+      {
+        "check": "assisted response cannot gain independent credit",
+        "status": "pass"
+      },
+      {
+        "check": "assessment answer feedback withheld",
+        "status": "pass"
+      },
+      {
+        "check": "assessment feedback released at explicit end",
+        "status": "pass"
+      },
+      {
+        "check": "generated teaching cannot award reviewed credit",
+        "status": "pass"
+      },
+      {
+        "check": "specialist switch clears stale reviewed practice",
+        "status": "pass"
+      },
+      {
+        "check": "deployed UI matches tested HTML byte for byte",
+        "status": "pass"
+      },
+      {
+        "check": "GCS recognition scenarios and untestable-response safeguards load live",
+        "status": "pass"
+      }
+    ],
+    "summary": {
+      "passed": 38,
+      "failed": 0
+    }
+  },
+  "provider_handshake": {
+    "synthetic_inputs": true,
+    "microphone_used": false,
+    "events": [],
+    "responses": [],
+    "stage": "local_transport",
+    "handshake_status": 200,
+    "exception": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  "browser": {
+    "public_login": "rendered",
+    "signed_in_workflows": "not_run_secure_browser_unlock_not_completed"
+  },
+  "clinical_limits": {
+    "independent_clinical_review": "pending",
+    "condition_pathways_with_remaining_scenarios": 31,
+    "criteria_purpose_and_interpretation_only": 18
+  },
+  "runtime_changes": false
+}

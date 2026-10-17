@@ -1,3 +1,5 @@
+Current full-build test record: [BUILD_ACCEPTANCE_2026-10-17.md](BUILD_ACCEPTANCE_2026-10-17.md). The results below describe the historical starter release.
+
 # Validation — medication safety and advanced synthesis
 
 ## Confirmed locally
