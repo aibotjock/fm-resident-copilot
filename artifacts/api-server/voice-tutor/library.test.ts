@@ -93,6 +93,7 @@ test("voice health identifies catalog navigation and private endpoints reject un
   const health: any = await response.json();
   assert.equal(health.libraryTopics, 156);
   assert.equal(health.libraryNavigation, "voice-search-and-select-v1");
+  assert.equal(health.navigationVersion, "condition-aliases-v1");
   assert.equal(health.version, version);
   assert.equal(
     (await request("/api/library/search", { query: "asthma" })).status,
@@ -101,6 +102,61 @@ test("voice health identifies catalog navigation and private endpoints reject un
   assert.equal(
     (await request("/api/library/select", { topic_id: asthma })).status,
     401,
+  );
+});
+
+test("pyelonephritis and inpatient pneumonia search, select and load their existing sourced lessons", async () => {
+  const api = await unlocked();
+  for (const [query, parent, lesson, source] of [
+    ["pyelonephritis", uti, "abx-pyelo-levo", "EXP-CUTI"],
+    [
+      "inpatient pneumonia",
+      "6bdba761b977cff2f575e630",
+      "abx-cap-ward",
+      "EXP-CAP",
+    ],
+    [
+      "impatient pneumonia",
+      "6bdba761b977cff2f575e630",
+      "abx-cap-ward",
+      "EXP-CAP",
+    ],
+  ]) {
+    const results: any = await (
+      await api("/api/library/search", { query })
+    ).json();
+    assert.ok(
+      results.topics.some((t: any) => t.id === parent),
+      query,
+    );
+    const selected: any = await (
+      await api("/api/library/select", { topic_id: parent })
+    ).json();
+    assert.ok(selected.instructions.includes(lesson), query);
+    assert.ok(selected.instructions.includes(source), query);
+    const regimens: any = await (
+      await api("/api/curriculum/search", { query })
+    ).json();
+    assert.ok(
+      regimens.lessons.some((l: any) => l.id === lesson),
+      query,
+    );
+    const loaded = await api("/api/curriculum/select", {
+      lesson_id: lesson,
+      ids: [parent],
+    });
+    assert.equal(loaded.status, 200);
+    const value: any = await loaded.json();
+    assert.ok(value.lesson.medication_safety.length);
+    assert.ok(value.instructions.includes(source));
+    assert.ok(value.lesson.regimen.dose);
+  }
+  const pyelo: any = await (
+    await api("/api/curriculum/search", { query: "pyelonephritis" })
+  ).json();
+  assert.ok(
+    !pyelo.lessons.some((l: any) => l.id === "abx-preg-nitro"),
+    "a 'not pyelonephritis' population must not become a search alias",
   );
 });
 

@@ -486,6 +486,19 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
   await nodes.get("login").onsubmit({ preventDefault() {} });
   assert.match(nodes.get("bankCoverage").textContent, /26 original/);
   assert.equal(nodes.get("topic").options.length, 156);
+  for (const [query, parent] of [
+    ["pyelonephritis", "2ddb34532433626f2090b51b"],
+    ["inpatient pneumonia", "6bdba761b977cff2f575e630"],
+    ["impatient pneumonia", "6bdba761b977cff2f575e630"],
+  ]) {
+    nodes.get("filter").value = query;
+    nodes.get("filter").oninput();
+    assert.ok(
+      nodes.get("topic").options.some((o: any) => o.value === parent),
+      query,
+    );
+    assert.equal(nodes.get("start").disabled, false);
+  }
   nodes.get("filter").value = "  AsThMa  ";
   nodes.get("filter").oninput();
   assert.ok(nodes.get("topic").options.length > 0);
@@ -547,6 +560,22 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
   );
   nodes.get("stop").onclick();
   assert.equal(vm.runInContext("track.stopped", sandbox), true);
+
+  for (const [query, focus] of [
+    ["pyelonephritis", "pyelonephritis"],
+    ["inpatient pneumonia", "inpatient community-acquired pneumonia"],
+  ]) {
+    nodes.get("filter").value = query;
+    nodes.get("filter").oninput();
+    await nodes.get("start").onclick();
+    const sent: any[] = vm.runInContext("outgoing", sandbox);
+    assert.ok(sent.at(-2).item.content[0].text.includes("focused on " + focus));
+    nodes.get("stop").onclick();
+  }
+  nodes.get("filter").value = "";
+  nodes.get("filter").oninput();
+  nodes.get("topic").value = topics[0].id;
+  nodes.get("topic").onchange();
 
   await nodes.get("practiceStart").onclick();
   assert.equal(vm.runInContext("practiceRunning", sandbox), true);
@@ -957,6 +986,22 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
   nodes.get("learningTrack").value = "medication";
   nodes.get("learningTrack").onchange();
   assert.equal(nodes.get("curriculumLesson").options.length, 94);
+  for (const [query, expected] of [
+    ["pyelonephritis", "abx-pyelo-levo"],
+    ["inpatient pneumonia", "abx-cap-ward"],
+    ["impatient pneumonia", "abx-cap-ward"],
+  ]) {
+    nodes.get("curriculumFilter").value = query;
+    nodes.get("curriculumFilter").oninput();
+    assert.ok(
+      nodes
+        .get("curriculumLesson")
+        .options.some((o: any) => o.value === expected),
+      query,
+    );
+    assert.ok(nodes.get("curriculumSources").children.length);
+    assert.equal(nodes.get("start").disabled, false);
+  }
   nodes.get("curriculumFilter").value = "amoxicillin";
   nodes.get("curriculumFilter").oninput();
   assert.equal(nodes.get("curriculumLesson").value, "med-amoxicillin-strep");

@@ -2,6 +2,7 @@ import content from "./curriculum.json";
 import expansion from "./expanded-curriculum.json";
 import antibiotics from "./antibiotic-expansion.json";
 import inventory from "./medication-inventory.json";
+import { navigationTerms, matchesNavigation } from "./navigation";
 
 export type Track =
   | "medication"
@@ -41,6 +42,7 @@ export type Lesson = {
   medication_safety?: MedicationSafety[];
   topic_ids?: string[];
   medication_names?: string[];
+  search_terms?: string;
   criteria_ids?: string[];
   study_scope?: "rule_summary" | "purpose_and_interpretation";
   practice_cases?: {
@@ -73,6 +75,16 @@ export const lessons = (
   );
   return {
     ...lesson,
+    search_terms: navigationTerms(
+      [
+        lesson.title,
+        ...lesson.tags,
+        lesson.regimen?.indication || "",
+        lesson.id === "abx-cap-severe"
+          ? "inpatient pneumonia severe CAP ICU"
+          : "",
+      ].join(" "),
+    ),
     medication_safety,
     source_ids: [
       ...new Set([
@@ -82,6 +94,23 @@ export const lessons = (
     ],
   };
 });
+export function searchCurriculum(query: unknown) {
+  if (typeof query !== "string" || query.length > 200)
+    throw new Error("Search with at most 200 characters");
+  const matches = lessons.filter((l) =>
+    matchesNavigation(l.search_terms, query),
+  );
+  return {
+    lessons: matches.map(({ id, title, track, tags, search_terms }) => ({
+      id,
+      title,
+      track,
+      tags,
+      search_terms,
+    })),
+    total: matches.length,
+  };
+}
 export const referenceRegistry = content.references;
 export const clinicalSources = [
   ...content.sources,

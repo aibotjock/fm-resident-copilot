@@ -14,6 +14,7 @@ import {
   lessonById,
   lessons,
   medicationSafetyProfiles,
+  searchCurriculum,
 } from "./curriculum";
 import { antibioticCoverage } from "./coverage";
 import {
@@ -74,6 +75,7 @@ app.get("/api/healthz", (_req, res) =>
     accessConfigured: !!process.env.FM_TUTOR_ACCESS_TOKEN,
     libraryTopics: topics.length,
     libraryNavigation: "voice-search-and-select-v1",
+    navigationVersion: "condition-aliases-v1",
     guidedCase: "vignette-to-conclusion-v1",
     curriculumVersion,
     releaseCommit:
@@ -304,29 +306,11 @@ app.post("/api/medications/load", async (req, res) => {
   }
 });
 app.post("/api/curriculum/search", (req, res) => {
-  if (typeof req.body.query !== "string" || req.body.query.length > 200) {
-    res.status(400).json({ error: "Search with at most 200 characters" });
-    return;
+  try {
+    res.json(searchCurriculum(req.body.query));
+  } catch (error) {
+    res.status(400).json({ error: (error as Error).message });
   }
-  const words: string[] = req.body.query
-    .toLowerCase()
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean);
-  const matches = lessons.filter((l) =>
-    words.every((w) =>
-      `${l.title} ${l.track} ${l.tags.join(" ")}`.toLowerCase().includes(w),
-    ),
-  );
-  res.json({
-    lessons: matches.map(({ id, title, track, tags }) => ({
-      id,
-      title,
-      track,
-      tags,
-    })),
-    total: matches.length,
-  });
 });
 app.post("/api/curriculum/select", (req, res) => {
   try {

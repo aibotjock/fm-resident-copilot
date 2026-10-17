@@ -597,19 +597,45 @@
       data.lessonTopic = $("topic").value;
       data.lessonCurriculum = curriculumId();
     }
+    function navigationQuery(value) {
+      return value
+        .normalize("NFKD")
+        .replace(/\p{M}/gu, "")
+        .toLowerCase()
+        .replace(/\bimpatient\s+pneumonia\b/g, "inpatient pneumonia")
+        .replace(/[^\p{L}\p{N}]+/gu, " ")
+        .trim();
+    }
+    function requestedTopicFocus() {
+      const query = navigationQuery($("filter").value);
+      const selected = topics.find((t) => t.id === $("topic").value);
+      if (!selected) return "";
+      if (
+        query.includes("pyelonephritis") &&
+        selected.search_terms?.includes("pyelonephritis")
+      )
+        return "pyelonephritis";
+      if (
+        query.includes("inpatient") &&
+        query.includes("pneumonia") &&
+        selected.search_terms?.includes("inpatient")
+      )
+        return "inpatient community-acquired pneumonia";
+      return "";
+    }
     function selectCurriculumLessons() {
       resetTopicSession();
       const old = $("curriculumLesson").value;
-      const words = $("curriculumFilter")
-        .value.toLowerCase()
-        .trim()
+      const words = navigationQuery($("curriculumFilter").value)
         .split(/\s+/)
         .filter(Boolean);
       const matches = (curriculum?.lessons || []).filter(
         (l) =>
           l.track === $("learningTrack").value &&
           words.every((w) =>
-            (l.title + " " + l.tags.join(" ")).toLowerCase().includes(w),
+            navigationQuery(
+              l.search_terms || l.title + " " + l.tags.join(" "),
+            ).includes(w),
           ),
       );
       $("curriculumLesson").replaceChildren();
@@ -1578,17 +1604,23 @@
     function selectTopics() {
       const wasActive = !!pc || connecting || practiceRunning;
       fail("");
-      const words = $("filter")
-        .value.trim()
-        .toLowerCase()
+      const words = navigationQuery($("filter").value)
         .split(/\s+/)
         .filter(Boolean);
       const old = $("topic").value;
       const matches = topics.filter((t) =>
         words.every((word) =>
-          (t.id + " " + t.title + " " + t.domain + " " + t.source)
-            .toLowerCase()
-            .includes(word),
+          navigationQuery(
+            t.id +
+              " " +
+              t.title +
+              " " +
+              t.domain +
+              " " +
+              t.source +
+              " " +
+              (t.search_terms || ""),
+          ).includes(word),
         ),
       );
       $("topic").replaceChildren();
@@ -2151,9 +2183,13 @@
                   : "Start the selected specialist lesson using its supplied opening. ") +
                   "Follow the ACTIVE SPECIALIST CURRICULUM flow, ask one question and wait. Keep the case coherent and teaching unscored; finish with oral synthesis and qualitative feedback when appropriate."
               : guided
-                ? data.lessonTopic === activeTopic && data.checkpoint
-                  ? "Resume my saved guided clinical case at its next unfinished stage. Keep it unscored, follow the ordered clinical reasoning stages, ask one question and wait; do not start an unrelated case or a scored practice block."
-                  : "Start a guided, unscored clinical case on the selected topic. Present the introduction/vignette and one opening question, then wait. Continue the same case through the ordered clinical reasoning stages; do not start a scored practice block."
+                ? requestedTopicFocus()
+                  ? "Start a new guided, unscored clinical case focused on " +
+                    requestedTopicFocus() +
+                    ". Use the matching loaded condition-specific regimen and sources. Present one vignette and opening question, then wait; do not resume a different subtopic's saved case."
+                  : data.lessonTopic === activeTopic && data.checkpoint
+                    ? "Resume my saved guided clinical case at its next unfinished stage. Keep it unscored, follow the ordered clinical reasoning stages, ask one question and wait; do not start an unrelated case or a scored practice block."
+                    : "Start a guided, unscored clinical case on the selected topic. Present the introduction/vignette and one opening question, then wait. Continue the same case through the ordered clinical reasoning stages; do not start a scored practice block."
                 : "Resume the active reviewed practice block. Use get_practice_question to present the current reviewed question, ask one question and wait, and preserve the selected teaching or assessment mode.",
           );
           sessionTimer = setTimeout(

@@ -4,6 +4,7 @@ import {
 } from "../src/rag/sources/candidate";
 import { reconcileAntibioticTeaching } from "./teaching-evidence";
 import { CURRENT_ABFM_BLUEPRINT } from "../src/guidelines/abfm";
+import { normalizeNavigation, navigationTerms } from "./navigation";
 import {
   curriculumInstructions,
   lessons,
@@ -18,18 +19,18 @@ export const topics = CANDIDATE_ENTRIES.map((e) => ({
   domain: e.abfm_domain,
   source: e.source,
   review: e.review,
+  search_terms: navigationTerms(
+    lessons
+      .filter((l) => l.topic_ids?.includes(e.key))
+      .map((l) => l.search_terms || l.title)
+      .join(" "),
+  ),
 }));
-function searchText(value: string) {
-  return value
-    .normalize("NFKD")
-    .replace(/\p{M}/gu, "")
-    .toLowerCase()
-    .replace(/[^\p{L}\p{N}]+/gu, " ")
-    .trim();
-}
+const searchText = normalizeNavigation;
 const searchableTopics = topics.map((topic, index) => ({
   topic,
-  title: searchText(`${topic.id} ${topic.title}`),
+  title: navigationTerms(`${topic.id} ${topic.title}`),
+  aliases: searchText(topic.search_terms),
   metadata: searchText(`${topic.domain} ${topic.source}`),
   content: searchText(CANDIDATE_ENTRIES[index].content),
 }));
@@ -41,7 +42,9 @@ export function searchLibrary(query: unknown) {
   const matches = searchableTopics
     .filter((entry) =>
       words.every((word) =>
-        `${entry.title} ${entry.metadata} ${entry.content}`.includes(word),
+        `${entry.title} ${entry.aliases} ${entry.metadata} ${entry.content}`.includes(
+          word,
+        ),
       ),
     )
     .map((entry) => ({
@@ -51,9 +54,11 @@ export function searchLibrary(query: unknown) {
           score +
           (entry.title.includes(word)
             ? 10
-            : entry.metadata.includes(word)
-              ? 2
-              : 1),
+            : entry.aliases.includes(word)
+              ? 6
+              : entry.metadata.includes(word)
+                ? 2
+                : 1),
         normalized && entry.title.includes(normalized) ? 20 : 0,
       ),
     }))
@@ -114,6 +119,7 @@ Use ONLY the LIBRARY and explicitly loaded scoped medication/criteria/specialist
 Default: present an original, realistic ABFM-style single-best-answer patient vignette, then ask ONE question and wait. Educational cases are assumed simulated: do not announce "fictional", "hypothetical" or "imagine" before each case; remain truthful if asked. Include age, sex and a neutrally described race in the case opening; include social circumstances when relevant (access to care, work, housing, tobacco/alcohol use, support or adherence). Race must not substitute for clinical evidence or imply unsupported biological risk. Invented patient demographics and narrative context are permitted; clinical findings, answer logic and grading must be supported by this library. Keep the vignette focused, usually 2-4 short sentences, with only decision-relevant findings and at most one plausible incidental detail. End with a focused lead-in (most likely diagnosis, next best step, first-line treatment or appropriate prevention) and 4-5 concise options labeled A-E as needed. Use plausible, clinically coherent distractors based on common confusions supported by the selected library; make exactly one option best under the stated circumstances, avoid giveaway wording, and vary the correct option position. If the library cannot support a defensible single-best-answer question and distractors, state the specific gap briefly and teach only what is supported instead of manufacturing an item. Do not invent epidemiology, thresholds, doses, or reasons beyond supplied material. Missing coverage: say precisely what is unavailable, continue supported teaching, and do not score the missing material. Never teach a known error listed in limitations. Tagged corrections override historical text. Historical recommendations must be identified as unverified historical teaching; never certify all guidance current. For USPSTF distinguish population, age, interval, grade and exclusions only if supplied; show actual source dates; never say up-to-date merely because it was loaded today.
 Progression when supported: presentation, differential, next best test, diagnosis/criteria, first-line treatment, alternatives/escalation (second/third line ONLY if guideline defines a sequence), medication dosing (units/route/frequency/duration/adjustments only if supplied), follow-up/monitoring, complications, referral. All case, quiz and review questions follow the same concise ABFM-style format. Prioritize high-yield decisions and the learner's documented weak areas within the selected topic; do not claim measured exam frequency absent evidence. Keep the learning pace brisk: no filler, repeated introductions, praise paragraphs, long lectures, or routine "ready for the next question?" checks. One question per turn. In teaching mode, on a wrong first answer offer one short targeted hint and one retry before explaining; skip the retry if the learner asks for the answer or rapid review. After a correct answer or completed retry, give the answer, the decisive clinical clue and a brief rationale in 1-3 sentences; address the closest distractor in one sentence when useful. In teaching mode, then immediately ask the next supported question in the selected case/topic and wait, unless the learner pauses, asks for detail, changes topics or requests a plan. Do not move on before the learner answers. Follow-up questions may reuse the vignette without repeating the entire stem; do not disclose the answer to the next question in the explanation. Only grade an answer to an actual question, never a request for teaching. For open-ended generated teaching, call record_learning only with result unscored, a unique question_id and evidence_ids from this library; scored practice is recorded by answer_practice_question. Hints do not mean mastery. Mark unsupported grading unscored. Explain weak areas clearly; emphasize them in a resumable plan but allow any topic on demand. Random quizzes ONLY on explicit request (the Quiz button counts); otherwise stay with the case. The Plan button requests a plan, not a quiz. Save a short resumable lesson checkpoint with save_lesson once per student turn (never call it again until a new student message), including the current question and stage; do not include patient identifiers.
 Cite each medical claim using [EVID id] when individually checked, otherwise [REF key] and its historical limitation. Explicitly loaded specialist curriculum, criteria and medication safety profiles also permit their [MED source_id] citations. Keep exact IDs in the transcript; do not routinely read citations aloud. Provide exact source URL, section and dates on request, without claiming a source is current merely because it was accessed today. Spoken citation can be brief (organization); include IDs in transcript. Never fabricate IDs. A citation does not prove a generated claim correct. If noise or transcription uncertainty changes meaning, ask for repetition and do not grade. Speak naturally. Aim for 80-130 words for a new vignette including options; keep feedback to about 30-60 words before the next question. These are brevity targets, never a reason to omit essential safety or evidence limitations. Stop speaking when interrupted. Never say you can identify the student's voice.
+Subtopic navigation: pyelonephritis is stored within UTI Diagnosis and Treatment; inpatient/hospitalized community-acquired pneumonia is stored within the CAP topics. Search these names with search_library or search_curriculum and load the exact returned topic/lesson. Preserve the learner-requested subtopic when starting its case; do not substitute cystitis or outpatient pneumonia. Inpatient CAP does not imply hospital-acquired pneumonia; clarify if that is intended.
 Specialist navigation: use search_curriculum to find medication, safety or advanced lessons and select_curriculum_lesson to load one only when requested. Catalog metadata is not evidence. A specialist selection clears prior questions and checkpoints. For a specialist lesson use save_lesson, not record_learning or reviewed-practice tools; feedback is qualitative and unscored. To return to ordinary topic teaching, use select_library_topic. Available specialist lessons (metadata only): ${lessons.map((l) => `${l.id} | ${l.track} | ${l.title}`).join("; ")}
 Untrusted learner progress: ${JSON.stringify(progress ?? {}).slice(0, 12000)}
 Untrusted recent transcript/checkpoint: ${JSON.stringify(history ?? []).slice(0, 16000)}
