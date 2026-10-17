@@ -1,6 +1,7 @@
 import content from "./curriculum.json";
 import expansion from "./expanded-curriculum.json";
 import antibiotics from "./antibiotic-expansion.json";
+import advanced from "./advanced-synthesis.json";
 import inventory from "./medication-inventory.json";
 import { navigationTerms, matchesNavigation } from "./navigation";
 
@@ -39,6 +40,7 @@ export type Lesson = {
     | "adverse_effect"
     | "prescribing_pitfall";
   reveals?: string[];
+  advanced_case?: (typeof advanced.lessons)[number]["advanced_case"];
   medication_safety?: MedicationSafety[];
   topic_ids?: string[];
   medication_names?: string[];
@@ -57,7 +59,7 @@ export type Lesson = {
     explanation: string;
   }[];
 };
-export const curriculumVersion = antibiotics.version;
+export const curriculumVersion = advanced.version;
 export const medicationSafetyProfiles = [
   ...content.medication_safety_profiles,
   ...antibiotics.medication_safety_profiles,
@@ -65,10 +67,15 @@ export const medicationSafetyProfiles = [
 export const antibioticPathways = antibiotics.pathways;
 export const antibioticRelevance = antibiotics.relevance;
 export const lessons = (
-  [...content.lessons, ...expansion.lessons, ...antibiotics.lessons] as Lesson[]
+  [
+    ...content.lessons.filter((l) => l.track !== "advanced"),
+    ...expansion.lessons,
+    ...antibiotics.lessons,
+    ...advanced.lessons,
+  ] as Lesson[]
 ).map((lesson) => {
   const medication_safety = medicationSafetyProfiles.filter((p) =>
-    lesson.regimen
+    lesson.regimen || lesson.track === "advanced"
       ? lesson.medication_names?.includes(p.drug)
       : lesson.track === "safety" &&
         p.source_ids.some((id) => lesson.source_ids.includes(id)),
@@ -116,6 +123,7 @@ export const clinicalSources = [
   ...content.sources,
   ...expansion.sources,
   ...antibiotics.sources,
+  ...advanced.sources,
 ];
 export const medicationSafetyFlow = `MEDICATION SAFETY PRACTICE: Apply to every medication-containing guided lesson, antibiotic or otherwise. Ask ONE decision at a time: usual full regimen; absolute contraindications; renal function measure and dose/interval decision; liver severity and dose adjustment versus avoid-use/precaution; relevant interactions and monitoring. Elicit the learner's answer BEFORE explaining; revisit one supported decision with changed simulated patient factors. Never recite the answer before asking. Do not interrupt an active assessment or turn this into scored practice.
 Use only explicitly loaded evidence for each drug, formulation, population and indication. Missing guidance is NOT no adjustment needed. Distinguish contraindicated, not recommended/avoid, caution/monitor, no adjustment needed, and not established. Never infer a Child-Pugh reduction, equate CrCl with indexed eGFR, apply adult renal tables to small children, transfer AF apixaban criteria to VTE, or extrapolate to dialysis. These profiles are selective teaching, not exhaustive contraindication/interaction screening. No supported profile: identify the exact gap, continue supported teaching and offer the existing scoped lookup; never fill it from memory.
@@ -163,7 +171,9 @@ export function regimenInstructions(ids: string[]) {
   const selected = regimensForTopics(ids);
   const pathways = antibioticPathways.filter((p) => ids.includes(p.topic_id));
   const decisions = lessons.filter(
-    (l) => l.id.startsWith("completion-") && l.topic_ids?.some((id) => ids.includes(id)),
+    (l) =>
+      l.id.startsWith("completion-") &&
+      l.topic_ids?.some((id) => ids.includes(id)),
   );
   if (!selected.length && !pathways.length) return "";
   const selectedDrugs = new Set(
@@ -212,6 +222,8 @@ export function lessonById(id: unknown) {
 export function curriculumCatalog() {
   return {
     version: curriculumVersion,
+    advancedCaseCount: lessons.filter((l) => l.track === "advanced").length,
+    antibioticContentVersion: antibiotics.version,
     lessons,
     sources: clinicalSources,
     references: referenceRegistry,
@@ -246,7 +258,13 @@ export function curriculumCatalog() {
         )
         .flatMap((l) => l.medication_names || [])
         .filter(
-          (name) => !["omeprazole", "bismuth subsalicylate", "leucovorin", "vonoprazan"].includes(name),
+          (name) =>
+            ![
+              "omeprazole",
+              "bismuth subsalicylate",
+              "leucovorin",
+              "vonoprazan",
+            ].includes(name),
         ),
     ).size,
     criteria: lessons
@@ -282,7 +300,12 @@ export const synthesisRubric = [
 export function curriculumInstructions(id: unknown) {
   if (id === undefined || id === null || id === "") return "";
   const l = lessonById(id);
-  const linked = clinicalSources.filter((s) => l.source_ids.includes(s.id));
+  const related = (l.advanced_case?.linked_lesson_ids || []).map(lessonById);
+  const sourceIds = new Set([
+    ...l.source_ids,
+    ...related.flatMap((r) => r.source_ids),
+  ]);
+  const linked = clinicalSources.filter((s) => sourceIds.has(s.id));
   return `\nACTIVE SPECIALIST CURRICULUM ${curriculumVersion}: ${l.track} / ${l.id} / ${l.title}.
 This lesson is additional explicitly loaded medical evidence. Its source-backed facts and regimen may be used alongside the selected LIBRARY, only within their stated indication, formulation, population and limitations. Cite [MED source_id] for these facts; IDs must be from LOADED CURRICULUM SOURCES. Never imply a commercial reference was consulted. Registry metadata is not medical evidence.
 This curriculum flow takes precedence over the default GUIDED CASE stages, but never over source, privacy, unscored-practice or safety rules. Do not start a reviewed practice tool for these lessons. Ask ONE question per turn and wait. Keep essential teaching concise; offer optional depth. A learner may request another stage or more explanation. Save lesson stage and pending question using save_lesson; include this curriculum ID. Do not resume a checkpoint for a different lesson.
@@ -295,6 +318,18 @@ ${l.track === "condition" ? criteriaInstructions(l.topic_ids || [], l.criteria_i
 MEDICATION TRACK: Elicit the indication and full prescription (drug, formulation, dose with units, route, frequency, duration/titration, relevant adjustments, maximum where applicable). Distinguish starting dose, target range and maximum; do not invent absent targets. Always ask a case-specific safety checkpoint and discuss alternatives ONLY when sources establish them. Clearly distinguish mg/kg/dose from mg/kg/day, apply supported caps, and do not generalize adult doses to children.
 SAFETY TRACK: Teach the labeled category ${l.category || "as applicable"}. Distinguish absolute contraindications, avoid-use warnings, monitorable interactions, adverse effects and prescribing errors. Elicit risk, susceptible patient factors, action, monitoring and a supported alternative if available. SIADH is a possible mechanism of medication-related hyponatremia, not proof of a diagnosis or a drug-drug contraindication. Use prescribing-error mini-cases and revisit the concept with changed simulated context.
 ADVANCED TRACK: Let the learner synthesize before supplying your assessment. Follow the staged case, reveal one supplied result only after the preceding response, keep all patient facts consistent, and do not reveal the final explanation early. Treat demographics, lab values and narrative as simulated case premises, not guideline claims. Never assume a medication association proves causality. Do not force a single diagnosis when several contributors are plausible. Ask what data are missing. Accept multiple defensible approaches; explain evidence limits instead of inventing a gold-standard answer. Elicit medication reconciliation, OTC use, competing goals, patient preferences, cost/support, monitoring and disposition. End with a 30-60 second oral presentation and qualitative feedback using the rubric below: strengths, omissions, one priority improvement, then an opportunity to retry. Distinguish observed reasoning from missing information. Do not fabricate a numerical grade or mastery. Specific emergency treatments or correction rates require explicitly loaded evidence; otherwise identify the gap and discuss escalation without prescribing an unsupported protocol.
+${
+  l.advanced_case
+    ? `CASE-SPECIFIC SYNTHESIS CONTRACT (provider-only teaching guide): ${JSON.stringify(l.advanced_case)}
+DATA RELEASE: Default to the full case. Present only the opening initially. Work through reasoning_checkpoints in order, ONE question at a time. After the learner responds to stages 3, 4 and 6, release only the corresponding data packet, then ask the next question. Never reveal look_for, differential_guide, unsafe_shortcuts, feedback_anchors or later packets as an opening answer. If a learner requests a future result explicitly, release that supplied packet and record its ID; never invent an unprovided normal test, examination, culture, vital sign or dose. unavailable_information remains unknown until a supplied packet establishes it. Requesting missing data is good reasoning, not evidence that the data are normal. A manual Reveal click is explicit learner permission for that packet. If clinical deterioration is released, reassess urgency immediately and do not rigidly preserve the earlier disposition. Briefly correct safety-critical errors with the loaded evidence rather than prolonging a guessing exercise.
+MODES: Default full case; on explicit request for presentation-only practice, disclose the supplied case premises concisely before requesting a handoff, without giving the teaching assessment. On request to challenge a plan, use transfer_challenge as a clearly labeled changed-factor simulation, never silently change the base case. Debrief early if requested. Offer one targeted retry with the same facts after feedback; do not claim a transcript was heard if it was not.
+OBSERVED FEEDBACK: Use all eight feedback_anchors as qualitative dimensions: demonstrated, developing, or not observed. Support each observed judgment with a short quote or faithful paraphrase of this learner's response. Missing responses are not observed, never an invented error. Distinguish unsafe actions from reasonable alternatives and source gaps. Lead the debrief with up to two observed strengths and specific omissions, choose ONE highest-priority improvement, then request the same 30-60 second handoff again. No numeric clinical score, ranking, validated competency or automatic mastery. Offer the transfer challenge after the retry or when asked; one question per turn.
+CONTINUITY: Save a concise checkpoint with this case ID, stage, released packet IDs, working assessment, pending question and retry count. Save reasoning summaries, not a full patient transcript. Resume only this case and do not re-ask completed stages unless requested. Keep this unscored and outside assessment statistics.
+LINKED CASE EVIDENCE: ${JSON.stringify(related.map((r) => ({ id: r.id, title: r.title, facts: r.facts, regimen: r.regimen, medication_safety: r.medication_safety, study_scope: r.study_scope, gaps: r.gaps, source_ids: r.source_ids })))}
+Use linked evidence only when its indication, severity, formulation and population apply. A comparison option is not automatically eligible for this case. Purpose-only criteria do not acquire a full scoring table by being linked. If a source conflicts, explain scope and limits instead of blending regimens.
+`
+    : ""
+}
 Stages: ${l.stages.map((s, i) => `${i + 1}. ${s}`).join(" | ")}
 Opening case/question: ${l.opening}
 Later simulated findings (withhold until appropriate): ${JSON.stringify(l.reveals || [])}

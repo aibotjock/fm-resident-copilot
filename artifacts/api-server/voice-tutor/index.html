@@ -683,7 +683,10 @@
       $("curriculumControls").classList.toggle("hidden", !specialist);
       $("curriculumStatus").textContent = specialist
         ? l
-          ? curriculum.notice
+          ? (l.advanced_case
+              ? curriculum.advancedCaseCount +
+                " advanced cases. Try: presentation only, challenge my plan, debrief, or retry. "
+              : "") + curriculum.notice
           : "No matching lesson. Clear the search or choose another section."
         : "";
       $("start").disabled = !$("topic").value || (specialist && !l);
@@ -701,6 +704,14 @@
         const p = document.createElement("p");
         p.textContent = text;
         $("curriculumNotes").append(p);
+      }
+      if (l.advanced_case) {
+        note("Case focus: " + l.advanced_case.domain);
+        note(
+          "Practice: full case, presentation only, challenge my plan, debrief, or retry. Ask by voice. Findings are staged; Reveal requests the next packet.",
+        );
+        for (const objective of l.advanced_case.learning_objectives)
+          note("Learning goal: " + objective);
       }
       if (l.category)
         note("Safety classification: " + l.category.replaceAll("_", " "));

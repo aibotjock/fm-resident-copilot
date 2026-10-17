@@ -1034,7 +1034,33 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
   );
   nodes.get("learningTrack").value = "advanced";
   nodes.get("learningTrack").onchange();
-  assert.equal(nodes.get("curriculumLesson").options.length, 4);
+  assert.equal(nodes.get("curriculumLesson").options.length, 28);
+  const advancedCases = vm.runInContext(
+    'curriculum.lessons.filter(l => l.track === "advanced")',
+    sandbox,
+  );
+  for (const lesson of advancedCases) {
+    nodes.get("curriculumLesson").value = lesson.id;
+    nodes.get("curriculumLesson").onchange();
+    assert.equal(
+      nodes.get("curriculumPreview").textContent,
+      lesson.opening,
+      lesson.id,
+    );
+    assert.equal(nodes.get("curriculumFinding").textContent, "", lesson.id);
+    for (const finding of lesson.reveals) {
+      assert.equal(nodes.get("curriculumReveal").disabled, false, lesson.id);
+      nodes.get("curriculumReveal").onclick();
+      assert.equal(
+        nodes.get("curriculumFinding").textContent,
+        finding,
+        lesson.id,
+      );
+    }
+    assert.equal(nodes.get("curriculumReveal").disabled, true, lesson.id);
+  }
+  nodes.get("curriculumLesson").value = "advanced-confusion";
+  nodes.get("curriculumLesson").onchange();
   nodes.get("curriculumReveal").onclick();
   assert.match(nodes.get("curriculumFinding").textContent, /124/);
   nodes.get("curriculumReveal").onclick();

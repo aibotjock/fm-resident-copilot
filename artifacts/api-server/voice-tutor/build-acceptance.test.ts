@@ -116,7 +116,7 @@ test("every shipped specialist lesson is discoverable and loads its own evidence
 
 test("advanced case contracts include staged uncertainty, patient constraints and qualitative feedback rather than a fabricated score", () => {
   const advanced = lessons.filter((l) => l.track === "advanced");
-  assert.equal(advanced.length, 4);
+  assert.equal(advanced.length, 28);
   assert.equal(synthesisRubric.length, 8);
   for (const lesson of advanced) {
     const prompt = curriculumInstructions(lesson.id);
@@ -173,5 +173,109 @@ test("every taught formulation is reachable from medication search and partial r
     );
   assert.ok(
     lessons.filter((l) => l.track === "criteria").every((l) => l.facts.length),
+  );
+});
+
+test("all 28 synthesis cases have coherent release packets, reasoning checkpoints and specific feedback", () => {
+  const cases = lessons.filter((l) => l.track === "advanced");
+  assert.equal(cases.length, 28);
+  const packetIds = new Set<string>();
+  for (const l of cases) {
+    const c = l.advanced_case!;
+    assert.ok(c, l.id);
+    assert.deepEqual(
+      c.data_packets.map((p) => p.after_stage),
+      [3, 4, 6],
+    );
+    assert.deepEqual(
+      c.data_packets.map((p) => p.findings),
+      l.reveals,
+    );
+    assert.deepEqual(
+      c.reasoning_checkpoints.map((q) => q.stage),
+      [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    );
+    assert.equal(new Set(c.feedback_anchors.map((a) => a.dimension)).size, 8);
+    assert.ok(
+      c.differential_guide.length >= 3 && c.unavailable_information.length >= 3,
+      l.id,
+    );
+    assert.ok(
+      c.unsafe_shortcuts[0] &&
+        c.transfer_challenge &&
+        c.oral_handoff.retry_instruction,
+      l.id,
+    );
+    for (const p of c.data_packets) {
+      assert.ok(!packetIds.has(p.id));
+      packetIds.add(p.id);
+      assert.ok(!l.opening.includes(p.findings), l.id);
+    }
+    const prompt = curriculumInstructions(l.id);
+    for (const rule of [
+      "Present only the opening initially",
+      "unavailable_information remains unknown",
+      "Missing responses are not observed",
+      "released packet IDs",
+      "same facts",
+      "Purpose-only criteria",
+      "ONE highest-priority improvement",
+    ])
+      assert.ok(prompt.includes(rule), `${l.id}: ${rule}`);
+  }
+  assert.equal(packetIds.size, 84);
+});
+
+test("synthesis related evidence stays selected, retains scope and never enters assessments", () => {
+  for (const l of lessons.filter((l) => l.track === "advanced")) {
+    const prompt = curriculumInstructions(l.id);
+    for (const id of l.advanced_case!.linked_lesson_ids) {
+      const related = lessons.find((r) => r.id === id)!;
+      assert.ok(related && related.track !== "advanced", `${l.id}: ${id}`);
+      assert.ok(prompt.includes(`"id":"${id}"`), l.id);
+      for (const source of related.source_ids)
+        assert.ok(prompt.includes(`"id":"${source}"`), `${l.id}: ${source}`);
+    }
+    assert.deepEqual(
+      l.medication_safety!.map((p) => p.drug).sort(),
+      [...l.medication_names!].sort(),
+      l.id,
+    );
+    assert.ok(
+      !instructions([topics[0].id], {}, [], "assessment", true, l.id).includes(
+        "CASE-SPECIFIC SYNTHESIS CONTRACT",
+      ),
+      l.id,
+    );
+  }
+  const pregnancy = curriculumInstructions("advanced-pregnancy");
+  assert.ok(pregnancy.includes('"id":"abx-preg-pyelo"'));
+  assert.ok(!pregnancy.includes('"id":"abx-endo-enterococcus"'));
+  assert.ok(
+    !curriculumInstructions("med-apixaban-af").includes(
+      "CASE-SPECIFIC SYNTHESIS CONTRACT",
+    ),
+  );
+});
+
+test("synthesis teaching preserves major eligibility and evolving-urgency distinctions", () => {
+  const content = (id: string) =>
+    JSON.stringify(lessons.find((l) => l.id === id));
+  assert.match(content("advanced-anticoagulant-transition"), /AF.*VTE|VTE.*AF/);
+  assert.match(content("advanced-child-pneumonia"), /source control/);
+  assert.match(
+    content("advanced-congenital-syphilis"),
+    /incomplete evaluation or unreliable follow-up/,
+  );
+  assert.match(content("advanced-hiv"), /G6PD/);
+  assert.match(content("advanced-chest-pain"), /one hour/);
+  assert.match(
+    content("advanced-head-injury"),
+    /does not replace individualized assessment/,
+  );
+  assert.match(content("advanced-pancreatic-necrosis"), /later unstable stage/);
+  assert.match(
+    content("advanced-mood-activation"),
+    /association alone does not establish/i,
   );
 });

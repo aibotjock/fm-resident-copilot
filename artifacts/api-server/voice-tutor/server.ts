@@ -85,6 +85,7 @@ app.get("/api/healthz", (_req, res) =>
     antibioticRegimenCount: curriculumCatalog().antibioticRegimenCount,
     antibioticConditionPathways: curriculumCatalog().antibioticPathways.length,
     curriculumLessons: lessons.length,
+    advancedCases: lessons.filter((l) => l.track === "advanced").length,
     medicationSafetyProfiles: medicationSafetyProfiles.length,
     medicationInventory: medicationInventory.length,
     criteriaEntries: lessons.filter((l) => l.track === "criteria").length,
