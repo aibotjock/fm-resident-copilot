@@ -28,4 +28,17 @@ Budgets reserve 74240 tokens before retrieval/provider work: at most 64000 UTF-8
 
 Minute windows and daily resets use database UTC time. Lifetime usage never resets automatically. Global/principal counters and concurrency admission are atomic across replicas. A disconnected or timed-out request aborts upstream work; its local lease is released when the handler settles. Crash leases expire after the request deadline plus 30 seconds. Provider-side cancellation and final billing are controlled by the provider; the full token reservation is retained regardless.
 
-Tests use synthetic local credentials, a provider stub and a transactional usage-store stub. No provider request or production database is needed. Run with the workspace's TypeScript runner: `node --import tsx --test artifacts/api-server/test/*.test.ts`.
+## Reproducing the security tests
+
+Use Node.js 22.18 or newer and PNPM with the locked workspace dependencies already installed in an approved environment. Do not use PNPM auto-installation to run these tests. From the repository root, run:
+
+```sh
+cd artifacts/api-server
+node --import tsx --test test/security.test.ts test/routes-security.test.ts
+```
+
+This runs the two committed suites (nine tests total). The API-server workspace declares the `tsx`, `esbuild`, and `express` dependencies used by this command; it does not require a globally installed loader or any files outside the repository. The helper `artifacts/api-server/test/helpers/usage-db.ts` is also committed.
+
+The route suite bundles the actual Express routes in a temporary directory and substitutes the provider, ingestion and database imports with fixtures. It binds only to an ephemeral loopback port. All tokens are synthetic local test values; no OpenAI API key, `DATABASE_URL`, production database, provider request or deployment is needed. The helper models transactional SQL, rollback and advisory locks; it is not a substitute for a deployment check against PostgreSQL. Temporary bundles are removed after the test.
+
+For a credential-free shell, remove provider/database credentials from the test process environment before running the command. Do not load a production `.env` file for these tests.
