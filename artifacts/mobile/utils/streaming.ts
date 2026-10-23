@@ -1,4 +1,4 @@
-import { fetch } from "expo/fetch";
+import { clinicalFetch as fetch } from "./clinicalAccess";
 import type { ClinicalMode, CitationMetadata } from "@/types";
 
 export interface StreamCallbacks {

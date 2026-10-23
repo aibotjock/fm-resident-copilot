@@ -1,3 +1,5 @@
+import { clinicalGate } from "../security/access";
+import { boundMessages } from "../security/access-policy";
 import { Router, type IRouter, type Request, type Response } from "express";
 import { openai, CLINICAL_MODEL } from "@workspace/integrations-openai-ai-server/client";
 import { getDomainList,CURRENT_ABFM_BLUEPRINT } from "../guidelines/abfm";
@@ -309,7 +311,8 @@ const WEIGHTED_DOMAINS = [
   ...Array(3).fill("Multisystem & Other"),
 ];
 
-router.post("/clinical/vignette", async (req: Request, res: Response) => {
+router.post("/clinical/vignette", clinicalGate("vignette"), async (req: Request, res: Response) => {
+  const permit = res.locals.clinicalPermit;
   const { domain, topic } = req.body;
 
   const targetDomain = domain || WEIGHTED_DOMAINS[Math.floor(Math.random() * WEIGHTED_DOMAINS.length)];
@@ -360,12 +363,12 @@ Return ONLY a valid JSON object with exactly this structure (no markdown, no add
     const completion = await openai.chat.completions.create({
       model: CLINICAL_MODEL,
       max_completion_tokens: 2048,
-      messages: [
+      messages: boundMessages([
         { role: "system", content: systemPrompt },
         { role: "user", content: `Generate an ABFM board vignette for: ${targetDomain}${topic ? ` — specifically about ${topic}` : ""}` },
-      ],
+      ], 2048),
       stream: false,
-    });
+    }, { signal: permit.signal, timeout: 90_000, maxRetries: 0 });
 
     const rawContent = completion.choices[0]?.message?.content ?? "";
 
@@ -386,23 +389,24 @@ Return ONLY a valid JSON object with exactly this structure (no markdown, no add
     res.json({...vignette,source:evidence.citations.map(c=>`${c.source}: ${c.guideline}`).join("; ") || "Historical teaching: source review pending",
       evidence,reviewStatus:"Candidate: claim review incomplete"});
   } catch (error) {
-    console.error("Vignette generation error:", error);
+    console.error("Vignette generation failed");
     res.status(500).json({ error: "Failed to generate vignette. Please try again." });
-  }
+  } finally { await permit.release().catch(() => {}); }
 });
 
-router.post("/clinical/query", async (req: Request, res: Response) => {
+router.post("/clinical/query", clinicalGate("query"), async (req: Request, res: Response) => {
+  const permit = res.locals.clinicalPermit;
   const { query, mode, condition } = req.body;
 
   if (!query || !mode) {
     res.status(400).json({ error: "query and mode are required" });
+    await permit.release();
     return;
   }
 
   res.setHeader("Content-Type", "text/event-stream");
-  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Cache-Control", "no-store");
   res.setHeader("Connection", "keep-alive");
-  res.setHeader("Access-Control-Allow-Origin", "*");
 
   try {
     // Use condition name as the primary RAG search key when available.
@@ -431,12 +435,12 @@ router.post("/clinical/query", async (req: Request, res: Response) => {
     const stream = await openai.chat.completions.create({
       model: CLINICAL_MODEL,
       max_completion_tokens: 8192,
-      messages: [
+      messages: boundMessages([
         { role: "system", content: systemPrompt },
         { role: "user", content: query },
-      ],
+      ], 8192),
       stream: true,
-    });
+    }, { signal: permit.signal, timeout: 90_000, maxRetries: 0 });
 
     for await (const chunk of stream) {
       const content = chunk.choices[0]?.delta?.content;
@@ -452,12 +456,12 @@ router.post("/clinical/query", async (req: Request, res: Response) => {
     res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
     res.end();
   } catch (error) {
-    console.error("Clinical query error:", error);
+    console.error("Clinical query failed");
     res.write(
       `data: ${JSON.stringify({ error: "Failed to generate response. Please try again." })}\n\n`
     );
     res.end();
-  }
+  } finally { await permit.release().catch(() => {}); }
 });
 
 export default router;
