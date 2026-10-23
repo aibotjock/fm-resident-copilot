@@ -1,3 +1,4 @@
+import { ClinicalAccessGate } from "@/components/ClinicalAccessGate";
 import {
   Inter_400Regular,
   Inter_500Medium,
@@ -88,7 +89,7 @@ export default function RootLayout() {
                     </Text>
                   </View>
                 )}
-                <RootLayoutNav />
+                <ClinicalAccessGate><RootLayoutNav /></ClinicalAccessGate>
                 {onboardingChecked && (
                   <Modal
                     visible={showOnboarding}

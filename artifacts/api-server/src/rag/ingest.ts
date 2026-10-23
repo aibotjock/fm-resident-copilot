@@ -3,7 +3,7 @@ import { initializeVersions, stageVersion, activateVersion, entryKey, versionDig
 import { CANDIDATE_ENTRIES,CANDIDATE_VERSION } from "./sources/candidate";
 import { SEED_CHUNKS } from "./sources/seed-data";
 
-export async function runIngestion(_force=false): Promise<void> {
+async function ingestUnlocked(_force=false): Promise<void> {
   await initializeVersions(pool);
   // An empty isolated database needs a historical baseline for before/after review.
   const baseline:ReferenceEntry[]=SEED_CHUNKS.map(e=>({...e,key:entryKey(e),review:"unresolved",
@@ -27,5 +27,17 @@ export async function ensureIngested():Promise<void> {
     const state=await pool.query("SELECT active_version FROM reference_state");
     if(!state.rows.length) throw err;
     console.error("[References] Candidate staging failed; serving the unchanged active version.");
+  }
+}
+
+export async function runIngestion(force = false): Promise<void> {
+  const client = await pool.connect();
+  try {
+    const { rows } = await client.query("SELECT pg_try_advisory_lock(1984632, 3) AS locked");
+    if (!rows[0].locked) throw new Error("Reference ingestion is already running");
+    await ingestUnlocked(force);
+  } finally {
+    await client.query("SELECT pg_advisory_unlock(1984632, 3)").catch(() => {});
+    client.release(true);
   }
 }

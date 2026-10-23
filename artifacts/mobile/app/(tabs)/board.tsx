@@ -1,3 +1,4 @@
+import { clinicalFetch as fetch } from "@/utils/clinicalAccess";
 import React, { useCallback, useRef, useState } from "react";
 import {
   KeyboardAvoidingView,

@@ -18,5 +18,8 @@
   "dependencies": {
     "@replit/connectors-sdk": "^0.4.1"
   },
-  "packageManager": "pnpm@11.25.0"
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=22.18.0"
+  }
 }
