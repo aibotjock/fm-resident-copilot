@@ -9,6 +9,10 @@ import os, pathlib, subprocess, shutil, secrets, zipfile, json, urllib.parse
 root = pathlib.Path(__file__).resolve().parents[1]
 sdk = pathlib.Path(os.environ['ANDROID_SDK_ROOT'])
 base = os.environ['FM_ANDROID_BASE_URL'].rstrip('/')
+version_code = os.environ.get('FM_ANDROID_VERSION_CODE','20261029')
+version_name = os.environ.get('FM_ANDROID_VERSION_NAME','1.1.1-preview')
+if not version_code.isdigit():
+    raise SystemExit('FM_ANDROID_VERSION_CODE must be a positive integer')
 url = urllib.parse.urlsplit(base)
 if url.scheme != 'https' or not url.hostname or url.username or url.password or url.path or url.query or url.fragment:
     raise SystemExit('FM_ANDROID_BASE_URL must be a plain HTTPS origin')
@@ -24,7 +28,7 @@ generated.mkdir(parents=True,exist_ok=True)
 (generated/'BuildConfig.java').write_text('package org.fmresidentcopilot.preview; public final class BuildConfig { public static final String BASE_URL = '+json.dumps(base)+'; }\n')
 def run(args,env=None):
     subprocess.run([str(a) for a in args],check=True,env=env)
-run([tools/'aapt','package','-f','-M',root/'android-preview/AndroidManifest.xml','-S',build/'res','-I',jar,'-F',build/'resources.ap_','-J',build/'generated','--version-code','20261028','--version-name','1.1.0-preview'])
+run([tools/'aapt','package','-f','-M',root/'android-preview/AndroidManifest.xml','-S',build/'res','-I',jar,'-F',build/'resources.ap_','-J',build/'generated','--version-code',version_code,'--version-name',version_name])
 sources=list((root/'android-preview/src').rglob('*.java'))+list((build/'generated').rglob('*.java'))
 run(['javac','-encoding','UTF-8','-source','8','-target','8','-classpath',jar,'-d',build/'classes',*sources])
 run([tools/'d8','--lib',jar,'--min-api','26','--output',build/'dex',*list((build/'classes').rglob('*.class'))])

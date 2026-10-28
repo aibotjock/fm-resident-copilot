@@ -7,10 +7,15 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Build;
+import android.content.res.ColorStateList;
+import android.graphics.Insets;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
 import android.util.Base64;
 import android.view.View;
+import android.view.WindowInsets;
+import android.view.Gravity;
 import android.webkit.*;
 import android.widget.*;
 import org.json.JSONObject;
@@ -20,6 +25,9 @@ import java.util.Locale;
 /** Thin Android host for the existing app. No API keys or shared access code are embedded. */
 public final class MainActivity extends Activity {
   private WebView web;
+  private LinearLayout unavailable;
+  private TextView unavailableTitle,unavailableMessage;
+  private boolean pageLoadFailed;
   private TextToSpeech tts;
   private PermissionRequest microphone;
   private ValueCallback<Uri[]> fileChoice;
@@ -33,30 +41,57 @@ public final class MainActivity extends Activity {
   }
   @Override public void onCreate(Bundle state) {
     super.onCreate(state);
-    LinearLayout root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setBackgroundColor(Color.rgb(15,23,42));root.setFitsSystemWindows(true);
-    LinearLayout bar=new LinearLayout(this);bar.setPadding(4,2,4,2);
-    addButton(bar,"Study",()->open("/"));addButton(bar,"Tutor",()->open("/tutor"));addButton(bar,"Backup",()->backup());addButton(bar,"Reload",()->web.reload());
-    root.addView(bar,new LinearLayout.LayoutParams(-1,48));
-    web=new WebView(this);root.addView(web,new LinearLayout.LayoutParams(-1,0,1));setContentView(root);
+    LinearLayout root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setBackgroundColor(Color.rgb(15,23,42));
+    // Target 35 draws behind system bars. Explicitly inset all interactive content.
+    if(Build.VERSION.SDK_INT>=30)getWindow().setDecorFitsSystemWindows(false);
+    else root.setFitsSystemWindows(true);
+    root.setOnApplyWindowInsetsListener((view,insets)->{
+      if(Build.VERSION.SDK_INT>=30){
+        Insets bars=insets.getInsets(WindowInsets.Type.systemBars()|WindowInsets.Type.displayCutout());
+        Insets keyboard=insets.getInsets(WindowInsets.Type.ime());
+        view.setPadding(bars.left,bars.top,bars.right,Math.max(bars.bottom,keyboard.bottom));
+        return WindowInsets.CONSUMED;
+      }
+      return insets;
+    });
+    LinearLayout bar=new LinearLayout(this);bar.setGravity(Gravity.CENTER_VERTICAL);bar.setPadding(dp(3),dp(4),dp(3),dp(4));
+    addButton(bar,"Study",()->open("/"));addButton(bar,"Tutor",()->open("/tutor"));addButton(bar,"Backup",()->backup());addButton(bar,"Reload",()->retry());
+    root.addView(bar,new LinearLayout.LayoutParams(-1,dp(56)));
+    FrameLayout content=new FrameLayout(this);root.addView(content,new LinearLayout.LayoutParams(-1,0,1));
+    web=new WebView(this);content.addView(web,new FrameLayout.LayoutParams(-1,-1));
+    unavailable=new LinearLayout(this);unavailable.setOrientation(LinearLayout.VERTICAL);unavailable.setGravity(Gravity.CENTER_VERTICAL);unavailable.setPadding(dp(24),dp(24),dp(24),dp(24));unavailable.setBackgroundColor(Color.rgb(15,23,42));unavailable.setVisibility(View.GONE);
+    unavailableTitle=new TextView(this);unavailableTitle.setTextSize(25);unavailableTitle.setTextColor(Color.WHITE);unavailable.addView(unavailableTitle);
+    unavailableMessage=new TextView(this);unavailableMessage.setTextSize(17);unavailableMessage.setTextColor(Color.rgb(203,213,225));unavailableMessage.setPadding(0,dp(16),0,dp(24));unavailable.addView(unavailableMessage);
+    Button retry=new Button(this);retry.setText("Retry connection");retry.setAllCaps(false);retry.setOnClickListener(v->retry());unavailable.addView(retry,new LinearLayout.LayoutParams(-1,dp(52)));
+    content.addView(unavailable,new FrameLayout.LayoutParams(-1,-1));setContentView(root);root.post(()->{
+      root.requestApplyInsets();
+      if(Build.VERSION.SDK_INT>=30&&getWindow().getInsetsController()!=null)getWindow().getInsetsController().setSystemBarsAppearance(0,android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS);
+    });
+    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
     WebView.setWebContentsDebuggingEnabled(false);
     WebSettings settings=web.getSettings();settings.setJavaScriptEnabled(true);settings.setDomStorageEnabled(true);settings.setMediaPlaybackRequiresUserGesture(false);settings.setAllowFileAccess(false);settings.setAllowContentAccess(true);settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);settings.setSupportMultipleWindows(true);settings.setSafeBrowsingEnabled(true);
     CookieManager.getInstance().setAcceptCookie(true);CookieManager.getInstance().setAcceptThirdPartyCookies(web,false);
     web.addJavascriptInterface(new Bridge(),"FMAndroid");
     web.setWebViewClient(new WebViewClient(){
+      @Override public void onPageStarted(WebView v,String url,android.graphics.Bitmap favicon){pageLoadFailed=false;unavailable.setVisibility(View.GONE);}
       @Override public boolean shouldOverrideUrlLoading(WebView v,WebResourceRequest r){
         String url=r.getUrl().toString();if(trusted(url))return false;
         if("https".equals(r.getUrl().getScheme())){try{startActivity(new Intent(Intent.ACTION_VIEW,r.getUrl()));}catch(Exception ignored){}}
         return true;
       }
       @Override public void onPageFinished(WebView v,String url){
-        if(!trusted(url))return;
+        if(!trusted(url)||pageLoadFailed)return;
         v.evaluateJavascript("window.FM_NATIVE_ANDROID=true;",null);
         CookieManager.getInstance().flush();
       }
       @Override public void onReceivedError(WebView v,WebResourceRequest r,WebResourceError error){if(r.isForMainFrame()){
-        v.loadDataWithBaseURL(BuildConfig.BASE_URL+"/offline","<html><meta name='viewport' content='width=device-width,initial-scale=1'><body style='font:18px sans-serif;padding:30px;background:#0f172a;color:white'><h2>FM Copilot</h2><p>The server could not be reached. Check your connection and tap Reload or Tutor.</p><p>Your device study data has not been cleared.</p></body></html>","text/html","utf-8",null);
+        showUnavailable("Connection unavailable","FM Copilot could not reach its app service. Check your connection and try again. Your saved study data has not been cleared.");
       }}
-      @Override public void onReceivedSslError(WebView v,android.webkit.SslErrorHandler h,android.net.http.SslError e){h.cancel();}
+      @Override public void onReceivedHttpError(WebView v,WebResourceRequest request,WebResourceResponse response){if(request.isForMainFrame()){
+        int status=response.getStatusCode();
+        showUnavailable(status==404?"Preview service not ready":"App service unavailable",status==404?"The preview backend has not started, or this page is not available yet. It needs to be activated before the app can connect. You do not need to change your phone's network settings. Tap Retry after activation.":"The app service returned an error ("+status+"). Please retry shortly. Your saved study data has not been cleared.");
+      }}
+      @Override public void onReceivedSslError(WebView v,android.webkit.SslErrorHandler h,android.net.http.SslError e){h.cancel();showUnavailable("Secure connection unavailable","The app could not verify the server's secure connection. Retry later; connection verification has not been disabled.");}
     });
     web.setWebChromeClient(new WebChromeClient(){
       @Override public void onPermissionRequest(PermissionRequest request){runOnUiThread(()->{
@@ -91,7 +126,10 @@ public final class MainActivity extends Activity {
     });
     if(state!=null)web.restoreState(state);else open("/tutor");
   }
-  private void addButton(LinearLayout bar,String text,Runnable action){Button button=new Button(this);button.setText(text);button.setTextSize(11);button.setMinWidth(0);button.setPadding(3,0,3,0);button.setOnClickListener(v->action.run());bar.addView(button,new LinearLayout.LayoutParams(0,-1,1));}
+  private int dp(int value){return Math.round(value*getResources().getDisplayMetrics().density);}
+  private void showUnavailable(String title,String message){runOnUiThread(()->{pageLoadFailed=true;unavailableTitle.setText(title);unavailableMessage.setText(message);unavailable.setVisibility(View.VISIBLE);});}
+  private void retry(){String url=web.getUrl();if(url==null||!trusted(url))url=BuildConfig.BASE_URL+"/tutor";web.loadUrl(url);}
+  private void addButton(LinearLayout bar,String text,Runnable action){Button button=new Button(this);button.setText(text);button.setAllCaps(false);button.setTextSize(14);button.setTextColor(Color.WHITE);button.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(30,41,59)));button.setMinWidth(0);button.setMinimumWidth(0);button.setMinHeight(dp(44));button.setPadding(dp(2),0,dp(2),0);button.setOnClickListener(v->action.run());LinearLayout.LayoutParams size=new LinearLayout.LayoutParams(0,-1,1);size.setMargins(dp(2),0,dp(2),0);bar.addView(button,size);}
   private void open(String path){if(web!=null){web.evaluateJavascript("window.dispatchEvent(new Event('pagehide'));",null);web.loadUrl(BuildConfig.BASE_URL+path);}}
   private void backup(){if(!trusted(web.getUrl()))return;web.evaluateJavascript("(()=>{const data={format:'fm-copilot-device-backup-v1',storage:{}};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k.startsWith('@fm_copilot_')||k.startsWith('fm-tutor-progress'))data.storage[k]=localStorage.getItem(k);}FMAndroid.exportFile(btoa(unescape(encodeURIComponent(JSON.stringify(data,null,2)))),'fm-copilot-device-backup.json');})()",null);}
   private void speechFinished(String id){if(id!=null&&id.equals(currentUtterance)){currentUtterance=null;runOnUiThread(()->{if(!isFinishing())web.evaluateJavascript("window.dispatchEvent(new Event('fm-native-speech-ended'));",null);});}}
