@@ -1,3 +1,7 @@
+# Current conversational preview branch
+
+See `docs/conversational-upgrade/README.md` for the shared evidence service, Android preview, tested commands, source limits, and staged deployment. This preview uses `pnpm build:conversation` and `FM_COMBINED_APP=1 pnpm start:tutor`. Notes below retain historical baseline architecture and must not override current user authorization or describe the preview as indexed-only.
+
 # Candidate branch status
 
 This branch preserves the approved restored app and stages a partial guideline refresh. Production and main are unchanged. Read `docs/guideline-refresh/README.md` for actual coverage, evidence, blockers, checks and rollback. The historical notes below describe the original architecture and are not current clinical verification.

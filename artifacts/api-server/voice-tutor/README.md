@@ -1,3 +1,9 @@
+# Current conversation and Android preview
+
+This branch adds an official-source evidence service, text conversation and an Android host. Read [the current implementation and deployment handoff](../../../docs/conversational-upgrade/README.md). The older notes below describe the original experimental tutor; their per-page lookup approvals and lack of web search no longer describe the new evidence conversation. Preview activation still requires explicit user confirmation.
+
+---
+
 # FM Copilot independent Socratic voice tutor
 
 Experimental branch: `experiment/socratic-voice-tutor-2026-10-16`.

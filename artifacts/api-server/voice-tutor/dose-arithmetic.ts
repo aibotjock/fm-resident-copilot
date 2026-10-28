@@ -12,6 +12,11 @@ export function calculateWeightDose(m: MedicationRecord, weightKg: number) {
     throw Error("This passage does not establish one numerical mg/kg regimen");
   if (m.dose_basis === "not_established")
     throw Error("The source must distinguish per-day from per-dose dosing");
+  if (
+    (/\/day\b/i.test(m.unit) && m.dose_basis !== "per_day") ||
+    (/\/dose\b/i.test(m.unit) && m.dose_basis !== "per_dose")
+  )
+    throw Error("The dose basis conflicts with the supplied units");
   const frequency = (m.frequency || "").toLowerCase().trim();
   const names: Record<string, number> = {
     "once daily": 1,

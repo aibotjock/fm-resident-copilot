@@ -90,6 +90,23 @@ try {
   await page.route("**/api/conversation", (route) =>
     route.fulfill({ json: answer }),
   );
+  await page.evaluate(() =>
+    FMConversation.handleTranscript("Agent Z dose 5 mg?"),
+  );
+  assert.equal(
+    await page.locator("#recognizedQuestion").inputValue(),
+    "Agent Z dose 5 mg?",
+  );
+  assert.equal(await page.locator("#evidenceAnswer").textContent(), "");
+  await page.click("#confirmRecognized");
+  await page.waitForFunction(() =>
+    document
+      .getElementById("evidenceAnswer")
+      .textContent.includes("synthetic explanation"),
+  );
+  checks.push(
+    "Spoken medication wording is held for confirmation before lookup",
+  );
   await page.fill("#text", "Explain the synthetic fixture");
   await page.locator("#typed").evaluate((form) => form.requestSubmit());
   await page.waitForFunction(() =>
@@ -107,6 +124,11 @@ try {
   checks.push(
     "Text-only questions show cleaned answers and readable source links",
   );
+  await page.waitForFunction(
+    () =>
+      document.getElementById("evidenceAnswer").dataset.question ===
+      "Explain the synthetic fixture",
+  );
   await page.click("#saveEvidence");
   assert.equal(await page.locator("#savedEvidence details").count(), 1);
   checks.push("Explicit save creates a source-versioned review item");
@@ -116,6 +138,37 @@ try {
   assert.equal(saved.history.length, 0);
   assert.equal(saved.evidenceSaved.length, 1);
   checks.push("Study items persist while conversation is temporary by default");
+  answer.sources = [{ ...source, version: "v2" }];
+  answer.text = "A refreshed synthetic explanation with its qualification.";
+  answer.claims = [{ text: answer.text, passages: answer.passages }];
+  await page.fill("#text", "Explain the synthetic fixture");
+  await page.locator("#typed").evaluate((form) => form.requestSubmit());
+  await page.waitForFunction(() =>
+    document
+      .getElementById("savedEvidence")
+      .textContent.includes("Update review needed"),
+  );
+  await page
+    .locator("#savedEvidence")
+    .evaluate((el) => (el.closest("details").open = true));
+  await page
+    .locator("#savedEvidence > details")
+    .first()
+    .evaluate((el) => (el.open = true));
+  page.once("dialog", (dialog) => dialog.accept());
+  await page
+    .getByRole("button", { name: "Replace my study copy after review" })
+    .click();
+  const revised = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("fm-tutor-progress-v1")).evidenceSaved[0],
+  );
+  assert.equal(revised.needsReview, false);
+  assert.equal(revised.previousVersions.length, 1);
+  assert.match(revised.previousVersions[0].answer, /synthetic explanation/);
+  checks.push(
+    "Changed-source items pause for review and preserve the previous version when replaced",
+  );
   await page
     .locator("#caseFacts")
     .evaluate((el) => (el.closest("details").open = true));

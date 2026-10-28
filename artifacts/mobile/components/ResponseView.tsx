@@ -338,7 +338,7 @@ export function ResponseView({
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setIsSpeaking(true);
     const native=(globalThis as any).FMAndroid;
-    if(native?.speak){native.speak(text);setIsSpeaking(false);return;}
+    if(native?.speak){native.speak(text);return;}
     Speech.speak(text, {
       rate: 0.92,
       pitch: 1.0,
@@ -356,8 +356,12 @@ export function ResponseView({
   }, []);
 
   useEffect(() => {
+    const ended=()=>setIsSpeaking(false);
+    (globalThis as any).addEventListener?.("fm-native-speech-ended",ended);
     return () => {
       Speech.stop();
+      (globalThis as any).FMAndroid?.stop();
+      (globalThis as any).removeEventListener?.("fm-native-speech-ended",ended);
     };
   }, []);
 

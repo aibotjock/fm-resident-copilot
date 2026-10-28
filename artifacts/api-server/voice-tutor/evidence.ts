@@ -34,6 +34,11 @@ const Claim = z.object({
   text: z.string().min(1).max(1800),
   passages: z.array(Passage).min(1).max(4),
 });
+const StudyCard = z.object({
+  front: z.string().min(1).max(1200),
+  back: z.string().min(1).max(1800),
+  passages: z.array(Passage).min(1).max(4),
+});
 const Medication = z.object({
   drug: z.string(),
   indication: z.string(),
@@ -52,6 +57,7 @@ const Medication = z.object({
   passages: z.array(Passage).min(1).max(4),
 });
 const Answer = z.object({
+  cards: z.array(StudyCard).max(6),
   claims: z.array(Claim).max(14),
   medications: z.array(Medication).max(6),
   gaps: z.array(z.string().max(900)).max(10),
@@ -80,6 +86,7 @@ const Answer = z.object({
 });
 export type MedicationRecord = z.infer<typeof Medication>;
 export type EvidenceAnswer = {
+  cards: z.infer<typeof StudyCard>[];
   text: string;
   speech: string;
   mode: string;
@@ -418,6 +425,16 @@ export function medicationSupported(
     )
   )
     return false;
+  if (
+    /\/day\b|per day/i.test(record.unit || "") &&
+    record.dose_basis !== "per_day"
+  )
+    return false;
+  if (
+    /\/dose\b|per dose/i.test(record.unit || "") &&
+    record.dose_basis !== "per_dose"
+  )
+    return false;
   return true;
 }
 function medicationText(m: MedicationRecord) {
@@ -457,6 +474,7 @@ Return JSON matching the schema. Every clinical claim must have short EXACT supp
 Use guideline recommendations for management; distinguish news, patient education, commentary, consensus, labels and stored summaries. A stored scoped correction is historical scoped teaching, not a newly read current guideline. Never describe it as current without checking. Never equate a retrieved page with full-topic verification.
 Answer the supported remainder when details are missing. Ask one concise clarifying question only when it changes the requested case-specific recommendation; general educational questions may state their population. Do not invent patient findings. Distinguish confirmed case facts, assumptions and hypothetical variations. No unsupported second-/third-line ladders. Distinguish preferred regimens, alternatives and indications.
 For medication records, copy dose/units/route/frequency/duration/formulation/adjustments/precautions LITERALLY from supporting quotes or set null. Explicitly distinguish mg/kg/day from mg/kg/dose, formulation concentration from administered dose, labeling from supported off-label guideline use. Include indication and population in the quote. Do not calculate a dose from uncertain inputs. Do not infer normal organ function or allergy type. If any field is unavailable preserve the supported fields and list gaps. Do not use a medication claim in prose to bypass medication records. No invented numerical confidence.
+Only when flashcards are requested, fill cards with focused, answerable study questions, source-supported answers and exact supporting quotes. Otherwise return an empty cards array. Never leak cards or their answers during the initial quiz question.
 Use brief readable prose with natural organization names, never reference IDs, raw URLs, Markdown tables or citation syntax in text. The server supplies clickable metadata. Quick mode is concise but retains exceptions; teach mode explains supported reasoning. Quiz mode asks exactly one original, source-supported question and waits: put the question/options only in next_question, put NO answer, hidden key, rationale or claims that reveal the answer in this response. Subsequent quiz feedback is source-bounded; unreviewed generated items remain unscored. Document dates must be actual dates in supplied metadata or passages, never retrieval dates. If unknown use null. Gaps must be plain descriptions, without raw source text or identifiers.`;
 
 export function assembleAnswer(
@@ -466,7 +484,10 @@ export function assembleAnswer(
   lookupInfo: EvidenceAnswer["lookup"],
   scenarioRevision = 0,
 ): EvidenceAnswer {
-  const parsed = Answer.parse(raw),
+  const parsed = Answer.parse({
+      ...(raw as any),
+      cards: (raw as any)?.cards || [],
+    }),
     gaps = [...parsed.gaps];
   const valid = parsed.claims.filter((c) => {
     const supported =
@@ -504,9 +525,20 @@ export function assembleAnswer(
             return true;
           }),
     regimens = mode === "quiz" ? [] : medications;
+  const cards =
+    mode === "quiz"
+      ? []
+      : parsed.cards.filter(
+          (c) =>
+            validatePassages(c.passages, docs) &&
+            clinicalNumbersSupported(c.front + " " + c.back, c.passages) &&
+            (!/\d+\s*(?:mg|mcg|mL|units?)\b/i.test(c.back) ||
+              medications.length > 0),
+        );
   const linked = [
     ...claims.flatMap((c) => c.passages),
     ...regimens.flatMap((m) => m.passages),
+    ...cards.flatMap((c) => c.passages),
   ];
   const used = new Set(linked.map((p) => p.source_id));
   if (docs.some((d) => d.access === "stored_scope" && used.has(d.id)))
@@ -522,6 +554,9 @@ export function assembleAnswer(
   const parts = [
     ...claims.map((c) => cleanClinicalText(c.text)),
     ...regimens.map(medicationText),
+    ...cards.map(
+      (c) => cleanClinicalText(c.front) + "\n" + cleanClinicalText(c.back),
+    ),
   ];
   if (parsed.next_question) parts.push(cleanClinicalText(parsed.next_question));
   if (parsed.clarifying_question)
@@ -534,6 +569,7 @@ export function assembleAnswer(
   if (dedup.length) parts.push("Evidence gaps: " + dedup.join(" "));
   const text = parts.join("\n\n");
   return {
+    cards,
     text,
     speech: speechText(text),
     mode,
@@ -546,7 +582,7 @@ export function assembleAnswer(
     nextQuestion: parsed.next_question,
     lookup: lookupInfo,
     support:
-      claims.length || regimens.length
+      claims.length || regimens.length || cards.length
         ? dedup.length
           ? "partial"
           : "passage_linked"

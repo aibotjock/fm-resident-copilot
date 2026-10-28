@@ -1835,7 +1835,7 @@
         if (e.name === "get_evidence_answer") {
           output = await api("conversation", { ...a, topic: topics.find(t => t.id === $("topic").value)?.title || "" });
           if (epoch !== connectionEpoch || context !== topicEpoch) return;
-          window.FMConversation?.showAnswer(output);
+          window.FMConversation?.showAnswer(output,a.query);
         } else if (e.name === "set_conversation_mode") {
           window.FMConversation?.setMode(a.mode);
           send({type:"session.update",session:{type:"realtime",instructions:(await api("context", {ids:[$("topic").value],progress:stats(),history:[]})).instructions + "\nCONVERSATION OVERRIDE: " + (a.mode === "quick" ? "Answer the question directly and briefly; do not start a vignette or quiz unless asked." : a.mode === "teach" ? "Explain and discuss the requested topic; do not quiz unless asked." : "Ask exactly one source-supported question and wait before revealing its answer.")}});
@@ -2068,7 +2068,7 @@
       if (e.type === "output_audio_buffer.started") state("Speaking…");
       if (e.type === "output_audio_buffer.stopped") state("Listening…");
       if (e.type === "conversation.item.input_audio_transcription.completed") {
-        if (window.FMConversation?.evidenceVoice()) { void FMConversation.submit(e.transcript); }
+        if (window.FMConversation?.evidenceVoice()) { void FMConversation.handleTranscript(e.transcript); }
         else log("user", e.transcript);
       }
       if (

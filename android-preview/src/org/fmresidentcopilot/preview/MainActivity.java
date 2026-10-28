@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.util.Base64;
 import android.view.View;
 import android.webkit.*;
@@ -23,6 +24,8 @@ public final class MainActivity extends Activity {
   private PermissionRequest microphone;
   private ValueCallback<Uri[]> fileChoice;
   private byte[] exportBytes;
+  private volatile String currentUtterance;
+  private int speechSequence;
   private static final int MIC=10, PICK=11, EXPORT=12;
   private boolean trusted(String raw) {
     try { Uri u=Uri.parse(raw),base=Uri.parse(BuildConfig.BASE_URL);return "https".equals(u.getScheme())&&base.getHost().equals(u.getHost())&&(u.getPort()==-1||u.getPort()==443); }
@@ -81,14 +84,23 @@ public final class MainActivity extends Activity {
       else if(trusted(url))startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(url)));
     });
     tts=new TextToSpeech(this,status->{if(status==TextToSpeech.SUCCESS)tts.setLanguage(Locale.US);});
+    tts.setOnUtteranceProgressListener(new UtteranceProgressListener(){
+      @Override public void onStart(String id){}
+      @Override public void onDone(String id){speechFinished(id);}
+      @Override public void onError(String id){speechFinished(id);}
+    });
     if(state!=null)web.restoreState(state);else open("/tutor");
   }
   private void addButton(LinearLayout bar,String text,Runnable action){Button button=new Button(this);button.setText(text);button.setTextSize(11);button.setMinWidth(0);button.setPadding(3,0,3,0);button.setOnClickListener(v->action.run());bar.addView(button,new LinearLayout.LayoutParams(0,-1,1));}
   private void open(String path){if(web!=null){web.evaluateJavascript("window.dispatchEvent(new Event('pagehide'));",null);web.loadUrl(BuildConfig.BASE_URL+path);}}
   private void backup(){if(!trusted(web.getUrl()))return;web.evaluateJavascript("(()=>{const data={format:'fm-copilot-device-backup-v1',storage:{}};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k.startsWith('@fm_copilot_')||k.startsWith('fm-tutor-progress'))data.storage[k]=localStorage.getItem(k);}FMAndroid.exportFile(btoa(unescape(encodeURIComponent(JSON.stringify(data,null,2)))),'fm-copilot-device-backup.json');})()",null);}
+  private void speechFinished(String id){if(id!=null&&id.equals(currentUtterance)){currentUtterance=null;runOnUiThread(()->{if(!isFinishing())web.evaluateJavascript("window.dispatchEvent(new Event('fm-native-speech-ended'));",null);});}}
   final class Bridge {
-    @JavascriptInterface public void speak(String text){if(text==null||text.length()>20000)return;runOnUiThread(()->{if(trusted(web.getUrl())&&tts!=null)tts.speak(text,TextToSpeech.QUEUE_FLUSH,null,"fm-answer");});}
-    @JavascriptInterface public void stop(){runOnUiThread(()->{if(tts!=null)tts.stop();});}
+    @JavascriptInterface public void speak(String text){if(text==null||text.length()>30000)return;runOnUiThread(()->{if(trusted(web.getUrl())&&tts!=null){
+      tts.stop();java.util.ArrayList<String> chunks=new java.util.ArrayList<>();String rest=text.trim();while(rest.length()>3500){int boundary=rest.lastIndexOf(' ',3500);if(boundary<1750)boundary=3500;chunks.add(rest.substring(0,boundary));rest=rest.substring(boundary).trim();}if(!rest.isEmpty())chunks.add(rest);
+      String prefix="fm-"+(++speechSequence)+"-";currentUtterance=prefix+"last";for(int i=0;i<chunks.size();i++)tts.speak(chunks.get(i),TextToSpeech.QUEUE_ADD,null,i==chunks.size()-1?currentUtterance:prefix+i);
+    }});}
+    @JavascriptInterface public void stop(){runOnUiThread(()->{if(tts!=null)tts.stop();speechFinished(currentUtterance);});}
     @JavascriptInterface public void exportFile(String base64,String filename){runOnUiThread(()->{
       if(!trusted(web.getUrl())||base64==null||base64.length()>4000000)return;
       try{byte[] bytes=Base64.decode(base64,Base64.DEFAULT);new JSONObject(new String(bytes,"UTF-8"));exportBytes=bytes;Intent i=new Intent(Intent.ACTION_CREATE_DOCUMENT);i.setType("application/json");i.addCategory(Intent.CATEGORY_OPENABLE);i.putExtra(Intent.EXTRA_TITLE,"fm-copilot-progress.json");startActivityForResult(i,EXPORT);}catch(Exception e){Toast.makeText(MainActivity.this,"Could not export this progress file",Toast.LENGTH_LONG).show();}

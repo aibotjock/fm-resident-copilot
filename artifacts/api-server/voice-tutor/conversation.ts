@@ -14,6 +14,12 @@ type Saved = {
   due: number;
   interval: number;
   history: { at: string; rating: string }[];
+  sourcePassages?: { url: string; quote: string }[];
+  previousVersions?: {
+    answer: string;
+    evidence: { url: string; version: string }[];
+    at: string;
+  }[];
 };
 type Options = {
   api: (path: string, body?: unknown) => Promise<any>;
@@ -33,6 +39,47 @@ let epoch = 0,
   mode = "quick",
   voice = false,
   scenario: Scenario = { confirmed: {}, hypothetical: {}, revision: 0 };
+let latestQuestion = "";
+let pendingTranscript = "";
+export async function handleTranscript(text: string) {
+  if (
+    pendingTranscript &&
+    /^(?:yes|confirm|correct|that'?s right|yes that'?s right)[.!]?$/i.test(
+      text.trim(),
+    )
+  ) {
+    const query = input("recognizedQuestion").value || pendingTranscript;
+    pendingTranscript = "";
+    input("recognizedQuestion").value = "";
+    await submit(query);
+    return;
+  }
+  if (/^(?:no|cancel|stop)[.!]?$/i.test(text.trim())) {
+    pendingTranscript = "";
+    input("recognizedQuestion").value = "";
+    await cancel();
+    return;
+  }
+  if (
+    pendingTranscript ||
+    /\b(?:dose|dosing|mg|mcg|milligrams?|micrograms?|units?|antibiotic|prescrib\w*|insulin)\b/i.test(
+      text,
+    )
+  ) {
+    pendingTranscript = text;
+    input("recognizedQuestion").value = text;
+    status(
+      "Check the recognized medication question. Say confirm, or correct the wording and confirm below.",
+    );
+    readLocal(
+      "I heard: " +
+        text +
+        ". Say confirm if that is correct, or correct the question.",
+    );
+    return;
+  }
+  await submit(text);
+}
 const $ = (id: string) => document.getElementById(id)!;
 const input = (id: string) => $(id) as HTMLInputElement;
 const button = (label: string, run: () => void) => {
@@ -51,8 +98,16 @@ export function currentMode() {
 export function evidenceVoice() {
   return voice;
 }
-export function voiceStopped(){voice=false;const b=document.getElementById("evidenceVoice");if(b)b.textContent="Start evidence voice";}
-export function interruptForSpeech(){epoch++;controller?.abort();stopPlayback();}
+export function voiceStopped() {
+  voice = false;
+  const b = document.getElementById("evidenceVoice");
+  if (b) b.textContent = "Start evidence voice";
+}
+export function interruptForSpeech() {
+  epoch++;
+  controller?.abort();
+  stopPlayback();
+}
 export function setMode(value: string) {
   if (!["quick", "teach", "quiz"].includes(value))
     throw Error("Choose quick, teach or quiz");
@@ -97,13 +152,15 @@ export async function changeScenario(
   renderScenario();
   return scenario;
 }
-export function showAnswer(answer: EvidenceAnswer) {
+export function showAnswer(answer: EvidenceAnswer, question = "") {
+  latestQuestion = question;
   if ((answer as any).scenario) {
     scenario = (answer as any).scenario;
     renderScenario();
   }
   latest = answer;
   $("evidenceAnswer").textContent = cleanClinicalText(answer.text);
+  $("evidenceAnswer").dataset.question=question;
   $("evidenceSources").replaceChildren();
   $("doseChoices").replaceChildren();
   answer.medications.forEach((m, i) => {
@@ -233,7 +290,7 @@ export async function submit(query: string, forceLookup = false) {
     const result = await r.json();
     if (!r.ok) throw Error(result.error || "Evidence request failed");
     if (revision !== epoch) return;
-    showAnswer(result);
+    showAnswer(result, query);
     options.log("assistant", result.text);
     if (input("speakAnswers").checked || voice) await readLatest(revision);
   } catch (e) {
@@ -320,6 +377,56 @@ function renderSaved() {
           void submit(item.question, true);
         }),
       );
+      if (latest && latestQuestion === item.question) {
+        const comparison = document.createElement("details"),
+          title = document.createElement("summary"),
+          before = document.createElement("p"),
+          after = document.createElement("p");
+        title.textContent = "Compare previous and newly retrieved support";
+        before.textContent =
+          "Previous supporting passages: " +
+          (item.sourcePassages?.map((p) => p.quote).join(" ") ||
+            "Not recorded for this older item.");
+        after.textContent =
+          "New supporting passages: " +
+          (latest.passages.map((p) => p.quote).join(" ") ||
+            "No replacement supporting passage was established.");
+        comparison.append(title, before, after);
+        d.append(comparison);
+        if (latest.claims.length || latest.medications.length)
+          d.append(
+            button("Replace my study copy after review", () => {
+              if (
+                !latest ||
+                latestQuestion !== item.question ||
+                !confirm(
+                  "Replace this study copy with the displayed answer? The previous version and review history will be retained. This does not establish independent clinical validation.",
+                )
+              )
+                return;
+              item.previousVersions ||= [];
+              item.previousVersions.push({
+                answer: item.answer,
+                evidence: item.evidence,
+                at: new Date().toISOString(),
+              });
+              item.answer = latest.text;
+              item.evidence = latest.sources.map((s) => ({
+                url: s.url,
+                version: s.version,
+              }));
+              item.sourcePassages = latest.passages.map((p) => ({
+                url:
+                  latest!.sources.find((s) => s.id === p.source_id)?.url || "",
+                quote: p.quote,
+              }));
+              item.needsReview = false;
+              item.due = Date.now() + 86400000;
+              options.persist();
+              renderSaved();
+            }),
+          );
+      }
     } else
       for (const [label, days] of [
         ["Again", 1],
@@ -357,6 +464,7 @@ export function init(o: Options) {
   <label for="conversationFocus">Topic or condition (optional)</label><input id="conversationFocus" placeholder="Ask freely, or name a topic"><label><input type="checkbox" id="useLibraryFocus"> Use the selected library topic as context</label>
   <div class="row"><button type="button" id="evidenceVoice">Start evidence voice</button><button type="button" id="interruptAnswer">Stop answer</button><button type="button" id="newClinicalCase">New case</button></div>
   <label><input type="checkbox" id="speakAnswers"> Read typed answers aloud</label>
+  <label for="recognizedQuestion">Recognized medication question — check names, numbers and units</label><input id="recognizedQuestion" placeholder="Spoken medication questions wait here for confirmation"><button id="confirmRecognized" type="button">Confirm or send corrected wording</button>
   <details><summary>Case facts &amp; hypothetical variations</summary><p id="caseFacts"></p><p id="caseVariation"></p><label for="factName">Clinical detail</label><select id="factName"><option value="pregnancy">Pregnancy</option><option value="renal_function">Renal function</option><option value="hepatic_function">Hepatic function</option><option value="allergy">Allergy and reaction</option><option value="age">Age</option><option value="weight">Weight with units</option><option value="severity">Severity</option><option value="setting">Care setting</option></select><input id="factValue" placeholder="No names or patient identifiers"><div class="row"><button id="confirmFact" type="button">Set confirmed fact</button><button id="varyFact" type="button">Try hypothetical change</button><button id="restoreCase" type="button">Restore original case</button></div></details>
   <p id="evidenceState" role="status">Ready</p><div id="evidenceAnswer" style="white-space:pre-wrap"></div><div class="row"><button id="readEvidence" type="button">Read answer</button><button id="refreshEvidence" type="button">Check latest guidance</button><button id="saveEvidence" type="button">Save answer for review</button></div><div id="evidenceSources"></div>
   <details><summary>Weight-based dose arithmetic</summary><p>Requires a supported mg/kg regimen, explicit frequency and scoped maximum. No regimen or liquid concentration is assumed.</p><select id="doseChoices" aria-label="Supported regimen"></select><label for="doseWeight">Weight in kilograms</label><input id="doseWeight" type="number" step="0.1"><label><input type="checkbox" id="doseApplicability"> I have checked the population, formulation and organ-function applicability</label><button id="calculateDose" type="button">Calculate from this regimen</button><p id="doseCalculation"></p></details>
@@ -367,6 +475,14 @@ export function init(o: Options) {
   else anchor.before(panel);
   panel.insertBefore(anchor, $("evidenceState"));
   $("answerMode").onchange = () => setMode(input("answerMode").value);
+  $("confirmRecognized").onclick = () => {
+    const query = input("recognizedQuestion").value.trim();
+    if (query) {
+      pendingTranscript = "";
+      input("recognizedQuestion").value = "";
+      void submit(query);
+    }
+  };
   $("interruptAnswer").onclick = () => {
     void cancel();
   };
@@ -379,11 +495,11 @@ export function init(o: Options) {
   $("evidenceVoice").onclick = () => {
     if (!voice) {
       options.stopVoice();
-      voice=true;
+      voice = true;
       $("evidenceVoice").textContent = "End evidence voice";
       options.startVoice();
     } else {
-      voice=false;
+      voice = false;
       $("evidenceVoice").textContent = "Start evidence voice";
       options.stopVoice();
       stopPlayback();
@@ -425,15 +541,17 @@ export function init(o: Options) {
   $("saveEvidence").onclick = () => {
     if (!latest) return;
     const data = options.data();
-    const question =
-      (data.history || []).filter((t: any) => t.role === "user").at(-1)
-        ?.content || options.topic();
+    const question = latestQuestion || options.topic();
     data.evidenceSaved ||= [];
     data.evidenceSaved.push({
       id: crypto.randomUUID(),
       question,
       answer: latest.text,
       evidence: latest.sources.map((s) => ({ url: s.url, version: s.version })),
+      sourcePassages: latest.passages.map((p) => ({
+        url: latest!.sources.find((s) => s.id === p.source_id)?.url || "",
+        quote: p.quote,
+      })),
       needsReview: false,
       due: Date.now() + 86400000,
       interval: 1,
@@ -479,7 +597,7 @@ export function init(o: Options) {
     .then((result) => {
       scenario = result.scenario;
       renderScenario();
-      if (result.latestAnswer) showAnswer(result.latestAnswer);
+      if (result.latestAnswer) showAnswer(result.latestAnswer,result.question||"");
     })
     .catch(() => {});
 }

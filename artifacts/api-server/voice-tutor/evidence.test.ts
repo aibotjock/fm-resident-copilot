@@ -42,6 +42,7 @@ const doc: EvidenceDocument = {
   section: "Engineering fixture, not clinical guidance",
 };
 const base = {
+  cards: [],
   claims: [
     {
       text: "Agent Z is used in this synthetic exercise.",
@@ -267,6 +268,11 @@ test("quiz output never leaks a generated explanation or medication answer befor
   assert.equal(result.medications.length, 0);
   assert.ok(!result.text.includes("5 mg"));
   assert.match(result.text, /which option/);
+});
+test("flashcards retain supporting passages and reject invented source support",()=>{
+  const card={front:"What does the synthetic exercise discuss?",back:"The synthetic exercise discusses Agent Z.",passages:[{source_id:doc.id,quote}]};
+  const supported=assembleAnswer({...base,claims:[],cards:[card]},[doc],"teach",info);assert.equal(supported.cards.length,1);assert.equal(supported.sources[0]?.id,doc.id);
+  const invalid=assembleAnswer({...base,claims:[],cards:[{...card,passages:[{source_id:"invented",quote}]}]},[doc],"teach",info);assert.equal(invalid.cards.length,0);
 });
 test("unknown subjects do not retrieve an arbitrary condition and query minimization removes direct identifiers", () => {
   assert.equal(

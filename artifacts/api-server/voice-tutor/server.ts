@@ -269,16 +269,18 @@ app.get("/api/conversation/state", (_req, res) =>
   res.json({
     scenario: res.locals.session.scenario || initialScenario(),
     latestAnswer: res.locals.session.latestAnswer || null,
+    question:
+      (res.locals.session.conversation || [])
+        .filter((t: any) => t.role === "user")
+        .at(-1)?.content || "",
   }),
 );
 app.post("/api/conversation/scenario", (req, res) => {
   const parsed = scenarioInput.safeParse(req.body);
   if (!parsed.success) {
-    res
-      .status(400)
-      .json({
-        error: "Use set, vary, restore or reset with short scenario fields",
-      });
+    res.status(400).json({
+      error: "Use set, vary, restore or reset with short scenario fields",
+    });
     return;
   }
   const s = res.locals.session;
@@ -362,12 +364,10 @@ async function conversationAnswer(
     );
     if ((s.conversationRevision || 0) !== revision) {
       if (!res.headersSent)
-        res
-          .status(409)
-          .json({
-            error:
-              "The case changed or the answer was cancelled. Ask again using the current scenario.",
-          });
+        res.status(409).json({
+          error:
+            "The case changed or the answer was cancelled. Ask again using the current scenario.",
+        });
       return null;
     }
     s.conversation = [
@@ -389,12 +389,10 @@ async function conversationAnswer(
 app.post("/api/conversation", async (req, res) => {
   const parsed = conversationInput.safeParse(req.body);
   if (!parsed.success) {
-    res
-      .status(400)
-      .json({
-        error:
-          "Enter a question of 1–3000 characters and choose quick, teach or quiz",
-      });
+    res.status(400).json({
+      error:
+        "Enter a question of 1–3000 characters and choose quick, teach or quiz",
+    });
     return;
   }
   try {
@@ -402,12 +400,10 @@ app.post("/api/conversation", async (req, res) => {
     if (result) res.json({ ...result, scenario: res.locals.session.scenario });
   } catch {
     if (!res.headersSent)
-      res
-        .status(502)
-        .json({
-          error:
-            "The evidence service could not complete this request. Retry; no substitute recommendation was generated.",
-        });
+      res.status(502).json({
+        error:
+          "The evidence service could not complete this request. Retry; no substitute recommendation was generated.",
+      });
   }
 });
 app.post("/api/conversation/speech", async (_req, res) => {
@@ -429,12 +425,10 @@ app.post("/api/conversation/speech", async (_req, res) => {
   try {
     const chunks = speechChunks(answer.speech);
     if (chunks.length > 8) {
-      res
-        .status(413)
-        .json({
-          error:
-            "This answer is too long for one audio request. Ask for a shorter explanation; the full text remains available.",
-        });
+      res.status(413).json({
+        error:
+          "This answer is too long for one audio request. Ask for a shorter explanation; the full text remains available.",
+      });
       return;
     }
     const audio: Buffer[] = [];
@@ -470,12 +464,10 @@ app.post("/api/conversation/speech", async (_req, res) => {
     }
     res.type("audio/mpeg").send(Buffer.concat(audio));
   } catch {
-    res
-      .status(502)
-      .json({
-        error:
-          "Audio could not be prepared. The displayed answer remains available.",
-      });
+    res.status(502).json({
+      error:
+        "Audio could not be prepared. The displayed answer remains available.",
+    });
   }
 });
 app.post("/api/conversation/calculate", (req, res) => {
@@ -488,23 +480,19 @@ app.post("/api/conversation/calculate", (req, res) => {
     })
     .safeParse(req.body);
   if (!parsed.success) {
-    res
-      .status(400)
-      .json({
-        error:
-          "Confirm population and adjustment applicability, select the supported regimen, and supply weight in kilograms",
-      });
+    res.status(400).json({
+      error:
+        "Confirm population and adjustment applicability, select the supported regimen, and supply weight in kilograms",
+    });
     return;
   }
   const medication =
     res.locals.session.latestAnswer?.medications[parsed.data.medication_index];
   if (!medication) {
-    res
-      .status(409)
-      .json({
-        error:
-          "No supported medication record is available from the latest answer",
-      });
+    res.status(409).json({
+      error:
+        "No supported medication record is available from the latest answer",
+    });
     return;
   }
   try {
@@ -515,8 +503,20 @@ app.post("/api/conversation/calculate", (req, res) => {
 });
 // Compatibility adapter: the preserved Expo interface uses the same evidence service.
 app.post("/api/clinical/query", async (req, res) => {
+  const format: Record<string, string> = {
+    flashcards:
+      "Create up to six focused source-supported question-and-answer flashcards in cards, each with exact supporting passages. ",
+    documentation:
+      "Explain source-supported documentation elements and a conditional assessment/plan structure. Never invent patient findings or unverified billing codes. ",
+    ddx: "Provide a conditional differential and supported distinguishing findings or next steps. Do not rank patient-specific likelihood without a case. ",
+    board_prep:
+      "Teach evidence-supported ABFM-style reasoning without claiming actual exam frequency or endorsement. ",
+  };
   const parsed = conversationInput.safeParse({
-    query: req.body.query,
+    query:
+      typeof req.body.query === "string"
+        ? (format[req.body.mode] || "") + req.body.query
+        : req.body.query,
     topic: req.body.condition,
     mode: req.body.mode === "point_of_care" ? "quick" : "teach",
   });
@@ -534,10 +534,10 @@ app.post("/api/clinical/query", async (req, res) => {
     });
     const visible =
       req.body.mode === "flashcards"
-        ? result.claims
+        ? result.cards
             .map(
-              (c, i) =>
-                `---CARD---\nFRONT: ${req.body.condition || "This topic"}: what is supported teaching point ${i + 1}?\nBACK: ${cleanClinicalText(c.text)}\n---END---`,
+              (c) =>
+                `---CARD---\nFRONT: ${cleanClinicalText(c.front)}\nBACK: ${cleanClinicalText(c.back)}\n---END---`,
             )
             .join("\n") || result.text
         : result.text;
@@ -573,11 +573,9 @@ app.post("/api/clinical/query", async (req, res) => {
     res.end();
   } catch {
     if (!res.headersSent)
-      res
-        .status(502)
-        .json({
-          error: "Evidence lookup failed; retry your clinical question",
-        });
+      res.status(502).json({
+        error: "Evidence lookup failed; retry your clinical question",
+      });
   }
 });
 app.post("/api/clinical/vignette", (req, res) => {
@@ -593,12 +591,10 @@ app.post("/api/clinical/vignette", (req, res) => {
       ),
   );
   if (!eligible.length) {
-    res
-      .status(422)
-      .json({
-        error:
-          "No source-scoped bank item matches. Open the conversational tutor and choose Quiz me for unscored evidence-supported practice.",
-      });
+    res.status(422).json({
+      error:
+        "No source-scoped bank item matches. Open the conversational tutor and choose Quiz me for unscored evidence-supported practice.",
+    });
     return;
   }
   const q = eligible[Math.floor(Math.random() * eligible.length)]!;
