@@ -15,6 +15,7 @@ import * as Speech from "expo-speech";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/colors";
 import { SourceCitation } from "@/components/SourceCitation";
+import { cleanClinicalText, speechText } from "@/utils/clinical-text";
 import type { CitationMetadata } from "@/types";
 
 export interface VignetteQuestion {
@@ -68,7 +69,7 @@ export function VignetteCard({ vignette, loading, error, sessionScore, onNext, o
     const text = `${vignette.question}. Option A: ${vignette.options.a}. Option B: ${vignette.options.b}. Option C: ${vignette.options.c}. Option D: ${vignette.options.d}.`;
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setIsSpeakingQ(true);
-    Speech.speak(text, {
+    Speech.speak(speechText(text), {
       rate: 0.9,
       onDone: () => setIsSpeakingQ(false),
       onStopped: () => setIsSpeakingQ(false),
@@ -83,7 +84,7 @@ export function VignetteCard({ vignette, loading, error, sessionScore, onNext, o
     const answerText = `The correct answer is ${vignette.answer.toUpperCase()}. ${vignette.explanation}`;
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setIsSpeakingE(true);
-    Speech.speak(answerText, {
+    Speech.speak(speechText(answerText), {
       rate: 0.9,
       onDone: () => setIsSpeakingE(false),
       onStopped: () => setIsSpeakingE(false),

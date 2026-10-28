@@ -112,6 +112,7 @@ export default function ResponseScreen() {
                 mode: m,
                 condition: cond,
                 response: responseRef.current + savedEvidenceNotes(capturedCitation),
+                evidence: capturedCitation?.evidence,
                 system,
                 abfmDomain: capturedDomain || undefined,
               });
@@ -154,6 +155,7 @@ export default function ResponseScreen() {
         condition,
         system,
         response: responseRef.current + savedEvidenceNotes(citationMetadata),
+        evidence: citationMetadata?.evidence,
       });
     }
   }, [existingBookmark, query, mode, condition, system, citationMetadata, addBookmark, removeBookmark]);
@@ -170,6 +172,7 @@ export default function ResponseScreen() {
         condition,
         topic,
         abfmDomain,
+        evidence: citationMetadata?.evidence,
       }))
     );
     setDeckSaved(true);

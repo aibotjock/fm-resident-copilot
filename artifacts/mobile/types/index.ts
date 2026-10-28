@@ -13,6 +13,8 @@ export interface Condition {
 }
 
 export interface QueryHistory {
+  evidence?: Array<{url:string;version:string}>;
+  needsReview?: boolean;
   id: string;
   query: string;
   mode: ClinicalMode;
@@ -24,6 +26,8 @@ export interface QueryHistory {
 }
 
 export interface Bookmark {
+  evidence?: Array<{url:string;version:string}>;
+  needsReview?: boolean;
   id: string;
   query: string;
   mode: ClinicalMode;
@@ -36,6 +40,8 @@ export interface Bookmark {
 }
 
 export interface SRSCard {
+  evidence?: Array<{url:string;version:string}>;
+  needsReview?: boolean;
   id: string;
   front: string;
   back: string;
@@ -69,6 +75,8 @@ export interface CitationEntry {
 }
 
 export interface CitationMetadata {
+  evidence?: Array<{url:string;version:string}>;
+  referenceVersion?: string;
   domain: string;
   weight: string;
   citations: CitationEntry[];

@@ -2,7 +2,13 @@
   "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
     "noEmit": true,
-    "types": ["node"]
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "es2022",
+      "dom"
+    ]
   },
   "include": [
     "core.ts",
@@ -16,7 +22,13 @@
     "coverage.ts",
     "curriculum.test.ts",
     "antibiotic-expansion.test.ts",
-    "build-acceptance.test.ts"
+    "build-acceptance.test.ts",
+    "evidence.ts",
+    "presentation.ts",
+    "conversation.ts",
+    "source-registry.ts",
+    "pdf-parse.d.ts",
+    "evidence.test.ts"
   ],
   "references": [
     {

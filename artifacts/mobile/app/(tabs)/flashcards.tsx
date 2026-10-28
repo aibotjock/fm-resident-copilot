@@ -126,14 +126,14 @@ export default function FlashcardsScreen() {
             <View style={styles.previewCardInner}>
               <Ionicons name="help-circle" size={20} color={MODE_COLOR} />
               <Text style={[styles.previewText, { color: isDark ? "#C4B5FD" : Colors.flashcardsDark }]}>
-                What is the first-line agent for stage 1 hypertension in a non-Black patient without CKD?
+                Which patient factors change a guideline recommendation?
               </Text>
             </View>
             <View style={[styles.previewDivider, { borderColor: `${MODE_COLOR}30` }]} />
             <View style={styles.previewCardInner}>
               <Ionicons name="checkmark-circle" size={20} color={Colors.boardPrep} />
               <Text style={[styles.previewAnswer, { color: isDark ? "#6EE7B7" : Colors.boardPrepDark }]}>
-                Thiazide diuretic (e.g. chlorthalidone) or ACE inhibitor/ARB or long-acting CCB — per ACC/AHA 2017
+                Identify the applicable population and setting, then inspect the supporting recommendation and its exceptions.
               </Text>
             </View>
           </View>

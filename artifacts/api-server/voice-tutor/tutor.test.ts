@@ -168,6 +168,7 @@ test("Realtime handshake uses the existing server key and configured evidence wi
     assert.deepEqual(config.tools.map((tool: any) => tool.name).sort(), [
       "answer_practice_question",
       "finish_practice",
+      "get_evidence_answer",
       "get_practice_question",
       "mark_practice_assisted",
       "record_learning",
@@ -176,6 +177,8 @@ test("Realtime handshake uses the existing server key and configured evidence wi
       "search_library",
       "select_curriculum_lesson",
       "select_library_topic",
+      "set_conversation_mode",
+      "update_case_scenario",
     ]);
     return new Response("v=0\r\nmock-answer", {
       headers: { "content-type": "application/sdp" },
@@ -1013,7 +1016,8 @@ test("tutor interface executes teaching, ITE cohort comparison and local persist
   assert.match(safetyNotes, /Contraindication:/);
   assert.match(safetyNotes, /Renal \(adjustment required\)/);
   assert.match(safetyNotes, /Hepatic \(not established\)/);
-  assert.match(safetyNotes, /LABEL-AMOXICILLIN/);
+  assert.match(safetyNotes, /DailyMed/);
+  assert.ok(!safetyNotes.includes("[MED LABEL-AMOXICILLIN]"));
   nodes.get("curriculumFilter").value = "absent-medication-zzzz";
   nodes.get("curriculumFilter").oninput();
   assert.equal(nodes.get("curriculumLesson").options.length, 0);

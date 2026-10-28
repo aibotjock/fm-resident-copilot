@@ -16,6 +16,7 @@ import type {
   SRSRating,
 } from "@/types";
 import { ABFM_DOMAIN_WEIGHTS } from "@/types";
+import { affectedStudyItems } from "../../api-server/voice-tutor/presentation";
 
 const HISTORY_KEY = "@fm_copilot_history";
 const BOOKMARKS_KEY = "@fm_copilot_bookmarks";
@@ -78,6 +79,7 @@ interface AppContextValue {
       condition?: string;
       topic: string;
       abfmDomain?: string;
+      evidence?: Array<{url:string;version:string}>;
     }>
   ) => Promise<number>;
   updateSRSCard: (id: string, rating: SRSRating) => Promise<void>;
@@ -138,6 +140,15 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     loadAll();
   }, [loadAll]);
+  useEffect(()=>{
+    if(isLoading)return;
+    let active=true;
+    fetch("/api/evidence/status").then(r=>r.ok?r.json():null).then(result=>{
+      if(!active||!result?.versions)return;
+      setSrsCards(previous=>{const next=affectedStudyItems(previous,result.versions);AsyncStorage.setItem(SRS_KEY,JSON.stringify(next)).catch(()=>{});return next;});
+      setBookmarks(previous=>{const next=affectedStudyItems(previous,result.versions);AsyncStorage.setItem(BOOKMARKS_KEY,JSON.stringify(next)).catch(()=>{});return next;});
+    }).catch(()=>{});return()=>{active=false;};
+  },[isLoading]);
 
   const saveHistory = useCallback(async (entries: QueryHistory[]) => {
     try {
@@ -286,6 +297,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         condition?: string;
         topic: string;
         abfmDomain?: string;
+        evidence?: Array<{url:string;version:string}>;
       }>
     ) => {
       const now = Date.now();
@@ -296,6 +308,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         condition: c.condition,
         topic: c.topic,
         abfmDomain: c.abfmDomain,
+        evidence: c.evidence,
         easeFactor: 2.5,
         interval: 1,
         repetitions: 0,
@@ -343,7 +356,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   const getDueCards = useCallback(() => {
     const now = Date.now();
-    return srsCards.filter((c) => c.dueDate <= now);
+    return srsCards.filter((c) => !c.needsReview && c.dueDate <= now);
   }, [srsCards]);
 
   const recordDomainQuery = useCallback(

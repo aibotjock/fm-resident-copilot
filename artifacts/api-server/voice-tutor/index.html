@@ -192,9 +192,8 @@
     </p>
     <p class="notice">
       <small
-        >Education only · Not a clinical reference · Not ABFM approved. Source
-        review is incomplete. No automatic research or guideline
-        refreshes.</small
+        >Clinical reference and study preview · Not ABFM endorsed.
+        Official-source lookup is available; independent clinical review remains incomplete.</small
       >
     </p>
     <section id="unlock" class="card">
@@ -431,12 +430,12 @@
               ><button id="plan" disabled>Build my lesson plan</button>
             </div>
             <form id="typed">
-              <label for="text">Or type into the active conversation</label>
+              <label for="text">Ask a question — microphone optional</label>
               <div class="row">
                 <input
                   id="text"
                   placeholder="Explain that, give me a hint, or repeat…"
-                /><button id="send" disabled>Send</button>
+                /><button id="send">Send</button>
               </div>
             </form>
             <p id="error" role="alert"></p>
@@ -520,16 +519,15 @@
           <div class="card">
             <h2>Evidence in this lesson</h2>
             <div id="sources"></div>
-            <h2>Approved official lookup</h2>
+            <h2>Additional source lookup</h2>
             <p>
               <small
-                >Each lookup requires your explicit approval. It reads one
-                listed official page; it does not refresh the library. No broad
-                web search is available.</small
+                >Questions can search and read official sources automatically as needed.
+                This manual control reads a listed page; it does not certify or replace the stored library.</small
               >
             </p>
             <select id="lookupUrl" aria-label="Official source URL"></select
-            ><button id="lookup">Approve this one lookup</button>
+            ><button id="lookup">Read selected official page</button>
             <div id="lookupResult"></div>
           </div>
           <div class="card">
@@ -550,6 +548,8 @@
     <audio id="audio" autoplay></audio>
   </main>
   <script src="/learning.js"></script>
+  <script src="/presentation.js"></script>
+  <script src="/conversation.js"></script>
   <script>
     const $ = (id) => document.getElementById(id),
       storage = "fm-tutor-progress-v1";
@@ -746,7 +746,7 @@
         for (const item of safety.gaps) note("Safety evidence gap: " + item);
         note(
           "Safety sources: " +
-            safety.source_ids.map((id) => "[MED " + id + "]").join(", "),
+            safety.source_ids.map((id) => curriculum.sources.find(s => s.id === id)?.organization || "Official clinical source").join(", "),
         );
       }
       for (const gap of l.gaps) note("Evidence gap: " + gap);
@@ -759,7 +759,7 @@
         a.href = source.url;
         a.target = "_blank";
         a.rel = "noopener noreferrer";
-        a.textContent = source.title + " [MED " + source.id + "]";
+        a.textContent = source.organization + " — " + source.title;
         p.append(
           a,
           document.createTextNode(
@@ -1098,7 +1098,8 @@
     };
     function persist() {
       try {
-        localStorage.setItem(storage, JSON.stringify(data));
+        const saved = data.rememberConversation === true ? data : { ...data, history: [], checkpoint: "", curriculumCheckpoints: {} };
+        localStorage.setItem(storage, JSON.stringify(saved));
       } catch {
         fail(
           "Progress could not be saved on this device. Export it before leaving.",
@@ -1119,6 +1120,7 @@
       node.className = "message";
       const label = document.createElement("strong");
       label.textContent = role === "user" ? "You" : "Tutor";
+      text = window.FMPresentation ? FMPresentation.cleanClinicalText(text) : text.replace(/\[(?:REF|EVID|MED)\s+[^\]]*\]/g, "");
       node.append(label, document.createTextNode(text));
       $("log").append(node);
       $("log").scrollTop = $("log").scrollHeight;
@@ -1187,7 +1189,7 @@
             " ";
           a.textContent =
             "Stored evidence " +
-            f.source.id +
+            "Source-scoped bank item" +
             " · checked " +
             f.source.lastChecked;
           a.href = f.source.url;
@@ -1209,7 +1211,7 @@
         review.textContent = v.question.review_note + " ";
         source.textContent =
           "Question evidence: " +
-          v.question.source.id +
+          "Source-scoped bank item" +
           " (" +
           v.question.source.lastChecked +
           ")";
@@ -1546,7 +1548,7 @@
                     "; " +
                     c.benchmark.sourceLabel +
                     " (" +
-                    c.benchmark.sourceUrl +
+                    "Open the official benchmark source" +
                     ")",
                 )
                 .join("; ")
@@ -1711,7 +1713,7 @@
           a.href = r.url;
           a.target = "_blank";
           a.rel = "noopener noreferrer";
-          a.textContent = r.title + " · " + r.id;
+          a.textContent = r.organization + " — " + r.title;
           p.append(
             a,
             document.createTextNode(
@@ -1735,11 +1737,7 @@
       $("lookupResult").textContent = "";
       renderLookupChoices();
     }
-    $("login").onsubmit = async (e) => {
-      e.preventDefault();
-      try {
-        await api("login", { code: $("code").value });
-        $("code").value = "";
+    async function loadWorkspace() {
         const v = await api("topics");
         topics = v.topics;
         curriculum = await api("curriculum");
@@ -1763,15 +1761,19 @@
             .filter((d) => !v.practice.coveredDomains.includes(d))
             .join(", ") +
           ". Unreviewed generated teaching is unscored.";
-        $("version").textContent = "Frozen library: " + v.version;
+        $("version").textContent = "Stored curriculum · See original source dates and review limits below";
         $("unlock").classList.add("hidden");
         $("workspace").classList.remove("hidden");
         selectTopics();
         renderProgress();
-      } catch (e) {
-        fail(e.message);
-        alert(e.message);
-      }
+    }
+    $("login").onsubmit = async (e) => {
+      e.preventDefault();
+      try {
+        await api("login", { code: $("code").value });
+        $("code").value = "";
+        await loadWorkspace();
+      } catch (e) { fail(e.message); alert(e.message); }
     };
     $("filter").oninput = selectTopics;
     for (const id of ["practiceMode", "practiceScope"])
@@ -1830,7 +1832,17 @@
       let output = { ok: false };
       try {
         const a = JSON.parse(e.arguments);
-        if (e.name === "search_curriculum") {
+        if (e.name === "get_evidence_answer") {
+          output = await api("conversation", { ...a, topic: topics.find(t => t.id === $("topic").value)?.title || "" });
+          if (epoch !== connectionEpoch || context !== topicEpoch) return;
+          window.FMConversation?.showAnswer(output);
+        } else if (e.name === "set_conversation_mode") {
+          window.FMConversation?.setMode(a.mode);
+          send({type:"session.update",session:{type:"realtime",instructions:(await api("context", {ids:[$("topic").value],progress:stats(),history:[]})).instructions + "\nCONVERSATION OVERRIDE: " + (a.mode === "quick" ? "Answer the question directly and briefly; do not start a vignette or quiz unless asked." : a.mode === "teach" ? "Explain and discuss the requested topic; do not quiz unless asked." : "Ask exactly one source-supported question and wait before revealing its answer.")}});
+          output = {ok:true,mode:a.mode};
+        } else if (e.name === "update_case_scenario") {
+          output = await window.FMConversation?.changeScenario(a.action, a.values);
+        } else if (e.name === "search_curriculum") {
           output = await api("curriculum/search", a);
         } else if (e.name === "select_curriculum_lesson") {
           const selected = await api("curriculum/select", {
@@ -2038,11 +2050,14 @@
       // is allowed below only when its tool output belongs to the new context.
       if (context !== topicEpoch && e.type !== "response.done") return;
       if (e.type === "error") {
+        if (/no active response|no response.*active|already.*cancel/i.test(e.error?.message || "")) return;
         fail(e.error?.message || "Voice error");
         state("Error");
         return;
       }
       if (e.type === "input_audio_buffer.speech_started") {
+        if (window.FMConversation?.evidenceVoice()) FMConversation.interruptForSpeech();
+        else window.FMConversation?.stopPlayback();
         state("Listening…");
         return;
       }
@@ -2052,8 +2067,10 @@
       }
       if (e.type === "output_audio_buffer.started") state("Speaking…");
       if (e.type === "output_audio_buffer.stopped") state("Listening…");
-      if (e.type === "conversation.item.input_audio_transcription.completed")
-        log("user", e.transcript);
+      if (e.type === "conversation.item.input_audio_transcription.completed") {
+        if (window.FMConversation?.evidenceVoice()) { void FMConversation.submit(e.transcript); }
+        else log("user", e.transcript);
+      }
       if (
         e.type === "response.output_audio_transcript.done" ||
         e.type === "response.audio_transcript.done"
@@ -2081,6 +2098,9 @@
                     "select_library_topic",
                     "search_curriculum",
                     "select_curriculum_lesson",
+                    "get_evidence_answer",
+                    "set_conversation_mode",
+                    "update_case_scenario",
                   ].includes(result.name),
                 ))
             )
@@ -2097,6 +2117,7 @@
       }
     }
     function stop() {
+      window.FMConversation?.voiceStopped();
       connectionEpoch++;
       responseTopics.clear();
       toolOutputs.clear();
@@ -2118,8 +2139,9 @@
       muted = false;
       $("mute").textContent = "Mute mic";
       $("mute").setAttribute("aria-pressed", "false");
-      for (const id of ["mute", "stop", "case", "quiz", "plan", "send"])
+      for (const id of ["mute", "stop", "case", "quiz", "plan"])
         $(id).disabled = true;
+      $("send").disabled = false;
       $("start").disabled =
         !$("topic").value ||
         ($("learningTrack").value !== "guided" && !moduleLesson());
@@ -2187,6 +2209,10 @@
           for (const id of ["mute", "stop", "case", "quiz", "plan", "send"])
             $(id).disabled = false;
           state("Listening…");
+          if (window.FMConversation?.evidenceVoice()) {
+            sessionTimer = setTimeout(stop, 20 * 60 * 1000);
+            return;
+          }
           ask(
             guided && curriculumId()
               ? (data.lessonCurriculum === curriculumId() && data.checkpoint
@@ -2215,6 +2241,7 @@
         await pc.setLocalDescription(offer);
         const answer = await api("session", {
           sdp: offer.sdp,
+          evidenceOnly: window.FMConversation?.evidenceVoice() === true,
           ids: [$("topic").value],
           guided,
           curriculum_id: guided ? curriculumId() : undefined,
@@ -2264,26 +2291,15 @@
       );
     $("typed").onsubmit = (e) => {
       e.preventDefault();
-      if (dc?.readyState !== "open") {
-        fail("Start a conversation before sending a message.");
-        return;
-      }
-      if ($("text").value.trim()) {
-        ask($("text").value.trim());
-        $("text").value = "";
-      }
+      const text = $("text").value.trim();
+      if (!text) return;
+      if (window.FMConversation) { $("text").value = ""; void FMConversation.submit(text); }
+      else if (dc?.readyState === "open") { $("text").value = ""; ask(text); }
+      else fail("Start a conversation or reload to enable text-only questions.");
     };
     $("lookup").onclick = async () => {
       const url = $("lookupUrl").value;
       if (!url) return;
-      if (
-        !confirm(
-          "Approve a single external lookup of this official page?\n" +
-            url +
-            "\nThe stored library will remain unchanged.",
-        )
-      )
-        return;
       const epoch = connectionEpoch;
       const topic = topicEpoch;
       try {
@@ -2417,7 +2433,13 @@
         persist();
       }
     };
-    window.addEventListener("pagehide", stop);
+    if (window.FMConversation) FMConversation.init({
+      api, log, topic: () => topics.find(t => t.id === $("topic").value)?.title || $("filter").value || "",
+      data: () => data, persist, startVoice: () => $("start").click(), stopVoice: stop,
+      interrupt: () => { $("audio").pause(); if (!window.FMConversation?.evidenceVoice()) { send({type:"response.cancel"}); send({type:"output_audio_buffer.clear"}); } }
+    });
+    window.addEventListener("pagehide", () => { stop(); window.FMConversation?.stopPlayback(); });
     renderProgress();
+    loadWorkspace().catch(() => {});
   </script>
 </html>

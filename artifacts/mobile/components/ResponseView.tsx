@@ -16,6 +16,7 @@ import * as Speech from "expo-speech";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors, getModeColor } from "@/constants/colors";
 import { SourceCitation } from "@/components/SourceCitation";
+import { cleanClinicalText, speechText } from "@/utils/clinical-text";
 import type { ClinicalMode, CitationMetadata } from "@/types";
 
 interface ResponseViewProps {
@@ -328,18 +329,7 @@ export function ResponseView({
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const stripMarkdown = useCallback((text: string): string => {
-    return text
-      .replace(/%%FM_CITE%%[\s\S]*?%%\/FM_CITE%%/g, "")
-      .replace(/^#{1,6}\s+/gm, "")
-      .replace(/\*\*(.+?)\*\*/g, "$1")
-      .replace(/\*(.+?)\*/g, "$1")
-      .replace(/`{1,3}[^`]*`{1,3}/g, "")
-      .replace(/^\s*[-*+]\s+/gm, "")
-      .replace(/^\s*\d+\.\s+/gm, "")
-      .replace(/^\|.*\|$/gm, "")
-      .replace(/^[-|:\s]+$/gm, "")
-      .replace(/\n{3,}/g, "\n\n")
-      .trim();
+    return speechText(text);
   }, []);
 
   const handleSpeak = useCallback(() => {
@@ -347,6 +337,8 @@ export function ResponseView({
     if (!text) return;
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setIsSpeaking(true);
+    const native=(globalThis as any).FMAndroid;
+    if(native?.speak){native.speak(text);setIsSpeaking(false);return;}
     Speech.speak(text, {
       rate: 0.92,
       pitch: 1.0,
@@ -358,6 +350,7 @@ export function ResponseView({
 
   const handleStopSpeech = useCallback(() => {
     Speech.stop();
+    (globalThis as any).FMAndroid?.stop();
     setIsSpeaking(false);
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
   }, []);
@@ -517,7 +510,7 @@ export function ResponseView({
         contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 40 }]}
         showsVerticalScrollIndicator={false}
       >
-        {parseMarkdown(response, isDark, modeColor, theme)}
+        {parseMarkdown(cleanClinicalText(response), isDark, modeColor, theme)}
 
         {isStreaming && (
           <Animated.View

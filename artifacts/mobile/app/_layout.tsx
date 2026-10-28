@@ -18,6 +18,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { AppProvider } from "@/context/AppContext";
 import { OnboardingModal } from "@/components/OnboardingModal";
+import { DeviceDataControls } from "@/components/DeviceDataControls";
 
 const ONBOARDED_KEY = "@fm_copilot_onboarded";
 
@@ -81,6 +82,7 @@ export default function RootLayout() {
           <AppProvider>
             <GestureHandlerRootView style={{ flex: 1, width: "100%", maxWidth: Platform.OS === "web" ? 960 : undefined, alignSelf: "center" }}>
               <KeyboardProvider>
+                <DeviceDataControls />
                 {process.env.EXPO_PUBLIC_REFERENCE_PREVIEW === "1" && (
                   <View accessibilityRole="alert" style={{ backgroundColor: "#FFF3CD", paddingHorizontal: 16, paddingVertical: 10 }}>
                     <Text style={{ color: "#664D03", fontSize: 13, textAlign: "center" }}>

@@ -27,9 +27,9 @@ const PANELS: OnboardingPanel[] = [
     title: "Guideline-Grounded Answers",
     subtitle: "Evidence from the sources that matter",
     bullets: [
-      "Answers grounded in 120+ indexed guideline chunks from ACC/AHA, ADA, IDSA, AAP, ACOG, USPSTF, and 15 other bodies",
+      "Clinical explanations use supporting material from family medicine organizations, specialty societies and public agencies",
       "Citations link answers to reference sources. AI can make mistakes; verify important details against current guidance.",
-      "When a question falls outside indexed sources, the app says so explicitly",
+      "Questions can use official-source online lookup when saved evidence is missing or needs checking",
     ],
   },
   {
@@ -53,7 +53,7 @@ const PANELS: OnboardingPanel[] = [
     bullets: [
       "This tool is for educational and decision-support purposes only. It is not a substitute for clinical judgment, real-time clinical decision support systems, or direct patient care protocols.",
       "Do not use this tool as the sole basis for clinical decisions. Verify all answers against your institution's resources and current guidelines.",
-      "Guideline content is periodically updated. Always confirm that you are referencing the most current version of any guideline before applying it to patient care.",
+      "Check source dates, population and supporting passages. Retrieved evidence and independent clinical review are different.",
     ],
   },
 ];

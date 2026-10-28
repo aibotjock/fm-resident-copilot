@@ -144,8 +144,8 @@ export function SourceCitation({ metadata }: SourceCitationProps) {
   const overallLabel = hasOutside || hasLimitation
     ? "Partial coverage — see limitation"
     : allDirect
-    ? "Fully addressed by indexed sources"
-    : "Addressed — see source details";
+    ? "Supporting sources available"
+    : "Sources available — check supporting passages";
 
   const overallIcon = hasOutside || hasLimitation
     ? ("alert-circle" as const)

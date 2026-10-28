@@ -27,6 +27,25 @@ import {
 import express from "express";
 import { randomBytes, timingSafeEqual } from "node:crypto";
 import { readFile } from "node:fs/promises";
+import path from "node:path";
+import { existsSync } from "node:fs";
+import { z } from "zod/v4";
+import {
+  answerWithEvidence,
+  cachedEvidenceVersions,
+  EVIDENCE_RELEASE,
+  type EvidenceAnswer,
+} from "./evidence";
+import { sourceRegistry } from "./source-registry";
+import {
+  updateScenario,
+  scenarioFromUtterance,
+  cleanClinicalText,
+  speechChunks,
+  type Scenario,
+} from "./presentation";
+import { releaseSmoke, runReleaseSmoke } from "./release-smoke";
+import { calculateWeightDose } from "./dose-arithmetic";
 import {
   instructions,
   tools,
@@ -59,6 +78,14 @@ const sessions = new Map<
     practice?: Practice;
     labelChoices?: { revision: number; choices: LabelChoice[] };
     referenceCalls?: number;
+    conversation?: { role: string; content: string }[];
+    conversationRevision?: number;
+    evidenceBusy?: boolean;
+    evidenceCalls?: number;
+    scenario?: Scenario;
+    latestAnswer?: EvidenceAnswer;
+    evidenceController?: AbortController;
+    pendingGeneratedQuiz?: string;
   }
 >();
 setInterval(() => {
@@ -67,6 +94,10 @@ setInterval(() => {
 app.get("/api/healthz", (_req, res) =>
   res.json({
     status: "ok",
+    evidenceRelease: EVIDENCE_RELEASE,
+    onlineEvidenceConfigured: !!process.env.OPENAI_API_KEY,
+    clinicalReview: "not_clinically_reviewed",
+    releaseSmoke,
     experiment: true,
     version,
     credentialsConfigured: !!(
@@ -108,13 +139,41 @@ app.get("/learning.js", async (_req, res) =>
       ),
     ),
 );
-app.get("/", async (_req, res) =>
+app.get("/tutor", async (_req, res) =>
   res
     .type("html")
     .send(
       await readFile("artifacts/api-server/voice-tutor/index.html", "utf8"),
     ),
 );
+app.get("/presentation.js", async (_req, res) =>
+  res
+    .type("js")
+    .send(
+      await readFile(
+        "artifacts/api-server/voice-tutor/dist/presentation.js",
+        "utf8",
+      ),
+    ),
+);
+app.get("/conversation.js", async (_req, res) =>
+  res
+    .type("js")
+    .send(
+      await readFile(
+        "artifacts/api-server/voice-tutor/dist/conversation.js",
+        "utf8",
+      ),
+    ),
+);
+if (process.env.FM_COMBINED_APP !== "1")
+  app.get("/", async (_req, res) =>
+    res
+      .type("html")
+      .send(
+        await readFile("artifacts/api-server/voice-tutor/index.html", "utf8"),
+      ),
+  );
 const attempts = new Map<string, { time: number; count: number }>();
 app.post("/api/login", (req, res) => {
   const ip = req.ip || "unknown";
@@ -182,12 +241,389 @@ app.use("/api", (req, res, next) => {
 });
 // Railway terminates TLS at its trusted proxy.
 app.set("trust proxy", 1);
+const conversationInput = z.object({
+  query: z.string().trim().min(1).max(3000),
+  mode: z.enum(["quick", "teach", "quiz"]).default("quick"),
+  topic: z.string().max(300).optional(),
+  forceLookup: z.boolean().optional(),
+});
+const scenarioInput = z.object({
+  action: z.enum(["set", "vary", "restore", "reset"]),
+  values: z.record(z.string(), z.string().max(300)).default({}),
+});
+const initialScenario = (): Scenario => ({
+  confirmed: {},
+  hypothetical: {},
+  revision: 0,
+});
+app.get("/api/evidence/status", (_req, res) =>
+  res.json({
+    release: EVIDENCE_RELEASE,
+    sources: sourceRegistry,
+    versions: cachedEvidenceVersions(),
+    clinicalReview: "not_clinically_reviewed",
+    onlineConfigured: !!process.env.OPENAI_API_KEY,
+  }),
+);
+app.get("/api/conversation/state", (_req, res) =>
+  res.json({
+    scenario: res.locals.session.scenario || initialScenario(),
+    latestAnswer: res.locals.session.latestAnswer || null,
+  }),
+);
+app.post("/api/conversation/scenario", (req, res) => {
+  const parsed = scenarioInput.safeParse(req.body);
+  if (!parsed.success) {
+    res
+      .status(400)
+      .json({
+        error: "Use set, vary, restore or reset with short scenario fields",
+      });
+    return;
+  }
+  const s = res.locals.session;
+  try {
+    s.scenario = updateScenario(
+      s.scenario || initialScenario(),
+      parsed.data.action,
+      parsed.data.values,
+    );
+    s.conversationRevision = (s.conversationRevision || 0) + 1;
+    if (parsed.data.action === "reset") {
+      s.conversation = [];
+      s.latestAnswer = undefined;
+    }
+    res.json(s.scenario);
+  } catch {
+    res.status(400).json({ error: "Invalid scenario fields" });
+  }
+});
+app.post("/api/conversation/reset", (_req, res) => {
+  const s = res.locals.session;
+  s.conversation = [];
+  s.latestAnswer = undefined;
+  s.scenario = initialScenario();
+  s.conversationRevision = (s.conversationRevision || 0) + 1;
+  res.json({ ok: true, scenario: s.scenario });
+});
+app.post("/api/conversation/cancel", (_req, res) => {
+  const s = res.locals.session;
+  s.conversationRevision = (s.conversationRevision || 0) + 1;
+  s.evidenceController?.abort();
+  res.json({ ok: true });
+});
+async function conversationAnswer(
+  req: express.Request,
+  res: express.Response,
+  input: z.infer<typeof conversationInput>,
+) {
+  const s = res.locals.session;
+  if (
+    (s.evidenceCalls || 0) >=
+    Number(process.env.FM_EVIDENCE_SESSION_LIMIT || 30)
+  ) {
+    res
+      .status(429)
+      .json({ error: "Evidence request limit reached. Unlock again later." });
+    return null;
+  }
+  if (s.evidenceBusy) {
+    s.evidenceController?.abort();
+    s.conversationRevision = (s.conversationRevision || 0) + 1;
+  }
+  s.evidenceBusy = true;
+  s.evidenceCalls = (s.evidenceCalls || 0) + 1;
+  const previousScenario = s.scenario || initialScenario();
+  s.scenario = scenarioFromUtterance(previousScenario, input.query);
+  if (s.scenario !== previousScenario)
+    s.conversationRevision = (s.conversationRevision || 0) + 1;
+  const revision = s.conversationRevision || 0;
+  const controller = new AbortController();
+  s.evidenceController = controller;
+  res.on("close", () => {
+    if (!res.writableEnded) controller.abort();
+  });
+  try {
+    const quizPhase =
+      input.mode === "quiz" &&
+      s.pendingGeneratedQuiz &&
+      !/[?]|\b(next|another|new|quiz|hint|question)\b/i.test(input.query)
+        ? "feedback"
+        : "question";
+    const result = await answerWithEvidence(
+      {
+        ...input,
+        quizPhase,
+        history: s.conversation || [],
+        scenario: s.scenario || initialScenario(),
+      },
+      {},
+      controller.signal,
+    );
+    if ((s.conversationRevision || 0) !== revision) {
+      if (!res.headersSent)
+        res
+          .status(409)
+          .json({
+            error:
+              "The case changed or the answer was cancelled. Ask again using the current scenario.",
+          });
+      return null;
+    }
+    s.conversation = [
+      ...(s.conversation || []),
+      { role: "user", content: input.query },
+      { role: "assistant", content: result.text },
+    ].slice(-12);
+    s.latestAnswer = result;
+    s.pendingGeneratedQuiz =
+      input.mode === "quiz" ? result.nextQuestion : undefined;
+    return result;
+  } finally {
+    if (s.evidenceController === controller) {
+      s.evidenceBusy = false;
+      s.evidenceController = undefined;
+    }
+  }
+}
+app.post("/api/conversation", async (req, res) => {
+  const parsed = conversationInput.safeParse(req.body);
+  if (!parsed.success) {
+    res
+      .status(400)
+      .json({
+        error:
+          "Enter a question of 1–3000 characters and choose quick, teach or quiz",
+      });
+    return;
+  }
+  try {
+    const result = await conversationAnswer(req, res, parsed.data);
+    if (result) res.json({ ...result, scenario: res.locals.session.scenario });
+  } catch {
+    if (!res.headersSent)
+      res
+        .status(502)
+        .json({
+          error:
+            "The evidence service could not complete this request. Retry; no substitute recommendation was generated.",
+        });
+  }
+});
+app.post("/api/conversation/speech", async (_req, res) => {
+  const s = res.locals.session,
+    answer: EvidenceAnswer | undefined = s.latestAnswer;
+  if (!answer) {
+    res.status(409).json({ error: "Ask a question before reading its answer" });
+    return;
+  }
+  if ((s.referenceCalls || 0) >= 40) {
+    res.status(429).json({ error: "Speech limit reached for this session" });
+    return;
+  }
+  s.referenceCalls = (s.referenceCalls || 0) + 1;
+  if (!process.env.OPENAI_API_KEY) {
+    res.status(503).json({ error: "Server speech is not configured" });
+    return;
+  }
+  try {
+    const chunks = speechChunks(answer.speech);
+    if (chunks.length > 8) {
+      res
+        .status(413)
+        .json({
+          error:
+            "This answer is too long for one audio request. Ask for a shorter explanation; the full text remains available.",
+        });
+      return;
+    }
+    const audio: Buffer[] = [];
+    for (const chunk of chunks) {
+      const r = await fetch("https://api.openai.com/v1/audio/speech", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: process.env.FM_SPEECH_MODEL || "gpt-4o-mini-tts",
+          voice: "marin",
+          input: chunk,
+          response_format: "mp3",
+          instructions:
+            "Read the supplied clinical text faithfully and clearly. Preserve every medication name, number, unit, negation and qualification. Do not add commentary.",
+        }),
+        signal: AbortSignal.timeout(60000),
+      });
+      if (!r.ok) {
+        await r.body?.cancel();
+        throw Error();
+      }
+      if (s.latestAnswer !== answer) {
+        await r.body?.cancel();
+        res
+          .status(409)
+          .json({ error: "Answer changed while speech was being prepared" });
+        return;
+      }
+      audio.push(Buffer.from(await r.arrayBuffer()));
+    }
+    res.type("audio/mpeg").send(Buffer.concat(audio));
+  } catch {
+    res
+      .status(502)
+      .json({
+        error:
+          "Audio could not be prepared. The displayed answer remains available.",
+      });
+  }
+});
+app.post("/api/conversation/calculate", (req, res) => {
+  const parsed = z
+    .object({
+      medication_index: z.number().int().min(0).max(5),
+      weight_kg: z.number().finite(),
+      population_confirmed: z.literal(true),
+      adjustments_confirmed: z.literal(true),
+    })
+    .safeParse(req.body);
+  if (!parsed.success) {
+    res
+      .status(400)
+      .json({
+        error:
+          "Confirm population and adjustment applicability, select the supported regimen, and supply weight in kilograms",
+      });
+    return;
+  }
+  const medication =
+    res.locals.session.latestAnswer?.medications[parsed.data.medication_index];
+  if (!medication) {
+    res
+      .status(409)
+      .json({
+        error:
+          "No supported medication record is available from the latest answer",
+      });
+    return;
+  }
+  try {
+    res.json(calculateWeightDose(medication, parsed.data.weight_kg));
+  } catch (e) {
+    res.status(422).json({ error: (e as Error).message });
+  }
+});
+// Compatibility adapter: the preserved Expo interface uses the same evidence service.
+app.post("/api/clinical/query", async (req, res) => {
+  const parsed = conversationInput.safeParse({
+    query: req.body.query,
+    topic: req.body.condition,
+    mode: req.body.mode === "point_of_care" ? "quick" : "teach",
+  });
+  if (!parsed.success) {
+    res.status(400).json({ error: "Enter a clinical question" });
+    return;
+  }
+  try {
+    const result = await conversationAnswer(req, res, parsed.data);
+    if (!result) return;
+    res.set({
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-store",
+      Connection: "keep-alive",
+    });
+    const visible =
+      req.body.mode === "flashcards"
+        ? result.claims
+            .map(
+              (c, i) =>
+                `---CARD---\nFRONT: ${req.body.condition || "This topic"}: what is supported teaching point ${i + 1}?\nBACK: ${cleanClinicalText(c.text)}\n---END---`,
+            )
+            .join("\n") || result.text
+        : result.text;
+    res.write(`data: ${JSON.stringify({ content: visible })}\n\n`);
+    const meta = {
+      domain:
+        topics.find((t) => t.title === req.body.condition)?.domain ||
+        "Family medicine",
+      weight: "",
+      citations: result.sources.map((s) => ({
+        source: s.organization,
+        year: s.publicationDate?.slice(0, 4) || "",
+        guideline: s.title,
+        url: s.url,
+        accessed: s.retrievedAt,
+        confidence: "peripheral",
+        reviewStatus: "Passage-linked; independent clinical review pending",
+        note: result.passages
+          .filter((p) => p.source_id === s.id)
+          .map((p) => p.quote)
+          .join("\n"),
+      })),
+      limitation:
+        result.gaps.join(" ") ||
+        "Passage linkage is not independent clinical validation.",
+      referenceVersion: result.evidenceFingerprint,
+      evidence: result.sources.map((s) => ({ url: s.url, version: s.version })),
+    };
+    res.write(
+      `data: ${JSON.stringify({ content: `\n\n%%FM_CITE%%${JSON.stringify(meta)}%%/FM_CITE%%` })}\n\n`,
+    );
+    res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+    res.end();
+  } catch {
+    if (!res.headersSent)
+      res
+        .status(502)
+        .json({
+          error: "Evidence lookup failed; retry your clinical question",
+        });
+  }
+});
+app.post("/api/clinical/vignette", (req, res) => {
+  const terms = String(req.body.topic || req.body.domain || "")
+    .toLowerCase()
+    .split(/\s+/)
+    .filter((w: string) => w.length > 3);
+  const eligible = bank.filter(
+    (q) =>
+      !terms.length ||
+      terms.some((w: string) =>
+        `${q.stem} ${q.domain}`.toLowerCase().includes(w),
+      ),
+  );
+  if (!eligible.length) {
+    res
+      .status(422)
+      .json({
+        error:
+          "No source-scoped bank item matches. Open the conversational tutor and choose Quiz me for unscored evidence-supported practice.",
+      });
+    return;
+  }
+  const q = eligible[Math.floor(Math.random() * eligible.length)]!;
+  res.json({
+    question: cleanClinicalText(q.stem),
+    options: Object.fromEntries(
+      q.options.map((o, i) => [
+        String.fromCharCode(97 + i),
+        cleanClinicalText(o),
+      ]),
+    ),
+    answer: String.fromCharCode(97 + q.answer),
+    explanation: cleanClinicalText(q.rationale),
+    domain: q.domain,
+    source:
+      "Stored source-scoped practice; independent clinical review and currency check pending",
+    reviewStatus: "not_clinically_reviewed",
+  });
+});
 app.get("/api/topics", (_req, res) =>
   res.json({
     topics,
     version,
     voiceEnrollment: false,
-    externalLookup: "explicit-official-url-only",
+    externalLookup: "automatic-official-source-evidence-service",
     practice: {
       count: bank.length,
       blueprint: BLUEPRINT,
@@ -482,6 +918,7 @@ app.post("/api/session", async (req, res) => {
   session.calls++;
   const contextRevision = ++session.contextRevision;
   try {
+    const evidenceOnly = req.body.evidenceOnly === true;
     const fd = new FormData();
     fd.set("sdp", req.body.sdp);
     fd.set(
@@ -489,8 +926,10 @@ app.post("/api/session", async (req, res) => {
       JSON.stringify({
         type: "realtime",
         model: process.env.FM_TUTOR_REALTIME_MODEL || "gpt-realtime-2.1",
-        instructions: prompt,
-        tools,
+        instructions: evidenceOnly
+          ? "Capture the user's spoken input. The application provides evidence-supported answers separately. Do not generate an answer unless explicitly requested by the application."
+          : prompt,
+        tools: evidenceOnly ? [] : tools,
         tool_choice: "auto",
         max_output_tokens: 1200,
         audio: {
@@ -502,7 +941,7 @@ app.post("/api/session", async (req, res) => {
               threshold: 0.6,
               prefix_padding_ms: 300,
               silence_duration_ms: 650,
-              create_response: true,
+              create_response: !evidenceOnly,
               interrupt_response: true,
             },
           },
@@ -621,11 +1060,28 @@ app.post("/api/lookup", async (req, res) => {
     });
   }
 });
+app.use("/api", (_req, res) =>
+  res.status(404).json({ error: "API route not found" }),
+);
+if (process.env.FM_COMBINED_APP === "1") {
+  const webDist = path.resolve("artifacts/mobile/dist");
+  if (existsSync(path.join(webDist, "index.html"))) {
+    app.use(
+      "/assets",
+      express.static(path.join(webDist, "assets"), { dotfiles: "allow" }),
+    );
+    app.use(express.static(webDist));
+    app.get("/{*path}", (_req, res) =>
+      res.sendFile(path.join(webDist, "index.html")),
+    );
+  }
+}
 app.use((_req, res) =>
   res.status(404).json({ error: "Tutor route not found" }),
 );
 if (process.env.FM_TUTOR_TEST !== "1")
-  app.listen(Number(process.env.PORT) || 8080, "0.0.0.0", () =>
-    console.log("Independent FM voice tutor listening"),
-  );
+  app.listen(Number(process.env.PORT) || 8080, "0.0.0.0", () => {
+    console.log("FM conversational evidence preview listening");
+    void runReleaseSmoke(Number(process.env.PORT) || 8080);
+  });
 export default app;

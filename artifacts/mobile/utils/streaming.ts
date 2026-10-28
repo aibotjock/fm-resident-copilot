@@ -65,7 +65,7 @@ export async function streamClinicalQuery(
     });
 
     if (!response.ok) {
-      callbacks.onError(`Server error: ${response.status}`);
+      callbacks.onError(response.status===401?"Unlock the private app using Talk to Copilot, then return and retry.":`Server error: ${response.status}`);
       return;
     }
 
