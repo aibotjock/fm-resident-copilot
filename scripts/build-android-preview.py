@@ -9,8 +9,8 @@ import os, pathlib, subprocess, shutil, secrets, zipfile, json, urllib.parse
 root = pathlib.Path(__file__).resolve().parents[1]
 sdk = pathlib.Path(os.environ['ANDROID_SDK_ROOT'])
 base = os.environ['FM_ANDROID_BASE_URL'].rstrip('/')
-version_code = os.environ.get('FM_ANDROID_VERSION_CODE','20261029')
-version_name = os.environ.get('FM_ANDROID_VERSION_NAME','1.1.1-preview')
+version_code = os.environ.get('FM_ANDROID_VERSION_CODE','20261030')
+version_name = os.environ.get('FM_ANDROID_VERSION_NAME','1.1.2-preview')
 if not version_code.isdigit():
     raise SystemExit('FM_ANDROID_VERSION_CODE must be a positive integer')
 url = urllib.parse.urlsplit(base)
