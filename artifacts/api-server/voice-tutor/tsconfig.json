@@ -2,13 +2,8 @@
   "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
     "noEmit": true,
-    "types": [
-      "node"
-    ],
-    "lib": [
-      "es2022",
-      "dom"
-    ]
+    "types": ["node"],
+    "lib": ["es2022", "dom"]
   },
   "include": [
     "core.ts",
@@ -28,7 +23,12 @@
     "conversation.ts",
     "source-registry.ts",
     "pdf-parse.d.ts",
-    "evidence.test.ts"
+    "evidence.test.ts",
+    "conversation-memory.ts",
+    "session-settings.ts",
+    "long-session.test.ts",
+    "performance.ts",
+    "performance.test.ts"
   ],
   "references": [
     {

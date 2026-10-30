@@ -240,6 +240,185 @@ test("official lookup is isolated, approved, and strips executable page content"
   }
 });
 
+test("active sessions renew beyond the original one-hour expiry", async () => {
+  const now = Date.now,
+    start = now();
+  try {
+    const login = await request(
+      "/api/login",
+      { code: process.env.FM_TUTOR_ACCESS_TOKEN },
+      false,
+    );
+    assert.equal(login.status, 200);
+    cookie = login.headers.get("set-cookie")!.split(";")[0];
+    Date.now = () => start + 30 * 60 * 1000;
+    const renewed = await request("/api/session/keepalive");
+    assert.equal(renewed.status, 200);
+    assert.match(renewed.headers.get("set-cookie")!, /HttpOnly/);
+    Date.now = () => start + 70 * 60 * 1000;
+    assert.equal((await request("/api/session/keepalive")).status, 200);
+  } finally {
+    Date.now = now;
+  }
+});
+
+test("case checkpoints restore after a reconnect and never bleed into a new case", async () => {
+  await request("/api/conversation/reset", {});
+  const oldKey = process.env.OPENAI_API_KEY;
+  delete process.env.OPENAI_API_KEY;
+  try {
+    const result = await request("/api/conversation", {
+      query: "Explain the fictional Agent Z teaching scenario",
+      caseId: "case-reconnect-fixture",
+      history: [
+        { role: "user", content: "Fictional patient has an Agent Z allergy." },
+      ],
+      resumeScenario: {
+        confirmed: { allergy: "Agent Z reaction", pregnancy: "not pregnant" },
+        hypothetical: { pregnancy: "pregnant" },
+        revision: 4,
+      },
+    });
+    assert.equal(result.status, 200);
+    const answer: any = await result.json();
+    assert.equal(answer.scenario.confirmed.pregnancy, "not pregnant");
+    assert.equal(answer.scenario.hypothetical.pregnancy, "pregnant");
+    assert.equal(
+      (
+        await request("/api/conversation", {
+          query: "Another fictional question",
+          caseId: "different-case",
+        })
+      ).status,
+      409,
+    );
+    await request("/api/conversation/reset", {});
+    const state: any = await (await request("/api/conversation/state")).json();
+    assert.equal(state.caseId, null);
+    assert.deepEqual(state.scenario.confirmed, {});
+    assert.deepEqual(state.scenario.hypothetical, {});
+    assert.equal(state.latestAnswer, null);
+    assert.equal(
+      (
+        await request("/api/conversation", {
+          query: "A fresh fictional scenario",
+          caseId: "different-case",
+        })
+      ).status,
+      200,
+    );
+  } finally {
+    if (oldKey === undefined) delete process.env.OPENAI_API_KEY;
+    else process.env.OPENAI_API_KEY = oldKey;
+  }
+});
+
+test("voice renewal preserves evidence mode and mute, while manual stop cancels renewal", async () => {
+  const { readFileSync } = await import("node:fs");
+  const vm = await import("node:vm");
+  const nodes = new Map<string, any>(),
+    timers: any[] = [];
+  const node = () => ({
+    textContent: "",
+    value: "",
+    disabled: false,
+    classList: { add() {}, remove() {}, toggle() {} },
+    setAttribute(name: string, value: string) {
+      (this as any)[name] = value;
+    },
+    replaceChildren() {},
+    append() {},
+    click() {},
+    pause() {},
+    play: async () => {},
+  });
+  const schedule = (fn: () => unknown, ms: number) => {
+    const timer = { fn, ms, cancelled: false };
+    timers.push(timer);
+    return timer;
+  };
+  const sandbox = vm.createContext({
+    document: {
+      getElementById(id: string) {
+        if (!nodes.has(id)) nodes.set(id, node());
+        return nodes.get(id);
+      },
+      createElement: node,
+      createTextNode: (s: string) => s,
+    },
+    window: { addEventListener() {} },
+    localStorage: {
+      getItem() {
+        return null;
+      },
+      setItem() {},
+    },
+    setTimeout: schedule,
+    setInterval: schedule,
+    clearTimeout: (timer: any) => {
+      if (timer) timer.cancelled = true;
+    },
+    clearInterval: (timer: any) => {
+      if (timer) timer.cancelled = true;
+    },
+    fetch: async () =>
+      new Response("v=0\r\nfixture", {
+        headers: { "content-type": "application/sdp" },
+      }),
+    console,
+  });
+  vm.runInContext(
+    readFileSync("artifacts/api-server/voice-tutor/dist/learning.js", "utf8"),
+    sandbox,
+  );
+  vm.runInContext(
+    readFileSync("artifacts/api-server/voice-tutor/index.html", "utf8").match(
+      /<script>([\s\S]*?)<\/script>/,
+    )![1],
+    sandbox,
+  );
+  vm.runInContext(
+    `
+    globalThis.evidence = true; globalThis.tracks = [];
+    window.FMConversation = {evidenceVoice:()=>evidence, voiceStopped(){evidence=false;}};
+    globalThis.navigator={mediaDevices:{getUserMedia:async()=>{
+      const track={enabled:true,stopped:false,stop(){this.stopped=true}};tracks.push(track);
+      return {getAudioTracks:()=>[track],getTracks:()=>[track]};
+    }}};
+    globalThis.crypto={randomUUID:()=>"renewal-fixture"};
+    globalThis.RTCPeerConnection=class {
+      createDataChannel(){this.channel={readyState:"open",send(){},close(){}};return this.channel;}
+      async createOffer(){return {sdp:"v=0\\r\\nfixture"};}
+      async setLocalDescription(){} async setRemoteDescription(){this.channel.onopen?.();}
+      close(){} addTrack(){}
+    }; window.RTCPeerConnection=RTCPeerConnection;
+  `,
+    sandbox,
+  );
+  nodes.get("topic").value = topics[0]!.id;
+  nodes.get("learningTrack").value = "guided";
+  await nodes.get("start").onclick();
+  nodes.get("mute").onclick();
+  const renewal = timers.find((timer) => timer.ms === 45 * 60 * 1000);
+  assert.ok(renewal);
+  renewal.fn();
+  await new Promise((resolve) => setImmediate(resolve));
+  assert.equal(vm.runInContext("tracks.length", sandbox), 2);
+  assert.equal(vm.runInContext("tracks[0].stopped", sandbox), true);
+  assert.equal(vm.runInContext("tracks[1].enabled", sandbox), false);
+  assert.equal(vm.runInContext("evidence", sandbox), true);
+  const nextRenewal = timers
+    .filter((timer) => timer.ms === 45 * 60 * 1000)
+    .at(-1);
+  assert.notEqual(nextRenewal, renewal);
+  nodes.get("stop").onclick();
+  assert.equal(nextRenewal.cancelled, true);
+  assert.equal(vm.runInContext("evidence", sandbox), false);
+  nextRenewal.fn();
+  await new Promise((resolve) => setImmediate(resolve));
+  assert.equal(vm.runInContext("tracks.length", sandbox), 2);
+});
+
 test("browser controls mute capture and release every track on end", async () => {
   const { readFileSync } = await import("node:fs");
   const vm = await import("node:vm");

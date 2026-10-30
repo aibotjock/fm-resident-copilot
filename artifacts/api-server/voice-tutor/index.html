@@ -574,6 +574,8 @@
       muted = false,
       connecting = false,
       sessionTimer,
+      keepaliveTimer,
+      resumeMuted = false,
       activeTopic = "",
       toolChain = Promise.resolve(),
       seen = new Set(),
@@ -1098,7 +1100,7 @@
     };
     function persist() {
       try {
-        const saved = data.rememberConversation === true ? data : { ...data, history: [], checkpoint: "", curriculumCheckpoints: {} };
+        const saved = data.rememberConversation === true ? data : { ...data, history: [], checkpoint: "", curriculumCheckpoints: {}, evidenceConversationHistory: [], evidenceScenario: undefined, evidenceCaseId: undefined };
         localStorage.setItem(storage, JSON.stringify(saved));
       } catch {
         fail(
@@ -2062,6 +2064,7 @@
         return;
       }
       if (e.type === "input_audio_buffer.speech_stopped") {
+        if (window.FMConversation?.evidenceVoice()) FMConversation.markSpeechStopped();
         state("Thinking…");
         return;
       }
@@ -2116,12 +2119,17 @@
           );
       }
     }
-    function stop() {
-      window.FMConversation?.voiceStopped();
+    function stop(preserveEvidenceVoice = false) {
+      if (preserveEvidenceVoice === true) window.FMConversation?.voiceRenewing?.();
+      if (preserveEvidenceVoice !== true) {
+        window.FMConversation?.voiceStopped();
+        resumeMuted = false;
+      }
       connectionEpoch++;
       responseTopics.clear();
       toolOutputs.clear();
       clearTimeout(sessionTimer);
+      clearInterval(keepaliveTimer);
       connecting = false;
       const oldPc = pc,
         oldDc = dc,
@@ -2180,6 +2188,9 @@
           return;
         }
         stream = media;
+        muted = resumeMuted;
+        stream.getAudioTracks().forEach((track) => (track.enabled = !muted));
+        resumeMuted = false;
         pc = new RTCPeerConnection();
         pc.ontrack = (e) => {
           $("audio").srcObject = e.streams[0];
@@ -2204,13 +2215,30 @@
         dc.onopen = () => {
           if (epoch !== connectionEpoch) return;
           connecting = false;
+          if (window.FMConversation?.evidenceVoice()) window.FMConversation.voiceConnected?.();
           activeTopic = $("topic").value;
           voiceSessionId = crypto.randomUUID();
           for (const id of ["mute", "stop", "case", "quiz", "plan", "send"])
             $(id).disabled = false;
+          $("mute").textContent = muted ? "Unmute mic" : "Mute mic";
+          $("mute").setAttribute("aria-pressed", String(muted));
+          keepaliveTimer = setInterval(() => {
+            if (epoch !== connectionEpoch) return;
+            void api("session/keepalive").catch((error) => {
+              if (epoch === connectionEpoch) { stop(); fail(error.message); }
+            });
+          }, 2 * 60 * 1000);
+          // Renew the transport before the provider's connection lifetime; retain case state.
+          sessionTimer = setTimeout(() => {
+            if (epoch !== connectionEpoch) return;
+            const wasMuted = muted;
+            stop(true);
+            resumeMuted = wasMuted;
+            state("Renewing voice connection…");
+            void $("start").onclick();
+          }, 45 * 60 * 1000);
           state("Listening…");
           if (window.FMConversation?.evidenceVoice()) {
-            sessionTimer = setTimeout(stop, 20 * 60 * 1000);
             return;
           }
           ask(
@@ -2228,13 +2256,6 @@
                     ? "Resume my saved guided clinical case at its next unfinished stage. Keep it unscored, follow the ordered clinical reasoning stages, ask one question and wait; do not start an unrelated case or a scored practice block."
                     : "Start a guided, unscored clinical case on the selected topic. Present the introduction/vignette and one opening question, then wait. Continue the same case through the ordered clinical reasoning stages; do not start a scored practice block."
                 : "Resume the active reviewed practice block. Use get_practice_question to present the current reviewed question, ask one question and wait, and preserve the selected teaching or assessment mode.",
-          );
-          sessionTimer = setTimeout(
-            () => {
-              stop();
-              fail("The 20-minute voice session ended. Start again to resume.");
-            },
-            20 * 60 * 1000,
           );
         };
         const offer = await pc.createOffer();

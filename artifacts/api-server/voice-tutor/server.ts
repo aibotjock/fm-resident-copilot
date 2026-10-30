@@ -46,6 +46,20 @@ import {
 } from "./presentation";
 import { releaseSmoke, runReleaseSmoke } from "./release-smoke";
 import { calculateWeightDose } from "./dose-arithmetic";
+import type { ProviderMeasurement } from "./performance";
+import {
+  retainConversation,
+  conversationContext,
+  CONTEXT_BYTES,
+  ARCHIVE_BYTES,
+} from "./conversation-memory";
+import {
+  answerModel,
+  searchModel,
+  reasoningEffort,
+  SESSION_IDLE_MS,
+  sessionLimitReached,
+} from "./session-settings";
 import {
   instructions,
   tools,
@@ -57,7 +71,7 @@ import {
 } from "./core";
 const app = express();
 app.disable("x-powered-by");
-app.use(express.json({ limit: "100kb" }));
+app.use(express.json({ limit: "2mb" }));
 app.use((_req, res, next) => {
   res.set({
     "Cache-Control": "no-store",
@@ -86,6 +100,7 @@ const sessions = new Map<
     latestAnswer?: EvidenceAnswer;
     evidenceController?: AbortController;
     pendingGeneratedQuiz?: string;
+    clientCaseId?: string;
   }
 >();
 setInterval(() => {
@@ -96,6 +111,15 @@ app.get("/api/healthz", (_req, res) =>
     status: "ok",
     evidenceRelease: EVIDENCE_RELEASE,
     onlineEvidenceConfigured: !!process.env.OPENAI_API_KEY,
+    answerModel: answerModel(),
+    searchModel: searchModel(),
+    reasoningEffort: reasoningEffort(),
+    conversationMemory: {
+      contextBytes: CONTEXT_BYTES,
+      archiveBytes: ARCHIVE_BYTES,
+      verbatim: true,
+    },
+    voiceSessionPolicy: "renew-connection-with-checkpoint",
     clinicalReview: "not_clinically_reviewed",
     releaseSmoke,
     experiment: true,
@@ -203,7 +227,7 @@ app.post("/api/login", (req, res) => {
   }
   const id = randomBytes(32).toString("hex");
   sessions.set(id, {
-    expires: Date.now() + 3600000,
+    expires: Date.now() + SESSION_IDLE_MS,
     calls: 0,
     busy: false,
     ids: [],
@@ -214,7 +238,7 @@ app.post("/api/login", (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
-      maxAge: 3600000,
+      maxAge: SESSION_IDLE_MS,
       path: "/",
     })
     .json({ ok: true });
@@ -237,6 +261,15 @@ app.use("/api", (req, res, next) => {
     return;
   }
   res.locals.session = session;
+  // An active study session renews its idle timeout, preserving its case and history.
+  session.expires = Date.now() + SESSION_IDLE_MS;
+  res.cookie("fm_tutor", id, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+    maxAge: SESSION_IDLE_MS,
+    path: "/",
+  });
   next();
 });
 // Railway terminates TLS at its trusted proxy.
@@ -246,7 +279,25 @@ const conversationInput = z.object({
   mode: z.enum(["quick", "teach", "quiz"]).default("quick"),
   topic: z.string().max(300).optional(),
   forceLookup: z.boolean().optional(),
+  caseId: z.string().min(1).max(80).optional(),
+  history: z
+    .array(
+      z.object({
+        role: z.enum(["user", "assistant"]),
+        content: z.string().max(50000),
+      }),
+    )
+    .max(5000)
+    .optional(),
+  resumeScenario: z
+    .object({
+      confirmed: z.record(z.string(), z.string().max(300)),
+      hypothetical: z.record(z.string(), z.string().max(300)),
+      revision: z.number().int().nonnegative(),
+    })
+    .optional(),
 });
+app.get("/api/session/keepalive", (_req, res) => res.json({ ok: true }));
 const scenarioInput = z.object({
   action: z.enum(["set", "vary", "restore", "reset"]),
   values: z.record(z.string(), z.string().max(300)).default({}),
@@ -263,10 +314,13 @@ app.get("/api/evidence/status", (_req, res) =>
     versions: cachedEvidenceVersions(),
     clinicalReview: "not_clinically_reviewed",
     onlineConfigured: !!process.env.OPENAI_API_KEY,
+    answerModel: answerModel(),
+    reasoningEffort: reasoningEffort(),
   }),
 );
 app.get("/api/conversation/state", (_req, res) =>
   res.json({
+    caseId: res.locals.session.clientCaseId || null,
     scenario: res.locals.session.scenario || initialScenario(),
     latestAnswer: res.locals.session.latestAnswer || null,
     question:
@@ -303,6 +357,8 @@ app.post("/api/conversation/scenario", (req, res) => {
 app.post("/api/conversation/reset", (_req, res) => {
   const s = res.locals.session;
   s.conversation = [];
+  s.clientCaseId = undefined;
+  s.pendingGeneratedQuiz = undefined;
   s.latestAnswer = undefined;
   s.scenario = initialScenario();
   s.conversationRevision = (s.conversationRevision || 0) + 1;
@@ -320,14 +376,37 @@ async function conversationAnswer(
   input: z.infer<typeof conversationInput>,
 ) {
   const s = res.locals.session;
-  if (
-    (s.evidenceCalls || 0) >=
-    Number(process.env.FM_EVIDENCE_SESSION_LIMIT || 30)
-  ) {
+  if (sessionLimitReached(s.evidenceCalls || 0, "FM_EVIDENCE_SESSION_LIMIT")) {
     res
       .status(429)
       .json({ error: "Evidence request limit reached. Unlock again later." });
     return null;
+  }
+  if (input.caseId && s.clientCaseId && input.caseId !== s.clientCaseId) {
+    res.status(409).json({
+      error:
+        "The active case changed. Start a new case or reload before continuing.",
+    });
+    return null;
+  }
+  if (input.caseId) s.clientCaseId = input.caseId;
+  if (!s.conversation?.length) {
+    if (input.history?.length)
+      s.conversation = retainConversation(input.history);
+    if (input.resumeScenario) {
+      // Device checkpoints carry explicit case facts, never inferred medical evidence.
+      let restored = updateScenario(
+        initialScenario(),
+        "set",
+        input.resumeScenario.confirmed,
+      );
+      restored = updateScenario(
+        restored,
+        "vary",
+        input.resumeScenario.hypothetical,
+      );
+      s.scenario = { ...restored, revision: input.resumeScenario.revision };
+    }
   }
   if (s.evidenceBusy) {
     s.evidenceController?.abort();
@@ -352,14 +431,20 @@ async function conversationAnswer(
       !/[?]|\b(next|another|new|quiz|hint|question)\b/i.test(input.query)
         ? "feedback"
         : "question";
+    const started = Date.now(),
+      providers: ProviderMeasurement[] = [];
+    const context = conversationContext(
+      input.history || s.conversation || [],
+      input.query,
+    );
     const result = await answerWithEvidence(
       {
         ...input,
         quizPhase,
-        history: s.conversation || [],
+        history: context,
         scenario: s.scenario || initialScenario(),
       },
-      {},
+      { observe: (measurement) => providers.push(measurement) },
       controller.signal,
     );
     if ((s.conversationRevision || 0) !== revision) {
@@ -370,11 +455,19 @@ async function conversationAnswer(
         });
       return null;
     }
-    s.conversation = [
+    s.conversation = retainConversation([
       ...(s.conversation || []),
       { role: "user", content: input.query },
       { role: "assistant", content: result.text },
-    ].slice(-12);
+    ]);
+    result.performance = {
+      model: answerModel(),
+      reasoning: reasoningEffort(),
+      elapsedMs: Date.now() - started,
+      contextTurns: context.length,
+      archiveTurns: s.conversation.length,
+      providers,
+    };
     s.latestAnswer = result;
     s.pendingGeneratedQuiz =
       input.mode === "quiz" ? result.nextQuestion : undefined;
@@ -407,13 +500,16 @@ app.post("/api/conversation", async (req, res) => {
   }
 });
 app.post("/api/conversation/speech", async (_req, res) => {
+  const audioStarted = Date.now();
   const s = res.locals.session,
     answer: EvidenceAnswer | undefined = s.latestAnswer;
   if (!answer) {
     res.status(409).json({ error: "Ask a question before reading its answer" });
     return;
   }
-  if ((s.referenceCalls || 0) >= 40) {
+  if (
+    sessionLimitReached(s.referenceCalls || 0, "FM_REFERENCE_SESSION_LIMIT")
+  ) {
     res.status(429).json({ error: "Speech limit reached for this session" });
     return;
   }
@@ -462,6 +558,11 @@ app.post("/api/conversation/speech", async (_req, res) => {
       }
       audio.push(Buffer.from(await r.arrayBuffer()));
     }
+    res.set({
+      "X-FM-Speech-Preparation-Ms": String(Date.now() - audioStarted),
+      "X-FM-Speech-Model": process.env.FM_SPEECH_MODEL || "gpt-4o-mini-tts",
+      "X-FM-Speech-Characters": String(answer.speech.length),
+    });
     res.type("audio/mpeg").send(Buffer.concat(audio));
   } catch {
     res.status(502).json({
@@ -672,7 +773,12 @@ app.post("/api/medications/labels", async (req, res) => {
     res.status(403).json({ error: "Approve this official label search first" });
     return;
   }
-  if ((session.referenceCalls || 0) >= 20) {
+  if (
+    sessionLimitReached(
+      session.referenceCalls || 0,
+      "FM_REFERENCE_SESSION_LIMIT",
+    )
+  ) {
     res.status(429).json({ error: "Reference request limit reached" });
     return;
   }
@@ -720,7 +826,12 @@ app.post("/api/medications/load", async (req, res) => {
     });
     return;
   }
-  if ((session.referenceCalls || 0) >= 20) {
+  if (
+    sessionLimitReached(
+      session.referenceCalls || 0,
+      "FM_REFERENCE_SESSION_LIMIT",
+    )
+  ) {
     res.status(429).json({ error: "Reference request limit reached" });
     return;
   }
@@ -868,7 +979,10 @@ app.post("/api/learning", (req, res) => {
 });
 app.post("/api/session", async (req, res) => {
   const session = res.locals.session;
-  if (session.busy || session.calls >= 10) {
+  if (
+    session.busy ||
+    sessionLimitReached(session.calls, "FM_VOICE_SESSION_LIMIT")
+  ) {
     res.status(429).json({
       error:
         "Session limit reached; wait for the current connection or unlock again later",
@@ -1006,7 +1120,7 @@ app.post("/api/lookup", async (req, res) => {
     return;
   }
   const session = res.locals.session;
-  if (session.calls >= 10) {
+  if (sessionLimitReached(session.calls, "FM_VOICE_SESSION_LIMIT")) {
     res.status(429).json({ error: "Session request limit reached" });
     return;
   }

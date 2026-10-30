@@ -4,6 +4,8 @@ import {
   type Scenario,
 } from "./presentation";
 import type { EvidenceAnswer } from "./evidence";
+import { conversationContext, retainConversation } from "./conversation-memory";
+import { recordPerformance, type PerformanceSample } from "./performance";
 
 type Saved = {
   id: string;
@@ -41,6 +43,35 @@ let epoch = 0,
   scenario: Scenario = { confirmed: {}, hypothetical: {}, revision: 0 };
 let latestQuestion = "";
 let pendingTranscript = "";
+let speechStoppedAt: number | undefined,
+  playbackOrigin:
+    | { at: number; input: "typed" | "speech_stop_event" }
+    | undefined;
+let voiceConnectedAt: number | undefined;
+function measured(sample: PerformanceSample) {
+  try {
+    recordPerformance(options.data(), sample);
+    options.persist();
+  } catch {
+    /* Measurements must not interrupt teaching. */
+  }
+}
+export function markSpeechStopped() {
+  speechStoppedAt = performance.now();
+}
+export function voiceConnected() {
+  voiceConnectedAt = performance.now();
+}
+export function voiceRenewing() {
+  if (voiceConnectedAt !== undefined)
+    measured({
+      kind: "voice_connection",
+      model: latest?.performance?.model || "unknown",
+      reasoning: latest?.performance?.reasoning,
+      elapsedMs: performance.now() - voiceConnectedAt,
+    });
+  voiceConnectedAt = undefined;
+}
 export async function handleTranscript(text: string) {
   if (
     pendingTranscript &&
@@ -66,6 +97,7 @@ export async function handleTranscript(text: string) {
       text,
     )
   ) {
+    speechStoppedAt = undefined; // Confirmation time is not model-processing time.
     pendingTranscript = text;
     input("recognizedQuestion").value = text;
     status(
@@ -99,6 +131,9 @@ export function evidenceVoice() {
   return voice;
 }
 export function voiceStopped() {
+  voiceRenewing();
+  speechStoppedAt = undefined;
+  playbackOrigin = undefined;
   voice = false;
   const b = document.getElementById("evidenceVoice");
   if (b) b.textContent = "Start evidence voice";
@@ -149,6 +184,8 @@ export async function changeScenario(
 ) {
   await cancel();
   scenario = await options.api("conversation/scenario", { action, values });
+  options.data().evidenceScenario = scenario;
+  options.persist();
   renderScenario();
   return scenario;
 }
@@ -156,11 +193,12 @@ export function showAnswer(answer: EvidenceAnswer, question = "") {
   latestQuestion = question;
   if ((answer as any).scenario) {
     scenario = (answer as any).scenario;
+    options.data().evidenceScenario = scenario;
     renderScenario();
   }
   latest = answer;
   $("evidenceAnswer").textContent = cleanClinicalText(answer.text);
-  $("evidenceAnswer").dataset.question=question;
+  $("evidenceAnswer").dataset.question = question;
   $("evidenceSources").replaceChildren();
   $("doseChoices").replaceChildren();
   answer.medications.forEach((m, i) => {
@@ -271,6 +309,12 @@ export async function submit(query: string, forceLookup = false) {
   controller?.abort();
   controller = new AbortController();
   const revision = ++epoch;
+  const requestStarted = performance.now();
+  playbackOrigin = {
+    at: speechStoppedAt ?? requestStarted,
+    input: speechStoppedAt === undefined ? "typed" : "speech_stop_event",
+  };
+  speechStoppedAt = undefined;
   options.log("user", query);
   status(
     forceLookup
@@ -284,16 +328,62 @@ export async function submit(query: string, forceLookup = false) {
     const r = await fetch("/api/conversation", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query, mode, topic: focus, forceLookup }),
+      body: JSON.stringify({
+        query,
+        mode,
+        topic: focus,
+        forceLookup,
+        caseId: (options.data().evidenceCaseId ||=
+          globalThis.crypto?.randomUUID?.() || String(Date.now())),
+        history: conversationContext(
+          options.data().evidenceConversationHistory || [],
+          query,
+        ),
+        resumeScenario: scenario,
+      }),
       signal: controller.signal,
     });
     const result = await r.json();
     if (!r.ok) throw Error(result.error || "Evidence request failed");
     if (revision !== epoch) return;
+    measured({
+      kind: "answer",
+      model: result.performance?.model || "unknown",
+      reasoning: result.performance?.reasoning,
+      elapsedMs: performance.now() - requestStarted,
+      input: playbackOrigin?.input,
+      status:
+        result.lookup?.status === "answer_failed" ||
+        result.lookup?.status === "lookup_failed"
+          ? "failed"
+          : "ok",
+      support: result.support,
+      contextTurns: result.performance?.contextTurns,
+      archiveTurns: result.performance?.archiveTurns,
+      providers: result.performance?.providers,
+    });
+    const previous = options.data().evidenceConversationHistory || [];
+    const retained = retainConversation([
+      ...previous,
+      { role: "user", content: query },
+      { role: "assistant", content: result.text },
+    ]);
+    options.data().evidenceConversationHistory = retained;
     showAnswer(result, query);
     options.log("assistant", result.text);
+    if (retained.length < previous.length + 2)
+      status(
+        "The oldest transcript entries have rolled out of the device memory budget. Export the remaining study progress if you need a separate copy, and restate any missing case facts.",
+      );
     if (input("speakAnswers").checked || voice) await readLatest(revision);
   } catch (e) {
+    if ((e as Error).name !== "AbortError")
+      measured({
+        kind: "answer",
+        model: "unknown",
+        elapsedMs: performance.now() - requestStarted,
+        status: "failed",
+      });
     if (revision === epoch && (e as Error).name !== "AbortError")
       status((e as Error).message);
   }
@@ -316,6 +406,7 @@ export async function readLatest(revision = epoch) {
   if (!latest) return;
   stopPlayback();
   status("Preparing speech from the displayed answer…");
+  const audioRequestStarted = performance.now();
   try {
     const r = await fetch("/api/conversation/speech", {
       method: "POST",
@@ -328,8 +419,28 @@ export async function readLatest(revision = epoch) {
       );
     const blob = await r.blob();
     if (revision !== epoch) return;
+    measured({
+      kind: "speech_preparation",
+      model: r.headers.get("X-FM-Speech-Model") || "unknown",
+      elapsedMs: performance.now() - audioRequestStarted,
+      audioCharacters: Number(r.headers.get("X-FM-Speech-Characters") || 0),
+    });
     const url = URL.createObjectURL(blob);
     audio = new Audio(url);
+    const origin = playbackOrigin;
+    playbackOrigin = undefined;
+    const player = audio;
+    player.onplaying = () => {
+      if (revision === epoch && origin)
+        measured({
+          kind: "playback",
+          model: latest?.performance?.model || "unknown",
+          reasoning: latest?.performance?.reasoning,
+          elapsedMs: performance.now() - origin.at,
+          input: origin.input,
+        });
+      player.onplaying = null;
+    };
     audio.onended = () => {
       URL.revokeObjectURL(url);
       status(voice ? "Listening…" : "Ready");
@@ -350,7 +461,14 @@ export async function readLatest(revision = epoch) {
 async function newCase() {
   await cancel();
   await options.api("conversation/reset", {});
+  options.data().evidenceConversationHistory = [];
+  speechStoppedAt = undefined;
+  playbackOrigin = undefined;
+  options.data().evidenceCaseId =
+    globalThis.crypto?.randomUUID?.() || String(Date.now());
   scenario = { confirmed: {}, hypothetical: {}, revision: 0 };
+  options.data().evidenceScenario = scenario;
+  options.persist();
   latest = undefined;
   $("evidenceAnswer").textContent = "";
   $("evidenceSources").replaceChildren();
@@ -455,6 +573,11 @@ function renderSaved() {
 }
 export function init(o: Options) {
   options = o;
+  // Preserve a previous explicit choice. New device profiles remember educational conversations.
+  if (options.data().rememberConversation === undefined)
+    options.data().rememberConversation = true;
+  if (options.data().evidenceScenario)
+    scenario = options.data().evidenceScenario;
   const anchor = $("typed");
   const panel = document.createElement("section");
   panel.className = "card";
@@ -469,7 +592,7 @@ export function init(o: Options) {
   <p id="evidenceState" role="status">Ready</p><div id="evidenceAnswer" style="white-space:pre-wrap"></div><div class="row"><button id="readEvidence" type="button">Read answer</button><button id="refreshEvidence" type="button">Check latest guidance</button><button id="saveEvidence" type="button">Save answer for review</button></div><div id="evidenceSources"></div>
   <details><summary>Weight-based dose arithmetic</summary><p>Requires a supported mg/kg regimen, explicit frequency and scoped maximum. No regimen or liquid concentration is assumed.</p><select id="doseChoices" aria-label="Supported regimen"></select><label for="doseWeight">Weight in kilograms</label><input id="doseWeight" type="number" step="0.1"><label><input type="checkbox" id="doseApplicability"> I have checked the population, formulation and organ-function applicability</label><button id="calculateDose" type="button">Calculate from this regimen</button><p id="doseCalculation"></p></details>
   <details><summary>Saved answers &amp; spaced review</summary><p>Self-assessed review is separate from scored practice. Changed-source items are paused until reassessed.</p><div id="savedEvidence"></div></details>
-  <label><input type="checkbox" id="rememberConversation"> Remember conversation and case checkpoints on this device</label><p><small>Study progress is saved separately. Case conversation stays temporary by default. Save only educational material without patient identifiers.</small></p>`;
+  <label><input type="checkbox" id="rememberConversation"> Remember conversation and case checkpoints on this device</label><p><small>Saved on this device when enabled; bounded context uses recent and relevant earlier exchanges. Older content can roll out at storage limits. Save only educational material without patient identifiers.</small></p>`;
   const main = document.querySelector("#workspace .grid > section");
   if (main) main.prepend(panel);
   else anchor.before(panel);
@@ -595,9 +718,15 @@ export function init(o: Options) {
   void options
     .api("conversation/state")
     .then((result) => {
-      scenario = result.scenario;
+      if (result.caseId) options.data().evidenceCaseId = result.caseId;
+      if (
+        result.latestAnswer ||
+        !options.data().evidenceConversationHistory?.length
+      )
+        scenario = result.scenario;
       renderScenario();
-      if (result.latestAnswer) showAnswer(result.latestAnswer,result.question||"");
+      if (result.latestAnswer)
+        showAnswer(result.latestAnswer, result.question || "");
     })
     .catch(() => {});
 }

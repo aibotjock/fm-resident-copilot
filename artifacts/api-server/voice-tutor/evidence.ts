@@ -6,6 +6,9 @@ import { z } from "zod/v4";
 import { allowedDomains, officialSource } from "./source-registry";
 import { cleanClinicalText, speechText, type Scenario } from "./presentation";
 import { CANDIDATE_ENTRIES } from "../src/rag/sources/candidate";
+import { conversationContext } from "./conversation-memory";
+import { answerModel, searchModel, reasoningOptions } from "./session-settings";
+import { providerMeasurement, type ProviderMeasurement } from "./performance";
 
 export const EVIDENCE_RELEASE = "conversation-evidence-2026-10-28-v1";
 const hash = (text: string) => createHash("sha256").update(text).digest("hex");
@@ -109,6 +112,14 @@ export type EvidenceAnswer = {
   release: string;
   scenarioRevision: number;
   evidenceFingerprint: string;
+  performance?: {
+    model: string;
+    reasoning: string;
+    elapsedMs: number;
+    contextTurns: number;
+    archiveTurns: number;
+    providers: ProviderMeasurement[];
+  };
 };
 type Fetcher = typeof fetch;
 export type EvidenceDeps = {
@@ -117,6 +128,7 @@ export type EvidenceDeps = {
   now?: () => number;
   apiKey?: string;
   test?: boolean;
+  observe?: (measurement: ProviderMeasurement) => void;
 };
 const generic = new Set(
   "a an the what which how why is are was were to of in on for with and or give tell me about please explain reference guidelines latest current compare check dose dosing treatment patient she he they it this that if could should would needs need".split(
@@ -475,7 +487,7 @@ Use guideline recommendations for management; distinguish news, patient educatio
 Answer the supported remainder when details are missing. Ask one concise clarifying question only when it changes the requested case-specific recommendation; general educational questions may state their population. Do not invent patient findings. Distinguish confirmed case facts, assumptions and hypothetical variations. No unsupported second-/third-line ladders. Distinguish preferred regimens, alternatives and indications.
 For medication records, copy dose/units/route/frequency/duration/formulation/adjustments/precautions LITERALLY from supporting quotes or set null. Explicitly distinguish mg/kg/day from mg/kg/dose, formulation concentration from administered dose, labeling from supported off-label guideline use. Include indication and population in the quote. Do not calculate a dose from uncertain inputs. Do not infer normal organ function or allergy type. If any field is unavailable preserve the supported fields and list gaps. Do not use a medication claim in prose to bypass medication records. No invented numerical confidence.
 Only when flashcards are requested, fill cards with focused, answerable study questions, source-supported answers and exact supporting quotes. Otherwise return an empty cards array. Never leak cards or their answers during the initial quiz question.
-Use brief readable prose with natural organization names, never reference IDs, raw URLs, Markdown tables or citation syntax in text. The server supplies clickable metadata. Quick mode is concise but retains exceptions; teach mode explains supported reasoning. Quiz mode asks exactly one original, source-supported question and waits: put the question/options only in next_question, put NO answer, hidden key, rationale or claims that reveal the answer in this response. Subsequent quiz feedback is source-bounded; unreviewed generated items remain unscored. Document dates must be actual dates in supplied metadata or passages, never retrieval dates. If unknown use null. Gaps must be plain descriptions, without raw source text or identifiers.`;
+Use brief readable prose with natural organization names, never reference IDs, raw URLs, Markdown tables or citation syntax in text. The server supplies clickable metadata. In quick mode, lead with the answer, usually 2-5 short sentences; avoid preambles, repeated disclaimers and repeating the question. This is a length target, never a reason to omit a necessary contraindication, adjustment, unit, qualification or uncertainty. Teach mode adds only the explanation requested. Conversation history is context, NEVER clinical evidence; recheck prior medical claims against the supplied documents. Older context may be omitted: ask rather than invent missing case facts. Quiz mode asks exactly one original, source-supported question and waits: put the question/options only in next_question, put NO answer, hidden key, rationale or claims that reveal the answer in this response. Subsequent quiz feedback is source-bounded; unreviewed generated items remain unscored. Document dates must be actual dates in supplied metadata or passages, never retrieval dates. If unknown use null. Gaps must be plain descriptions, without raw source text or identifiers.`;
 
 export function assembleAnswer(
   raw: unknown,
@@ -608,6 +620,9 @@ async function provider(
   deps: EvidenceDeps,
   signal?: AbortSignal,
 ) {
+  const started = Date.now();
+  const model = String((body as any).model);
+  const phase = (body as any).tools ? "search" : "answer";
   const key = deps.apiKey || process.env.OPENAI_API_KEY;
   if (!key)
     throw Error("Online evidence lookup is not configured on this server");
@@ -626,10 +641,32 @@ async function provider(
     },
   );
   if (!response.ok) {
+    try {
+      deps.observe?.(
+        providerMeasurement(
+          model,
+          phase,
+          Date.now() - started,
+          response.status,
+        ),
+      );
+    } catch {}
     await response.body?.cancel();
     throw Error(`Evidence provider request failed (${response.status})`);
   }
-  return (await response.json()) as any;
+  const result = (await response.json()) as any;
+  try {
+    deps.observe?.(
+      providerMeasurement(
+        model,
+        phase,
+        Date.now() - started,
+        response.status,
+        result,
+      ),
+    );
+  } catch {}
+  return result;
 }
 function outputText(r: any) {
   return (r.output || [])
@@ -653,8 +690,9 @@ export async function discoverOfficialSources(
   const operation = (async () => {
     const r = await provider(
       {
-        model: process.env.FM_EVIDENCE_SEARCH_MODEL || "gpt-4.1",
-        max_output_tokens: 1200,
+        model: searchModel(),
+        ...reasoningOptions(searchModel()),
+        max_output_tokens: 6000,
         tools: [
           {
             type: "web_search",
@@ -725,13 +763,7 @@ export async function answerWithEvidence(
     mode = ["quick", "teach", "quiz"].includes(input.mode || "")
       ? input.mode!
       : "quick";
-  const history = (input.history || [])
-    .filter(
-      (t) =>
-        ["user", "assistant"].includes(t.role) && typeof t.content === "string",
-    )
-    .slice(-12)
-    .map((t) => ({ ...t, content: t.content.slice(0, 3500) }));
+  const history = conversationContext(input.history || [], query);
   const lookupQuery = researchQuery(
     query,
     input.topic || "",
@@ -829,8 +861,9 @@ export async function answerWithEvidence(
   try {
     const r = await provider(
       {
-        model: process.env.FM_EVIDENCE_ANSWER_MODEL || "gpt-4.1",
-        max_output_tokens: mode === "quick" ? 4000 : 6000,
+        model: answerModel(),
+        ...reasoningOptions(answerModel()),
+        max_output_tokens: mode === "quick" ? 8000 : 12000,
         text: {
           format: {
             type: "json_schema",
