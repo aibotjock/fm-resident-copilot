@@ -1639,6 +1639,12 @@
         ),
       );
       $("topic").replaceChildren();
+      if (matches.length) {
+        const random = document.createElement("option");
+        random.value = "__random__";
+        random.textContent = "Random case";
+        $("topic").append(random);
+      }
       for (const t of matches) {
         const o = document.createElement("option");
         o.value = t.id;
@@ -1646,7 +1652,9 @@
         $("topic").append(o);
       }
       if (matches.some((t) => t.id === old)) $("topic").value = old;
-      else $("topic").value = matches[0]?.id || "";
+      else $("topic").value = matches.length
+        ? matches[Math.floor(Math.random() * matches.length)].id
+        : "";
       if (wasActive || old !== $("topic").value) resetTopicSession();
       $("start").disabled = !matches.length;
       $("practiceStart").disabled = !matches.length;
@@ -1785,6 +1793,13 @@
         clearInterval(practiceTimer);
       };
     $("topic").onchange = () => {
+      if ($("topic").value === "__random__") {
+        const choices = Array.from($("topic").options).filter(
+          (option) => option.value !== "__random__",
+        );
+        if (!choices.length) return;
+        $("topic").value = choices[Math.floor(Math.random() * choices.length)].value;
+      }
       resetTopicSession();
       clearTopicEvidence();
       persist();
