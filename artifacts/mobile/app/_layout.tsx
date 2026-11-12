@@ -29,6 +29,8 @@ function RootLayoutNav() {
   return (
     <Stack screenOptions={{ headerBackTitle: "Back" }}>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="antibiotics" options={{ title: "Antibiotics" }} />
+      <Stack.Screen name="screening" options={{ title: "Screening" }} />
       <Stack.Screen
         name="response"
         options={{
@@ -81,13 +83,12 @@ export default function RootLayout() {
           <AppProvider>
             <GestureHandlerRootView style={{ flex: 1, width: "100%", maxWidth: Platform.OS === "web" ? 960 : undefined, alignSelf: "center" }}>
               <KeyboardProvider>
-                {process.env.EXPO_PUBLIC_REFERENCE_PREVIEW === "1" && (
-                  <View accessibilityRole="alert" style={{ backgroundColor: "#FFF3CD", paddingHorizontal: 16, paddingVertical: 10 }}>
-                    <Text style={{ color: "#664D03", fontSize: 13, textAlign: "center" }}>
-                      Guideline preview · Medical review incomplete · Study testing only
-                    </Text>
-                  </View>
-                )}
+                <View style={{ backgroundColor: "#FFF3CD", paddingHorizontal: 16, paddingVertical: 8 }}>
+                  <Text style={{ color: "#664D03", fontSize: 13, textAlign: "center" }}>
+                    For learning only. Do not use to guide patient care.
+                    {process.env.EXPO_PUBLIC_REFERENCE_PREVIEW === "1" && " Medical review of the reference library is incomplete."}
+                  </Text>
+                </View>
                 <RootLayoutNav />
                 {onboardingChecked && (
                   <Modal

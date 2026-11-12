@@ -144,7 +144,7 @@ export default function BookmarksScreen() {
             No bookmarks yet
           </Text>
           <Text style={[styles.emptySubtitle, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
-            Tap the bookmark icon on any response to save it here for quick access during rounds or study sessions
+            Tap the bookmark icon on any response to save it here to revisit it during study sessions
           </Text>
         </View>
       ) : (
@@ -170,7 +170,7 @@ export default function BookmarksScreen() {
                     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                     router.push({
                       pathname: "/response",
-                      params: { query: b.query, mode: b.mode, condition: b.condition, system: b.system },
+                      params: { savedFrom: "bookmark", savedId: b.id },
                     });
                   }}
                   style={({ pressed }) => [

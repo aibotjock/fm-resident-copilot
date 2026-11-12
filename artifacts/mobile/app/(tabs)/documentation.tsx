@@ -225,12 +225,7 @@ export default function DocumentationScreen() {
                     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                     router.push({
                       pathname: "/response",
-                      params: {
-                        query: h.query,
-                        mode: MODE,
-                        condition: h.condition,
-                        system: h.system,
-                      },
+                      params: { savedFrom: "history", savedId: h.id },
                     });
                   }}
                   style={({ pressed }) => [

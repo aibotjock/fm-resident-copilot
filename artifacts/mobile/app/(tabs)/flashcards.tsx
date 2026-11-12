@@ -16,6 +16,7 @@ import { router } from "expo-router";
 import * as Haptics from "expo-haptics";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/colors";
+import { ANTIBIOTIC_CARDS } from "@/content/antibiotics";
 import { ConditionGrid } from "@/components/ConditionGrid";
 import { useApp } from "@/context/AppContext";
 
@@ -27,8 +28,6 @@ const PLACEHOLDER = "e.g. Flashcards for heart failure management...";
 const QUICK_TOPICS = [
   "Diabetes medications mechanism and indications",
   "Heart failure pharmacotherapy",
-  "Antibiotic coverage for common infections",
-  "Screening guidelines by age group",
   "Common EKG findings and diagnoses",
   "Vaccinations schedule for adults",
 ];
@@ -110,33 +109,49 @@ export default function FlashcardsScreen() {
               Spaced Review
             </Text>
             <Text style={[styles.heroSubtitle, { color: theme.textSecondary }]}>
-              Anki-style flip cards generated from indexed guidelines
+              Review built-in cards or generate a deck from indexed guidelines.
             </Text>
           </View>
 
-          <View
-            style={[
-              styles.previewCard,
-              {
-                backgroundColor: isDark ? "#1A1F35" : "#EDE9FE",
-                borderColor: isDark ? Colors.flashcardsDark : Colors.flashcards,
-              },
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => router.push("/antibiotics")}
+            style={({ pressed }) => [
+              styles.recentItem,
+              { backgroundColor: theme.surface, borderColor: theme.border, opacity: pressed ? 0.7 : 1 },
             ]}
           >
-            <View style={styles.previewCardInner}>
-              <Ionicons name="help-circle" size={20} color={MODE_COLOR} />
-              <Text style={[styles.previewText, { color: isDark ? "#C4B5FD" : Colors.flashcardsDark }]}>
-                What is the first-line agent for stage 1 hypertension in a non-Black patient without CKD?
+            <View style={[styles.recentIcon, { backgroundColor: `${MODE_COLOR}15` }]}>
+              <Ionicons name="layers-outline" size={18} color={MODE_COLOR} />
+            </View>
+            <View style={styles.recentContent}>
+              <Text style={[styles.previewText, { color: theme.text }]}>Antibiotics</Text>
+              <Text style={[styles.recentQuery, { color: theme.textSecondary }]}>
+                {ANTIBIOTIC_CARDS.length} cards and a linked reference
               </Text>
             </View>
-            <View style={[styles.previewDivider, { borderColor: `${MODE_COLOR}30` }]} />
-            <View style={styles.previewCardInner}>
-              <Ionicons name="checkmark-circle" size={20} color={Colors.boardPrep} />
-              <Text style={[styles.previewAnswer, { color: isDark ? "#6EE7B7" : Colors.boardPrepDark }]}>
-                Thiazide diuretic (e.g. chlorthalidone) or ACE inhibitor/ARB or long-acting CCB — per ACC/AHA 2017
+            <Ionicons name="chevron-forward" size={16} color={theme.textTertiary} />
+          </Pressable>
+
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => router.push("/screening")}
+            style={({ pressed }) => [
+              styles.recentItem,
+              { backgroundColor: theme.surface, borderColor: theme.border, opacity: pressed ? 0.7 : 1 },
+            ]}
+          >
+            <View style={[styles.recentIcon, { backgroundColor: `${MODE_COLOR}15` }]}>
+              <Ionicons name="clipboard-outline" size={18} color={MODE_COLOR} />
+            </View>
+            <View style={styles.recentContent}>
+              <Text style={[styles.previewText, { color: theme.text }]}>Screening guidelines</Text>
+              <Text style={[styles.recentQuery, { color: theme.textSecondary }]}>
+                USPSTF flashcards and a linked reference
               </Text>
             </View>
-          </View>
+            <Ionicons name="chevron-forward" size={16} color={theme.textTertiary} />
+          </Pressable>
 
           <View
             style={[
@@ -247,12 +262,7 @@ export default function FlashcardsScreen() {
                     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                     router.push({
                       pathname: "/response",
-                      params: {
-                        query: h.query,
-                        mode: MODE,
-                        condition: h.condition,
-                        system: h.system,
-                      },
+                      params: { savedFrom: "history", savedId: h.id },
                     });
                   }}
                   style={({ pressed }) => [
@@ -328,30 +338,7 @@ const styles = StyleSheet.create({
   modeLabel: { fontSize: 12, letterSpacing: 0.3 },
   heroTitle: { fontSize: 28 },
   heroSubtitle: { fontSize: 15, fontFamily: "Inter_400Regular", lineHeight: 22 },
-  previewCard: {
-    borderRadius: 16,
-    borderWidth: 2,
-    overflow: "hidden",
-  },
-  previewCardInner: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    gap: 10,
-    padding: 16,
-  },
-  previewDivider: { borderTopWidth: 1 },
-  previewText: {
-    flex: 1,
-    fontSize: 14,
-    fontFamily: "Inter_600SemiBold",
-    lineHeight: 20,
-  },
-  previewAnswer: {
-    flex: 1,
-    fontSize: 13,
-    fontFamily: "Inter_400Regular",
-    lineHeight: 20,
-  },
+  previewText: { fontSize: 16, fontFamily: "Inter_600SemiBold", lineHeight: 22 },
   inputCard: {
     borderRadius: 16,
     borderWidth: 1,

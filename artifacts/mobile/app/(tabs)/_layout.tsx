@@ -13,7 +13,7 @@ function NativeTabLayout() {
     <NativeTabs>
       <NativeTabs.Trigger name="index">
         <Icon sf={{ default: "stethoscope", selected: "stethoscope" }} />
-        <Label>Point of Care</Label>
+        <Label>Clinical Review</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="documentation">
         <Icon sf={{ default: "doc.text", selected: "doc.text.fill" }} />
@@ -60,7 +60,7 @@ function ClassicTabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Point of Care",
+          title: "Clinical Review",
           tabBarIcon: ({ color }) =>
             isIOS ? (
               <SymbolView name="stethoscope" tintColor={color} size={22} />
