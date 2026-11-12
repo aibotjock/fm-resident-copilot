@@ -24,4 +24,4 @@ export const CANDIDATE_ENTRIES: ReferenceEntry[] = SEED_CHUNKS.map((original,ind
   };
 });
 validateEntries(CANDIDATE_ENTRIES);
-export const CANDIDATE_VERSION=`refresh-2026-10-15-${versionDigest(CANDIDATE_ENTRIES).slice(0,12)}`;
+export const CANDIDATE_VERSION=`refresh-2026-11-12-${versionDigest(CANDIDATE_ENTRIES).slice(0,12)}`;

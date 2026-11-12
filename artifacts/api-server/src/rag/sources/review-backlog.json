@@ -154,7 +154,7 @@
   {
     "index": 19,
     "priorAssessment": "superseded",
-    "issue": "2024 vaccine summary is outdated. Current retrieved CDC adult notes use an age-50 pneumococcal threshold and include PCV21; prior PCV20-only preference and age-65 threshold are incomplete. COVID and RSV need the live schedule and addenda; do not generate an invented 2026 schedule.",
+    "issue": "2024 vaccine summary is outdated. Current retrieved CDC adult notes use an age-50 pneumococcal threshold and include PCV21; prior PCV20-only preference and age-65 threshold are incomplete. Tagged corrections address the 2026–2027 respiratory season for the indicated populations. Confirm product, vaccine history, pregnancy, immunocompromise, and seasonal addenda against the applicable schedule.",
     "suggestedOfficialSource": "https://www.cdc.gov/vaccines/hcp/imz-schedules/adult-notes.html",
     "origin": "Earlier review in this session; issue inventory, not full claim verification",
     "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."
@@ -162,7 +162,7 @@
   {
     "index": 20,
     "priorAssessment": "superseded",
-    "issue": "Legacy childhood schedule includes an incorrect 6-month Hib instruction: PedvaxHIB (Hib-OMP) uses a 2-dose primary series at 2 and 4 months, not a routine 6-month primary dose. Blanket COVID/live-vaccine statements and a static 2024 table are not adequate current guidance.",
+    "issue": "Legacy childhood schedule includes an incorrect 6-month Hib instruction: PedvaxHIB (Hib-OMP) uses a 2-dose primary series at 2 and 4 months, not a routine 6-month primary dose. The tagged COVID-19 update distinguishes AAP and CDC 2026–2027 guidance. Other historical vaccine statements and the static 2024 table still require review.",
     "suggestedOfficialSource": "https://www.cdc.gov/vaccines/hcp/imz-schedules/child-adolescent-notes.html",
     "origin": "Earlier review in this session; issue inventory, not full claim verification",
     "remainingReview": "Check every retained claim, dates, doses, populations, and reuse terms against accessible official publications."

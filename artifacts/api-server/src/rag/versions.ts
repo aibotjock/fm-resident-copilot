@@ -110,7 +110,7 @@ export async function stageVersion(pool: Pool, id: string, entries: ReferenceEnt
     await insertVersion(c,id,entries,false);
   });
 }
-export async function activateVersion(pool: Pool, id: string, reason: string, preview = false): Promise<void> {
+export async function activateVersion(pool: Pool, id: string, reason: string, preview = false, expectedCurrent?: string): Promise<void> {
   if (preview && (process.env.FM_REFERENCE_PREVIEW !== "1" || !process.env.FM_REFERENCE_SCHEMA || process.env.FM_REFERENCE_SCHEMA === "fm_copilot_restored")) {
     throw new Error("Incomplete preview activation requires an explicitly isolated schema");
   }
@@ -124,6 +124,11 @@ export async function activateVersion(pool: Pool, id: string, reason: string, pr
     const state=await c.query("SELECT active_version,previous_version FROM reference_state WHERE singleton=true FOR UPDATE");
     const current=state.rows[0]?.active_version ?? null;
     if(current===id) return;
+    if (expectedCurrent !== undefined) {
+      if (!preview || current !== expectedCurrent) return;
+      const activation = await c.query("SELECT 1 FROM reference_activations WHERE to_version=$1 LIMIT 1", [id]);
+      if (activation.rows.length) return;
+    }
     const prior=state.rows[0]?.previous_version;
     // Restoring the prior active snapshot is always allowed. Activating a new,
     // medically incomplete version is limited to an isolated preview.
