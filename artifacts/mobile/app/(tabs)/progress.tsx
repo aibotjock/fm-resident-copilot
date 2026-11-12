@@ -12,6 +12,7 @@ import {
   View,
   useColorScheme,
 } from "react-native";
+import { router } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 import { Ionicons } from "@expo/vector-icons";
@@ -371,6 +372,28 @@ export default function ProgressScreen() {
             Study topic coverage · Saved scores · Spaced repetition deck
           </Text>
         </View>
+
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => router.push("/milestones")}
+          style={({ pressed }) => [
+            styles.milestonesCard,
+            {
+              backgroundColor: theme.surface,
+              borderColor: theme.border,
+              opacity: pressed ? 0.75 : 1,
+            },
+          ]}
+        >
+          <Ionicons name="ribbon-outline" size={23} color={Colors.boardPrep} />
+          <View style={styles.milestonesText}>
+            <Text style={[styles.milestonesTitle, { color: theme.text }]}>ACGME Family Medicine Milestones</Text>
+            <Text style={[styles.heroSubtitle, { color: theme.textSecondary }]}>
+              Residency competencies, level descriptors, and practice reflections
+            </Text>
+          </View>
+          <Ionicons name="chevron-forward" size={18} color={theme.textTertiary} />
+        </Pressable>
 
         {priorityDomains.length > 0 && (
           <View
@@ -1215,6 +1238,16 @@ const styles = StyleSheet.create({
   modeLabel: { fontSize: 12, letterSpacing: 0.3 },
   heroTitle: { fontSize: 28 },
   heroSubtitle: { fontSize: 14, lineHeight: 20 },
+  milestonesCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    borderRadius: 12,
+    borderWidth: 1,
+    padding: 14,
+  },
+  milestonesText: { flex: 1, gap: 3 },
+  milestonesTitle: { fontSize: 15, lineHeight: 21, fontFamily: "Inter_600SemiBold" },
   priorityCard: {
     borderRadius: 12,
     borderWidth: 1,
