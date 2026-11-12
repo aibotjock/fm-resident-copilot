@@ -22,7 +22,7 @@ import { CONDITIONS } from "@/types";
 
 const MODE = "point_of_care" as const;
 const MODE_COLOR = Colors.pointOfCare;
-const MODE_LABEL = "Point of Care";
+const MODE_LABEL = "Clinical Review";
 const PLACEHOLDER = "e.g. Management of heart failure with reduced EF...";
 
 export default function PointOfCareScreen() {
@@ -102,9 +102,27 @@ export default function PointOfCareScreen() {
               Clinical Reference
             </Text>
             <Text style={[styles.heroSubtitle, { color: theme.textSecondary }]}>
-              Evidence-based answers at the point of care
+              Guideline-based explanations for Family Medicine study
             </Text>
           </View>
+
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => router.push("/screening")}
+            style={({ pressed }) => [
+              styles.recentItem,
+              { backgroundColor: theme.surface, borderColor: theme.border, opacity: pressed ? 0.7 : 1 },
+            ]}
+          >
+            <Ionicons name="clipboard-outline" size={20} color={MODE_COLOR} />
+            <View style={styles.recentItemContent}>
+              <Text style={[styles.recentCondition, { color: theme.text }]}>Screening guidelines</Text>
+              <Text style={[styles.recentQuery, { color: theme.textSecondary }]}>
+                Read final USPSTF recommendations
+              </Text>
+            </View>
+            <Ionicons name="chevron-forward" size={16} color={theme.textTertiary} />
+          </Pressable>
 
           <View
             style={[
@@ -196,12 +214,7 @@ export default function PointOfCareScreen() {
                     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                     router.push({
                       pathname: "/response",
-                      params: {
-                        query: h.query,
-                        mode: MODE,
-                        condition: h.condition,
-                        system: h.system,
-                      },
+                      params: { savedFrom: "history", savedId: h.id },
                     });
                   }}
                   style={({ pressed }) => [

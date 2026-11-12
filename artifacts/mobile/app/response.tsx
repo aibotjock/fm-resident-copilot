@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
+  ActivityIndicator,
   Pressable,
   StyleSheet,
   Text,
@@ -15,7 +16,7 @@ import { ResponseView } from "@/components/ResponseView";
 import { FlashcardView } from "@/components/FlashcardView";
 import { useApp } from "@/context/AppContext";
 import { streamClinicalQuery, parseFlashcards } from "@/utils/streaming";
-import type { ClinicalMode, CitationMetadata } from "@/types";
+import type { Bookmark, ClinicalMode, CitationMetadata, QueryHistory } from "@/types";
 import { MODE_LABELS } from "@/types";
 
 function savedEvidenceNotes(meta: CitationMetadata | null): string {
@@ -24,7 +25,67 @@ function savedEvidenceNotes(meta: CitationMetadata | null): string {
     meta.citations.map(c=>`${c.source}: ${c.guideline || ""}${c.url ? ` — ${c.url}` : ""}${c.accessed ? ` (checked ${c.accessed})` : ""}`).join("\n");
 }
 
+type ResponseParams = {
+  query?: string;
+  mode?: ClinicalMode;
+  condition?: string;
+  system?: string;
+  savedFrom?: string;
+  savedId?: string;
+};
+
 export default function ResponseScreen() {
+  const params = useLocalSearchParams<ResponseParams>();
+  const { history, bookmarks, isLoading } = useApp();
+  const theme = useColorScheme() === "dark" ? Colors.dark : Colors.light;
+  const insets = useSafeAreaInsets();
+
+  if (params.savedFrom !== undefined || params.savedId !== undefined) {
+    const saved = params.savedFrom === "bookmark"
+      ? bookmarks.find((entry) => entry.id === params.savedId)
+      : params.savedFrom === "history"
+        ? history.find((entry) => entry.id === params.savedId)
+        : undefined;
+    if (saved) {
+      return <ResponseContent key={`${params.savedFrom}:${saved.id}`} params={saved} saved={saved} />;
+    }
+    return (
+      <View style={[styles.container, { paddingTop: insets.top, backgroundColor: theme.background }]}>
+        <View style={styles.errorContainer}>
+          {isLoading ? <ActivityIndicator accessibilityLabel="Loading saved answer" /> : (
+            <>
+              <Text style={[styles.errorText, { color: theme.text }]}>
+                This saved answer is unavailable on this device.
+              </Text>
+              <Pressable
+                accessibilityRole="button"
+                style={[styles.retryBtn, { backgroundColor: Colors.flashcardsDark }]}
+                onPress={() => router.canGoBack() ? router.back() : router.replace("/history")}
+              >
+                <Text style={styles.retryBtnText}>Return</Text>
+              </Pressable>
+            </>
+          )}
+        </View>
+      </View>
+    );
+  }
+
+  return (
+    <ResponseContent
+      key={JSON.stringify([params.query, params.mode, params.condition, params.system])}
+      params={params}
+    />
+  );
+}
+
+function ResponseContent({
+  params,
+  saved,
+}: {
+  params: ResponseParams;
+  saved?: Bookmark | QueryHistory;
+}) {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
@@ -39,27 +100,24 @@ export default function ResponseScreen() {
     recordDomainQuery,
   } = useApp();
 
-  const params = useLocalSearchParams<{
-    query: string;
-    mode: string;
-    condition?: string;
-    system?: string;
-  }>();
-
-  const mode = (params.mode || "point_of_care") as ClinicalMode;
+  const mode = params.mode || "point_of_care";
   const query = params.query || "";
   const condition = params.condition;
   const system = params.system;
 
-  const [response, setResponse] = useState("");
-  const [isStreaming, setIsStreaming] = useState(true);
+  const [response, setResponse] = useState(saved?.response ?? "");
+  const [isStreaming, setIsStreaming] = useState(!saved && !!query);
   const [error, setError] = useState("");
-  const [flashcards, setFlashcards] = useState<Array<{ front: string; back: string }>>([]);
+  const [flashcards, setFlashcards] = useState<Array<{ front: string; back: string }>>(() =>
+    saved && mode === "flashcards"
+      ? parseFlashcards(saved.response.split("\n\nReference review:")[0])
+      : []
+  );
   const [showFlashcards, setShowFlashcards] = useState(false);
   const [deckSaved, setDeckSaved] = useState(false);
   const [citationMetadata, setCitationMetadata] = useState<CitationMetadata | null>(null);
 
-  const responseRef = useRef("");
+  const responseRef = useRef(saved?.response ?? "");
   const abortRef = useRef<AbortController | null>(null);
   const savedRef = useRef(false);
 
@@ -134,7 +192,7 @@ export default function ResponseScreen() {
   );
 
   useEffect(() => {
-    if (query) {
+    if (!saved && query) {
       startStream(query, mode, condition);
     }
     return () => {
@@ -162,11 +220,13 @@ export default function ResponseScreen() {
     if (deckSaved || flashcards.length === 0) return;
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     const topic = condition || query.slice(0, 40);
-    const abfmDomain = citationMetadata?.domain || undefined;
+    const abfmDomain = citationMetadata?.domain || saved?.abfmDomain;
+    const evidence = saved?.response.match(/\n\nReference review:[\s\S]*$/)?.[0]
+      ?? savedEvidenceNotes(citationMetadata);
     await addSRSCards(
       flashcards.map((c) => ({
         front: c.front,
-        back: c.back + savedEvidenceNotes(citationMetadata),
+        back: c.back + evidence,
         condition,
         topic,
         abfmDomain,
@@ -256,6 +316,21 @@ export default function ResponseScreen() {
 
         <View style={{ width: 36 }} />
       </View>
+
+      {saved && (
+        <View style={[styles.flashcardHeaderRow, { alignItems: "center" }]}>
+          <Text style={{ color: theme.textSecondary, flex: 1 }}>
+            Saved {new Date(saved.timestamp).toLocaleDateString()}
+          </Text>
+          <Pressable
+            accessibilityRole="button"
+            style={[styles.viewToggle, { backgroundColor: theme.surfaceSecondary }]}
+            onPress={() => router.push({ pathname: "/response", params: { query, mode, condition, system } })}
+          >
+            <Text style={[styles.viewToggleText, { color: theme.text }]}>Generate fresh answer</Text>
+          </Pressable>
+        </View>
+      )}
 
       {error ? (
         <View style={styles.errorContainer}>

@@ -193,12 +193,7 @@ export default function HistoryScreen() {
                   Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                   router.push({
                     pathname: "/response",
-                    params: {
-                      query: item.query,
-                      mode: item.mode,
-                      condition: item.condition,
-                      system: item.system,
-                    },
+                    params: { savedFrom: "history", savedId: item.id },
                   });
                 }}
                 style={({ pressed }) => [

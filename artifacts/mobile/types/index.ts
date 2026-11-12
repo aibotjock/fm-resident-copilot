@@ -133,7 +133,7 @@ export const ABFM_DOMAIN_WEIGHTS: Record<string, number> = {
 };
 
 export const MODE_LABELS: Record<ClinicalMode, string> = {
-  point_of_care: "Point of Care",
+  point_of_care: "Clinical Review",
   documentation: "Documentation",
   ddx: "Differential Dx",
   board_prep: "Board Prep",
@@ -141,7 +141,7 @@ export const MODE_LABELS: Record<ClinicalMode, string> = {
 };
 
 export const MODE_DESCRIPTIONS: Record<ClinicalMode, string> = {
-  point_of_care: "Guideline-directed clinical reference",
+  point_of_care: "Guideline-based clinical study",
   documentation: "Charting and coding essentials",
   ddx: "Symptom → evidence-based DDx",
   board_prep: "ABFM ITE exam preparation",
@@ -150,11 +150,11 @@ export const MODE_DESCRIPTIONS: Record<ClinicalMode, string> = {
 
 export function getModePrompt(mode: ClinicalMode, condition: string): string {
   const prompts: Record<ClinicalMode, string> = {
-    point_of_care: `Guideline-directed clinical reference for ${condition}: diagnosis criteria, classification, first-line treatment, monitoring targets, and escalation thresholds — all from indexed sources only.`,
-    documentation: `SOAP note and charting template for ${condition} with ICD-10 code, HPI elements, assessment, plan, and billing documentation requirements.`,
+    point_of_care: `Guideline-based study review for ${condition}: diagnosis criteria, classification, first-line treatment, monitoring targets, and escalation thresholds — all from indexed sources only.`,
+    documentation: `Educational SOAP note and charting example for ${condition} with ICD-10 code, HPI elements, assessment, plan, and billing documentation requirements.`,
     ddx: `Evidence-based differential diagnosis for a presentation suggesting ${condition}: ranked differential with must-not-miss, decision branch, and first workup orders from indexed guidelines.`,
     board_prep: `ABFM board preparation for ${condition}: high-yield pearls, key numbers, exam traps, guideline conflicts, and a board-style vignette — from indexed sources only.`,
-    flashcards: `Generate 6 Anki-style flashcards for ${condition} covering diagnosis, treatment, monitoring, and board-tested facts — each backed by an indexed guideline source.`,
+    flashcards: `Generate 6 Anki-style flashcards for ${condition} covering diagnosis, treatment, monitoring, and board-relevant concepts — each backed by an indexed guideline source.`,
   };
   return prompts[mode];
 }

@@ -321,7 +321,7 @@ export default function BoardPrepScreen() {
                       key={h.id}
                       onPress={() => {
                         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                        router.push({ pathname: "/response", params: { query: h.query, mode: MODE, condition: h.condition, system: h.system } });
+                        router.push({ pathname: "/response", params: { savedFrom: "history", savedId: h.id } });
                       }}
                       style={({ pressed }) => [
                         styles.recentItem,

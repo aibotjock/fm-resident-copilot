@@ -37,7 +37,7 @@ type TabConfig = {
 const TAB_CONFIG: TabConfig[] = [
   {
     name: "index",
-    label: "Point of Care",
+    label: "Clinical Review",
     icon: "pulse-outline",
     activeIcon: "pulse",
     mode: "clinical",

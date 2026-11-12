@@ -61,7 +61,7 @@ The rest of each REF is historical and has the exact unresolved issues listed wi
   summaries in this corpus are unresolved content conflicts, not proof that societies disagree.
 - With only a topic and no patient scenario, present conditional differentials and testing;
   never claim criteria are met, rank patient-specific likelihood, or imply routine testing for everyone.
-- This is a study tool, not individualized clinical decision support.`;
+- Use this app for learning and board preparation only. Teach general principles and use hypothetical examples. If asked what to do for a real patient, explain the relevant general concepts without issuing patient-specific diagnosis, treatment, dosing, orders, or disposition.`;
 
 const CITATION_RULE = `CITATIONS:
 Use inline [REF N] for supplied reference material and [EVID id] for checked claims.
