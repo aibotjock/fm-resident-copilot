@@ -575,5 +575,35 @@
       "syphilis-screen-grade"
     ],
     "reason": "Correct evidence grade and distinguish nonpregnant screening population"
+  },
+  {
+    "index": 19,
+    "old": "Influenza: annually for all adults ≥6 months; high-dose or adjuvanted for ≥65",
+    "new": "AAFP 2026–2027 influenza: recommend vaccination each year for nonpregnant, immunocompetent adults aged 19 or older and for health care personnel. At age 65 or older, prefer an age-appropriate high-dose, adjuvanted, recombinant, or mRNA vaccine when available. Use another age-appropriate product if an enhanced product is unavailable.",
+    "evidence": [
+      "aafp-adult-flu-2026"
+    ],
+    "reason": "Replace the outdated adult influenza schedule with AAFP seasonal guidance"
+  },
+  {
+    "index": 19,
+    "old": "COVID-19: updated annual vaccine for all adults (≥6 months)",
+    "new": "COVID-19, 2026–2027: AAFP recommends the updated vaccine for nonpregnant, immunocompetent adults from age 19 and for health care personnel. CDC recommends seasonal vaccination for adults from age 18. For adults aged 65 or older, both describe two seasonal doses, typically six months apart. CDC specifies product-dependent minimum intervals and notes that a second dose in this age group is off-label. Check the current schedule for product, previous doses, risk, pregnancy, and immunocompromise.\n\nAAFP 2026–2027 RSV: offer a single age-appropriate dose at age 75 or older, or at ages 50–74 with increased risk for severe RSV. Adult RSV vaccination is currently a one-time dose. Health care employment alone does not establish RSV vaccine eligibility.",
+    "evidence": [
+      "aafp-adult-covid-2026",
+      "cdc-covid-2026",
+      "aafp-adult-rsv-2026"
+    ],
+    "reason": "Replace the blanket adult COVID-19 wording and add age- and risk-specific RSV eligibility"
+  },
+  {
+    "index": 20,
+    "old": "COVID-19: all children ≥6 months, updated annual vaccination",
+    "new": "AAP 2026–2027 COVID-19: routinely vaccinate children ages 6–23 months without contraindications. Start or finish an initial series as appropriate, or give a seasonal dose at least eight weeks after the previous dose if the series was completed. At ages 2–18, AAP recommends one seasonal dose for children at higher risk of severe disease, those living in congregate settings, those never vaccinated, and those with a household contact at high risk. Offer a dose to other children in this age group when the parent or guardian wants protection. Use the separate schedule for moderate or severe immunocompromise. CDC recommends vaccination at ages 6 months–17 years with moderate or severe immunocompromise and uses shared clinical decision-making for others in that age range. Confirm eligibility, interval, and product using the relevant current schedule.",
+    "evidence": [
+      "aap-child-covid-2026",
+      "cdc-covid-2026"
+    ],
+    "reason": "Replace blanket pediatric COVID-19 wording and keep the AAP and CDC policies distinct"
   }
 ]

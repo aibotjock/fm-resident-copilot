@@ -19,6 +19,16 @@ export async function runIngestion(_force=false): Promise<void> {
   } else if(!state.rows.length) {
     throw new Error("No existing active library. Initialize an isolated preview; production activation requires reviewed migration.");
   }
+  const previewRelease = process.env.FM_REFERENCE_PREVIEW_RELEASE;
+  if (process.env.FM_REFERENCE_PREVIEW === "1" && previewRelease) {
+    const [previousVersion, targetVersion] = previewRelease.split(":");
+    if (previousVersion && targetVersion === CANDIDATE_VERSION &&
+        previewRelease === `${previousVersion}:${targetVersion}`) {
+      // Only this explicitly selected transition may run at startup. The
+      // activation transaction also prevents a restart from undoing a rollback.
+      await activateVersion(pool, targetVersion, "Scoped preview guideline update", true, previousVersion);
+    }
+  }
   console.log(`[References] Staged ${CANDIDATE_VERSION}; ${CANDIDATE_ENTRIES.length} entries. Production activation is never automatic.`);
 }
 export async function ensureIngested():Promise<void> {
